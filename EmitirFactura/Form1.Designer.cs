@@ -40,6 +40,12 @@
             label2 = new Label();
             CancelarBoton = new Button();
             EmitirFacturaBoton = new Button();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
             SuspendLayout();
             // 
             // DetalleEnviosLabel
@@ -54,12 +60,15 @@
             // 
             // DetalleEnviosListView
             // 
+            DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
             DetalleEnviosListView.GridLines = true;
             DetalleEnviosListView.Location = new Point(30, 183);
             DetalleEnviosListView.Name = "DetalleEnviosListView";
-            DetalleEnviosListView.Size = new Size(752, 251);
+            DetalleEnviosListView.Size = new Size(728, 251);
             DetalleEnviosListView.TabIndex = 3;
             DetalleEnviosListView.UseCompatibleStateImageBehavior = false;
+            DetalleEnviosListView.View = View.Details;
+            DetalleEnviosListView.SelectedIndexChanged += DetalleEnviosListView_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -75,7 +84,7 @@
             // 
             TotalAFacturarLabel.AutoSize = true;
             TotalAFacturarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            TotalAFacturarLabel.Location = new Point(663, 453);
+            TotalAFacturarLabel.Location = new Point(656, 450);
             TotalAFacturarLabel.Name = "TotalAFacturarLabel";
             TotalAFacturarLabel.Size = new Size(102, 20);
             TotalAFacturarLabel.TabIndex = 5;
@@ -157,11 +166,46 @@
             EmitirFacturaBoton.Text = "Emitir Factura";
             EmitirFacturaBoton.UseVisualStyleBackColor = true;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Nro. Guia";
+            columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Fecha Admision";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 120;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Origen";
+            columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 140;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Destino";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 140;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Tamaño";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Importe";
+            columnHeader6.TextAlign = HorizontalAlignment.Center;
+            columnHeader6.Width = 120;
+            // 
             // EmitirFacturaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(802, 596);
+            ClientSize = new Size(781, 596);
             Controls.Add(EmitirFacturaBoton);
             Controls.Add(CancelarBoton);
             Controls.Add(label2);
@@ -193,5 +237,11 @@
         private Label label2;
         private Button CancelarBoton;
         private Button EmitirFacturaBoton;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
     }
 }

@@ -6,5 +6,10 @@ namespace GrupoE_Tutasa
         {
             InitializeComponent();
         }
+
+        private void DetalleEnviosListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
