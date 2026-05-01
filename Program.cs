@@ -1,4 +1,4 @@
-namespace GrupoE_Tutasa
+namespace GrupoE_Tutasa.EmitirFactura
 {
     internal static class Program
     {
