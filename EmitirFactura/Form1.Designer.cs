@@ -28,34 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SeleccioneClienteBox = new GroupBox();
+            DetalleEnviosLabel = new Label();
+            DetalleEnviosListView = new ListView();
+            label1 = new Label();
+            TotalAFacturarLabel = new Label();
             CUITClienteLabel = new Label();
             DatosClienteLabel = new Label();
             DatosCLienteRespuestaLabel = new Label();
             CuitClienteBox = new TextBox();
             BuscarClienteBoton = new Button();
-            SeleccioneClienteBox.SuspendLayout();
+            label2 = new Label();
+            CancelarBoton = new Button();
+            EmitirFacturaBoton = new Button();
             SuspendLayout();
             // 
-            // SeleccioneClienteBox
+            // DetalleEnviosLabel
             // 
-            SeleccioneClienteBox.Controls.Add(BuscarClienteBoton);
-            SeleccioneClienteBox.Controls.Add(CuitClienteBox);
-            SeleccioneClienteBox.Controls.Add(DatosCLienteRespuestaLabel);
-            SeleccioneClienteBox.Controls.Add(DatosClienteLabel);
-            SeleccioneClienteBox.Controls.Add(CUITClienteLabel);
-            SeleccioneClienteBox.Location = new Point(18, 18);
-            SeleccioneClienteBox.Name = "SeleccioneClienteBox";
-            SeleccioneClienteBox.Size = new Size(770, 110);
-            SeleccioneClienteBox.TabIndex = 0;
-            SeleccioneClienteBox.TabStop = false;
-            SeleccioneClienteBox.Text = "Seleccione cliente";
-            SeleccioneClienteBox.Enter += this.groupBox1_Enter;
+            DetalleEnviosLabel.AutoSize = true;
+            DetalleEnviosLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            DetalleEnviosLabel.Location = new Point(30, 138);
+            DetalleEnviosLabel.Name = "DetalleEnviosLabel";
+            DetalleEnviosLabel.Size = new Size(255, 25);
+            DetalleEnviosLabel.TabIndex = 2;
+            DetalleEnviosLabel.Text = "Detalle de Envíos a Facturar";
+            // 
+            // DetalleEnviosListView
+            // 
+            DetalleEnviosListView.GridLines = true;
+            DetalleEnviosListView.Location = new Point(30, 183);
+            DetalleEnviosListView.Name = "DetalleEnviosListView";
+            DetalleEnviosListView.Size = new Size(752, 251);
+            DetalleEnviosListView.TabIndex = 3;
+            DetalleEnviosListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.Location = new Point(444, 450);
+            label1.Name = "label1";
+            label1.Size = new Size(153, 23);
+            label1.TabIndex = 4;
+            label1.Text = "Total a Facturar $:";
+            // 
+            // TotalAFacturarLabel
+            // 
+            TotalAFacturarLabel.AutoSize = true;
+            TotalAFacturarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            TotalAFacturarLabel.Location = new Point(663, 453);
+            TotalAFacturarLabel.Name = "TotalAFacturarLabel";
+            TotalAFacturarLabel.Size = new Size(102, 20);
+            TotalAFacturarLabel.TabIndex = 5;
+            TotalAFacturarLabel.Text = "1.000.000,23";
             // 
             // CUITClienteLabel
             // 
             CUITClienteLabel.AutoSize = true;
-            CUITClienteLabel.Location = new Point(11, 33);
+            CUITClienteLabel.Location = new Point(30, 53);
             CUITClienteLabel.Name = "CUITClienteLabel";
             CUITClienteLabel.Size = new Size(115, 20);
             CUITClienteLabel.TabIndex = 0;
@@ -64,7 +93,7 @@
             // DatosClienteLabel
             // 
             DatosClienteLabel.AutoSize = true;
-            DatosClienteLabel.Location = new Point(11, 72);
+            DatosClienteLabel.Location = new Point(30, 89);
             DatosClienteLabel.Name = "DatosClienteLabel";
             DatosClienteLabel.Size = new Size(123, 20);
             DatosClienteLabel.TabIndex = 1;
@@ -73,7 +102,7 @@
             // DatosCLienteRespuestaLabel
             // 
             DatosCLienteRespuestaLabel.AutoSize = true;
-            DatosCLienteRespuestaLabel.Location = new Point(165, 72);
+            DatosCLienteRespuestaLabel.Location = new Point(184, 89);
             DatosCLienteRespuestaLabel.Name = "DatosCLienteRespuestaLabel";
             DatosCLienteRespuestaLabel.Size = new Size(123, 20);
             DatosCLienteRespuestaLabel.TabIndex = 2;
@@ -81,7 +110,7 @@
             // 
             // CuitClienteBox
             // 
-            CuitClienteBox.Location = new Point(165, 30);
+            CuitClienteBox.Location = new Point(184, 47);
             CuitClienteBox.Name = "CuitClienteBox";
             CuitClienteBox.Size = new Size(207, 27);
             CuitClienteBox.TabIndex = 3;
@@ -89,33 +118,80 @@
             // BuscarClienteBoton
             // 
             BuscarClienteBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarClienteBoton.Location = new Point(574, 36);
+            BuscarClienteBoton.Location = new Point(593, 53);
             BuscarClienteBoton.Name = "BuscarClienteBoton";
             BuscarClienteBoton.Size = new Size(165, 52);
             BuscarClienteBoton.TabIndex = 4;
             BuscarClienteBoton.Text = "Buscar";
             BuscarClienteBoton.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label2.Location = new Point(30, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(188, 25);
+            label2.TabIndex = 6;
+            label2.Text = "Seleccione el cliente";
+            // 
+            // CancelarBoton
+            // 
+            CancelarBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            CancelarBoton.ForeColor = Color.Red;
+            CancelarBoton.Location = new Point(408, 522);
+            CancelarBoton.Name = "CancelarBoton";
+            CancelarBoton.Size = new Size(165, 52);
+            CancelarBoton.TabIndex = 7;
+            CancelarBoton.Text = "Cancelar";
+            CancelarBoton.UseVisualStyleBackColor = true;
+            // 
+            // EmitirFacturaBoton
+            // 
+            EmitirFacturaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            EmitirFacturaBoton.ForeColor = Color.FromArgb(0, 192, 0);
+            EmitirFacturaBoton.Location = new Point(593, 522);
+            EmitirFacturaBoton.Name = "EmitirFacturaBoton";
+            EmitirFacturaBoton.Size = new Size(165, 52);
+            EmitirFacturaBoton.TabIndex = 8;
+            EmitirFacturaBoton.Text = "Emitir Factura";
+            EmitirFacturaBoton.UseVisualStyleBackColor = true;
+            // 
             // EmitirFacturaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(802, 450);
-            Controls.Add(SeleccioneClienteBox);
+            ClientSize = new Size(802, 596);
+            Controls.Add(EmitirFacturaBoton);
+            Controls.Add(CancelarBoton);
+            Controls.Add(label2);
+            Controls.Add(BuscarClienteBoton);
+            Controls.Add(CuitClienteBox);
+            Controls.Add(TotalAFacturarLabel);
+            Controls.Add(DatosCLienteRespuestaLabel);
+            Controls.Add(label1);
+            Controls.Add(DatosClienteLabel);
+            Controls.Add(CUITClienteLabel);
+            Controls.Add(DetalleEnviosLabel);
+            Controls.Add(DetalleEnviosListView);
             Name = "EmitirFacturaForm";
             Text = "Emitir Factura";
-            SeleccioneClienteBox.ResumeLayout(false);
-            SeleccioneClienteBox.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private GroupBox SeleccioneClienteBox;
-        private TextBox CuitClienteBox;
-        private Label DatosCLienteRespuestaLabel;
-        private Label DatosClienteLabel;
+        private Label DetalleEnviosLabel;
+        private ListView DetalleEnviosListView;
+        private Label label1;
+        private Label TotalAFacturarLabel;
         private Label CUITClienteLabel;
+        private Label DatosClienteLabel;
+        private Label DatosCLienteRespuestaLabel;
+        private TextBox CuitClienteBox;
         private Button BuscarClienteBoton;
+        private Label label2;
+        private Button CancelarBoton;
+        private Button EmitirFacturaBoton;
     }
 }
