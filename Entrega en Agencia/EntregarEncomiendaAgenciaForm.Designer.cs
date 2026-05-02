@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.Entrega_en_Agencia
 {
-    partial class Form1
+    partial class EntregarEncomiendaAgenciaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "", "S (hasta 2,5 kg)" }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "", "M (hasta 5 kg)" }, -1);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "", "L (hasta 10 kg)" }, -1);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "", "XL (hasta 20 kg)" }, -1);
             GroupBox_BusquedaDestinatario = new GroupBox();
             Label_ApellidoResultado = new Label();
             Label_Apellido = new Label();
@@ -149,7 +145,6 @@
             // ListView_GuiasPendientes
             // 
             ListView_GuiasPendientes.Columns.AddRange(new ColumnHeader[] { columnHeader1_nrodeguia, columnHeader2_tamaño, columnHeader3_estado });
-            ListView_GuiasPendientes.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
             ListView_GuiasPendientes.Location = new Point(17, 22);
             ListView_GuiasPendientes.Name = "ListView_GuiasPendientes";
             ListView_GuiasPendientes.Size = new Size(417, 108);

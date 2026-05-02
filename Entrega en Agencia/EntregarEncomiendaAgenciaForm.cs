@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace GrupoE_Tutasa.Entrega_en_Agencia
 {
-    public partial class Form1 : Form
+    public partial class EntregarEncomiendaAgenciaForm : Form
     {
-        public Form1()
+        public EntregarEncomiendaAgenciaForm()
         {
             InitializeComponent();
         }

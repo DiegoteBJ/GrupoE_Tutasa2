@@ -1,3 +1,5 @@
+using GrupoE_Tutasa.Entrega_en_Agencia;
+
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
     internal static class Program
@@ -11,7 +13,8 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             // ApplicationConfiguration.Initialize();
-            Application.Run(new FormularioPrincipal());
+           Application.Run(new FormularioPrincipal());
+          //Application.Run(new EntregarEncomiendaAgenciaForm());
         }
     }
 }
