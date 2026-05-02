@@ -33,5 +33,10 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             EstadoCClientesForm estadoCClientesForm = new EstadoCClientesForm();
             estadoCClientesForm.Show();
         }
+
+        private void SalirBoton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

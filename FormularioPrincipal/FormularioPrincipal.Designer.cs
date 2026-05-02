@@ -31,6 +31,7 @@
             label2 = new Label();
             EmitirFacturasBoton = new Button();
             EstadoCCClientesBoton = new Button();
+            SalirBoton = new Button();
             SuspendLayout();
             // 
             // label2
@@ -65,11 +66,23 @@
             EstadoCCClientesBoton.UseVisualStyleBackColor = true;
             EstadoCCClientesBoton.Click += EstadoCCClientesBoton_Click;
             // 
+            // SalirBoton
+            // 
+            SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            SalirBoton.Location = new Point(623, 475);
+            SalirBoton.Name = "SalirBoton";
+            SalirBoton.Size = new Size(165, 52);
+            SalirBoton.TabIndex = 22;
+            SalirBoton.Text = "Salir";
+            SalirBoton.UseVisualStyleBackColor = true;
+            SalirBoton.Click += SalirBoton_Click;
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 539);
+            Controls.Add(SalirBoton);
             Controls.Add(EstadoCCClientesBoton);
             Controls.Add(EmitirFacturasBoton);
             Controls.Add(label2);
@@ -85,5 +98,6 @@
         private Label label2;
         private Button EmitirFacturasBoton;
         private Button EstadoCCClientesBoton;
+        private Button SalirBoton;
     }
 }

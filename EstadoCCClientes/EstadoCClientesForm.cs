@@ -132,5 +132,10 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             EstadoCClientesForm nuevoForm = new EstadoCClientesForm();
             nuevoForm.Show();
         }
+
+        private void SalirBoton_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

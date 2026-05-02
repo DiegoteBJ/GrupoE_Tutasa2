@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            EmitirFacturaBoton = new Button();
+            SalirBoton = new Button();
             label2 = new Label();
             BuscarClienteBoton = new Button();
             CuitClienteBox = new TextBox();
@@ -57,16 +57,17 @@
             label6 = new Label();
             SuspendLayout();
             // 
-            // EmitirFacturaBoton
+            // SalirBoton
             // 
-            EmitirFacturaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EmitirFacturaBoton.ForeColor = Color.FromArgb(64, 0, 64);
-            EmitirFacturaBoton.Location = new Point(593, 647);
-            EmitirFacturaBoton.Name = "EmitirFacturaBoton";
-            EmitirFacturaBoton.Size = new Size(165, 52);
-            EmitirFacturaBoton.TabIndex = 20;
-            EmitirFacturaBoton.Text = "Salir";
-            EmitirFacturaBoton.UseVisualStyleBackColor = true;
+            SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            SalirBoton.ForeColor = Color.FromArgb(64, 0, 64);
+            SalirBoton.Location = new Point(593, 647);
+            SalirBoton.Name = "SalirBoton";
+            SalirBoton.Size = new Size(165, 52);
+            SalirBoton.TabIndex = 20;
+            SalirBoton.Text = "Salir";
+            SalirBoton.UseVisualStyleBackColor = true;
+            SalirBoton.Click += SalirBoton_Click_1;
             // 
             // label2
             // 
@@ -316,7 +317,7 @@
             Controls.Add(DesdeDateTime);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(EmitirFacturaBoton);
+            Controls.Add(SalirBoton);
             Controls.Add(label2);
             Controls.Add(BuscarClienteBoton);
             Controls.Add(CuitClienteBox);
@@ -335,7 +336,7 @@
 
         #endregion
 
-        private Button EmitirFacturaBoton;
+        private Button SalirBoton;
         private Label label2;
         private Button BuscarClienteBoton;
         private TextBox CuitClienteBox;
