@@ -29,5 +29,28 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         {
 
         }
+
+        private void nombretxtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Recepcion_y_despacho_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2DNIFletero(object sender, EventArgs e)
+        {
+            string dni;
+            dni = textBoxDNIFletero.Text;
+
+            MessageBox.Show("El DNI ingresado es: " + dni);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
