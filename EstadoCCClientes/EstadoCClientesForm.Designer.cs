@@ -231,6 +231,7 @@
             DocumentosLista.Size = new Size(722, 210);
             DocumentosLista.TabIndex = 29;
             DocumentosLista.UseCompatibleStateImageBehavior = false;
+            DocumentosLista.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -240,21 +241,26 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Tipo Doc.";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 80;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Número Documento";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Debe";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 180;
             // 
             // columnHeader5
             // 
             columnHeader5.Text = "Haber";
             columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 180;
             // 
             // EstadoCClientesForm
             // 
