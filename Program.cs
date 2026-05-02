@@ -1,4 +1,4 @@
-namespace GrupoE_Tutasa.EmitirFactura
+namespace GrupoE_Tutasa.FormularioPrincipal
 {
     internal static class Program
     {
@@ -10,8 +10,8 @@ namespace GrupoE_Tutasa.EmitirFactura
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new EmitirFacturaForm());
+            // ApplicationConfiguration.Initialize();
+            Application.Run(new FormularioPrincipal());
         }
     }
 }

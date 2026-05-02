@@ -26,9 +26,9 @@ namespace GrupoE_Tutasa.EmitirFactura
             int encuentro = 0;
             int clienteId = 0;
             decimal totalImporte = 0;
-
             DetalleEnviosListView.Items.Clear();
-            //1 Validar Datos
+            
+            //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
                 MessageBox.Show("Por favor, ingrese un CUIT válido.");
@@ -54,7 +54,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 DatosCLienteRespuestaLabel.Text = "Cliente no encontrado.";
                 return;
             }
-            //2 Generar opercion de busqueda
+            //3 Generar opercion de busqueda
             foreach (var guia in modelo.LGuiasPendientes)
             {
                 if (guia.clienteID == clienteId)

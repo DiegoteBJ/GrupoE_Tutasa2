@@ -32,7 +32,7 @@
             label2 = new Label();
             BuscarClienteBoton = new Button();
             CuitClienteBox = new TextBox();
-            SaldoAlCierreLabel = new Label();
+            SaldoCierreLabel = new Label();
             DatosCLienteRespuestaLabel = new Label();
             label1 = new Label();
             DatosClienteLabel = new Label();
@@ -46,13 +46,15 @@
             SaldoInicioLabel = new Label();
             label7 = new Label();
             BuscarMovimientosBoton = new Button();
-            DocumentosLista = new ListView();
+            DocumentosListView = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             VerOtroBoton = new Button();
+            ClienteIDLabel = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // EmitirFacturaBoton
@@ -85,6 +87,7 @@
             BuscarClienteBoton.TabIndex = 15;
             BuscarClienteBoton.Text = "Buscar Cliente";
             BuscarClienteBoton.UseVisualStyleBackColor = true;
+            BuscarClienteBoton.Click += BuscarClienteBoton_Click;
             // 
             // CuitClienteBox
             // 
@@ -93,15 +96,15 @@
             CuitClienteBox.Size = new Size(207, 27);
             CuitClienteBox.TabIndex = 13;
             // 
-            // SaldoAlCierreLabel
+            // SaldoCierreLabel
             // 
-            SaldoAlCierreLabel.AutoSize = true;
-            SaldoAlCierreLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SaldoAlCierreLabel.Location = new Point(654, 602);
-            SaldoAlCierreLabel.Name = "SaldoAlCierreLabel";
-            SaldoAlCierreLabel.Size = new Size(102, 20);
-            SaldoAlCierreLabel.TabIndex = 17;
-            SaldoAlCierreLabel.Text = "1.000.000,23";
+            SaldoCierreLabel.AutoSize = true;
+            SaldoCierreLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            SaldoCierreLabel.Location = new Point(654, 602);
+            SaldoCierreLabel.Name = "SaldoCierreLabel";
+            SaldoCierreLabel.Size = new Size(102, 20);
+            SaldoCierreLabel.TabIndex = 17;
+            SaldoCierreLabel.Text = "1.000.000,23";
             // 
             // DatosCLienteRespuestaLabel
             // 
@@ -171,6 +174,7 @@
             // 
             // DesdeDateTime
             // 
+            DesdeDateTime.Format = DateTimePickerFormat.Short;
             DesdeDateTime.Location = new Point(92, 170);
             DesdeDateTime.Name = "DesdeDateTime";
             DesdeDateTime.Size = new Size(250, 27);
@@ -178,6 +182,7 @@
             // 
             // HastaDateTime
             // 
+            HastaDateTime.Format = DateTimePickerFormat.Short;
             HastaDateTime.Location = new Point(508, 170);
             HastaDateTime.Name = "HastaDateTime";
             HastaDateTime.Size = new Size(250, 27);
@@ -221,23 +226,24 @@
             BuscarMovimientosBoton.TabIndex = 28;
             BuscarMovimientosBoton.Text = "Buscar Movimientos";
             BuscarMovimientosBoton.UseVisualStyleBackColor = true;
+            BuscarMovimientosBoton.Click += BuscarMovimientosBoton_Click;
             // 
-            // DocumentosLista
+            // DocumentosListView
             // 
-            DocumentosLista.BackgroundImageTiled = true;
-            DocumentosLista.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
-            DocumentosLista.GridLines = true;
-            DocumentosLista.Location = new Point(34, 377);
-            DocumentosLista.Name = "DocumentosLista";
-            DocumentosLista.Size = new Size(722, 210);
-            DocumentosLista.TabIndex = 29;
-            DocumentosLista.UseCompatibleStateImageBehavior = false;
-            DocumentosLista.View = View.Details;
+            DocumentosListView.BackgroundImageTiled = true;
+            DocumentosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            DocumentosListView.GridLines = true;
+            DocumentosListView.Location = new Point(34, 377);
+            DocumentosListView.Name = "DocumentosListView";
+            DocumentosListView.Size = new Size(722, 210);
+            DocumentosListView.TabIndex = 29;
+            DocumentosListView.UseCompatibleStateImageBehavior = false;
+            DocumentosListView.View = View.Details;
             // 
             // columnHeader1
             // 
             columnHeader1.Text = "Fecha";
-            columnHeader1.Width = 120;
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
@@ -249,19 +255,19 @@
             // 
             columnHeader3.Text = "Número Documento";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 150;
+            columnHeader3.Width = 100;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Debe";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
-            columnHeader4.Width = 180;
+            columnHeader4.Width = 150;
             // 
             // columnHeader5
             // 
             columnHeader5.Text = "Haber";
             columnHeader5.TextAlign = HorizontalAlignment.Center;
-            columnHeader5.Width = 180;
+            columnHeader5.Width = 150;
             // 
             // VerOtroBoton
             // 
@@ -273,14 +279,35 @@
             VerOtroBoton.TabIndex = 30;
             VerOtroBoton.Text = "Ver otro cliente";
             VerOtroBoton.UseVisualStyleBackColor = true;
+            VerOtroBoton.Click += VerOtroBoton_Click;
+            // 
+            // ClienteIDLabel
+            // 
+            ClienteIDLabel.AutoSize = true;
+            ClienteIDLabel.Location = new Point(539, 56);
+            ClienteIDLabel.Name = "ClienteIDLabel";
+            ClienteIDLabel.Size = new Size(17, 20);
+            ClienteIDLabel.TabIndex = 31;
+            ClienteIDLabel.Text = "0";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(446, 56);
+            label6.Name = "label6";
+            label6.Size = new Size(81, 20);
+            label6.TabIndex = 32;
+            label6.Text = "Cliente ID: ";
             // 
             // EstadoCClientesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 711);
+            Controls.Add(label6);
+            Controls.Add(ClienteIDLabel);
             Controls.Add(VerOtroBoton);
-            Controls.Add(DocumentosLista);
+            Controls.Add(DocumentosListView);
             Controls.Add(BuscarMovimientosBoton);
             Controls.Add(SaldoInicioLabel);
             Controls.Add(label7);
@@ -293,7 +320,7 @@
             Controls.Add(label2);
             Controls.Add(BuscarClienteBoton);
             Controls.Add(CuitClienteBox);
-            Controls.Add(SaldoAlCierreLabel);
+            Controls.Add(SaldoCierreLabel);
             Controls.Add(DatosCLienteRespuestaLabel);
             Controls.Add(label1);
             Controls.Add(DatosClienteLabel);
@@ -312,7 +339,7 @@
         private Label label2;
         private Button BuscarClienteBoton;
         private TextBox CuitClienteBox;
-        private Label SaldoAlCierreLabel;
+        private Label SaldoCierreLabel;
         private Label DatosCLienteRespuestaLabel;
         private Label label1;
         private Label DatosClienteLabel;
@@ -326,12 +353,14 @@
         private Label SaldoInicioLabel;
         private Label label7;
         private Button BuscarMovimientosBoton;
-        private ListView DocumentosLista;
+        private ListView DocumentosListView;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private Button VerOtroBoton;
+        private Label ClienteIDLabel;
+        private Label label6;
     }
 }

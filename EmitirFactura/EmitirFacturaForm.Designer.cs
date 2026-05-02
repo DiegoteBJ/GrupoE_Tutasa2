@@ -46,6 +46,7 @@
             label2 = new Label();
             CancelarBoton = new Button();
             EmitirFacturaBoton = new Button();
+            FacturarOtroBoton = new Button();
             SuspendLayout();
             // 
             // DetalleEnviosLabel
@@ -120,9 +121,9 @@
             TotalAFacturarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             TotalAFacturarLabel.Location = new Point(656, 450);
             TotalAFacturarLabel.Name = "TotalAFacturarLabel";
-            TotalAFacturarLabel.Size = new Size(102, 20);
+            TotalAFacturarLabel.Size = new Size(49, 20);
             TotalAFacturarLabel.TabIndex = 5;
-            TotalAFacturarLabel.Text = "1.000.000,23";
+            TotalAFacturarLabel.Text = "00,00";
             // 
             // CUITClienteLabel
             // 
@@ -202,11 +203,22 @@
             EmitirFacturaBoton.Text = "Emitir Factura";
             EmitirFacturaBoton.UseVisualStyleBackColor = true;
             // 
+            // FacturarOtroBoton
+            // 
+            FacturarOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            FacturarOtroBoton.Location = new Point(30, 522);
+            FacturarOtroBoton.Name = "FacturarOtroBoton";
+            FacturarOtroBoton.Size = new Size(165, 52);
+            FacturarOtroBoton.TabIndex = 9;
+            FacturarOtroBoton.Text = "Facturar otro Cliente";
+            FacturarOtroBoton.UseVisualStyleBackColor = true;
+            // 
             // EmitirFacturaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 596);
+            Controls.Add(FacturarOtroBoton);
             Controls.Add(EmitirFacturaBoton);
             Controls.Add(CancelarBoton);
             Controls.Add(label2);
@@ -245,5 +257,6 @@
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
+        private Button FacturarOtroBoton;
     }
 }
