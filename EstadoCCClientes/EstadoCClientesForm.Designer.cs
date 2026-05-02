@@ -52,6 +52,7 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
+            VerOtroBoton = new Button();
             SuspendLayout();
             // 
             // EmitirFacturaBoton
@@ -262,11 +263,23 @@
             columnHeader5.TextAlign = HorizontalAlignment.Center;
             columnHeader5.Width = 180;
             // 
+            // VerOtroBoton
+            // 
+            VerOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            VerOtroBoton.ForeColor = Color.FromArgb(64, 0, 64);
+            VerOtroBoton.Location = new Point(422, 647);
+            VerOtroBoton.Name = "VerOtroBoton";
+            VerOtroBoton.Size = new Size(165, 52);
+            VerOtroBoton.TabIndex = 30;
+            VerOtroBoton.Text = "Ver otro cliente";
+            VerOtroBoton.UseVisualStyleBackColor = true;
+            // 
             // EstadoCClientesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 711);
+            Controls.Add(VerOtroBoton);
             Controls.Add(DocumentosLista);
             Controls.Add(BuscarMovimientosBoton);
             Controls.Add(SaldoInicioLabel);
@@ -319,5 +332,6 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
+        private Button VerOtroBoton;
     }
 }
