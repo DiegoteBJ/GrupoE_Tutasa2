@@ -167,6 +167,7 @@
             BuscarClienteBoton.TabIndex = 4;
             BuscarClienteBoton.Text = "Buscar";
             BuscarClienteBoton.UseVisualStyleBackColor = true;
+            BuscarClienteBoton.Click += BuscarClienteBoton_Click;
             // 
             // label2
             // 
@@ -188,6 +189,7 @@
             CancelarBoton.TabIndex = 7;
             CancelarBoton.Text = "Cancelar";
             CancelarBoton.UseVisualStyleBackColor = true;
+            CancelarBoton.Click += CancelarBoton_Click;
             // 
             // EmitirFacturaBoton
             // 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrupoE_Tutasa.EmitirFactura
 {
-    internal class GuiasPendientesFacturar
+    internal class GuiasPendientes
     {
         public int Id { get; set; }
         public int clienteID { get; set; }

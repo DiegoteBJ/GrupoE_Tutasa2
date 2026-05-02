@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrupoE_Tutasa.EmitirFactura
 {
-    internal class Cliente
+    internal class Clientes
     {
         public int clienteId { get; set; }
         public string clienteName { get; set; }
