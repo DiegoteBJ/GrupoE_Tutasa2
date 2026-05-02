@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.Actualizar_HDR
 {
-    partial class Form1
+    partial class ActualizarHDR
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,8 @@
             boton_Buscar = new Button();
             boton_Confirmar = new Button();
             boton_Cancelar = new Button();
+            label4 = new Label();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -118,11 +120,33 @@
             boton_Cancelar.Text = "Cancelar";
             boton_Cancelar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(36, 23);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 9;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.Control;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(35, 26);
+            label5.Name = "label5";
+            label5.Size = new Size(268, 15);
+            label5.TabIndex = 10;
+            label5.Text = "ACTUALIZAR ESTADO DE HOJA DE RUTA (HDR)";
+            // 
+            // ActualizarHDR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(boton_Cancelar);
             Controls.Add(boton_Confirmar);
             Controls.Add(boton_Buscar);
@@ -132,7 +156,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "ActualizarHDR";
             Text = "Actualizar HDR";
             ResumeLayout(false);
             PerformLayout();
@@ -149,5 +173,7 @@
         private Button boton_Buscar;
         private Button boton_Confirmar;
         private Button boton_Cancelar;
+        private Label label4;
+        private Label label5;
     }
 }

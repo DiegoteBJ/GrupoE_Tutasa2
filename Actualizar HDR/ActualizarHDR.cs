@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.Actualizar_HDR
 {
-    public partial class Form1 : Form
+    public partial class ActualizarHDR : Form
     {
-        public Form1()
+        public ActualizarHDR()
         {
             InitializeComponent();
         }
