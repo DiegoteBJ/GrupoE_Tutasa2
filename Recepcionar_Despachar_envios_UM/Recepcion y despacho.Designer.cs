@@ -37,11 +37,15 @@
             labelcd = new Label();
             txtboxUsuario = new TextBox();
             labelname = new Label();
-            tabControl1 = new TabControl();
-            tabPageRecepcion = new TabPage();
-            tabPageDespacho = new TabPage();
+            groupBoxRecepcion = new GroupBox();
+            listView1 = new ListView();
+            ColumnCumplida = new ColumnHeader();
+            ColumnGuia = new ColumnHeader();
+            ColumnHDR = new ColumnHeader();
+            columndestino = new ColumnHeader();
+            columntamaño = new ColumnHeader();
             paneltop.SuspendLayout();
-            tabControl1.SuspendLayout();
+            groupBoxRecepcion.SuspendLayout();
             SuspendLayout();
             // 
             // paneltop
@@ -144,36 +148,52 @@
             labelname.Text = "Usuario:";
             labelname.Click += label1_Click;
             // 
-            // tabControl1
+            // groupBoxRecepcion
             // 
-            tabControl1.Controls.Add(tabPageRecepcion);
-            tabControl1.Controls.Add(tabPageDespacho);
-            tabControl1.Location = new Point(12, 78);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(613, 329);
-            tabControl1.TabIndex = 1;
+            groupBoxRecepcion.Controls.Add(listView1);
+            groupBoxRecepcion.Location = new Point(28, 99);
+            groupBoxRecepcion.Name = "groupBoxRecepcion";
+            groupBoxRecepcion.Size = new Size(356, 228);
+            groupBoxRecepcion.TabIndex = 1;
+            groupBoxRecepcion.TabStop = false;
+            groupBoxRecepcion.Text = "Recepción";
             // 
-            // tabPageRecepcion
+            // listView1
             // 
-            tabPageRecepcion.BackColor = SystemColors.ControlLight;
-            tabPageRecepcion.ForeColor = SystemColors.ActiveCaptionText;
-            tabPageRecepcion.Location = new Point(4, 24);
-            tabPageRecepcion.Name = "tabPageRecepcion";
-            tabPageRecepcion.Padding = new Padding(3);
-            tabPageRecepcion.Size = new Size(605, 301);
-            tabPageRecepcion.TabIndex = 0;
-            tabPageRecepcion.Text = "Recepción";
+            listView1.CheckBoxes = true;
+            listView1.Columns.AddRange(new ColumnHeader[] { ColumnCumplida, ColumnGuia, ColumnHDR, columndestino, columntamaño });
+            listView1.Location = new Point(6, 24);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(350, 141);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.ItemChecked += listView1_ItemChecked;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged_1;
             // 
-            // tabPageDespacho
+            // ColumnCumplida
             // 
-            tabPageDespacho.BackColor = SystemColors.ControlLight;
-            tabPageDespacho.Location = new Point(4, 24);
-            tabPageDespacho.Name = "tabPageDespacho";
-            tabPageDespacho.Padding = new Padding(3);
-            tabPageDespacho.Size = new Size(605, 301);
-            tabPageDespacho.TabIndex = 1;
-            tabPageDespacho.Text = "Despacho";
+            ColumnCumplida.Text = "Cumplida";
+            ColumnCumplida.Width = 70;
+            // 
+            // ColumnGuia
+            // 
+            ColumnGuia.Text = "Nro. Guía";
+            ColumnGuia.Width = 70;
+            // 
+            // ColumnHDR
+            // 
+            ColumnHDR.Text = "HDR";
+            ColumnHDR.Width = 70;
+            // 
+            // columndestino
+            // 
+            columndestino.Text = "Destino";
+            columndestino.Width = 70;
+            // 
+            // columntamaño
+            // 
+            columntamaño.Text = "Tamaño";
             // 
             // Recepcion_y_despacho
             // 
@@ -181,7 +201,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(875, 450);
-            Controls.Add(tabControl1);
+            Controls.Add(groupBoxRecepcion);
             Controls.Add(paneltop);
             ForeColor = SystemColors.ActiveCaptionText;
             Name = "Recepcion_y_despacho";
@@ -189,7 +209,7 @@
             Load += Recepcion_y_despacho_Load;
             paneltop.ResumeLayout(false);
             paneltop.PerformLayout();
-            tabControl1.ResumeLayout(false);
+            groupBoxRecepcion.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -200,12 +220,16 @@
         private Label labelcd;
         private Label labeldnifletero;
         private Button buttonbuscardnifletero;
-        private TabControl tabControl1;
-        private TabPage tabPageRecepcion;
-        private TabPage tabPageDespacho;
         private TextBox textBoxresultadofletero;
         private TextBox textBoxDNIFletero;
         private TextBox textBoxCD;
         private TextBox txtboxUsuario;
+        private GroupBox groupBoxRecepcion;
+        private ListView listView1;
+        private ColumnHeader ColumnCumplida;
+        private ColumnHeader ColumnGuia;
+        private ColumnHeader ColumnHDR;
+        private ColumnHeader columndestino;
+        private ColumnHeader columntamaño;
     }
 }

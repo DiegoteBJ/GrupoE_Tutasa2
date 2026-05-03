@@ -46,11 +46,37 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             dni = textBoxDNIFletero.Text;
 
             MessageBox.Show("El DNI ingresado es: " + dni);
+
+            textBoxDNIFletero.Clear();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_ItemChecked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ActualizarContadores();
+        }
+        private void ActualizarContadores()
+        {
+            int cumplidas = listView1.CheckedItems.Count;
+            int pendientes = listView1.Items.Count - cumplidas;
+
+            // Aquí actualizas un Label o TextBox con los valores
+           // labelContadores.Text = $"Cumplidas: {cumplidas} / Pendientes: {pendientes}";
         }
     }
 }
