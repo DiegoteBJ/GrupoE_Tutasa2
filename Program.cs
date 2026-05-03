@@ -1,6 +1,7 @@
 using GrupoE_Tutasa.Entrega_en_Agencia;
 using GrupoE_Tutasa.Entrega_en_CD;
 using GrupoE_Tutasa.Actualizar_HDR;
+using GrupoE_Tutasa.Estado_de_Encomienda;
 
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
@@ -19,7 +20,8 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // Application.Run(new FormularioPrincipal());
             // Application.Run(new EntregarEncomiendaAgenciaForm());
             // Application.Run(new EntregaEnCDFormNuevo());
-            Application.Run(new ActualizarHDRForm());
+            // Application.Run(new ActualizarHDRForm());
+            Application.Run(new EstadoDeEncomiendaForm());
         }
     }
 }
