@@ -1,5 +1,6 @@
 ﻿using GrupoE_Tutasa.EstadoCCClientes;
 using GrupoE_Tutasa.EmitirFactura;
+using GrupoE_Tutasa.MonitoreoResultados;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,12 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         private void SalirBoton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void MonitoreoBoton_Click(object sender, EventArgs e)
+        {
+            MonitoreoResultadosForm monitoreoResultadosForm = new MonitoreoResultadosForm();
+            monitoreoResultadosForm.Show();
         }
     }
 }

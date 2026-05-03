@@ -14,5 +14,18 @@ namespace GrupoE_Tutasa.MonitoreoResultados
         {
             InitializeComponent();
         }
+
+        private void MonitoreoResultadosForm_Load(object sender, EventArgs e)
+        {
+            var hoy = DateTime.Today;
+            var anterior = new DateTime(hoy.Year, hoy.Month, 1).AddDays(-1);
+            int anio = anterior.Year;
+            int mes = anterior.Month;
+            MesUpDown.Value = mes;
+            AñoUpDown.Value = anio;
+            ResultadoMensualLabel.Text = string.Empty;
+            ResultadosObtenidosListView.Items.Clear();
+        }
+
     }
 }

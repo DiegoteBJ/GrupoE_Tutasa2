@@ -37,7 +37,7 @@
             label4 = new Label();
             BuscarBoton = new Button();
             label5 = new Label();
-            listView1 = new ListView();
+            ResultadosObtenidosListView = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -137,16 +137,16 @@
             label5.TabIndex = 30;
             label5.Text = "Resultados Obtenidos";
             // 
-            // listView1
+            // ResultadosObtenidosListView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1.GridLines = true;
-            listView1.Location = new Point(19, 182);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(748, 176);
-            listView1.TabIndex = 31;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            ResultadosObtenidosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            ResultadosObtenidosListView.GridLines = true;
+            ResultadosObtenidosListView.Location = new Point(19, 182);
+            ResultadosObtenidosListView.Name = "ResultadosObtenidosListView";
+            ResultadosObtenidosListView.Size = new Size(748, 176);
+            ResultadosObtenidosListView.TabIndex = 31;
+            ResultadosObtenidosListView.UseCompatibleStateImageBehavior = false;
+            ResultadosObtenidosListView.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -220,7 +220,7 @@
             Controls.Add(SalirBoton);
             Controls.Add(ResultadoMensualLabel);
             Controls.Add(label6);
-            Controls.Add(listView1);
+            Controls.Add(ResultadosObtenidosListView);
             Controls.Add(label5);
             Controls.Add(BuscarBoton);
             Controls.Add(label4);
@@ -232,6 +232,7 @@
             Controls.Add(label3);
             Name = "MonitoreoResultadosForm";
             Text = "Monitoreo Resultados Empresas de Transporte";
+            Load += MonitoreoResultadosForm_Load;
             ((System.ComponentModel.ISupportInitialize)MesUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)AñoUpDown).EndInit();
             ResumeLayout(false);
@@ -249,7 +250,7 @@
         private Label label4;
         private Button BuscarBoton;
         private Label label5;
-        private ListView listView1;
+        private ListView ResultadosObtenidosListView;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;

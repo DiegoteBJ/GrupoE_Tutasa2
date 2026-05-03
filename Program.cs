@@ -14,9 +14,9 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             // ApplicationConfiguration.Initialize();
-            // Application.Run(new FormularioPrincipal());
+            Application.Run(new FormularioPrincipal());
             // Application.Run(new EntregarEncomiendaAgenciaForm());
-            Application.Run(new EntregaEnCDFormNuevo());
+            // Application.Run(new EntregaEnCDFormNuevo());
         }
     }
 }

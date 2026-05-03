@@ -32,6 +32,7 @@
             EmitirFacturasBoton = new Button();
             EstadoCCClientesBoton = new Button();
             SalirBoton = new Button();
+            MonitoreoBoton = new Button();
             SuspendLayout();
             // 
             // label2
@@ -58,7 +59,7 @@
             // EstadoCCClientesBoton
             // 
             EstadoCCClientesBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EstadoCCClientesBoton.Location = new Point(273, 77);
+            EstadoCCClientesBoton.Location = new Point(279, 77);
             EstadoCCClientesBoton.Name = "EstadoCCClientesBoton";
             EstadoCCClientesBoton.Size = new Size(165, 52);
             EstadoCCClientesBoton.TabIndex = 21;
@@ -77,11 +78,23 @@
             SalirBoton.UseVisualStyleBackColor = true;
             SalirBoton.Click += SalirBoton_Click;
             // 
+            // MonitoreoBoton
+            // 
+            MonitoreoBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            MonitoreoBoton.Location = new Point(546, 77);
+            MonitoreoBoton.Name = "MonitoreoBoton";
+            MonitoreoBoton.Size = new Size(165, 52);
+            MonitoreoBoton.TabIndex = 23;
+            MonitoreoBoton.Text = "Monitoreo de Resultados";
+            MonitoreoBoton.UseVisualStyleBackColor = true;
+            MonitoreoBoton.Click += MonitoreoBoton_Click;
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 539);
+            Controls.Add(MonitoreoBoton);
             Controls.Add(SalirBoton);
             Controls.Add(EstadoCCClientesBoton);
             Controls.Add(EmitirFacturasBoton);
@@ -99,5 +112,6 @@
         private Button EmitirFacturasBoton;
         private Button EstadoCCClientesBoton;
         private Button SalirBoton;
+        private Button MonitoreoBoton;
     }
 }
