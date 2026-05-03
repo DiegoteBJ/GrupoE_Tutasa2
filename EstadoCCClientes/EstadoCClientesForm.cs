@@ -101,7 +101,6 @@ namespace GrupoE_Tutasa.EstadoCCClientes
                     }
 
                     ListViewItem item = new ListViewItem(documento.documentoFecha.ToString());
-                    //item.SubItems.Add(documento.documentoFecha.ToShortDateString());
                     item.SubItems.Add(documento.documentoTipo);
                     item.SubItems.Add(documento.documentoNumero.ToString());
 

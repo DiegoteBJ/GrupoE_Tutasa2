@@ -126,6 +126,7 @@
             BuscarBoton.TabIndex = 29;
             BuscarBoton.Text = "Buscar";
             BuscarBoton.UseVisualStyleBackColor = true;
+            BuscarBoton.Click += BuscarBoton_Click;
             // 
             // label5
             // 
@@ -143,7 +144,7 @@
             ResultadosObtenidosListView.GridLines = true;
             ResultadosObtenidosListView.Location = new Point(19, 182);
             ResultadosObtenidosListView.Name = "ResultadosObtenidosListView";
-            ResultadosObtenidosListView.Size = new Size(748, 176);
+            ResultadosObtenidosListView.Size = new Size(748, 250);
             ResultadosObtenidosListView.TabIndex = 31;
             ResultadosObtenidosListView.UseCompatibleStateImageBehavior = false;
             ResultadosObtenidosListView.View = View.Details;
@@ -151,31 +152,31 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Empresa de Transporte";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 180;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Venta Mensual";
             columnHeader2.TextAlign = HorizontalAlignment.Center;
-            columnHeader2.Width = 180;
+            columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Costo Mensual";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 180;
+            columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Resultado Mensual";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
-            columnHeader4.Width = 180;
+            columnHeader4.Width = 150;
             // 
             // ResultadoMensualLabel
             // 
             ResultadoMensualLabel.AutoSize = true;
             ResultadoMensualLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ResultadoMensualLabel.Location = new Point(645, 383);
+            ResultadoMensualLabel.Location = new Point(645, 447);
             ResultadoMensualLabel.Name = "ResultadoMensualLabel";
             ResultadoMensualLabel.Size = new Size(102, 20);
             ResultadoMensualLabel.TabIndex = 33;
@@ -185,7 +186,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.Location = new Point(19, 383);
+            label6.Location = new Point(19, 447);
             label6.Name = "label6";
             label6.Size = new Size(376, 23);
             label6.TabIndex = 32;
@@ -194,28 +195,30 @@
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(642, 471);
+            SalirBoton.Location = new Point(642, 510);
             SalirBoton.Name = "SalirBoton";
             SalirBoton.Size = new Size(111, 50);
             SalirBoton.TabIndex = 34;
             SalirBoton.Text = "Salir";
             SalirBoton.UseVisualStyleBackColor = true;
+            SalirBoton.Click += SalirBoton_Click;
             // 
             // VerOtroBoton
             // 
             VerOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            VerOtroBoton.Location = new Point(497, 471);
+            VerOtroBoton.Location = new Point(497, 510);
             VerOtroBoton.Name = "VerOtroBoton";
             VerOtroBoton.Size = new Size(111, 50);
             VerOtroBoton.TabIndex = 35;
             VerOtroBoton.Text = "Ver otro período";
             VerOtroBoton.UseVisualStyleBackColor = true;
+            VerOtroBoton.Click += VerOtroBoton_Click;
             // 
             // MonitoreoResultadosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 537);
+            ClientSize = new Size(779, 586);
             Controls.Add(VerOtroBoton);
             Controls.Add(SalirBoton);
             Controls.Add(ResultadoMensualLabel);
