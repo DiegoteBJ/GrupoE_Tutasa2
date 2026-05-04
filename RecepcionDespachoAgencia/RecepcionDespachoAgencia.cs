@@ -26,7 +26,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 
             LimpiarFormulario();
         }
-        private void BuscarFleteroBoton_Click(object sender, EventArgs e)
+        private void BuscarFleteroBoton_Click_1(object sender, EventArgs e)
         {
             string dni = DNIFleteroBox.Text.Trim();
 
@@ -106,7 +106,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             }
         }
 
-        private void ConfirmarBoton_Click(object sender, EventArgs e)
+        private void ConfirmarBoton_Click_1(object sender, EventArgs e)
         {
             if (!fleteroValido)
             {
@@ -118,7 +118,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             LimpiarFormulario();
         }
 
-        private void CancelarBoton_Click(object sender, EventArgs e)
+        private void CancelarBoton_Click_1(object sender, EventArgs e)
         {
             LimpiarFormulario();
         }
@@ -132,6 +132,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             GuiasEntregarAFleteroListView.Items.Clear();
             fleteroValido = false;
         }
+
     }
 }
 
