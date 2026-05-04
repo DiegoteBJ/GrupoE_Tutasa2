@@ -4,12 +4,12 @@ using System.Text;
 
 namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
 {
-    internal class Buscar_Fletero
+    internal class Fletero
     {
         private fletero Fletero1;
         private fletero Fletero2;
 
-        public Buscar_Fletero()
+        public Fletero()
         {
             // Usar el constructor con parámetros
             Fletero1 = new fletero("12345678", "Juan");
@@ -29,6 +29,21 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             Console.WriteLine($"DNI: {Fletero1.DNI}, Nombre: {Fletero1.Nombre}");
         }
 
-        
+       
     }
+
+        public class Guia
+        {
+            public Guia()
+             {
+                GrupoE_Tutasa.Recepcionar_Despachar_envios_UM.guia encomienda1 = new GrupoE_Tutasa.Recepcionar_Despachar_envios_UM.guia();
+                {
+                encomienda1.NroGuia = "001-001";
+                encomienda1.HDR = "123";
+                encomienda1.Destino = "Salta";
+                encomienda1.Tamaño = "G";
+                encomienda1.Cumplida = true; 
+                }
+            }
+        }
 }

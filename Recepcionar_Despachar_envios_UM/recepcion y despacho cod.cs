@@ -35,4 +35,28 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         }
 
     }
+    public class guia
+    {
+        public string NroGuia { get; set; }
+        public string HDR { get; set; }
+        public string Destino { get; set; }
+        public string Tamaño { get; set; }
+        public bool Cumplida { get; set; }
+
+        public guia()
+        {
+        }
+
+        public guia(string nroguia, string hdr, string destino, string tamaño, bool cumplida)
+        {
+            NroGuia = nroguia;
+            HDR = hdr;
+            Destino = destino;
+            Tamaño = tamaño;
+            Cumplida = cumplida;
+        }
+
+    }
+
+
 }

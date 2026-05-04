@@ -76,7 +76,17 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             int pendientes = listView1.Items.Count - cumplidas;
 
             // Aquí actualizas un Label o TextBox con los valores
-           // labelContadores.Text = $"Cumplidas: {cumplidas} / Pendientes: {pendientes}";
+            // labelContadores.Text = $"Cumplidas: {cumplidas} / Pendientes: {pendientes}";
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

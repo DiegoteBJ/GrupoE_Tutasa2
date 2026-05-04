@@ -32,10 +32,8 @@
             textBoxresultadofletero = new TextBox();
             buttonbuscardnifletero = new Button();
             textBoxDNIFletero = new TextBox();
-            textBoxCD = new TextBox();
             labeldnifletero = new Label();
             labelcd = new Label();
-            txtboxUsuario = new TextBox();
             labelname = new Label();
             groupBoxRecepcion = new GroupBox();
             listView1 = new ListView();
@@ -44,8 +42,24 @@
             ColumnHDR = new ColumnHeader();
             columndestino = new ColumnHeader();
             columntamaño = new ColumnHeader();
+            listView2 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            groupBox1 = new GroupBox();
+            label1 = new Label();
+            label2 = new Label();
+            btnagregarrecepcion = new Button();
+            btnagregardespacho = new Button();
+            btnaceptarrecepcion = new Button();
+            btnaceptardespacho = new Button();
+            btncancelarrecepcion = new Button();
+            btncancelardespacho = new Button();
             paneltop.SuspendLayout();
             groupBoxRecepcion.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // paneltop
@@ -53,13 +67,13 @@
             paneltop.BackColor = SystemColors.ControlLight;
             paneltop.BackgroundImageLayout = ImageLayout.None;
             paneltop.BorderStyle = BorderStyle.FixedSingle;
+            paneltop.Controls.Add(label2);
+            paneltop.Controls.Add(label1);
             paneltop.Controls.Add(textBoxresultadofletero);
             paneltop.Controls.Add(buttonbuscardnifletero);
             paneltop.Controls.Add(textBoxDNIFletero);
-            paneltop.Controls.Add(textBoxCD);
             paneltop.Controls.Add(labeldnifletero);
             paneltop.Controls.Add(labelcd);
-            paneltop.Controls.Add(txtboxUsuario);
             paneltop.Controls.Add(labelname);
             paneltop.Location = new Point(8, 21);
             paneltop.Name = "paneltop";
@@ -78,7 +92,7 @@
             // 
             // buttonbuscardnifletero
             // 
-            buttonbuscardnifletero.Location = new Point(610, 4);
+            buttonbuscardnifletero.Location = new Point(596, 2);
             buttonbuscardnifletero.Name = "buttonbuscardnifletero";
             buttonbuscardnifletero.Size = new Size(87, 20);
             buttonbuscardnifletero.TabIndex = 6;
@@ -96,17 +110,6 @@
             textBoxDNIFletero.Size = new Size(108, 16);
             textBoxDNIFletero.TabIndex = 5;
             textBoxDNIFletero.TextChanged += textBox2DNIFletero;
-            // 
-            // textBoxCD
-            // 
-            textBoxCD.BackColor = SystemColors.ControlLight;
-            textBoxCD.BorderStyle = BorderStyle.None;
-            textBoxCD.ForeColor = SystemColors.HotTrack;
-            textBoxCD.Location = new Point(261, 7);
-            textBoxCD.Name = "textBoxCD";
-            textBoxCD.Size = new Size(114, 16);
-            textBoxCD.TabIndex = 4;
-            textBoxCD.TextChanged += textBox1_TextChanged;
             // 
             // labeldnifletero
             // 
@@ -127,21 +130,10 @@
             labelcd.Text = "CD:";
             labelcd.Click += label2_Click;
             // 
-            // txtboxUsuario
-            // 
-            txtboxUsuario.BackColor = SystemColors.ControlLight;
-            txtboxUsuario.BorderStyle = BorderStyle.None;
-            txtboxUsuario.ForeColor = SystemColors.HotTrack;
-            txtboxUsuario.Location = new Point(79, 7);
-            txtboxUsuario.Name = "txtboxUsuario";
-            txtboxUsuario.Size = new Size(101, 16);
-            txtboxUsuario.TabIndex = 1;
-            txtboxUsuario.TextChanged += nombretxtbox_TextChanged;
-            // 
             // labelname
             // 
             labelname.AutoSize = true;
-            labelname.Location = new Point(19, 8);
+            labelname.Location = new Point(19, 4);
             labelname.Name = "labelname";
             labelname.Size = new Size(50, 15);
             labelname.TabIndex = 0;
@@ -150,6 +142,9 @@
             // 
             // groupBoxRecepcion
             // 
+            groupBoxRecepcion.Controls.Add(btncancelarrecepcion);
+            groupBoxRecepcion.Controls.Add(btnaceptarrecepcion);
+            groupBoxRecepcion.Controls.Add(btnagregarrecepcion);
             groupBoxRecepcion.Controls.Add(listView1);
             groupBoxRecepcion.Location = new Point(28, 99);
             groupBoxRecepcion.Name = "groupBoxRecepcion";
@@ -162,7 +157,7 @@
             // 
             listView1.CheckBoxes = true;
             listView1.Columns.AddRange(new ColumnHeader[] { ColumnCumplida, ColumnGuia, ColumnHDR, columndestino, columntamaño });
-            listView1.Location = new Point(6, 24);
+            listView1.Location = new Point(0, 22);
             listView1.Name = "listView1";
             listView1.Size = new Size(350, 141);
             listView1.TabIndex = 0;
@@ -195,12 +190,139 @@
             // 
             columntamaño.Text = "Tamaño";
             // 
+            // listView2
+            // 
+            listView2.CheckBoxes = true;
+            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            listView2.Location = new Point(0, 22);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(350, 141);
+            listView2.TabIndex = 2;
+            listView2.UseCompatibleStateImageBehavior = false;
+            listView2.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Cumplida";
+            columnHeader1.Width = 70;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nro. Guía";
+            columnHeader2.Width = 70;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "HDR";
+            columnHeader3.Width = 70;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Destino";
+            columnHeader4.Width = 70;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Tamaño";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btncancelardespacho);
+            groupBox1.Controls.Add(btnaceptardespacho);
+            groupBox1.Controls.Add(btnagregardespacho);
+            groupBox1.Controls.Add(listView2);
+            groupBox1.Location = new Point(390, 99);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(356, 228);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Despacho";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.HotTrack;
+            label1.Location = new Point(87, 4);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Juan Perez";
+            label1.Click += label1_Click_1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.HotTrack;
+            label2.Location = new Point(232, 4);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Buenos Aires";
+            // 
+            // btnagregarrecepcion
+            // 
+            btnagregarrecepcion.Location = new Point(6, 187);
+            btnagregarrecepcion.Name = "btnagregarrecepcion";
+            btnagregarrecepcion.Size = new Size(97, 23);
+            btnagregarrecepcion.TabIndex = 1;
+            btnagregarrecepcion.Text = "Agregar";
+            btnagregarrecepcion.UseVisualStyleBackColor = true;
+            btnagregarrecepcion.Click += button1_Click;
+            // 
+            // btnagregardespacho
+            // 
+            btnagregardespacho.Location = new Point(12, 187);
+            btnagregardespacho.Name = "btnagregardespacho";
+            btnagregardespacho.Size = new Size(97, 23);
+            btnagregardespacho.TabIndex = 2;
+            btnagregardespacho.Text = "Agregar";
+            btnagregardespacho.UseVisualStyleBackColor = true;
+            // 
+            // btnaceptarrecepcion
+            // 
+            btnaceptarrecepcion.Location = new Point(121, 187);
+            btnaceptarrecepcion.Name = "btnaceptarrecepcion";
+            btnaceptarrecepcion.Size = new Size(97, 23);
+            btnaceptarrecepcion.TabIndex = 2;
+            btnaceptarrecepcion.Text = "Aceptar";
+            btnaceptarrecepcion.UseVisualStyleBackColor = true;
+            // 
+            // btnaceptardespacho
+            // 
+            btnaceptardespacho.Location = new Point(134, 187);
+            btnaceptardespacho.Name = "btnaceptardespacho";
+            btnaceptardespacho.Size = new Size(97, 23);
+            btnaceptardespacho.TabIndex = 3;
+            btnaceptardespacho.Text = "Aceptar";
+            btnaceptardespacho.UseVisualStyleBackColor = true;
+            // 
+            // btncancelarrecepcion
+            // 
+            btncancelarrecepcion.Location = new Point(241, 187);
+            btncancelarrecepcion.Name = "btncancelarrecepcion";
+            btncancelarrecepcion.Size = new Size(97, 23);
+            btncancelarrecepcion.TabIndex = 4;
+            btncancelarrecepcion.Text = "Cancelar";
+            btncancelarrecepcion.UseVisualStyleBackColor = true;
+            // 
+            // btncancelardespacho
+            // 
+            btncancelardespacho.Location = new Point(253, 187);
+            btncancelardespacho.Name = "btncancelardespacho";
+            btncancelardespacho.Size = new Size(97, 23);
+            btncancelardespacho.TabIndex = 4;
+            btncancelardespacho.Text = "Cancelar";
+            btncancelardespacho.UseVisualStyleBackColor = true;
+            // 
             // Recepcion_y_despacho
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(875, 450);
+            Controls.Add(groupBox1);
             Controls.Add(groupBoxRecepcion);
             Controls.Add(paneltop);
             ForeColor = SystemColors.ActiveCaptionText;
@@ -210,6 +332,7 @@
             paneltop.ResumeLayout(false);
             paneltop.PerformLayout();
             groupBoxRecepcion.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -222,8 +345,6 @@
         private Button buttonbuscardnifletero;
         private TextBox textBoxresultadofletero;
         private TextBox textBoxDNIFletero;
-        private TextBox textBoxCD;
-        private TextBox txtboxUsuario;
         private GroupBox groupBoxRecepcion;
         private ListView listView1;
         private ColumnHeader ColumnCumplida;
@@ -231,5 +352,20 @@
         private ColumnHeader ColumnHDR;
         private ColumnHeader columndestino;
         private ColumnHeader columntamaño;
+        private Label label1;
+        private ListView listView2;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private GroupBox groupBox1;
+        private Label label2;
+        private Button btncancelarrecepcion;
+        private Button btnaceptarrecepcion;
+        private Button btnagregarrecepcion;
+        private Button btncancelardespacho;
+        private Button btnaceptardespacho;
+        private Button btnagregardespacho;
     }
 }
