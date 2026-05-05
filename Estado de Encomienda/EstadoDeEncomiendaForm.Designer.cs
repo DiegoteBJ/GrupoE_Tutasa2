@@ -40,12 +40,14 @@
             columnUbicacion = new ColumnHeader();
             Button_Borrar = new Button();
             Button_Cerrar = new Button();
+            label1 = new Label();
             GroupBox_BusquedaGuia.SuspendLayout();
             GroupBox_ResultadoBusqueda.SuspendLayout();
             SuspendLayout();
             // 
             // GroupBox_BusquedaGuia
             // 
+            GroupBox_BusquedaGuia.Controls.Add(label1);
             GroupBox_BusquedaGuia.Controls.Add(Button_Buscar);
             GroupBox_BusquedaGuia.Controls.Add(TextBox_NroGuia);
             GroupBox_BusquedaGuia.Controls.Add(Label_NroGuia);
@@ -81,9 +83,8 @@
             Label_NroGuia.AutoSize = true;
             Label_NroGuia.Location = new Point(11, 71);
             Label_NroGuia.Name = "Label_NroGuia";
-            Label_NroGuia.Size = new Size(100, 15);
+            Label_NroGuia.Size = new Size(0, 15);
             Label_NroGuia.TabIndex = 1;
-            Label_NroGuia.Text = "Número de Guía: ";
             // 
             // Label_Instruccion
             // 
@@ -152,6 +153,15 @@
             Button_Cerrar.UseVisualStyleBackColor = true;
             Button_Cerrar.Click += Button_Cerrar_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(11, 72);
+            label1.Name = "label1";
+            label1.Size = new Size(97, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Número de Guía:";
+            // 
             // EstadoDeEncomiendaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -183,5 +193,6 @@
         private ColumnHeader columnUbicacion;
         private Button Button_Borrar;
         private Button Button_Cerrar;
+        private Label label1;
     }
 }
