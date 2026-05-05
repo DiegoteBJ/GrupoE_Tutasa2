@@ -328,7 +328,7 @@
             Controls.Add(CUITClienteLabel);
             Controls.Add(DetalleEnviosLabel);
             Name = "EstadoCClientesForm";
-            Text = "EstadoCClientesForm";
+            Text = "Estado Cuenta Corriente Clientes";
             Load += EstadoCClientesForm_Load;
             ResumeLayout(false);
             PerformLayout();
