@@ -7,9 +7,11 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
 {
     public partial class FormRecepcionYDespachoUM : Form
     {
-        // Datos precargados
-        private Dictionary<string, string> _fleteros = new Dictionary<string, string>();
-        private string _dniSeleccionado = "";
+        // Datos precargados (evita CS8618)
+        private readonly Dictionary<string, string> _fleteros = new Dictionary<string, string>();
+
+        // Nullable
+        private string? _dniSeleccionado = null;
 
         public FormRecepcionYDespachoUM()
         {
@@ -32,12 +34,10 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             ConfigurarListViewNuevasRetiro(lvNuevaRetiro);
 
             // Fleteros (3 DNIs)
-            _fleteros = new Dictionary<string, string>
-            {
-                { "12345678", "Juan Pérez" },
-                { "23456789", "Ana Gómez" },
-                { "34567890", "Carlos López" } // sin guías
-            };
+            _fleteros.Clear();
+            _fleteros.Add("12345678", "Juan Pérez");
+            _fleteros.Add("23456789", "Ana Gómez");
+            _fleteros.Add("34567890", "Carlos López"); // sin guías
 
             // Eventos
             btnBuscar.Click += btnBuscar_Click;
@@ -55,7 +55,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             lv.FullRowSelect = true;
             lv.GridLines = true;
             lv.HideSelection = false;
-            lv.CheckBoxes = true; // arriba con checkbox
+            lv.CheckBoxes = true;
 
             lv.Columns.Add("¿Cumplida?", 90);
             lv.Columns.Add("Nro Guía", 120);
@@ -69,7 +69,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             lv.FullRowSelect = true;
             lv.GridLines = true;
             lv.HideSelection = false;
-            lv.CheckBoxes = false; // abajo sin checkbox
+            lv.CheckBoxes = false;
 
             lv.Columns.Add("Nro Guía", 120);
             lv.Columns.Add("Tamaño", 90);
@@ -84,7 +84,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             lv.FullRowSelect = true;
             lv.GridLines = true;
             lv.HideSelection = false;
-            lv.CheckBoxes = false; // abajo sin checkbox
+            lv.CheckBoxes = false;
 
             lv.Columns.Add("Nro Guía", 120);
             lv.Columns.Add("Tamaño", 90);
@@ -93,13 +93,15 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         }
 
         // ====== Buscar Fletero ======
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object? sender, EventArgs e)
         {
             string dni = SoloDigitos(txtDni.Text);
 
-            if (!ValidarDni(dni, out string error))
+            // ✅ cambio: out string? error
+            if (!ValidarDni(dni, out string? error))
             {
-                MessageBox.Show(error, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(error ?? "DNI inválido", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDni.Focus();
                 return;
             }
@@ -171,7 +173,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         private void AddAsignada(ListView lv, string nroGuia, string nroHdr)
         {
             var item = new ListViewItem("");
-            item.Checked = false; // arranca desmarcado
+            item.Checked = false;
             item.SubItems.Add(nroGuia);
             item.SubItems.Add(nroHdr);
             lv.Items.Add(item);
@@ -196,7 +198,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         }
 
         // ====== Confirmar ======
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object? sender, EventArgs e)
         {
             if (_dniSeleccionado == null)
             {
@@ -244,6 +246,7 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
         private void LimpiarPantalla(bool keepDni = false)
         {
             if (!keepDni) txtDni.Text = "";
+
             _dniSeleccionado = null;
             lblFleteroValue.Text = "-";
 
@@ -255,13 +258,28 @@ namespace GrupoE_Tutasa.Recepcionar_Despachar_envios_UM
             btnConfirmar.Enabled = false;
         }
 
-        private bool ValidarDni(string dni, out string error)
+        // ✅ cambio: out string? para permitir error = null
+        private bool ValidarDni(string dni, out string? error)
         {
             error = null;
 
-            if (string.IsNullOrWhiteSpace(dni)) { error = "Debe ingresar un DNI."; return false; }
-            if (!long.TryParse(dni, out long n) || n <= 0) { error = "Debe ingresar un número entero positivo."; return false; }
-            if (dni.Length < 7 || dni.Length > 8) { error = "Debe ingresar un número que contenga entre 7 y 8 caracteres."; return false; }
+            if (string.IsNullOrWhiteSpace(dni))
+            {
+                error = "Debe ingresar un DNI.";
+                return false;
+            }
+
+            if (!long.TryParse(dni, out long n) || n <= 0)
+            {
+                error = "Debe ingresar un número entero positivo.";
+                return false;
+            }
+
+            if (dni.Length < 7 || dni.Length > 8)
+            {
+                error = "Debe ingresar un número que contenga entre 7 y 8 caracteres.";
+                return false;
+            }
 
             return true;
         }
