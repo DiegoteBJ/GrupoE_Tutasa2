@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ImponerEnCD
+﻿namespace GrupoE_Tutasa.Imposicion
 {
-    public partial class ImponerEnCD_Form : Form
+    public partial class ImposicionForm : Form
     {
-        public ImponerEnCD_Form()
+        public ImposicionForm()
         {
             InitializeComponent();
         }

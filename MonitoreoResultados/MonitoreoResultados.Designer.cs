@@ -30,10 +30,8 @@
         {
             label3 = new Label();
             label1 = new Label();
-            MesUpDown = new NumericUpDown();
             Mes = new Label();
             label2 = new Label();
-            AñoUpDown = new NumericUpDown();
             label4 = new Label();
             BuscarBoton = new Button();
             label5 = new Label();
@@ -46,83 +44,64 @@
             label6 = new Label();
             SalirBoton = new Button();
             VerOtroBoton = new Button();
-            ((System.ComponentModel.ISupportInitialize)MesUpDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)AñoUpDown).BeginInit();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
             SuspendLayout();
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label3.Location = new Point(12, 21);
+            label3.Location = new Point(10, 16);
             label3.Name = "label3";
-            label3.Size = new Size(301, 25);
+            label3.Size = new Size(235, 20);
             label3.TabIndex = 22;
             label3.Text = "Ingrese el período de la consulta";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 78);
+            label1.Location = new Point(9, 58);
             label1.Name = "label1";
-            label1.Size = new Size(368, 20);
+            label1.Size = new Size(292, 15);
             label1.TabIndex = 23;
             label1.Text = "Ingrese el mes y año cuyos resultados desee visualizar:";
-            // 
-            // MesUpDown
-            // 
-            MesUpDown.Location = new Point(412, 76);
-            MesUpDown.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
-            MesUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            MesUpDown.Name = "MesUpDown";
-            MesUpDown.Size = new Size(73, 27);
-            MesUpDown.TabIndex = 24;
-            MesUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // Mes
             // 
             Mes.AutoSize = true;
-            Mes.Location = new Point(432, 53);
+            Mes.Location = new Point(378, 40);
             Mes.Name = "Mes";
-            Mes.Size = new Size(36, 20);
+            Mes.Size = new Size(29, 15);
             Mes.TabIndex = 25;
             Mes.Text = "Mes";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(555, 53);
+            label2.Location = new Point(486, 40);
             label2.Name = "label2";
-            label2.Size = new Size(36, 20);
+            label2.Size = new Size(29, 15);
             label2.TabIndex = 27;
             label2.Text = "Año";
-            // 
-            // AñoUpDown
-            // 
-            AñoUpDown.Location = new Point(535, 76);
-            AñoUpDown.Maximum = new decimal(new int[] { 2200, 0, 0, 0 });
-            AñoUpDown.Minimum = new decimal(new int[] { 2000, 0, 0, 0 });
-            AñoUpDown.Name = "AñoUpDown";
-            AñoUpDown.Size = new Size(73, 27);
-            AñoUpDown.TabIndex = 26;
-            AñoUpDown.Value = new decimal(new int[] { 2000, 0, 0, 0 });
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F);
-            label4.Location = new Point(501, 73);
+            label4.Location = new Point(438, 55);
             label4.Name = "label4";
-            label4.Size = new Size(19, 25);
+            label4.Size = new Size(15, 20);
             label4.TabIndex = 28;
             label4.Text = "/";
             // 
             // BuscarBoton
             // 
             BuscarBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarBoton.Location = new Point(642, 53);
+            BuscarBoton.Location = new Point(562, 40);
+            BuscarBoton.Margin = new Padding(3, 2, 3, 2);
             BuscarBoton.Name = "BuscarBoton";
-            BuscarBoton.Size = new Size(111, 50);
+            BuscarBoton.Size = new Size(97, 38);
             BuscarBoton.TabIndex = 29;
             BuscarBoton.Text = "Buscar";
             BuscarBoton.UseVisualStyleBackColor = true;
@@ -132,9 +111,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label5.Location = new Point(12, 139);
+            label5.Location = new Point(10, 104);
             label5.Name = "label5";
-            label5.Size = new Size(205, 25);
+            label5.Size = new Size(162, 20);
             label5.TabIndex = 30;
             label5.Text = "Resultados Obtenidos";
             // 
@@ -142,9 +121,10 @@
             // 
             ResultadosObtenidosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             ResultadosObtenidosListView.GridLines = true;
-            ResultadosObtenidosListView.Location = new Point(19, 182);
+            ResultadosObtenidosListView.Location = new Point(17, 136);
+            ResultadosObtenidosListView.Margin = new Padding(3, 2, 3, 2);
             ResultadosObtenidosListView.Name = "ResultadosObtenidosListView";
-            ResultadosObtenidosListView.Size = new Size(748, 250);
+            ResultadosObtenidosListView.Size = new Size(655, 188);
             ResultadosObtenidosListView.TabIndex = 31;
             ResultadosObtenidosListView.UseCompatibleStateImageBehavior = false;
             ResultadosObtenidosListView.View = View.Details;
@@ -176,9 +156,9 @@
             // 
             ResultadoMensualLabel.AutoSize = true;
             ResultadoMensualLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ResultadoMensualLabel.Location = new Point(645, 447);
+            ResultadoMensualLabel.Location = new Point(564, 335);
             ResultadoMensualLabel.Name = "ResultadoMensualLabel";
-            ResultadoMensualLabel.Size = new Size(102, 20);
+            ResultadoMensualLabel.Size = new Size(79, 15);
             ResultadoMensualLabel.TabIndex = 33;
             ResultadoMensualLabel.Text = "1.000.000,23";
             // 
@@ -186,18 +166,19 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.Location = new Point(19, 447);
+            label6.Location = new Point(17, 335);
             label6.Name = "label6";
-            label6.Size = new Size(376, 23);
+            label6.Size = new Size(314, 19);
             label6.TabIndex = 32;
             label6.Text = "Resultado Mensual Empresas de Transporte $:";
             // 
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(642, 510);
+            SalirBoton.Location = new Point(562, 382);
+            SalirBoton.Margin = new Padding(3, 2, 3, 2);
             SalirBoton.Name = "SalirBoton";
-            SalirBoton.Size = new Size(111, 50);
+            SalirBoton.Size = new Size(97, 38);
             SalirBoton.TabIndex = 34;
             SalirBoton.Text = "Salir";
             SalirBoton.UseVisualStyleBackColor = true;
@@ -206,19 +187,36 @@
             // VerOtroBoton
             // 
             VerOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            VerOtroBoton.Location = new Point(497, 510);
+            VerOtroBoton.Location = new Point(435, 382);
+            VerOtroBoton.Margin = new Padding(3, 2, 3, 2);
             VerOtroBoton.Name = "VerOtroBoton";
-            VerOtroBoton.Size = new Size(111, 50);
+            VerOtroBoton.Size = new Size(97, 38);
             VerOtroBoton.TabIndex = 35;
             VerOtroBoton.Text = "Ver otro período";
             VerOtroBoton.UseVisualStyleBackColor = true;
             VerOtroBoton.Click += VerOtroBoton_Click;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(332, 58);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 36;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(456, 58);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 37;
+            // 
             // MonitoreoResultadosForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 586);
+            ClientSize = new Size(682, 440);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(VerOtroBoton);
             Controls.Add(SalirBoton);
             Controls.Add(ResultadoMensualLabel);
@@ -228,16 +226,13 @@
             Controls.Add(BuscarBoton);
             Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(AñoUpDown);
             Controls.Add(Mes);
-            Controls.Add(MesUpDown);
             Controls.Add(label1);
             Controls.Add(label3);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MonitoreoResultadosForm";
             Text = "Monitoreo Resultados Empresas de Transporte";
             Load += MonitoreoResultadosForm_Load;
-            ((System.ComponentModel.ISupportInitialize)MesUpDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)AñoUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -246,10 +241,8 @@
 
         private Label label3;
         private Label label1;
-        private NumericUpDown MesUpDown;
         private Label Mes;
         private Label label2;
-        private NumericUpDown AñoUpDown;
         private Label label4;
         private Button BuscarBoton;
         private Label label5;
@@ -262,5 +255,7 @@
         private Label label6;
         private Button SalirBoton;
         private Button VerOtroBoton;
+        private TextBox textBox1;
+        private TextBox textBox2;
     }
 }

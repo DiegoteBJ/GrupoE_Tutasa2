@@ -1,4 +1,4 @@
-﻿namespace GrupoE_Tutasa.Entrega_en_Agencia
+﻿namespace GrupoE_Tutasa.EntregaEnAgencia
 {
     partial class EntregarEncomiendaAgenciaForm
     {
