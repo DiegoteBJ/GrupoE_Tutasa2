@@ -23,4 +23,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Recepcionar_Despachar_envios_UM\" />
+  </ItemGroup>
+
 </Project>
