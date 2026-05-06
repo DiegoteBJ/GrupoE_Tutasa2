@@ -81,5 +81,9 @@ namespace GrupoE_Tutasa.Estado_de_Encomienda
             this.Close();
         }
 
+        private void Label_Instruccion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

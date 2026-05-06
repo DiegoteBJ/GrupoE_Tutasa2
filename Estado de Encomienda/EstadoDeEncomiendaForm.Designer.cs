@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             GroupBox_BusquedaGuia = new GroupBox();
+            label1 = new Label();
             Button_Buscar = new Button();
             TextBox_NroGuia = new TextBox();
             Label_NroGuia = new Label();
@@ -40,7 +41,6 @@
             columnUbicacion = new ColumnHeader();
             Button_Borrar = new Button();
             Button_Cerrar = new Button();
-            label1 = new Label();
             GroupBox_BusquedaGuia.SuspendLayout();
             GroupBox_ResultadoBusqueda.SuspendLayout();
             SuspendLayout();
@@ -58,6 +58,15 @@
             GroupBox_BusquedaGuia.TabIndex = 0;
             GroupBox_BusquedaGuia.TabStop = false;
             GroupBox_BusquedaGuia.Text = "Búsqueda de Encomienda";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(11, 72);
+            label1.Name = "label1";
+            label1.Size = new Size(97, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Número de Guía:";
             // 
             // Button_Buscar
             // 
@@ -92,9 +101,10 @@
             Label_Instruccion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Label_Instruccion.Location = new Point(6, 31);
             Label_Instruccion.Name = "Label_Instruccion";
-            Label_Instruccion.Size = new Size(489, 21);
+            Label_Instruccion.Size = new Size(493, 21);
             Label_Instruccion.TabIndex = 0;
-            Label_Instruccion.Text = "Ingrese el número de guía de la encomienda que desea consultar:";
+            Label_Instruccion.Text = "Ingrese el número de guía de la encomienda que desea consultar: ";
+            Label_Instruccion.Click += Label_Instruccion_Click;
             // 
             // GroupBox_ResultadoBusqueda
             // 
@@ -152,15 +162,6 @@
             Button_Cerrar.Text = "CERRAR";
             Button_Cerrar.UseVisualStyleBackColor = true;
             Button_Cerrar.Click += Button_Cerrar_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(11, 72);
-            label1.Name = "label1";
-            label1.Size = new Size(97, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Número de Guía:";
             // 
             // EstadoDeEncomiendaForm
             // 
