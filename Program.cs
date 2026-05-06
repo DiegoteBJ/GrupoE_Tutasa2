@@ -1,4 +1,10 @@
-namespace GrupoE_Tutasa.EmitirFactura
+using GrupoE_Tutasa.Entrega_en_Agencia;
+using GrupoE_Tutasa.Entrega_en_CD;
+using GrupoE_Tutasa.Actualizar_HDR;
+using GrupoE_Tutasa.Estado_de_Encomienda;
+using GrupoE_Tutasa.RecepcionDespachoAgencia;
+
+namespace GrupoE_Tutasa.FormularioPrincipal
 {
     internal static class Program
     {
@@ -10,8 +16,13 @@ namespace GrupoE_Tutasa.EmitirFactura
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new EmitirFacturaForm());
+            // ApplicationConfiguration.Initialize();
+
+            // Application.Run(new FormularioPrincipal());
+            // Application.Run(new EntregarEncomiendaAgenciaForm());
+            // Application.Run(new EntregaEnCDFormNuevo());
+            // Application.Run(new ActualizarHDRForm());
+            Application.Run(new GrupoE_Tutasa.RecepcionDespachoAgencia.RecepcionDespachoAgencia());
         }
     }
 }
