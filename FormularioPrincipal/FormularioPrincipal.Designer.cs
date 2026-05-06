@@ -33,6 +33,11 @@
             EstadoCCClientesBoton = new Button();
             SalirBoton = new Button();
             MonitoreoBoton = new Button();
+            ActualizarHDRBoton = new Button();
+            EntregaEnAgenciaBoton = new Button();
+            EntregaEnCDBoton = new Button();
+            EstadoEncomiendaBoton = new Button();
+            ImponerEnCD = new Button();
             SuspendLayout();
             // 
             // label2
@@ -89,11 +94,66 @@
             MonitoreoBoton.UseVisualStyleBackColor = true;
             MonitoreoBoton.Click += MonitoreoBoton_Click;
             // 
+            // ActualizarHDRBoton
+            // 
+            ActualizarHDRBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            ActualizarHDRBoton.Location = new Point(12, 172);
+            ActualizarHDRBoton.Name = "ActualizarHDRBoton";
+            ActualizarHDRBoton.Size = new Size(165, 52);
+            ActualizarHDRBoton.TabIndex = 24;
+            ActualizarHDRBoton.Text = "Actualizar Hojas de Ruta";
+            ActualizarHDRBoton.UseVisualStyleBackColor = true;
+            // 
+            // EntregaEnAgenciaBoton
+            // 
+            EntregaEnAgenciaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            EntregaEnAgenciaBoton.Location = new Point(279, 172);
+            EntregaEnAgenciaBoton.Name = "EntregaEnAgenciaBoton";
+            EntregaEnAgenciaBoton.Size = new Size(165, 52);
+            EntregaEnAgenciaBoton.TabIndex = 25;
+            EntregaEnAgenciaBoton.Text = "Entrega en Agencia";
+            EntregaEnAgenciaBoton.UseVisualStyleBackColor = true;
+            // 
+            // EntregaEnCDBoton
+            // 
+            EntregaEnCDBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            EntregaEnCDBoton.Location = new Point(546, 172);
+            EntregaEnCDBoton.Name = "EntregaEnCDBoton";
+            EntregaEnCDBoton.Size = new Size(165, 52);
+            EntregaEnCDBoton.TabIndex = 26;
+            EntregaEnCDBoton.Text = "Entrega en CD";
+            EntregaEnCDBoton.UseVisualStyleBackColor = true;
+            // 
+            // EstadoEncomiendaBoton
+            // 
+            EstadoEncomiendaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            EstadoEncomiendaBoton.Location = new Point(12, 275);
+            EstadoEncomiendaBoton.Name = "EstadoEncomiendaBoton";
+            EstadoEncomiendaBoton.Size = new Size(165, 52);
+            EstadoEncomiendaBoton.TabIndex = 27;
+            EstadoEncomiendaBoton.Text = "Estado de Encomienda";
+            EstadoEncomiendaBoton.UseVisualStyleBackColor = true;
+            // 
+            // ImponerEnCD
+            // 
+            ImponerEnCD.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            ImponerEnCD.Location = new Point(279, 275);
+            ImponerEnCD.Name = "ImponerEnCD";
+            ImponerEnCD.Size = new Size(165, 52);
+            ImponerEnCD.TabIndex = 28;
+            ImponerEnCD.Text = "Imponer en CD";
+            ImponerEnCD.UseVisualStyleBackColor = true;
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 539);
+            Controls.Add(ImponerEnCD);
+            Controls.Add(EstadoEncomiendaBoton);
+            Controls.Add(EntregaEnCDBoton);
+            Controls.Add(EntregaEnAgenciaBoton);
+            Controls.Add(ActualizarHDRBoton);
             Controls.Add(MonitoreoBoton);
             Controls.Add(SalirBoton);
             Controls.Add(EstadoCCClientesBoton);
@@ -113,5 +173,10 @@
         private Button EstadoCCClientesBoton;
         private Button SalirBoton;
         private Button MonitoreoBoton;
+        private Button ActualizarHDRBoton;
+        private Button EntregaEnAgenciaBoton;
+        private Button EntregaEnCDBoton;
+        private Button EstadoEncomiendaBoton;
+        private Button ImponerEnCD;
     }
 }

@@ -3,6 +3,7 @@ using GrupoE_Tutasa.Entrega_en_CD;
 using GrupoE_Tutasa.Actualizar_HDR;
 using GrupoE_Tutasa.Estado_de_Encomienda;
 using GrupoE_Tutasa.RecepcionDespachoAgencia;
+using GrupoE_Tutasa.FormularioPrincipal;
 
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
@@ -18,11 +19,11 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // see https://aka.ms/applicationconfiguration.
             // ApplicationConfiguration.Initialize();
 
-            // Application.Run(new FormularioPrincipal());
+            Application.Run(new FormularioPrincipal());
             // Application.Run(new EntregarEncomiendaAgenciaForm());
             // Application.Run(new EntregaEnCDFormNuevo());
             // Application.Run(new ActualizarHDRForm());
-            Application.Run(new GrupoE_Tutasa.RecepcionDespachoAgencia.RecepcionDespachoAgencia());
+            // Application.Run(new GrupoE_Tutasa.RecepcionDespachoAgencia.RecepcionDespachoAgencia());
         }
     }
 }
