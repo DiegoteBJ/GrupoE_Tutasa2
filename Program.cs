@@ -1,10 +1,3 @@
-using GrupoE_Tutasa.Entrega_en_Agencia;
-using GrupoE_Tutasa.Entrega_en_CD;
-using GrupoE_Tutasa.Actualizar_HDR;
-using GrupoE_Tutasa.Estado_de_Encomienda;
-using GrupoE_Tutasa.RecepcionDespachoAgencia;
-using GrupoE_Tutasa.FormularioPrincipal;
-
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
     internal static class Program
