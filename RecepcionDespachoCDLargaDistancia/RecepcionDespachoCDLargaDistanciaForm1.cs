@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoE_Tutasa.Recepcion_y_Despacho_CD_Larga_distancia
+namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
-    public partial class RecepcionYDespachoLargaDistanciaForm1 : Form
+    public partial class RecepcionDespachoCDLargaDistanciaForm1 : Form
     {
-        public RecepcionYDespachoLargaDistanciaForm1()
+        public RecepcionDespachoCDLargaDistanciaForm1()
         {
             InitializeComponent();
         }

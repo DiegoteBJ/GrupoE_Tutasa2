@@ -7,7 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GrupoE_Tutasa.Estado_de_Encomienda
+namespace GrupoE_Tutasa.EstadoDeEncomienda
 {
     public partial class EstadoDeEncomiendaForm : Form
     {

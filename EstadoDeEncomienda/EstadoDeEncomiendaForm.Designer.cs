@@ -1,4 +1,4 @@
-﻿namespace GrupoE_Tutasa.Estado_de_Encomienda
+﻿namespace GrupoE_Tutasa.EstadoDeEncomienda
 {
     partial class EstadoDeEncomiendaForm
     {
@@ -52,9 +52,11 @@
             GroupBox_BusquedaGuia.Controls.Add(TextBox_NroGuia);
             GroupBox_BusquedaGuia.Controls.Add(Label_NroGuia);
             GroupBox_BusquedaGuia.Controls.Add(Label_Instruccion);
-            GroupBox_BusquedaGuia.Location = new Point(40, 42);
+            GroupBox_BusquedaGuia.Location = new Point(46, 56);
+            GroupBox_BusquedaGuia.Margin = new Padding(3, 4, 3, 4);
             GroupBox_BusquedaGuia.Name = "GroupBox_BusquedaGuia";
-            GroupBox_BusquedaGuia.Size = new Size(661, 108);
+            GroupBox_BusquedaGuia.Padding = new Padding(3, 4, 3, 4);
+            GroupBox_BusquedaGuia.Size = new Size(755, 144);
             GroupBox_BusquedaGuia.TabIndex = 0;
             GroupBox_BusquedaGuia.TabStop = false;
             GroupBox_BusquedaGuia.Text = "Búsqueda de Encomienda";
@@ -62,17 +64,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 72);
+            label1.Location = new Point(13, 96);
             label1.Name = "label1";
-            label1.Size = new Size(97, 15);
+            label1.Size = new Size(121, 20);
             label1.TabIndex = 4;
             label1.Text = "Número de Guía:";
             // 
             // Button_Buscar
             // 
-            Button_Buscar.Location = new Point(276, 68);
+            Button_Buscar.Location = new Point(315, 91);
+            Button_Buscar.Margin = new Padding(3, 4, 3, 4);
             Button_Buscar.Name = "Button_Buscar";
-            Button_Buscar.Size = new Size(75, 23);
+            Button_Buscar.Size = new Size(86, 31);
             Button_Buscar.TabIndex = 3;
             Button_Buscar.Text = "Buscar";
             Button_Buscar.UseVisualStyleBackColor = true;
@@ -81,27 +84,28 @@
             // TextBox_NroGuia
             // 
             TextBox_NroGuia.ForeColor = SystemColors.ControlDarkDark;
-            TextBox_NroGuia.Location = new Point(117, 68);
+            TextBox_NroGuia.Location = new Point(134, 91);
+            TextBox_NroGuia.Margin = new Padding(3, 4, 3, 4);
             TextBox_NroGuia.Name = "TextBox_NroGuia";
-            TextBox_NroGuia.Size = new Size(153, 23);
+            TextBox_NroGuia.Size = new Size(174, 27);
             TextBox_NroGuia.TabIndex = 2;
             TextBox_NroGuia.Text = "ej: 123456789";
             // 
             // Label_NroGuia
             // 
             Label_NroGuia.AutoSize = true;
-            Label_NroGuia.Location = new Point(11, 71);
+            Label_NroGuia.Location = new Point(13, 95);
             Label_NroGuia.Name = "Label_NroGuia";
-            Label_NroGuia.Size = new Size(0, 15);
+            Label_NroGuia.Size = new Size(0, 20);
             Label_NroGuia.TabIndex = 1;
             // 
             // Label_Instruccion
             // 
             Label_Instruccion.AutoSize = true;
             Label_Instruccion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Label_Instruccion.Location = new Point(6, 31);
+            Label_Instruccion.Location = new Point(7, 41);
             Label_Instruccion.Name = "Label_Instruccion";
-            Label_Instruccion.Size = new Size(493, 21);
+            Label_Instruccion.Size = new Size(623, 28);
             Label_Instruccion.TabIndex = 0;
             Label_Instruccion.Text = "Ingrese el número de guía de la encomienda que desea consultar: ";
             Label_Instruccion.Click += Label_Instruccion_Click;
@@ -109,9 +113,11 @@
             // GroupBox_ResultadoBusqueda
             // 
             GroupBox_ResultadoBusqueda.Controls.Add(ListView_Resultado);
-            GroupBox_ResultadoBusqueda.Location = new Point(44, 173);
+            GroupBox_ResultadoBusqueda.Location = new Point(50, 231);
+            GroupBox_ResultadoBusqueda.Margin = new Padding(3, 4, 3, 4);
             GroupBox_ResultadoBusqueda.Name = "GroupBox_ResultadoBusqueda";
-            GroupBox_ResultadoBusqueda.Size = new Size(657, 214);
+            GroupBox_ResultadoBusqueda.Padding = new Padding(3, 4, 3, 4);
+            GroupBox_ResultadoBusqueda.Size = new Size(751, 285);
             GroupBox_ResultadoBusqueda.TabIndex = 1;
             GroupBox_ResultadoBusqueda.TabStop = false;
             GroupBox_ResultadoBusqueda.Text = "Resultado de la Búsqueda";
@@ -119,9 +125,10 @@
             // ListView_Resultado
             // 
             ListView_Resultado.Columns.AddRange(new ColumnHeader[] { column_Fecha, columnEstado, columnUbicacion });
-            ListView_Resultado.Location = new Point(14, 39);
+            ListView_Resultado.Location = new Point(16, 52);
+            ListView_Resultado.Margin = new Padding(3, 4, 3, 4);
             ListView_Resultado.Name = "ListView_Resultado";
-            ListView_Resultado.Size = new Size(454, 153);
+            ListView_Resultado.Size = new Size(518, 203);
             ListView_Resultado.TabIndex = 0;
             ListView_Resultado.UseCompatibleStateImageBehavior = false;
             ListView_Resultado.View = View.Details;
@@ -145,9 +152,10 @@
             // 
             // Button_Borrar
             // 
-            Button_Borrar.Location = new Point(533, 409);
+            Button_Borrar.Location = new Point(609, 545);
+            Button_Borrar.Margin = new Padding(3, 4, 3, 4);
             Button_Borrar.Name = "Button_Borrar";
-            Button_Borrar.Size = new Size(75, 23);
+            Button_Borrar.Size = new Size(86, 31);
             Button_Borrar.TabIndex = 2;
             Button_Borrar.Text = "BORRAR";
             Button_Borrar.UseVisualStyleBackColor = true;
@@ -155,9 +163,10 @@
             // 
             // Button_Cerrar
             // 
-            Button_Cerrar.Location = new Point(626, 409);
+            Button_Cerrar.Location = new Point(715, 545);
+            Button_Cerrar.Margin = new Padding(3, 4, 3, 4);
             Button_Cerrar.Name = "Button_Cerrar";
-            Button_Cerrar.Size = new Size(75, 23);
+            Button_Cerrar.Size = new Size(86, 31);
             Button_Cerrar.TabIndex = 3;
             Button_Cerrar.Text = "CERRAR";
             Button_Cerrar.UseVisualStyleBackColor = true;
@@ -165,15 +174,17 @@
             // 
             // EstadoDeEncomiendaForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(Button_Cerrar);
             Controls.Add(Button_Borrar);
             Controls.Add(GroupBox_ResultadoBusqueda);
             Controls.Add(GroupBox_BusquedaGuia);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "EstadoDeEncomiendaForm";
             Text = "Consultar Estado de Encomienda";
+            //Load += this.EstadoDeEncomiendaForm_Load;
             GroupBox_BusquedaGuia.ResumeLayout(false);
             GroupBox_BusquedaGuia.PerformLayout();
             GroupBox_ResultadoBusqueda.ResumeLayout(false);

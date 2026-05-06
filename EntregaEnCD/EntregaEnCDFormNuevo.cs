@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoE_Tutasa.Entrega_en_CD
+namespace GrupoE_Tutasa.EntregaEnCD
 {
     public partial class EntregaEnCDFormNuevo : Form
     {
@@ -84,6 +84,11 @@ namespace GrupoE_Tutasa.Entrega_en_CD
             Label_NombreResultado.Text = "";
             Label_ApellidoResultado.Text = "";
             ListView_GuiasPendientes.Items.Clear();
+        }
+
+        private void EntregaEnCDFormNuevo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
