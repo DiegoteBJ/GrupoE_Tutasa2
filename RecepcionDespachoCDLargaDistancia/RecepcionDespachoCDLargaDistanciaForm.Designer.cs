@@ -43,6 +43,10 @@
             listView2 = new ListView();
             button2 = new Button();
             button3 = new Button();
+            label1 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -55,7 +59,7 @@
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(NrodeTransportelabel);
             groupBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(37, 23);
+            groupBox1.Location = new Point(40, 60);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(728, 109);
             groupBox1.TabIndex = 0;
@@ -74,7 +78,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(211, 43);
+            textBox1.Location = new Point(222, 47);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(325, 31);
             textBox1.TabIndex = 1;
@@ -95,7 +99,7 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label2);
             groupBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(37, 155);
+            groupBox2.Location = new Point(40, 185);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(731, 129);
             groupBox2.TabIndex = 1;
@@ -136,6 +140,7 @@
             label3.Size = new Size(43, 20);
             label3.TabIndex = 1;
             label3.Text = "HDR:";
+            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -151,9 +156,9 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(listView1);
-            groupBox3.Location = new Point(42, 353);
+            groupBox3.Location = new Point(42, 320);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(322, 211);
+            groupBox3.Size = new Size(322, 215);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Hojas de ruta a recibir";
@@ -170,9 +175,9 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(listView2);
-            groupBox4.Location = new Point(429, 353);
+            groupBox4.Location = new Point(429, 320);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(335, 211);
+            groupBox4.Size = new Size(335, 210);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Hojas de ruta a despachar";
@@ -188,27 +193,68 @@
             // 
             // button2
             // 
-            button2.Location = new Point(130, 595);
+            button2.Location = new Point(130, 614);
             button2.Name = "button2";
-            button2.Size = new Size(191, 55);
+            button2.Size = new Size(139, 36);
             button2.TabIndex = 4;
             button2.Text = "Confirmar";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(504, 592);
+            button3.Location = new Point(504, 614);
             button3.Name = "button3";
-            button3.Size = new Size(207, 48);
+            button3.Size = new Size(145, 36);
             button3.TabIndex = 5;
             button3.Text = "Cancelar";
             button3.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(23, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(66, 20);
+            label1.TabIndex = 6;
+            label1.Text = "Usuario: ";
+            label1.Click += label1_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(95, 13);
+            label6.Name = "label6";
+            label6.Size = new Size(79, 20);
+            label6.TabIndex = 7;
+            label6.Text = "Usuario 11";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(233, 13);
+            label7.Name = "label7";
+            label7.Size = new Size(36, 20);
+            label7.TabIndex = 8;
+            label7.Text = "CD: ";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(273, 13);
+            label8.Name = "label8";
+            label8.Size = new Size(94, 20);
+            label8.TabIndex = 9;
+            label8.Text = "Buenos Aires";
             // 
             // RecepcionDespachoCDLargaDistanciaForm1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 712);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(groupBox4);
@@ -225,6 +271,7 @@
             groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -244,5 +291,9 @@
         private Button button2;
         private Button button3;
         private ListView listView2;
+        private Label label1;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
