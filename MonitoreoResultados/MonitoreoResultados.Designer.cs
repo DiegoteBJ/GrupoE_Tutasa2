@@ -44,44 +44,44 @@
             label6 = new Label();
             SalirBoton = new Button();
             VerOtroBoton = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            MesTextBox = new TextBox();
+            AnioTextBox = new TextBox();
             SuspendLayout();
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label3.Location = new Point(10, 16);
+            label3.Location = new Point(11, 21);
             label3.Name = "label3";
-            label3.Size = new Size(235, 20);
+            label3.Size = new Size(301, 25);
             label3.TabIndex = 22;
             label3.Text = "Ingrese el período de la consulta";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 58);
+            label1.Location = new Point(10, 77);
             label1.Name = "label1";
-            label1.Size = new Size(292, 15);
+            label1.Size = new Size(368, 20);
             label1.TabIndex = 23;
             label1.Text = "Ingrese el mes y año cuyos resultados desee visualizar:";
             // 
             // Mes
             // 
             Mes.AutoSize = true;
-            Mes.Location = new Point(378, 40);
+            Mes.Location = new Point(432, 53);
             Mes.Name = "Mes";
-            Mes.Size = new Size(29, 15);
+            Mes.Size = new Size(36, 20);
             Mes.TabIndex = 25;
             Mes.Text = "Mes";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(486, 40);
+            label2.Location = new Point(555, 53);
             label2.Name = "label2";
-            label2.Size = new Size(29, 15);
+            label2.Size = new Size(36, 20);
             label2.TabIndex = 27;
             label2.Text = "Año";
             // 
@@ -89,19 +89,18 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F);
-            label4.Location = new Point(438, 55);
+            label4.Location = new Point(501, 73);
             label4.Name = "label4";
-            label4.Size = new Size(15, 20);
+            label4.Size = new Size(19, 25);
             label4.TabIndex = 28;
             label4.Text = "/";
             // 
             // BuscarBoton
             // 
             BuscarBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarBoton.Location = new Point(562, 40);
-            BuscarBoton.Margin = new Padding(3, 2, 3, 2);
+            BuscarBoton.Location = new Point(656, 53);
             BuscarBoton.Name = "BuscarBoton";
-            BuscarBoton.Size = new Size(97, 38);
+            BuscarBoton.Size = new Size(111, 51);
             BuscarBoton.TabIndex = 29;
             BuscarBoton.Text = "Buscar";
             BuscarBoton.UseVisualStyleBackColor = true;
@@ -111,9 +110,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label5.Location = new Point(10, 104);
+            label5.Location = new Point(11, 139);
             label5.Name = "label5";
-            label5.Size = new Size(162, 20);
+            label5.Size = new Size(205, 25);
             label5.TabIndex = 30;
             label5.Text = "Resultados Obtenidos";
             // 
@@ -121,10 +120,9 @@
             // 
             ResultadosObtenidosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             ResultadosObtenidosListView.GridLines = true;
-            ResultadosObtenidosListView.Location = new Point(17, 136);
-            ResultadosObtenidosListView.Margin = new Padding(3, 2, 3, 2);
+            ResultadosObtenidosListView.Location = new Point(19, 181);
             ResultadosObtenidosListView.Name = "ResultadosObtenidosListView";
-            ResultadosObtenidosListView.Size = new Size(655, 188);
+            ResultadosObtenidosListView.Size = new Size(748, 249);
             ResultadosObtenidosListView.TabIndex = 31;
             ResultadosObtenidosListView.UseCompatibleStateImageBehavior = false;
             ResultadosObtenidosListView.View = View.Details;
@@ -156,9 +154,9 @@
             // 
             ResultadoMensualLabel.AutoSize = true;
             ResultadoMensualLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ResultadoMensualLabel.Location = new Point(564, 335);
+            ResultadoMensualLabel.Location = new Point(645, 447);
             ResultadoMensualLabel.Name = "ResultadoMensualLabel";
-            ResultadoMensualLabel.Size = new Size(79, 15);
+            ResultadoMensualLabel.Size = new Size(102, 20);
             ResultadoMensualLabel.TabIndex = 33;
             ResultadoMensualLabel.Text = "1.000.000,23";
             // 
@@ -166,19 +164,18 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.Location = new Point(17, 335);
+            label6.Location = new Point(19, 447);
             label6.Name = "label6";
-            label6.Size = new Size(314, 19);
+            label6.Size = new Size(376, 23);
             label6.TabIndex = 32;
             label6.Text = "Resultado Mensual Empresas de Transporte $:";
             // 
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(562, 382);
-            SalirBoton.Margin = new Padding(3, 2, 3, 2);
+            SalirBoton.Location = new Point(642, 509);
             SalirBoton.Name = "SalirBoton";
-            SalirBoton.Size = new Size(97, 38);
+            SalirBoton.Size = new Size(111, 51);
             SalirBoton.TabIndex = 34;
             SalirBoton.Text = "Salir";
             SalirBoton.UseVisualStyleBackColor = true;
@@ -187,36 +184,39 @@
             // VerOtroBoton
             // 
             VerOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            VerOtroBoton.Location = new Point(435, 382);
-            VerOtroBoton.Margin = new Padding(3, 2, 3, 2);
+            VerOtroBoton.Location = new Point(497, 509);
             VerOtroBoton.Name = "VerOtroBoton";
-            VerOtroBoton.Size = new Size(97, 38);
+            VerOtroBoton.Size = new Size(111, 51);
             VerOtroBoton.TabIndex = 35;
             VerOtroBoton.Text = "Ver otro período";
             VerOtroBoton.UseVisualStyleBackColor = true;
             VerOtroBoton.Click += VerOtroBoton_Click;
             // 
-            // textBox1
+            // MesTextBox
             // 
-            textBox1.Location = new Point(332, 58);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 36;
+            MesTextBox.Location = new Point(405, 77);
+            MesTextBox.Margin = new Padding(3, 4, 3, 4);
+            MesTextBox.Name = "MesTextBox";
+            MesTextBox.Size = new Size(93, 27);
+            MesTextBox.TabIndex = 36;
+            MesTextBox.TextChanged += MesTextBox_TextChanged;
             // 
-            // textBox2
+            // AnioTextBox
             // 
-            textBox2.Location = new Point(456, 58);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 37;
+            AnioTextBox.Location = new Point(526, 77);
+            AnioTextBox.Margin = new Padding(3, 4, 3, 4);
+            AnioTextBox.Name = "AnioTextBox";
+            AnioTextBox.Size = new Size(100, 27);
+            AnioTextBox.TabIndex = 37;
+            AnioTextBox.TextChanged += AnioTextBox_TextChanged;
             // 
             // MonitoreoResultadosForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(682, 440);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(779, 587);
+            Controls.Add(AnioTextBox);
+            Controls.Add(MesTextBox);
             Controls.Add(VerOtroBoton);
             Controls.Add(SalirBoton);
             Controls.Add(ResultadoMensualLabel);
@@ -229,7 +229,6 @@
             Controls.Add(Mes);
             Controls.Add(label1);
             Controls.Add(label3);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "MonitoreoResultadosForm";
             Text = "Monitoreo Resultados Empresas de Transporte";
             Load += MonitoreoResultadosForm_Load;
@@ -255,7 +254,7 @@
         private Label label6;
         private Button SalirBoton;
         private Button VerOtroBoton;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox MesTextBox;
+        private TextBox AnioTextBox;
     }
 }

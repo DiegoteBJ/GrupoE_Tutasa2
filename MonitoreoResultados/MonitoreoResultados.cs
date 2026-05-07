@@ -14,8 +14,9 @@
             var anterior = new DateTime(hoy.Year, hoy.Month, 1).AddDays(-1);
             int anio = anterior.Year;
             int mes = anterior.Month;
-            //MesUpDown.Value = mes;
+            MesTextBox.Text = mes.ToString();
             //AñoUpDown.Value = anio;
+            AnioTextBox.Text = anio.ToString();
             ResultadoMensualLabel.Text = 0.ToString("C");
             ResultadosObtenidosListView.Items.Clear();
         }
@@ -35,11 +36,8 @@
         private void BuscarBoton_Click(object sender, EventArgs e)
         {
             //int mes = (int)MesUpDown.Value;
-            int mes = 0;//para que compile solamente.
-            //int anio = (int)AñoUpDown.Value;
-            int anio = 0;//para que compile solamente.
-
-
+            int mes = int.Parse(MesTextBox.Text);
+            int anio = int.Parse(AnioTextBox.Text);
             decimal importePagado = 0;
             decimal resultadoMensualporEmpresa = 0;
             decimal resultadoMensualAcumulado = 0;
@@ -71,6 +69,34 @@
                 importePagado = 0;
             }
             ResultadoMensualLabel.Text = resultadoMensualAcumulado.ToString("C");
+        }
+
+        private void MesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var mes = MesTextBox.Text;
+            if (mes == string.Empty)
+            {
+                return;
+            }
+            if (!int.TryParse(mes, out int mesInt) || mesInt < 1 || mesInt > 12)
+            {
+                MessageBox.Show("Por favor, ingrese un número de mes válido (1-12).");
+                MesTextBox.Text = string.Empty;
+            }
+        }
+
+        private void AnioTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var anio = AnioTextBox.Text;
+            if (anio == string.Empty)
+            {
+                return;
+            }
+            if (!int.TryParse(anio, out int anioInt) || anioInt < 1900 || anioInt > DateTime.Today.Year)
+            {
+                MessageBox.Show("Por favor, ingrese un número de año válido.");
+                AnioTextBox.Text = string.Empty;
+            }
         }
     }
 }

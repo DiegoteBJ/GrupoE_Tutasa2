@@ -132,7 +132,7 @@
             // AdmisionBoton
             // 
             AdmisionBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            AdmisionBoton.Location = new Point(278, 138);
+            AdmisionBoton.Location = new Point(545, 138);
             AdmisionBoton.Name = "AdmisionBoton";
             AdmisionBoton.Size = new Size(165, 52);
             AdmisionBoton.TabIndex = 29;
@@ -143,7 +143,7 @@
             // RecepcionAgenciaBoton
             // 
             RecepcionAgenciaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            RecepcionAgenciaBoton.Location = new Point(545, 138);
+            RecepcionAgenciaBoton.Location = new Point(278, 138);
             RecepcionAgenciaBoton.Name = "RecepcionAgenciaBoton";
             RecepcionAgenciaBoton.Size = new Size(165, 52);
             RecepcionAgenciaBoton.TabIndex = 30;

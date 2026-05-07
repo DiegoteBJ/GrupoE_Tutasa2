@@ -47,15 +47,15 @@
             TamañoDeclaradoLabel = new Label();
             label6 = new Label();
             groupBox2 = new GroupBox();
+            CambiarTamañoBoton = new Button();
             TamañoReclasificacionComboBox = new ComboBox();
             label7 = new Label();
             AdmitirBoton = new Button();
             RechazarBoton = new Button();
-            button1 = new Button();
             ObservacionesTextBox = new TextBox();
             groupBox3 = new GroupBox();
-            CambiarTamañoBoton = new Button();
             groupBox1.SuspendLayout();
+            DatosGenerales.SuspendLayout();
             ValidacionGroupBox.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -64,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 56);
+            label2.Location = new Point(12, 39);
             label2.Name = "label2";
             label2.Size = new Size(241, 20);
             label2.TabIndex = 1;
@@ -177,6 +177,7 @@
             // 
             // DatosGenerales
             // 
+            DatosGenerales.Controls.Add(label2);
             DatosGenerales.Location = new Point(15, 13);
             DatosGenerales.Name = "DatosGenerales";
             DatosGenerales.Size = new Size(448, 178);
@@ -242,12 +243,21 @@
             groupBox2.Controls.Add(CambiarTamañoBoton);
             groupBox2.Controls.Add(TamañoReclasificacionComboBox);
             groupBox2.Controls.Add(label7);
-            groupBox2.Location = new Point(472, 205);
+            groupBox2.Location = new Point(469, 205);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(393, 125);
+            groupBox2.Size = new Size(396, 125);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Reclasificación Caja";
+            // 
+            // CambiarTamañoBoton
+            // 
+            CambiarTamañoBoton.Location = new Point(217, 69);
+            CambiarTamañoBoton.Name = "CambiarTamañoBoton";
+            CambiarTamañoBoton.Size = new Size(154, 29);
+            CambiarTamañoBoton.TabIndex = 4;
+            CambiarTamañoBoton.Text = "Cambiar tamaño";
+            CambiarTamañoBoton.UseVisualStyleBackColor = true;
             // 
             // TamañoReclasificacionComboBox
             // 
@@ -271,7 +281,7 @@
             // 
             AdmitirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AdmitirBoton.ForeColor = Color.Lime;
-            AdmitirBoton.Location = new Point(622, 393);
+            AdmitirBoton.Location = new Point(746, 406);
             AdmitirBoton.Name = "AdmitirBoton";
             AdmitirBoton.Size = new Size(119, 53);
             AdmitirBoton.TabIndex = 8;
@@ -283,24 +293,13 @@
             // 
             RechazarBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             RechazarBoton.ForeColor = Color.Red;
-            RechazarBoton.Location = new Point(482, 393);
+            RechazarBoton.Location = new Point(606, 406);
             RechazarBoton.Name = "RechazarBoton";
             RechazarBoton.Size = new Size(126, 53);
             RechazarBoton.TabIndex = 9;
             RechazarBoton.Text = "Rechazar";
             RechazarBoton.UseVisualStyleBackColor = true;
             RechazarBoton.Click += RechazarBoton_Click;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(755, 393);
-            button1.Name = "button1";
-            button1.Size = new Size(115, 53);
-            button1.TabIndex = 10;
-            button1.Text = "Admitir Otro";
-            button1.UseVisualStyleBackColor = true;
             // 
             // ObservacionesTextBox
             // 
@@ -312,29 +311,19 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(ObservacionesTextBox);
-            groupBox3.Location = new Point(16, 336);
+            groupBox3.Location = new Point(16, 349);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(447, 110);
             groupBox3.TabIndex = 12;
             groupBox3.TabStop = false;
             groupBox3.Text = "Observaciones";
             // 
-            // CambiarTamañoBoton
-            // 
-            CambiarTamañoBoton.Location = new Point(217, 69);
-            CambiarTamañoBoton.Name = "CambiarTamañoBoton";
-            CambiarTamañoBoton.Size = new Size(154, 29);
-            CambiarTamañoBoton.TabIndex = 4;
-            CambiarTamañoBoton.Text = "Cambiar tamaño";
-            CambiarTamañoBoton.UseVisualStyleBackColor = true;
-            // 
             // AdmisionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(881, 469);
+            ClientSize = new Size(881, 485);
             Controls.Add(groupBox3);
-            Controls.Add(button1);
             Controls.Add(RechazarBoton);
             Controls.Add(AdmitirBoton);
             Controls.Add(groupBox2);
@@ -342,12 +331,13 @@
             Controls.Add(groupBox1);
             Controls.Add(BuscarGuiaBoton);
             Controls.Add(NumeroGuiaTextBox);
-            Controls.Add(label2);
             Controls.Add(DatosGenerales);
             Name = "AdmisionForm";
             Text = "Admisión";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            DatosGenerales.ResumeLayout(false);
+            DatosGenerales.PerformLayout();
             ValidacionGroupBox.ResumeLayout(false);
             ValidacionGroupBox.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -382,7 +372,6 @@
         private ComboBox TamañoReclasificacionComboBox;
         private Button AdmitirBoton;
         private Button RechazarBoton;
-        private Button button1;
         private TextBox ObservacionesTextBox;
         private GroupBox groupBox3;
         private Button CambiarTamañoBoton;
