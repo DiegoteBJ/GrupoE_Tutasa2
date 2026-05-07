@@ -133,6 +133,20 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             fleteroValido = false;
         }
 
+        private void RecepcionDespachoAgencia_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
