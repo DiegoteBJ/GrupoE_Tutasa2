@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
-    public partial class RecepcionDespachoCDLargaDistanciaForm1 : Form
+    public partial class RecepcionDespachoCDLargaDistanciaForm : Form
     {
-        public RecepcionDespachoCDLargaDistanciaForm1()
+        public RecepcionDespachoCDLargaDistanciaForm()
         {
             InitializeComponent();
         }

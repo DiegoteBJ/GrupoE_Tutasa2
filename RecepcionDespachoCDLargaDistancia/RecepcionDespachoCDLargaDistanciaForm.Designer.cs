@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
-    partial class RecepcionDespachoCDLargaDistanciaForm1
+    partial class RecepcionDespachoCDLargaDistanciaForm
     {
         /// <summary>
         /// Required designer variable.

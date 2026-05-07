@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
-    public partial class RecepcionDespachoAgencia : Form
+    public partial class RecepcionDespachoAgenciaForm : Form
     {
         private bool fleteroValido = false;
 
@@ -17,7 +17,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
         { "28456789", new string[] { "Carlos", "Gómez" } },
         { "35123456", new string[] { "Laura", "Martínez" } }
     };
-        public RecepcionDespachoAgencia()
+        public RecepcionDespachoAgenciaForm()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
-    partial class RecepcionDespachoAgencia
+    partial class RecepcionDespachoAgenciaForm
     {
         /// <summary>
         /// Required designer variable.

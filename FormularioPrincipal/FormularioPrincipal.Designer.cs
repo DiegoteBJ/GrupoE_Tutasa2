@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
             EmitirFacturasBoton = new Button();
             EstadoCCClientesBoton = new Button();
             SalirBoton = new Button();
             MonitoreoBoton = new Button();
-            ActualizarHDRBoton = new Button();
             EntregaEnAgenciaBoton = new Button();
             EntregaEnCDBoton = new Button();
             EstadoEncomiendaBoton = new Button();
             ImponerEnCD = new Button();
+            AdmisionBoton = new Button();
+            RecepcionAgenciaBoton = new Button();
+            RecepcionCDLDBoton = new Button();
             SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label2.Location = new Point(12, 30);
-            label2.Name = "label2";
-            label2.Size = new Size(243, 25);
-            label2.TabIndex = 19;
-            label2.Text = "Administración y Finanzas";
             // 
             // EmitirFacturasBoton
             // 
             EmitirFacturasBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EmitirFacturasBoton.Location = new Point(12, 77);
+            EmitirFacturasBoton.Location = new Point(11, 43);
             EmitirFacturasBoton.Name = "EmitirFacturasBoton";
             EmitirFacturasBoton.Size = new Size(165, 52);
             EmitirFacturasBoton.TabIndex = 20;
@@ -64,7 +55,7 @@
             // EstadoCCClientesBoton
             // 
             EstadoCCClientesBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EstadoCCClientesBoton.Location = new Point(279, 77);
+            EstadoCCClientesBoton.Location = new Point(278, 43);
             EstadoCCClientesBoton.Name = "EstadoCCClientesBoton";
             EstadoCCClientesBoton.Size = new Size(165, 52);
             EstadoCCClientesBoton.TabIndex = 21;
@@ -75,7 +66,7 @@
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(623, 475);
+            SalirBoton.Location = new Point(545, 435);
             SalirBoton.Name = "SalirBoton";
             SalirBoton.Size = new Size(165, 52);
             SalirBoton.TabIndex = 22;
@@ -86,7 +77,7 @@
             // MonitoreoBoton
             // 
             MonitoreoBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            MonitoreoBoton.Location = new Point(546, 77);
+            MonitoreoBoton.Location = new Point(545, 43);
             MonitoreoBoton.Name = "MonitoreoBoton";
             MonitoreoBoton.Size = new Size(165, 52);
             MonitoreoBoton.TabIndex = 23;
@@ -94,89 +85,116 @@
             MonitoreoBoton.UseVisualStyleBackColor = true;
             MonitoreoBoton.Click += MonitoreoBoton_Click;
             // 
-            // ActualizarHDRBoton
-            // 
-            ActualizarHDRBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ActualizarHDRBoton.Location = new Point(12, 172);
-            ActualizarHDRBoton.Name = "ActualizarHDRBoton";
-            ActualizarHDRBoton.Size = new Size(165, 52);
-            ActualizarHDRBoton.TabIndex = 24;
-            ActualizarHDRBoton.Text = "Actualizar Hojas de Ruta";
-            ActualizarHDRBoton.UseVisualStyleBackColor = true;
-            // 
             // EntregaEnAgenciaBoton
             // 
             EntregaEnAgenciaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EntregaEnAgenciaBoton.Location = new Point(279, 172);
+            EntregaEnAgenciaBoton.Location = new Point(278, 241);
             EntregaEnAgenciaBoton.Name = "EntregaEnAgenciaBoton";
             EntregaEnAgenciaBoton.Size = new Size(165, 52);
             EntregaEnAgenciaBoton.TabIndex = 25;
             EntregaEnAgenciaBoton.Text = "Entrega en Agencia";
             EntregaEnAgenciaBoton.UseVisualStyleBackColor = true;
+            EntregaEnAgenciaBoton.Click += EntregaEnAgenciaBoton_Click;
             // 
             // EntregaEnCDBoton
             // 
             EntregaEnCDBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EntregaEnCDBoton.Location = new Point(546, 172);
+            EntregaEnCDBoton.Location = new Point(545, 241);
             EntregaEnCDBoton.Name = "EntregaEnCDBoton";
             EntregaEnCDBoton.Size = new Size(165, 52);
             EntregaEnCDBoton.TabIndex = 26;
             EntregaEnCDBoton.Text = "Entrega en CD";
             EntregaEnCDBoton.UseVisualStyleBackColor = true;
+            EntregaEnCDBoton.Click += EntregaEnCDBoton_Click;
             // 
             // EstadoEncomiendaBoton
             // 
             EstadoEncomiendaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EstadoEncomiendaBoton.Location = new Point(12, 275);
+            EstadoEncomiendaBoton.Location = new Point(11, 338);
             EstadoEncomiendaBoton.Name = "EstadoEncomiendaBoton";
             EstadoEncomiendaBoton.Size = new Size(165, 52);
             EstadoEncomiendaBoton.TabIndex = 27;
             EstadoEncomiendaBoton.Text = "Estado de Encomienda";
             EstadoEncomiendaBoton.UseVisualStyleBackColor = true;
+            EstadoEncomiendaBoton.Click += EstadoEncomiendaBoton_Click;
             // 
             // ImponerEnCD
             // 
             ImponerEnCD.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ImponerEnCD.Location = new Point(279, 275);
+            ImponerEnCD.Location = new Point(11, 138);
             ImponerEnCD.Name = "ImponerEnCD";
             ImponerEnCD.Size = new Size(165, 52);
             ImponerEnCD.TabIndex = 28;
-            ImponerEnCD.Text = "Imponer en CD";
+            ImponerEnCD.Text = "Imposición";
             ImponerEnCD.UseVisualStyleBackColor = true;
+            ImponerEnCD.Click += ImponerEnCD_Click;
+            // 
+            // AdmisionBoton
+            // 
+            AdmisionBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            AdmisionBoton.Location = new Point(278, 138);
+            AdmisionBoton.Name = "AdmisionBoton";
+            AdmisionBoton.Size = new Size(165, 52);
+            AdmisionBoton.TabIndex = 29;
+            AdmisionBoton.Text = "Admisión";
+            AdmisionBoton.UseVisualStyleBackColor = true;
+            AdmisionBoton.Click += AdmisionBoton_Click_1;
+            // 
+            // RecepcionAgenciaBoton
+            // 
+            RecepcionAgenciaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            RecepcionAgenciaBoton.Location = new Point(545, 138);
+            RecepcionAgenciaBoton.Name = "RecepcionAgenciaBoton";
+            RecepcionAgenciaBoton.Size = new Size(165, 52);
+            RecepcionAgenciaBoton.TabIndex = 30;
+            RecepcionAgenciaBoton.Text = "Recepcion en Agencia";
+            RecepcionAgenciaBoton.UseVisualStyleBackColor = true;
+            RecepcionAgenciaBoton.Click += RecepcionAgenciaBoton_Click;
+            // 
+            // RecepcionCDLDBoton
+            // 
+            RecepcionCDLDBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            RecepcionCDLDBoton.Location = new Point(11, 241);
+            RecepcionCDLDBoton.Name = "RecepcionCDLDBoton";
+            RecepcionCDLDBoton.Size = new Size(165, 52);
+            RecepcionCDLDBoton.TabIndex = 31;
+            RecepcionCDLDBoton.Text = "Recepcion en CD Larga Distancia";
+            RecepcionCDLDBoton.UseVisualStyleBackColor = true;
+            RecepcionCDLDBoton.Click += RecepcionCDLDBoton_Click;
             // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 539);
+            ClientSize = new Size(729, 533);
+            Controls.Add(RecepcionCDLDBoton);
+            Controls.Add(RecepcionAgenciaBoton);
+            Controls.Add(AdmisionBoton);
             Controls.Add(ImponerEnCD);
             Controls.Add(EstadoEncomiendaBoton);
             Controls.Add(EntregaEnCDBoton);
             Controls.Add(EntregaEnAgenciaBoton);
-            Controls.Add(ActualizarHDRBoton);
             Controls.Add(MonitoreoBoton);
             Controls.Add(SalirBoton);
             Controls.Add(EstadoCCClientesBoton);
             Controls.Add(EmitirFacturasBoton);
-            Controls.Add(label2);
             Name = "FormularioPrincipal";
             Text = "FormularioPrincipal";
             Load += FormularioPrincipal_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label2;
         private Button EmitirFacturasBoton;
         private Button EstadoCCClientesBoton;
         private Button SalirBoton;
         private Button MonitoreoBoton;
-        private Button ActualizarHDRBoton;
         private Button EntregaEnAgenciaBoton;
         private Button EntregaEnCDBoton;
         private Button EstadoEncomiendaBoton;
         private Button ImponerEnCD;
+        private Button AdmisionBoton;
+        private Button RecepcionAgenciaBoton;
+        private Button RecepcionCDLDBoton;
     }
 }

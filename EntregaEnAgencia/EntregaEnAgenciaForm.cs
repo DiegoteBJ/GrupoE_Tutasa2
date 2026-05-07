@@ -1,8 +1,8 @@
 ﻿namespace GrupoE_Tutasa.EntregaEnAgencia
 {
-    public partial class EntregarEncomiendaAgenciaForm : Form
+    public partial class EntregaEnAgenciaForm : Form
     {
-        public EntregarEncomiendaAgenciaForm()
+        public EntregaEnAgenciaForm()
         {
             InitializeComponent();
         }

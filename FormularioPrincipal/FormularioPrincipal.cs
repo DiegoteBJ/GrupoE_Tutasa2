@@ -1,6 +1,14 @@
 ﻿using GrupoE_Tutasa.EmitirFactura;
 using GrupoE_Tutasa.EstadoCCClientes;
 using GrupoE_Tutasa.MonitoreoResultados;
+using GrupoE_Tutasa.Admision;
+using GrupoE_Tutasa.EntregaEnAgencia;
+using GrupoE_Tutasa.EntregaEnCD;
+using GrupoE_Tutasa.EstadoDeEncomienda;
+using GrupoE_Tutasa.Imposicion;
+using GrupoE_Tutasa.RecepcionDespachoAgencia;
+using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
+
 
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
@@ -37,6 +45,53 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         {
             MonitoreoResultadosForm monitoreoResultadosForm = new MonitoreoResultadosForm();
             monitoreoResultadosForm.Show();
+        }
+
+        private void ImponerEnCD_Click(object sender, EventArgs e)
+        {
+            ImposicionForm imposicionForm = new ImposicionForm();
+            imposicionForm.Show();
+        }
+        private void AdmisionBoton_Click(object sender, EventArgs e)
+        {
+            AdmisionForm admisionForm = new AdmisionForm();
+            admisionForm.Show();
+        }
+
+        private void AdmisionBoton_Click_1(object sender, EventArgs e)
+        {
+            AdmisionForm admisionForm = new AdmisionForm();
+            admisionForm.Show();
+        }
+
+        private void RecepcionAgenciaBoton_Click(object sender, EventArgs e)
+        {
+            RecepcionDespachoAgenciaForm recepcionDespachoAgencia = new RecepcionDespachoAgenciaForm();
+            recepcionDespachoAgencia.Show();
+        }
+
+        private void RecepcionCDLDBoton_Click(object sender, EventArgs e)
+        {
+            RecepcionDespachoCDLargaDistanciaForm recepcionDespacho = new RecepcionDespachoCDLargaDistanciaForm();
+            recepcionDespacho.Show();
+        }
+
+        private void EntregaEnAgenciaBoton_Click(object sender, EventArgs e)
+        {
+            EntregaEnAgenciaForm entregaEnAgenciaForm = new EntregaEnAgenciaForm();
+            entregaEnAgenciaForm.Show();
+        }
+
+        private void EntregaEnCDBoton_Click(object sender, EventArgs e)
+        {
+            EntregaEnCDForm entregaEnCDForm = new EntregaEnCDForm();
+            entregaEnCDForm.Show();
+        }
+
+        private void EstadoEncomiendaBoton_Click(object sender, EventArgs e)
+        {
+            EstadoDeEncomiendaForm estadoDeEncomiendaForm = new EstadoDeEncomiendaForm();
+            estadoDeEncomiendaForm.Show();
         }
     }
 }

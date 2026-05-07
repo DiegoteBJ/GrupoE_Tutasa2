@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.EntregaEnCD
 {
-    public partial class EntregaEnCDFormNuevo : Form
+    public partial class EntregaEnCDForm : Form
     {
-        public EntregaEnCDFormNuevo()
+        public EntregaEnCDForm()
         {
             InitializeComponent();
         }

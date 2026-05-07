@@ -52,9 +52,13 @@
             AdmitirBoton = new Button();
             RechazarBoton = new Button();
             button1 = new Button();
+            ObservacionesTextBox = new TextBox();
+            groupBox3 = new GroupBox();
+            CambiarTamañoBoton = new Button();
             groupBox1.SuspendLayout();
             ValidacionGroupBox.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -235,6 +239,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(CambiarTamañoBoton);
             groupBox2.Controls.Add(TamañoReclasificacionComboBox);
             groupBox2.Controls.Add(label7);
             groupBox2.Location = new Point(472, 205);
@@ -246,6 +251,7 @@
             // 
             // TamañoReclasificacionComboBox
             // 
+            TamañoReclasificacionComboBox.Enabled = false;
             TamañoReclasificacionComboBox.FormattingEnabled = true;
             TamañoReclasificacionComboBox.Location = new Point(15, 70);
             TamañoReclasificacionComboBox.Name = "TamañoReclasificacionComboBox";
@@ -296,11 +302,38 @@
             button1.Text = "Admitir Otro";
             button1.UseVisualStyleBackColor = true;
             // 
+            // ObservacionesTextBox
+            // 
+            ObservacionesTextBox.Location = new Point(11, 26);
+            ObservacionesTextBox.Name = "ObservacionesTextBox";
+            ObservacionesTextBox.Size = new Size(125, 27);
+            ObservacionesTextBox.TabIndex = 11;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(ObservacionesTextBox);
+            groupBox3.Location = new Point(16, 336);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(447, 110);
+            groupBox3.TabIndex = 12;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Observaciones";
+            // 
+            // CambiarTamañoBoton
+            // 
+            CambiarTamañoBoton.Location = new Point(217, 69);
+            CambiarTamañoBoton.Name = "CambiarTamañoBoton";
+            CambiarTamañoBoton.Size = new Size(154, 29);
+            CambiarTamañoBoton.TabIndex = 4;
+            CambiarTamañoBoton.Text = "Cambiar tamaño";
+            CambiarTamañoBoton.UseVisualStyleBackColor = true;
+            // 
             // AdmisionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(881, 469);
+            Controls.Add(groupBox3);
             Controls.Add(button1);
             Controls.Add(RechazarBoton);
             Controls.Add(AdmitirBoton);
@@ -319,6 +352,8 @@
             ValidacionGroupBox.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -348,5 +383,8 @@
         private Button AdmitirBoton;
         private Button RechazarBoton;
         private Button button1;
+        private TextBox ObservacionesTextBox;
+        private GroupBox groupBox3;
+        private Button CambiarTamañoBoton;
     }
 }
