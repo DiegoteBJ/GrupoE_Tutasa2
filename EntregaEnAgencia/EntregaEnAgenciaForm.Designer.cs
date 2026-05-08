@@ -178,7 +178,7 @@
             // 
             // Button_Cancelar
             // 
-            Button_Cancelar.Location = new Point(565, 553);
+            Button_Cancelar.Location = new Point(452, 503);
             Button_Cancelar.Margin = new Padding(3, 4, 3, 4);
             Button_Cancelar.Name = "Button_Cancelar";
             Button_Cancelar.Size = new Size(165, 31);
@@ -189,7 +189,7 @@
             // 
             // Button_ConfirmarEntrega
             // 
-            Button_ConfirmarEntrega.Location = new Point(736, 553);
+            Button_ConfirmarEntrega.Location = new Point(623, 503);
             Button_ConfirmarEntrega.Margin = new Padding(3, 4, 3, 4);
             Button_ConfirmarEntrega.Name = "Button_ConfirmarEntrega";
             Button_ConfirmarEntrega.Size = new Size(165, 31);
@@ -202,7 +202,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(801, 600);
             Controls.Add(Button_ConfirmarEntrega);
             Controls.Add(Button_Cancelar);
             Controls.Add(GroupBox_GuiasPendientes);
