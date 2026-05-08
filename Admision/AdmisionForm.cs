@@ -16,7 +16,7 @@ namespace GrupoE_Tutasa.Admision
         {
             InitializeComponent();
         }
-            private void AdmisionForm_Load(object sender, EventArgs e)
+        private void AdmisionForm_Load(object sender, EventArgs e)
         {
             /*Todavia el formulario no esta visible. Hay que cargar los datos del modelo
               para que se muestren en el formulario*/
@@ -39,12 +39,11 @@ namespace GrupoE_Tutasa.Admision
             {
                 TamañoReclasificacionComboBox.Items.Add(caja);
             }
-
         }
         private void BuscarGuiaBoton_Click(object sender, EventArgs e)
         {
             int encuentro = 0;
-            if(string.IsNullOrWhiteSpace(NumeroGuiaTextBox.Text)) 
+            if (string.IsNullOrWhiteSpace(NumeroGuiaTextBox.Text))
             {
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
                 return;
@@ -60,7 +59,7 @@ namespace GrupoE_Tutasa.Admision
                     ObservacionesTextBox.Text = guia.observaciones;
                     TamañoDeclaradoLabel.Text = guia.tamaño;
                     encuentro = 1;
-                    return ;
+                    return;
                 }
             }
             if (encuentro == 0)
@@ -68,9 +67,20 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("No se encontró la guía con el número proporcionado.");
                 return;
             }
+        }
 
-
-
+        private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TamañoCorrectoBoton.Checked)
+            {
+                TamañoReclasificacionComboBox.Enabled = false;
+                CambiarTamañoBoton.Enabled = false;
+            }
+            else
+            {
+                TamañoReclasificacionComboBox.Enabled = true;
+                CambiarTamañoBoton.Enabled = true;
+            }
         }
     }
 }

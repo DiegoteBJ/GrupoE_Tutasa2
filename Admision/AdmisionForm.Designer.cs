@@ -220,6 +220,7 @@
             TamañoCorrectoBoton.TabStop = true;
             TamañoCorrectoBoton.Text = "Tamaño Correcto";
             TamañoCorrectoBoton.UseVisualStyleBackColor = true;
+            TamañoCorrectoBoton.CheckedChanged += TamañoCorrectoBoton_CheckedChanged;
             // 
             // TamañoDeclaradoLabel
             // 
