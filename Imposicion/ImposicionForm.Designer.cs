@@ -50,10 +50,6 @@
             comboBox4 = new ComboBox();
             label30 = new Label();
             panel1 = new Panel();
-            textBox9 = new TextBox();
-            textBox8 = new TextBox();
-            label14 = new Label();
-            label13 = new Label();
             label12 = new Label();
             comboBox3 = new ComboBox();
             label11 = new Label();
@@ -65,6 +61,10 @@
             comboBox1 = new ComboBox();
             label9 = new Label();
             label10 = new Label();
+            textBox9 = new TextBox();
+            textBox8 = new TextBox();
+            label14 = new Label();
+            label13 = new Label();
             groupBox4 = new GroupBox();
             panel2 = new Panel();
             label33 = new Label();
@@ -89,14 +89,18 @@
             label25 = new Label();
             label26 = new Label();
             groupBox5 = new GroupBox();
+            checkBox1 = new CheckBox();
             comboBox5 = new ComboBox();
             comboBox6 = new ComboBox();
             label34 = new Label();
-            label35 = new Label();
             label37 = new Label();
+            label35 = new Label();
             label38 = new Label();
-            checkBox1 = new CheckBox();
             panel4 = new Panel();
+            textBox2 = new TextBox();
+            label36 = new Label();
+            textBox3 = new TextBox();
+            label39 = new Label();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -347,48 +351,16 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(label39);
             panel1.Controls.Add(label12);
+            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(label36);
             panel1.Location = new Point(35, 215);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(798, 122);
             panel1.TabIndex = 20;
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(453, 104);
-            textBox9.Margin = new Padding(4, 3, 4, 3);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(92, 23);
-            textBox9.TabIndex = 23;
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(453, 65);
-            textBox8.Margin = new Padding(4, 3, 4, 3);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(245, 23);
-            textBox8.TabIndex = 14;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(355, 107);
-            label14.Margin = new Padding(4, 0, 4, 0);
-            label14.Name = "label14";
-            label14.Size = new Size(67, 15);
-            label14.TabIndex = 22;
-            label14.Text = "Cód. Postal";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(355, 68);
-            label13.Margin = new Padding(4, 0, 4, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(60, 15);
-            label13.TabIndex = 21;
-            label13.Text = "Dirección ";
             // 
             // label12
             // 
@@ -506,6 +478,42 @@
             label10.TabIndex = 9;
             label10.Text = "Provincia";
             label10.Click += label10_Click;
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(453, 104);
+            textBox9.Margin = new Padding(4, 3, 4, 3);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(92, 23);
+            textBox9.TabIndex = 23;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(453, 65);
+            textBox8.Margin = new Padding(4, 3, 4, 3);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(245, 23);
+            textBox8.TabIndex = 14;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(355, 107);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(67, 15);
+            label14.TabIndex = 22;
+            label14.Text = "Cód. Postal";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(355, 68);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(60, 15);
+            label13.TabIndex = 21;
+            label13.Text = "Dirección ";
             // 
             // groupBox4
             // 
@@ -770,6 +778,16 @@
             groupBox5.Text = "Domicilio de retiro";
             groupBox5.Enter += groupBox5_Enter;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(56, 38);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(109, 19);
+            checkBox1.TabIndex = 29;
+            checkBox1.Text = "Domicilio Fiscal";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // comboBox5
             // 
             comboBox5.FormattingEnabled = true;
@@ -798,16 +816,6 @@
             label34.TabIndex = 24;
             label34.Text = "Localidad ";
             // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Location = new Point(357, 25);
-            label35.Margin = new Padding(4, 0, 4, 0);
-            label35.Name = "label35";
-            label35.Size = new Size(56, 15);
-            label35.TabIndex = 23;
-            label35.Text = "Provincia";
-            // 
             // label37
             // 
             label37.AutoSize = true;
@@ -817,6 +825,16 @@
             label37.Size = new Size(108, 15);
             label37.TabIndex = 26;
             label37.Text = "Av. Corrientes 1111";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new Point(357, 25);
+            label35.Margin = new Padding(4, 0, 4, 0);
+            label35.Name = "label35";
+            label35.Size = new Size(56, 15);
+            label35.TabIndex = 23;
+            label35.Text = "Provincia";
             // 
             // label38
             // 
@@ -828,22 +846,49 @@
             label38.TabIndex = 25;
             label38.Text = "Dirección:";
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(56, 38);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(109, 19);
-            checkBox1.TabIndex = 29;
-            checkBox1.Text = "Domicilio Fiscal";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // panel4
             // 
             panel4.Location = new Point(37, 63);
             panel4.Name = "panel4";
             panel4.Size = new Size(247, 59);
             panel4.TabIndex = 30;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(272, 28);
+            textBox2.Margin = new Padding(4, 3, 4, 3);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(245, 23);
+            textBox2.TabIndex = 31;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Location = new Point(179, 31);
+            label36.Margin = new Padding(4, 0, 4, 0);
+            label36.Name = "label36";
+            label36.Size = new Size(60, 15);
+            label36.TabIndex = 32;
+            label36.Text = "Dirección ";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(278, 69);
+            textBox3.Margin = new Padding(4, 3, 4, 3);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(92, 23);
+            textBox3.TabIndex = 32;
+            textBox3.TextChanged += textBox3_TextChanged;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Location = new Point(180, 72);
+            label39.Margin = new Padding(4, 0, 4, 0);
+            label39.Name = "label39";
+            label39.Size = new Size(67, 15);
+            label39.TabIndex = 31;
+            label39.Text = "Cód. Postal";
             // 
             // ImposicionForm
             // 
@@ -955,6 +1000,10 @@
         private Label label38;
         private CheckBox checkBox1;
         private Panel panel4;
+        private TextBox textBox3;
+        private Label label39;
+        private TextBox textBox2;
+        private Label label36;
     }
 }
 
