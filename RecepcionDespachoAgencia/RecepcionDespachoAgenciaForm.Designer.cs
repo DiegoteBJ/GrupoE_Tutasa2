@@ -51,11 +51,11 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             label3 = new Label();
-            label2 = new Label();
             listView1 = new ListView();
             columnHeader4 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            label2 = new Label();
             GuiasRecibirGroupBox.SuspendLayout();
             GuiasAEntregarFleteroGroupBox.SuspendLayout();
             BuscarFleteroGroupBox.SuspendLayout();
@@ -295,15 +295,6 @@
             label3.TabIndex = 2;
             label3.Text = "HDR-20250504-018";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(22, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(62, 20);
-            label2.TabIndex = 1;
-            label2.Text = "N° HDR";
-            // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
@@ -331,11 +322,20 @@
             columnHeader2.Text = "Tipo";
             columnHeader2.Width = 120;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 20);
+            label2.TabIndex = 1;
+            label2.Text = "N° HDR";
+            // 
             // RecepcionDespachoAgenciaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(827, 737);
+            ClientSize = new Size(805, 737);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(ConfirmarBoton);
