@@ -1,1 +1,10 @@
-{}
+{
+  "profiles": {
+    "GrupoE_Tutasa": {
+      "commandName": "Project"
+    },
+    "Perfil 1": {
+      "commandName": "Executable"
+    }
+  }
+}
