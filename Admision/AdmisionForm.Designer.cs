@@ -54,6 +54,7 @@
             RechazarBoton = new Button();
             ObservacionesTextBox = new TextBox();
             groupBox3 = new GroupBox();
+            SalirBoton = new Button();
             groupBox1.SuspendLayout();
             DatosGenerales.SuspendLayout();
             ValidacionGroupBox.SuspendLayout();
@@ -291,6 +292,7 @@
             AdmitirBoton.TabIndex = 8;
             AdmitirBoton.Text = "Admitir";
             AdmitirBoton.UseVisualStyleBackColor = true;
+            AdmitirBoton.Click += AdmitirBoton_Click;
             // 
             // RechazarBoton
             // 
@@ -302,13 +304,15 @@
             RechazarBoton.TabIndex = 9;
             RechazarBoton.Text = "Rechazar";
             RechazarBoton.UseVisualStyleBackColor = true;
+            RechazarBoton.Click += RechazarBoton_Click;
             // 
             // ObservacionesTextBox
             // 
-            ObservacionesTextBox.Location = new Point(11, 27);
+            ObservacionesTextBox.Location = new Point(6, 26);
             ObservacionesTextBox.Name = "ObservacionesTextBox";
-            ObservacionesTextBox.Size = new Size(413, 27);
+            ObservacionesTextBox.Size = new Size(435, 27);
             ObservacionesTextBox.TabIndex = 11;
+            ObservacionesTextBox.TextChanged += ObservacionesTextBox_TextChanged;
             // 
             // groupBox3
             // 
@@ -320,11 +324,23 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Observaciones";
             // 
+            // SalirBoton
+            // 
+            SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            SalirBoton.Location = new Point(480, 405);
+            SalirBoton.Name = "SalirBoton";
+            SalirBoton.Size = new Size(109, 53);
+            SalirBoton.TabIndex = 13;
+            SalirBoton.Text = "Salir";
+            SalirBoton.UseVisualStyleBackColor = true;
+            SalirBoton.Click += SalirBoton_Click;
+            // 
             // AdmisionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(883, 485);
+            Controls.Add(SalirBoton);
             Controls.Add(groupBox3);
             Controls.Add(RechazarBoton);
             Controls.Add(AdmitirBoton);
@@ -378,5 +394,6 @@
         private TextBox ObservacionesTextBox;
         private GroupBox groupBox3;
         private Button CambiarTamañoBoton;
+        private Button SalirBoton;
     }
 }
