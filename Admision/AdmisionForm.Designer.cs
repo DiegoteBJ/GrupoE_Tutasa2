@@ -263,6 +263,7 @@
             CambiarTamañoBoton.TabIndex = 4;
             CambiarTamañoBoton.Text = "Cambiar tamaño";
             CambiarTamañoBoton.UseVisualStyleBackColor = true;
+            CambiarTamañoBoton.Click += CambiarTamañoBoton_Click;
             // 
             // TamañoReclasificacionComboBox
             // 

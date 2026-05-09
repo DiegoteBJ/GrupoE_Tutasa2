@@ -1,4 +1,5 @@
 ﻿using GrupoE_Tutasa.EmitirFactura;
+using GrupoE_Tutasa.EstadoCCClientes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace GrupoE_Tutasa.Admision
     public partial class AdmisionForm : Form
     {
         private AdmisionModelo modelo = new();
-        int encuentro = 0;
+        bool encuentro = false;
         public AdmisionForm()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace GrupoE_Tutasa.Admision
         }
         private void BuscarGuiaBoton_Click(object sender, EventArgs e)
         {
-            encuentro = 0;
+            encuentro = false;
             if (string.IsNullOrWhiteSpace(NumeroGuiaTextBox.Text))
             {
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
@@ -59,11 +60,11 @@ namespace GrupoE_Tutasa.Admision
                     EstadoGuiaLabel.Text = guia.estadoGuia.ToString();
                     ObservacionesTextBox.Text = guia.observaciones;
                     TamañoDeclaradoLabel.Text = guia.tamaño;
-                    encuentro = 1;
+                    encuentro = true;
                     return;
                 }
             }
-            if (encuentro == 0)
+            if (encuentro == false)
             {
                 MessageBox.Show("No se encontró la guía con el número proporcionado.");
                 return;
@@ -72,7 +73,7 @@ namespace GrupoE_Tutasa.Admision
 
         private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
         {
-            if (TamañoCorrectoBoton.Checked || encuentro == 0)
+            if (TamañoCorrectoBoton.Checked || encuentro == false)
             {
                 TamañoReclasificacionComboBox.Enabled = false;
                 CambiarTamañoBoton.Enabled = false;
@@ -92,7 +93,7 @@ namespace GrupoE_Tutasa.Admision
 
         private void AdmitirBoton_Click(object sender, EventArgs e)
         {
-            if (encuentro == 0)
+            if (encuentro == false)
             {
                 MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de admitir.");
                 return;
@@ -112,11 +113,12 @@ namespace GrupoE_Tutasa.Admision
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
                 MessageBox.Show($"La guía ha sido admitida con el nuevo tamaño: {nuevoTamañoNombre}.");
             }
+            LimpiaYCierra(sender, e);
         }
 
         private void RechazarBoton_Click(object sender, EventArgs e)
         {
-            if (encuentro == 0)
+            if (encuentro == false)
             {
                 MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de rechazar.");
                 return;
@@ -127,11 +129,41 @@ namespace GrupoE_Tutasa.Admision
                 return;
             }
             MessageBox.Show("La guía ha sido rechazada.");
+            LimpiaYCierra(sender, e);
         }
 
         private void SalirBoton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CambiarTamañoBoton_Click(object sender, EventArgs e)
+        {
+            if (TamañoReclasificacionComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un nuevo tamaño para la guía.");
+                return;
+            }
+            if (!encuentro) 
+            {MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de cambiar el tamaño.");
+                return;
+            }
+            var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
+            string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
+            if(nuevoTamañoNombre == TamañoDeclaradoLabel.Text)
+            {
+                MessageBox.Show("El nuevo tamaño seleccionado es el mismo que el tamaño declarado. Por favor, seleccione un tamaño diferente.");
+                return;
+            }
+            MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
+        }
+        private void LimpiaYCierra(object sender, EventArgs e)
+        {
+            // Cierra el formulario actual
+            this.Close();
+            // Crea una nueva instancia y la muestra
+            AdmisionForm nuevoForm = new AdmisionForm();
+            nuevoForm.Show();
         }
     }
 }
