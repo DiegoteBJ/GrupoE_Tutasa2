@@ -125,11 +125,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
 
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
-            // Cierra el formulario actual
-            this.Close();
-            // Crea una nueva instancia y la muestra
-            EstadoCClientesForm nuevoForm = new EstadoCClientesForm();
-            nuevoForm.Show();
+            EstadoCClientesForm_Load(sender, e);
         }
 
         private void SalirBoton_Click_1(object sender, EventArgs e)

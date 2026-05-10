@@ -27,7 +27,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             int clienteId = 0;
             decimal totalImporte = 0;
             DetalleEnviosListView.Items.Clear();
-            
+
             //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
@@ -75,6 +75,11 @@ namespace GrupoE_Tutasa.EmitirFactura
         private void CancelarBoton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FacturarOtroBoton_Click(object sender, EventArgs e)
+        {
+            EmitirFacturaForm_Load(sender, e);
         }
     }
 }

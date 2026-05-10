@@ -28,9 +28,7 @@
 
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MonitoreoResultadosForm nuevoForm = new MonitoreoResultadosForm();
-            nuevoForm.Show();
+            MonitoreoResultadosForm_Load(sender, e);
         }
 
         private void BuscarBoton_Click(object sender, EventArgs e)
