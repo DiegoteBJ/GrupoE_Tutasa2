@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace GrupoE_Tutasa.Admision
     {
         private AdmisionModelo modelo = new();
         bool encuentro = false;
+        GuiasAImponer guiaActual = null;
+
         public AdmisionForm()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace GrupoE_Tutasa.Admision
               para que se muestren en el formulario*/
             var guiasAImponer = modelo.LGuiasAImponer;
             var cajas = modelo.LCajas;
-
+            
             //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
             NumeroGuiaTextBox.Clear();
             FechaGuiaLabel.Text = string.Empty;
@@ -34,7 +37,6 @@ namespace GrupoE_Tutasa.Admision
             ObservacionesTextBox.Text = string.Empty;
             TamañoDeclaradoLabel.Text = string.Empty;
             //cargar los datos de las cajas en el ComboBox
-            //TamañoReclasificacionComboBox.SelectedIndex = 0;
             TamañoReclasificacionComboBox.Items.Clear();
             TamañoReclasificacionComboBox.DisplayMember = "nombre";
             foreach (var caja in cajas)
@@ -54,6 +56,7 @@ namespace GrupoE_Tutasa.Admision
             {
                 if (guia.numeroGuia == NumeroGuiaTextBox.Text)
                 {
+                    guiaActual = guia;
                     FechaGuiaLabel.Text = guia.fechaImposicion.ToString("dd/MM/yyyy");
                     CDOrigenGuiaLabel.Text = guia.CDorigen;
                     CDDestinoGuiaLabel.Text = guia.CDdestino;
@@ -84,8 +87,6 @@ namespace GrupoE_Tutasa.Admision
                 CambiarTamañoBoton.Enabled = true;
             }
         }
-
-
         private void ObservacionesTextBox_TextChanged(object sender, EventArgs e)
         {
             //string observaciones = ObservacionesTextBox.Text;
@@ -99,7 +100,7 @@ namespace GrupoE_Tutasa.Admision
                 return;
             }
             if (TamañoCorrectoBoton.Checked)
-            {
+            {                                              
                 MessageBox.Show("La guía ha sido admitida con el tamaño declarado.");
             }
             else
@@ -111,8 +112,11 @@ namespace GrupoE_Tutasa.Admision
                 }
                 var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
+                guiaActual.tamaño = nuevoTamañoNombre ; 
                 MessageBox.Show($"La guía ha sido admitida con el nuevo tamaño: {nuevoTamañoNombre}.");
             }
+            decimal importe= CalculadorLogistica.ProcesarGuia(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID, guiaActual.tipoImposicion, guiaActual.tipoEntrega);
+            MessageBox.Show($"El importe calculado para la guía es: {importe:C}.");
             LimpiaYCierra(sender, e);
         }
 
@@ -156,14 +160,33 @@ namespace GrupoE_Tutasa.Admision
                 return;
             }
             MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
+            TamañoDeclaradoLabel.Text = nuevoTamañoNombre;
         }
         private void LimpiaYCierra(object sender, EventArgs e)
         {
             // Cierra el formulario actual
             this.Close();
             // Crea una nueva instancia y la muestra
-            AdmisionForm nuevoForm = new AdmisionForm();
-            nuevoForm.Show();
+            // Resetear estado interno
+            encuentro = false;
+            guiaActual = null;
+
+            // Limpiar campos de texto y etiquetas
+            NumeroGuiaTextBox.Clear();
+            FechaGuiaLabel.Text = string.Empty;
+            CDOrigenGuiaLabel.Text = string.Empty;
+            CDDestinoGuiaLabel.Text = string.Empty;
+            EstadoGuiaLabel.Text = string.Empty;
+            ObservacionesTextBox.Clear();
+            TamañoDeclaradoLabel.Text = string.Empty;
+
+            // Resetear controles de tamaño
+            TamañoReclasificacionComboBox.SelectedIndex = -1;
+            TamañoReclasificacionComboBox.Enabled = false;
+            CambiarTamañoBoton.Enabled = false;
+
+            // Resetear el radio button si corresponde
+            TamañoCorrectoBoton.Checked = true;
         }
     }
 }

@@ -17,5 +17,7 @@ namespace GrupoE_Tutasa.Admision
         public decimal importe { get; set; }
         public string estadoGuia { get; set; }
         public string observaciones { get; set; }
+        public string tipoImposicion { get; set; }
+        public string tipoEntrega { get; set; }
     }
 }
