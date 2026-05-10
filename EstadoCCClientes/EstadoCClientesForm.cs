@@ -17,7 +17,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
         {
             InitializeComponent();
         }
-
+        Clientes clienteActual = null;
         private void EstadoCClientesForm_Load(object sender, EventArgs e)
         {
             var clientes = modelo.LClientes;
@@ -51,6 +51,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             {
                 if (cliente.clienteCUIT == cuit)
                 {
+                    clienteActual = cliente;
                     DatosCLienteRespuestaLabel.Text = $"{cliente.clienteName}";
                     clienteId = cliente.clienteId;
                     encuentro = 1;
@@ -125,6 +126,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
 
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
+            clienteActual = null;
             EstadoCClientesForm_Load(sender, e);
         }
 

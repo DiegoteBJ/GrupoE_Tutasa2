@@ -101,7 +101,7 @@ namespace GrupoE_Tutasa.Admision
             }
             if (TamañoCorrectoBoton.Checked)
             {                                              
-                MessageBox.Show("La guía ha sido admitida con el tamaño declarado.");
+                //MessageBox.Show("La guía ha sido admitida con el tamaño declarado.");
             }
             else
             {
@@ -112,11 +112,11 @@ namespace GrupoE_Tutasa.Admision
                 }
                 var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
-                guiaActual.tamaño = nuevoTamañoNombre ; 
-                MessageBox.Show($"La guía ha sido admitida con el nuevo tamaño: {nuevoTamañoNombre}.");
+                
             }
             decimal importe= CalculadorLogistica.ProcesarGuia(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID, guiaActual.tipoImposicion, guiaActual.tipoEntrega);
-            MessageBox.Show($"El importe calculado para la guía es: {importe:C}.");
+            guiaActual.importe = importe;
+            MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
             LimpiaYCierra(sender, e);
         }
 
@@ -159,8 +159,10 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("El nuevo tamaño seleccionado es el mismo que el tamaño declarado. Por favor, seleccione un tamaño diferente.");
                 return;
             }
-            MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
             TamañoDeclaradoLabel.Text = nuevoTamañoNombre;
+            guiaActual.tamaño = nuevoTamañoNombre;
+            MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
+            TamañoCorrectoBoton.Checked = true;
         }
         private void LimpiaYCierra(object sender, EventArgs e)
         {
