@@ -39,6 +39,8 @@
             AdmisionBoton = new Button();
             RecepcionAgenciaBoton = new Button();
             RecepcionCDLDBoton = new Button();
+            GenerarHDRBoton = new Button();
+            GenerarHDRTransporteBoton = new Button();
             SuspendLayout();
             // 
             // EmitirFacturasBoton
@@ -66,7 +68,7 @@
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(545, 435);
+            SalirBoton.Location = new Point(545, 469);
             SalirBoton.Name = "SalirBoton";
             SalirBoton.Size = new Size(165, 52);
             SalirBoton.TabIndex = 22;
@@ -162,11 +164,35 @@
             RecepcionCDLDBoton.UseVisualStyleBackColor = true;
             RecepcionCDLDBoton.Click += RecepcionCDLDBoton_Click;
             // 
+            // GenerarHDRBoton
+            // 
+            GenerarHDRBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            GenerarHDRBoton.Location = new Point(278, 338);
+            GenerarHDRBoton.Name = "GenerarHDRBoton";
+            GenerarHDRBoton.Size = new Size(165, 52);
+            GenerarHDRBoton.TabIndex = 32;
+            GenerarHDRBoton.Text = "Generar HDR Ultima Milla";
+            GenerarHDRBoton.UseVisualStyleBackColor = true;
+            GenerarHDRBoton.Click += GenerarHDRBoton_Click;
+            // 
+            // GenerarHDRTransporteBoton
+            // 
+            GenerarHDRTransporteBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            GenerarHDRTransporteBoton.Location = new Point(545, 338);
+            GenerarHDRTransporteBoton.Name = "GenerarHDRTransporteBoton";
+            GenerarHDRTransporteBoton.Size = new Size(165, 52);
+            GenerarHDRTransporteBoton.TabIndex = 33;
+            GenerarHDRTransporteBoton.Text = "Generar HDR Transporte";
+            GenerarHDRTransporteBoton.UseVisualStyleBackColor = true;
+            GenerarHDRTransporteBoton.Click += GenerarHDRTransporteBoton_Click;
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 533);
+            Controls.Add(GenerarHDRTransporteBoton);
+            Controls.Add(GenerarHDRBoton);
             Controls.Add(RecepcionCDLDBoton);
             Controls.Add(RecepcionAgenciaBoton);
             Controls.Add(AdmisionBoton);
@@ -196,5 +222,7 @@
         private Button AdmisionBoton;
         private Button RecepcionAgenciaBoton;
         private Button RecepcionCDLDBoton;
+        private Button GenerarHDRBoton;
+        private Button GenerarHDRTransporteBoton;
     }
 }

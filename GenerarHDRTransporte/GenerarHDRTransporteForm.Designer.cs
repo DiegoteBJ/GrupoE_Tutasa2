@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.GenerarHDRTransporte
 {
-    partial class Form1
+    partial class GenerarHDRTransporteForm
     {
         /// <summary>
         /// Required designer variable.

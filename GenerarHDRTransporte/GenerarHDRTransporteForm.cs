@@ -6,21 +6,21 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoE_Tutasa.GenerarHDR
+namespace GrupoE_Tutasa.GenerarHDRTransporte
 {
-    public partial class GenerarHDR : Form
+    public partial class GenerarHDRTransporteForm : Form
     {
-        public GenerarHDR()
+        public GenerarHDRTransporteForm()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

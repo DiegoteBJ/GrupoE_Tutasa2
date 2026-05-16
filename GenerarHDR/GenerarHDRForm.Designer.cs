@@ -1,6 +1,6 @@
 ﻿namespace GrupoE_Tutasa.GenerarHDR
 {
-    partial class GenerarHDR
+    partial class GenerarHDRForm
     {
         /// <summary>
         /// Required designer variable.
