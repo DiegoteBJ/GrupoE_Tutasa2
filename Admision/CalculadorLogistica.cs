@@ -62,7 +62,7 @@ namespace GrupoE_Tutasa.Admision
                 "L" => 3.0m,
                 "XL" => 6.0m,
             };
-            
+
             decimal precioBase = 10.0m; // Precio base por km
             decimal transporte = (decimal)km * factorTamaño * (1 - descuento) * precioBase;
             if (transporte <= 0)
@@ -92,3 +92,4 @@ namespace GrupoE_Tutasa.Admision
             return entrega;
         }
     }
+}
