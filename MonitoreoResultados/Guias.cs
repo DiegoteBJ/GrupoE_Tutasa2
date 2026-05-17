@@ -10,12 +10,16 @@ namespace GrupoE_Tutasa.MonitoreoResultados
         public int Id { get; set; }
         public int clienteID { get; set; }
         public string numeroGuia { get; set; } = string.Empty;
-        public DateTime fechaAdmision { get; set; }
+        public DateTime fechaEntrega { get; set; }
         public string origen { get; set; } = string.Empty;
         public string destino { get; set; } = string.Empty;
         public string modalidadImposicion { get; set; } = string.Empty;
         public string modalidadEntrega { get; set; } = string.Empty;
         public string tamaño { get; set; } = string.Empty;
-        public decimal importe { get; set; }
+        public int proveedorTransporteId { get; set; }
+        public decimal importeImposicion { get; set; }
+        public decimal importeEntrega { get; set; }
+        public decimal importeTransporte { get; set; }
+        public decimal importeTotal { get; set; }
     }
 }
