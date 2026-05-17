@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.EmitirFactura;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -46,6 +47,35 @@ namespace GrupoE_Tutasa.MonitoreoResultados
                     new ProveedoresLD { proveedorId = 8, proveedorName = "El Rapido Argentino", proveedorCUIT = 23345678903 },
                     new ProveedoresLD { proveedorId = 9, proveedorName = "Empresa 20 de Junio", proveedorCUIT = 30789123456 },
                     new ProveedoresLD { proveedorId = 10, proveedorName = "General Urquiza", proveedorCUIT = 20345678901 },
+                };
+            }
+        }
+        public List<Guias> LGuias
+        {
+            get
+            {
+                return new List<Guias>
+                {
+                    new Guias { Id = 1, clienteID = 1, numeroGuia = "G001", fechaAdmision = new DateTime(2026, 04, 05), origen = "Buenos Aires", destino = "Rosario", tamaño = "L", importe = 15000 },
+                    new Guias { Id = 2, clienteID = 2, numeroGuia = "G002", fechaAdmision = new DateTime(2026, 04, 06), origen = "Córdoba", destino = "Mendoza", tamaño = "M", importe = 10000 },
+                    new Guias { Id = 3, clienteID = 3, numeroGuia = "G003", fechaAdmision = new DateTime(2026, 04, 07), origen = "La Plata", destino = "Mar del Plata", tamaño = "S", importe = 6000 },
+                    new Guias { Id = 4, clienteID = 4, numeroGuia = "G004", fechaAdmision = new DateTime(2026, 04, 08), origen = "San Juan", destino = "Salta", tamaño = "XL", importe = 20000 },
+                    new Guias { Id = 5, clienteID = 5, numeroGuia = "G005", fechaAdmision = new DateTime(2026, 04, 09), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "M", importe = 11000 },
+                    new Guias { Id = 6, clienteID = 6, numeroGuia = "G006", fechaAdmision = new DateTime(2026, 04, 10), origen = "Tucumán", destino = "Santa Fe", tamaño = "S", importe = 7000 },
+                    new Guias { Id = 7, clienteID = 1, numeroGuia = "G007", fechaAdmision = new DateTime(2026, 04, 11), origen = "Corrientes", destino = "Posadas", tamaño = "XL", importe = 19000 },
+                    new Guias { Id = 8, clienteID = 2, numeroGuia = "G008", fechaAdmision = new DateTime(2026, 04, 12), origen = "Resistencia", destino = "San Luis", tamaño = "L", importe = 14000 },
+                    new Guias { Id = 9, clienteID = 3, numeroGuia = "G009", fechaAdmision = new DateTime(2026, 04, 13), origen = "Catamarca", destino = "Jujuy", tamaño = "M", importe = 9500 },
+                    new Guias { Id = 10, clienteID = 4, numeroGuia = "G010", fechaAdmision = new DateTime(2026, 04, 14), origen = "Trelew", destino = "Río Gallegos", tamaño = "S", importe = 7500 },
+                    new Guias { Id = 11, clienteID = 1, numeroGuia = "G011", fechaAdmision = new DateTime(2026, 04, 15), origen = "Buenos Aires", destino = "Rosario", tamaño = "XL", importe = 20000 },
+                    new Guias { Id = 12, clienteID = 2, numeroGuia = "G012", fechaAdmision = new DateTime(2026, 04, 16), origen = "Córdoba", destino = "Mendoza", tamaño = "L", importe = 15000 },
+                    new Guias { Id = 13, clienteID = 3, numeroGuia = "G013", fechaAdmision = new DateTime(2026, 04, 17), origen = "La Plata", destino = "Mar del Plata", tamaño = "M", importe = 10000 },
+                    new Guias { Id = 14, clienteID = 4, numeroGuia = "G014", fechaAdmision = new DateTime(2026, 04, 18), origen = "San Juan", destino = "Salta", tamaño = "S", importe = 6000 },
+                    new Guias { Id = 15, clienteID = 1, numeroGuia = "G015", fechaAdmision = new DateTime(2026, 04, 19), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "XL", importe = 20000 },
+                    new Guias { Id = 16, clienteID = 2, numeroGuia = "G016", fechaAdmision = new DateTime(2026, 04, 20), origen = "Tucumán", destino = "Santa Fe", tamaño = "L", importe = 14000 },
+                    new Guias { Id = 17, clienteID = 3, numeroGuia = "G017", fechaAdmision = new DateTime(2026, 04, 21), origen = "Corrientes", destino = "Posadas", tamaño = "M", importe = 11000 },
+                    new Guias { Id = 18, clienteID = 4, numeroGuia = "G018", fechaAdmision = new DateTime(2026, 04, 22), origen = "Resistencia", destino = "San Luis", tamaño = "S", importe = 7000 },
+                    new Guias { Id = 19, clienteID = 5, numeroGuia = "G019", fechaAdmision = new DateTime(2026, 04, 23), origen = "Catamarca", destino = "Jujuy", tamaño = "XL", importe = 19000 },
+                    new Guias { Id = 20, clienteID = 1, numeroGuia = "G020", fechaAdmision = new DateTime(2026, 04, 24), origen = "Trelew", destino = "Río Gallegos", tamaño = "L", importe = 15000 },
                 };
             }
         }

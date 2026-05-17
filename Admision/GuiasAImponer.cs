@@ -14,6 +14,9 @@ namespace GrupoE_Tutasa.Admision
         public string CDorigen { get; set; } = string.Empty;
         public string CDdestino { get; set; } = string.Empty;
         public string tamaño { get; set; } = string.Empty;
+        public decimal importeImposicion { get; set; }
+        public decimal importeEntrega { get; set; }
+        public decimal importeTransporte { get; set; }
         public decimal importe { get; set; }
         public string estadoGuia { get; set; }
         public string observaciones { get; set; }

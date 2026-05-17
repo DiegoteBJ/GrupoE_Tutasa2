@@ -114,7 +114,14 @@ namespace GrupoE_Tutasa.Admision
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
                 
             }
-            decimal importe= CalculadorLogistica.ProcesarGuia(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID, guiaActual.tipoImposicion, guiaActual.tipoEntrega);
+            decimal importeTransporte= CalculadorLogistica.CalcularTransporte(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID);
+            decimal importeImposicion = CalculadorLogistica.CalcularImposicion(guiaActual.clienteID, guiaActual.tipoImposicion);
+            decimal importeEntrega = CalculadorLogistica.CalcularEntrega(guiaActual.clienteID, guiaActual.tipoEntrega);
+            decimal importe = importeTransporte + importeImposicion + importeEntrega;
+            
+            guiaActual.importeImposicion = importeImposicion;
+            guiaActual.importeEntrega = importeEntrega;
+            guiaActual.importeTransporte = importeTransporte;
             guiaActual.importe = importe;
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
             LimpiaYCierra(sender, e);

@@ -44,7 +44,7 @@ namespace GrupoE_Tutasa.Admision
             return 0;
         }
 
-        public static decimal ProcesarGuia(string CDOrigen, string CDDestino, string tamaño, int clienteID, string tipoImposicion, string tipoEntrega)
+        public static decimal CalcularTransporte(string CDOrigen, string CDDestino, string tamaño, int clienteID)
         {
             int km = ObtenerDistancia(CDOrigen, CDDestino);
             decimal descuento = 0.0m;
@@ -62,27 +62,33 @@ namespace GrupoE_Tutasa.Admision
                 "L" => 3.0m,
                 "XL" => 6.0m,
             };
+            
+            decimal precioBase = 10.0m; // Precio base por km
+            decimal transporte = (decimal)km * factorTamaño * (1 - descuento) * precioBase;
+            if (transporte <= 0)
+            {
+                transporte = 5000;
+            }
+            return transporte;
+        }
+        public static decimal CalcularImposicion(int clienteID, string tipoImposicion)
+        {
             decimal imposicion = tipoImposicion switch
             {
                 "A" => 0m,
                 "C" => 0m,
                 "D" => 10000.0m,
             };
+            return imposicion;
+        }
+        public static decimal CalcularEntrega(int clienteID, string tipoEntrega)
+        {
             decimal entrega = tipoEntrega switch
             {
                 "A" => 5000.0m,
                 "C" => 0m,
                 "D" => 10000.0m,
             };
-            decimal precioBase = 20.0m; // Precio base por km
-
-            decimal importe = (decimal)km * factorTamaño * (1 - descuento) * precioBase + imposicion + entrega;
-            
-            if (importe <= 0)
-            {
-                importe = 5000;
-            }
-            return importe;
+            return entrega;
         }
     }
-}
