@@ -40,6 +40,16 @@
             labelapellido = new Label();
             buttonbuscar = new Button();
             labelencomiendaspendientes = new Label();
+            buttonemitirhdr = new Button();
+            buttoncancelar = new Button();
+            groupBoxresumenhdr = new GroupBox();
+            labeltotalasignados = new Label();
+            labelcantidadbultos = new Label();
+            listViewresumenhdr = new ListView();
+            Guía = new ColumnHeader();
+            Tipo = new ColumnHeader();
+            Domicilio = new ColumnHeader();
+            groupBoxresumenhdr.SuspendLayout();
             SuspendLayout();
             // 
             // labelfletero
@@ -149,11 +159,86 @@
             labelencomiendaspendientes.TabIndex = 11;
             labelencomiendaspendientes.Text = "Encomiendas Pendientes";
             // 
+            // buttonemitirhdr
+            // 
+            buttonemitirhdr.Location = new Point(490, 394);
+            buttonemitirhdr.Name = "buttonemitirhdr";
+            buttonemitirhdr.Size = new Size(100, 35);
+            buttonemitirhdr.TabIndex = 13;
+            buttonemitirhdr.Text = "Emitir HDR";
+            buttonemitirhdr.UseVisualStyleBackColor = true;
+            // 
+            // buttoncancelar
+            // 
+            buttoncancelar.Location = new Point(632, 394);
+            buttoncancelar.Name = "buttoncancelar";
+            buttoncancelar.Size = new Size(100, 35);
+            buttoncancelar.TabIndex = 14;
+            buttoncancelar.Text = "Cancelar";
+            buttoncancelar.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxresumenhdr
+            // 
+            groupBoxresumenhdr.Controls.Add(listViewresumenhdr);
+            groupBoxresumenhdr.Controls.Add(labelcantidadbultos);
+            groupBoxresumenhdr.Controls.Add(labeltotalasignados);
+            groupBoxresumenhdr.Location = new Point(414, 74);
+            groupBoxresumenhdr.Name = "groupBoxresumenhdr";
+            groupBoxresumenhdr.Size = new Size(384, 301);
+            groupBoxresumenhdr.TabIndex = 15;
+            groupBoxresumenhdr.TabStop = false;
+            groupBoxresumenhdr.Text = "Resumen HDR";
+            groupBoxresumenhdr.Enter += groupBox1_Enter;
+            // 
+            // labeltotalasignados
+            // 
+            labeltotalasignados.AutoSize = true;
+            labeltotalasignados.Location = new Point(18, 277);
+            labeltotalasignados.Name = "labeltotalasignados";
+            labeltotalasignados.Size = new Size(92, 15);
+            labeltotalasignados.TabIndex = 13;
+            labeltotalasignados.Text = "Total asignados:";
+            // 
+            // labelcantidadbultos
+            // 
+            labelcantidadbultos.AutoSize = true;
+            labelcantidadbultos.Location = new Point(116, 277);
+            labelcantidadbultos.Name = "labelcantidadbultos";
+            labelcantidadbultos.Size = new Size(55, 15);
+            labelcantidadbultos.TabIndex = 14;
+            labelcantidadbultos.Text = "25 bultos";
+            // 
+            // listViewresumenhdr
+            // 
+            listViewresumenhdr.Columns.AddRange(new ColumnHeader[] { Guía, Tipo, Domicilio });
+            listViewresumenhdr.Location = new Point(14, 20);
+            listViewresumenhdr.Name = "listViewresumenhdr";
+            listViewresumenhdr.Size = new Size(360, 252);
+            listViewresumenhdr.TabIndex = 15;
+            listViewresumenhdr.UseCompatibleStateImageBehavior = false;
+            listViewresumenhdr.View = View.Details;
+            // 
+            // Guía
+            // 
+            Guía.Text = "Guía";
+            // 
+            // Tipo
+            // 
+            Tipo.Text = "Tipo";
+            // 
+            // Domicilio
+            // 
+            Domicilio.Text = "Domicilio";
+            Domicilio.Width = 70;
+            // 
             // GenerarHDRFleteros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(groupBoxresumenhdr);
+            Controls.Add(buttoncancelar);
+            Controls.Add(buttonemitirhdr);
             Controls.Add(labelencomiendaspendientes);
             Controls.Add(buttonbuscar);
             Controls.Add(labelapellidofletero);
@@ -168,6 +253,8 @@
             Controls.Add(labelfletero);
             Name = "GenerarHDRFleteros";
             Text = "Generar HDR Fleteros";
+            groupBoxresumenhdr.ResumeLayout(false);
+            groupBoxresumenhdr.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,5 +273,14 @@
         private Label labelapellido;
         private Button buttonbuscar;
         private Label labelencomiendaspendientes;
+        private Button buttonemitirhdr;
+        private Button buttoncancelar;
+        private GroupBox groupBoxresumenhdr;
+        private Label labelcantidadbultos;
+        private Label labeltotalasignados;
+        private ListView listViewresumenhdr;
+        private ColumnHeader Guía;
+        private ColumnHeader Tipo;
+        private ColumnHeader Domicilio;
     }
 }

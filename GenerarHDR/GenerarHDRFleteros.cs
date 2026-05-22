@@ -19,5 +19,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
