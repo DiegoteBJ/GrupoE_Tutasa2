@@ -43,12 +43,19 @@
             buttonemitirhdr = new Button();
             buttoncancelar = new Button();
             groupBoxresumenhdr = new GroupBox();
-            labeltotalasignados = new Label();
-            labelcantidadbultos = new Label();
             listViewresumenhdr = new ListView();
-            Guía = new ColumnHeader();
-            Tipo = new ColumnHeader();
-            Domicilio = new ColumnHeader();
+            Guíaresumenhdr = new ColumnHeader();
+            Tiporesumenhdr = new ColumnHeader();
+            Domicilioresumenhdr = new ColumnHeader();
+            labelcantidadbultos = new Label();
+            labeltotalasignados = new Label();
+            comboBoxencomiendaspendientes = new ComboBox();
+            listView1 = new ListView();
+            Guiaencomiendapendiente = new ColumnHeader();
+            Destinoencomiendapendiente = new ColumnHeader();
+            Domicilioencomiendapendiente = new ColumnHeader();
+            Tamañoencomiendapendiente = new ColumnHeader();
+            Pesoencomiendapendiente = new ColumnHeader();
             groupBoxresumenhdr.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,7 +133,7 @@
             // labelapellidofletero
             // 
             labelapellidofletero.AutoSize = true;
-            labelapellidofletero.Location = new Point(269, 82);
+            labelapellidofletero.Location = new Point(285, 82);
             labelapellidofletero.Name = "labelapellidofletero";
             labelapellidofletero.Size = new Size(98, 15);
             labelapellidofletero.TabIndex = 9;
@@ -135,7 +142,7 @@
             // labelapellido
             // 
             labelapellido.AutoSize = true;
-            labelapellido.Location = new Point(209, 82);
+            labelapellido.Location = new Point(225, 82);
             labelapellido.Name = "labelapellido";
             labelapellido.Size = new Size(54, 15);
             labelapellido.TabIndex = 8;
@@ -153,7 +160,7 @@
             // labelencomiendaspendientes
             // 
             labelencomiendaspendientes.AutoSize = true;
-            labelencomiendaspendientes.Location = new Point(34, 133);
+            labelencomiendaspendientes.Location = new Point(34, 118);
             labelencomiendaspendientes.Name = "labelencomiendaspendientes";
             labelencomiendaspendientes.Size = new Size(139, 15);
             labelencomiendaspendientes.TabIndex = 11;
@@ -161,7 +168,7 @@
             // 
             // buttonemitirhdr
             // 
-            buttonemitirhdr.Location = new Point(490, 394);
+            buttonemitirhdr.Location = new Point(644, 394);
             buttonemitirhdr.Name = "buttonemitirhdr";
             buttonemitirhdr.Size = new Size(100, 35);
             buttonemitirhdr.TabIndex = 13;
@@ -170,7 +177,7 @@
             // 
             // buttoncancelar
             // 
-            buttoncancelar.Location = new Point(632, 394);
+            buttoncancelar.Location = new Point(504, 394);
             buttoncancelar.Name = "buttoncancelar";
             buttoncancelar.Size = new Size(100, 35);
             buttoncancelar.TabIndex = 14;
@@ -182,60 +189,103 @@
             groupBoxresumenhdr.Controls.Add(listViewresumenhdr);
             groupBoxresumenhdr.Controls.Add(labelcantidadbultos);
             groupBoxresumenhdr.Controls.Add(labeltotalasignados);
-            groupBoxresumenhdr.Location = new Point(414, 74);
+            groupBoxresumenhdr.Location = new Point(414, 8);
             groupBoxresumenhdr.Name = "groupBoxresumenhdr";
-            groupBoxresumenhdr.Size = new Size(384, 301);
+            groupBoxresumenhdr.Size = new Size(384, 367);
             groupBoxresumenhdr.TabIndex = 15;
             groupBoxresumenhdr.TabStop = false;
             groupBoxresumenhdr.Text = "Resumen HDR";
             groupBoxresumenhdr.Enter += groupBox1_Enter;
             // 
-            // labeltotalasignados
+            // listViewresumenhdr
             // 
-            labeltotalasignados.AutoSize = true;
-            labeltotalasignados.Location = new Point(18, 277);
-            labeltotalasignados.Name = "labeltotalasignados";
-            labeltotalasignados.Size = new Size(92, 15);
-            labeltotalasignados.TabIndex = 13;
-            labeltotalasignados.Text = "Total asignados:";
+            listViewresumenhdr.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Tiporesumenhdr, Domicilioresumenhdr });
+            listViewresumenhdr.Location = new Point(14, 20);
+            listViewresumenhdr.Name = "listViewresumenhdr";
+            listViewresumenhdr.Size = new Size(360, 317);
+            listViewresumenhdr.TabIndex = 15;
+            listViewresumenhdr.UseCompatibleStateImageBehavior = false;
+            listViewresumenhdr.View = View.Details;
+            // 
+            // Guíaresumenhdr
+            // 
+            Guíaresumenhdr.Text = "Guía";
+            // 
+            // Tiporesumenhdr
+            // 
+            Tiporesumenhdr.Text = "Tipo";
+            // 
+            // Domicilioresumenhdr
+            // 
+            Domicilioresumenhdr.Text = "Domicilio";
+            Domicilioresumenhdr.Width = 70;
             // 
             // labelcantidadbultos
             // 
             labelcantidadbultos.AutoSize = true;
-            labelcantidadbultos.Location = new Point(116, 277);
+            labelcantidadbultos.Location = new Point(121, 340);
             labelcantidadbultos.Name = "labelcantidadbultos";
             labelcantidadbultos.Size = new Size(55, 15);
             labelcantidadbultos.TabIndex = 14;
             labelcantidadbultos.Text = "25 bultos";
             // 
-            // listViewresumenhdr
+            // labeltotalasignados
             // 
-            listViewresumenhdr.Columns.AddRange(new ColumnHeader[] { Guía, Tipo, Domicilio });
-            listViewresumenhdr.Location = new Point(14, 20);
-            listViewresumenhdr.Name = "listViewresumenhdr";
-            listViewresumenhdr.Size = new Size(360, 252);
-            listViewresumenhdr.TabIndex = 15;
-            listViewresumenhdr.UseCompatibleStateImageBehavior = false;
-            listViewresumenhdr.View = View.Details;
+            labeltotalasignados.AutoSize = true;
+            labeltotalasignados.Location = new Point(14, 340);
+            labeltotalasignados.Name = "labeltotalasignados";
+            labeltotalasignados.Size = new Size(92, 15);
+            labeltotalasignados.TabIndex = 13;
+            labeltotalasignados.Text = "Total asignados:";
             // 
-            // Guía
+            // comboBoxencomiendaspendientes
             // 
-            Guía.Text = "Guía";
+            comboBoxencomiendaspendientes.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxencomiendaspendientes.FormattingEnabled = true;
+            comboBoxencomiendaspendientes.Items.AddRange(new object[] { "Retiro", "Distribución" });
+            comboBoxencomiendaspendientes.Location = new Point(34, 136);
+            comboBoxencomiendaspendientes.Name = "comboBoxencomiendaspendientes";
+            comboBoxencomiendaspendientes.Size = new Size(139, 23);
+            comboBoxencomiendaspendientes.TabIndex = 16;
             // 
-            // Tipo
+            // listView1
             // 
-            Tipo.Text = "Tipo";
+            listView1.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Destinoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Pesoencomiendapendiente });
+            listView1.Location = new Point(34, 180);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(349, 195);
+            listView1.TabIndex = 17;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
             // 
-            // Domicilio
+            // Guiaencomiendapendiente
             // 
-            Domicilio.Text = "Domicilio";
-            Domicilio.Width = 70;
+            Guiaencomiendapendiente.Text = "Guía";
+            // 
+            // Destinoencomiendapendiente
+            // 
+            Destinoencomiendapendiente.Text = "Destino";
+            // 
+            // Domicilioencomiendapendiente
+            // 
+            Domicilioencomiendapendiente.Text = "Domicilio";
+            Domicilioencomiendapendiente.Width = 70;
+            // 
+            // Tamañoencomiendapendiente
+            // 
+            Tamañoencomiendapendiente.Text = "Tamaño";
+            // 
+            // Pesoencomiendapendiente
+            // 
+            Pesoencomiendapendiente.Text = "Peso";
             // 
             // GenerarHDRFleteros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(listView1);
+            Controls.Add(comboBoxencomiendaspendientes);
             Controls.Add(groupBoxresumenhdr);
             Controls.Add(buttoncancelar);
             Controls.Add(buttonemitirhdr);
@@ -279,8 +329,15 @@
         private Label labelcantidadbultos;
         private Label labeltotalasignados;
         private ListView listViewresumenhdr;
-        private ColumnHeader Guía;
-        private ColumnHeader Tipo;
-        private ColumnHeader Domicilio;
+        private ColumnHeader Guíaresumenhdr;
+        private ColumnHeader Tiporesumenhdr;
+        private ColumnHeader Domicilioresumenhdr;
+        private ComboBox comboBoxencomiendaspendientes;
+        private ListView listView1;
+        private ColumnHeader Guiaencomiendapendiente;
+        private ColumnHeader Destinoencomiendapendiente;
+        private ColumnHeader Domicilioencomiendapendiente;
+        private ColumnHeader Tamañoencomiendapendiente;
+        private ColumnHeader Pesoencomiendapendiente;
     }
 }
