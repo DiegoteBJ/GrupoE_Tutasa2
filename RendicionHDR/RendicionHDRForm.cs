@@ -34,5 +34,10 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
 
         }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

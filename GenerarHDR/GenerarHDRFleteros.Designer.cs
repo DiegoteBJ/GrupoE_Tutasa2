@@ -55,7 +55,6 @@
             Destinoencomiendapendiente = new ColumnHeader();
             Domicilioencomiendapendiente = new ColumnHeader();
             Tamañoencomiendapendiente = new ColumnHeader();
-            Pesoencomiendapendiente = new ColumnHeader();
             buttonagregar = new Button();
             buttonagregartodo = new Button();
             groupBoxresumenhdr.SuspendLayout();
@@ -174,7 +173,7 @@
             buttonemitirhdr.Name = "buttonemitirhdr";
             buttonemitirhdr.Size = new Size(100, 35);
             buttonemitirhdr.TabIndex = 13;
-            buttonemitirhdr.Text = "Emitir HDR";
+            buttonemitirhdr.Text = "Generar HDR";
             buttonemitirhdr.UseVisualStyleBackColor = true;
             // 
             // buttoncancelar
@@ -252,7 +251,7 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Destinoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Pesoencomiendapendiente });
+            listView1.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Destinoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente });
             listView1.Location = new Point(34, 180);
             listView1.Name = "listView1";
             listView1.Size = new Size(349, 195);
@@ -276,10 +275,6 @@
             // Tamañoencomiendapendiente
             // 
             Tamañoencomiendapendiente.Text = "Tamaño";
-            // 
-            // Pesoencomiendapendiente
-            // 
-            Pesoencomiendapendiente.Text = "Peso";
             // 
             // buttonagregar
             // 
@@ -361,7 +356,6 @@
         private ColumnHeader Destinoencomiendapendiente;
         private ColumnHeader Domicilioencomiendapendiente;
         private ColumnHeader Tamañoencomiendapendiente;
-        private ColumnHeader Pesoencomiendapendiente;
         private Button buttonagregar;
         private Button buttonagregartodo;
     }
