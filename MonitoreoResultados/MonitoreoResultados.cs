@@ -28,9 +28,7 @@
 
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MonitoreoResultadosForm nuevoForm = new MonitoreoResultadosForm();
-            nuevoForm.Show();
+            MonitoreoResultadosForm_Load(sender, e);
         }
 
         private void BuscarBoton_Click(object sender, EventArgs e)
@@ -39,6 +37,7 @@
             int mes = int.Parse(MesTextBox.Text);
             int anio = int.Parse(AnioTextBox.Text);
             decimal importePagado = 0;
+            decimal importeCobrado = 0;
             decimal resultadoMensualporEmpresa = 0;
             decimal resultadoMensualAcumulado = 0;
             ResultadosObtenidosListView.Items.Clear();
@@ -57,15 +56,24 @@
                         importePagado = importePagado + documentos.documentoTotalsinIVA;
                     }
                 }
+                foreach (var Guias in modelo.LGuias)
+                {
+                    if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio)
+                    {
+                        importeCobrado = importeCobrado + Guias.importeTotal;
+                    }
+                }
+
                 ListViewItem item = new ListViewItem(proveedoresLD.proveedorName);
-                item.SubItems.Add((proveedoresLD.proveedorId * 1000000).ToString("C"));
+                item.SubItems.Add((importeCobrado).ToString("C"));
                 item.SubItems.Add(importePagado.ToString("C"));
-                resultadoMensualporEmpresa = proveedoresLD.proveedorId * 1000000 - importePagado;
+                resultadoMensualporEmpresa = importeCobrado - importePagado;
                 item.SubItems.Add(resultadoMensualporEmpresa.ToString("C"));
                 ResultadosObtenidosListView.Items.Add(item);
 
                 resultadoMensualAcumulado = resultadoMensualporEmpresa + resultadoMensualAcumulado;
                 resultadoMensualporEmpresa = 0;
+                importeCobrado = 0;
                 importePagado = 0;
             }
             ResultadoMensualLabel.Text = resultadoMensualAcumulado.ToString("C");

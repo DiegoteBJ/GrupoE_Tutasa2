@@ -7,7 +7,7 @@ namespace GrupoE_Tutasa.EmitirFactura
         {
             InitializeComponent();
         }
-
+        Clientes clienteActual = null;
         private void EmitirFacturaForm_Load(object sender, EventArgs e)
         {
             /*Todavia el formulario no esta visible. Hay que cargar los datos del modelo
@@ -27,7 +27,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             int clienteId = 0;
             decimal totalImporte = 0;
             DetalleEnviosListView.Items.Clear();
-            
+
             //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
@@ -44,6 +44,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             {
                 if (cliente.clienteCUIT == cuit)
                 {
+                    clienteActual = cliente;
                     DatosCLienteRespuestaLabel.Text = $"{cliente.clienteName}";
                     clienteId = cliente.clienteId;
                     encuentro = 1;
@@ -75,6 +76,12 @@ namespace GrupoE_Tutasa.EmitirFactura
         private void CancelarBoton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FacturarOtroBoton_Click(object sender, EventArgs e)
+        {
+            clienteActual = null;
+            EmitirFacturaForm_Load(sender, e);
         }
     }
 }

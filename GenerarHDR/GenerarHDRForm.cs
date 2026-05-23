@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    public partial class GenerarHDR : Form
+    public partial class GenerarHDRForm : Form
     {
-        public GenerarHDR()
+        public GenerarHDRForm()
         {
             InitializeComponent();
         }

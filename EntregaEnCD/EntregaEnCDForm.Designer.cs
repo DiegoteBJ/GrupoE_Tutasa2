@@ -178,18 +178,18 @@
             // 
             // Button_ConfirmarEntrega
             // 
-            Button_ConfirmarEntrega.Location = new Point(681, 553);
+            Button_ConfirmarEntrega.Location = new Point(619, 538);
             Button_ConfirmarEntrega.Margin = new Padding(3, 4, 3, 4);
             Button_ConfirmarEntrega.Name = "Button_ConfirmarEntrega";
             Button_ConfirmarEntrega.Size = new Size(189, 31);
             Button_ConfirmarEntrega.TabIndex = 2;
-            Button_ConfirmarEntrega.Text = "CONFIRMAR ENTREGA";
+            Button_ConfirmarEntrega.Text = "CONFIRMAR";
             Button_ConfirmarEntrega.UseVisualStyleBackColor = true;
             Button_ConfirmarEntrega.Click += Button_ConfirmarEntrega_Click;
             // 
             // Button_Cancelar
             // 
-            Button_Cancelar.Location = new Point(486, 553);
+            Button_Cancelar.Location = new Point(424, 538);
             Button_Cancelar.Margin = new Padding(3, 4, 3, 4);
             Button_Cancelar.Name = "Button_Cancelar";
             Button_Cancelar.Size = new Size(189, 31);
@@ -198,17 +198,17 @@
             Button_Cancelar.UseVisualStyleBackColor = true;
             Button_Cancelar.Click += Button_Cancelar_Click;
             // 
-            // EntregaEnCDFormNuevo
+            // EntregaEnCDForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(826, 600);
             Controls.Add(Button_Cancelar);
             Controls.Add(Button_ConfirmarEntrega);
             Controls.Add(GroupBox_GuiasPendientes);
             Controls.Add(GroupBox_BusquedaDestinatario);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "EntregaEnCDFormNuevo";
+            Name = "EntregaEnCDForm";
             Text = "Entrega en CD";
             Load += EntregaEnCDFormNuevo_Load;
             GroupBox_BusquedaDestinatario.ResumeLayout(false);

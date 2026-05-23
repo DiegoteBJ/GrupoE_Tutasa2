@@ -8,6 +8,8 @@ using GrupoE_Tutasa.EstadoDeEncomienda;
 using GrupoE_Tutasa.Imposicion;
 using GrupoE_Tutasa.RecepcionDespachoAgencia;
 using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
+using GrupoE_Tutasa.GenerarHDR;
+using GrupoE_Tutasa.GenerarHDRTransporte;
 
 
 namespace GrupoE_Tutasa.FormularioPrincipal
@@ -92,6 +94,18 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         {
             EstadoDeEncomiendaForm estadoDeEncomiendaForm = new EstadoDeEncomiendaForm();
             estadoDeEncomiendaForm.Show();
+        }
+
+        private void GenerarHDRBoton_Click(object sender, EventArgs e)
+        {
+            GenerarHDRForm generarHDRForm = new GenerarHDRForm();
+            generarHDRForm.Show();
+        }
+
+        private void GenerarHDRTransporteBoton_Click(object sender, EventArgs e)
+        {
+            GenerarHDRTransporteForm generarHDRTransporteForm = new GenerarHDRTransporteForm();
+            generarHDRTransporteForm.Show();
         }
     }
 }

@@ -156,9 +156,9 @@
             ResultadoMensualLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             ResultadoMensualLabel.Location = new Point(645, 447);
             ResultadoMensualLabel.Name = "ResultadoMensualLabel";
-            ResultadoMensualLabel.Size = new Size(102, 20);
+            ResultadoMensualLabel.Size = new Size(49, 20);
             ResultadoMensualLabel.TabIndex = 33;
-            ResultadoMensualLabel.Text = "1.000.000,23";
+            ResultadoMensualLabel.Text = "00,00";
             // 
             // label6
             // 

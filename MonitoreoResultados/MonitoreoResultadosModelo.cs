@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.EmitirFactura;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -46,6 +47,35 @@ namespace GrupoE_Tutasa.MonitoreoResultados
                     new ProveedoresLD { proveedorId = 8, proveedorName = "El Rapido Argentino", proveedorCUIT = 23345678903 },
                     new ProveedoresLD { proveedorId = 9, proveedorName = "Empresa 20 de Junio", proveedorCUIT = 30789123456 },
                     new ProveedoresLD { proveedorId = 10, proveedorName = "General Urquiza", proveedorCUIT = 20345678901 },
+                };
+            }
+        }
+        public List<Guias> LGuias
+        {
+            get
+            {
+                return new List<Guias>
+                {
+                    new Guias { Id = 1, clienteID = 1, numeroGuia = "G001", fechaEntrega = new DateTime(2026, 04, 05), origen = "Buenos Aires", destino = "Rosario", tamaño = "L", importeImposicion = 5000, importeEntrega = 5000, importeTransporte = 7000, importeTotal = 17000, proveedorTransporteId = 1 },
+                    new Guias { Id = 2, clienteID = 2, numeroGuia = "G002", fechaEntrega = new DateTime(2026, 04, 06), origen = "Córdoba", destino = "Mendoza", tamaño = "M", importeImposicion = 0, importeEntrega = 0, importeTransporte = 8500, importeTotal = 8500 , proveedorTransporteId = 2 },
+                    new Guias { Id = 3, clienteID = 3, numeroGuia = "G003", fechaEntrega = new DateTime(2026, 04, 07), origen = "La Plata", destino = "Mar del Plata", tamaño = "S", importeImposicion = 0, importeEntrega = 0, importeTransporte = 6000, importeTotal = 6000 , proveedorTransporteId = 3 },
+                    new Guias { Id = 4, clienteID = 4, numeroGuia = "G004", fechaEntrega = new DateTime(2026, 04, 08), origen = "San Juan", destino = "Salta", tamaño = "XL", importeImposicion = 5000, importeEntrega = 10000, importeTransporte = 20000, importeTotal = 35000 , proveedorTransporteId = 4 },
+                    new Guias { Id = 5, clienteID = 5, numeroGuia = "G005", fechaEntrega = new DateTime(2026, 04, 09), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "M", importeImposicion = 5000, importeEntrega = 0, importeTransporte = 11000, importeTotal = 16000 , proveedorTransporteId = 2 },
+                    new Guias { Id = 6, clienteID = 6, numeroGuia = "G006", fechaEntrega = new DateTime(2026, 04, 10), origen = "Tucumán", destino = "Santa Fe", tamaño = "S", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 7000, importeTotal = 12000 , proveedorTransporteId = 3 },
+                    new Guias { Id = 7, clienteID = 1, numeroGuia = "G007", fechaEntrega = new DateTime(2026, 04, 11), origen = "Corrientes", destino = "Posadas", tamaño = "XL", importeImposicion = 5000, importeEntrega = 10000, importeTransporte = 19000, importeTotal = 34000 , proveedorTransporteId = 7 },
+                    new Guias { Id = 8, clienteID = 2, numeroGuia = "G008", fechaEntrega = new DateTime(2026, 04, 12), origen = "Resistencia", destino = "San Luis", tamaño = "L", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 14000, importeTotal = 19000 , proveedorTransporteId = 5 },
+                    new Guias { Id = 9, clienteID = 3, numeroGuia = "G009", fechaEntrega = new DateTime(2026, 04, 13), origen = "Catamarca", destino = "Jujuy", tamaño = "M", importeImposicion = 5000, importeEntrega = 0, importeTransporte = 9000, importeTotal = 14000 , proveedorTransporteId = 6 },
+                    new Guias { Id = 10, clienteID = 4, numeroGuia = "G010", fechaEntrega = new DateTime(2026, 04, 14), origen = "Trelew", destino = "Río Gallegos", tamaño = "S", importeImposicion = 0, importeEntrega = 0, importeTransporte = 7500, importeTotal = 7500, proveedorTransporteId = 2  },
+                    new Guias { Id = 11, clienteID = 1, numeroGuia = "G011", fechaEntrega = new DateTime(2026, 04, 15), origen = "Buenos Aires", destino = "Rosario", tamaño = "XL", importeImposicion = 5000, importeEntrega = 10000, importeTransporte = 20000, importeTotal = 35000, proveedorTransporteId = 1  },
+                    new Guias { Id = 12, clienteID = 2, numeroGuia = "G012", fechaEntrega = new DateTime(2026, 04, 16), origen = "Córdoba", destino = "Mendoza", tamaño = "L", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 15000, importeTotal = 20000 , proveedorTransporteId = 1},
+                    new Guias { Id = 13, clienteID = 3, numeroGuia = "G013", fechaEntrega = new DateTime(2026, 04, 17), origen = "La Plata", destino = "Mar del Plata", tamaño = "M", importeImposicion = 5000, importeEntrega = 0, importeTransporte = 10000, importeTotal = 15000 , proveedorTransporteId = 1},
+                    new Guias { Id = 14, clienteID = 4, numeroGuia = "G014", fechaEntrega = new DateTime(2026, 04, 18), origen = "San Juan", destino = "Salta", tamaño = "S", importeImposicion = 0, importeEntrega = 0, importeTransporte = 6000, importeTotal = 6000 , proveedorTransporteId = 6},
+                    new Guias { Id = 15, clienteID = 1, numeroGuia = "G015", fechaEntrega = new DateTime(2026, 04, 19), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "XL", importeImposicion = 5000, importeEntrega = 10000, importeTransporte = 20000, importeTotal = 35000 , proveedorTransporteId = 3},
+                    new Guias { Id = 16, clienteID = 2, numeroGuia = "G016", fechaEntrega = new DateTime(2026, 04, 20), origen = "Tucumán", destino = "Santa Fe", tamaño = "L", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 14000, importeTotal = 19000 , proveedorTransporteId = 5},
+                    new Guias { Id = 17, clienteID = 3, numeroGuia = "G017", fechaEntrega = new DateTime(2026, 04, 21), origen = "Corrientes", destino = "Posadas", tamaño = "M", importeImposicion = 5000, importeEntrega = 0, importeTransporte = 11000, importeTotal = 16000 , proveedorTransporteId = 2},
+                    new Guias { Id = 18, clienteID = 4, numeroGuia = "G018", fechaEntrega = new DateTime(2026, 04, 22), origen = "Resistencia", destino = "San Luis", tamaño = "S", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 7000, importeTotal = 12000 , proveedorTransporteId = 6},
+                    new Guias { Id = 19, clienteID = 5, numeroGuia = "G019", fechaEntrega = new DateTime(2026, 04, 23), origen = "Catamarca", destino = "Jujuy", tamaño = "XL", importeImposicion = 5000, importeEntrega = 10000, importeTransporte = 19000, importeTotal = 34000 , proveedorTransporteId = 5},
+                    new Guias { Id = 20, clienteID = 1, numeroGuia = "G020", fechaEntrega = new DateTime(2026, 04, 24), origen = "Trelew", destino = "Río Gallegos", tamaño = "L", importeImposicion = 0, importeEntrega = 5000, importeTransporte = 15000, importeTotal = 20000 , proveedorTransporteId = 3}
                 };
             }
         }

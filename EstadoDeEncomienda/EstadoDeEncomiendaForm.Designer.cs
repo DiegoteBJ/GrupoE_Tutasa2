@@ -176,7 +176,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(827, 600);
             Controls.Add(Button_Cerrar);
             Controls.Add(Button_Borrar);
             Controls.Add(GroupBox_ResultadoBusqueda);
@@ -184,7 +184,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "EstadoDeEncomiendaForm";
             Text = "Consultar Estado de Encomienda";
-            //Load += this.EstadoDeEncomiendaForm_Load;
             GroupBox_BusquedaGuia.ResumeLayout(false);
             GroupBox_BusquedaGuia.PerformLayout();
             GroupBox_ResultadoBusqueda.ResumeLayout(false);
