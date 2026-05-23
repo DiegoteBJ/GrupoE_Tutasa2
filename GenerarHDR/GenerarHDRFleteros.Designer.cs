@@ -56,6 +56,8 @@
             Domicilioencomiendapendiente = new ColumnHeader();
             Tamañoencomiendapendiente = new ColumnHeader();
             Pesoencomiendapendiente = new ColumnHeader();
+            buttonagregar = new Button();
+            buttonagregartodo = new Button();
             groupBoxresumenhdr.SuspendLayout();
             SuspendLayout();
             // 
@@ -279,11 +281,32 @@
             // 
             Pesoencomiendapendiente.Text = "Peso";
             // 
+            // buttonagregar
+            // 
+            buttonagregar.Location = new Point(94, 394);
+            buttonagregar.Name = "buttonagregar";
+            buttonagregar.Size = new Size(106, 32);
+            buttonagregar.TabIndex = 18;
+            buttonagregar.Text = "Agregar";
+            buttonagregar.UseVisualStyleBackColor = true;
+            buttonagregar.Click += button1_Click;
+            // 
+            // buttonagregartodo
+            // 
+            buttonagregartodo.Location = new Point(225, 394);
+            buttonagregartodo.Name = "buttonagregartodo";
+            buttonagregartodo.Size = new Size(106, 32);
+            buttonagregartodo.TabIndex = 19;
+            buttonagregartodo.Text = "Agregar todo";
+            buttonagregartodo.UseVisualStyleBackColor = true;
+            // 
             // GenerarHDRFleteros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonagregartodo);
+            Controls.Add(buttonagregar);
             Controls.Add(listView1);
             Controls.Add(comboBoxencomiendaspendientes);
             Controls.Add(groupBoxresumenhdr);
@@ -339,5 +362,7 @@
         private ColumnHeader Domicilioencomiendapendiente;
         private ColumnHeader Tamañoencomiendapendiente;
         private ColumnHeader Pesoencomiendapendiente;
+        private Button buttonagregar;
+        private Button buttonagregartodo;
     }
 }
