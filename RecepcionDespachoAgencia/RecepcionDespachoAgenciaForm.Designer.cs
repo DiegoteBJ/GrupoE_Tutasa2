@@ -51,11 +51,11 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             label3 = new Label();
-            label2 = new Label();
             listView1 = new ListView();
             columnHeader4 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            label2 = new Label();
             GuiasRecibirGroupBox.SuspendLayout();
             GuiasAEntregarFleteroGroupBox.SuspendLayout();
             BuscarFleteroGroupBox.SuspendLayout();
@@ -139,7 +139,7 @@
             // 
             NombreFleteroLabel.AutoSize = true;
             NombreFleteroLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NombreFleteroLabel.Location = new Point(310, 111);
+            NombreFleteroLabel.Location = new Point(311, 32);
             NombreFleteroLabel.Name = "NombreFleteroLabel";
             NombreFleteroLabel.Size = new Size(66, 20);
             NombreFleteroLabel.TabIndex = 4;
@@ -167,7 +167,7 @@
             // 
             NombreFleteroRespuestaLabel.AutoSize = true;
             NombreFleteroRespuestaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NombreFleteroRespuestaLabel.Location = new Point(280, 64);
+            NombreFleteroRespuestaLabel.Location = new Point(311, 58);
             NombreFleteroRespuestaLabel.Name = "NombreFleteroRespuestaLabel";
             NombreFleteroRespuestaLabel.Size = new Size(114, 20);
             NombreFleteroRespuestaLabel.TabIndex = 8;
@@ -184,9 +184,9 @@
             // 
             BuscarFleteroBoton.Location = new Point(190, 133);
             BuscarFleteroBoton.Name = "BuscarFleteroBoton";
-            BuscarFleteroBoton.Size = new Size(94, 29);
+            BuscarFleteroBoton.Size = new Size(117, 29);
             BuscarFleteroBoton.TabIndex = 11;
-            BuscarFleteroBoton.Text = "Buscar";
+            BuscarFleteroBoton.Text = "Buscar Fletero";
             BuscarFleteroBoton.UseVisualStyleBackColor = true;
             BuscarFleteroBoton.Click += BuscarFleteroBoton_Click_1;
             // 
@@ -218,13 +218,14 @@
             BuscarFleteroGroupBox.Controls.Add(textBox1);
             BuscarFleteroGroupBox.Controls.Add(DNIFleteroBox);
             BuscarFleteroGroupBox.Controls.Add(ApellidoLabel);
+            BuscarFleteroGroupBox.Controls.Add(NombreFleteroLabel);
             BuscarFleteroGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BuscarFleteroGroupBox.Location = new Point(30, 79);
             BuscarFleteroGroupBox.Name = "BuscarFleteroGroupBox";
             BuscarFleteroGroupBox.Size = new Size(763, 109);
             BuscarFleteroGroupBox.TabIndex = 14;
             BuscarFleteroGroupBox.TabStop = false;
-            BuscarFleteroGroupBox.Text = "Buscar vehiculo";
+            BuscarFleteroGroupBox.Text = "Buscar DNI";
             // 
             // DNILabel
             // 
@@ -240,7 +241,7 @@
             // 
             ApellidoRespuestaLabel.AutoSize = true;
             ApellidoRespuestaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ApellidoRespuestaLabel.Location = new Point(413, 63);
+            ApellidoRespuestaLabel.Location = new Point(460, 58);
             ApellidoRespuestaLabel.Name = "ApellidoRespuestaLabel";
             ApellidoRespuestaLabel.Size = new Size(116, 20);
             ApellidoRespuestaLabel.TabIndex = 9;
@@ -257,7 +258,7 @@
             // 
             ApellidoLabel.AutoSize = true;
             ApellidoLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ApellidoLabel.Location = new Point(413, 32);
+            ApellidoLabel.Location = new Point(460, 32);
             ApellidoLabel.Name = "ApellidoLabel";
             ApellidoLabel.Size = new Size(66, 20);
             ApellidoLabel.TabIndex = 5;
@@ -295,15 +296,6 @@
             label3.TabIndex = 2;
             label3.Text = "HDR-20250504-018";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(22, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(62, 20);
-            label2.TabIndex = 1;
-            label2.Text = "N° HDR";
-            // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
@@ -331,6 +323,15 @@
             columnHeader2.Text = "Tipo";
             columnHeader2.Width = 120;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 20);
+            label2.TabIndex = 1;
+            label2.Text = "N° HDR";
+            // 
             // RecepcionDespachoAgenciaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -343,7 +344,6 @@
             Controls.Add(BuscarFleteroBoton);
             Controls.Add(AgenciaRespuestaLabel);
             Controls.Add(UsuarioRespuestaLabel);
-            Controls.Add(NombreFleteroLabel);
             Controls.Add(AgenciaLabel);
             Controls.Add(UsuarioLabel);
             Controls.Add(GuiasAEntregarFleteroGroupBox);

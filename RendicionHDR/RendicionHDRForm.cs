@@ -6,21 +6,26 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoE_Tutasa.GenerarHDR
+namespace GrupoE_Tutasa.RendicionHDR
 {
-    public partial class GenerarHDR : Form
+    public partial class RendicionHDRForm : Form
     {
-        public GenerarHDR()
+        public RendicionHDRForm()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
