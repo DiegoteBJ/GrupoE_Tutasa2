@@ -30,11 +30,6 @@ namespace GrupoE_Tutasa.RendicionHDR
 
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
 
