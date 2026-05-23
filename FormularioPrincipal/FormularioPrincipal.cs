@@ -10,6 +10,7 @@ using GrupoE_Tutasa.RecepcionDespachoAgencia;
 using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
 using GrupoE_Tutasa.GenerarHDR;
 using GrupoE_Tutasa.GenerarHDRTransporte;
+using GrupoE_Tutasa.RendicionHDR;
 
 
 namespace GrupoE_Tutasa.FormularioPrincipal
@@ -106,6 +107,12 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         {
             GenerarHDRTransporteForm generarHDRTransporteForm = new GenerarHDRTransporteForm();
             generarHDRTransporteForm.Show();
+        }
+
+        private void RendicionHDRBoton_Click(object sender, EventArgs e)
+        {
+            RendicionHDRForm rendicionHDRForm = new RendicionHDRForm();
+            rendicionHDRForm.Show();
         }
     }
 }

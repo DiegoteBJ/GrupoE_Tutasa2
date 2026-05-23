@@ -41,6 +41,7 @@
             RecepcionCDLDBoton = new Button();
             GenerarHDRBoton = new Button();
             GenerarHDRTransporteBoton = new Button();
+            RendicionHDRBoton = new Button();
             SuspendLayout();
             // 
             // EmitirFacturasBoton
@@ -68,7 +69,7 @@
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(545, 469);
+            SalirBoton.Location = new Point(545, 523);
             SalirBoton.Name = "SalirBoton";
             SalirBoton.Size = new Size(165, 52);
             SalirBoton.TabIndex = 22;
@@ -186,11 +187,23 @@
             GenerarHDRTransporteBoton.UseVisualStyleBackColor = true;
             GenerarHDRTransporteBoton.Click += GenerarHDRTransporteBoton_Click;
             // 
+            // RendicionHDRBoton
+            // 
+            RendicionHDRBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            RendicionHDRBoton.Location = new Point(11, 436);
+            RendicionHDRBoton.Name = "RendicionHDRBoton";
+            RendicionHDRBoton.Size = new Size(165, 52);
+            RendicionHDRBoton.TabIndex = 34;
+            RendicionHDRBoton.Text = "Rendición de Hoja de Ruta";
+            RendicionHDRBoton.UseVisualStyleBackColor = true;
+            RendicionHDRBoton.Click += RendicionHDRBoton_Click;
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 533);
+            ClientSize = new Size(729, 596);
+            Controls.Add(RendicionHDRBoton);
             Controls.Add(GenerarHDRTransporteBoton);
             Controls.Add(GenerarHDRBoton);
             Controls.Add(RecepcionCDLDBoton);
@@ -224,5 +237,6 @@
         private Button RecepcionCDLDBoton;
         private Button GenerarHDRBoton;
         private Button GenerarHDRTransporteBoton;
+        private Button RendicionHDRBoton;
     }
 }
