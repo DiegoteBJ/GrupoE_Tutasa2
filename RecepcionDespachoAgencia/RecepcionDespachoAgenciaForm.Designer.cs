@@ -202,7 +202,7 @@
             // 
             // ConfirmarBoton
             // 
-            ConfirmarBoton.Location = new Point(560, 684);
+            ConfirmarBoton.Location = new Point(554, 684);
             ConfirmarBoton.Name = "ConfirmarBoton";
             ConfirmarBoton.Size = new Size(94, 29);
             ConfirmarBoton.TabIndex = 13;
