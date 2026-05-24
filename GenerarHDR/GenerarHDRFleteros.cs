@@ -15,17 +15,12 @@ namespace GrupoE_Tutasa.GenerarHDR
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void GenerarHDRFleteros_Load(object sender, EventArgs e)
         {
 
         }
