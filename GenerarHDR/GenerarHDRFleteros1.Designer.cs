@@ -67,6 +67,7 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             label3 = new Label();
+            button6 = new Button();
             groupBoxresumenhdr.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -193,6 +194,7 @@
             // 
             // groupBoxresumenhdr
             // 
+            groupBoxresumenhdr.Controls.Add(button6);
             groupBoxresumenhdr.Controls.Add(listViewresumenhdr);
             groupBoxresumenhdr.Controls.Add(labelcantidadbultos);
             groupBoxresumenhdr.Controls.Add(labeltotalasignados);
@@ -290,7 +292,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(714, 420);
+            button1.Location = new Point(726, 420);
             button1.Name = "button1";
             button1.Size = new Size(92, 40);
             button1.TabIndex = 27;
@@ -299,7 +301,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(592, 420);
+            button2.Location = new Point(606, 420);
             button2.Name = "button2";
             button2.Size = new Size(92, 40);
             button2.TabIndex = 28;
@@ -308,7 +310,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(190, 244);
+            button3.Location = new Point(206, 244);
             button3.Name = "button3";
             button3.Size = new Size(92, 40);
             button3.TabIndex = 29;
@@ -317,7 +319,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(302, 244);
+            button4.Location = new Point(323, 244);
             button4.Name = "button4";
             button4.Size = new Size(92, 40);
             button4.TabIndex = 30;
@@ -380,6 +382,15 @@
             label3.Size = new Size(63, 15);
             label3.TabIndex = 31;
             label3.Text = "[25 bultos]";
+            // 
+            // button6
+            // 
+            button6.Location = new Point(282, 328);
+            button6.Name = "button6";
+            button6.Size = new Size(92, 40);
+            button6.TabIndex = 29;
+            button6.Text = "Eliminar";
+            button6.UseVisualStyleBackColor = true;
             // 
             // GenerarHDRFleteros1
             // 
@@ -457,5 +468,6 @@
         private Label label1;
         private GroupBox groupBox1;
         private Label label3;
+        private Button button6;
     }
 }
