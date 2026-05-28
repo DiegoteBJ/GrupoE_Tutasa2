@@ -186,7 +186,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(179, 35);
+            textBox1.Location = new Point(219, 35);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(297, 27);
             textBox1.TabIndex = 1;
@@ -196,9 +196,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(21, 35);
             label5.Name = "label5";
-            label5.Size = new Size(136, 20);
+            label5.Size = new Size(192, 20);
             label5.TabIndex = 0;
-            label5.Text = "Nro. de Transporte ";
+            label5.Text = "Nro. de Servicio Transporte ";
             // 
             // groupBox2
             // 
@@ -278,7 +278,7 @@
             button5.Name = "button5";
             button5.Size = new Size(153, 33);
             button5.TabIndex = 2;
-            button5.Text = "Elimitar todo";
+            button5.Text = "Eliminar todo";
             button5.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -338,7 +338,7 @@
             button7.Text = "Generar HDR";
             button7.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // GenerarHDRTransporteForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -352,7 +352,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "GenerarHDRTransporteForm";
             Text = "Recepcion Despacho Larga Distancia";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
