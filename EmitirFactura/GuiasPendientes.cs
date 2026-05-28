@@ -9,7 +9,7 @@ namespace GrupoE_Tutasa.EmitirFactura
     {
         public int Id { get; set; }
         public int clienteID { get; set; }
-        public string numeroGuia { get; set; } = string.Empty;
+        public int numeroGuia { get; set; }
         public DateTime fechaAdmision { get; set; }
         public string origen { get; set; } = string.Empty;
         public string destino { get; set; } = string.Empty;

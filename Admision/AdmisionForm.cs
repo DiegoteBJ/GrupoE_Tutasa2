@@ -15,7 +15,7 @@ namespace GrupoE_Tutasa.Admision
     {
         private AdmisionModelo modelo = new();
         bool encuentro = false;
-        GuiasAImponer guiaActual = null;
+        GuiasAAdmitir guiaActual = null;
 
         public AdmisionForm()
         {
@@ -25,7 +25,7 @@ namespace GrupoE_Tutasa.Admision
         {
             /*Todavia el formulario no esta visible. Hay que cargar los datos del modelo
               para que se muestren en el formulario*/
-            var guiasAImponer = modelo.LGuiasAImponer;
+            var guiasAAdmitir = modelo.LGuiasAAdmitir;
             var cajas = modelo.LCajas;
             
             //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
@@ -52,9 +52,9 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
                 return;
             }
-            foreach (var guia in modelo.LGuiasAImponer)
+            foreach (var guia in modelo.LGuiasAAdmitir)
             {
-                if (guia.numeroGuia == NumeroGuiaTextBox.Text)
+                if (guia.numeroGuia == (int)int.Parse(NumeroGuiaTextBox.Text))
                 {
                     guiaActual = guia;
                     FechaGuiaLabel.Text = guia.fechaImposicion.ToString("dd/MM/yyyy");
@@ -112,7 +112,6 @@ namespace GrupoE_Tutasa.Admision
                 }
                 var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
-                
             }
             decimal importeTransporte= CalculadorLogistica.CalcularTransporte(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID);
             decimal importeImposicion = CalculadorLogistica.CalcularImposicion(guiaActual.clienteID, guiaActual.tipoImposicion);
@@ -122,6 +121,8 @@ namespace GrupoE_Tutasa.Admision
             guiaActual.importeImposicion = importeImposicion;
             guiaActual.importeEntrega = importeEntrega;
             guiaActual.importeTransporte = importeTransporte;
+            guiaActual.fechaAdmision = DateTime.Now;
+            guiaActual.estadoGuia = "Admitida";
             guiaActual.importe = importe;
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
             LimpiaYCierra(sender, e);
