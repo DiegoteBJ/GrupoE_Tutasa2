@@ -52,9 +52,14 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
                 return;
             }
+            if(!int.TryParse(NumeroGuiaTextBox.Text, out int numeroGuia))
+            {
+                MessageBox.Show("El número de guía debe ser un valor numérico.");
+                return;
+            }
             foreach (var guia in modelo.LGuiasAAdmitir)
             {
-                if (guia.numeroGuia == (int)int.Parse(NumeroGuiaTextBox.Text))
+                if (guia.numeroGuia == numeroGuia)
                 {
                     guiaActual = guia;
                     FechaGuiaLabel.Text = guia.fechaImposicion.ToString("dd/MM/yyyy");

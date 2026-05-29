@@ -22,6 +22,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
         {
             var clientes = modelo.LClientes;
             var documentos = modelo.LDocumentos;
+            ClienteIDLabel.Text = string.Empty;
             CuitClienteBox.Clear();
             DatosCLienteRespuestaLabel.Text = string.Empty;
             SaldoInicioLabel.Text = $"0";
@@ -33,6 +34,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             //1 definir variables
             int encuentro = 0;
             int clienteId = 0;
+            ClienteIDLabel.Text = string.Empty;
             DocumentosListView.Items.Clear();
 
             //2 Validar Datos
@@ -44,6 +46,12 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             if (!long.TryParse(CuitClienteBox.Text, out long cuit))
             {
                 MessageBox.Show("El CUIT debe ser un número válido.");
+                return;
+            }
+            bool cuitValido = EstadoCCClientesModelo.ValidarCuit(CuitClienteBox.Text);
+            if (!cuitValido)
+            {
+                MessageBox.Show("El CUIT ingresado no es válido.");
                 return;
             }
 
@@ -73,8 +81,11 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             decimal totalImporte = 0;
             decimal saldoInicio = 0;
             decimal saldoCierre = 0;
-            int clienteId = int.Parse(ClienteIDLabel.Text);
-
+            if (!int.TryParse(ClienteIDLabel.Text, out int clienteId))
+            {
+                MessageBox.Show("Por favor, busque un cliente antes de buscar movimientos.");
+                return;
+            }
             if (fechaDesde > fechaHasta)
             {
                 MessageBox.Show("La fecha desde no puede ser mayor que la fecha hasta.");

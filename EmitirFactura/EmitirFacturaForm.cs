@@ -35,6 +35,11 @@ namespace GrupoE_Tutasa.EmitirFactura
                 MessageBox.Show("Por favor, ingrese un CUIT válido.");
                 return;
             }
+            if (!EmisionFacturaModelo.ValidarCuit(CuitClienteBox.Text))
+            {
+                MessageBox.Show("El CUIT ingresado no es válido.");
+                return;
+            }
             if (!long.TryParse(CuitClienteBox.Text, out long cuit))
             {
                 MessageBox.Show("El CUIT debe ser un número válido.");

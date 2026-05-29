@@ -68,5 +68,27 @@ namespace GrupoE_Tutasa.EmitirFactura
                 };
             }
         }
+        public static bool ValidarCuit(string cuit)
+        {
+            if (string.IsNullOrWhiteSpace(cuit)) return false;
+
+            cuit = new string(cuit.Where(char.IsDigit).ToArray());
+
+            if (cuit.Length != 11) return false;
+
+            int prefijo = int.Parse(cuit[..2]);
+            if (!new[] { 20, 23, 24, 27, 30, 33, 34 }.Contains(prefijo)) return false;
+
+            int[] coef = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+            int suma = 0;
+            for (int i = 0; i < 10; i++)
+                suma += (cuit[i] - '0') * coef[i];
+
+            int resto = suma % 11;
+            if (resto == 1) return false;
+
+            int esperado = resto == 0 ? 0 : 11 - resto;
+            return (cuit[10] - '0') == esperado;
+        }
     }
 }
