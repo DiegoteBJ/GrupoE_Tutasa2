@@ -44,5 +44,10 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
