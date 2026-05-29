@@ -6,7 +6,7 @@ namespace GrupoE_Tutasa.EmitirFactura
 {
     internal class EmisionFacturaModelo
     {
-        public List<GuiasPendientes> LGuiasPendientes  
+        public List<GuiasPendientes> LGuiasPendientes
         {
             get
             {
@@ -51,6 +51,20 @@ namespace GrupoE_Tutasa.EmitirFactura
                     new Clientes { clienteId = 8, clienteName = "Cliente H", clienteCUIT = 23345678903 },
                     new Clientes { clienteId = 9, clienteName = "Cliente I", clienteCUIT = 30789123456 },
                     new Clientes { clienteId = 10, clienteName = "Cliente J", clienteCUIT = 20345678901 },
+                };
+            }
+        }
+        public List<Documentos> LDocumentos
+        {
+            get
+            {
+                return new List<Documentos>
+                {
+                    new Documentos { documentoId = 1, clienteId = 1, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 01), documentoNumero = "F001-00000001", netoGravado = 10000,  ivaDF = 2100, documentoTotal = 12100 },
+                    new Documentos { documentoId = 2, clienteId = 2, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 02), documentoNumero = "F001-00000002", netoGravado = 15000,  ivaDF = 3150, documentoTotal = 18150 },
+                    new Documentos { documentoId = 3, clienteId = 3, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 03), documentoNumero = "F001-00000003", netoGravado = 20000,  ivaDF = 4200, documentoTotal = 24200 },
+                    new Documentos { documentoId = 4, clienteId = 4, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 04), documentoNumero = "F001-00000004", netoGravado = 25000,  ivaDF = 5250, documentoTotal = 30250 },
+                    new Documentos { documentoId = 5, clienteId = 5, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 05), documentoNumero = "F001-00000005", netoGravado = 30000,  ivaDF = 6300, documentoTotal = 36300 }
                 };
             }
         }

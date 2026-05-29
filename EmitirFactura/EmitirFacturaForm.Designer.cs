@@ -202,6 +202,7 @@
             EmitirFacturaBoton.TabIndex = 8;
             EmitirFacturaBoton.Text = "Emitir Factura";
             EmitirFacturaBoton.UseVisualStyleBackColor = true;
+            EmitirFacturaBoton.Click += EmitirFacturaBoton_Click;
             // 
             // FacturarOtroBoton
             // 
