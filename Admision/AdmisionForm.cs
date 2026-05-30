@@ -1,4 +1,4 @@
-﻿using GrupoE_Tutasa.EmitirFactura;
+using GrupoE_Tutasa.EmitirFactura;
 using GrupoE_Tutasa.EstadoCCClientes;
 using System;
 using System.Collections.Generic;
@@ -21,14 +21,15 @@ namespace GrupoE_Tutasa.Admision
         {
             InitializeComponent();
         }
+
         private void AdmisionForm_Load(object sender, EventArgs e)
         {
             /*Todavia el formulario no esta visible. Hay que cargar los datos del modelo
               para que se muestren en el formulario*/
             var guiasAAdmitir = modelo.LGuiasAAdmitir;
             var cajas = modelo.LCajas;
-            
-            //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
+
+            // Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
             NumeroGuiaTextBox.Clear();
             FechaGuiaLabel.Text = string.Empty;
             CDOrigenGuiaLabel.Text = string.Empty;
@@ -36,7 +37,8 @@ namespace GrupoE_Tutasa.Admision
             EstadoGuiaLabel.Text = string.Empty;
             ObservacionesTextBox.Text = string.Empty;
             TamañoDeclaradoLabel.Text = string.Empty;
-            //cargar los datos de las cajas en el ComboBox
+
+            // Cargar los datos de las cajas en el ComboBox
             TamañoReclasificacionComboBox.Items.Clear();
             TamañoReclasificacionComboBox.DisplayMember = "nombre";
             foreach (var caja in cajas)
@@ -44,19 +46,22 @@ namespace GrupoE_Tutasa.Admision
                 TamañoReclasificacionComboBox.Items.Add(caja);
             }
         }
+
         private void BuscarGuiaBoton_Click(object sender, EventArgs e)
         {
             encuentro = false;
+
             if (string.IsNullOrWhiteSpace(NumeroGuiaTextBox.Text))
             {
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
                 return;
             }
-            if(!int.TryParse(NumeroGuiaTextBox.Text, out int numeroGuia))
+            if (!int.TryParse(NumeroGuiaTextBox.Text, out int numeroGuia))
             {
                 MessageBox.Show("El número de guía debe ser un valor numérico.");
                 return;
             }
+
             foreach (var guia in modelo.LGuiasAAdmitir)
             {
                 if (guia.numeroGuia == numeroGuia)
@@ -69,32 +74,30 @@ namespace GrupoE_Tutasa.Admision
                     ObservacionesTextBox.Text = guia.observaciones;
                     TamañoDeclaradoLabel.Text = guia.tamaño;
                     encuentro = true;
+
+                    // FIX 7: Resetear el radio button y el combo al cargar una nueva guía
+                    TamañoCorrectoBoton.Checked = true;
+                    TamañoReclasificacionComboBox.SelectedIndex = -1;
+
                     return;
                 }
             }
-            if (encuentro == false)
-            {
-                MessageBox.Show("No se encontró la guía con el número proporcionado.");
-                return;
-            }
+
+            // FIX 4: El if es redundante, si llegamos acá encuentro siempre es false
+            MessageBox.Show("No se encontró la guía con el número proporcionado.");
         }
 
         private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
         {
-            if (TamañoCorrectoBoton.Checked || encuentro == false)
-            {
-                TamañoReclasificacionComboBox.Enabled = false;
-                CambiarTamañoBoton.Enabled = false;
-            }
-            else
-            {
-                TamañoReclasificacionComboBox.Enabled = true;
-                CambiarTamañoBoton.Enabled = true;
-            }
+            // FIX 3: Separar claramente ambas condiciones
+            bool habilitarReclasificacion = !TamañoCorrectoBoton.Checked && encuentro;
+            TamañoReclasificacionComboBox.Enabled = habilitarReclasificacion;
+            CambiarTamañoBoton.Enabled = habilitarReclasificacion;
         }
+
         private void ObservacionesTextBox_TextChanged(object sender, EventArgs e)
         {
-            //string observaciones = ObservacionesTextBox.Text;
+            // string observaciones = ObservacionesTextBox.Text;
         }
 
         private void AdmitirBoton_Click(object sender, EventArgs e)
@@ -104,31 +107,32 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de admitir.");
                 return;
             }
-            if (TamañoCorrectoBoton.Checked)
-            {                                              
-                //MessageBox.Show("La guía ha sido admitida con el tamaño declarado.");
-            }
-            else
+
+            if (!TamañoCorrectoBoton.Checked)
             {
                 if (TamañoReclasificacionComboBox.SelectedItem == null)
                 {
                     MessageBox.Show("Por favor, seleccione un nuevo tamaño para la guía.");
                     return;
                 }
-                var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
+
+                // FIX 5: Asignar el nuevo tamaño a guiaActual ANTES de calcular el importe
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
+                guiaActual.tamaño = nuevoTamañoNombre;
             }
-            decimal importeTransporte= CalculadorLogistica.CalcularTransporte(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID);
+
+            decimal importeTransporte = CalculadorLogistica.CalcularTransporte(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID);
             decimal importeImposicion = CalculadorLogistica.CalcularImposicion(guiaActual.clienteID, guiaActual.tipoImposicion);
             decimal importeEntrega = CalculadorLogistica.CalcularEntrega(guiaActual.clienteID, guiaActual.tipoEntrega);
             decimal importe = importeTransporte + importeImposicion + importeEntrega;
-            
+
             guiaActual.importeImposicion = importeImposicion;
             guiaActual.importeEntrega = importeEntrega;
             guiaActual.importeTransporte = importeTransporte;
             guiaActual.fechaAdmision = DateTime.Now;
             guiaActual.estadoGuia = "Admitida";
             guiaActual.importe = importe;
+
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
             LimpiaYCierra(sender, e);
         }
@@ -145,6 +149,11 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("Por favor, ingrese una razón para el rechazo en las observaciones.");
                 return;
             }
+
+            // FIX 6: Actualizar el estado de la guía y guardar las observaciones del rechazo
+            guiaActual.estadoGuia = "Rechazada";
+            guiaActual.observaciones = ObservacionesTextBox.Text;
+
             MessageBox.Show("La guía ha sido rechazada.");
             LimpiaYCierra(sender, e);
         }
@@ -161,28 +170,29 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("Por favor, seleccione un nuevo tamaño para la guía.");
                 return;
             }
-            if (!encuentro) 
-            {MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de cambiar el tamaño.");
+            if (!encuentro)
+            {
+                MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de cambiar el tamaño.");
                 return;
             }
-            var nuevoTamaño = TamañoReclasificacionComboBox.SelectedItem.ToString();
+
             string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
-            if(nuevoTamañoNombre == TamañoDeclaradoLabel.Text)
+
+            if (nuevoTamañoNombre == TamañoDeclaradoLabel.Text)
             {
                 MessageBox.Show("El nuevo tamaño seleccionado es el mismo que el tamaño declarado. Por favor, seleccione un tamaño diferente.");
                 return;
             }
+
             TamañoDeclaradoLabel.Text = nuevoTamañoNombre;
             guiaActual.tamaño = nuevoTamañoNombre;
             MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
             TamañoCorrectoBoton.Checked = true;
         }
+
         private void LimpiaYCierra(object sender, EventArgs e)
         {
-            // Cierra el formulario actual
-            this.Close();
-            // Crea una nueva instancia y la muestra
-            // Resetear estado interno
+            // FIX 1: Primero limpiar el estado, luego cerrar
             encuentro = false;
             guiaActual = null;
 
@@ -200,8 +210,11 @@ namespace GrupoE_Tutasa.Admision
             TamañoReclasificacionComboBox.Enabled = false;
             CambiarTamañoBoton.Enabled = false;
 
-            // Resetear el radio button si corresponde
+            // Resetear el radio button
             TamañoCorrectoBoton.Checked = true;
+
+            // Cerrar al final, una vez que todo está limpio
+            this.Close();
         }
     }
 }

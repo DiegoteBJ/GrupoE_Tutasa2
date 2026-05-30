@@ -33,9 +33,15 @@
 
         private void BuscarBoton_Click(object sender, EventArgs e)
         {
-            //int mes = (int)MesUpDown.Value;
-            int mes = int.Parse(MesTextBox.Text);
-            int anio = int.Parse(AnioTextBox.Text);
+            if (!int.TryParse(MesTextBox.Text, out int mes) || mes<1 || mes> 12)
+				{
+					MessageBox.Show("Por favor, ingrese un número de mes válido (1-12).");
+					return;
+				}
+            if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<1900 ||  anio >DateTime.Today.Year)
+				{
+						MessageBox.Show("Por favor, ingrese un año válido");
+				}
             decimal importePagado = 0;
             decimal importeCobrado = 0;
             decimal resultadoMensualporEmpresa = 0;

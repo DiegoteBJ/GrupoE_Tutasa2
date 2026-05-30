@@ -43,11 +43,6 @@ namespace GrupoE_Tutasa.EstadoCCClientes
                 MessageBox.Show("Por favor, ingrese un CUIT válido.");
                 return;
             }
-            if (!long.TryParse(CuitClienteBox.Text, out long cuit))
-            {
-                MessageBox.Show("El CUIT debe ser un número válido.");
-                return;
-            }
             bool cuitValido = EstadoCCClientesModelo.ValidarCuit(CuitClienteBox.Text);
             if (!cuitValido)
             {

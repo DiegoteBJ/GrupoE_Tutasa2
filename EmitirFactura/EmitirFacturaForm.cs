@@ -97,17 +97,17 @@ namespace GrupoE_Tutasa.EmitirFactura
 
         private void EmitirFacturaBoton_Click(object sender, EventArgs e)
         {
-            int nuevoDocumentoId = Documentos.ObtenerUltimoId(modelo.LDocumentos) + 1;
             if (clienteActual == null)
                 {
                 MessageBox.Show("Debe seleccionar un cliente antes de poder generar la factura");
                 return;
                 }
-            if (TotalAFacturarLabel.Text == "0")
+           if (!decimal.TryParse(TotalAFacturarLabel.Text, out decimal totalParseado) || totalParseado == 0)	
                 {
                 MessageBox.Show("No hay importe a facturar. Por favor, seleccione un cliente con guías pendientes.");
                 return;
                 }
+            int nuevoDocumentoId = Documentos.ObtenerUltimoId(modelo.LDocumentos) + 1;
             int clienteId = clienteActual.clienteId;
             string documentoTipo = "FC";
             DateTime documentoFecha = DateTime.Now;
