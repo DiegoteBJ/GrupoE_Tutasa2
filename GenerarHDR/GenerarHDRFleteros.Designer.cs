@@ -28,212 +28,212 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonbuscar = new Button();
-            labelapellidofletero = new Label();
-            labelapellido = new Label();
-            labelnombrefletero = new Label();
-            labelnombre = new Label();
-            labelcentrodistribucion = new Label();
-            labelCD = new Label();
-            labelnumusuario = new Label();
-            labelusuario = new Label();
-            textBox1 = new TextBox();
-            labelfletero = new Label();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
-            groupBoxresumenhdr = new GroupBox();
-            button7 = new Button();
-            button6 = new Button();
-            listViewresumenhdr = new ListView();
+            buscardnifleterobutton = new Button();
+            apellidofleterolabel = new Label();
+            apellidolabel = new Label();
+            nombrefleterolabel = new Label();
+            nombrelabel = new Label();
+            centrodistribucionlabel = new Label();
+            cdlabel = new Label();
+            numusuariolabel = new Label();
+            usuariolabel = new Label();
+            ingresardnitextBox = new TextBox();
+            dnifleterolabel = new Label();
+            retiroradioButton = new RadioButton();
+            distribucionradioButton = new RadioButton();
+            detallehdrgroupBox = new GroupBox();
+            eliminartodoguiasbutton = new Button();
+            eliminarguiasbutton = new Button();
+            detallehdrlistView = new ListView();
             Guíaresumenhdr = new ColumnHeader();
             Tiporesumenhdr = new ColumnHeader();
             Domicilioresumenhdr = new ColumnHeader();
             Nombreresumenhdr = new ColumnHeader();
             Telefonoresumenhdr = new ColumnHeader();
-            labelcantidadbultos = new Label();
-            labeltotalasignados = new Label();
-            listView1 = new ListView();
+            bultostotalasignadoslabel = new Label();
+            totalbultosasignadoslabel = new Label();
+            seleccionguiaslistView = new ListView();
             Guiaencomiendapendiente = new ColumnHeader();
             Codigopostalencomiendapendiente = new ColumnHeader();
             Tipoencomiendapendiente = new ColumnHeader();
             Domicilioencomiendapendiente = new ColumnHeader();
             Tamañoencomiendapendiente = new ColumnHeader();
             Estadoencomiendapendiente = new ColumnHeader();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            button5 = new Button();
-            label1 = new Label();
-            groupBox1 = new GroupBox();
-            label3 = new Label();
-            groupBoxresumenhdr.SuspendLayout();
-            groupBox1.SuspendLayout();
+            generarhdrbutton = new Button();
+            cancelargenerarhdrbutton = new Button();
+            agregarguiasbutton = new Button();
+            agregartodoguiasbutton = new Button();
+            codigopostallabel = new Label();
+            ingresarcodigopostaltextBox = new TextBox();
+            buscarcodigopostalbutton = new Button();
+            cantidaddebultoslabel = new Label();
+            seleccionguiasgroupBox = new GroupBox();
+            bultoslabel = new Label();
+            detallehdrgroupBox.SuspendLayout();
+            seleccionguiasgroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // buttonbuscar
+            // buscardnifleterobutton
             // 
-            buttonbuscar.Location = new Point(210, 36);
-            buttonbuscar.Name = "buttonbuscar";
-            buttonbuscar.Size = new Size(112, 25);
-            buttonbuscar.TabIndex = 21;
-            buttonbuscar.Text = "Buscar";
-            buttonbuscar.UseVisualStyleBackColor = true;
+            buscardnifleterobutton.Location = new Point(210, 36);
+            buscardnifleterobutton.Name = "buscardnifleterobutton";
+            buscardnifleterobutton.Size = new Size(112, 25);
+            buscardnifleterobutton.TabIndex = 21;
+            buscardnifleterobutton.Text = "Buscar";
+            buscardnifleterobutton.UseVisualStyleBackColor = true;
             // 
-            // labelapellidofletero
+            // apellidofleterolabel
             // 
-            labelapellidofletero.AutoSize = true;
-            labelapellidofletero.Location = new Point(270, 77);
-            labelapellidofletero.Name = "labelapellidofletero";
-            labelapellidofletero.Size = new Size(98, 15);
-            labelapellidofletero.TabIndex = 20;
-            labelapellidofletero.Text = "[Apellido Fletero]";
+            apellidofleterolabel.AutoSize = true;
+            apellidofleterolabel.Location = new Point(270, 77);
+            apellidofleterolabel.Name = "apellidofleterolabel";
+            apellidofleterolabel.Size = new Size(98, 15);
+            apellidofleterolabel.TabIndex = 20;
+            apellidofleterolabel.Text = "[Apellido Fletero]";
             // 
-            // labelapellido
+            // apellidolabel
             // 
-            labelapellido.AutoSize = true;
-            labelapellido.Location = new Point(210, 77);
-            labelapellido.Name = "labelapellido";
-            labelapellido.Size = new Size(54, 15);
-            labelapellido.TabIndex = 19;
-            labelapellido.Text = "Apellido:";
+            apellidolabel.AutoSize = true;
+            apellidolabel.Location = new Point(210, 77);
+            apellidolabel.Name = "apellidolabel";
+            apellidolabel.Size = new Size(54, 15);
+            apellidolabel.TabIndex = 19;
+            apellidolabel.Text = "Apellido:";
             // 
-            // labelnombrefletero
+            // nombrefleterolabel
             // 
-            labelnombrefletero.AutoSize = true;
-            labelnombrefletero.Location = new Point(79, 77);
-            labelnombrefletero.Name = "labelnombrefletero";
-            labelnombrefletero.Size = new Size(98, 15);
-            labelnombrefletero.TabIndex = 18;
-            labelnombrefletero.Text = "[Nombre Fletero]";
+            nombrefleterolabel.AutoSize = true;
+            nombrefleterolabel.Location = new Point(79, 77);
+            nombrefleterolabel.Name = "nombrefleterolabel";
+            nombrefleterolabel.Size = new Size(98, 15);
+            nombrefleterolabel.TabIndex = 18;
+            nombrefleterolabel.Text = "[Nombre Fletero]";
             // 
-            // labelnombre
+            // nombrelabel
             // 
-            labelnombre.AutoSize = true;
-            labelnombre.Location = new Point(19, 77);
-            labelnombre.Name = "labelnombre";
-            labelnombre.Size = new Size(54, 15);
-            labelnombre.TabIndex = 17;
-            labelnombre.Text = "Nombre:";
+            nombrelabel.AutoSize = true;
+            nombrelabel.Location = new Point(19, 77);
+            nombrelabel.Name = "nombrelabel";
+            nombrelabel.Size = new Size(54, 15);
+            nombrelabel.TabIndex = 17;
+            nombrelabel.Text = "Nombre:";
             // 
-            // labelcentrodistribucion
+            // centrodistribucionlabel
             // 
-            labelcentrodistribucion.AutoSize = true;
-            labelcentrodistribucion.Location = new Point(194, 9);
-            labelcentrodistribucion.Name = "labelcentrodistribucion";
-            labelcentrodistribucion.Size = new Size(134, 15);
-            labelcentrodistribucion.TabIndex = 16;
-            labelcentrodistribucion.Text = "[Centro de Distribución]";
+            centrodistribucionlabel.AutoSize = true;
+            centrodistribucionlabel.Location = new Point(194, 9);
+            centrodistribucionlabel.Name = "centrodistribucionlabel";
+            centrodistribucionlabel.Size = new Size(134, 15);
+            centrodistribucionlabel.TabIndex = 16;
+            centrodistribucionlabel.Text = "[Centro de Distribución]";
             // 
-            // labelCD
+            // cdlabel
             // 
-            labelCD.AutoSize = true;
-            labelCD.Location = new Point(159, 9);
-            labelCD.Name = "labelCD";
-            labelCD.Size = new Size(29, 15);
-            labelCD.TabIndex = 15;
-            labelCD.Text = "CD: ";
+            cdlabel.AutoSize = true;
+            cdlabel.Location = new Point(159, 9);
+            cdlabel.Name = "cdlabel";
+            cdlabel.Size = new Size(29, 15);
+            cdlabel.TabIndex = 15;
+            cdlabel.Text = "CD: ";
             // 
-            // labelnumusuario
+            // numusuariolabel
             // 
-            labelnumusuario.AutoSize = true;
-            labelnumusuario.Location = new Point(79, 9);
-            labelnumusuario.Name = "labelnumusuario";
-            labelnumusuario.Size = new Size(25, 15);
-            labelnumusuario.TabIndex = 14;
-            labelnumusuario.Text = "003";
+            numusuariolabel.AutoSize = true;
+            numusuariolabel.Location = new Point(79, 9);
+            numusuariolabel.Name = "numusuariolabel";
+            numusuariolabel.Size = new Size(25, 15);
+            numusuariolabel.TabIndex = 14;
+            numusuariolabel.Text = "003";
             // 
-            // labelusuario
+            // usuariolabel
             // 
-            labelusuario.AutoSize = true;
-            labelusuario.Location = new Point(19, 9);
-            labelusuario.Name = "labelusuario";
-            labelusuario.Size = new Size(50, 15);
-            labelusuario.TabIndex = 13;
-            labelusuario.Text = "Usuario:";
+            usuariolabel.AutoSize = true;
+            usuariolabel.Location = new Point(19, 9);
+            usuariolabel.Name = "usuariolabel";
+            usuariolabel.Size = new Size(50, 15);
+            usuariolabel.TabIndex = 13;
+            usuariolabel.Text = "Usuario:";
             // 
-            // textBox1
+            // ingresardnitextBox
             // 
-            textBox1.Location = new Point(79, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(120, 23);
-            textBox1.TabIndex = 12;
+            ingresardnitextBox.Location = new Point(79, 38);
+            ingresardnitextBox.Name = "ingresardnitextBox";
+            ingresardnitextBox.Size = new Size(120, 23);
+            ingresardnitextBox.TabIndex = 12;
             // 
-            // labelfletero
+            // dnifleterolabel
             // 
-            labelfletero.AutoSize = true;
-            labelfletero.Location = new Point(19, 46);
-            labelfletero.Name = "labelfletero";
-            labelfletero.Size = new Size(30, 15);
-            labelfletero.TabIndex = 11;
-            labelfletero.Text = "DNI:";
+            dnifleterolabel.AutoSize = true;
+            dnifleterolabel.Location = new Point(19, 46);
+            dnifleterolabel.Name = "dnifleterolabel";
+            dnifleterolabel.Size = new Size(30, 15);
+            dnifleterolabel.TabIndex = 11;
+            dnifleterolabel.Text = "DNI:";
             // 
-            // radioButton5
+            // retiroradioButton
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(19, 116);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(56, 19);
-            radioButton5.TabIndex = 23;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Retiro";
-            radioButton5.UseVisualStyleBackColor = true;
-            radioButton5.CheckedChanged += radioButton5_CheckedChanged;
+            retiroradioButton.AutoSize = true;
+            retiroradioButton.Location = new Point(19, 116);
+            retiroradioButton.Name = "retiroradioButton";
+            retiroradioButton.Size = new Size(56, 19);
+            retiroradioButton.TabIndex = 23;
+            retiroradioButton.TabStop = true;
+            retiroradioButton.Text = "Retiro";
+            retiroradioButton.UseVisualStyleBackColor = true;
+            retiroradioButton.CheckedChanged += radioButton5_CheckedChanged;
             // 
-            // radioButton6
+            // distribucionradioButton
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(79, 116);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(89, 19);
-            radioButton6.TabIndex = 24;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Distribución";
-            radioButton6.UseVisualStyleBackColor = true;
+            distribucionradioButton.AutoSize = true;
+            distribucionradioButton.Location = new Point(79, 116);
+            distribucionradioButton.Name = "distribucionradioButton";
+            distribucionradioButton.Size = new Size(89, 19);
+            distribucionradioButton.TabIndex = 24;
+            distribucionradioButton.TabStop = true;
+            distribucionradioButton.Text = "Distribución";
+            distribucionradioButton.UseVisualStyleBackColor = true;
             // 
-            // groupBoxresumenhdr
+            // detallehdrgroupBox
             // 
-            groupBoxresumenhdr.Controls.Add(button7);
-            groupBoxresumenhdr.Controls.Add(button6);
-            groupBoxresumenhdr.Controls.Add(listViewresumenhdr);
-            groupBoxresumenhdr.Controls.Add(labelcantidadbultos);
-            groupBoxresumenhdr.Controls.Add(labeltotalasignados);
-            groupBoxresumenhdr.Location = new Point(444, 12);
-            groupBoxresumenhdr.Name = "groupBoxresumenhdr";
-            groupBoxresumenhdr.Size = new Size(423, 371);
-            groupBoxresumenhdr.TabIndex = 25;
-            groupBoxresumenhdr.TabStop = false;
-            groupBoxresumenhdr.Text = "Detalle HDR";
+            detallehdrgroupBox.Controls.Add(eliminartodoguiasbutton);
+            detallehdrgroupBox.Controls.Add(eliminarguiasbutton);
+            detallehdrgroupBox.Controls.Add(detallehdrlistView);
+            detallehdrgroupBox.Controls.Add(bultostotalasignadoslabel);
+            detallehdrgroupBox.Controls.Add(totalbultosasignadoslabel);
+            detallehdrgroupBox.Location = new Point(444, 12);
+            detallehdrgroupBox.Name = "detallehdrgroupBox";
+            detallehdrgroupBox.Size = new Size(423, 371);
+            detallehdrgroupBox.TabIndex = 25;
+            detallehdrgroupBox.TabStop = false;
+            detallehdrgroupBox.Text = "Detalle HDR";
             // 
-            // button7
+            // eliminartodoguiasbutton
             // 
-            button7.Location = new Point(325, 328);
-            button7.Name = "button7";
-            button7.Size = new Size(92, 40);
-            button7.TabIndex = 35;
-            button7.Text = "Eliminar todo";
-            button7.UseVisualStyleBackColor = true;
+            eliminartodoguiasbutton.Location = new Point(325, 328);
+            eliminartodoguiasbutton.Name = "eliminartodoguiasbutton";
+            eliminartodoguiasbutton.Size = new Size(92, 40);
+            eliminartodoguiasbutton.TabIndex = 35;
+            eliminartodoguiasbutton.Text = "Eliminar todo";
+            eliminartodoguiasbutton.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // eliminarguiasbutton
             // 
-            button6.Location = new Point(227, 328);
-            button6.Name = "button6";
-            button6.Size = new Size(92, 40);
-            button6.TabIndex = 29;
-            button6.Text = "Eliminar";
-            button6.UseVisualStyleBackColor = true;
+            eliminarguiasbutton.Location = new Point(227, 328);
+            eliminarguiasbutton.Name = "eliminarguiasbutton";
+            eliminarguiasbutton.Size = new Size(92, 40);
+            eliminarguiasbutton.TabIndex = 29;
+            eliminarguiasbutton.Text = "Eliminar";
+            eliminarguiasbutton.UseVisualStyleBackColor = true;
             // 
-            // listViewresumenhdr
+            // detallehdrlistView
             // 
-            listViewresumenhdr.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Tiporesumenhdr, Domicilioresumenhdr, Nombreresumenhdr, Telefonoresumenhdr });
-            listViewresumenhdr.Location = new Point(14, 22);
-            listViewresumenhdr.Name = "listViewresumenhdr";
-            listViewresumenhdr.Size = new Size(403, 303);
-            listViewresumenhdr.TabIndex = 15;
-            listViewresumenhdr.UseCompatibleStateImageBehavior = false;
-            listViewresumenhdr.View = View.Details;
+            detallehdrlistView.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Tiporesumenhdr, Domicilioresumenhdr, Nombreresumenhdr, Telefonoresumenhdr });
+            detallehdrlistView.Location = new Point(14, 22);
+            detallehdrlistView.Name = "detallehdrlistView";
+            detallehdrlistView.Size = new Size(403, 303);
+            detallehdrlistView.TabIndex = 15;
+            detallehdrlistView.UseCompatibleStateImageBehavior = false;
+            detallehdrlistView.View = View.Details;
             // 
             // Guíaresumenhdr
             // 
@@ -256,33 +256,33 @@
             // 
             Telefonoresumenhdr.Text = "Teléfono";
             // 
-            // labelcantidadbultos
+            // bultostotalasignadoslabel
             // 
-            labelcantidadbultos.AutoSize = true;
-            labelcantidadbultos.Location = new Point(148, 341);
-            labelcantidadbultos.Name = "labelcantidadbultos";
-            labelcantidadbultos.Size = new Size(63, 15);
-            labelcantidadbultos.TabIndex = 14;
-            labelcantidadbultos.Text = "[25 bultos]";
+            bultostotalasignadoslabel.AutoSize = true;
+            bultostotalasignadoslabel.Location = new Point(148, 341);
+            bultostotalasignadoslabel.Name = "bultostotalasignadoslabel";
+            bultostotalasignadoslabel.Size = new Size(63, 15);
+            bultostotalasignadoslabel.TabIndex = 14;
+            bultostotalasignadoslabel.Text = "[25 bultos]";
             // 
-            // labeltotalasignados
+            // totalbultosasignadoslabel
             // 
-            labeltotalasignados.AutoSize = true;
-            labeltotalasignados.Location = new Point(14, 341);
-            labeltotalasignados.Name = "labeltotalasignados";
-            labeltotalasignados.Size = new Size(128, 15);
-            labeltotalasignados.TabIndex = 13;
-            labeltotalasignados.Text = "Total bultos asignados:";
+            totalbultosasignadoslabel.AutoSize = true;
+            totalbultosasignadoslabel.Location = new Point(14, 341);
+            totalbultosasignadoslabel.Name = "totalbultosasignadoslabel";
+            totalbultosasignadoslabel.Size = new Size(128, 15);
+            totalbultosasignadoslabel.TabIndex = 13;
+            totalbultosasignadoslabel.Text = "Total bultos asignados:";
             // 
-            // listView1
+            // seleccionguiaslistView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Tipoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente });
-            listView1.Location = new Point(15, 27);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(400, 180);
-            listView1.TabIndex = 26;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Tipoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente });
+            seleccionguiaslistView.Location = new Point(15, 27);
+            seleccionguiaslistView.Name = "seleccionguiaslistView";
+            seleccionguiaslistView.Size = new Size(400, 180);
+            seleccionguiaslistView.TabIndex = 26;
+            seleccionguiaslistView.UseCompatibleStateImageBehavior = false;
+            seleccionguiaslistView.View = View.Details;
             // 
             // Guiaencomiendapendiente
             // 
@@ -310,177 +310,177 @@
             // 
             Estadoencomiendapendiente.Text = "Estado";
             // 
-            // button1
+            // generarhdrbutton
             // 
-            button1.Location = new Point(769, 420);
-            button1.Name = "button1";
-            button1.Size = new Size(92, 40);
-            button1.TabIndex = 27;
-            button1.Text = "Generar HDR";
-            button1.UseVisualStyleBackColor = true;
+            generarhdrbutton.Location = new Point(769, 420);
+            generarhdrbutton.Name = "generarhdrbutton";
+            generarhdrbutton.Size = new Size(92, 40);
+            generarhdrbutton.TabIndex = 27;
+            generarhdrbutton.Text = "Generar HDR";
+            generarhdrbutton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // cancelargenerarhdrbutton
             // 
-            button2.Location = new Point(671, 420);
-            button2.Name = "button2";
-            button2.Size = new Size(92, 40);
-            button2.TabIndex = 28;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
+            cancelargenerarhdrbutton.Location = new Point(671, 420);
+            cancelargenerarhdrbutton.Name = "cancelargenerarhdrbutton";
+            cancelargenerarhdrbutton.Size = new Size(92, 40);
+            cancelargenerarhdrbutton.TabIndex = 28;
+            cancelargenerarhdrbutton.Text = "Cancelar";
+            cancelargenerarhdrbutton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // agregarguiasbutton
             // 
-            button3.Location = new Point(225, 244);
-            button3.Name = "button3";
-            button3.Size = new Size(92, 40);
-            button3.TabIndex = 29;
-            button3.Text = "Agregar";
-            button3.UseVisualStyleBackColor = true;
+            agregarguiasbutton.Location = new Point(225, 244);
+            agregarguiasbutton.Name = "agregarguiasbutton";
+            agregarguiasbutton.Size = new Size(92, 40);
+            agregarguiasbutton.TabIndex = 29;
+            agregarguiasbutton.Text = "Agregar";
+            agregarguiasbutton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // agregartodoguiasbutton
             // 
-            button4.Location = new Point(323, 244);
-            button4.Name = "button4";
-            button4.Size = new Size(92, 40);
-            button4.TabIndex = 30;
-            button4.Text = "Agregar todo";
-            button4.UseVisualStyleBackColor = true;
+            agregartodoguiasbutton.Location = new Point(323, 244);
+            agregartodoguiasbutton.Name = "agregartodoguiasbutton";
+            agregartodoguiasbutton.Size = new Size(92, 40);
+            agregartodoguiasbutton.TabIndex = 30;
+            agregartodoguiasbutton.Text = "Agregar todo";
+            agregartodoguiasbutton.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // codigopostallabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(19, 153);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 15);
-            label2.TabIndex = 31;
-            label2.Text = "Código Postal:";
+            codigopostallabel.AutoSize = true;
+            codigopostallabel.Location = new Point(19, 153);
+            codigopostallabel.Name = "codigopostallabel";
+            codigopostallabel.Size = new Size(84, 15);
+            codigopostallabel.TabIndex = 31;
+            codigopostallabel.Text = "Código Postal:";
             // 
-            // textBox2
+            // ingresarcodigopostaltextBox
             // 
-            textBox2.Location = new Point(109, 147);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(120, 23);
-            textBox2.TabIndex = 32;
+            ingresarcodigopostaltextBox.Location = new Point(109, 147);
+            ingresarcodigopostaltextBox.Name = "ingresarcodigopostaltextBox";
+            ingresarcodigopostaltextBox.Size = new Size(120, 23);
+            ingresarcodigopostaltextBox.TabIndex = 32;
             // 
-            // button5
+            // buscarcodigopostalbutton
             // 
-            button5.Location = new Point(235, 145);
-            button5.Name = "button5";
-            button5.Size = new Size(112, 25);
-            button5.TabIndex = 33;
-            button5.Text = "Buscar";
-            button5.UseVisualStyleBackColor = true;
+            buscarcodigopostalbutton.Location = new Point(235, 145);
+            buscarcodigopostalbutton.Name = "buscarcodigopostalbutton";
+            buscarcodigopostalbutton.Size = new Size(112, 25);
+            buscarcodigopostalbutton.TabIndex = 33;
+            buscarcodigopostalbutton.Text = "Buscar";
+            buscarcodigopostalbutton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // cantidaddebultoslabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(15, 210);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 15);
-            label1.TabIndex = 16;
-            label1.Text = "Cantidad de bultos:";
+            cantidaddebultoslabel.AutoSize = true;
+            cantidaddebultoslabel.Location = new Point(15, 210);
+            cantidaddebultoslabel.Name = "cantidaddebultoslabel";
+            cantidaddebultoslabel.Size = new Size(110, 15);
+            cantidaddebultoslabel.TabIndex = 16;
+            cantidaddebultoslabel.Text = "Cantidad de bultos:";
             // 
-            // groupBox1
+            // seleccionguiasgroupBox
             // 
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(listView1);
-            groupBox1.Location = new Point(4, 176);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(434, 290);
-            groupBox1.TabIndex = 34;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Selección de guías:";
+            seleccionguiasgroupBox.Controls.Add(bultoslabel);
+            seleccionguiasgroupBox.Controls.Add(agregarguiasbutton);
+            seleccionguiasgroupBox.Controls.Add(cantidaddebultoslabel);
+            seleccionguiasgroupBox.Controls.Add(agregartodoguiasbutton);
+            seleccionguiasgroupBox.Controls.Add(seleccionguiaslistView);
+            seleccionguiasgroupBox.Location = new Point(4, 176);
+            seleccionguiasgroupBox.Name = "seleccionguiasgroupBox";
+            seleccionguiasgroupBox.Size = new Size(434, 290);
+            seleccionguiasgroupBox.TabIndex = 34;
+            seleccionguiasgroupBox.TabStop = false;
+            seleccionguiasgroupBox.Text = "Selección de guías:";
             // 
-            // label3
+            // bultoslabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(132, 210);
-            label3.Name = "label3";
-            label3.Size = new Size(63, 15);
-            label3.TabIndex = 31;
-            label3.Text = "[25 bultos]";
+            bultoslabel.AutoSize = true;
+            bultoslabel.Location = new Point(132, 210);
+            bultoslabel.Name = "bultoslabel";
+            bultoslabel.Size = new Size(63, 15);
+            bultoslabel.TabIndex = 31;
+            bultoslabel.Text = "[25 bultos]";
             // 
             // GenerarHDRFleteros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(879, 480);
-            Controls.Add(button5);
-            Controls.Add(textBox2);
-            Controls.Add(label2);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(groupBoxresumenhdr);
-            Controls.Add(radioButton6);
-            Controls.Add(radioButton5);
-            Controls.Add(buttonbuscar);
-            Controls.Add(labelapellidofletero);
-            Controls.Add(labelapellido);
-            Controls.Add(labelnombrefletero);
-            Controls.Add(labelnombre);
-            Controls.Add(labelcentrodistribucion);
-            Controls.Add(labelCD);
-            Controls.Add(labelnumusuario);
-            Controls.Add(labelusuario);
-            Controls.Add(textBox1);
-            Controls.Add(labelfletero);
-            Controls.Add(groupBox1);
+            Controls.Add(buscarcodigopostalbutton);
+            Controls.Add(ingresarcodigopostaltextBox);
+            Controls.Add(codigopostallabel);
+            Controls.Add(cancelargenerarhdrbutton);
+            Controls.Add(generarhdrbutton);
+            Controls.Add(detallehdrgroupBox);
+            Controls.Add(distribucionradioButton);
+            Controls.Add(retiroradioButton);
+            Controls.Add(buscardnifleterobutton);
+            Controls.Add(apellidofleterolabel);
+            Controls.Add(apellidolabel);
+            Controls.Add(nombrefleterolabel);
+            Controls.Add(nombrelabel);
+            Controls.Add(centrodistribucionlabel);
+            Controls.Add(cdlabel);
+            Controls.Add(numusuariolabel);
+            Controls.Add(usuariolabel);
+            Controls.Add(ingresardnitextBox);
+            Controls.Add(dnifleterolabel);
+            Controls.Add(seleccionguiasgroupBox);
             Name = "GenerarHDRFleteros";
             Text = "Generar HDR Fleteros";
             Load += GenerarHDRFleteros_Load;
-            groupBoxresumenhdr.ResumeLayout(false);
-            groupBoxresumenhdr.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            detallehdrgroupBox.ResumeLayout(false);
+            detallehdrgroupBox.PerformLayout();
+            seleccionguiasgroupBox.ResumeLayout(false);
+            seleccionguiasgroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button buttonbuscar;
-        private Label labelapellidofletero;
-        private Label labelapellido;
-        private Label labelnombrefletero;
-        private Label labelnombre;
-        private Label labelcentrodistribucion;
-        private Label labelCD;
-        private Label labelnumusuario;
-        private Label labelusuario;
-        private TextBox textBox1;
-        private Label labelfletero;
-        private RadioButton radioButton5;
-        private RadioButton radioButton6;
-        private GroupBox groupBoxresumenhdr;
-        private ListView listViewresumenhdr;
+        private Button buscardnifleterobutton;
+        private Label apellidofleterolabel;
+        private Label apellidolabel;
+        private Label nombrefleterolabel;
+        private Label nombrelabel;
+        private Label centrodistribucionlabel;
+        private Label cdlabel;
+        private Label numusuariolabel;
+        private Label usuariolabel;
+        private TextBox ingresardnitextBox;
+        private Label dnifleterolabel;
+        private RadioButton retiroradioButton;
+        private RadioButton distribucionradioButton;
+        private GroupBox detallehdrgroupBox;
+        private ListView detallehdrlistView;
         private ColumnHeader Guíaresumenhdr;
         private ColumnHeader Tiporesumenhdr;
         private ColumnHeader Domicilioresumenhdr;
         private ColumnHeader Nombreresumenhdr;
         private ColumnHeader Telefonoresumenhdr;
-        private Label labelcantidadbultos;
-        private Label labeltotalasignados;
-        private ListView listView1;
+        private Label bultostotalasignadoslabel;
+        private Label totalbultosasignadoslabel;
+        private ListView seleccionguiaslistView;
         private ColumnHeader Guiaencomiendapendiente;
         private ColumnHeader Domicilioencomiendapendiente;
         private ColumnHeader Codigopostalencomiendapendiente;
         private ColumnHeader Tipoencomiendapendiente;
         private ColumnHeader Tamañoencomiendapendiente;
         private ColumnHeader Estadoencomiendapendiente;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Label label2;
-        private TextBox textBox2;
-        private Button button5;
-        private Label label1;
-        private GroupBox groupBox1;
-        private Label label3;
-        private Button button6;
-        private Button button7;
+        private Button generarhdrbutton;
+        private Button cancelargenerarhdrbutton;
+        private Button agregarguiasbutton;
+        private Button agregartodoguiasbutton;
+        private Label codigopostallabel;
+        private TextBox ingresarcodigopostaltextBox;
+        private Button buscarcodigopostalbutton;
+        private Label cantidaddebultoslabel;
+        private GroupBox seleccionguiasgroupBox;
+        private Label bultoslabel;
+        private Button eliminarguiasbutton;
+        private Button eliminartodoguiasbutton;
     }
 }
