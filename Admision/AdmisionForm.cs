@@ -78,7 +78,6 @@ namespace GrupoE_Tutasa.Admision
                     // FIX 7: Resetear el radio button y el combo al cargar una nueva guía
                     TamañoCorrectoBoton.Checked = true;
                     TamañoReclasificacionComboBox.SelectedIndex = -1;
-
                     return;
                 }
             }
