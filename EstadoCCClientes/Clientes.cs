@@ -8,6 +8,6 @@ namespace GrupoE_Tutasa.EstadoCCClientes
     {
         public int clienteId { get; set; }
         public string clienteName { get; set; }
-        public long clienteCUIT { get; set; }
+        public string clienteCUIT { get; set; }
     }
 }

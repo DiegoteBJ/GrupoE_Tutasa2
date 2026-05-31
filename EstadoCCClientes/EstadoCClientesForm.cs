@@ -50,6 +50,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
                 return;
             }
 
+            string cuit = CuitClienteBox.Text.Trim();
             foreach (var cliente in modelo.LClientes)
             {
                 if (cliente.clienteCUIT == cuit)
