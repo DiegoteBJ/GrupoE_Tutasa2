@@ -13,14 +13,14 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 return new List<GuiasAAsignar>
                 {
-                    new GuiasAAsignar { GuiaId = 1, CodigoPostalGuia = "1000", Domicilio = "Calle Falsa 123", tamaño = "L", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Juan Pérez" },
-                    new GuiasAAsignar { GuiaId = 2, CodigoPostalGuia = "2000", Domicilio = "Avenida Siempre Viva 456", tamaño = "M", EstadoGuia = "A retirar", NombreDestinatarioGuia = "María Gómez" },
-                    new GuiasAAsignar { GuiaId = 3, CodigoPostalGuia = "3000", Domicilio = "Boulevard de los Sueños Rotos 789", tamaño = "S", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Carlos Rodríguez" },
-                    new GuiasAAsignar { GuiaId = 4, CodigoPostalGuia = "4000", Domicilio = "Calle del Olvido 321", tamaño = "XL", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Ana Martínez" },
-                    new GuiasAAsignar { GuiaId = 5, CodigoPostalGuia = "5000", Domicilio = "Avenida de la Esperanza 654", tamaño = "M", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Luis Fernández" },
-                    new GuiasAAsignar { GuiaId = 6, CodigoPostalGuia = "6000", Domicilio = "Calle de la Fortuna 987", tamaño = "S", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Sofía López" },
-                    new GuiasAAsignar { GuiaId = 7, CodigoPostalGuia = "7000", Domicilio = "Avenida del Destino 159", tamaño = "XL", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Miguel Sánchez" },
-                    new GuiasAAsignar { GuiaId = 8, CodigoPostalGuia = "8000", Domicilio = "Calle de la Ilusión 753", tamaño = "L", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Laura Gómez" },
+                    new GuiasAAsignar { GuiaId = 1, CodigoPostalGuia = "1000", DomicilioGuia = "Calle Falsa 123", tamañoGuia = "L", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Juan Pérez" },
+                    new GuiasAAsignar { GuiaId = 2, CodigoPostalGuia = "2000", DomicilioGuia = "Avenida Siempre Viva 456", tamañoGuia = "M", EstadoGuia = "A retirar", NombreDestinatarioGuia = "María Gómez" },
+                    new GuiasAAsignar { GuiaId = 3, CodigoPostalGuia = "3000", DomicilioGuia = "Boulevard de los Sueños Rotos 789", tamañoGuia = "S", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Carlos Rodríguez" },
+                    new GuiasAAsignar { GuiaId = 4, CodigoPostalGuia = "4000", DomicilioGuia = "Calle del Olvido 321", tamañoGuia = "XL", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Ana Martínez" },
+                    new GuiasAAsignar { GuiaId = 5, CodigoPostalGuia = "5000", DomicilioGuia = "Avenida de la Esperanza 654", tamañoGuia = "M", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Luis Fernández" },
+                    new GuiasAAsignar { GuiaId = 6, CodigoPostalGuia = "6000", DomicilioGuia = "Calle de la Fortuna 987", tamañoGuia = "S", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Sofía López" },
+                    new GuiasAAsignar { GuiaId = 7, CodigoPostalGuia = "7000", DomicilioGuia = "Avenida del Destino 159", tamañoGuia = "XL", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Miguel Sánchez" },
+                    new GuiasAAsignar { GuiaId = 8, CodigoPostalGuia = "8000", DomicilioGuia = "Calle de la Ilusión 753", tamañoGuia = "L", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Laura Gómez" },
                 };
             }
         }
@@ -39,20 +39,13 @@ namespace GrupoE_Tutasa.GenerarHDR
             }
         }
 
-        public static bool ValidarDni(string dni)
+        public static bool ValidarDniString(string dni)
         {
-            if (string.IsNullOrWhiteSpace(dni))
-                return false;
-
-            // Intentar convertir a número
-            if (!int.TryParse(dni, out int numero))
-                return false;
-
-            // Validar longitud (7 u 8 dígitos)
-            if (dni.Length < 7 || dni.Length > 8)
-                return false;
-
-            return true;
+            if (string.IsNullOrWhiteSpace(dni)) return false;
+            // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
+            if (!int.TryParse(dni, out int numero)) return false;
+            if (numero < 0) return false;
+            return dni.Length == 7 || dni.Length == 8;
         }
 
     }

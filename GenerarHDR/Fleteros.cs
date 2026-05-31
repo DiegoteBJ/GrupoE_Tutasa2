@@ -9,9 +9,9 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         public int FleteroId { get; set; }
        
-        public string FleteroDNI { get; set; }
-        public string FleteroNombre { get; set; }
-        public string FleteroApellido { get; set; }
+        public string FleteroDNI { get; set; } = string.Empty;
+        public string FleteroNombre { get; set; } = string.Empty;
+        public string FleteroApellido { get; set; } = string.Empty;
 
     }
 }

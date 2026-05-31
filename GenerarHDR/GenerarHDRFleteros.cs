@@ -10,6 +10,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     public partial class GenerarHDRFleteros : Form
     {
+        
         public GenerarHDRFleteros()
         {
             InitializeComponent();
@@ -19,7 +20,13 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void GenerarHDRFleteros_Load(object sender, EventArgs e)
         {
-
+            // Form_Load: estado inicial
+            ingresardnitextBox.Enabled = true;
+            buscardnifleterobutton.Enabled = false;
+            nombrefleterolabel.Text = string.Empty;
+            apellidofleterolabel.Text = string.Empty;
+            retiroradioButton.Enabled = false;
+            distribucionradioButton.Enabled = false;
         }
 
         private void usuariolabel_Click(object sender, EventArgs e)
@@ -49,12 +56,64 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresardnitextBox_TextChanged(object sender, EventArgs e)
         {
+            // TextChanged: normaliza y habilita botón sólo si tiene 7 u 8 dígitos
+            int selStart = ingresardnitextBox.SelectionStart;
+            string raw = ingresardnitextBox.Text ?? string.Empty;
+            string digits = new string(raw.Where(char.IsDigit).ToArray());
 
+            if (ingresardnitextBox.Text != digits)
+            {
+                ingresardnitextBox.Text = digits;
+                ingresardnitextBox.SelectionStart = Math.Min(selStart, digits.Length);
+            }
+
+            // Habilitar sólo si longitud 7 u 8 y es número no negativo
+            buscardnifleterobutton.Enabled = (digits.Length == 7 || digits.Length == 8) && int.TryParse(digits, out int n) && n >= 0;
+        
+        
         }
 
         private void buscardnifleterobutton_Click(object sender, EventArgs e)
         {
+            string dni = ingresardnitextBox.Text?.Trim() ?? string.Empty;
 
+            if (!AsignarGuiasModelo.ValidarDniString(dni))
+            {
+                MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var modelo = new AsignarGuiasModelo();
+            var fletero = modelo.LFleteros.FirstOrDefault(f => f.FleteroDNI == dni);
+
+            if (fletero != null)
+            {
+                nombrefleterolabel.Text = fletero.FleteroNombre;
+                apellidofleterolabel.Text = fletero.FleteroApellido;
+                this.Tag = fletero; // guardar contexto simple
+                retiroradioButton.Enabled = true;
+                distribucionradioButton.Enabled = true;
+            }
+            else
+            {
+                nombrefleterolabel.Text = string.Empty;
+                apellidofleterolabel.Text = string.Empty;
+                MessageBox.Show($"No se encontró un fletero con DNI {dni}.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+        }
+
+      
+
+        private void ingresardnitextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Atajo Enter
+            if (e.KeyCode == Keys.Enter && buscardnifleterobutton.Enabled)
+            {
+                buscardnifleterobutton.PerformClick();
+                e.Handled = true;
+            }
         }
 
         private void nombrelabel_Click(object sender, EventArgs e)
