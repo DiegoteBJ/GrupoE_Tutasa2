@@ -38,9 +38,7 @@ namespace GrupoE_Tutasa.Imposicion
             comboBox3.Enabled = false;
             comboBox4.Enabled = false;
 
-            // radioButtons → suscribir eventos
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+          
             // radioButton2 ya tiene CheckedChanged en el Designer
 
             // textBoxes de cantidades → suscribir eventos
@@ -198,17 +196,13 @@ namespace GrupoE_Tutasa.Imposicion
         // ─────────────────────────────────────────────
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Resetear todo antes de evaluar la localidad
+            // Resetear todo
             comboBox3.DataSource = null;
             comboBox4.DataSource = null;
             comboBox3.Enabled = false;
             comboBox4.Enabled = false;
-
-            // Ocultar todo por defecto hasta saber qué hay disponible
-            radioButton1.Visible = false;   // Agencia
-            radioButton3.Visible = false;   // CD
-            comboBox3.Visible = false;   // Selector Agencia
-            comboBox4.Visible = false;   // Selector CD
+            comboBox3.Visible = false;
+            comboBox4.Visible = false;
 
             if (comboBox2.SelectedItem is not Localidad localidadSeleccionada)
                 return;
@@ -216,30 +210,27 @@ namespace GrupoE_Tutasa.Imposicion
             var agencias = modelo.ObtenerAgenciasPorLocalidad(localidadSeleccionada.LocalidadId);
             var cds = modelo.ObtenerCDsPorLocalidad(localidadSeleccionada.LocalidadId);
 
-            // Mostrar Agencia solo si hay agencias disponibles en esa localidad
-            radioButton1.Visible = agencias.Count > 0;
-            comboBox3.Visible = agencias.Count > 0;
+            // Mostrar y cargar Agencia solo si hay disponibles
             if (agencias.Count > 0)
             {
                 comboBox3.DataSource = agencias;
                 comboBox3.DisplayMember = "Nombre";
                 comboBox3.ValueMember = "AgenciaId";
                 comboBox3.SelectedIndex = -1;
+                comboBox3.Visible = true;
+                comboBox3.Enabled = true;
             }
 
-            // Mostrar CD solo si hay CDs disponibles en esa localidad
-            radioButton3.Visible = cds.Count > 0;
-            comboBox4.Visible = cds.Count > 0;
+            // Mostrar y cargar CD solo si hay disponibles
             if (cds.Count > 0)
             {
                 comboBox4.DataSource = cds;
                 comboBox4.DisplayMember = "Nombre";
                 comboBox4.ValueMember = "CDId";
                 comboBox4.SelectedIndex = -1;
+                comboBox4.Visible = true;
+                comboBox4.Enabled = true;
             }
-
-            // Domicilio siempre disponible
-            radioButton2.Visible = true;
         }
 
         // ─────────────────────────────────────────────
@@ -247,19 +238,7 @@ namespace GrupoE_Tutasa.Imposicion
         // radioButton1 = Agencia, radioButton3 = CD, radioButton2 = Domicilio
         // panel1 = panel "Entrega a domicilio"
         // ─────────────────────────────────────────────
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox3.Enabled = radioButton1.Checked;
-            comboBox4.Enabled = false;
-            panel1.Visible = false;
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBox4.Enabled = radioButton3.Checked;
-            comboBox3.Enabled = false;
-            panel1.Visible = false;
-        }
+      
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -345,23 +324,9 @@ namespace GrupoE_Tutasa.Imposicion
             }
 
             // Validar tipo de entrega
-            if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
+            if (!radioButton2.Checked && comboBox3.SelectedIndex == -1 && comboBox4.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccioná el Tipo de entrega.");
-                return;
-            }
-
-            // Validar selección de Agencia (comboBox3)
-            if (radioButton1.Checked && comboBox3.SelectedIndex == -1)
-            {
-                MessageBox.Show("Completá el dato requerido del tipo de entrega elegido.");
-                return;
-            }
-
-            // Validar selección de CD (comboBox4)
-            if (radioButton3.Checked && comboBox4.SelectedIndex == -1)
-            {
-                MessageBox.Show("Completá el dato requerido del tipo de entrega elegido.");
+                MessageBox.Show("Seleccioná el tipo de entrega: elegí una Agencia, un CD, o marcá Domicilio.");
                 return;
             }
 
@@ -384,25 +349,27 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // Determinar dirección y CP destino según tipo de entrega
-            string tipoEntrega = radioButton1.Checked ? "Agencia" : radioButton3.Checked ? "CD" : "Domicilio";
+            // Determinar tipo de entrega y datos del destino
+            // Ya no se usan radioButton1/radioButton3 — se detecta por el comboBox seleccionado
+            string tipoEntrega = radioButton2.Checked ? "Domicilio" :
+                                   comboBox3.SelectedIndex != -1 ? "Agencia" : "CD";
             string direccionDest = string.Empty;
             string cpDest = string.Empty;
 
-            if (radioButton1.Checked && comboBox3.SelectedItem is Agencia agencia)
+            if (comboBox3.SelectedItem is Agencia agencia)
             {
                 direccionDest = agencia.Direccion;
                 cpDest = agencia.CodigoPostal;
             }
-            else if (radioButton3.Checked && comboBox4.SelectedItem is CentroDistribucion cd)
+            else if (comboBox4.SelectedItem is CentroDistribucion cd)
             {
                 direccionDest = cd.Direccion;
                 cpDest = cd.CodigoPostal;
             }
             else if (radioButton2.Checked)
             {
-                direccionDest = textBox2.Text;  // Dirección domicilio
-                cpDest = textBox3.Text;  // CP domicilio
+                direccionDest = textBox2.Text;
+                cpDest = textBox3.Text;
             }
 
             // Registrar una guía por cada encomienda
@@ -441,8 +408,6 @@ namespace GrupoE_Tutasa.Imposicion
             MessageBox.Show($"Operación confirmada. Guías generadas exitosamente:\n{detalle}");
 
             LimpiarFormulario();
-
-           
         }
 
         // ─────────────────────────────────────────────
@@ -485,13 +450,13 @@ namespace GrupoE_Tutasa.Imposicion
             comboBox1.SelectedIndex = -1;
             comboBox2.DataSource = null;
             comboBox2.Enabled = false;
-            radioButton1.Checked = false;
             radioButton2.Checked = false;
-            radioButton3.Checked = false;
             comboBox3.DataSource = null;
             comboBox3.Enabled = false;
+            comboBox3.Visible = false;
             comboBox4.DataSource = null;
             comboBox4.Enabled = false;
+            comboBox4.Visible = false;
             panel1.Visible = false;
             textBox2.Clear();   // Dirección domicilio
             textBox3.Clear();   // CP domicilio
@@ -506,16 +471,7 @@ namespace GrupoE_Tutasa.Imposicion
             label31.Text = "[Total]";
             label32.Text = "[Guias]";
             label33.Text = "[ $... ]";
-
-            //MEJORAS
-
-            // Agregar en LimpiarFormulario(), después de radioButton3.Checked = false:
-            radioButton1.Visible = false;
-            radioButton3.Visible = false;
-            comboBox3.Visible = false;
-            comboBox4.Visible = false;
         }
-
         // ─────────────────────────────────────────────
         // HANDLERS REQUERIDOS POR EL DESIGNER (sin lógica)
         // ─────────────────────────────────────────────
