@@ -29,5 +29,10 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
 
         }
+
+        private void listViewEncomiendasAsignadas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
