@@ -19,7 +19,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // Application.Run(new EntregarEncomiendaAgenciaForm());
             // Application.Run(new EntregaEnCDFormNuevo());
             // Application.Run(new ActualizarHDRForm());
-            Application.Run(new GenerarHDRTransporteForm());
+            // Application.Run(new GenerarHDRTransporteForm());
         }
     }
 }
