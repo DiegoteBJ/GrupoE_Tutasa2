@@ -46,16 +46,13 @@
             eliminarguiasbutton = new Button();
             detallehdrlistView = new ListView();
             Guíaresumenhdr = new ColumnHeader();
-            Tiporesumenhdr = new ColumnHeader();
             Domicilioresumenhdr = new ColumnHeader();
-            Nombreresumenhdr = new ColumnHeader();
-            Telefonoresumenhdr = new ColumnHeader();
+            Nombredestinatarioresumenhdr = new ColumnHeader();
             bultostotalasignadoslabel = new Label();
             totalbultosasignadoslabel = new Label();
             seleccionguiaslistView = new ListView();
             Guiaencomiendapendiente = new ColumnHeader();
             Codigopostalencomiendapendiente = new ColumnHeader();
-            Tipoencomiendapendiente = new ColumnHeader();
             Domicilioencomiendapendiente = new ColumnHeader();
             Tamañoencomiendapendiente = new ColumnHeader();
             Estadoencomiendapendiente = new ColumnHeader();
@@ -227,7 +224,7 @@
             // 
             // detallehdrlistView
             // 
-            detallehdrlistView.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Tiporesumenhdr, Domicilioresumenhdr, Nombreresumenhdr, Telefonoresumenhdr });
+            detallehdrlistView.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Domicilioresumenhdr, Nombredestinatarioresumenhdr });
             detallehdrlistView.Location = new Point(14, 22);
             detallehdrlistView.Name = "detallehdrlistView";
             detallehdrlistView.Size = new Size(403, 303);
@@ -239,22 +236,14 @@
             // 
             Guíaresumenhdr.Text = "Guía";
             // 
-            // Tiporesumenhdr
-            // 
-            Tiporesumenhdr.Text = "Tipo";
-            // 
             // Domicilioresumenhdr
             // 
             Domicilioresumenhdr.Text = "Domicilio";
             Domicilioresumenhdr.Width = 70;
             // 
-            // Nombreresumenhdr
+            // Nombredestinatarioresumenhdr
             // 
-            Nombreresumenhdr.Text = "Nombre";
-            // 
-            // Telefonoresumenhdr
-            // 
-            Telefonoresumenhdr.Text = "Teléfono";
+            Nombredestinatarioresumenhdr.Text = "Nombre";
             // 
             // bultostotalasignadoslabel
             // 
@@ -276,7 +265,7 @@
             // 
             // seleccionguiaslistView
             // 
-            seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Tipoencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente });
+            seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente });
             seleccionguiaslistView.Location = new Point(15, 27);
             seleccionguiaslistView.Name = "seleccionguiaslistView";
             seleccionguiaslistView.Size = new Size(400, 180);
@@ -292,10 +281,6 @@
             // 
             Codigopostalencomiendapendiente.Text = "Código Postal";
             Codigopostalencomiendapendiente.Width = 90;
-            // 
-            // Tipoencomiendapendiente
-            // 
-            Tipoencomiendapendiente.Text = "Tipo";
             // 
             // Domicilioencomiendapendiente
             // 
@@ -457,17 +442,14 @@
         private GroupBox detallehdrgroupBox;
         private ListView detallehdrlistView;
         private ColumnHeader Guíaresumenhdr;
-        private ColumnHeader Tiporesumenhdr;
         private ColumnHeader Domicilioresumenhdr;
-        private ColumnHeader Nombreresumenhdr;
-        private ColumnHeader Telefonoresumenhdr;
+        private ColumnHeader Nombredestinatarioresumenhdr;
         private Label bultostotalasignadoslabel;
         private Label totalbultosasignadoslabel;
         private ListView seleccionguiaslistView;
         private ColumnHeader Guiaencomiendapendiente;
         private ColumnHeader Domicilioencomiendapendiente;
         private ColumnHeader Codigopostalencomiendapendiente;
-        private ColumnHeader Tipoencomiendapendiente;
         private ColumnHeader Tamañoencomiendapendiente;
         private ColumnHeader Estadoencomiendapendiente;
         private Button generarhdrbutton;
