@@ -14,6 +14,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         public GenerarHDRFleteros()
         {
             InitializeComponent();
+            // Cada vez que cambian los ítems o la selección, refrescar el contador
+          
         }
 
 
@@ -123,6 +125,9 @@ namespace GrupoE_Tutasa.GenerarHDR
             distribucionradioButton.Checked = false;
             distribucionradioButton.Enabled = false;
             seleccionguiaslistView.Items.Clear();
+            detallehdrlistView.Items.Clear();
+            buscarcodigopostalbutton.Enabled = false;
+            ingresarcodigopostaltextBox.Text = string.Empty;
             this.Tag = null; // borra el contexto del fletero anterior
         }
 
@@ -152,6 +157,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CargarGuiasPorEstado("A retirar");
                 ActualizarAutoCompleteCP("A retirar");
                 buscarcodigopostalbutton.Enabled = true;
+                
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
@@ -162,12 +168,14 @@ namespace GrupoE_Tutasa.GenerarHDR
                 buscarcodigopostalbutton.Enabled = true;
         }
 
+        private HashSet<int> guiasAsignadas = new HashSet<int>();
+
         private void CargarGuiasPorEstado(string estado)
         {
             seleccionguiaslistView.Items.Clear();
             var modelo = new AsignarGuiasModelo();
 
-            var guias = modelo.LGuiasAAsignar.Where(g => g.EstadoGuia == estado);
+            var guias = modelo.LGuiasAAsignar.Where(g => g.EstadoGuia == estado && !guiasAsignadas.Contains(g.GuiaId));
 
             foreach (var g in guias)
             {
@@ -184,7 +192,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
         private void ActualizarBultosSeleccion()
         {
-            bultoslabel.Text = $"Bultos: {seleccionguiaslistView.Items.Count}";
+            bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
         }
 
         private void codigopostallabel_Click(object sender, EventArgs e)
@@ -228,7 +236,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             var modelo = new AsignarGuiasModelo();
             var codigosPostales = modelo.LGuiasAAsignar
-                                        .Where(g => g.EstadoGuia == estado)
+                                        .Where(g => g.EstadoGuia == estado && !guiasAsignadas.Contains(g.GuiaId))
                                         .Select(g => g.CodigoPostalGuia)
                                         .Distinct()
                                         .ToArray();
@@ -272,11 +280,16 @@ namespace GrupoE_Tutasa.GenerarHDR
                 newItem.SubItems.Add(guia.DomicilioGuia);
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
+                
 
                 detallehdrlistView.Items.Add(newItem);
                 seleccionguiaslistView.Items.Remove(item);
+
+                guiasAsignadas.Add(guia.GuiaId);
             }
 
+            // Actualizar ambos contadores
+            ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
         }
 
@@ -291,16 +304,22 @@ namespace GrupoE_Tutasa.GenerarHDR
                 newItem.SubItems.Add(guia.DomicilioGuia);
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
+                
 
                 detallehdrlistView.Items.Add(newItem);
+
+                guiasAsignadas.Add(guia.GuiaId);
             }
 
             seleccionguiaslistView.Items.Clear();
+
+            // Actualizar ambos contadores
+            ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
         }
         private void ActualizarTotalesDetalle()
         {
-            bultostotalasignadoslabel.Text = $"Total asignados: {detallehdrlistView.Items.Count}";
+            bultostotalasignadoslabel.Text = detallehdrlistView.Items.Count.ToString();
         }
 
         private void detallehdrgroupBox_Enter(object sender, EventArgs e)
@@ -325,17 +344,73 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void eliminarguiasbutton_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in detallehdrlistView.SelectedItems)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                if (guia == null) continue;
 
+                // Crear item nuevo para seleccionguiasListView
+                var newItem = new ListViewItem(guia.GuiaId.ToString());
+                newItem.SubItems.Add(guia.CodigoPostalGuia);
+                newItem.SubItems.Add(guia.DomicilioGuia);
+                newItem.SubItems.Add(guia.tamañoGuia);
+                newItem.SubItems.Add(guia.EstadoGuia);
+                newItem.Tag = guia;
+                
+
+                // Validar estado y radio button
+                if (guia.EstadoGuia == "A retirar" && retiroradioButton.Checked)
+                    seleccionguiaslistView.Items.Add(newItem);
+                else if (guia.EstadoGuia == "Admitida" && distribucionradioButton.Checked)
+                    seleccionguiaslistView.Items.Add(newItem);
+
+                detallehdrlistView.Items.Remove(item);
+
+                guiasAsignadas.Remove(guia.GuiaId);
+            }
+
+            ActualizarBultosSeleccion();
+            ActualizarTotalesDetalle();
         }
 
         private void eliminartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in detallehdrlistView.Items)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                if (guia == null) continue;
 
+                var newItem = new ListViewItem(guia.GuiaId.ToString());
+                newItem.SubItems.Add(guia.CodigoPostalGuia);
+                newItem.SubItems.Add(guia.DomicilioGuia);
+                newItem.SubItems.Add(guia.tamañoGuia);
+                newItem.SubItems.Add(guia.EstadoGuia);
+                newItem.Tag = guia;
+               
+                if (guia.EstadoGuia == "A retirar" && retiroradioButton.Checked)
+                    seleccionguiaslistView.Items.Add(newItem);
+                else if (guia.EstadoGuia == "Admitida" && distribucionradioButton.Checked)
+                    seleccionguiaslistView.Items.Add(newItem);
+
+                guiasAsignadas.Remove(guia.GuiaId);
+            }
+
+            detallehdrlistView.Items.Clear();
+
+            ActualizarBultosSeleccion();
+            ActualizarTotalesDetalle();
         }
 
         private void cancelargenerarhdrbutton_Click(object sender, EventArgs e)
         {
+            var result = MessageBox.Show(
+                     "No se guardará ningún cambio. ¿Está seguro de salir?",
+                     "Cancelar HDR",
+                     MessageBoxButtons.OKCancel,
+                     MessageBoxIcon.Warning);
 
+            if (result == DialogResult.OK)
+                this.Close();
         }
 
         private void generarhdrbutton_Click(object sender, EventArgs e)
