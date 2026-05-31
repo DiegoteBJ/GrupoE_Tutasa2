@@ -24,5 +24,10 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
 
         }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,163 +28,168 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            NrodeTransportelabel = new Label();
-            groupBox2 = new GroupBox();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            groupBox3 = new GroupBox();
+            groupBoxIngreseNrodeTransporte = new GroupBox();
+            botonBuscar = new Button();
+            textBoxNrodeservicioTransporte = new TextBox();
+            labelNrodeServicioTransporte = new Label();
+            groupBoxDatosdeEmpresaTransporte = new GroupBox();
+            labelResultadoFecha = new Label();
+            labelResultadoNombreTransporte = new Label();
+            labelFecha = new Label();
+            labelNombreTransporte = new Label();
+            groupBoxHDRaRecibir = new GroupBox();
             listView1 = new ListView();
-            groupBox4 = new GroupBox();
+            groupBoxHDRaDespachar = new GroupBox();
             listView2 = new ListView();
-            button2 = new Button();
-            button3 = new Button();
+            botonConfirmar = new Button();
+            botonCancelar = new Button();
             label1 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox4.SuspendLayout();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            groupBoxIngreseNrodeTransporte.SuspendLayout();
+            groupBoxDatosdeEmpresaTransporte.SuspendLayout();
+            groupBoxHDRaRecibir.SuspendLayout();
+            groupBoxHDRaDespachar.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxIngreseNrodeTransporte
             // 
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(NrodeTransportelabel);
-            groupBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(40, 60);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(728, 109);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Ingrese en Nro de Transporte";
-            groupBox1.Enter += groupBox1_Enter;
+            groupBoxIngreseNrodeTransporte.Controls.Add(botonBuscar);
+            groupBoxIngreseNrodeTransporte.Controls.Add(textBoxNrodeservicioTransporte);
+            groupBoxIngreseNrodeTransporte.Controls.Add(labelNrodeServicioTransporte);
+            groupBoxIngreseNrodeTransporte.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBoxIngreseNrodeTransporte.Location = new Point(40, 60);
+            groupBoxIngreseNrodeTransporte.Name = "groupBoxIngreseNrodeTransporte";
+            groupBoxIngreseNrodeTransporte.Size = new Size(728, 109);
+            groupBoxIngreseNrodeTransporte.TabIndex = 0;
+            groupBoxIngreseNrodeTransporte.TabStop = false;
+            groupBoxIngreseNrodeTransporte.Text = "Ingrese en Nro de Transporte";
+            groupBoxIngreseNrodeTransporte.Enter += groupBox1_Enter;
             // 
-            // button1
+            // botonBuscar
             // 
-            button1.Location = new Point(570, 47);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 37);
-            button1.TabIndex = 2;
-            button1.Text = "BUSCAR";
-            button1.UseVisualStyleBackColor = true;
+            botonBuscar.Location = new Point(570, 47);
+            botonBuscar.Name = "botonBuscar";
+            botonBuscar.Size = new Size(137, 37);
+            botonBuscar.TabIndex = 2;
+            botonBuscar.Text = "BUSCAR";
+            botonBuscar.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxNrodeservicioTransporte
             // 
-            textBox1.Location = new Point(308, 50);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(241, 31);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBoxNrodeservicioTransporte.Location = new Point(308, 50);
+            textBoxNrodeservicioTransporte.Name = "textBoxNrodeservicioTransporte";
+            textBoxNrodeservicioTransporte.Size = new Size(241, 31);
+            textBoxNrodeservicioTransporte.TabIndex = 1;
+            textBoxNrodeservicioTransporte.TextChanged += textBox1_TextChanged;
             // 
-            // NrodeTransportelabel
+            // labelNrodeServicioTransporte
             // 
-            NrodeTransportelabel.AutoSize = true;
-            NrodeTransportelabel.Location = new Point(29, 47);
-            NrodeTransportelabel.Name = "NrodeTransportelabel";
-            NrodeTransportelabel.Size = new Size(272, 25);
-            NrodeTransportelabel.TabIndex = 0;
-            NrodeTransportelabel.Text = "Nro. de Servicio de Transporte";
+            labelNrodeServicioTransporte.AutoSize = true;
+            labelNrodeServicioTransporte.Location = new Point(29, 47);
+            labelNrodeServicioTransporte.Name = "labelNrodeServicioTransporte";
+            labelNrodeServicioTransporte.Size = new Size(272, 25);
+            labelNrodeServicioTransporte.TabIndex = 0;
+            labelNrodeServicioTransporte.Text = "Nro. de Servicio de Transporte";
             // 
-            // groupBox2
+            // groupBoxDatosdeEmpresaTransporte
             // 
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(40, 185);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(731, 129);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Datos de la Empresa de Transporte";
-            groupBox2.Enter += groupBox2_Enter;
+            groupBoxDatosdeEmpresaTransporte.Controls.Add(labelResultadoFecha);
+            groupBoxDatosdeEmpresaTransporte.Controls.Add(labelResultadoNombreTransporte);
+            groupBoxDatosdeEmpresaTransporte.Controls.Add(labelFecha);
+            groupBoxDatosdeEmpresaTransporte.Controls.Add(labelNombreTransporte);
+            groupBoxDatosdeEmpresaTransporte.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBoxDatosdeEmpresaTransporte.Location = new Point(40, 185);
+            groupBoxDatosdeEmpresaTransporte.Name = "groupBoxDatosdeEmpresaTransporte";
+            groupBoxDatosdeEmpresaTransporte.Size = new Size(731, 129);
+            groupBoxDatosdeEmpresaTransporte.TabIndex = 1;
+            groupBoxDatosdeEmpresaTransporte.TabStop = false;
+            groupBoxDatosdeEmpresaTransporte.Text = "Datos de la Empresa de Transporte";
+            groupBoxDatosdeEmpresaTransporte.Enter += groupBox2_Enter;
             // 
-            // label5
+            // labelResultadoFecha
             // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.ControlLightLight;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ControlDark;
-            label5.Location = new Point(193, 85);
-            label5.Name = "label5";
-            label5.Size = new Size(110, 20);
-            label5.TabIndex = 3;
-            label5.Text = "Resultado HDR";
+            labelResultadoFecha.AutoSize = true;
+            labelResultadoFecha.BackColor = SystemColors.ControlLightLight;
+            labelResultadoFecha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelResultadoFecha.ForeColor = SystemColors.ControlDark;
+            labelResultadoFecha.Location = new Point(193, 85);
+            labelResultadoFecha.Name = "labelResultadoFecha";
+            labelResultadoFecha.Size = new Size(117, 20);
+            labelResultadoFecha.TabIndex = 3;
+            labelResultadoFecha.Text = "Resultado Fecha";
             // 
-            // label4
+            // labelResultadoNombreTransporte
             // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.ControlLightLight;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ButtonShadow;
-            label4.Location = new Point(193, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(134, 20);
-            label4.TabIndex = 2;
-            label4.Text = "Resultado Nombre";
+            labelResultadoNombreTransporte.AutoSize = true;
+            labelResultadoNombreTransporte.BackColor = SystemColors.ControlLightLight;
+            labelResultadoNombreTransporte.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelResultadoNombreTransporte.ForeColor = SystemColors.ButtonShadow;
+            labelResultadoNombreTransporte.Location = new Point(193, 40);
+            labelResultadoNombreTransporte.Name = "labelResultadoNombreTransporte";
+            labelResultadoNombreTransporte.Size = new Size(134, 20);
+            labelResultadoNombreTransporte.TabIndex = 2;
+            labelResultadoNombreTransporte.Text = "Resultado Nombre";
             // 
-            // label3
+            // labelFecha
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(27, 85);
-            label3.Name = "label3";
-            label3.Size = new Size(43, 20);
-            label3.TabIndex = 1;
-            label3.Text = "HDR:";
-            label3.Click += label3_Click;
+            labelFecha.AutoSize = true;
+            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelFecha.Location = new Point(27, 85);
+            labelFecha.Name = "labelFecha";
+            labelFecha.Size = new Size(50, 20);
+            labelFecha.TabIndex = 1;
+            labelFecha.Text = "Fecha:";
+            labelFecha.Click += label3_Click;
             // 
-            // label2
+            // labelNombreTransporte
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(27, 43);
-            label2.Name = "label2";
-            label2.Size = new Size(147, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Nombre Transporte:";
-            label2.Click += label2_Click;
+            labelNombreTransporte.AutoSize = true;
+            labelNombreTransporte.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelNombreTransporte.Location = new Point(27, 43);
+            labelNombreTransporte.Name = "labelNombreTransporte";
+            labelNombreTransporte.Size = new Size(147, 20);
+            labelNombreTransporte.TabIndex = 0;
+            labelNombreTransporte.Text = "Nombre Transporte:";
+            labelNombreTransporte.Click += label2_Click;
             // 
-            // groupBox3
+            // groupBoxHDRaRecibir
             // 
-            groupBox3.Controls.Add(listView1);
-            groupBox3.Location = new Point(42, 320);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(322, 215);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Hojas de ruta a recibir";
+            groupBoxHDRaRecibir.Controls.Add(listView1);
+            groupBoxHDRaRecibir.Location = new Point(42, 320);
+            groupBoxHDRaRecibir.Name = "groupBoxHDRaRecibir";
+            groupBoxHDRaRecibir.Size = new Size(322, 215);
+            groupBoxHDRaRecibir.TabIndex = 2;
+            groupBoxHDRaRecibir.TabStop = false;
+            groupBoxHDRaRecibir.Text = "Hojas de ruta a recibir";
             // 
             // listView1
             // 
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             listView1.Location = new Point(11, 29);
             listView1.Name = "listView1";
             listView1.Size = new Size(301, 169);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
-            // groupBox4
+            // groupBoxHDRaDespachar
             // 
-            groupBox4.Controls.Add(listView2);
-            groupBox4.Location = new Point(429, 320);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(335, 211);
-            groupBox4.TabIndex = 3;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Hojas de ruta a despachar";
+            groupBoxHDRaDespachar.Controls.Add(listView2);
+            groupBoxHDRaDespachar.Location = new Point(429, 320);
+            groupBoxHDRaDespachar.Name = "groupBoxHDRaDespachar";
+            groupBoxHDRaDespachar.Size = new Size(335, 211);
+            groupBoxHDRaDespachar.TabIndex = 3;
+            groupBoxHDRaDespachar.TabStop = false;
+            groupBoxHDRaDespachar.Text = "Hojas de ruta a despachar";
             // 
             // listView2
             // 
+            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
             listView2.Location = new Point(8, 29);
             listView2.Name = "listView2";
             listView2.Size = new Size(310, 168);
@@ -192,23 +197,23 @@
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
             // 
-            // button2
+            // botonConfirmar
             // 
-            button2.Location = new Point(130, 613);
-            button2.Name = "button2";
-            button2.Size = new Size(139, 36);
-            button2.TabIndex = 4;
-            button2.Text = "Confirmar";
-            button2.UseVisualStyleBackColor = true;
+            botonConfirmar.Location = new Point(130, 613);
+            botonConfirmar.Name = "botonConfirmar";
+            botonConfirmar.Size = new Size(139, 36);
+            botonConfirmar.TabIndex = 4;
+            botonConfirmar.Text = "Confirmar";
+            botonConfirmar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // botonCancelar
             // 
-            button3.Location = new Point(504, 613);
-            button3.Name = "button3";
-            button3.Size = new Size(145, 36);
-            button3.TabIndex = 5;
-            button3.Text = "Cancelar";
-            button3.UseVisualStyleBackColor = true;
+            botonCancelar.Location = new Point(504, 613);
+            botonCancelar.Name = "botonCancelar";
+            botonCancelar.Size = new Size(145, 36);
+            botonCancelar.TabIndex = 5;
+            botonCancelar.Text = "Cancelar";
+            botonCancelar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -247,6 +252,16 @@
             label8.TabIndex = 9;
             label8.Text = "Buenos Aires";
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Nro de Guias";
+            columnHeader1.Width = 110;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nro de Guias";
+            columnHeader2.Width = 110;
+            // 
             // RecepcionDespachoCDLargaDistanciaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -256,45 +271,47 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label1);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(groupBox4);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(botonCancelar);
+            Controls.Add(botonConfirmar);
+            Controls.Add(groupBoxHDRaDespachar);
+            Controls.Add(groupBoxHDRaRecibir);
+            Controls.Add(groupBoxDatosdeEmpresaTransporte);
+            Controls.Add(groupBoxIngreseNrodeTransporte);
             Name = "RecepcionDespachoCDLargaDistanciaForm";
             Text = "RecepcionYDespachoLargaDistanciaForm1";
             Load += RecepcionYDespachoLargaDistanciaForm1_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
+            groupBoxIngreseNrodeTransporte.ResumeLayout(false);
+            groupBoxIngreseNrodeTransporte.PerformLayout();
+            groupBoxDatosdeEmpresaTransporte.ResumeLayout(false);
+            groupBoxDatosdeEmpresaTransporte.PerformLayout();
+            groupBoxHDRaRecibir.ResumeLayout(false);
+            groupBoxHDRaDespachar.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private Button button1;
-        private TextBox textBox1;
-        private Label NrodeTransportelabel;
-        private GroupBox groupBox2;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private GroupBox groupBox3;
-        private GroupBox groupBox4;
+        private GroupBox groupBoxIngreseNrodeTransporte;
+        private Button botonBuscar;
+        private TextBox textBoxNrodeservicioTransporte;
+        private Label labelNrodeServicioTransporte;
+        private GroupBox groupBoxDatosdeEmpresaTransporte;
+        private Label labelNombreTransporte;
+        private Label labelFecha;
+        private Label labelResultadoNombreTransporte;
+        private Label labelResultadoFecha;
+        private GroupBox groupBoxHDRaRecibir;
+        private GroupBox groupBoxHDRaDespachar;
         private ListView listView1;
-        private Button button2;
-        private Button button3;
+        private Button botonConfirmar;
+        private Button botonCancelar;
         private ListView listView2;
         private Label label1;
         private Label label6;
         private Label label7;
         private Label label8;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }
