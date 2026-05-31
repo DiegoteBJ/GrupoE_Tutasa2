@@ -40,12 +40,8 @@ namespace GrupoE_Tutasa.EmitirFactura
                 MessageBox.Show("El CUIT ingresado no es válido.");
                 return;
             }
-            if (!long.TryParse(CuitClienteBox.Text, out long cuit))
-            {
-                MessageBox.Show("El CUIT debe ser un número válido.");
-                return;
-            }
-
+         
+            string cuit = CuitClienteBox.Text.Trim();
             foreach (var cliente in modelo.LClientes)
             {
                 if (cliente.clienteCUIT == cuit)
