@@ -152,7 +152,6 @@
             labelFecha.Size = new Size(47, 20);
             labelFecha.TabIndex = 5;
             labelFecha.Text = "Fecha";
-            labelFecha.Click += label8_Click;
             // 
             // labelResultadoEmpresaTransporte
             // 
@@ -162,7 +161,6 @@
             labelResultadoEmpresaTransporte.Size = new Size(171, 20);
             labelResultadoEmpresaTransporte.TabIndex = 4;
             labelResultadoEmpresaTransporte.Text = "[Empresa de Transporte]";
-            labelResultadoEmpresaTransporte.Click += label7_Click;
             // 
             // labelEmpresaTransporte
             // 
@@ -181,6 +179,7 @@
             botonBuscar.TabIndex = 2;
             botonBuscar.Text = "Buscar";
             botonBuscar.UseVisualStyleBackColor = true;
+            botonBuscar.Click += botonBuscar_Click;
             // 
             // textBoxNrodeServicioTransporte
             // 
@@ -218,6 +217,7 @@
             botonAgregarTodo.TabIndex = 2;
             botonAgregarTodo.Text = "Agregar todo";
             botonAgregarTodo.UseVisualStyleBackColor = true;
+            botonAgregarTodo.Click += botonAgregarTodo_Click;
             // 
             // botonAgregar
             // 
@@ -227,11 +227,14 @@
             botonAgregar.TabIndex = 1;
             botonAgregar.Text = "Agregar";
             botonAgregar.UseVisualStyleBackColor = true;
+            botonAgregar.Click += botonAgregar_Click;
             // 
             // listViewEncomiendasPendientes
             // 
             listViewEncomiendasPendientes.Columns.AddRange(new ColumnHeader[] { columnaguia, columnatamaño, columnadestino });
+            listViewEncomiendasPendientes.FullRowSelect = true;
             listViewEncomiendasPendientes.Location = new Point(13, 31);
+            listViewEncomiendasPendientes.MultiSelect = false;
             listViewEncomiendasPendientes.Name = "listViewEncomiendasPendientes";
             listViewEncomiendasPendientes.Size = new Size(320, 135);
             listViewEncomiendasPendientes.TabIndex = 0;
@@ -273,6 +276,7 @@
             botonEliminarTodo.TabIndex = 2;
             botonEliminarTodo.Text = "Eliminar todo";
             botonEliminarTodo.UseVisualStyleBackColor = true;
+            botonEliminarTodo.Click += botonEliminarTodo_Click;
             // 
             // botonEliminar
             // 
@@ -282,6 +286,7 @@
             botonEliminar.TabIndex = 1;
             botonEliminar.Text = "Eliminar";
             botonEliminar.UseVisualStyleBackColor = true;
+            botonEliminar.Click += botonEliminar_Click;
             // 
             // listViewEncomiendasAsignadas
             // 
@@ -292,7 +297,6 @@
             listViewEncomiendasAsignadas.TabIndex = 0;
             listViewEncomiendasAsignadas.UseCompatibleStateImageBehavior = false;
             listViewEncomiendasAsignadas.View = View.Details;
-            listViewEncomiendasAsignadas.SelectedIndexChanged += listViewEncomiendasAsignadas_SelectedIndexChanged;
             // 
             // columnaguia2
             // 
@@ -317,6 +321,7 @@
             botonCancelar.TabIndex = 7;
             botonCancelar.Text = "Cancelar";
             botonCancelar.UseVisualStyleBackColor = true;
+            botonCancelar.Click += botonCancelar_Click;
             // 
             // botonGenerarHDR
             // 
@@ -326,6 +331,7 @@
             botonGenerarHDR.TabIndex = 8;
             botonGenerarHDR.Text = "Generar HDR";
             botonGenerarHDR.UseVisualStyleBackColor = true;
+            botonGenerarHDR.Click += botonGenerarHDR_Click;
             // 
             // GenerarHDRTransporteForm
             // 
