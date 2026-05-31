@@ -27,4 +27,9 @@
     <Folder Include="Almacenes\" />
   </ItemGroup>
 
+<ItemGroup>
+  <Compile Remove="**\obj\**\*.cs" />
+  <Compile Remove="**\bin\**\*.cs" />
+</ItemGroup>
+
 </Project>

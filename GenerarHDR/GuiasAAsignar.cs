@@ -12,7 +12,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         public string tamañoGuia { get; set; }
         public string EstadoGuia { get; set; }
         public string NombreDestinatarioGuia { get; set; }
-        
+
+
     }
 }
 

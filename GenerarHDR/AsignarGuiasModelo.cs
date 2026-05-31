@@ -31,10 +31,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 return new List<Fleteros>
                 {
-                    new Fleteros { FleteroId = 1, FleteroDNI = "11111111", FleteroNombre = "Fletero A", FleteroApellido = "Apellido A" },
-                    new Fleteros { FleteroId = 2, FleteroDNI = "22222222", FleteroNombre = "Fletero B", FleteroApellido = "Apellido B" },
-                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Fletero C", FleteroApellido = "Apellido C" },
-                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Fletero D", FleteroApellido = "Apellido D" },
+                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
+                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
+                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
+                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
                 };
             }
         }

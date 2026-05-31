@@ -1,3 +1,6 @@
+using GrupoE_Tutasa.GenerarHDR;
+using GrupoE_Tutasa.GenerarHDRTransporte;
+
 namespace GrupoE_Tutasa.FormularioPrincipal
 {
     internal static class Program
@@ -16,6 +19,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // Application.Run(new EntregarEncomiendaAgenciaForm());
             // Application.Run(new EntregaEnCDFormNuevo());
             // Application.Run(new ActualizarHDRForm());
+            // Application.Run(new GenerarHDRTransporteForm());
         }
     }
 }

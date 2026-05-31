@@ -41,7 +41,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 return;
             }
          
-            long cuit = long.Parse(CuitClienteBox.Text.Trim());
+            string cuit = CuitClienteBox.Text.Trim();
             foreach (var cliente in modelo.LClientes)
             {
                 if (cliente.clienteCUIT == cuit)

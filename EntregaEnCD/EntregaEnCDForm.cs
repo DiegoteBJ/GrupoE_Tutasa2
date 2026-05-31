@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -10,9 +11,15 @@ namespace GrupoE_Tutasa.EntregaEnCD
 {
     public partial class EntregaEnCDForm : Form
     {
+        private EntregaEnCDModelo modelo = new EntregaEnCDModelo();
         public EntregaEnCDForm()
         {
             InitializeComponent();
+
+            ListView_GuiasPendientes.FullRowSelect = true;
+            ListView_GuiasPendientes.HideSelection = false;
+            ListView_GuiasPendientes.MultiSelect = false;
+            ListView_GuiasPendientes.View = View.Details;
         }
 
         private void Button_Buscar_Click(object sender, EventArgs e)
@@ -37,29 +44,39 @@ namespace GrupoE_Tutasa.EntregaEnCD
                 return;
             }
 
-            Label_NombreResultado.Text = "Carlos";
-            Label_ApellidoResultado.Text = "Pérez";
+            long dniNumero = Convert.ToInt64(dni);
+
+            Destinatario destinatario = modelo.BuscarDestinatarioPorDni(dniNumero);
+
+            if (destinatario == null)
+            {
+                MessageBox.Show("Destinatario no encontrado.");
+                return;
+            }
+
+            Label_NombreResultado.Text = destinatario.Nombre;
+            Label_ApellidoResultado.Text = destinatario.Apellido;
+
+            List<Guia> guias = modelo.BuscarGuiasPendientesEnCD(dniNumero);
 
             ListView_GuiasPendientes.Items.Clear();
             ListView_GuiasPendientes.View = View.Details;
 
-            if (ListView_GuiasPendientes.Columns.Count == 0)
+            if (guias.Count == 0)
             {
-                ListView_GuiasPendientes.Columns.Add("Nro de guía", 120);
-                ListView_GuiasPendientes.Columns.Add("Tamaño", 100);
-                ListView_GuiasPendientes.Columns.Add("Estado", 150);
+                MessageBox.Show("No hay guías pendientes en CD para este destinatario.");
+                return;
             }
 
-            ListViewItem fila1 = new ListViewItem("CD000321");
-            fila1.SubItems.Add("Chica");
-            fila1.SubItems.Add("Pendiente de entrega");
+            foreach (Guia guia in guias)
+            {
+                ListViewItem fila = new ListViewItem(guia.GuiaId.ToString());
 
-            ListViewItem fila2 = new ListViewItem("CD000322");
-            fila2.SubItems.Add("Mediana");
-            fila2.SubItems.Add("Pendiente de entrega");
+                fila.SubItems.Add(guia.Tamanio);
+                fila.SubItems.Add(guia.Estado);
 
-            ListView_GuiasPendientes.Items.Add(fila1);
-            ListView_GuiasPendientes.Items.Add(fila2);
+                ListView_GuiasPendientes.Items.Add(fila);
+            }
         }
 
         private void Button_ConfirmarEntrega_Click(object sender, EventArgs e)
@@ -70,12 +87,25 @@ namespace GrupoE_Tutasa.EntregaEnCD
                 return;
             }
 
+            if (ListView_GuiasPendientes.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una guía para confirmar la entrega.");
+                return;
+            }
+
+            ListViewItem filaSeleccionada = ListView_GuiasPendientes.SelectedItems[0];
+
+            int guiaId = Convert.ToInt32(filaSeleccionada.Text);
+
+            modelo.ConfirmarEntrega(guiaId);
+
             MessageBox.Show("Entrega registrada correctamente en CD.");
 
             TextBox_DniDestinatario.Clear();
             Label_NombreResultado.Text = "";
             Label_ApellidoResultado.Text = "";
             ListView_GuiasPendientes.Items.Clear();
+            TextBox_DniDestinatario.Focus();
         }
 
         private void Button_Cancelar_Click(object sender, EventArgs e)
@@ -87,6 +117,16 @@ namespace GrupoE_Tutasa.EntregaEnCD
         }
 
         private void EntregaEnCDFormNuevo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_DniDestinatario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView_GuiasPendientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
