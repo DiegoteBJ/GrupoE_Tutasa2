@@ -8,8 +8,8 @@ namespace GrupoE_Tutasa.GenerarHDR
     {
         public int GuiaId { get; set; }
         public string CodigoPostalGuia { get; set; }
-        public string Domicilio { get; set; }
-        public string tamaño { get; set; }
+        public string DomicilioGuia { get; set; }
+        public string tamañoGuia { get; set; }
         public string EstadoGuia { get; set; }
         public string NombreDestinatarioGuia { get; set; }
         

@@ -7,10 +7,11 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class Fleteros
     {
 
-        public int fleterosid { get; set; }
-        public string fleterosdni { get; set; } = string.Empty;
-        public string fleterosnombre { get; set; } = string.Empty;
-        public string fleterosapellido { get; set; } = string.Empty;
+        public int FleteroId { get; set; }
+       
+        public string FleteroDNI { get; set; } = string.Empty;
+        public string FleteroNombre { get; set; } = string.Empty;
+        public string FleteroApellido { get; set; } = string.Empty;
 
     }
 }

@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GuiasRecibirGroupBox = new GroupBox();
-            GuiasRecibirListView = new ListView();
-            GuiasAEntregarFleteroGroupBox = new GroupBox();
-            label4 = new Label();
-            GuiasEntregarAFleteroListView = new ListView();
+            HojasdeRutaGroupBox = new GroupBox();
+            HojasdeRutaListView = new ListView();
+            HDRaRendirAgenciaGroupBox = new GroupBox();
+            HDRaRendirAgenciaListView = new ListView();
             UsuarioLabel = new Label();
             AgenciaLabel = new Label();
             NombreFleteroLabel = new Label();
@@ -46,74 +45,64 @@
             BuscarFleteroGroupBox = new GroupBox();
             DNILabel = new Label();
             ApellidoRespuestaLabel = new Label();
-            textBox1 = new TextBox();
             ApellidoLabel = new Label();
             label1 = new Label();
             groupBox1 = new GroupBox();
-            label3 = new Label();
-            listView1 = new ListView();
+            NumeroHDRSuperiorLabel = new Label();
+            DetalleGuiasListView = new ListView();
             columnHeader4 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             label2 = new Label();
-            GuiasRecibirGroupBox.SuspendLayout();
-            GuiasAEntregarFleteroGroupBox.SuspendLayout();
+            HojasdeRutaGroupBox.SuspendLayout();
+            HDRaRendirAgenciaGroupBox.SuspendLayout();
             BuscarFleteroGroupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // GuiasRecibirGroupBox
+            // HojasdeRutaGroupBox
             // 
-            GuiasRecibirGroupBox.Controls.Add(GuiasRecibirListView);
-            GuiasRecibirGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GuiasRecibirGroupBox.Location = new Point(30, 207);
-            GuiasRecibirGroupBox.Name = "GuiasRecibirGroupBox";
-            GuiasRecibirGroupBox.Size = new Size(277, 220);
-            GuiasRecibirGroupBox.TabIndex = 0;
-            GuiasRecibirGroupBox.TabStop = false;
-            GuiasRecibirGroupBox.Text = "Hojas de ruta";
+            HojasdeRutaGroupBox.Controls.Add(HojasdeRutaListView);
+            HojasdeRutaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HojasdeRutaGroupBox.Location = new Point(30, 207);
+            HojasdeRutaGroupBox.Name = "HojasdeRutaGroupBox";
+            HojasdeRutaGroupBox.Size = new Size(277, 220);
+            HojasdeRutaGroupBox.TabIndex = 0;
+            HojasdeRutaGroupBox.TabStop = false;
+            HojasdeRutaGroupBox.Text = "Hojas de ruta";
             // 
-            // GuiasRecibirListView
+            // HojasdeRutaListView
             // 
-            GuiasRecibirListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuiasRecibirListView.Location = new Point(23, 28);
-            GuiasRecibirListView.Name = "GuiasRecibirListView";
-            GuiasRecibirListView.Size = new Size(231, 175);
-            GuiasRecibirListView.TabIndex = 0;
-            GuiasRecibirListView.UseCompatibleStateImageBehavior = false;
-            GuiasRecibirListView.View = View.Details;
+            HojasdeRutaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            HojasdeRutaListView.Location = new Point(23, 28);
+            HojasdeRutaListView.Name = "HojasdeRutaListView";
+            HojasdeRutaListView.Size = new Size(231, 175);
+            HojasdeRutaListView.TabIndex = 0;
+            HojasdeRutaListView.UseCompatibleStateImageBehavior = false;
+            HojasdeRutaListView.View = View.Details;
+            HojasdeRutaListView.SelectedIndexChanged += HojasdeRutaListView_SelectedIndexChanged;
             // 
-            // GuiasAEntregarFleteroGroupBox
+            // HDRaRendirAgenciaGroupBox
             // 
-            GuiasAEntregarFleteroGroupBox.Controls.Add(label4);
-            GuiasAEntregarFleteroGroupBox.Controls.Add(GuiasEntregarAFleteroListView);
-            GuiasAEntregarFleteroGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GuiasAEntregarFleteroGroupBox.Location = new Point(363, 207);
-            GuiasAEntregarFleteroGroupBox.Name = "GuiasAEntregarFleteroGroupBox";
-            GuiasAEntregarFleteroGroupBox.Size = new Size(430, 220);
-            GuiasAEntregarFleteroGroupBox.TabIndex = 1;
-            GuiasAEntregarFleteroGroupBox.TabStop = false;
-            GuiasAEntregarFleteroGroupBox.Text = "Hojas de ruta a rendir";
+            HDRaRendirAgenciaGroupBox.Controls.Add(HDRaRendirAgenciaListView);
+            HDRaRendirAgenciaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HDRaRendirAgenciaGroupBox.Location = new Point(363, 207);
+            HDRaRendirAgenciaGroupBox.Name = "HDRaRendirAgenciaGroupBox";
+            HDRaRendirAgenciaGroupBox.Size = new Size(430, 220);
+            HDRaRendirAgenciaGroupBox.TabIndex = 1;
+            HDRaRendirAgenciaGroupBox.TabStop = false;
+            HDRaRendirAgenciaGroupBox.Text = "Hojas de ruta a recepcionar";
             // 
-            // label4
+            // HDRaRendirAgenciaListView
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(39, 43);
-            label4.Name = "label4";
-            label4.Size = new Size(140, 20);
-            label4.TabIndex = 1;
-            label4.Text = "HDR-20250504-018";
-            // 
-            // GuiasEntregarAFleteroListView
-            // 
-            GuiasEntregarAFleteroListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuiasEntregarAFleteroListView.Location = new Point(21, 27);
-            GuiasEntregarAFleteroListView.Name = "GuiasEntregarAFleteroListView";
-            GuiasEntregarAFleteroListView.Size = new Size(388, 175);
-            GuiasEntregarAFleteroListView.TabIndex = 0;
-            GuiasEntregarAFleteroListView.UseCompatibleStateImageBehavior = false;
-            GuiasEntregarAFleteroListView.View = View.Details;
+            HDRaRendirAgenciaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            HDRaRendirAgenciaListView.Location = new Point(21, 27);
+            HDRaRendirAgenciaListView.Name = "HDRaRendirAgenciaListView";
+            HDRaRendirAgenciaListView.Size = new Size(388, 175);
+            HDRaRendirAgenciaListView.TabIndex = 0;
+            HDRaRendirAgenciaListView.UseCompatibleStateImageBehavior = false;
+            HDRaRendirAgenciaListView.View = View.Details;
+            HDRaRendirAgenciaListView.SelectedIndexChanged += HDRaRendirAgenciaListView_SelectedIndexChanged;
             // 
             // UsuarioLabel
             // 
@@ -188,7 +177,7 @@
             BuscarFleteroBoton.TabIndex = 11;
             BuscarFleteroBoton.Text = "Buscar Fletero";
             BuscarFleteroBoton.UseVisualStyleBackColor = true;
-            BuscarFleteroBoton.Click += BuscarFleteroBoton_Click_1;
+            BuscarFleteroBoton.Click += BuscarFleteroBoton_Click;
             // 
             // CancelarBoton
             // 
@@ -198,7 +187,7 @@
             CancelarBoton.TabIndex = 12;
             CancelarBoton.Text = "Cancelar";
             CancelarBoton.UseVisualStyleBackColor = true;
-            CancelarBoton.Click += CancelarBoton_Click_1;
+            CancelarBoton.Click += CancelarBoton_Click;
             // 
             // ConfirmarBoton
             // 
@@ -215,7 +204,6 @@
             BuscarFleteroGroupBox.Controls.Add(DNILabel);
             BuscarFleteroGroupBox.Controls.Add(NombreFleteroRespuestaLabel);
             BuscarFleteroGroupBox.Controls.Add(ApellidoRespuestaLabel);
-            BuscarFleteroGroupBox.Controls.Add(textBox1);
             BuscarFleteroGroupBox.Controls.Add(DNIFleteroBox);
             BuscarFleteroGroupBox.Controls.Add(ApellidoLabel);
             BuscarFleteroGroupBox.Controls.Add(NombreFleteroLabel);
@@ -247,13 +235,6 @@
             ApellidoRespuestaLabel.TabIndex = 9;
             ApellidoRespuestaLabel.Text = "Apellido Fletero";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(27, 55);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 10;
-            // 
             // ApellidoLabel
             // 
             ApellidoLabel.AutoSize = true;
@@ -274,8 +255,8 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(listView1);
+            groupBox1.Controls.Add(NumeroHDRSuperiorLabel);
+            groupBox1.Controls.Add(DetalleGuiasListView);
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(31, 444);
@@ -284,29 +265,29 @@
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle de Hoja de ruta";
-            groupBox1.Enter += groupBox1_Enter;
             // 
-            // label3
+            // NumeroHDRSuperiorLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(89, 23);
-            label3.Name = "label3";
-            label3.Size = new Size(140, 20);
-            label3.TabIndex = 2;
-            label3.Text = "HDR-20250504-018";
+            NumeroHDRSuperiorLabel.AutoSize = true;
+            NumeroHDRSuperiorLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NumeroHDRSuperiorLabel.Location = new Point(89, 23);
+            NumeroHDRSuperiorLabel.Name = "NumeroHDRSuperiorLabel";
+            NumeroHDRSuperiorLabel.Size = new Size(110, 20);
+            NumeroHDRSuperiorLabel.TabIndex = 2;
+            NumeroHDRSuperiorLabel.Text = "[HDR-Numero]";
             // 
-            // listView1
+            // DetalleGuiasListView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
-            listView1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listView1.Location = new Point(22, 47);
-            listView1.Margin = new Padding(3, 4, 3, 4);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(371, 185);
-            listView1.TabIndex = 17;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            DetalleGuiasListView.CheckBoxes = true;
+            DetalleGuiasListView.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
+            DetalleGuiasListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DetalleGuiasListView.Location = new Point(22, 47);
+            DetalleGuiasListView.Margin = new Padding(3, 4, 3, 4);
+            DetalleGuiasListView.Name = "DetalleGuiasListView";
+            DetalleGuiasListView.Size = new Size(371, 185);
+            DetalleGuiasListView.TabIndex = 17;
+            DetalleGuiasListView.UseCompatibleStateImageBehavior = false;
+            DetalleGuiasListView.View = View.Details;
             // 
             // columnHeader4
             // 
@@ -346,15 +327,14 @@
             Controls.Add(UsuarioRespuestaLabel);
             Controls.Add(AgenciaLabel);
             Controls.Add(UsuarioLabel);
-            Controls.Add(GuiasAEntregarFleteroGroupBox);
-            Controls.Add(GuiasRecibirGroupBox);
+            Controls.Add(HDRaRendirAgenciaGroupBox);
+            Controls.Add(HojasdeRutaGroupBox);
             Controls.Add(BuscarFleteroGroupBox);
             Name = "RecepcionDespachoAgenciaForm";
             Text = "Recepción y despacho en agencia";
-            Load += RecepcionDespachoAgencia_Load;
-            GuiasRecibirGroupBox.ResumeLayout(false);
-            GuiasAEntregarFleteroGroupBox.ResumeLayout(false);
-            GuiasAEntregarFleteroGroupBox.PerformLayout();
+            Load += RecepcionDespachoAgenciaForm_Load;
+            HojasdeRutaGroupBox.ResumeLayout(false);
+            HDRaRendirAgenciaGroupBox.ResumeLayout(false);
             BuscarFleteroGroupBox.ResumeLayout(false);
             BuscarFleteroGroupBox.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -365,8 +345,8 @@
 
         #endregion
 
-        private GroupBox GuiasRecibirGroupBox;
-        private GroupBox GuiasAEntregarFleteroGroupBox;
+        private GroupBox HojasdeRutaGroupBox;
+        private GroupBox HDRaRendirAgenciaGroupBox;
         private Label UsuarioLabel;
         private Label AgenciaLabel;
         private Label NombreFleteroLabel;
@@ -377,21 +357,19 @@
         private Button BuscarFleteroBoton;
         private Button CancelarBoton;
         private Button ConfirmarBoton;
-        private ListView GuiasRecibirListView;
-        private ListView GuiasEntregarAFleteroListView;
+        private ListView HojasdeRutaListView;
+        private ListView HDRaRendirAgenciaListView;
         private GroupBox BuscarFleteroGroupBox;
         private Label label1;
         private GroupBox groupBox1;
         private Label label2;
-        private Label label4;
-        private Label label3;
-        private ListView listView1;
-        private TextBox textBox1;
+        private ListView DetalleGuiasListView;
         private Label DNILabel;
         private Label ApellidoRespuestaLabel;
         private Label ApellidoLabel;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
+        private Label NumeroHDRSuperiorLabel;
     }
 }
