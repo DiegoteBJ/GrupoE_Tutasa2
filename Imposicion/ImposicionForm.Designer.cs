@@ -57,10 +57,7 @@
             label36 = new Label();
             comboBox3 = new ComboBox();
             label11 = new Label();
-            radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
-            label8 = new Label();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
             label9 = new Label();
@@ -313,10 +310,7 @@
             groupBox3.Controls.Add(panel1);
             groupBox3.Controls.Add(comboBox3);
             groupBox3.Controls.Add(label11);
-            groupBox3.Controls.Add(radioButton3);
             groupBox3.Controls.Add(radioButton2);
-            groupBox3.Controls.Add(radioButton1);
-            groupBox3.Controls.Add(label8);
             groupBox3.Controls.Add(comboBox2);
             groupBox3.Controls.Add(comboBox1);
             groupBox3.Controls.Add(label9);
@@ -333,7 +327,7 @@
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(639, 75);
+            comboBox4.Location = new Point(557, 31);
             comboBox4.Margin = new Padding(4, 3, 4, 3);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(140, 23);
@@ -342,7 +336,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(584, 83);
+            label30.Location = new Point(523, 33);
             label30.Margin = new Padding(4, 0, 4, 0);
             label30.Name = "label30";
             label30.Size = new Size(26, 15);
@@ -413,7 +407,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(397, 75);
+            comboBox3.Location = new Point(363, 31);
             comboBox3.Margin = new Padding(4, 3, 4, 3);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(140, 23);
@@ -422,29 +416,17 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(307, 83);
+            label11.Location = new Point(302, 33);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(53, 15);
             label11.TabIndex = 18;
             label11.Text = "Agencia:";
             // 
-            // radioButton3
-            // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(533, 34);
-            radioButton3.Margin = new Padding(4, 3, 4, 3);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(41, 19);
-            radioButton3.TabIndex = 17;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "CD";
-            radioButton3.UseVisualStyleBackColor = true;
-            // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(608, 36);
+            radioButton2.Location = new Point(713, 31);
             radioButton2.Margin = new Padding(4, 3, 4, 3);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(76, 19);
@@ -453,28 +435,6 @@
             radioButton2.Text = "Domicilio";
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(422, 34);
-            radioButton1.Margin = new Padding(4, 3, 4, 3);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(68, 19);
-            radioButton1.TabIndex = 15;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Agencia";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(307, 36);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(93, 15);
-            label8.TabIndex = 14;
-            label8.Text = "Tipo de entrega ";
             // 
             // comboBox2
             // 
@@ -518,7 +478,7 @@
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(453, 104);
+            textBox9.Location = new Point(430, 104);
             textBox9.Margin = new Padding(4, 3, 4, 3);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(92, 23);
@@ -526,7 +486,7 @@
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(453, 65);
+            textBox8.Location = new Point(430, 65);
             textBox8.Margin = new Padding(4, 3, 4, 3);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(245, 23);
@@ -535,7 +495,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(355, 107);
+            label14.Location = new Point(326, 107);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(67, 15);
@@ -545,7 +505,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(355, 68);
+            label13.Location = new Point(326, 68);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(60, 15);
@@ -868,7 +828,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(357, 25);
+            label35.Location = new Point(330, 25);
             label35.Margin = new Padding(4, 0, 4, 0);
             label35.Name = "label35";
             label35.Size = new Size(56, 15);
@@ -952,10 +912,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Panel panel1;
