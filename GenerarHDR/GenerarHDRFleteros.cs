@@ -27,6 +27,20 @@ namespace GrupoE_Tutasa.GenerarHDR
             apellidofleterolabel.Text = string.Empty;
             retiroradioButton.Enabled = false;
             distribucionradioButton.Enabled = false;
+            buscarcodigopostalbutton.Enabled = false;
+
+            // Autocompletar de códigos postales
+            var modelo = new AsignarGuiasModelo();
+            var codigosPostales = modelo.LGuiasAAsignar
+                                        .Select(g => g.CodigoPostalGuia)
+                                        .Distinct()
+                                        .ToArray();
+
+            ingresarcodigopostaltextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            ingresarcodigopostaltextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(codigosPostales);
+            ingresarcodigopostaltextBox.AutoCompleteCustomSource = source;
         }
 
         private void usuariolabel_Click(object sender, EventArgs e)
@@ -139,12 +153,39 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void retiroradioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (retiroradioButton.Checked)
+                CargarGuiasPorEstado("A retirar");
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
+            if (distribucionradioButton.Checked)
+                CargarGuiasPorEstado("Admitida");
+        }
 
+        private void CargarGuiasPorEstado(string estado)
+        {
+            seleccionguiaslistView.Items.Clear();
+            var modelo = new AsignarGuiasModelo();
+
+            var guias = modelo.LGuiasAAsignar.Where(g => g.EstadoGuia == estado);
+
+            foreach (var g in guias)
+            {
+                var item = new ListViewItem(g.GuiaId.ToString());
+                item.SubItems.Add(g.CodigoPostalGuia);
+                item.SubItems.Add(g.DomicilioGuia);
+                item.SubItems.Add(g.tamañoGuia);
+                item.SubItems.Add(g.EstadoGuia);
+                item.Tag = g;
+                seleccionguiaslistView.Items.Add(item);
+            }
+
+            ActualizarBultosSeleccion();
+        }
+        private void ActualizarBultosSeleccion()
+        {
+            bultoslabel.Text = $"Bultos: {seleccionguiaslistView.Items.Count}";
         }
 
         private void codigopostallabel_Click(object sender, EventArgs e)
@@ -159,7 +200,30 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
+            string cp = ingresarcodigopostaltextBox.Text.Trim();
+            if (!ValidarCodigoPostalArg(cp))
+            {
+                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ingresarcodigopostaltextBox.Clear();   // borra el contenido
+                ingresarcodigopostaltextBox.Focus(); // vuelve el foco al TextBox
+                return;
+            }
 
+            // Filtrar lo que ya está cargado en seleccionguiaslistView
+            foreach (ListViewItem item in seleccionguiaslistView.Items)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                item.BackColor = (guia != null && guia.CodigoPostalGuia == cp) ? Color.LightGreen : Color.LightGray;
+                ingresarcodigopostaltextBox.Clear();
+                ingresarcodigopostaltextBox.Focus();
+            }
+        }
+        private bool ValidarCodigoPostalArg(string cp)
+        {
+            if (string.IsNullOrWhiteSpace(cp)) return false;
+            cp = cp.Trim().ToUpper();
+            var regex = new System.Text.RegularExpressions.Regex(@"^([A-Z]\d{4}[A-Z]{3}|\d{4})$");
+            return regex.IsMatch(cp);
         }
 
         private void seleccionguiasgroupBox_Enter(object sender, EventArgs e)
@@ -171,6 +235,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
 
         }
+       
 
         private void cantidaddebultoslabel_Click(object sender, EventArgs e)
         {
@@ -184,12 +249,44 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregarguiasbutton_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                if (guia == null) continue;
 
+                var newItem = new ListViewItem(guia.GuiaId.ToString());
+                newItem.SubItems.Add(guia.DomicilioGuia);
+                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
+                newItem.Tag = guia;
+
+                detallehdrlistView.Items.Add(newItem);
+                seleccionguiaslistView.Items.Remove(item);
+            }
+
+            ActualizarTotalesDetalle();
         }
 
         private void agregartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in seleccionguiaslistView.Items)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                if (guia == null) continue;
 
+                var newItem = new ListViewItem(guia.GuiaId.ToString());
+                newItem.SubItems.Add(guia.DomicilioGuia);
+                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
+                newItem.Tag = guia;
+
+                detallehdrlistView.Items.Add(newItem);
+            }
+
+            seleccionguiaslistView.Items.Clear();
+            ActualizarTotalesDetalle();
+        }
+        private void ActualizarTotalesDetalle()
+        {
+            bultostotalasignadoslabel.Text = $"Total asignados: {detallehdrlistView.Items.Count}";
         }
 
         private void detallehdrgroupBox_Enter(object sender, EventArgs e)
