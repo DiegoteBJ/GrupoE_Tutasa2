@@ -2,142 +2,214 @@
 {
     public partial class RecepcionDespachoAgenciaForm : Form
     {
-        private bool fleteroValido = false;
+        private RecepcionDespachoAgenciaModelo modelo = new();
+        private Fletero? fleteroActual = null;
 
-        private Dictionary<string, string[]> fleteros = new Dictionary<string, string[]>()
-    {
-        { "28456789", new string[] { "Carlos", "Gómez" } },
-        { "35123456", new string[] { "Laura", "Martínez" } }
-    };
         public RecepcionDespachoAgenciaForm()
         {
             InitializeComponent();
+        }
 
+        private void RecepcionDespachoAgenciaForm_Load(object sender, EventArgs e)
+        {
             UsuarioRespuestaLabel.Text = "Usuario01";
             AgenciaRespuestaLabel.Text = "Agencia Moron Centro";
 
-            LimpiarFormulario();
+            NombreFleteroRespuestaLabel.Text = "";
+            ApellidoRespuestaLabel.Text = "";
+
+            NumeroHDRSuperiorLabel.Text = "";
+
+            HojasdeRutaListView.Items.Clear();
+            HDRaRendirAgenciaListView.Items.Clear();
+            DetalleGuiasListView.Items.Clear();
+
+            HojasdeRutaListView.Columns.Add("HDR", 200);
+            HDRaRendirAgenciaListView.Columns.Add("HDR", 300);
         }
-        private void BuscarFleteroBoton_Click_1(object sender, EventArgs e)
+
+        private void BuscarFleteroBoton_Click(object sender, EventArgs e)
         {
+            HojasdeRutaListView.Items.Clear();
+            HDRaRendirAgenciaListView.Items.Clear();
+            DetalleGuiasListView.Items.Clear();
+
             string dni = DNIFleteroBox.Text.Trim();
 
-            if (string.IsNullOrEmpty(dni))
+            // Validar vacío
+            if (string.IsNullOrWhiteSpace(dni))
             {
-                MessageBox.Show("Debe ingresar un numero de DNI");
-                return;
-            }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(dni, @"^\d+$"))
-            {
-                MessageBox.Show("Debe ingresar un numero entero positivo");
+                MessageBox.Show(
+                    "El formato del DNI es incorrecto. Debe ingresar un número entero válido.");
                 DNIFleteroBox.Clear();
                 return;
             }
 
+            // Validar numérico y convertir a long
+            if (!long.TryParse(dni, out long dniBuscado))
+            {
+                MessageBox.Show(
+                    "El formato del DNI es incorrecto. Debe ingresar un número entero válido.");
+                DNIFleteroBox.Clear();
+                return;
+            }
+
+            // Validar longitud
             if (dni.Length < 7 || dni.Length > 8)
             {
-                MessageBox.Show("Debe ingresar un numero que contenga entre 7 y 8 caracteres");
+                MessageBox.Show(
+                    "El formato del DNI es incorrecto. Debe ingresar un número entero válido.");
                 DNIFleteroBox.Clear();
                 return;
             }
 
-            if (!fleteros.ContainsKey(dni))
+            // Buscar fletero
+            foreach (var fletero in modelo.LFleteros)
             {
-                MessageBox.Show("No se encontró el fletero. Vuelva a intentarlo.");
-                DNIFleteroBox.Clear();
-                return;
+                if (fletero.fleteroDNI == dniBuscado)
+                {
+                    fleteroActual = fletero;
+
+                    NombreFleteroRespuestaLabel.Text =
+                        fletero.fleteroNombre;
+
+                    ApellidoRespuestaLabel.Text =
+                        fletero.fleteroApellido;
+                    foreach (var hdr in modelo.LHDRRetiro)
+                    {
+                        if (hdr.fleteroDNI == dniBuscado)
+                        {
+                            HojasdeRutaListView.Items.Add(hdr.numeroHDR);
+                        }
+                    }
+
+                    // HDR de distribución
+                    foreach (var hdr in modelo.LHDRDistribucion)
+                    {
+                        if (hdr.fleteroDNI == dniBuscado)
+                        {
+                            HDRaRendirAgenciaListView.Items.Add(hdr.numeroHDR);
+                        }
+                    }
+
+                    return;
+                }
             }
 
-            NombreFleteroRespuestaLabel.Text = fleteros[dni][0];
-            ApellidoRespuestaLabel.Text = fleteros[dni][1];
+            // Si no se encontró
+            MessageBox.Show(
+                "No se encontró el fletero. Vuelva a intentarlo.");
 
-            CargarGuias(dni);
+            DNIFleteroBox.Clear();
 
-            if (GuiasRecibirListView.Items.Count == 0 &&
-                GuiasEntregarAFleteroListView.Items.Count == 0)
-            {
-                MessageBox.Show("El fletero seleccionado no tiene guias a recibir ni entregar");
-                LimpiarFormulario();
-                return;
-            }
-
-            fleteroValido = true;
+            NombreFleteroRespuestaLabel.Text = "";
+            ApellidoRespuestaLabel.Text = "";
         }
 
-        private void CargarGuias(string dni)
+        private void HDRaRendirAgenciaListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GuiasRecibirListView.Items.Clear();
-            GuiasEntregarAFleteroListView.Items.Clear();
-
-            if (dni == "28456789")
+            if (HDRaRendirAgenciaListView.SelectedItems.Count > 0)
             {
-                ListViewItem fila1 = new ListViewItem("G-004821");
-                fila1.SubItems.Add("Tipo M");
-                GuiasRecibirListView.Items.Add(fila1);
+                string hdrSeleccionada =
+                    HDRaRendirAgenciaListView.SelectedItems[0].Text;
 
-                ListViewItem fila2 = new ListViewItem("G-004839");
-                fila2.SubItems.Add("Tipo L");
-                GuiasRecibirListView.Items.Add(fila2);
-
-                ListViewItem fila3 = new ListViewItem("G-003711");
-                fila3.SubItems.Add("Tipo XL");
-                fila3.SubItems.Add("CD Buenos Aires");
-                GuiasEntregarAFleteroListView.Items.Add(fila3);
+                NumeroHDRSuperiorLabel.Text = hdrSeleccionada; 
+                CargarDetalleHDR(hdrSeleccionada);
             }
-            else if (dni == "35123456")
-            {
-                ListViewItem fila1 = new ListViewItem("G-005001");
-                fila1.SubItems.Add("Tipo S");
-                GuiasRecibirListView.Items.Add(fila1);
+        }
 
-                ListViewItem fila2 = new ListViewItem("G-004100");
-                fila2.SubItems.Add("Tipo M");
-                fila2.SubItems.Add("CD Córdoba");
-                GuiasEntregarAFleteroListView.Items.Add(fila2);
+        private void HojasdeRutaListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (HojasdeRutaListView.SelectedItems.Count > 0)
+            {
+                string hdrSeleccionada =
+                    HojasdeRutaListView.SelectedItems[0].Text;
+
+                NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
+                CargarDetalleHDR(hdrSeleccionada);
+            }
+        }
+
+        private void CargarDetalleHDR(string hdrSeleccionada)
+        {
+            NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
+
+            DetalleGuiasListView.Items.Clear();
+
+            foreach (var guia in modelo.LGuias)
+            {
+                if (guia.numeroHDR == hdrSeleccionada) // Se procesan únicamente las guías marcadas.
+                                                       // Las guías no marcadas permanecen en su estado actual.
+                {
+                    ListViewItem item = new ListViewItem("");
+
+                    item.SubItems.Add(guia.guiaId.ToString());
+                    item.SubItems.Add(guia.tipo);
+
+                    DetalleGuiasListView.Items.Add(item);
+                }
             }
         }
 
         private void ConfirmarBoton_Click_1(object sender, EventArgs e)
         {
-            if (!fleteroValido)
+            bool hayAlgunaMarcada = false;
+
+            foreach (ListViewItem item in DetalleGuiasListView.Items)
             {
-                MessageBox.Show("Seleccione un transportista para continuar");
+                if (item.Checked)
+                {
+                    hayAlgunaMarcada = true;
+                    break;
+                }
+            }
+
+            if (!hayAlgunaMarcada)
+            {
+                MessageBox.Show(
+                    "Debe controlar al menos una guía antes de confirmar.");
                 return;
             }
 
-            MessageBox.Show("Operación confirmada. Se actualizaron los estados de las guías.");
-            LimpiarFormulario();
-        }
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de confirmar la operación?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-        private void CancelarBoton_Click_1(object sender, EventArgs e)
-        {
-            LimpiarFormulario();
-        }
+            if (respuesta == DialogResult.No)
+            {
+                return;
+            }
 
-        private void LimpiarFormulario()
-        {
-            DNIFleteroBox.Clear();
-            NombreFleteroRespuestaLabel.Text = "Nombre Fletero";
-            ApellidoRespuestaLabel.Text = "Apellido Fletero";
-            GuiasRecibirListView.Items.Clear();
-            GuiasEntregarAFleteroListView.Items.Clear();
-            fleteroValido = false;
-        }
+            MessageBox.Show(
+                "Operación confirmada. Estados actualizados.");
 
-        private void RecepcionDespachoAgencia_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
+            // FUTURO:
+            // Una vez confirmada la operación:
+            // 1. Actualizar estados de las guías marcadas.
+            // 2. Remover la HDR procesada de la lista correspondiente.
+            // 3. Limpiar el detalle de la HDR para permitir procesar otra HDR del mismo fletero.
+            NumeroHDRSuperiorLabel.Text = "";
+            DetalleGuiasListView.Items.Clear();
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CancelarBoton_Click(object sender, EventArgs e)
         {
+            DialogResult respuesta = MessageBox.Show(
+                "Si sale se eliminarán los datos ingresados. ¿Desea salir?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
+            if (respuesta == DialogResult.Yes)
+            {
+                MessageBox.Show(
+                    "Operación cancelada. No se ha registrado ninguna actualización de estados");
+
+                Close();
+            }
         }
     }
 }
