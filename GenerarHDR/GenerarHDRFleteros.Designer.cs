@@ -78,6 +78,7 @@
             buscardnifleterobutton.TabIndex = 21;
             buscardnifleterobutton.Text = "Buscar";
             buscardnifleterobutton.UseVisualStyleBackColor = true;
+            buscardnifleterobutton.Click += buscardnifleterobutton_Click;
             // 
             // apellidofleterolabel
             // 
@@ -87,6 +88,7 @@
             apellidofleterolabel.Size = new Size(98, 15);
             apellidofleterolabel.TabIndex = 20;
             apellidofleterolabel.Text = "[Apellido Fletero]";
+            apellidofleterolabel.Click += apellidofleterolabel_Click;
             // 
             // apellidolabel
             // 
@@ -96,6 +98,7 @@
             apellidolabel.Size = new Size(54, 15);
             apellidolabel.TabIndex = 19;
             apellidolabel.Text = "Apellido:";
+            apellidolabel.Click += apellidolabel_Click;
             // 
             // nombrefleterolabel
             // 
@@ -105,6 +108,7 @@
             nombrefleterolabel.Size = new Size(98, 15);
             nombrefleterolabel.TabIndex = 18;
             nombrefleterolabel.Text = "[Nombre Fletero]";
+            nombrefleterolabel.Click += nombrefleterolabel_Click;
             // 
             // nombrelabel
             // 
@@ -114,6 +118,7 @@
             nombrelabel.Size = new Size(54, 15);
             nombrelabel.TabIndex = 17;
             nombrelabel.Text = "Nombre:";
+            nombrelabel.Click += nombrelabel_Click;
             // 
             // centrodistribucionlabel
             // 
@@ -123,6 +128,7 @@
             centrodistribucionlabel.Size = new Size(134, 15);
             centrodistribucionlabel.TabIndex = 16;
             centrodistribucionlabel.Text = "[Centro de Distribución]";
+            centrodistribucionlabel.Click += centrodistribucionlabel_Click;
             // 
             // cdlabel
             // 
@@ -132,6 +138,7 @@
             cdlabel.Size = new Size(29, 15);
             cdlabel.TabIndex = 15;
             cdlabel.Text = "CD: ";
+            cdlabel.Click += cdlabel_Click;
             // 
             // numusuariolabel
             // 
@@ -141,6 +148,7 @@
             numusuariolabel.Size = new Size(25, 15);
             numusuariolabel.TabIndex = 14;
             numusuariolabel.Text = "003";
+            numusuariolabel.Click += numusuariolabel_Click;
             // 
             // usuariolabel
             // 
@@ -150,6 +158,7 @@
             usuariolabel.Size = new Size(50, 15);
             usuariolabel.TabIndex = 13;
             usuariolabel.Text = "Usuario:";
+            usuariolabel.Click += usuariolabel_Click;
             // 
             // ingresardnitextBox
             // 
@@ -157,6 +166,7 @@
             ingresardnitextBox.Name = "ingresardnitextBox";
             ingresardnitextBox.Size = new Size(120, 23);
             ingresardnitextBox.TabIndex = 12;
+            ingresardnitextBox.TextChanged += ingresardnitextBox_TextChanged;
             // 
             // dnifleterolabel
             // 
@@ -166,6 +176,7 @@
             dnifleterolabel.Size = new Size(30, 15);
             dnifleterolabel.TabIndex = 11;
             dnifleterolabel.Text = "DNI:";
+            dnifleterolabel.Click += dnifleterolabel_Click;
             // 
             // retiroradioButton
             // 
@@ -177,7 +188,7 @@
             retiroradioButton.TabStop = true;
             retiroradioButton.Text = "Retiro";
             retiroradioButton.UseVisualStyleBackColor = true;
-            retiroradioButton.CheckedChanged += radioButton5_CheckedChanged;
+            retiroradioButton.CheckedChanged += retiroradioButton_CheckedChanged;
             // 
             // distribucionradioButton
             // 
@@ -189,6 +200,7 @@
             distribucionradioButton.TabStop = true;
             distribucionradioButton.Text = "Distribución";
             distribucionradioButton.UseVisualStyleBackColor = true;
+            distribucionradioButton.CheckedChanged += distribucionradioButton_CheckedChanged;
             // 
             // detallehdrgroupBox
             // 
@@ -203,6 +215,7 @@
             detallehdrgroupBox.TabIndex = 25;
             detallehdrgroupBox.TabStop = false;
             detallehdrgroupBox.Text = "Detalle HDR";
+            detallehdrgroupBox.Enter += detallehdrgroupBox_Enter;
             // 
             // eliminartodoguiasbutton
             // 
@@ -212,6 +225,7 @@
             eliminartodoguiasbutton.TabIndex = 35;
             eliminartodoguiasbutton.Text = "Eliminar todo";
             eliminartodoguiasbutton.UseVisualStyleBackColor = true;
+            eliminartodoguiasbutton.Click += eliminartodoguiasbutton_Click;
             // 
             // eliminarguiasbutton
             // 
@@ -221,6 +235,7 @@
             eliminarguiasbutton.TabIndex = 29;
             eliminarguiasbutton.Text = "Eliminar";
             eliminarguiasbutton.UseVisualStyleBackColor = true;
+            eliminarguiasbutton.Click += eliminarguiasbutton_Click;
             // 
             // detallehdrlistView
             // 
@@ -231,6 +246,7 @@
             detallehdrlistView.TabIndex = 15;
             detallehdrlistView.UseCompatibleStateImageBehavior = false;
             detallehdrlistView.View = View.Details;
+            detallehdrlistView.SelectedIndexChanged += detallehdrlistView_SelectedIndexChanged;
             // 
             // Guíaresumenhdr
             // 
@@ -253,6 +269,7 @@
             bultostotalasignadoslabel.Size = new Size(63, 15);
             bultostotalasignadoslabel.TabIndex = 14;
             bultostotalasignadoslabel.Text = "[25 bultos]";
+            bultostotalasignadoslabel.Click += bultostotalasignadoslabel_Click;
             // 
             // totalbultosasignadoslabel
             // 
@@ -262,6 +279,7 @@
             totalbultosasignadoslabel.Size = new Size(128, 15);
             totalbultosasignadoslabel.TabIndex = 13;
             totalbultosasignadoslabel.Text = "Total bultos asignados:";
+            totalbultosasignadoslabel.Click += totalbultosasignadoslabel_Click;
             // 
             // seleccionguiaslistView
             // 
@@ -272,6 +290,7 @@
             seleccionguiaslistView.TabIndex = 26;
             seleccionguiaslistView.UseCompatibleStateImageBehavior = false;
             seleccionguiaslistView.View = View.Details;
+            seleccionguiaslistView.SelectedIndexChanged += seleccionguiaslistView_SelectedIndexChanged;
             // 
             // Guiaencomiendapendiente
             // 
@@ -303,6 +322,7 @@
             generarhdrbutton.TabIndex = 27;
             generarhdrbutton.Text = "Generar HDR";
             generarhdrbutton.UseVisualStyleBackColor = true;
+            generarhdrbutton.Click += generarhdrbutton_Click;
             // 
             // cancelargenerarhdrbutton
             // 
@@ -312,6 +332,7 @@
             cancelargenerarhdrbutton.TabIndex = 28;
             cancelargenerarhdrbutton.Text = "Cancelar";
             cancelargenerarhdrbutton.UseVisualStyleBackColor = true;
+            cancelargenerarhdrbutton.Click += cancelargenerarhdrbutton_Click;
             // 
             // agregarguiasbutton
             // 
@@ -321,6 +342,7 @@
             agregarguiasbutton.TabIndex = 29;
             agregarguiasbutton.Text = "Agregar";
             agregarguiasbutton.UseVisualStyleBackColor = true;
+            agregarguiasbutton.Click += agregarguiasbutton_Click;
             // 
             // agregartodoguiasbutton
             // 
@@ -330,6 +352,7 @@
             agregartodoguiasbutton.TabIndex = 30;
             agregartodoguiasbutton.Text = "Agregar todo";
             agregartodoguiasbutton.UseVisualStyleBackColor = true;
+            agregartodoguiasbutton.Click += agregartodoguiasbutton_Click;
             // 
             // codigopostallabel
             // 
@@ -339,6 +362,7 @@
             codigopostallabel.Size = new Size(84, 15);
             codigopostallabel.TabIndex = 31;
             codigopostallabel.Text = "Código Postal:";
+            codigopostallabel.Click += codigopostallabel_Click;
             // 
             // ingresarcodigopostaltextBox
             // 
@@ -346,6 +370,7 @@
             ingresarcodigopostaltextBox.Name = "ingresarcodigopostaltextBox";
             ingresarcodigopostaltextBox.Size = new Size(120, 23);
             ingresarcodigopostaltextBox.TabIndex = 32;
+            ingresarcodigopostaltextBox.TextChanged += ingresarcodigopostaltextBox_TextChanged;
             // 
             // buscarcodigopostalbutton
             // 
@@ -355,6 +380,7 @@
             buscarcodigopostalbutton.TabIndex = 33;
             buscarcodigopostalbutton.Text = "Buscar";
             buscarcodigopostalbutton.UseVisualStyleBackColor = true;
+            buscarcodigopostalbutton.Click += buscarcodigopostalbutton_Click;
             // 
             // cantidaddebultoslabel
             // 
@@ -364,6 +390,7 @@
             cantidaddebultoslabel.Size = new Size(110, 15);
             cantidaddebultoslabel.TabIndex = 16;
             cantidaddebultoslabel.Text = "Cantidad de bultos:";
+            cantidaddebultoslabel.Click += cantidaddebultoslabel_Click;
             // 
             // seleccionguiasgroupBox
             // 
@@ -378,6 +405,7 @@
             seleccionguiasgroupBox.TabIndex = 34;
             seleccionguiasgroupBox.TabStop = false;
             seleccionguiasgroupBox.Text = "Selección de guías:";
+            seleccionguiasgroupBox.Enter += seleccionguiasgroupBox_Enter;
             // 
             // bultoslabel
             // 
@@ -387,6 +415,7 @@
             bultoslabel.Size = new Size(63, 15);
             bultoslabel.TabIndex = 31;
             bultoslabel.Text = "[25 bultos]";
+            bultoslabel.Click += bultoslabel_Click;
             // 
             // GenerarHDRFleteros
             // 
