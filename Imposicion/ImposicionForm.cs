@@ -1,6 +1,4 @@
-﻿using GrupoE_Tutasa.MonitoreoResultados;
-
-namespace GrupoE_Tutasa.Imposicion
+﻿namespace GrupoE_Tutasa.Imposicion
 {
     public partial class ImposicionForm : Form
     {
@@ -9,10 +7,9 @@ namespace GrupoE_Tutasa.Imposicion
         public ImposicionForm()
         {
             InitializeComponent();
-            button2.Click += button2_Click;  // Cancelar (no tiene Click en el Designer)
+            button2.Click += button2_Click;  // Cancelar
         }
 
-        // Variable de estado: remitente encontrado al buscar por CUIT
         private ClienteRemitente clienteActual = null;
 
         // ─────────────────────────────────────────────
@@ -20,328 +17,276 @@ namespace GrupoE_Tutasa.Imposicion
         // ─────────────────────────────────────────────
         private void Form1_Load(object sender, EventArgs e)
         {
-            /* El formulario aún no es visible. Se cargan los datos del modelo
-               para inicializar los controles antes de que el usuario interactúe. */
+            // Provincias entrega
+            ProvinciaEntregaComboBox.DataSource = modelo.LProvincias;
+            ProvinciaEntregaComboBox.DisplayMember = "Nombre";
+            ProvinciaEntregaComboBox.ValueMember = "ProvinciaId";
+            ProvinciaEntregaComboBox.SelectedIndex = -1;
+            ProvinciaEntregaComboBox.SelectedIndexChanged += ProvinciaEntregaComboBox_SelectedIndexChanged;
 
-            // comboBox1 = Provincia (Datos para la Entrega)
-            comboBox1.DataSource = modelo.LProvincias;
-            comboBox1.DisplayMember = "Nombre";
-            comboBox1.ValueMember = "ProvinciaId";
-            comboBox1.SelectedIndex = -1;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            LocalidadEntregaComboBox.Enabled = false;
+            LocalidadEntregaComboBox.SelectedIndexChanged += LocalidadEntregaComboBox_SelectedIndexChanged;
 
-            // comboBox2 = Localidad entrega → deshabilitado hasta elegir provincia
-            comboBox2.Enabled = false;
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            AgenciaEntregaComboBox.Enabled = false;
+            AgenciaEntregaComboBox.Visible = false;
+            CDEntregaComboBox.Enabled = false;
+            CDEntregaComboBox.Visible = false;
 
-            // comboBox3 = Agencia, comboBox4 = CD → deshabilitados al inicio
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
+            DomicilioEntregaRadio.CheckedChanged += DomicilioEntregaRadio_CheckedChanged;
 
-          
-            // radioButton2 ya tiene CheckedChanged en el Designer
+            // Provincias retiro
+            ProvinciaRetiroComboBox.DataSource = modelo.LProvincias;
+            ProvinciaRetiroComboBox.DisplayMember = "Nombre";
+            ProvinciaRetiroComboBox.ValueMember = "ProvinciaId";
+            ProvinciaRetiroComboBox.SelectedIndex = -1;
+            ProvinciaRetiroComboBox.SelectedIndexChanged += ProvinciaRetiroComboBox_SelectedIndexChanged;
 
-            // textBoxes de cantidades → suscribir eventos
-            textBox10.TextChanged += textBox10_TextChanged;
-            textBox11.TextChanged += textBox11_TextChanged;
-            textBox12.TextChanged += textBox12_TextChanged;
-            textBox13.TextChanged += textBox13_TextChanged;
+            LocalidadRetiroComboBox.Enabled = false;
 
-            // panel1 = panel "Entrega a domicilio" → oculto al inicio
+            DomicilioFiscalCheck.CheckedChanged += DomicilioFiscalCheck_CheckedChanged;
+
+            // Cantidades
+            CantidadSTextBox.TextChanged += CantidadSTextBox_TextChanged;
+            CantidadMTextBox.TextChanged += CantidadMTextBox_TextChanged;
+            CantidadLTextBox.TextChanged += CantidadLTextBox_TextChanged;
+            CantidadXLTextBox.TextChanged += CantidadXLTextBox_TextChanged;
+
             panel1.Visible = false;
 
-            // Limpiar labels de respuesta del remitente
-            // label27 = Nombre, label28 = Teléfono, label29 = Dirección
-            label27.Text = string.Empty;
-            label28.Text = string.Empty;
-            label29.Text = string.Empty;
+            // Limpiar labels remitente
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
+            DireccionRemitenteLabel.Text = string.Empty;
 
             // Limpiar totales
-            // label31 = Total Bultos, label32 = Guías a Generar, label33 = Importe Estimado
-            label31.Text = "[Total]";
-            label32.Text = "[Guias]";
-            label33.Text = "[ $... ]";
-
-            // MEJORAS DEL FORMULARIO
-
-            // Cargar provincias en comboBox6 (Provincia - Domicilio de retiro)
-            comboBox6.DataSource = modelo.LProvincias;
-            comboBox6.DisplayMember = "Nombre";
-            comboBox6.ValueMember = "ProvinciaId";
-            comboBox6.SelectedIndex = -1;
-
-            // comboBox5 = Localidad retiro → deshabilitado hasta elegir provincia
-            comboBox5.Enabled = false;
-
-            // Suscribir eventos del checkbox y cascada de retiro
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            comboBox6.SelectedIndexChanged += comboBox6_SelectedIndexChanged;
+            TotalBultosLabel.Text = "[Total]";
+            GuiasAGenerarLabel.Text = "[Guias]";
+            ImporteEstimadoLabel.Text = "[ $... ]";
         }
 
         // ─────────────────────────────────────────────
-        // BUSCAR REMITENTE POR CUIT
-        // button1 = Buscar, textBox1 = campo CUIT
-        // label27 = Nombre, label28 = Teléfono, label29 = Dirección
+        // BUSCAR REMITENTE
         // ─────────────────────────────────────────────
-        private void button1_Click(object sender, EventArgs e)
+        private void BuscarRemitenteBoton_Click(object sender, EventArgs e)
         {
-            // Limpiar búsqueda anterior
             clienteActual = null;
-            label27.Text = string.Empty;
-            label28.Text = string.Empty;
-            label29.Text = string.Empty;
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
+            DireccionRemitenteLabel.Text = string.Empty;
 
-            // Validar que el campo no esté vacío
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(CuitRemitenteTextBox.Text))
             {
                 MessageBox.Show("Es necesario que ingrese un dato.");
                 return;
             }
-
-            // Validar formato de CUIT
-            if (!ImposicionModelo.ValidarCuit(textBox1.Text))
+            if (!ImposicionModelo.ValidarCuit(CuitRemitenteTextBox.Text))
             {
                 MessageBox.Show("Ingresá un CUIT válido.");
-                textBox1.Clear();
+                CuitRemitenteTextBox.Clear();
                 return;
             }
-
-            if (!long.TryParse(textBox1.Text, out long cuit))
+            if (!long.TryParse(CuitRemitenteTextBox.Text, out long cuit))
             {
                 MessageBox.Show("El CUIT debe ser un número válido.");
                 return;
             }
 
-            // Buscar cliente en el modelo
             int encuentro = 0;
             foreach (var cliente in modelo.LClientes)
             {
                 if (cliente.CUIT == cuit)
                 {
                     clienteActual = cliente;
-                    label27.Text = cliente.Nombre;
-                    label28.Text = cliente.Telefono;
-                    label29.Text = cliente.Direccion;
+                    NombreRemitenteLabel.Text = cliente.Nombre;
+                    TelefonoRemitenteLabel.Text = cliente.Telefono;
+                    DireccionRemitenteLabel.Text = cliente.Direccion;
                     encuentro = 1;
                 }
             }
-
             if (encuentro == 0)
             {
                 MessageBox.Show("Ingresá un CUIT válido.");
-                textBox1.Clear();
+                CuitRemitenteTextBox.Clear();
             }
         }
 
-
-        //MEJORAS
-
-        // Método nuevo: toggle del domicilio fiscal
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        // ─────────────────────────────────────────────
+        // DOMICILIO FISCAL
+        // ─────────────────────────────────────────────
+        private void DomicilioFiscalCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bool fiscal = checkBox1.Checked;
-
-            // Deshabilitar/habilitar los controles manuales de retiro
-            comboBox6.Enabled = !fiscal;   // Provincia retiro
-            comboBox5.Enabled = !fiscal;   // Localidad retiro
-            textBox8.Enabled = !fiscal;   // Dirección retiro
-            textBox9.Enabled = !fiscal;   // CP retiro
-        }
-
-        // Método nuevo: cascada Provincia → Localidad en Domicilio de retiro
-        // comboBox6 = Provincia retiro, comboBox5 = Localidad retiro
-        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBox5.DataSource = null;
-            comboBox5.Enabled = false;
-
-            if (comboBox6.SelectedItem is not Provincia provinciaSeleccionada)
-                return;
-
-            var localidades = modelo.ObtenerLocalidadesPorProvincia(provinciaSeleccionada.ProvinciaId);
-            comboBox5.DataSource = localidades;
-            comboBox5.DisplayMember = "Nombre";
-            comboBox5.ValueMember = "LocalidadId";
-            comboBox5.SelectedIndex = -1;
-            comboBox5.Enabled = true;
+            bool fiscal = DomicilioFiscalCheck.Checked;
+            ProvinciaRetiroComboBox.Enabled = !fiscal;
+            LocalidadRetiroComboBox.Enabled = !fiscal;
+            DireccionRetiroTextBox.Enabled = !fiscal;
+            CPRetiroTextBox.Enabled = !fiscal;
         }
 
         // ─────────────────────────────────────────────
-        // CASCADA PROVINCIA → LOCALIDAD
-        // comboBox1 = Provincia, comboBox2 = Localidad
+        // CASCADA RETIRO: Provincia → Localidad
         // ─────────────────────────────────────────────
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProvinciaRetiroComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox2.DataSource = null;
-            comboBox3.DataSource = null;
-            comboBox4.DataSource = null;
-            comboBox2.Enabled = false;
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
+            LocalidadRetiroComboBox.DataSource = null;
+            LocalidadRetiroComboBox.Enabled = false;
 
-            if (comboBox1.SelectedItem is not Provincia provinciaSeleccionada)
-                return;
+            if (ProvinciaRetiroComboBox.SelectedItem is not Provincia prov) return;
 
-            var localidades = modelo.ObtenerLocalidadesPorProvincia(provinciaSeleccionada.ProvinciaId);
-            comboBox2.DataSource = localidades;
-            comboBox2.DisplayMember = "Nombre";
-            comboBox2.ValueMember = "LocalidadId";
-            comboBox2.SelectedIndex = -1;
-            comboBox2.Enabled = true;
+            var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
+            LocalidadRetiroComboBox.DataSource = localidades;
+            LocalidadRetiroComboBox.DisplayMember = "Nombre";
+            LocalidadRetiroComboBox.ValueMember = "LocalidadId";
+            LocalidadRetiroComboBox.SelectedIndex = -1;
+            LocalidadRetiroComboBox.Enabled = true;
         }
 
         // ─────────────────────────────────────────────
-        // CASCADA LOCALIDAD → AGENCIAS / CDs
-        // comboBox2 = Localidad, comboBox3 = Agencia, comboBox4 = CD
+        // CASCADA ENTREGA: Provincia → Localidad
         // ─────────────────────────────────────────────
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProvinciaEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Resetear todo
-            comboBox3.DataSource = null;
-            comboBox4.DataSource = null;
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
-            comboBox3.Visible = false;
-            comboBox4.Visible = false;
+            LocalidadEntregaComboBox.DataSource = null;
+            AgenciaEntregaComboBox.DataSource = null;
+            CDEntregaComboBox.DataSource = null;
+            LocalidadEntregaComboBox.Enabled = false;
+            AgenciaEntregaComboBox.Enabled = false;
+            AgenciaEntregaComboBox.Visible = false;
+            CDEntregaComboBox.Enabled = false;
+            CDEntregaComboBox.Visible = false;
 
-            if (comboBox2.SelectedItem is not Localidad localidadSeleccionada)
-                return;
+            if (ProvinciaEntregaComboBox.SelectedItem is not Provincia prov) return;
 
-            var agencias = modelo.ObtenerAgenciasPorLocalidad(localidadSeleccionada.LocalidadId);
-            var cds = modelo.ObtenerCDsPorLocalidad(localidadSeleccionada.LocalidadId);
+            var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
+            LocalidadEntregaComboBox.DataSource = localidades;
+            LocalidadEntregaComboBox.DisplayMember = "Nombre";
+            LocalidadEntregaComboBox.ValueMember = "LocalidadId";
+            LocalidadEntregaComboBox.SelectedIndex = -1;
+            LocalidadEntregaComboBox.Enabled = true;
+        }
 
-            // Mostrar y cargar Agencia solo si hay disponibles
+        // ─────────────────────────────────────────────
+        // CASCADA ENTREGA: Localidad → Agencia / CD
+        // ─────────────────────────────────────────────
+        private void LocalidadEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AgenciaEntregaComboBox.DataSource = null;
+            CDEntregaComboBox.DataSource = null;
+            AgenciaEntregaComboBox.Enabled = false;
+            AgenciaEntregaComboBox.Visible = false;
+            CDEntregaComboBox.Enabled = false;
+            CDEntregaComboBox.Visible = false;
+
+            if (LocalidadEntregaComboBox.SelectedItem is not Localidad loc) return;
+
+            var agencias = modelo.ObtenerAgenciasPorLocalidad(loc.LocalidadId);
+            var cds = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
+
             if (agencias.Count > 0)
             {
-                comboBox3.DataSource = agencias;
-                comboBox3.DisplayMember = "Nombre";
-                comboBox3.ValueMember = "AgenciaId";
-                comboBox3.SelectedIndex = -1;
-                comboBox3.Visible = true;
-                comboBox3.Enabled = true;
+                AgenciaEntregaComboBox.DataSource = agencias;
+                AgenciaEntregaComboBox.DisplayMember = "Nombre";
+                AgenciaEntregaComboBox.ValueMember = "AgenciaId";
+                AgenciaEntregaComboBox.SelectedIndex = -1;
+                AgenciaEntregaComboBox.Visible = true;
+                AgenciaEntregaComboBox.Enabled = true;
             }
-
-            // Mostrar y cargar CD solo si hay disponibles
             if (cds.Count > 0)
             {
-                comboBox4.DataSource = cds;
-                comboBox4.DisplayMember = "Nombre";
-                comboBox4.ValueMember = "CDId";
-                comboBox4.SelectedIndex = -1;
-                comboBox4.Visible = true;
-                comboBox4.Enabled = true;
+                CDEntregaComboBox.DataSource = cds;
+                CDEntregaComboBox.DisplayMember = "Nombre";
+                CDEntregaComboBox.ValueMember = "CDId";
+                CDEntregaComboBox.SelectedIndex = -1;
+                CDEntregaComboBox.Visible = true;
+                CDEntregaComboBox.Enabled = true;
             }
         }
 
         // ─────────────────────────────────────────────
-        // SELECCIÓN TIPO DE ENTREGA
-        // radioButton1 = Agencia, radioButton3 = CD, radioButton2 = Domicilio
-        // panel1 = panel "Entrega a domicilio"
+        // RADIO DOMICILIO
         // ─────────────────────────────────────────────
-      
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void DomicilioEntregaRadio_CheckedChanged(object sender, EventArgs e)
         {
-            panel1.Visible = radioButton2.Checked;
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
+            panel1.Visible = DomicilioEntregaRadio.Checked;
         }
 
         // ─────────────────────────────────────────────
-        // CÁLCULO AUTOMÁTICO DE TOTALES
-        // textBox10=cantS, textBox11=cantM, textBox12=cantL, textBox13=cantXL
-        // label31=Total Bultos, label32=Guías, label33=Importe Estimado
+        // CÁLCULO DE TOTALES
         // ─────────────────────────────────────────────
         private void ActualizarTotales()
         {
-            int.TryParse(textBox10.Text, out int cantS);
-            int.TryParse(textBox11.Text, out int cantM);
-            int.TryParse(textBox12.Text, out int cantL);
-            int.TryParse(textBox13.Text, out int cantXL);
+            int.TryParse(CantidadSTextBox.Text, out int cantS);
+            int.TryParse(CantidadMTextBox.Text, out int cantM);
+            int.TryParse(CantidadLTextBox.Text, out int cantL);
+            int.TryParse(CantidadXLTextBox.Text, out int cantXL);
 
             int totalBultos = cantS + cantM + cantL + cantXL;
-            label31.Text = totalBultos.ToString();
-            label32.Text = totalBultos.ToString();  // 1 guía por bulto
+            TotalBultosLabel.Text = totalBultos.ToString();
+            GuiasAGenerarLabel.Text = totalBultos.ToString();
 
             decimal importe = modelo.CalcularImporteEstimado(cantS, cantM, cantL, cantXL);
-            label33.Text = $"$ {importe:N2}";
+            ImporteEstimadoLabel.Text = $"$ {importe:N2}";
         }
 
-        private void textBox10_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void textBox11_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void textBox12_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void textBox13_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadSTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadMTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadXLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
 
         // ─────────────────────────────────────────────
         // CONFIRMAR
-        // button3 = Confirmar
         // ─────────────────────────────────────────────
         private void button3_Click(object sender, EventArgs e)
         {
-            // Validar remitente
             if (clienteActual == null)
             {
                 MessageBox.Show("Debe seleccionar un remitente antes de confirmar.");
                 return;
             }
-
-            // Validar Nombre destinatario (textBox5)
-            if (string.IsNullOrWhiteSpace(textBox5.Text) ||
-                !textBox5.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            if (string.IsNullOrWhiteSpace(NombreDestinatarioTextBox.Text) ||
+                !NombreDestinatarioTextBox.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 MessageBox.Show("Nombre y Apellido deben ser válidos (solo letras).");
                 return;
             }
-
-            // Validar Apellido destinatario (textBox7)
-            if (string.IsNullOrWhiteSpace(textBox7.Text) ||
-                !textBox7.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            if (string.IsNullOrWhiteSpace(ApellidoDestinatarioTextBox.Text) ||
+                !ApellidoDestinatarioTextBox.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 MessageBox.Show("Nombre y Apellido deben ser válidos (solo letras).");
                 return;
             }
-
-            // Validar DNI destinatario (textBox6)
-            if (!long.TryParse(textBox6.Text, out long dni) ||
-                textBox6.Text.Length < 7 || textBox6.Text.Length > 8)
+            if (!long.TryParse(DNIDestinatarioTextBox.Text, out long dni) ||
+                DNIDestinatarioTextBox.Text.Length < 7 || DNIDestinatarioTextBox.Text.Length > 8)
             {
                 MessageBox.Show("Ingresá un DNI válido (7-8 dígitos).");
                 return;
             }
-
-            // Validar provincia destino (comboBox1)
-            if (comboBox1.SelectedIndex == -1)
+            if (ProvinciaEntregaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccioná una provincia.");
                 return;
             }
-
-            // Validar localidad destino (comboBox2)
-            if (comboBox2.SelectedIndex == -1)
+            if (LocalidadEntregaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccioná una localidad.");
                 return;
             }
-
-            // Validar tipo de entrega
-            if (!radioButton2.Checked && comboBox3.SelectedIndex == -1 && comboBox4.SelectedIndex == -1)
+            if (!DomicilioEntregaRadio.Checked &&
+                AgenciaEntregaComboBox.SelectedIndex == -1 &&
+                CDEntregaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccioná el tipo de entrega: elegí una Agencia, un CD, o marcá Domicilio.");
                 return;
             }
-
-            // Validar dirección domicilio (textBox2)
-            if (radioButton2.Checked && string.IsNullOrWhiteSpace(textBox2.Text))
+            if (DomicilioEntregaRadio.Checked && string.IsNullOrWhiteSpace(DireccionDomicilioTextBox.Text))
             {
                 MessageBox.Show("Ingresá una dirección válida.");
                 return;
             }
 
-            // Validar cantidades
-            int.TryParse(textBox10.Text, out int cantS);
-            int.TryParse(textBox11.Text, out int cantM);
-            int.TryParse(textBox12.Text, out int cantL);
-            int.TryParse(textBox13.Text, out int cantXL);
+            int.TryParse(CantidadSTextBox.Text, out int cantS);
+            int.TryParse(CantidadMTextBox.Text, out int cantM);
+            int.TryParse(CantidadLTextBox.Text, out int cantL);
+            int.TryParse(CantidadXLTextBox.Text, out int cantXL);
 
             if (cantS + cantM + cantL + cantXL == 0)
             {
@@ -349,30 +294,27 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // Determinar tipo de entrega y datos del destino
-            // Ya no se usan radioButton1/radioButton3 — se detecta por el comboBox seleccionado
-            string tipoEntrega = radioButton2.Checked ? "Domicilio" :
-                                   comboBox3.SelectedIndex != -1 ? "Agencia" : "CD";
+            string tipoEntrega = DomicilioEntregaRadio.Checked ? "Domicilio" :
+                                   AgenciaEntregaComboBox.SelectedIndex != -1 ? "Agencia" : "CD";
             string direccionDest = string.Empty;
             string cpDest = string.Empty;
 
-            if (comboBox3.SelectedItem is Agencia agencia)
+            if (AgenciaEntregaComboBox.SelectedItem is Agencia agencia)
             {
                 direccionDest = agencia.Direccion;
                 cpDest = agencia.CodigoPostal;
             }
-            else if (comboBox4.SelectedItem is CentroDistribucion cd)
+            else if (CDEntregaComboBox.SelectedItem is CentroDistribucion cd)
             {
                 direccionDest = cd.Direccion;
                 cpDest = cd.CodigoPostal;
             }
-            else if (radioButton2.Checked)
+            else if (DomicilioEntregaRadio.Checked)
             {
-                direccionDest = textBox2.Text;
-                cpDest = textBox3.Text;
+                direccionDest = DireccionDomicilioTextBox.Text;
+                cpDest = CPDomicilioTextBox.Text;
             }
 
-            // Registrar una guía por cada encomienda
             int totalBultos = cantS + cantM + cantL + cantXL;
             decimal importeEstimado = modelo.CalcularImporteEstimado(cantS, cantM, cantL, cantXL);
             var guiasGeneradas = new List<string>();
@@ -388,8 +330,8 @@ namespace GrupoE_Tutasa.Imposicion
                         TipoEntrega = tipoEntrega,
                         DireccionDestino = direccionDest,
                         CPDestino = cpDest,
-                        NombreDestinatario = textBox5.Text,
-                        ApellidoDestinatario = textBox7.Text,
+                        NombreDestinatario = NombreDestinatarioTextBox.Text,
+                        ApellidoDestinatario = ApellidoDestinatarioTextBox.Text,
                         DNIDestinatario = dni,
                         Estado = "A retirar",
                         ImporteEstimado = importeEstimado / totalBultos,
@@ -412,7 +354,6 @@ namespace GrupoE_Tutasa.Imposicion
 
         // ─────────────────────────────────────────────
         // CANCELAR
-        // button2 = Cancelar (evento suscripto en el constructor)
         // ─────────────────────────────────────────────
         private void button2_Click(object sender, EventArgs e)
         {
@@ -429,51 +370,47 @@ namespace GrupoE_Tutasa.Imposicion
         }
 
         // ─────────────────────────────────────────────
-        // LIMPIEZA DEL FORMULARIO
+        // LIMPIEZA
         // ─────────────────────────────────────────────
         private void LimpiarFormulario()
         {
             clienteActual = null;
 
-            // Sección remitente
-            textBox1.Clear();
-            label27.Text = string.Empty;
-            label28.Text = string.Empty;
-            label29.Text = string.Empty;
+            CuitRemitenteTextBox.Clear();
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
+            DireccionRemitenteLabel.Text = string.Empty;
 
-            // Sección destinatario
-            textBox5.Clear();   // Nombre
-            textBox7.Clear();   // Apellido
-            textBox6.Clear();   // DNI
+            NombreDestinatarioTextBox.Clear();
+            ApellidoDestinatarioTextBox.Clear();
+            DNIDestinatarioTextBox.Clear();
 
-            // Sección entrega
-            comboBox1.SelectedIndex = -1;
-            comboBox2.DataSource = null;
-            comboBox2.Enabled = false;
-            radioButton2.Checked = false;
-            comboBox3.DataSource = null;
-            comboBox3.Enabled = false;
-            comboBox3.Visible = false;
-            comboBox4.DataSource = null;
-            comboBox4.Enabled = false;
-            comboBox4.Visible = false;
+            ProvinciaEntregaComboBox.SelectedIndex = -1;
+            LocalidadEntregaComboBox.DataSource = null;
+            LocalidadEntregaComboBox.Enabled = false;
+            DomicilioEntregaRadio.Checked = false;
+            AgenciaEntregaComboBox.DataSource = null;
+            AgenciaEntregaComboBox.Enabled = false;
+            AgenciaEntregaComboBox.Visible = false;
+            CDEntregaComboBox.DataSource = null;
+            CDEntregaComboBox.Enabled = false;
+            CDEntregaComboBox.Visible = false;
             panel1.Visible = false;
-            textBox2.Clear();   // Dirección domicilio
-            textBox3.Clear();   // CP domicilio
+            DireccionDomicilioTextBox.Clear();
+            CPDomicilioTextBox.Clear();
 
-            // Sección cantidades
-            textBox10.Clear();
-            textBox11.Clear();
-            textBox12.Clear();
-            textBox13.Clear();
+            CantidadSTextBox.Clear();
+            CantidadMTextBox.Clear();
+            CantidadLTextBox.Clear();
+            CantidadXLTextBox.Clear();
 
-            // Totales
-            label31.Text = "[Total]";
-            label32.Text = "[Guias]";
-            label33.Text = "[ $... ]";
+            TotalBultosLabel.Text = "[Total]";
+            GuiasAGenerarLabel.Text = "[Guias]";
+            ImporteEstimadoLabel.Text = "[ $... ]";
         }
+
         // ─────────────────────────────────────────────
-        // HANDLERS REQUERIDOS POR EL DESIGNER (sin lógica)
+        // HANDLERS REQUERIDOS POR EL DESIGNER
         // ─────────────────────────────────────────────
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }
@@ -486,6 +423,6 @@ namespace GrupoE_Tutasa.Imposicion
         private void label12_Click(object sender, EventArgs e) { }
         private void label19_Click(object sender, EventArgs e) { }
         private void label26_Click(object sender, EventArgs e) { }
-        private void textBox3_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CPDomicilioTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
     }
 }
