@@ -88,6 +88,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             if (fletero != null)
             {
+                //Muestra nombre y apellido de fletero en labels correspondientes, habilita los radio buttons de retiro y distribución
                 nombrefleterolabel.Text = fletero.FleteroNombre;
                 apellidofleterolabel.Text = fletero.FleteroApellido;
                 this.Tag = fletero; // guardar contexto simple
