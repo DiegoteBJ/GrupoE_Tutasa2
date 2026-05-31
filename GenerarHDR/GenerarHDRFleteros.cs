@@ -22,25 +22,15 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             // Form_Load: estado inicial
             ingresardnitextBox.Enabled = true;
-            buscardnifleterobutton.Enabled = false;
+            buscardnifleterobutton.Enabled = true;
             nombrefleterolabel.Text = string.Empty;
             apellidofleterolabel.Text = string.Empty;
             retiroradioButton.Enabled = false;
             distribucionradioButton.Enabled = false;
             buscarcodigopostalbutton.Enabled = false;
 
-            // Autocompletar de códigos postales
-            var modelo = new AsignarGuiasModelo();
-            var codigosPostales = modelo.LGuiasAAsignar
-                                        .Select(g => g.CodigoPostalGuia)
-                                        .Distinct()
-                                        .ToArray();
-
-            ingresarcodigopostaltextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            ingresarcodigopostaltextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            var source = new AutoCompleteStringCollection();
-            source.AddRange(codigosPostales);
-            ingresarcodigopostaltextBox.AutoCompleteCustomSource = source;
+            // Predictivo vacío al inicio
+            ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
         }
 
         private void usuariolabel_Click(object sender, EventArgs e)
@@ -75,15 +65,15 @@ namespace GrupoE_Tutasa.GenerarHDR
             string raw = ingresardnitextBox.Text ?? string.Empty;
             string digits = new string(raw.Where(char.IsDigit).ToArray());
 
+            // Limitar a 8 dígitos
+            if (digits.Length > 8)
+                digits = digits.Substring(0, 8);
+
             if (ingresardnitextBox.Text != digits)
             {
                 ingresardnitextBox.Text = digits;
                 ingresardnitextBox.SelectionStart = Math.Min(selStart, digits.Length);
             }
-
-            // Habilitar sólo si longitud 7 u 8 y es número no negativo
-            buscardnifleterobutton.Enabled = (digits.Length == 7 || digits.Length == 8) && int.TryParse(digits, out int n) && n >= 0;
-        
         
         }
 
@@ -94,6 +84,9 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (!AsignarGuiasModelo.ValidarDniString(dni))
             {
                 MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ResetearFormularioFletero();
+                ingresardnitextBox.Focus();
+                ingresardnitextBox.SelectAll();
                 return;
             }
 
@@ -113,22 +106,24 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 nombrefleterolabel.Text = string.Empty;
                 apellidofleterolabel.Text = string.Empty;
-                MessageBox.Show($"No se encontró un fletero con DNI {dni}.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"No se encontró un fletero con DNI {dni}.",
+                                 "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetearFormularioFletero();
             }
 
 
         }
 
-      
-
-        private void ingresardnitextBox_KeyDown(object sender, KeyEventArgs e)
+        private void ResetearFormularioFletero()
         {
-            // Atajo Enter
-            if (e.KeyCode == Keys.Enter && buscardnifleterobutton.Enabled)
-            {
-                buscardnifleterobutton.PerformClick();
-                e.Handled = true;
-            }
+            nombrefleterolabel.Text = string.Empty;
+            apellidofleterolabel.Text = string.Empty;
+            retiroradioButton.Checked = false;
+            retiroradioButton.Enabled = false;
+            distribucionradioButton.Checked = false;
+            distribucionradioButton.Enabled = false;
+            seleccionguiaslistView.Items.Clear();
+            this.Tag = null; // borra el contexto del fletero anterior
         }
 
         private void nombrelabel_Click(object sender, EventArgs e)
@@ -155,12 +150,16 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A retirar");
+                ActualizarAutoCompleteCP("A retirar");
+                buscarcodigopostalbutton.Enabled = true;
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
                 CargarGuiasPorEstado("Admitida");
+                ActualizarAutoCompleteCP("Admitida");
+                buscarcodigopostalbutton.Enabled = true;
         }
 
         private void CargarGuiasPorEstado(string estado)
@@ -225,7 +224,22 @@ namespace GrupoE_Tutasa.GenerarHDR
             var regex = new System.Text.RegularExpressions.Regex(@"^([A-Z]\d{4}[A-Z]{3}|\d{4})$");
             return regex.IsMatch(cp);
         }
+        private void ActualizarAutoCompleteCP(string estado)
+        {
+            var modelo = new AsignarGuiasModelo();
+            var codigosPostales = modelo.LGuiasAAsignar
+                                        .Where(g => g.EstadoGuia == estado)
+                                        .Select(g => g.CodigoPostalGuia)
+                                        .Distinct()
+                                        .ToArray();
 
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(codigosPostales);
+
+            ingresarcodigopostaltextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            ingresarcodigopostaltextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            ingresarcodigopostaltextBox.AutoCompleteCustomSource = source;
+        }
         private void seleccionguiasgroupBox_Enter(object sender, EventArgs e)
         {
 
