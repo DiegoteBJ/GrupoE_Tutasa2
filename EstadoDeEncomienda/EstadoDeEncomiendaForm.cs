@@ -11,6 +11,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 {
     public partial class EstadoDeEncomiendaForm : Form
     {
+        private EstadoDeEncomiendaModelo modelo = new EstadoDeEncomiendaModelo();
         public EstadoDeEncomiendaForm()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
         private void Button_Buscar_Click(object sender, EventArgs e)
         {
-            string guia = TextBox_NroGuia.Text.Trim();
+            string guia = TextBox_numerodeguia.Text.Trim();
 
             if (guia == "")
             {
@@ -41,14 +42,11 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
                 return;
             }
 
-            if (guia.Length != 9)
-            {
-                MessageBox.Show("El número de guía debe tener 9 dígitos.");
-                return;
-            }
+            int guiaId = Convert.ToInt32(guia);
 
-            // Simulación (dato ficticio)
-            if (guia != "123456789")
+            Guia guiaEncontrada = modelo.BuscarGuia(guiaId);
+
+            if (guiaEncontrada == null)
             {
                 MessageBox.Show("Número de guía no encontrado.");
                 return;
@@ -56,23 +54,20 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
             ListView_Resultado.Items.Clear();
 
-            ListViewItem fila1 = new ListViewItem("03/05/2026");
-            fila1.SubItems.Add("En tránsito");
-            fila1.SubItems.Add("CD Central");
+            foreach (MovimientoEstadoGuia movimiento in guiaEncontrada.MovimientosEstado)
+            {
+                ListViewItem fila = new ListViewItem(movimiento.Fecha.ToString("dd/MM/yyyy"));
+                fila.SubItems.Add(movimiento.Estado);
+                fila.SubItems.Add(movimiento.Ubicacion);
 
-            ListViewItem fila2 = new ListViewItem("04/05/2026");
-            fila2.SubItems.Add("Pendiente de entrega");
-            fila2.SubItems.Add("Agencia Belgrano");
-
-            ListView_Resultado.Items.Add(fila1);
-            ListView_Resultado.Items.Add(fila2);
+                ListView_Resultado.Items.Add(fila);
+            }
 
             MessageBox.Show("Consulta realizada correctamente.");
         }
-
         private void Button_Borrar_Click(object sender, EventArgs e)
         {
-            TextBox_NroGuia.Clear();
+            TextBox_numerodeguia.Clear();
             ListView_Resultado.Items.Clear();
         }
 
@@ -82,6 +77,11 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
         }
 
         private void Label_Instruccion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox_BusquedaGuia_Enter(object sender, EventArgs e)
         {
 
         }
