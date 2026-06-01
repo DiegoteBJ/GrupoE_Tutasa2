@@ -120,7 +120,8 @@ namespace GrupoE_Tutasa.EmitirFactura
             decimal netoGravado = TotalAFacturarLabel.Text != string.Empty ? decimal.Parse(TotalAFacturarLabel.Text) : 0;
             decimal iva = netoGravado * 0.21m;
             decimal documentoTotal = netoGravado + iva;
-            
+
+            // Agregar el nuevo documento a la lista de documentos del modelo. 
             modelo.LDocumentos.Add(new Documentos
             {
                 documentoId = nuevoDocumentoId,
@@ -132,6 +133,17 @@ namespace GrupoE_Tutasa.EmitirFactura
                 ivaDF = iva,
                 documentoTotal = documentoTotal,
             });
+
+            // Marcar las guías como facturadas y agregar el número de documento a cada guía facturada.
+            foreach (var guiaAFacturar in modelo.LGuiasPendientes)
+            {
+                if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
+                {
+                    guiaAFacturar.facturada = true;
+                    guiaAFacturar.documentoNumero = numeroDocumento; 
+                }
+            }
+            // Mostrar mensaje de éxito con el número de documento y el importe facturado.
             MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" + $"Importe facturado: {documentoTotal}\n" + $"Importe sin IVA: {netoGravado}");
             EmitirFacturaBoton.Enabled = false;
             CancelarBoton.Text = "Cerrar";
