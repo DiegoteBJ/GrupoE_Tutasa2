@@ -39,8 +39,9 @@
 				}
             if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<1900 ||  anio >DateTime.Today.Year)
 				{
-						MessageBox.Show("Por favor, ingrese un año válido");
-				}
+					MessageBox.Show("Por favor, ingrese un año válido");
+                    return;
+            }
             decimal importePagado = 0;
             decimal importeCobrado = 0;
             decimal resultadoMensualporEmpresa = 0;
@@ -54,7 +55,7 @@
 
             foreach (var proveedoresLD in modelo.LProveedoresLD)
             {
-                
+                importeCobrado = 0;
                 importePagado = proveedoresLD.montoFijoMensual;
                 
                 foreach (var Guias in modelo.LGuias)
@@ -74,7 +75,6 @@
 
                 resultadoMensualAcumulado = resultadoMensualporEmpresa + resultadoMensualAcumulado;
                 resultadoMensualporEmpresa = 0;
-                importeCobrado = 0;
                 importePagado = 0;
             }
             ResultadoMensualLabel.Text = resultadoMensualAcumulado.ToString("C");
