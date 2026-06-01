@@ -12,9 +12,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
         public string TipoHDR { get; set; } // Retiro o Distribución
+        public int IntentosDeEntrega { get; set; }
 
 
-        public HDRResumen(int hdrId, Guias guia, string tipo)
+       public HDRResumen(int hdrId, Guias guia, string tipo)
         {
             HDRId = hdrId;
             GuiaId = guia.GuiaId;
@@ -31,6 +32,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                 Domicilio = $"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}";
                 CodigoPostal = guia.DomicilioEntrega.CodigoPostal;
             }
+
+            IntentosDeEntrega = guia.IntentosDeEntrega;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         public string tamañoGuia { get; set; }
         public string EstadoGuia { get; set; }
         public string NombreDestinatarioGuia { get; set; }
-        public int IntentosDeEntrega { get; set; } = 0; // contador de intentos
+        public int IntentosDeEntrega { get; set; }  // contador de intentos
     }
 }
 

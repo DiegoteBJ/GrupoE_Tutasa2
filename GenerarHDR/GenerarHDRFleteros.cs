@@ -34,6 +34,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultoslabel.Text = "0";
             bultostotalasignadoslabel.Text = "0";
             centrodistribucionlabel.Text = "Buenos Aires";
+            generarhdrbutton.Enabled = false;
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -139,7 +140,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultostotalasignadoslabel.Text = "0";
             ingresardnitextBox.Clear();
             ingresardnitextBox.Focus();
-            
+            generarhdrbutton.Enabled = false;
+
             this.Tag = null; // borra el contexto del fletero anterior
         }
 
@@ -169,7 +171,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CargarGuiasPorEstado("A retirar");
                 ActualizarAutoCompleteCP("A retirar");
                 buscarcodigopostalbutton.Enabled = true;
-                
+                generarhdrbutton.Enabled = true;
+
+
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
@@ -178,6 +182,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CargarGuiasPorEstado("Distribucion"); // parámetro especial
                 ActualizarAutoCompleteCP("Distribucion");
                 buscarcodigopostalbutton.Enabled = true;
+                generarhdrbutton.Enabled = true;
         }
 
         private HashSet<int> guiasAsignadas = new HashSet<int>();
@@ -608,6 +613,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.Columns.Add("Domicilio", 200);
             listView.Columns.Add("CP", 80);
             listView.Columns.Add("Tipo HDR", 100);
+            listView.Columns.Add("Intentos", 80);
 
             foreach (var r in resumen)
             {
@@ -617,6 +623,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(r.Domicilio);
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.TipoHDR);
+                item.SubItems.Add(r.IntentosDeEntrega.ToString());
                 listView.Items.Add(item);
             }
 
