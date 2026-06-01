@@ -9,7 +9,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
     {
        
         
-            // ── Datos de prueba (reemplazar por acceso a BD) ─────────────────
+            // ── Datos de prueba ─────────────────
             private readonly Dictionary<string, ServicioTransporte> _servicios = new()
             {
                 ["001"] = new ServicioTransporte
