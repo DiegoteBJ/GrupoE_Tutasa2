@@ -38,17 +38,21 @@
             labelFecha = new Label();
             labelNombreTransporte = new Label();
             groupBoxHDRaRecibir = new GroupBox();
-            listView1 = new ListView();
+            listViewHDRaRecibir = new ListView();
+            columnHeaderNroGuias = new ColumnHeader();
+            columnHeaderDestino = new ColumnHeader();
+            columnHeaderTamaño = new ColumnHeader();
             groupBoxHDRaDespachar = new GroupBox();
-            listView2 = new ListView();
+            listViewHDRaDespachar = new ListView();
+            columnaNrodeGuia = new ColumnHeader();
+            columnaDestinoDespachar = new ColumnHeader();
+            columnaTamañoDespachar = new ColumnHeader();
             botonConfirmar = new Button();
             botonCancelar = new Button();
-            label1 = new Label();
-            label6 = new Label();
+            labelUsuario = new Label();
+            labelRespuestaUsuario = new Label();
             label7 = new Label();
             label8 = new Label();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             groupBoxIngreseNrodeTransporte.SuspendLayout();
             groupBoxDatosdeEmpresaTransporte.SuspendLayout();
             groupBoxHDRaRecibir.SuspendLayout();
@@ -67,7 +71,6 @@
             groupBoxIngreseNrodeTransporte.TabIndex = 0;
             groupBoxIngreseNrodeTransporte.TabStop = false;
             groupBoxIngreseNrodeTransporte.Text = "Ingrese en Nro de Transporte";
-            groupBoxIngreseNrodeTransporte.Enter += groupBox1_Enter;
             // 
             // botonBuscar
             // 
@@ -77,6 +80,7 @@
             botonBuscar.TabIndex = 2;
             botonBuscar.Text = "BUSCAR";
             botonBuscar.UseVisualStyleBackColor = true;
+            botonBuscar.Click += botonBuscar_Click;
             // 
             // textBoxNrodeservicioTransporte
             // 
@@ -84,7 +88,6 @@
             textBoxNrodeservicioTransporte.Name = "textBoxNrodeservicioTransporte";
             textBoxNrodeservicioTransporte.Size = new Size(241, 31);
             textBoxNrodeservicioTransporte.TabIndex = 1;
-            textBoxNrodeservicioTransporte.TextChanged += textBox1_TextChanged;
             // 
             // labelNrodeServicioTransporte
             // 
@@ -108,7 +111,6 @@
             groupBoxDatosdeEmpresaTransporte.TabIndex = 1;
             groupBoxDatosdeEmpresaTransporte.TabStop = false;
             groupBoxDatosdeEmpresaTransporte.Text = "Datos de la Empresa de Transporte";
-            groupBoxDatosdeEmpresaTransporte.Enter += groupBox2_Enter;
             // 
             // labelResultadoFecha
             // 
@@ -143,7 +145,6 @@
             labelFecha.Size = new Size(50, 20);
             labelFecha.TabIndex = 1;
             labelFecha.Text = "Fecha:";
-            labelFecha.Click += label3_Click;
             // 
             // labelNombreTransporte
             // 
@@ -154,11 +155,10 @@
             labelNombreTransporte.Size = new Size(147, 20);
             labelNombreTransporte.TabIndex = 0;
             labelNombreTransporte.Text = "Nombre Transporte:";
-            labelNombreTransporte.Click += label2_Click;
             // 
             // groupBoxHDRaRecibir
             // 
-            groupBoxHDRaRecibir.Controls.Add(listView1);
+            groupBoxHDRaRecibir.Controls.Add(listViewHDRaRecibir);
             groupBoxHDRaRecibir.Location = new Point(42, 320);
             groupBoxHDRaRecibir.Name = "groupBoxHDRaRecibir";
             groupBoxHDRaRecibir.Size = new Size(322, 215);
@@ -166,20 +166,34 @@
             groupBoxHDRaRecibir.TabStop = false;
             groupBoxHDRaRecibir.Text = "Hojas de ruta a recibir";
             // 
-            // listView1
+            // listViewHDRaRecibir
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
-            listView1.Location = new Point(11, 29);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(301, 169);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            listViewHDRaRecibir.Columns.AddRange(new ColumnHeader[] { columnHeaderNroGuias, columnHeaderDestino, columnHeaderTamaño });
+            listViewHDRaRecibir.Location = new Point(11, 29);
+            listViewHDRaRecibir.Name = "listViewHDRaRecibir";
+            listViewHDRaRecibir.Size = new Size(301, 169);
+            listViewHDRaRecibir.TabIndex = 0;
+            listViewHDRaRecibir.UseCompatibleStateImageBehavior = false;
+            listViewHDRaRecibir.View = View.Details;
+            // 
+            // columnHeaderNroGuias
+            // 
+            columnHeaderNroGuias.Text = "Nro de Guias";
+            columnHeaderNroGuias.Width = 110;
+            // 
+            // columnHeaderDestino
+            // 
+            columnHeaderDestino.Text = "Destino";
+            columnHeaderDestino.Width = 90;
+            // 
+            // columnHeaderTamaño
+            // 
+            columnHeaderTamaño.Text = "Tamaño";
+            columnHeaderTamaño.Width = 80;
             // 
             // groupBoxHDRaDespachar
             // 
-            groupBoxHDRaDespachar.Controls.Add(listView2);
+            groupBoxHDRaDespachar.Controls.Add(listViewHDRaDespachar);
             groupBoxHDRaDespachar.Location = new Point(429, 320);
             groupBoxHDRaDespachar.Name = "groupBoxHDRaDespachar";
             groupBoxHDRaDespachar.Size = new Size(335, 211);
@@ -187,15 +201,30 @@
             groupBoxHDRaDespachar.TabStop = false;
             groupBoxHDRaDespachar.Text = "Hojas de ruta a despachar";
             // 
-            // listView2
+            // listViewHDRaDespachar
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
-            listView2.Location = new Point(8, 29);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(310, 168);
-            listView2.TabIndex = 0;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            listViewHDRaDespachar.Columns.AddRange(new ColumnHeader[] { columnaNrodeGuia, columnaDestinoDespachar, columnaTamañoDespachar });
+            listViewHDRaDespachar.Location = new Point(8, 29);
+            listViewHDRaDespachar.Name = "listViewHDRaDespachar";
+            listViewHDRaDespachar.Size = new Size(310, 168);
+            listViewHDRaDespachar.TabIndex = 0;
+            listViewHDRaDespachar.UseCompatibleStateImageBehavior = false;
+            listViewHDRaDespachar.View = View.Details;
+            // 
+            // columnaNrodeGuia
+            // 
+            columnaNrodeGuia.Text = "Nro de Guias";
+            columnaNrodeGuia.Width = 110;
+            // 
+            // columnaDestinoDespachar
+            // 
+            columnaDestinoDespachar.Text = "Destino";
+            columnaDestinoDespachar.Width = 80;
+            // 
+            // columnaTamañoDespachar
+            // 
+            columnaTamañoDespachar.Text = "Tamaño";
+            columnaTamañoDespachar.Width = 80;
             // 
             // botonConfirmar
             // 
@@ -205,6 +234,7 @@
             botonConfirmar.TabIndex = 4;
             botonConfirmar.Text = "Confirmar";
             botonConfirmar.UseVisualStyleBackColor = true;
+            botonConfirmar.Click += botonConfirmar_Click;
             // 
             // botonCancelar
             // 
@@ -214,25 +244,25 @@
             botonCancelar.TabIndex = 5;
             botonCancelar.Text = "Cancelar";
             botonCancelar.UseVisualStyleBackColor = true;
+            botonCancelar.Click += botonCancelar_Click;
             // 
-            // label1
+            // labelUsuario
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(23, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 20);
-            label1.TabIndex = 6;
-            label1.Text = "Usuario: ";
-            label1.Click += label1_Click;
+            labelUsuario.AutoSize = true;
+            labelUsuario.Location = new Point(23, 13);
+            labelUsuario.Name = "labelUsuario";
+            labelUsuario.Size = new Size(66, 20);
+            labelUsuario.TabIndex = 6;
+            labelUsuario.Text = "Usuario: ";
             // 
-            // label6
+            // labelRespuestaUsuario
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(95, 13);
-            label6.Name = "label6";
-            label6.Size = new Size(79, 20);
-            label6.TabIndex = 7;
-            label6.Text = "Usuario 11";
+            labelRespuestaUsuario.AutoSize = true;
+            labelRespuestaUsuario.Location = new Point(95, 13);
+            labelRespuestaUsuario.Name = "labelRespuestaUsuario";
+            labelRespuestaUsuario.Size = new Size(79, 20);
+            labelRespuestaUsuario.TabIndex = 7;
+            labelRespuestaUsuario.Text = "Usuario 11";
             // 
             // label7
             // 
@@ -252,16 +282,6 @@
             label8.TabIndex = 9;
             label8.Text = "Buenos Aires";
             // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Nro de Guias";
-            columnHeader1.Width = 110;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Nro de Guias";
-            columnHeader2.Width = 110;
-            // 
             // RecepcionDespachoCDLargaDistanciaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -269,8 +289,8 @@
             ClientSize = new Size(800, 712);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label1);
+            Controls.Add(labelRespuestaUsuario);
+            Controls.Add(labelUsuario);
             Controls.Add(botonCancelar);
             Controls.Add(botonConfirmar);
             Controls.Add(groupBoxHDRaDespachar);
@@ -279,7 +299,6 @@
             Controls.Add(groupBoxIngreseNrodeTransporte);
             Name = "RecepcionDespachoCDLargaDistanciaForm";
             Text = "RecepcionYDespachoLargaDistanciaForm1";
-            Load += RecepcionYDespachoLargaDistanciaForm1_Load;
             groupBoxIngreseNrodeTransporte.ResumeLayout(false);
             groupBoxIngreseNrodeTransporte.PerformLayout();
             groupBoxDatosdeEmpresaTransporte.ResumeLayout(false);
@@ -303,15 +322,20 @@
         private Label labelResultadoFecha;
         private GroupBox groupBoxHDRaRecibir;
         private GroupBox groupBoxHDRaDespachar;
-        private ListView listView1;
+        private ListView listViewHDRaRecibir;
         private Button botonConfirmar;
         private Button botonCancelar;
-        private ListView listView2;
-        private Label label1;
-        private Label label6;
+        private ListView listViewHDRaDespachar;
+        private Label labelUsuario;
+        private Label labelRespuestaUsuario;
         private Label label7;
         private Label label8;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeaderNroGuias;
+        private ColumnHeader columnaNrodeGuia;
+        private ColumnHeader columnHeaderDestino;
+        private ColumnHeader columnHeaderTamaño;
+        private ColumnHeader columnaDestinoDespachar;
+        private ColumnHeader columnaTamañoDespachar;
+      
     }
 }
