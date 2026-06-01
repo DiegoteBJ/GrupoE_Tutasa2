@@ -28,292 +28,218 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            radioButton1 = new RadioButton();
-            radioButton6 = new RadioButton();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            groupBox2 = new GroupBox();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            groupBox3 = new GroupBox();
-            CantidadGuiasCumplidasLabel = new Label();
-            label9 = new Label();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            button2 = new Button();
-            button3 = new Button();
-            CambiarCumplidasBoton = new Button();
+            BusquedaHDRgroupBox = new GroupBox();
+            HDRDistribucionRadioBoton = new RadioButton();
+            HDRRetiroRadioBoton = new RadioButton();
+            BuscarHDRboton = new Button();
+            HDRtextBox = new TextBox();
+            DatosViajegroupBox = new GroupBox();
+            RespuestaTotalGuiasLabel = new Label();
+            TotalGuiasLabel = new Label();
+            RespuestaTipoHDRLabel = new Label();
+            TipoHDRLabel = new Label();
+            RespuestaFechaLabel = new Label();
+            FechaLabel = new Label();
+            RespuestaFleteroLabel = new Label();
+            FleteroLabel = new Label();
+            DetalleHDRGroupBox = new GroupBox();
+            RespCantidadGuiasNoCumplidasLabel = new Label();
+            CantGuiasNoCumplidasLabel = new Label();
             CambiarNoCumplidasBoton = new Button();
-            CantidadGuiasNoCumplidasLabel = new Label();
-            label12 = new Label();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            CambiarCumplidasBoton = new Button();
+            RespCantGuiasCumplidasLabel = new Label();
+            CantGuiasCumplidasLabel = new Label();
+            DetalleHDRListView = new ListView();
+            GuiacolumnHeader = new ColumnHeader();
+            RemitentecolumnHeader = new ColumnHeader();
+            DestinatariocolumnHeader = new ColumnHeader();
+            DomiciliocolumnHeader = new ColumnHeader();
+            TamcolumnHeader = new ColumnHeader();
+            IntentocolumnHeader = new ColumnHeader();
+            EstadocolumnHeader = new ColumnHeader();
+            ConfirmarRendicionBoton = new Button();
+            CancelarRendicionBoton = new Button();
+            BusquedaHDRgroupBox.SuspendLayout();
+            DatosViajegroupBox.SuspendLayout();
+            DetalleHDRGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // BusquedaHDRgroupBox
             // 
-            groupBox1.Controls.Add(radioButton1);
-            groupBox1.Controls.Add(radioButton6);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Location = new Point(19, 19);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(751, 111);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Búsqueda de Hoja de Ruta";
+            BusquedaHDRgroupBox.Controls.Add(HDRDistribucionRadioBoton);
+            BusquedaHDRgroupBox.Controls.Add(HDRRetiroRadioBoton);
+            BusquedaHDRgroupBox.Controls.Add(BuscarHDRboton);
+            BusquedaHDRgroupBox.Controls.Add(HDRtextBox);
+            BusquedaHDRgroupBox.Location = new Point(19, 19);
+            BusquedaHDRgroupBox.Name = "BusquedaHDRgroupBox";
+            BusquedaHDRgroupBox.Size = new Size(815, 111);
+            BusquedaHDRgroupBox.TabIndex = 0;
+            BusquedaHDRgroupBox.TabStop = false;
+            BusquedaHDRgroupBox.Text = "Búsqueda de Hoja de Ruta";
             // 
-            // radioButton1
+            // HDRDistribucionRadioBoton
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(435, 32);
-            radioButton1.Margin = new Padding(3, 4, 3, 4);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(110, 24);
-            radioButton1.TabIndex = 25;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Distribución";
-            radioButton1.UseVisualStyleBackColor = true;
+            HDRDistribucionRadioBoton.AutoSize = true;
+            HDRDistribucionRadioBoton.Location = new Point(435, 32);
+            HDRDistribucionRadioBoton.Margin = new Padding(3, 4, 3, 4);
+            HDRDistribucionRadioBoton.Name = "HDRDistribucionRadioBoton";
+            HDRDistribucionRadioBoton.Size = new Size(110, 24);
+            HDRDistribucionRadioBoton.TabIndex = 25;
+            HDRDistribucionRadioBoton.TabStop = true;
+            HDRDistribucionRadioBoton.Text = "Distribución";
+            HDRDistribucionRadioBoton.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // HDRRetiroRadioBoton
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(365, 32);
-            radioButton6.Margin = new Padding(3, 4, 3, 4);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(70, 24);
-            radioButton6.TabIndex = 25;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Retiro";
-            radioButton6.UseVisualStyleBackColor = true;
-            radioButton6.CheckedChanged += radioButton6_CheckedChanged;
+            HDRRetiroRadioBoton.AutoSize = true;
+            HDRRetiroRadioBoton.Location = new Point(365, 32);
+            HDRRetiroRadioBoton.Margin = new Padding(3, 4, 3, 4);
+            HDRRetiroRadioBoton.Name = "HDRRetiroRadioBoton";
+            HDRRetiroRadioBoton.Size = new Size(70, 24);
+            HDRRetiroRadioBoton.TabIndex = 25;
+            HDRRetiroRadioBoton.TabStop = true;
+            HDRRetiroRadioBoton.Text = "Retiro";
+            HDRRetiroRadioBoton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // BuscarHDRboton
             // 
-            button1.Location = new Point(6, 59);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Buscar";
-            button1.UseVisualStyleBackColor = true;
+            BuscarHDRboton.Location = new Point(6, 59);
+            BuscarHDRboton.Name = "BuscarHDRboton";
+            BuscarHDRboton.Size = new Size(94, 29);
+            BuscarHDRboton.TabIndex = 1;
+            BuscarHDRboton.Text = "Buscar";
+            BuscarHDRboton.UseVisualStyleBackColor = true;
+            BuscarHDRboton.Click += BuscarHDRboton_Click;
             // 
-            // textBox1
+            // HDRtextBox
             // 
-            textBox1.Location = new Point(6, 27);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(324, 27);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            HDRtextBox.Location = new Point(6, 27);
+            HDRtextBox.Name = "HDRtextBox";
+            HDRtextBox.Size = new Size(324, 27);
+            HDRtextBox.TabIndex = 0;
             // 
-            // groupBox2
+            // DatosViajegroupBox
             // 
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Location = new Point(19, 148);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(751, 111);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Datos del viaje";
+            DatosViajegroupBox.Controls.Add(RespuestaTotalGuiasLabel);
+            DatosViajegroupBox.Controls.Add(TotalGuiasLabel);
+            DatosViajegroupBox.Controls.Add(RespuestaTipoHDRLabel);
+            DatosViajegroupBox.Controls.Add(TipoHDRLabel);
+            DatosViajegroupBox.Controls.Add(RespuestaFechaLabel);
+            DatosViajegroupBox.Controls.Add(FechaLabel);
+            DatosViajegroupBox.Controls.Add(RespuestaFleteroLabel);
+            DatosViajegroupBox.Controls.Add(FleteroLabel);
+            DatosViajegroupBox.Location = new Point(19, 148);
+            DatosViajegroupBox.Name = "DatosViajegroupBox";
+            DatosViajegroupBox.Size = new Size(815, 111);
+            DatosViajegroupBox.TabIndex = 1;
+            DatosViajegroupBox.TabStop = false;
+            DatosViajegroupBox.Text = "Datos del viaje";
             // 
-            // label8
+            // RespuestaTotalGuiasLabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(656, 76);
-            label8.Name = "label8";
-            label8.Size = new Size(44, 20);
-            label8.TabIndex = 7;
-            label8.Text = "[Nro]";
+            RespuestaTotalGuiasLabel.AutoSize = true;
+            RespuestaTotalGuiasLabel.Location = new Point(656, 76);
+            RespuestaTotalGuiasLabel.Name = "RespuestaTotalGuiasLabel";
+            RespuestaTotalGuiasLabel.Size = new Size(44, 20);
+            RespuestaTotalGuiasLabel.TabIndex = 7;
+            RespuestaTotalGuiasLabel.Text = "[Nro]";
             // 
-            // label7
+            // TotalGuiasLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(566, 76);
-            label7.Name = "label7";
-            label7.Size = new Size(84, 20);
-            label7.TabIndex = 6;
-            label7.Text = "Total guías:";
+            TotalGuiasLabel.AutoSize = true;
+            TotalGuiasLabel.Location = new Point(566, 76);
+            TotalGuiasLabel.Name = "TotalGuiasLabel";
+            TotalGuiasLabel.Size = new Size(84, 20);
+            TotalGuiasLabel.TabIndex = 6;
+            TotalGuiasLabel.Text = "Total guías:";
             // 
-            // label6
+            // RespuestaTipoHDRLabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(559, 37);
-            label6.Name = "label6";
-            label6.Size = new Size(145, 20);
-            label6.TabIndex = 5;
-            label6.Text = "[Distribución/Retiro]";
+            RespuestaTipoHDRLabel.AutoSize = true;
+            RespuestaTipoHDRLabel.Location = new Point(559, 37);
+            RespuestaTipoHDRLabel.Name = "RespuestaTipoHDRLabel";
+            RespuestaTipoHDRLabel.Size = new Size(145, 20);
+            RespuestaTipoHDRLabel.TabIndex = 5;
+            RespuestaTipoHDRLabel.Text = "[Distribución/Retiro]";
             // 
-            // label5
+            // TipoHDRLabel
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(455, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(98, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Tipo de HDR:";
+            TipoHDRLabel.AutoSize = true;
+            TipoHDRLabel.Location = new Point(455, 37);
+            TipoHDRLabel.Name = "TipoHDRLabel";
+            TipoHDRLabel.Size = new Size(98, 20);
+            TipoHDRLabel.TabIndex = 4;
+            TipoHDRLabel.Text = "Tipo de HDR:";
             // 
-            // label4
+            // RespuestaFechaLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(293, 37);
-            label4.Name = "label4";
-            label4.Size = new Size(123, 20);
-            label4.TabIndex = 3;
-            label4.Text = "[FechaRendicion]";
+            RespuestaFechaLabel.AutoSize = true;
+            RespuestaFechaLabel.Location = new Point(293, 37);
+            RespuestaFechaLabel.Name = "RespuestaFechaLabel";
+            RespuestaFechaLabel.Size = new Size(123, 20);
+            RespuestaFechaLabel.TabIndex = 3;
+            RespuestaFechaLabel.Text = "[FechaRendicion]";
             // 
-            // label3
+            // FechaLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(248, 37);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Fecha:";
+            FechaLabel.AutoSize = true;
+            FechaLabel.Location = new Point(248, 37);
+            FechaLabel.Name = "FechaLabel";
+            FechaLabel.Size = new Size(50, 20);
+            FechaLabel.TabIndex = 2;
+            FechaLabel.Text = "Fecha:";
             // 
-            // label2
+            // RespuestaFleteroLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(66, 37);
-            label2.Name = "label2";
-            label2.Size = new Size(138, 20);
-            label2.TabIndex = 1;
-            label2.Text = "[Apellido, Nombre]";
+            RespuestaFleteroLabel.AutoSize = true;
+            RespuestaFleteroLabel.Location = new Point(66, 37);
+            RespuestaFleteroLabel.Name = "RespuestaFleteroLabel";
+            RespuestaFleteroLabel.Size = new Size(138, 20);
+            RespuestaFleteroLabel.TabIndex = 1;
+            RespuestaFleteroLabel.Text = "[Apellido, Nombre]";
             // 
-            // label1
+            // FleteroLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 37);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Fletero:";
+            FleteroLabel.AutoSize = true;
+            FleteroLabel.Location = new Point(13, 37);
+            FleteroLabel.Name = "FleteroLabel";
+            FleteroLabel.Size = new Size(58, 20);
+            FleteroLabel.TabIndex = 0;
+            FleteroLabel.Text = "Fletero:";
             // 
-            // groupBox3
+            // DetalleHDRGroupBox
             // 
-            groupBox3.Controls.Add(CantidadGuiasNoCumplidasLabel);
-            groupBox3.Controls.Add(label12);
-            groupBox3.Controls.Add(CambiarNoCumplidasBoton);
-            groupBox3.Controls.Add(CambiarCumplidasBoton);
-            groupBox3.Controls.Add(CantidadGuiasCumplidasLabel);
-            groupBox3.Controls.Add(label9);
-            groupBox3.Controls.Add(listView1);
-            groupBox3.Location = new Point(19, 279);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(751, 326);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Detalle de HDR";
-            groupBox3.Enter += groupBox3_Enter;
+            DetalleHDRGroupBox.Controls.Add(RespCantidadGuiasNoCumplidasLabel);
+            DetalleHDRGroupBox.Controls.Add(CantGuiasNoCumplidasLabel);
+            DetalleHDRGroupBox.Controls.Add(CambiarNoCumplidasBoton);
+            DetalleHDRGroupBox.Controls.Add(CambiarCumplidasBoton);
+            DetalleHDRGroupBox.Controls.Add(RespCantGuiasCumplidasLabel);
+            DetalleHDRGroupBox.Controls.Add(CantGuiasCumplidasLabel);
+            DetalleHDRGroupBox.Controls.Add(DetalleHDRListView);
+            DetalleHDRGroupBox.Location = new Point(19, 279);
+            DetalleHDRGroupBox.Name = "DetalleHDRGroupBox";
+            DetalleHDRGroupBox.Size = new Size(815, 326);
+            DetalleHDRGroupBox.TabIndex = 2;
+            DetalleHDRGroupBox.TabStop = false;
+            DetalleHDRGroupBox.Text = "Detalle de HDR";
             // 
-            // CantidadGuiasCumplidasLabel
+            // RespCantidadGuiasNoCumplidasLabel
             // 
-            CantidadGuiasCumplidasLabel.AutoSize = true;
-            CantidadGuiasCumplidasLabel.Location = new Point(632, 239);
-            CantidadGuiasCumplidasLabel.Name = "CantidadGuiasCumplidasLabel";
-            CantidadGuiasCumplidasLabel.Size = new Size(83, 20);
-            CantidadGuiasCumplidasLabel.TabIndex = 2;
-            CantidadGuiasCumplidasLabel.Text = "[Nro/Total]";
+            RespCantidadGuiasNoCumplidasLabel.AutoSize = true;
+            RespCantidadGuiasNoCumplidasLabel.Location = new Point(706, 277);
+            RespCantidadGuiasNoCumplidasLabel.Name = "RespCantidadGuiasNoCumplidasLabel";
+            RespCantidadGuiasNoCumplidasLabel.Size = new Size(83, 20);
+            RespCantidadGuiasNoCumplidasLabel.TabIndex = 6;
+            RespCantidadGuiasNoCumplidasLabel.Text = "[Nro/Total]";
             // 
-            // label9
+            // CantGuiasNoCumplidasLabel
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(404, 239);
-            label9.Name = "label9";
-            label9.Size = new Size(180, 20);
-            label9.TabIndex = 1;
-            label9.Text = "Cantidad guías cumplidas";
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
-            listView1.Location = new Point(14, 27);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(722, 193);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Nro. Guía";
-            columnHeader1.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Remitente";
-            columnHeader2.Width = 110;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Destinatario";
-            columnHeader3.Width = 110;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Domicilio";
-            columnHeader4.Width = 130;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Tam.";
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Intento";
-            columnHeader6.Width = 90;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Estado";
-            columnHeader7.Width = 80;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(588, 627);
-            button2.Name = "button2";
-            button2.Size = new Size(182, 32);
-            button2.TabIndex = 3;
-            button2.Text = "Confirmar Rendición";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(426, 627);
-            button3.Name = "button3";
-            button3.Size = new Size(135, 32);
-            button3.TabIndex = 4;
-            button3.Text = "Cancelar";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // CambiarCumplidasBoton
-            // 
-            CambiarCumplidasBoton.Location = new Point(14, 235);
-            CambiarCumplidasBoton.Name = "CambiarCumplidasBoton";
-            CambiarCumplidasBoton.Size = new Size(213, 29);
-            CambiarCumplidasBoton.TabIndex = 3;
-            CambiarCumplidasBoton.Text = "Cambiar a Cumplidas";
-            CambiarCumplidasBoton.UseVisualStyleBackColor = true;
+            CantGuiasNoCumplidasLabel.AutoSize = true;
+            CantGuiasNoCumplidasLabel.Location = new Point(503, 277);
+            CantGuiasNoCumplidasLabel.Name = "CantGuiasNoCumplidasLabel";
+            CantGuiasNoCumplidasLabel.Size = new Size(201, 20);
+            CantGuiasNoCumplidasLabel.TabIndex = 5;
+            CantGuiasNoCumplidasLabel.Text = "Cantidad guías no cumplidas";
             // 
             // CambiarNoCumplidasBoton
             // 
@@ -323,78 +249,153 @@
             CambiarNoCumplidasBoton.TabIndex = 4;
             CambiarNoCumplidasBoton.Text = "Cambiar a No Cumplidas";
             CambiarNoCumplidasBoton.UseVisualStyleBackColor = true;
+            CambiarNoCumplidasBoton.Click += CambiarNoCumplidasBoton_Click;
             // 
-            // CantidadGuiasNoCumplidasLabel
+            // CambiarCumplidasBoton
             // 
-            CantidadGuiasNoCumplidasLabel.AutoSize = true;
-            CantidadGuiasNoCumplidasLabel.Location = new Point(632, 281);
-            CantidadGuiasNoCumplidasLabel.Name = "CantidadGuiasNoCumplidasLabel";
-            CantidadGuiasNoCumplidasLabel.Size = new Size(83, 20);
-            CantidadGuiasNoCumplidasLabel.TabIndex = 6;
-            CantidadGuiasNoCumplidasLabel.Text = "[Nro/Total]";
+            CambiarCumplidasBoton.Location = new Point(14, 235);
+            CambiarCumplidasBoton.Name = "CambiarCumplidasBoton";
+            CambiarCumplidasBoton.Size = new Size(213, 29);
+            CambiarCumplidasBoton.TabIndex = 3;
+            CambiarCumplidasBoton.Text = "Cambiar a Cumplidas";
+            CambiarCumplidasBoton.UseVisualStyleBackColor = true;
+            CambiarCumplidasBoton.Click += CambiarCumplidasBoton_Click;
             // 
-            // label12
+            // RespCantGuiasCumplidasLabel
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(404, 281);
-            label12.Name = "label12";
-            label12.Size = new Size(201, 20);
-            label12.TabIndex = 5;
-            label12.Text = "Cantidad guías no cumplidas";
+            RespCantGuiasCumplidasLabel.AutoSize = true;
+            RespCantGuiasCumplidasLabel.Location = new Point(706, 239);
+            RespCantGuiasCumplidasLabel.Name = "RespCantGuiasCumplidasLabel";
+            RespCantGuiasCumplidasLabel.Size = new Size(83, 20);
+            RespCantGuiasCumplidasLabel.TabIndex = 2;
+            RespCantGuiasCumplidasLabel.Text = "[Nro/Total]";
+            // 
+            // CantGuiasCumplidasLabel
+            // 
+            CantGuiasCumplidasLabel.AutoSize = true;
+            CantGuiasCumplidasLabel.Location = new Point(520, 239);
+            CantGuiasCumplidasLabel.Name = "CantGuiasCumplidasLabel";
+            CantGuiasCumplidasLabel.Size = new Size(180, 20);
+            CantGuiasCumplidasLabel.TabIndex = 1;
+            CantGuiasCumplidasLabel.Text = "Cantidad guías cumplidas";
+            // 
+            // DetalleHDRListView
+            // 
+            DetalleHDRListView.Columns.AddRange(new ColumnHeader[] { GuiacolumnHeader, RemitentecolumnHeader, DestinatariocolumnHeader, DomiciliocolumnHeader, TamcolumnHeader, IntentocolumnHeader, EstadocolumnHeader });
+            DetalleHDRListView.FullRowSelect = true;
+            DetalleHDRListView.Location = new Point(14, 27);
+            DetalleHDRListView.Name = "DetalleHDRListView";
+            DetalleHDRListView.Size = new Size(785, 193);
+            DetalleHDRListView.TabIndex = 0;
+            DetalleHDRListView.UseCompatibleStateImageBehavior = false;
+            DetalleHDRListView.View = View.Details;
+            // 
+            // GuiacolumnHeader
+            // 
+            GuiacolumnHeader.Text = "Nro. Guía";
+            GuiacolumnHeader.Width = 100;
+            // 
+            // RemitentecolumnHeader
+            // 
+            RemitentecolumnHeader.Text = "Remitente";
+            RemitentecolumnHeader.Width = 110;
+            // 
+            // DestinatariocolumnHeader
+            // 
+            DestinatariocolumnHeader.Text = "Destinatario";
+            DestinatariocolumnHeader.Width = 110;
+            // 
+            // DomiciliocolumnHeader
+            // 
+            DomiciliocolumnHeader.Text = "Domicilio";
+            DomiciliocolumnHeader.Width = 130;
+            // 
+            // TamcolumnHeader
+            // 
+            TamcolumnHeader.Text = "Tam.";
+            // 
+            // IntentocolumnHeader
+            // 
+            IntentocolumnHeader.Text = "Intento";
+            IntentocolumnHeader.Width = 70;
+            // 
+            // EstadocolumnHeader
+            // 
+            EstadocolumnHeader.Text = "Estado";
+            EstadocolumnHeader.Width = 90;
+            // 
+            // ConfirmarRendicionBoton
+            // 
+            ConfirmarRendicionBoton.Location = new Point(487, 637);
+            ConfirmarRendicionBoton.Name = "ConfirmarRendicionBoton";
+            ConfirmarRendicionBoton.Size = new Size(182, 32);
+            ConfirmarRendicionBoton.TabIndex = 3;
+            ConfirmarRendicionBoton.Text = "Confirmar Rendición";
+            ConfirmarRendicionBoton.UseVisualStyleBackColor = true;
+            ConfirmarRendicionBoton.Click += ConfirmarRendicionBoton_Click;
+            // 
+            // CancelarRendicionBoton
+            // 
+            CancelarRendicionBoton.Location = new Point(699, 637);
+            CancelarRendicionBoton.Name = "CancelarRendicionBoton";
+            CancelarRendicionBoton.Size = new Size(135, 32);
+            CancelarRendicionBoton.TabIndex = 4;
+            CancelarRendicionBoton.Text = "Cancelar";
+            CancelarRendicionBoton.UseVisualStyleBackColor = true;
             // 
             // RendicionHDRForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(785, 681);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(857, 681);
+            Controls.Add(CancelarRendicionBoton);
+            Controls.Add(ConfirmarRendicionBoton);
+            Controls.Add(DetalleHDRGroupBox);
+            Controls.Add(DatosViajegroupBox);
+            Controls.Add(BusquedaHDRgroupBox);
             Name = "RendicionHDRForm";
             Text = "Rendicion de HDR";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            BusquedaHDRgroupBox.ResumeLayout(false);
+            BusquedaHDRgroupBox.PerformLayout();
+            DatosViajegroupBox.ResumeLayout(false);
+            DatosViajegroupBox.PerformLayout();
+            DetalleHDRGroupBox.ResumeLayout(false);
+            DetalleHDRGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private TextBox textBox1;
-        private Button button1;
-        private GroupBox groupBox2;
-        private Label label1;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label8;
-        private Label label7;
-        private GroupBox groupBox3;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private Button button2;
-        private Label label9;
-        private Button button3;
-        private Label CantidadGuiasCumplidasLabel;
-        private RadioButton radioButton1;
-        private RadioButton radioButton6;
-        private ColumnHeader columnHeader7;
+        private GroupBox BusquedaHDRgroupBox;
+        private TextBox HDRtextBox;
+        private Button BuscarHDRboton;
+        private GroupBox DatosViajegroupBox;
+        private Label FleteroLabel;
+        private Label RespuestaTipoHDRLabel;
+        private Label TipoHDRLabel;
+        private Label RespuestaFechaLabel;
+        private Label FechaLabel;
+        private Label RespuestaFleteroLabel;
+        private Label RespuestaTotalGuiasLabel;
+        private Label TotalGuiasLabel;
+        private GroupBox DetalleHDRGroupBox;
+        private ListView DetalleHDRListView;
+        private ColumnHeader GuiacolumnHeader;
+        private ColumnHeader RemitentecolumnHeader;
+        private ColumnHeader DestinatariocolumnHeader;
+        private ColumnHeader DomiciliocolumnHeader;
+        private ColumnHeader TamcolumnHeader;
+        private ColumnHeader IntentocolumnHeader;
+        private Button ConfirmarRendicionBoton;
+        private Label CantGuiasCumplidasLabel;
+        private Button CancelarRendicionBoton;
+        private Label RespCantGuiasCumplidasLabel;
+        private RadioButton HDRDistribucionRadioBoton;
+        private RadioButton HDRRetiroRadioBoton;
+        private ColumnHeader EstadocolumnHeader;
         private Button CambiarNoCumplidasBoton;
         private Button CambiarCumplidasBoton;
-        private Label CantidadGuiasNoCumplidasLabel;
-        private Label label12;
+        private Label RespCantidadGuiasNoCumplidasLabel;
+        private Label CantGuiasNoCumplidasLabel;
     }
 }

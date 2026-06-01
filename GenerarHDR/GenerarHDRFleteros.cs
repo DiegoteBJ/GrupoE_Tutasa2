@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace GrupoE_Tutasa.GenerarHDR
 {
     public partial class GenerarHDRFleteros : Form
@@ -30,6 +31,9 @@ namespace GrupoE_Tutasa.GenerarHDR
             retiroradioButton.Enabled = false;
             distribucionradioButton.Enabled = false;
             buscarcodigopostalbutton.Enabled = false;
+            bultoslabel.Text = "0";
+            bultostotalasignadoslabel.Text = "0";
+            centrodistribucionlabel.Text = "Buenos Aires";
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -128,6 +132,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             detallehdrlistView.Items.Clear();
             buscarcodigopostalbutton.Enabled = false;
             ingresarcodigopostaltextBox.Text = string.Empty;
+            ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+            bultoslabel.Text = "0";
+            bultostotalasignadoslabel.Text = "0";
+            ingresardnitextBox.Clear();
             this.Tag = null; // borra el contexto del fletero anterior
         }
 
@@ -413,9 +421,123 @@ namespace GrupoE_Tutasa.GenerarHDR
                 this.Close();
         }
 
+        private AsignarGuiasModelo modelo = new AsignarGuiasModelo();
+        private int ultimoHDRRetiroId = 0;
+        private int ultimoHDRDistribucionId = 0;
+
         private void generarhdrbutton_Click(object sender, EventArgs e)
         {
+            var resumenHDR = new List<HDRResumen>();
+            var fletero = this.Tag as Fleteros; // el fletero seleccionado en pantalla
 
+            foreach (ListViewItem item in detallehdrlistView.Items)
+            {
+                var guia = item.Tag as GuiasAAsignar;
+                if (guia == null || fletero == null) continue;
+
+                if (guia.EstadoGuia == "A retirar")
+                {
+                    ultimoHDRRetiroId++;
+                    var hdr = new HDRRetiro
+                    {
+                        HDRRetiroId = ultimoHDRRetiroId,
+                        GuiaId = guia.GuiaId,
+                        fleteroId = fletero.FleteroId,
+                        FechaEmision = DateTime.Now
+                    };
+                    modelo.HDRsRetiro.Add(hdr);
+                    resumenHDR.Add(new HDRResumen(hdr.HDRRetiroId, guia, "Retiro"));
+                }
+                else if (guia.EstadoGuia == "Admitida")
+                {
+                    ultimoHDRDistribucionId++;
+                    var hdr = new HDRDistribucion
+                    {
+                        HDRDistribucionId = ultimoHDRDistribucionId,
+                        GuiaId = guia.GuiaId,
+                        fleteroId = fletero.FleteroId,
+                        FechaEmision = DateTime.Now
+                    };
+                    modelo.HDRsDistribucion.Add(hdr);
+                    resumenHDR.Add(new HDRResumen(hdr.HDRDistribucionId, guia, "Distribución"));
+
+                    // Cambio de estado
+                    guia.EstadoGuia = "En distribución";
+                }
+            }
+
+            var resumenOrdenado = resumenHDR.OrderBy(r => r.Domicilio).ToList();
+            MostrarResumenPopup(resumenOrdenado);
+
+        }
+
+        private void MostrarResumenPopup(List<HDRResumen> resumen)
+        {
+            Form popup = new Form();
+            popup.Text = "Resumen HDR";
+            popup.Size = new Size(650, 450);
+            popup.StartPosition = FormStartPosition.CenterParent;
+
+            var listView = new ListView();
+            listView.Dock = DockStyle.Top;
+            listView.View = View.Details;
+            listView.FullRowSelect = true;
+            listView.Height = 350;
+
+            listView.Columns.Add("HDR Id", 80);
+            listView.Columns.Add("Guía", 80);
+            listView.Columns.Add("Destinatario", 150);
+            listView.Columns.Add("Domicilio", 200);
+            listView.Columns.Add("CP", 80);
+            listView.Columns.Add("Tipo HDR", 100);
+
+            foreach (var r in resumen)
+            {
+                var item = new ListViewItem(r.HDRId.ToString());
+                item.SubItems.Add(r.GuiaId.ToString());
+                item.SubItems.Add(r.Destinatario);
+                item.SubItems.Add(r.Domicilio);
+                item.SubItems.Add(r.CodigoPostal);
+                item.SubItems.Add(r.TipoHDR);
+                listView.Items.Add(item);
+            }
+
+            var imprimirButton = new Button();
+            imprimirButton.Text = "Imprimir HDR y Resumen";
+            imprimirButton.Dock = DockStyle.Bottom;
+            imprimirButton.Height = 40;
+            imprimirButton.Click += (s, e) =>
+            {
+                ImprimirResumen(resumen);
+                popup.Close(); // cerrar el pop-up después de imprimir
+            };
+
+            popup.Controls.Add(listView);
+            popup.Controls.Add(imprimirButton);
+
+            popup.ShowDialog();
+        }
+        private void ImprimirResumen(List<HDRResumen> resumen)
+        {
+            // Mostrar mensaje de impresión
+            MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
+                            "Impresión",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+            // Guardar cambios de estado de las guías
+            foreach (var r in resumen)
+            {
+                var guia = modelo.LGuiasAAsignar.FirstOrDefault(g => g.GuiaId == r.GuiaId);
+                if (guia != null && guia.EstadoGuia == "Admitida")
+                {
+                    guia.EstadoGuia = "En distribución";
+                }
+            }
+
+            // Resetear todo el formulario
+            ResetearFormularioFletero();
+            ingresardnitextBox.Clear(); // limpiar DNI del fletero
         }
     }
 }

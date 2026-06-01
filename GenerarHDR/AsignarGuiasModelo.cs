@@ -7,11 +7,8 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class AsignarGuiasModelo
     {
 
-        public List<GuiasAAsignar> LGuiasAAsignar
-        {
-            get
-            {
-                return new List<GuiasAAsignar>
+        public List<GuiasAAsignar> LGuiasAAsignar {  get; set; } = new List<GuiasAAsignar>()
+      
                 {
                     new GuiasAAsignar { GuiaId = 1, CodigoPostalGuia = "1000", DomicilioGuia = "Calle Falsa 123", tamañoGuia = "L", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Juan Pérez" },
                     new GuiasAAsignar { GuiaId = 2, CodigoPostalGuia = "2000", DomicilioGuia = "Avenida Siempre Viva 456", tamañoGuia = "M", EstadoGuia = "A retirar", NombreDestinatarioGuia = "María Gómez" },
@@ -22,22 +19,19 @@ namespace GrupoE_Tutasa.GenerarHDR
                     new GuiasAAsignar { GuiaId = 7, CodigoPostalGuia = "7000", DomicilioGuia = "Avenida del Destino 159", tamañoGuia = "XL", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Miguel Sánchez" },
                     new GuiasAAsignar { GuiaId = 8, CodigoPostalGuia = "8000", DomicilioGuia = "Calle de la Ilusión 753", tamañoGuia = "L", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Laura Gómez" },
                 };
-            }
-        }
-
-        public List<Fleteros> LFleteros
-        {
-            get
-            {
-                return new List<Fleteros>
+            
+        public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
+       
                 {
                     new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
                     new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
                     new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
                     new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
                 };
-            }
-        }
+       
+        // Listas HDR generadas
+        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>();
+        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>();
 
         public static bool ValidarDniString(string dni)
         {
