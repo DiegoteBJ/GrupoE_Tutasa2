@@ -59,7 +59,7 @@
                 
                 foreach (var Guias in modelo.LGuias)
                 {
-                    if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio)
+                    if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio && Guias.facturada == true)
                     {
                         importeCobrado = importeCobrado + Guias.importeTotal;
                     }

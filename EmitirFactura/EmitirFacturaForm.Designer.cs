@@ -33,7 +33,6 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             label1 = new Label();
@@ -61,11 +60,11 @@
             // 
             // DetalleEnviosListView
             // 
-            DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5, columnHeader6 });
             DetalleEnviosListView.GridLines = true;
             DetalleEnviosListView.Location = new Point(29, 184);
             DetalleEnviosListView.Name = "DetalleEnviosListView";
-            DetalleEnviosListView.Size = new Size(729, 251);
+            DetalleEnviosListView.Size = new Size(676, 251);
             DetalleEnviosListView.TabIndex = 3;
             DetalleEnviosListView.UseCompatibleStateImageBehavior = false;
             DetalleEnviosListView.View = View.Details;
@@ -83,15 +82,9 @@
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Origen";
+            columnHeader3.Text = "Fecha Entrega";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
             columnHeader3.Width = 140;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Destino";
-            columnHeader4.TextAlign = HorizontalAlignment.Center;
-            columnHeader4.Width = 140;
             // 
             // columnHeader5
             // 
@@ -256,7 +249,6 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private Button FacturarOtroBoton;

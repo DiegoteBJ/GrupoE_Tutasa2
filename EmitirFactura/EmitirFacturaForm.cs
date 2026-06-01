@@ -15,6 +15,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             var clientes = modelo.LClientes;
             var documentos = modelo.LDocumentos;
             var guiasPendientes = modelo.LGuiasPendientes;
+            var guias = modelo.LGuias;
             //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
             CuitClienteBox.Clear();
             DatosCLienteRespuestaLabel.Text = string.Empty;
@@ -27,6 +28,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             int encuentro = 0;
             int clienteId = 0;
             decimal totalImporte = 0;
+            string tamaño = string.Empty;
             DetalleEnviosListView.Items.Clear();
 
             //2 Validar Datos
@@ -58,17 +60,24 @@ namespace GrupoE_Tutasa.EmitirFactura
                 return;
             }
             //3 Generar opercion de busqueda
-            foreach (var guia in modelo.LGuiasPendientes)
+            foreach (var guiaAFacturar in modelo.LGuiasPendientes)
             {
-                if (guia.clienteID == clienteId)
+                if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
                 {
-                    ListViewItem item = new ListViewItem(guia.numeroGuia.ToString());
-                    item.SubItems.Add(guia.fechaAdmision.ToShortDateString());
-                    item.SubItems.Add(guia.origen);
-                    item.SubItems.Add(guia.destino);
-                    item.SubItems.Add(guia.tamaño);
-                    item.SubItems.Add(guia.importe.ToString());
-                    totalImporte = totalImporte + guia.importe;
+                    ListViewItem item = new ListViewItem(guiaAFacturar.numeroGuia.ToString());
+                    foreach (var guia in modelo.LGuias)
+                    {
+                        if (guia.guiaId == guiaAFacturar.numeroGuia)
+                        {
+                            item.SubItems.Add(guia.fechaImposicion.ToShortDateString());
+                            tamaño = guia.tipoCaja.ToString();
+                            break;
+                        }
+                    }
+                    item.SubItems.Add(guiaAFacturar.fechaEntrega.ToShortDateString());
+                    item.SubItems.Add(tamaño);
+                    item.SubItems.Add(guiaAFacturar.importe.ToString());
+                    totalImporte = totalImporte + guiaAFacturar.importe;
                     DetalleEnviosListView.Items.Add(item);
                 }
             }

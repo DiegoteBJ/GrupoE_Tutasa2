@@ -12,26 +12,31 @@ namespace GrupoE_Tutasa.EmitirFactura
             {
                 return new List<GuiasPendientes>
                 {
-                    new GuiasPendientes { Id = 1, clienteID = 1, numeroGuia = 001, fechaAdmision = new DateTime(2026, 01, 05), origen = "Buenos Aires", destino = "Rosario", tamaño = "L", importe = 15000 },
-                    new GuiasPendientes { Id = 2, clienteID = 2, numeroGuia = 002, fechaAdmision = new DateTime(2026, 01, 06), origen = "Córdoba", destino = "Mendoza", tamaño = "M", importe = 10000 },
-                    new GuiasPendientes { Id = 3, clienteID = 3, numeroGuia = 003, fechaAdmision = new DateTime(2026, 01, 07), origen = "La Plata", destino = "Mar del Plata", tamaño = "S", importe = 6000 },
-                    new GuiasPendientes { Id = 4, clienteID = 4, numeroGuia = 004, fechaAdmision = new DateTime(2026, 01, 08), origen = "San Juan", destino = "Salta", tamaño = "XL", importe = 20000 },
-                    new GuiasPendientes { Id = 5, clienteID = 5, numeroGuia = 005, fechaAdmision = new DateTime(2026, 01, 09), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "M", importe = 11000 },
-                    new GuiasPendientes { Id = 6, clienteID = 6, numeroGuia = 006, fechaAdmision = new DateTime(2026, 01, 10), origen = "Tucumán", destino = "Santa Fe", tamaño = "S", importe = 7000 },
-                    new GuiasPendientes { Id = 7, clienteID = 1, numeroGuia = 007, fechaAdmision = new DateTime(2026, 01, 11), origen = "Corrientes", destino = "Posadas", tamaño = "XL", importe = 19000 },
-                    new GuiasPendientes { Id = 8, clienteID = 2, numeroGuia = 008, fechaAdmision = new DateTime(2026, 01, 12), origen = "Resistencia", destino = "San Luis", tamaño = "L", importe = 14000 },
-                    new GuiasPendientes { Id = 9, clienteID = 3, numeroGuia = 009, fechaAdmision = new DateTime(2026, 01, 13), origen = "Catamarca", destino = "Jujuy", tamaño = "M", importe = 9500 },
-                    new GuiasPendientes { Id = 10, clienteID = 4, numeroGuia = 010, fechaAdmision = new DateTime(2026, 01, 14), origen = "Trelew", destino = "Río Gallegos", tamaño = "S", importe = 7500 },
-                    new GuiasPendientes { Id = 11, clienteID = 1, numeroGuia = 011, fechaAdmision = new DateTime(2026, 01, 15), origen = "Buenos Aires", destino = "Rosario", tamaño = "XL", importe = 20000 },
-                    new GuiasPendientes { Id = 12, clienteID = 2, numeroGuia = 012, fechaAdmision = new DateTime(2026, 01, 16), origen = "Córdoba", destino = "Mendoza", tamaño = "L", importe = 15000 },
-                    new GuiasPendientes { Id = 13, clienteID = 3, numeroGuia = 013, fechaAdmision = new DateTime(2026, 01, 17), origen = "La Plata", destino = "Mar del Plata", tamaño = "M", importe = 10000 },
-                    new GuiasPendientes { Id = 14, clienteID = 4, numeroGuia = 014, fechaAdmision = new DateTime(2026, 01, 18), origen = "San Juan", destino = "Salta", tamaño = "S", importe = 6000 },
-                    new GuiasPendientes { Id = 15, clienteID = 1, numeroGuia = 015, fechaAdmision = new DateTime(2026, 01, 19), origen = "Neuquén", destino = "Bahía Blanca", tamaño = "XL", importe = 20000 },
-                    new GuiasPendientes { Id = 16, clienteID = 2, numeroGuia = 016, fechaAdmision = new DateTime(2026, 01, 20), origen = "Tucumán", destino = "Santa Fe", tamaño = "L", importe = 14000 },
-                    new GuiasPendientes { Id = 17, clienteID = 3, numeroGuia = 017, fechaAdmision = new DateTime(2026, 01, 21), origen = "Corrientes", destino = "Posadas", tamaño = "M", importe = 11000 },
-                    new GuiasPendientes { Id = 18, clienteID = 4, numeroGuia = 018, fechaAdmision = new DateTime(2026, 01, 22), origen = "Resistencia", destino = "San Luis", tamaño = "S", importe = 7000 },
-                    new GuiasPendientes { Id = 19, clienteID = 5, numeroGuia = 019, fechaAdmision = new DateTime(2026, 01, 23), origen = "Catamarca", destino = "Jujuy", tamaño = "XL", importe = 19000 },
-                    new GuiasPendientes { Id = 20, clienteID = 1, numeroGuia = 020, fechaAdmision = new DateTime(2026, 01, 24), origen = "Trelew", destino = "Río Gallegos", tamaño = "L", importe = 15000 },
+                    //Esta clase representa las guias pendientes de facturacion, Cada guia tiene un Id unico, un clienteID 
+                    //sruge en realidad de la clase CC de Clientes, guia id, fecha de entrega, fecha de movimiento, 
+                    //precio de imposicion, transporte, entrega y total. Un boolean que indique si ya fue facturada
+                    // y un string con el numero de cocumento una vez facturada.
+
+                    new GuiasPendientes { Id = 1, clienteID = 1, numeroGuia = 001, fechaEntrega = new DateTime(2026, 04, 05), importe = 15000 },
+                    new GuiasPendientes { Id = 2, clienteID = 2, numeroGuia = 002, fechaEntrega = new DateTime(2026, 04, 06), importe = 10000 },
+                    new GuiasPendientes { Id = 3, clienteID = 3, numeroGuia = 003, fechaEntrega = new DateTime(2026, 04, 07), importe = 6000 },
+                    new GuiasPendientes { Id = 4, clienteID = 4, numeroGuia = 004, fechaEntrega = new DateTime(2026, 04, 08), importe = 20000 },
+                    new GuiasPendientes { Id = 5, clienteID = 5, numeroGuia = 005, fechaEntrega = new DateTime(2026, 04, 09), importe = 11000 },
+                    new GuiasPendientes { Id = 6, clienteID = 6, numeroGuia = 006, fechaEntrega = new DateTime(2026, 04, 10), importe = 7000 },
+                    new GuiasPendientes { Id = 7, clienteID = 1, numeroGuia = 007, fechaEntrega = new DateTime(2026, 04, 11), importe = 19000 },
+                    new GuiasPendientes { Id = 8, clienteID = 2, numeroGuia = 008, fechaEntrega = new DateTime(2026, 04, 12), importe = 14000 },
+                    new GuiasPendientes { Id = 9, clienteID = 3, numeroGuia = 009, fechaEntrega = new DateTime(2026, 04, 13), importe = 9500 },
+                    new GuiasPendientes { Id = 10, clienteID = 4, numeroGuia = 010, fechaEntrega = new DateTime(2026, 04, 14), importe = 7500 },
+                    new GuiasPendientes { Id = 11, clienteID = 1, numeroGuia = 011, fechaEntrega = new DateTime(2026, 04, 15), importe = 20000 },
+                    new GuiasPendientes { Id = 12, clienteID = 2, numeroGuia = 012, fechaEntrega = new DateTime(2026, 04, 16), importe = 15000 },
+                    new GuiasPendientes { Id = 13, clienteID = 3, numeroGuia = 013, fechaEntrega = new DateTime(2026, 04, 17), importe = 10000 },
+                    new GuiasPendientes { Id = 14, clienteID = 4, numeroGuia = 014, fechaEntrega = new DateTime(2026, 04, 18), importe = 6000 },
+                    new GuiasPendientes { Id = 15, clienteID = 1, numeroGuia = 015, fechaEntrega = new DateTime(2026, 04, 19), importe = 20000 },
+                    new GuiasPendientes { Id = 16, clienteID = 2, numeroGuia = 016, fechaEntrega = new DateTime(2026, 04, 20), importe = 14000 },
+                    new GuiasPendientes { Id = 17, clienteID = 3, numeroGuia = 017, fechaEntrega = new DateTime(2026, 04, 21), importe = 11000 },
+                    new GuiasPendientes { Id = 18, clienteID = 4, numeroGuia = 018, fechaEntrega = new DateTime(2026, 04, 22), importe = 7000 },
+                    new GuiasPendientes { Id = 19, clienteID = 5, numeroGuia = 019, fechaEntrega = new DateTime(2026, 04, 23), importe = 19000 },
+                    new GuiasPendientes { Id = 20, clienteID = 1, numeroGuia = 020, fechaEntrega = new DateTime(2026, 04, 24), importe = 15000 }
                 };
             }
         }
@@ -65,6 +70,38 @@ namespace GrupoE_Tutasa.EmitirFactura
                     new Documentos { documentoId = 3, clienteId = 3, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 03), documentoNumero = "F001-00000003", netoGravado = 20000,  ivaDF = 4200, documentoTotal = 24200 },
                     new Documentos { documentoId = 4, clienteId = 4, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 04), documentoNumero = "F001-00000004", netoGravado = 25000,  ivaDF = 5250, documentoTotal = 30250 },
                     new Documentos { documentoId = 5, clienteId = 5, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 05), documentoNumero = "F001-00000005", netoGravado = 30000,  ivaDF = 6300, documentoTotal = 36300 }
+                };
+            }
+        }
+        public List<Guias> LGuias
+        //Esta clase sale de la clase Guias para obtener los datos que falta para presentar en la pantalla y que
+        //el operador pueda visualizar lo que esta facturando. Necesitamos guiaID, el clienteID, apellido y nombre del destinatario
+        // tipo de caja, tarifarioID. El resto de los datos se pueden obtener de la clase GuiasPendientes, como fecha de entrega.  
+        {
+            get
+            {
+                return new List<Guias>
+                {
+                    new Guias { guiaId = 1, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 01), apellidoDestinatario="Gonzalez", nombreDestinatario = "Jorge", tipoCaja="L", tarifarioId = 1 },
+                    new Guias { guiaId = 2, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 02), apellidoDestinatario="Perez", nombreDestinatario = "Maria", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 3, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 03), apellidoDestinatario="Garcia", nombreDestinatario = "Carlos", tipoCaja = "S", tarifarioId = 1 },
+                    new Guias { guiaId = 4, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 04), apellidoDestinatario="Flores", nombreDestinatario = "Ana", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 5, clienteId = 5, fechaImposicion = new DateTime(2026, 01, 05), apellidoDestinatario="DellaSalla", nombreDestinatario = "Luis", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 6, clienteId = 6, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Conte", nombreDestinatario = "Elena", tipoCaja = "S", tarifarioId = 1 },
+                    new Guias { guiaId = 7, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 07), apellidoDestinatario="Djokeres", nombreDestinatario = "Juan", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 8, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 08), apellidoDestinatario="Saka", nombreDestinatario = "María", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 9, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 09), apellidoDestinatario="Paredes", nombreDestinatario = "Carlos", tipoCaja = "XL", tarifarioId = 1 },
+                    new Guias { guiaId = 10, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 10), apellidoDestinatario="Merentiel", nombreDestinatario = "Ana", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 11, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 11), apellidoDestinatario="Delgado", nombreDestinatario = "Luis", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 12, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 12), apellidoDestinatario="Pedraza", nombreDestinatario = "María", tipoCaja = "S", tarifarioId = 1 },
+                    new Guias { guiaId = 13, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 17), apellidoDestinatario="Torres", nombreDestinatario = "Carlos", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 14, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 18), apellidoDestinatario="Reyna", nombreDestinatario = "Ana", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 15, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 19), apellidoDestinatario="Gonzalez", nombreDestinatario = "Jorge", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 16, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 20), apellidoDestinatario="Perez", nombreDestinatario = "Maria", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 17, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 13), apellidoDestinatario="Torres", nombreDestinatario = "Carlos", tipoCaja = "L", tarifarioId = 1 },
+                    new Guias { guiaId = 18, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 14), apellidoDestinatario="Reyna", nombreDestinatario = "Ana", tipoCaja = "X", tarifarioId = 1 },
+                    new Guias { guiaId = 19, clienteId = 5, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Gimenez", nombreDestinatario = "Luis", tipoCaja = "S", tarifarioId = 1 },
+                    new Guias { guiaId = 20, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Lopez", nombreDestinatario = "Jorge", tipoCaja = "XL", tarifarioId = 1 }
                 };
             }
         }
