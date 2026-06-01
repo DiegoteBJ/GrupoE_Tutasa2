@@ -230,9 +230,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(g.EstadoGuia);
 
                 if (g.EstadoGuia == "En distribución")
-                    item.SubItems.Add($"Intentos: {g.IntentosDeEntrega}");
+                    item.SubItems.Add( g.IntentosDeEntrega.ToString());
                 else
-                    item.SubItems.Add("Intentos: 0");
+                    item.SubItems.Add("0");
 
                 item.SubItems.Add(g.NombreDestinatarioGuia);
 
@@ -613,7 +613,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.Columns.Add("Domicilio", 200);
             listView.Columns.Add("CP", 80);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Intentos", 80);
+            //listView.Columns.Add("Intentos", 80);
 
             foreach (var r in resumen)
             {
@@ -623,7 +623,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(r.Domicilio);
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.TipoHDR);
-                item.SubItems.Add(r.IntentosDeEntrega.ToString());
+                //item.SubItems.Add(r.IntentosDeEntrega.ToString());
                 listView.Items.Add(item);
             }
 

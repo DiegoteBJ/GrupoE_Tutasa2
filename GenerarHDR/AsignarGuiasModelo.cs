@@ -7,8 +7,8 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class AsignarGuiasModelo
     {
 
-        public List<Guias> LGuiasAAsignar {  get; set; } = new List<Guias>()
-      
+        public List<Guias> LGuiasAAsignar { get; set; } = new List<Guias>()
+
                 {
                     new Guias
                     {
@@ -228,28 +228,80 @@ namespace GrupoE_Tutasa.GenerarHDR
                         IntentosDeEntrega = 2
                     },
                 };
-            
+
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
-       
+
                 {
                     new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
                     new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
                     new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
                     new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
                 };
-       
+
         // Listas HDR generadas
-        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>();
-        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>();
-
-        public static bool ValidarDniString(string dni)
+        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>()
         {
-            if (string.IsNullOrWhiteSpace(dni)) return false;
-            // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
-            if (!int.TryParse(dni, out int numero)) return false;
-            if (numero < 0) return false;
-            return dni.Length == 7 || dni.Length == 8;
-        }
+            new HDRRetiro
+            {
+                HDRRetiroId = 1,
+                GuiaId = 101,
+                fleteroId = 1,
+                FechaEmision = DateTime.Now.AddDays(-1),
+                FechaRendicion = DateTime.MinValue, // aún no rendida
+                Estado = "Pendiente"
+            },
+            new HDRRetiro
+            {
+                HDRRetiroId = 2,
+                GuiaId = 102,
+                fleteroId = 2,
+                FechaEmision = DateTime.Now.AddDays(-2),
+                FechaRendicion = DateTime.MinValue,
+                Estado = "Pendiente"
+            }
+        };
 
-    }
-}
+        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>()
+        {
+            new HDRDistribucion
+            {
+                HDRDistribucionId = 1,
+                GuiaId = 201,
+                fleteroId = 1,
+                FechaEmision = DateTime.Now.AddDays(-1),
+                FechaRendicion = DateTime.MinValue, // aún no rendida
+                Estado = "Pendiente"
+            },
+            new HDRDistribucion
+            {
+                HDRDistribucionId = 2,
+                GuiaId = 202,
+                fleteroId = 2,
+                FechaEmision = DateTime.Now.AddDays(-2),
+                FechaRendicion = DateTime.MinValue,
+                Estado = "Pendiente"
+            },
+            new HDRDistribucion
+            {
+                HDRDistribucionId = 3,
+                GuiaId = 203,
+                fleteroId = 3,
+                FechaEmision = DateTime.Now.AddDays(-3),
+                FechaRendicion = DateTime.MinValue,
+                Estado = "Pendiente"
+            }
+
+
+        };
+
+                public static bool ValidarDniString(string dni)
+                {
+                    if (string.IsNullOrWhiteSpace(dni)) return false;
+                    // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
+                    if (!int.TryParse(dni, out int numero)) return false;
+                    if (numero < 0) return false;
+                    return dni.Length == 7 || dni.Length == 8;
+                }
+
+            }
+        }
