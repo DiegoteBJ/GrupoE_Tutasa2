@@ -4,16 +4,16 @@ using System.Text;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal class GuiasAAsignar
+    internal class Guias
     {
         public int GuiaId { get; set; }
-        public string CodigoPostalGuia { get; set; }
-        public string DomicilioGuia { get; set; }
+        
+        public Domicilio DomicilioRetiro { get; set; } = new Domicilio();
+        public Domicilio DomicilioEntrega { get; set; } = new Domicilio();
         public string tamañoGuia { get; set; }
         public string EstadoGuia { get; set; }
         public string NombreDestinatarioGuia { get; set; }
-
-
+        public int IntentosDeEntrega { get; set; }  // contador de intentos
     }
 }
 

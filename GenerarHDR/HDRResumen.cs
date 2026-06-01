@@ -12,16 +12,28 @@ namespace GrupoE_Tutasa.GenerarHDR
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
         public string TipoHDR { get; set; } // Retiro o Distribución
-    
+        public int IntentosDeEntrega { get; set; }
 
-    public HDRResumen(int hdrId, GuiasAAsignar guia, string tipo)
+
+       public HDRResumen(int hdrId, Guias guia, string tipo)
         {
             HDRId = hdrId;
             GuiaId = guia.GuiaId;
             Destinatario = guia.NombreDestinatarioGuia;
-            Domicilio = guia.DomicilioGuia;
-            CodigoPostal = guia.CodigoPostalGuia;
             TipoHDR = tipo;
+
+            if (tipo == "Retiro")
+            {
+                Domicilio = $"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}";
+                CodigoPostal = guia.DomicilioRetiro.CodigoPostal;
+            }
+            else // Distribución
+            {
+                Domicilio = $"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}";
+                CodigoPostal = guia.DomicilioEntrega.CodigoPostal;
+            }
+
+            IntentosDeEntrega = guia.IntentosDeEntrega;
         }
     }
 }

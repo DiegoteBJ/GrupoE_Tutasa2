@@ -11,7 +11,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         public int fleteroId { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRendicion { get; set; }
-        public string Estado { get; set; } = "Pendiente";
-        public string Observaciones { get; set; } = string.Empty;
+        public string Estado { get; set; }
+        
     }
 }
