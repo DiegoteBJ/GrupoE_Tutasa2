@@ -15,6 +15,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
                 {
                     new MovimientoEstadoGuia
                     {
+                        GuiaId = 5001,
                         Fecha = DateTime.Today.AddDays(-3),
                         Estado = "ADMISION",
                         Ubicacion = "CD Buenos Aires"
@@ -22,6 +23,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
                     new MovimientoEstadoGuia
                     {
+                        GuiaId = 5001,
                         Fecha = DateTime.Today.AddDays(-2),
                         Estado = "EN TRANSITO",
                         Ubicacion = "Ruta 9"
@@ -29,6 +31,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
                     new MovimientoEstadoGuia
                     {
+                        GuiaId = 5001,
                         Fecha = DateTime.Today.AddDays(-1),
                         Estado = "PENDIENTE DE ENTREGA",
                         Ubicacion = "Agencia Moron"
@@ -43,6 +46,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
                 {
                     new MovimientoEstadoGuia
                     {
+                        GuiaId = 5002,
                         Fecha = DateTime.Today.AddDays(-5),
                         Estado = "ADMISION",
                         Ubicacion = "CD Rosario"
@@ -50,6 +54,7 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
                     new MovimientoEstadoGuia
                     {
+                        GuiaId = 5002,
                         Fecha = DateTime.Today.AddDays(-4),
                         Estado = "ENTREGADA",
                         Ubicacion = "CD Rosario"

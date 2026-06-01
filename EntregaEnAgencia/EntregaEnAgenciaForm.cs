@@ -12,7 +12,7 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
             InitializeComponent();
             ListView_GuiasPendientes.FullRowSelect = true;
             ListView_GuiasPendientes.HideSelection = false;
-            ListView_GuiasPendientes.MultiSelect = false;
+            ListView_GuiasPendientes.MultiSelect = true;
             ListView_GuiasPendientes.View = View.Details;
         }
 
@@ -42,18 +42,19 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
                 MessageBox.Show("El DNI debe tener entre 7 y 8 dígitos.");
                 return;
             }
+
             long dniNumero = Convert.ToInt64(dni);
 
-            Destinatario destinatario = modelo.BuscarDestinatarioPorDni(dniNumero);
+            Guia guiaReferencia = modelo.BuscarGuiaPorDni(dniNumero);
 
-            if (destinatario == null)
+            if (guiaReferencia == null)
             {
                 MessageBox.Show("Destinatario no encontrado.");
                 return;
             }
 
-            Label_NombreResultado.Text = destinatario.Nombre;
-            Label_ApellidoResultado.Text = destinatario.Apellido;
+            Label_NombreResultado.Text = guiaReferencia.NombreDestinatario;
+            Label_ApellidoResultado.Text = guiaReferencia.ApellidoDestinatario;
 
             List<Guia> guias = modelo.BuscarGuiasPendientesEnAgencia(dniNumero);
 
@@ -68,8 +69,10 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
             foreach (Guia guia in guias)
             {
                 ListViewItem fila = new ListViewItem(guia.GuiaId.ToString());
+
                 fila.SubItems.Add(guia.Tamanio);
                 fila.SubItems.Add(guia.Estado);
+
                 ListView_GuiasPendientes.Items.Add(fila);
             }
         }
@@ -83,17 +86,18 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
 
             if (ListView_GuiasPendientes.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Debe seleccionar una guía.");
+                MessageBox.Show("Debe seleccionar al menos una guía.");
                 return;
             }
 
-            ListViewItem filaSeleccionada = ListView_GuiasPendientes.SelectedItems[0];
+            foreach (ListViewItem filaSeleccionada in ListView_GuiasPendientes.SelectedItems)
+            {
+                int guiaId = Convert.ToInt32(filaSeleccionada.Text);
 
-            int guiaId = Convert.ToInt32(filaSeleccionada.Text);
+                modelo.ConfirmarEntrega(guiaId);
+            }
 
-            modelo.ConfirmarEntrega(guiaId);
-
-            MessageBox.Show("Entrega registrada correctamente.");
+            MessageBox.Show("Entrega realizada correctamente.");
 
             TextBox_DniDestinatario.Clear();
             Label_NombreResultado.Text = "";
