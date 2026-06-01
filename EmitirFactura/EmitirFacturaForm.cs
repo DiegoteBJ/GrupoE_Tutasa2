@@ -83,7 +83,6 @@ namespace GrupoE_Tutasa.EmitirFactura
             }
             TotalAFacturarLabel.Text = $"{totalImporte}";
         }
-
         private void CancelarBoton_Click(object sender, EventArgs e)
         {
             this.Close();

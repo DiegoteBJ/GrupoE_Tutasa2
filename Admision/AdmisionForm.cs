@@ -75,20 +75,18 @@ namespace GrupoE_Tutasa.Admision
                     TamañoDeclaradoLabel.Text = guia.tamaño;
                     encuentro = true;
 
-                    // FIX 7: Resetear el radio button y el combo al cargar una nueva guía
+                    // Resetear el radio button y el combo al cargar una nueva guía
                     TamañoCorrectoBoton.Checked = true;
                     TamañoReclasificacionComboBox.SelectedIndex = -1;
                     return;
                 }
             }
-
-            // FIX 4: El if es redundante, si llegamos acá encuentro siempre es false
             MessageBox.Show("No se encontró la guía con el número proporcionado.");
         }
 
         private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
         {
-            // FIX 3: Separar claramente ambas condiciones
+            // Separar claramente ambas condiciones
             bool habilitarReclasificacion = !TamañoCorrectoBoton.Checked && encuentro;
             TamañoReclasificacionComboBox.Enabled = habilitarReclasificacion;
             CambiarTamañoBoton.Enabled = habilitarReclasificacion;
@@ -115,7 +113,7 @@ namespace GrupoE_Tutasa.Admision
                     return;
                 }
 
-                // FIX 5: Asignar el nuevo tamaño a guiaActual ANTES de calcular el importe
+                // Asignar el nuevo tamaño a guiaActual ANTES de calcular el importe
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
                 guiaActual.tamaño = nuevoTamañoNombre;
             }
@@ -149,7 +147,7 @@ namespace GrupoE_Tutasa.Admision
                 return;
             }
 
-            // FIX 6: Actualizar el estado de la guía y guardar las observaciones del rechazo
+            // Actualizar el estado de la guía y guardar las observaciones del rechazo
             guiaActual.estadoGuia = "Rechazada";
             guiaActual.observaciones = ObservacionesTextBox.Text;
 

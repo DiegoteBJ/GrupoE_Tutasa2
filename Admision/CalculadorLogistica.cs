@@ -6,9 +6,9 @@ namespace GrupoE_Tutasa.Admision
 {
     internal class CalculadorLogistica
     {
-        // Diccionario de distancias (Matriz de 20x20)
-        // Clave: (Origen, Destino), Valor: Kilómetros
-        private static readonly Dictionary<(string, string), int> MatrizDistancias = new Dictionary<(string, string), int>
+        // Diccionario de tarifas (Matriz de 20x20)
+        // Clave: (Origen, Destino), precio transporte
+        private static readonly Dictionary<(string, string), int> MatrizTarifas = new Dictionary<(string, string), int>
         {
             { ("Buenos Aires", "Rosario"), 300 }, { ("Buenos Aires", "Córdoba"), 700 }, { ("Buenos Aires", "Mendoza"), 1050 }, { ("Buenos Aires", "La Plata"), 60 }, { ("Buenos Aires", "Mar del Plata"), 415 }, { ("Buenos Aires", "San Juan"), 1100 }, { ("Buenos Aires", "Salta"), 1490 }, { ("Buenos Aires", "Neuquén"), 1150 }, { ("Buenos Aires", "Bahía Blanca"), 640 }, { ("Buenos Aires", "Tucumán"), 1250 }, { ("Buenos Aires", "Santa Fe"), 470 }, { ("Buenos Aires", "Corrientes"), 920 }, { ("Buenos Aires", "Posadas"), 1000 }, { ("Buenos Aires", "Resistencia"), 930 }, { ("Buenos Aires", "San Luis"), 790 }, { ("Buenos Aires", "Catamarca"), 1130 }, { ("Buenos Aires", "Jujuy"), 1500 }, { ("Buenos Aires", "La Rioja"), 1150 }, { ("Buenos Aires", "Formosa"), 1180 },
             { ("Rosario", "Córdoba"), 400 }, { ("Rosario", "Mendoza"), 850 }, { ("Rosario", "La Plata"), 350 }, { ("Rosario", "Mar del Plata"), 710 }, { ("Rosario", "San Juan"), 900 }, { ("Rosario", "Salta"), 1200 }, { ("Rosario", "Neuquén"), 1100 }, { ("Rosario", "Bahía Blanca"), 760 }, { ("Rosario", "Tucumán"), 950 }, { ("Rosario", "Santa Fe"), 170 }, { ("Rosario", "Corrientes"), 630 }, { ("Rosario", "Posadas"), 800 }, { ("Rosario", "Resistencia"), 640 }, { ("Rosario", "San Luis"), 610 }, { ("Rosario", "Catamarca"), 830 }, { ("Rosario", "Jujuy"), 1210 }, { ("Rosario", "La Rioja"), 850 }, { ("Rosario", "Formosa"), 890 },
@@ -36,39 +36,27 @@ namespace GrupoE_Tutasa.Admision
             if (origen == destino) return 0;
 
             // Intentamos buscar A -> B
-            if (MatrizDistancias.TryGetValue((origen, destino), out int d1)) return d1;
+            if (MatrizTarifas.TryGetValue((origen, destino), out int d1)) return d1;
 
             // Si no existe, buscamos B -> A (Inversa)
-            if (MatrizDistancias.TryGetValue((destino, origen), out int d2)) return d2;
+            if (MatrizTarifas.TryGetValue((destino, origen), out int d2)) return d2;
 
             return 0;
         }
 
         public static decimal CalcularTransporte(string CDOrigen, string CDDestino, string tamaño, int clienteID)
         {
-            int km = ObtenerDistancia(CDOrigen, CDDestino);
-            decimal descuento = 0.0m;
-            foreach (var tarifa in new AdmisionModelo().LTarifaCliente)
-            {
-                if (tarifa.clienteID == clienteID)
-                {
-                    descuento = tarifa.descuentoxKm;
-                }
-            }
+            decimal precioTransporte = ObtenerDistancia(CDOrigen, CDDestino);
             decimal factorTamaño = tamaño switch
             {
                 "S" => 1.0m,
-                "M" => 1.5m,
-                "L" => 3.0m,
-                "XL" => 6.0m,
+                "M" => 2.0m,
+                "L" => 4.0m,
+                "XL" => 8.0m,
             };
 
             decimal precioBase = 10.0m; // Precio base por km
-            decimal transporte = (decimal)km * factorTamaño * (1 - descuento) * precioBase;
-            if (transporte <= 0)
-            {
-                transporte = 5000;
-            }
+            decimal transporte = precioTransporte * factorTamaño * precioBase;
             return transporte;
         }
         public static decimal CalcularImposicion(int clienteID, string tipoImposicion)
