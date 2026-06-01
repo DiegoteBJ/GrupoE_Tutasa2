@@ -101,12 +101,14 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             if (fletero != null)
             {
+                
                 //Muestra nombre y apellido de fletero en labels correspondientes, habilita los radio buttons de retiro y distribución
                 nombrefleterolabel.Text = fletero.FleteroNombre;
                 apellidofleterolabel.Text = fletero.FleteroApellido;
                 this.Tag = fletero; // guardar contexto simple
                 retiroradioButton.Enabled = true;
                 distribucionradioButton.Enabled = true;
+                
             }
             else
             {
@@ -136,6 +138,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultoslabel.Text = "0";
             bultostotalasignadoslabel.Text = "0";
             ingresardnitextBox.Clear();
+            ingresardnitextBox.Focus();
+            
             this.Tag = null; // borra el contexto del fletero anterior
         }
 
@@ -536,66 +540,56 @@ namespace GrupoE_Tutasa.GenerarHDR
         private int ultimoHDRRetiroId = 0;
         private int ultimoHDRDistribucionId = 0;
 
+
+        private List<HDRResumen> hdrsProvisorios = new List<HDRResumen>();
+
         private void generarhdrbutton_Click(object sender, EventArgs e)
         {
-            // Validar que haya guías en el detalle
             if (detallehdrlistView.Items.Count == 0)
             {
-                MessageBox.Show(
-                    "No hay guías asignadas en el detalle. Debe seleccionar al menos una guía antes de generar la HDR.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return; // salir sin generar nada
+                MessageBox.Show("No hay guías asignadas en el detalle.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ingresardnitextBox.Focus();
+                return;
             }
 
-            var resumenHDR = new List<HDRResumen>();
-            var fletero = this.Tag as Fleteros; // el fletero seleccionado en pantalla
+            // ✅ Obtener el fletero actual desde Tag (lo guardaste al buscar por DNI)
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null)
+            {
+                MessageBox.Show("Debe seleccionar un fletero antes de generar HDR.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return;
+            }
+
+            hdrsProvisorios.Clear();
+            int idRetiroTemp = 1;
+            int idDistribTemp = 1;
 
             foreach (ListViewItem item in detallehdrlistView.Items)
             {
                 var guia = item.Tag as Guias;
-                if (guia == null || fletero == null) continue;
+                if (guia == null) continue;
 
                 if (guia.EstadoGuia == "A retirar")
                 {
-                    ultimoHDRRetiroId++;
-                    var hdr = new HDRRetiro
-                    {
-                        HDRRetiroId = ultimoHDRRetiroId,
-                        GuiaId = guia.GuiaId,
-                        fleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now
-                    };
-                    modelo.HDRsRetiro.Add(hdr);
-                    resumenHDR.Add(new HDRResumen(hdr.HDRRetiroId, guia, "Retiro"));
+                    hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guia, "Retiro"));
                 }
                 else if (guia.EstadoGuia == "Admitida" || guia.EstadoGuia == "En distribución")
                 {
-                    ultimoHDRDistribucionId++;
-                    var hdr = new HDRDistribucion
-                    {
-                        HDRDistribucionId = ultimoHDRDistribucionId,
-                        GuiaId = guia.GuiaId,
-                        fleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now
-                    };
-                    modelo.HDRsDistribucion.Add(hdr);
-                    resumenHDR.Add(new HDRResumen(hdr.HDRDistribucionId, guia, "Distribución"));
-
-                    // Solo si estaba admitida, cambiar estado
-                    if (guia.EstadoGuia == "Admitida")
-                        guia.EstadoGuia = "En distribución";
+                    hdrsProvisorios.Add(new HDRResumen(idDistribTemp++, guia, "Distribución"));
                 }
             }
 
-            var resumenOrdenado = resumenHDR.OrderBy(r => r.Domicilio).ToList();
-            MostrarResumenPopup(resumenOrdenado);
+            var resumenOrdenado = hdrsProvisorios.OrderBy(r => r.Domicilio).ToList();
+            MostrarResumenPopup(resumenOrdenado, fletero); // ✅ pasar fletero como parámetro
+        
 
         }
 
-        private void MostrarResumenPopup(List<HDRResumen> resumen)
+        private void MostrarResumenPopup(List<HDRResumen> resumen, Fleteros fletero)
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";
@@ -620,10 +614,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 var item = new ListViewItem(r.HDRId.ToString());
                 item.SubItems.Add(r.GuiaId.ToString());
                 item.SubItems.Add(r.Destinatario);
-
-                // Mostrar domicilio como Calle + Número
                 item.SubItems.Add(r.Domicilio);
-
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.TipoHDR);
                 listView.Items.Add(item);
@@ -641,54 +632,61 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             imprimirButton.Click += (s, e) =>
             {
-                ImprimirResumen(resumen);
-                popup.Close(); // cerrar el pop-up después de imprimir
+                ImprimirResumen(resumen, fletero); // ✅ se pasa fletero aquí
+                popup.Close();
             };
 
             popup.Controls.Add(listView);
             popup.Controls.Add(imprimirButton);
 
-            popup.FormClosing += (s, e) =>
-            {
-                
-                
-                    // Si se cierra con la cruz y NO se imprimió nada
-                    if (popup.DialogResult != DialogResult.OK)
-                    {
-                        MessageBox.Show("Se canceló la impresión. Puede modificar las guías en el detalle antes de volver a generar.",
-                                        "Cancelado",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
-
-                        // No reseteamos nada, simplemente volvemos al formulario principal
-                        // detallehdrListView sigue con las guías cargadas
-                    }
-                
-            };
-
             popup.ShowDialog();
         }
-        private void ImprimirResumen(List<HDRResumen> resumen)
+
+
+        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero)
         {
-            // Mostrar mensaje de impresión
             MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
                             "Impresión",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
-            // Guardar cambios de estado de las guías
             foreach (var r in resumen)
             {
                 var guia = modelo.LGuiasAAsignar.FirstOrDefault(g => g.GuiaId == r.GuiaId);
-                if (guia != null && guia.EstadoGuia == "Admitida")
+                if (guia == null) continue;
+
+                if (r.TipoHDR == "Retiro")
                 {
-                    guia.EstadoGuia = "En distribución";
+                    ultimoHDRRetiroId++;
+                    var hdr = new HDRRetiro
+                    {
+                        HDRRetiroId = ultimoHDRRetiroId,
+                        GuiaId = guia.GuiaId,
+                        fleteroId = fletero.FleteroId, // ✅ ahora funciona
+                        FechaEmision = DateTime.Now
+                    };
+                    modelo.HDRsRetiro.Add(hdr);
+                }
+                else if (r.TipoHDR == "Distribución")
+                {
+                    ultimoHDRDistribucionId++;
+                    var hdr = new HDRDistribucion
+                    {
+                        HDRDistribucionId = ultimoHDRDistribucionId,
+                        GuiaId = guia.GuiaId,
+                        fleteroId = fletero.FleteroId, // ✅ ahora funciona
+                        FechaEmision = DateTime.Now
+                    };
+                    modelo.HDRsDistribucion.Add(hdr);
+
+                    if (guia.EstadoGuia == "Admitida")
+                        guia.EstadoGuia = "En distribución";
                 }
             }
 
-            // Resetear todo el formulario
             ResetearFormularioFletero();
-            ingresardnitextBox.Clear(); // limpiar DNI del fletero
+            ingresardnitextBox.Clear();
+            ingresardnitextBox.Focus();
         }
     }
 }
