@@ -9,7 +9,7 @@ namespace GrupoE_Tutasa.MonitoreoResultados
     // Esta clase representa las guías que tienen estado de entregadas y facturadas, con sus propiedades correspondientes.
         public int Id { get; set; }
         public int clienteID { get; set; }
-        public string numeroGuia { get; set; } = string.Empty;
+        public int numeroGuia { get; set; } 
         public DateTime fechaEntrega { get; set; }
         public string origen { get; set; } = string.Empty;
         public string destino { get; set; } = string.Empty;

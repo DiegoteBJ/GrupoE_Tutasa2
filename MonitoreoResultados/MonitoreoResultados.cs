@@ -15,7 +15,6 @@
             int anio = anterior.Year;
             int mes = anterior.Month;
             MesTextBox.Text = mes.ToString();
-            //AñoUpDown.Value = anio;
             AnioTextBox.Text = anio.ToString();
             ResultadoMensualLabel.Text = 0.ToString("C");
             ResultadosObtenidosListView.Items.Clear();
@@ -48,20 +47,16 @@
             decimal resultadoMensualAcumulado = 0;
             ResultadosObtenidosListView.Items.Clear();
 
-            if (modelo?.LProveedoresLD == null)
+            if (modelo.LProveedoresLD == null)
             {
                 return;
             }
 
             foreach (var proveedoresLD in modelo.LProveedoresLD)
             {
-                foreach (var documentos in modelo.LDocumentos)
-                {
-                    if (documentos.proveedorId == proveedoresLD.proveedorId && documentos.documentoFecha.Month == mes && documentos.documentoFecha.Year == anio)
-                    {
-                        importePagado = importePagado + documentos.documentoTotalsinIVA;
-                    }
-                }
+                
+                importePagado = proveedoresLD.montoFijoMensual;
+                
                 foreach (var Guias in modelo.LGuias)
                 {
                     if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio)
