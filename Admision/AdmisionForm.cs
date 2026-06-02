@@ -168,7 +168,7 @@ namespace GrupoE_Tutasa.Admision
             guiaActual.importe = importe;
 
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
-            LimpiaYCierra(sender, e);
+            LimpiaNoCierra(sender, e);
         }
 
         private void RechazarBoton_Click(object sender, EventArgs e)
@@ -249,6 +249,32 @@ namespace GrupoE_Tutasa.Admision
 
             // Cerrar al final, una vez que todo está limpio
             this.Close();
+        }
+        private void LimpiaNoCierra(object sender, EventArgs e)
+        {
+            // FIX 1: Primero limpiar el estado, luego cerrar
+            encuentro = false;
+            guiaActual = null;
+
+            // Limpiar campos de texto y etiquetas
+            NumeroGuiaTextBox.Clear();
+            FechaGuiaLabel.Text = string.Empty;
+            CDOrigenGuiaLabel.Text = string.Empty;
+            CDDestinoGuiaLabel.Text = string.Empty;
+            EstadoGuiaLabel.Text = string.Empty;
+            ObservacionesTextBox.Clear();
+            TamañoDeclaradoLabel.Text = string.Empty;
+
+            // Resetear controles de tamaño
+            TamañoReclasificacionComboBox.SelectedIndex = -1;
+            TamañoReclasificacionComboBox.Enabled = false;
+            CambiarTamañoBoton.Enabled = false;
+
+            // Resetear el radio button
+            TamañoCorrectoBoton.Checked = true;
+
+            // Cerrar al final, una vez que todo está limpio
+            //this.Close();
         }
     }
 }

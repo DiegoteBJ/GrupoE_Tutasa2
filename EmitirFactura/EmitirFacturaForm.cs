@@ -34,7 +34,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
-                MessageBox.Show("Por favor, ingrese un CUIT válido.");
+                MessageBox.Show("Debe completar el campo CUIT.");
                 return;
             }
             if (!EmisionFacturaModelo.ValidarCuit(CuitClienteBox.Text))
@@ -56,7 +56,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             }
             if (encuentro == 0)
             {
-                DatosCLienteRespuestaLabel.Text = "Cliente no encontrado.";
+                DatosCLienteRespuestaLabel.Text = "No existe el Cliente seleccionado. Vuelva a intentarlo";
                 return;
             }
             //3 Generar opercion de busqueda
@@ -82,6 +82,8 @@ namespace GrupoE_Tutasa.EmitirFactura
                 }
             }
             TotalAFacturarLabel.Text = $"{totalImporte}";
+            if (totalImporte==0)
+            { MessageBox.Show("No se encontraron ítems pendientes de facturar. Para el cliente seleccionado. Reintente");}
         }
         private void CancelarBoton_Click(object sender, EventArgs e)
         {

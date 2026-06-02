@@ -37,7 +37,7 @@
 					MessageBox.Show("Por favor, ingrese un número de mes válido (1-12).");
 					return;
 				}
-            if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<1900 ||  anio >DateTime.Today.Year)
+            if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<2000 ||  anio >DateTime.Today.Year)
 				{
 					MessageBox.Show("Por favor, ingrese un año válido");
                     return;
