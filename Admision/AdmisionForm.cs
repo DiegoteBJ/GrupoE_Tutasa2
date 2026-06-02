@@ -68,8 +68,8 @@ namespace GrupoE_Tutasa.Admision
                 {
                     guiaActual = guia;
                     FechaGuiaLabel.Text = guia.fechaImposicion.ToString("dd/MM/yyyy");
-                    CDOrigenGuiaLabel.Text = guia.CDorigen;
-                    CDDestinoGuiaLabel.Text = guia.CDdestino;
+                    CDOrigenGuiaLabel.Text = guia.CDOrigenId.ToString();
+                    CDDestinoGuiaLabel.Text = guia.CDDestinoId.ToString();
                     EstadoGuiaLabel.Text = guia.estadoGuia.ToString();
                     ObservacionesTextBox.Text = guia.observaciones;
                     TamañoDeclaradoLabel.Text = guia.tamaño;
@@ -83,7 +83,7 @@ namespace GrupoE_Tutasa.Admision
             }
             MessageBox.Show("No se encontró la guía con el número proporcionado.");
         }
-
+        
         private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
         {
             // Separar claramente ambas condiciones
@@ -99,9 +99,20 @@ namespace GrupoE_Tutasa.Admision
 
         private void AdmitirBoton_Click(object sender, EventArgs e)
         {
+            decimal importeImposicion = 0;
+            decimal importeEntrega = 0;
+            decimal importeTransporte = 0;
+            decimal importe = 0;
+            string estadoGuia = guiaActual.estadoGuia;
+
             if (encuentro == false)
             {
                 MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de admitir.");
+                return;
+            }
+            if (estadoGuia != "IMPUESTA_TELEFONICAMENTE" && estadoGuia != "RENDIDA")
+            {
+                MessageBox.Show("La guía no se encuentra en un estado válido para ser admitida. Por favor, revise el estado de la guía antes de admitir.");
                 return;
             }
 
@@ -118,16 +129,34 @@ namespace GrupoE_Tutasa.Admision
                 guiaActual.tamaño = nuevoTamañoNombre;
             }
 
-            decimal importeTransporte = CalculadorLogistica.CalcularTransporte(CDOrigenGuiaLabel.Text, CDDestinoGuiaLabel.Text, guiaActual.tamaño, guiaActual.clienteID);
-            decimal importeImposicion = CalculadorLogistica.CalcularImposicion(guiaActual.clienteID, guiaActual.tipoImposicion);
-            decimal importeEntrega = CalculadorLogistica.CalcularEntrega(guiaActual.clienteID, guiaActual.tipoEntrega);
-            decimal importe = importeTransporte + importeImposicion + importeEntrega;
+            importeTransporte = modelo.ObtenerCoeficiente(guiaActual.CDOrigenId, guiaActual.CDDestinoId, guiaActual.tamaño);
+            decimal precioUnitarioTransporte = modelo.ObtenerPrecioUnitarioTransporte(guiaActual.tarifarioId);
+            importeTransporte = importeTransporte * precioUnitarioTransporte;
+            
+            if (guiaActual.tipoImposicion == "A")
+            {
+                importeImposicion = modelo.ObtenerTarifaImposicionAgencia(guiaActual.tarifarioId);
+            }
+            else if (guiaActual.tipoImposicion == "D")
+            {
+                importeImposicion = modelo.ObtenerTarifaRetiroDomicilio(guiaActual.tarifarioId);
+            }
+            if (guiaActual.tipoEntrega == "A")
+            {
+                importeEntrega = modelo.ObtenerTarifaEntregaAgencia(guiaActual.tarifarioId);
+            }
+            else if (guiaActual.tipoEntrega == "D")
+            {
+                importeEntrega = modelo.ObtenerTarifaDistribucionDomicilio(guiaActual.tarifarioId);
+            }
+            
+            importe = importeTransporte + importeImposicion + importeEntrega;
 
             guiaActual.importeImposicion = importeImposicion;
             guiaActual.importeEntrega = importeEntrega;
             guiaActual.importeTransporte = importeTransporte;
             guiaActual.fechaAdmision = DateTime.Now;
-            guiaActual.estadoGuia = "Admitida";
+            guiaActual.estadoGuia = "ADMITIDA";
             guiaActual.importe = importe;
 
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
