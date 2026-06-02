@@ -56,8 +56,9 @@
             foreach (var proveedoresLD in modelo.LProveedoresLD)
             {
                 importeCobrado = 0;
-                importePagado = proveedoresLD.montoFijoMensual;
-                
+                int convenioVigente = modelo.ConvenioVigenteId(proveedoresLD.proveedorId, new DateTime(anio, mes, 1));
+                importePagado = modelo.ConvenioVigenteImporte(convenioVigente);
+
                 foreach (var Guias in modelo.LGuias)
                 {
                     if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio && Guias.facturada == true)

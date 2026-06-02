@@ -83,6 +83,54 @@ namespace GrupoE_Tutasa.MonitoreoResultados
                 };
             }
         }
+        public List<ConvenioTransporte> LConvenioTransporte
+        {
+            get
+            {
+                return new List<ConvenioTransporte>
+                {
+                    new ConvenioTransporte { ConvenioId = 1, EmpresaTransporteId = 1, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(2026, 03, 31), ImporteConvenio = 150000 },
+                    new ConvenioTransporte { ConvenioId = 2, EmpresaTransporteId = 2, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 100000 },
+                    new ConvenioTransporte { ConvenioId = 3, EmpresaTransporteId = 3, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 120000 },
+                    new ConvenioTransporte { ConvenioId = 4, EmpresaTransporteId = 4, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 90000 },
+                    new ConvenioTransporte { ConvenioId = 5, EmpresaTransporteId = 5, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 110000 },
+                    new ConvenioTransporte { ConvenioId = 6, EmpresaTransporteId = 6, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 80000 },
+                    new ConvenioTransporte { ConvenioId = 7, EmpresaTransporteId = 7, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 130000 },
+                    new ConvenioTransporte { ConvenioId = 8, EmpresaTransporteId = 8, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 140000 },
+                    new ConvenioTransporte { ConvenioId = 9, EmpresaTransporteId = 9, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 160000 },
+                    new ConvenioTransporte { ConvenioId = 10, EmpresaTransporteId = 10, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 170000 },
+                    new ConvenioTransporte { ConvenioId = 11, EmpresaTransporteId = 1, FechaVigenciaDesde = new DateTime(2026, 04, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 180000 },
+                };
+            }
+        }
+        public int ConvenioVigenteId(int empresaTransporteId, DateTime fecha)
+        {
+        // Este método se encarga de verificar si existe un convenio vigente para el proveedor de transporte dado y la fecha actual.
+        // Si existe un convenio vigente, devuelve su ID; de lo contrario, devuelve 0.
+
+            foreach (var convenio in LConvenioTransporte)
+            {
+                if (convenio.EmpresaTransporteId == empresaTransporteId && convenio.FechaVigenciaDesde <= fecha && convenio.FechaVigenciaHasta >= fecha)
+                {
+                    return convenio.ConvenioId;
+                }
+            }
+        return 0;
+        }
+        public decimal ConvenioVigenteImporte(int convenioId)
+        {
+            // Este método se encarga de devolver el importe del convenio vigente dado su ID.
+            // Si el convenio no existe, devuelve 0. Como sigo?
+            
+            foreach (var convenio in LConvenioTransporte)
+            {
+                if (convenio.ConvenioId == convenioId)
+                {
+                    return convenio.ImporteConvenio;
+                }
+            }
+            return 0;
+        }
     }
 }
 
