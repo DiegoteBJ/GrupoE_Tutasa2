@@ -6,34 +6,47 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class HDRResumen
     {
-        public int HDRId { get; set; }
-        public int GuiaId { get; set; }
+        public int HDRId { get; set; }                // correlativo interno, no persistente
+        public List<int> GuiasIds { get; set; } = new List<int>(); // ✅ lista de guías
         public string Destinatario { get; set; }
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
-        public string TipoHDR { get; set; } // Retiro o Distribución
+        public string TipoHDR { get; set; }           // Retiro o Distribución
         public int IntentosDeEntrega { get; set; }
+        public List<int> GuiasAImprimir { get; set; } = new List<int>(); // guías impuestas telefónicamente
+        public DateTime FechaImpresion { get; set; }  // fecha/hora de impresión
 
-
-       public HDRResumen(int hdrId, Guias guia, string tipo)
+        public HDRResumen(int hdrId, List<Guias> guias, string tipo)
         {
             HDRId = hdrId;
-            GuiaId = guia.GuiaId;
-            Destinatario = guia.NombreDestinatarioGuia;
+            GuiasIds = guias.Select(g => g.GuiaId).ToList();
+            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatarioGuia));
             TipoHDR = tipo;
 
             if (tipo == "Retiro")
             {
-                Domicilio = $"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}";
-                CodigoPostal = guia.DomicilioRetiro.CodigoPostal;
+                var domicilio = guias.First().DomicilioRetiro;
+                Domicilio = $"{domicilio.Calle} {domicilio.Numero}";
+                CodigoPostal = domicilio.CodigoPostal;
             }
             else // Distribución
             {
-                Domicilio = $"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}";
-                CodigoPostal = guia.DomicilioEntrega.CodigoPostal;
+                var domicilio = guias.First().DomicilioEntrega;
+                Domicilio = $"{domicilio.Calle} {domicilio.Numero}";
+                CodigoPostal = domicilio.CodigoPostal;
             }
 
-            IntentosDeEntrega = guia.IntentosDeEntrega;
+            IntentosDeEntrega = guias.Max(g => g.IntentosDeEntrega);
+
+            // ✅ Guías a imprimir: las que están impuestas telefónicamente
+            GuiasAImprimir = guias.Where(g => g.EstadoGuia == "Impuesta Telefónicamente")
+                                  .Select(g => g.GuiaId)
+                                  .ToList();
+
+            // ✅ Fecha/hora de impresión
+            FechaImpresion = DateTime.Now;
         }
     }
 }
+    
+
