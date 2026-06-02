@@ -7,7 +7,8 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class HDRResumen
     {
         public int HDRId { get; set; }
-        public int GuiaId { get; set; }
+        public int GuiaId { get; set; } // opcional: primer guía, útil para compatibilidad
+        public List<int> GuiasIds { get; set; } = new List<int>(); // ✅ lista de guías
         public string Destinatario { get; set; }
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
@@ -15,25 +16,30 @@ namespace GrupoE_Tutasa.GenerarHDR
         public int IntentosDeEntrega { get; set; }
 
 
-       public HDRResumen(int hdrId, Guias guia, string tipo)
+        // Constructor para varias guías (agrupadas por domicilio)
+        public HDRResumen(int hdrId, List<Guias> guias, string tipo)
         {
             HDRId = hdrId;
-            GuiaId = guia.GuiaId;
-            Destinatario = guia.NombreDestinatarioGuia;
+            GuiasIds = guias.Select(g => g.GuiaId).ToList();
+            GuiaId = GuiasIds.FirstOrDefault(); // opcional, primer guía
+            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatarioGuia));
             TipoHDR = tipo;
 
             if (tipo == "Retiro")
             {
-                Domicilio = $"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}";
-                CodigoPostal = guia.DomicilioRetiro.CodigoPostal;
+                var domicilio = guias.First().DomicilioRetiro;
+                Domicilio = $"{domicilio.Calle} {domicilio.Numero}";
+                CodigoPostal = domicilio.CodigoPostal;
             }
             else // Distribución
             {
-                Domicilio = $"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}";
-                CodigoPostal = guia.DomicilioEntrega.CodigoPostal;
+                var domicilio = guias.First().DomicilioEntrega;
+                Domicilio = $"{domicilio.Calle} {domicilio.Numero}";
+                CodigoPostal = domicilio.CodigoPostal;
             }
 
-            IntentosDeEntrega = guia.IntentosDeEntrega;
+            // Si hay varias guías, tomás el máximo de intentos de entrega
+            IntentosDeEntrega = guias.Max(g => g.IntentosDeEntrega);
         }
     }
 }

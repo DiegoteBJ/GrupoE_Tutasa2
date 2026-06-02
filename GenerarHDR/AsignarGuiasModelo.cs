@@ -39,11 +39,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                         GuiaId = 2,
                         DomicilioRetiro = new Domicilio
                         {
-                            Calle = "Avenida Siempre Viva",
-                            Numero = "456",
-                            CodigoPostal = "2000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires",
+                            Calle = "Calle Falsa",
+                            Numero = "123",
+                            CodigoPostal = "1000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
 
                         },
                         tamañoGuia = "M",
@@ -195,9 +195,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                         NombreDestinatarioGuia = "Laura Gómez",
                         DomicilioEntrega = new Domicilio
                         {
-                            Calle = "Calle Real",
-                            Numero = "753",
-                            CodigoPostal = "2500",
+                            Calle = "Avenida Real",
+                            Numero = "852",
+                            CodigoPostal = "9500",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -227,6 +227,31 @@ namespace GrupoE_Tutasa.GenerarHDR
                         },
                         IntentosDeEntrega = 2
                     },
+                    new Guias
+                    {
+                        GuiaId = 10,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle Falsa",
+                            Numero = "123",
+                            CodigoPostal = "1000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
+
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "Impuesta Telefónicamente",
+                        NombreDestinatarioGuia = "María Gómez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "7819",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
                 };
 
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
@@ -244,20 +269,22 @@ namespace GrupoE_Tutasa.GenerarHDR
             new HDRRetiro
             {
                 HDRRetiroId = 1,
-                GuiaId = 101,
+             
                 fleteroId = 1,
                 FechaEmision = DateTime.Now.AddDays(-1),
                 FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "Pendiente"
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
             new HDRRetiro
             {
                 HDRRetiroId = 2,
-                GuiaId = 102,
+               
                 fleteroId = 2,
                 FechaEmision = DateTime.Now.AddDays(-2),
                 FechaRendicion = DateTime.MinValue,
-                Estado = "Pendiente"
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             }
         };
 
@@ -266,30 +293,23 @@ namespace GrupoE_Tutasa.GenerarHDR
             new HDRDistribucion
             {
                 HDRDistribucionId = 1,
-                GuiaId = 201,
+               
                 fleteroId = 1,
                 FechaEmision = DateTime.Now.AddDays(-1),
                 FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "Pendiente"
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
             new HDRDistribucion
             {
                 HDRDistribucionId = 2,
-                GuiaId = 202,
+               
                 fleteroId = 2,
                 FechaEmision = DateTime.Now.AddDays(-2),
                 FechaRendicion = DateTime.MinValue,
-                Estado = "Pendiente"
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
-            new HDRDistribucion
-            {
-                HDRDistribucionId = 3,
-                GuiaId = 203,
-                fleteroId = 3,
-                FechaEmision = DateTime.Now.AddDays(-3),
-                FechaRendicion = DateTime.MinValue,
-                Estado = "Pendiente"
-            }
 
 
         };
