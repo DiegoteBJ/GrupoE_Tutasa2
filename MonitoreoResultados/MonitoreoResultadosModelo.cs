@@ -120,7 +120,7 @@ namespace GrupoE_Tutasa.MonitoreoResultados
         public decimal ConvenioVigenteImporte(int convenioId)
         {
             // Este método se encarga de devolver el importe del convenio vigente dado su ID.
-            // Si el convenio no existe, devuelve 0. Como sigo?
+            // Si el convenio no existe, devuelve 0.
             
             foreach (var convenio in LConvenioTransporte)
             {
