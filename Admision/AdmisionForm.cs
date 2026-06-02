@@ -141,6 +141,10 @@ namespace GrupoE_Tutasa.Admision
             {
                 importeImposicion = modelo.ObtenerTarifaRetiroDomicilio(guiaActual.tarifarioId);
             }
+            else if (guiaActual.tipoImposicion == "C")
+            {
+                importeImposicion = 0;
+            }
             if (guiaActual.tipoEntrega == "A")
             {
                 importeEntrega = modelo.ObtenerTarifaEntregaAgencia(guiaActual.tarifarioId);
@@ -149,7 +153,11 @@ namespace GrupoE_Tutasa.Admision
             {
                 importeEntrega = modelo.ObtenerTarifaDistribucionDomicilio(guiaActual.tarifarioId);
             }
-            
+            else if (guiaActual.tipoEntrega == "C")
+            {
+                importeEntrega = 0;
+            }
+
             importe = importeTransporte + importeImposicion + importeEntrega;
 
             guiaActual.importeImposicion = importeImposicion;

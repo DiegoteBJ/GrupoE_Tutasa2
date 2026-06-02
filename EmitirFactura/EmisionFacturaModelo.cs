@@ -50,12 +50,12 @@ namespace GrupoE_Tutasa.EmitirFactura
                     new Clientes { clienteId = 2, clienteName = "Cliente B", clienteCUIT = "27202016494" },
                     new Clientes { clienteId = 3, clienteName = "Cliente C", clienteCUIT = "20483900334" },
                     new Clientes { clienteId = 4, clienteName = "Cliente D", clienteCUIT = "20483900342" },
-                    new Clientes { clienteId = 5, clienteName = "Cliente E", clienteCUIT = "20329642330" },
-                    new Clientes { clienteId = 6, clienteName = "Cliente F", clienteCUIT = "27384592017" },
-                    new Clientes { clienteId = 7, clienteName = "Cliente G", clienteCUIT = "30765432109" },
+                    new Clientes { clienteId = 5, clienteName = "Cliente E", clienteCUIT = "27329642335" },
+                    new Clientes { clienteId = 6, clienteName = "Cliente F", clienteCUIT = "23384592015" },
+                    new Clientes { clienteId = 7, clienteName = "Cliente G", clienteCUIT = "33765432109" },
                     new Clientes { clienteId = 8, clienteName = "Cliente H", clienteCUIT = "23345678903" },
-                    new Clientes { clienteId = 9, clienteName = "Cliente I", clienteCUIT = "30789123456" },
-                    new Clientes { clienteId = 10, clienteName = "Cliente J", clienteCUIT = "20345678901" },
+                    new Clientes { clienteId = 9, clienteName = "Cliente I", clienteCUIT = "30759123456" },
+                    new Clientes { clienteId = 10, clienteName = "Cliente J", clienteCUIT = "20345678906" },
                 };
             }
         }

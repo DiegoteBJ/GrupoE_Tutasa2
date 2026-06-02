@@ -63,7 +63,7 @@
                 {
                     if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio && Guias.facturada == true)
                     {
-                        importeCobrado = importeCobrado + Guias.importeTotal;
+                        importeCobrado = importeCobrado + Guias.importeTransporte;
                     }
                 }
 

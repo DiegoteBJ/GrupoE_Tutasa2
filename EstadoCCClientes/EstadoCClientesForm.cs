@@ -134,6 +134,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
             clienteActual = null;
+            DocumentosListView.Items.Clear();
             EstadoCClientesForm_Load(sender, e);
         }
 
