@@ -6,22 +6,20 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class HDRResumen
     {
-        public int HDRId { get; set; }
-        public int GuiaId { get; set; } // opcional: primer guía, útil para compatibilidad
+        public int HDRId { get; set; }                // correlativo interno, no persistente
         public List<int> GuiasIds { get; set; } = new List<int>(); // ✅ lista de guías
         public string Destinatario { get; set; }
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
-        public string TipoHDR { get; set; } // Retiro o Distribución
+        public string TipoHDR { get; set; }           // Retiro o Distribución
         public int IntentosDeEntrega { get; set; }
+        public List<int> GuiasAImprimir { get; set; } = new List<int>(); // guías impuestas telefónicamente
+        public DateTime FechaImpresion { get; set; }  // fecha/hora de impresión
 
-
-        // Constructor para varias guías (agrupadas por domicilio)
         public HDRResumen(int hdrId, List<Guias> guias, string tipo)
         {
             HDRId = hdrId;
             GuiasIds = guias.Select(g => g.GuiaId).ToList();
-            GuiaId = GuiasIds.FirstOrDefault(); // opcional, primer guía
             Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatarioGuia));
             TipoHDR = tipo;
 
@@ -38,8 +36,17 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CodigoPostal = domicilio.CodigoPostal;
             }
 
-            // Si hay varias guías, tomás el máximo de intentos de entrega
             IntentosDeEntrega = guias.Max(g => g.IntentosDeEntrega);
+
+            // ✅ Guías a imprimir: las que están impuestas telefónicamente
+            GuiasAImprimir = guias.Where(g => g.EstadoGuia == "Impuesta Telefónicamente")
+                                  .Select(g => g.GuiaId)
+                                  .ToList();
+
+            // ✅ Fecha/hora de impresión
+            FechaImpresion = DateTime.Now;
         }
     }
 }
+    
+

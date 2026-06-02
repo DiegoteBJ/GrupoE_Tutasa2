@@ -578,16 +578,9 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             hdrsProvisorios.Clear();
 
-            // Buscar último ID usado en HDRs definitivos o en resúmenes previos
-            int idRetiroTemp = Math.Max(
-                modelo.HDRsRetiro.Any() ? modelo.HDRsRetiro.Max(h => h.HDRRetiroId) : 0,
-                hdrsProvisorios.Any() ? hdrsProvisorios.Where(r => r.TipoHDR == "Retiro").Max(r => r.HDRId) : 0
-            ) + 1;
-
-            int idDistribTemp = Math.Max(
-                modelo.HDRsDistribucion.Any() ? modelo.HDRsDistribucion.Max(h => h.HDRDistribucionId) : 0,
-                hdrsProvisorios.Any() ? hdrsProvisorios.Where(r => r.TipoHDR == "Distribución").Max(r => r.HDRId) : 0
-            ) + 1;
+            // ✅ Numeración continua según HDRs ya guardados
+            int idRetiroTemp = modelo.HDRsRetiro.Any() ? modelo.HDRsRetiro.Max(h => h.HDRRetiroId) + 1 : 1;
+            int idDistribTemp = modelo.HDRsDistribucion.Any() ? modelo.HDRsDistribucion.Max(h => h.HDRDistribucionId) + 1 : 1;
 
             // Agrupar guías por domicilio
             var grupos = detallehdrlistView.Items
@@ -621,19 +614,20 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";
-            popup.Size = new Size(750, 450);
+            popup.Size = new Size(850, 500);
             popup.StartPosition = FormStartPosition.CenterParent;
 
             var listView = new ListView();
             listView.Dock = DockStyle.Top;
             listView.View = View.Details;
             listView.FullRowSelect = true;
-            listView.Height = 350;
+            listView.Height = 380;
 
             listView.Columns.Add("HDR Id", 80);
             listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Estado especial", 150);
+            listView.Columns.Add("Guías a imprimir", 200);
+            listView.Columns.Add("Fecha/Hora impresión", 150);
 
             foreach (var r in resumen)
             {
@@ -641,9 +635,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(string.Join(", ", r.GuiasIds));
                 item.SubItems.Add(r.TipoHDR);
 
-                var guiasGrupo = modelo.LGuiasAAsignar.Where(g => r.GuiasIds.Contains(g.GuiaId));
-                bool impuesta = guiasGrupo.Any(g => g.EstadoGuia == "Impuesta Telefónicamente");
-                item.SubItems.Add(impuesta ? "Sí (Imprimir guía)" : "-");
+                // ✅ Mostrar directamente las guías a imprimir desde la propiedad
+                item.SubItems.Add(r.GuiasAImprimir.Any() ? string.Join(", ", r.GuiasAImprimir) : "-");
+
+                // ✅ Mostrar la fecha/hora de impresión desde la propiedad
+                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));
 
                 listView.Items.Add(item);
             }
