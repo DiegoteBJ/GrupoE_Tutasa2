@@ -179,8 +179,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion"); // parámetro especial
-                ActualizarAutoCompleteCP("Distribucion");
+                CargarGuiasPorEstado("Distribución"); // parámetro especial
+                ActualizarAutoCompleteCP("Distribución");
                 buscarcodigopostalbutton.Enabled = true;
                 generarhdrbutton.Enabled = true;
         }
@@ -202,7 +202,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         && !guiasAsignadas.Contains(g.GuiaId)
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
-            else if (estado == "Distribucion")
+            else if (estado == "Distribución")
             {
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
@@ -311,7 +311,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     .Distinct()
                     .ToArray();
             }
-            else if (estado == "Distribucion")
+            else if (estado == "Distribución")
             {
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g =>
@@ -436,6 +436,13 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void eliminarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (detallehdrlistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             foreach (ListViewItem item in detallehdrlistView.SelectedItems)
             {
                 var guia = item.Tag as Guias;
@@ -453,7 +460,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     newItem.SubItems.Add(guia.DomicilioEntrega.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
                 }
-               
+
 
                 newItem.SubItems.Add(guia.tamañoGuia);
                 newItem.SubItems.Add(guia.EstadoGuia);
@@ -483,11 +490,17 @@ namespace GrupoE_Tutasa.GenerarHDR
             else if (distribucionradioButton.Checked)
                 CargarGuiasPorEstado("Distribucion");
 
-               
+
         }
 
         private void eliminartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultostotalasignadoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in detallehdrlistView.Items)
             {
                 var guia = item.Tag as Guias;
@@ -534,7 +547,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A retirar");
             else if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion");
+                CargarGuiasPorEstado("Distribución");
 
         }
 
