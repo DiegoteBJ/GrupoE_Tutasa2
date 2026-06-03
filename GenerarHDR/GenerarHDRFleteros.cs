@@ -191,15 +191,23 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             seleccionguiaslistView.Items.Clear();
 
+            // ✅ Excluir guías que ya están en detallehdrlistView
+            var guiasEnDetalle = detallehdrlistView.Items
+                .Cast<ListViewItem>()
+                .Select(i => (i.Tag as Guias)?.GuiaId)
+                .Where(id => id.HasValue)
+                .Select(id => id.Value)
+                .ToHashSet();
+
             IEnumerable<Guias> guias;
 
             if (estado == "A retirar")
             {
                 guias = modelo.LGuiasAAsignar
-                    .Where(g => 
-                        g.EstadoGuia == "A retirar" || 
-                        g.EstadoGuia == "Impuesta Telefónicamente" 
+                    .Where(g =>
+                        (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
                         && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else if (estado == "Distribución")
@@ -207,8 +215,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                        (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
                         && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else
@@ -224,7 +233,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 {
                     item.SubItems.Add(g.DomicilioRetiro.CodigoPostal);
                     item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero}");
-
                 }
                 else // Distribución
                 {
@@ -236,7 +244,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(g.EstadoGuia);
 
                 if (g.EstadoGuia == "En distribución")
-                    item.SubItems.Add( g.IntentosDeEntrega.ToString());
+                    item.SubItems.Add(g.IntentosDeEntrega.ToString());
                 else
                     item.SubItems.Add("0");
 
