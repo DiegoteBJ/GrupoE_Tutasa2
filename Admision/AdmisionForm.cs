@@ -110,7 +110,7 @@ namespace GrupoE_Tutasa.Admision
                 MessageBox.Show("No se ha encontrado la guía. Por favor, busque una guía válida antes de admitir.");
                 return;
             }
-            if (estadoGuia != "IMPUESTA_TELEFONICAMENTE" && estadoGuia != "RENDIDA")
+            if (estadoGuia != "RENDIDA")
             {
                 MessageBox.Show("La guía no se encuentra en un estado válido para ser admitida. Por favor, revise el estado de la guía antes de admitir.");
                 return;
@@ -268,9 +268,6 @@ namespace GrupoE_Tutasa.Admision
 
             // Resetear el radio button
             TamañoCorrectoBoton.Checked = true;
-
-            // Cerrar al final, una vez que todo está limpio
-            //this.Close();
         }
     }
 }
