@@ -25,7 +25,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}");
+            MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)

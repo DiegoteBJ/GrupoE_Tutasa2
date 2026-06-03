@@ -16,8 +16,9 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             // ApplicationConfiguration.Initialize();
           
             Application.Run(new FormularioPrincipal());
-            
-            // Application.Run(new GenerarHDRTransporteForm());
+
+            // Antes de salir, guardamos los datos en los alamcenes
+            Almacenes.ClienteAlmacen.Guardar();
         }
     }
 }
