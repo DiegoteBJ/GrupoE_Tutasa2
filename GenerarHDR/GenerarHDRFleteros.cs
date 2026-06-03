@@ -215,7 +215,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
                         && !guiasAsignadas.Contains(g.GuiaId)
                         && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
@@ -365,6 +365,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (seleccionguiaslistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
             {
                 var guia = item.Tag as Guias;
@@ -392,6 +398,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.Items)
             {
                 var guia = item.Tag as Guias;
