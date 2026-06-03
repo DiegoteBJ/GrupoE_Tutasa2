@@ -285,15 +285,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
-        {
-            string cp = ingresarcodigopostaltextBox.Text.Trim();
-
-            // ✅ Caso 1: si está vacío, resetear colores y reordenar
-            if (string.IsNullOrEmpty(cp))
+            if (string.IsNullOrWhiteSpace(ingresarcodigopostaltextBox.Text))
             {
                 foreach (ListViewItem item in seleccionguiaslistView.Items)
                     item.BackColor = Color.White;
@@ -312,11 +304,22 @@ namespace GrupoE_Tutasa.GenerarHDR
                 seleccionguiaslistView.Items.Clear();
                 seleccionguiaslistView.Items.AddRange(itemsOrdenados.ToArray());
                 seleccionguiaslistView.EndUpdate();
+            }
+        }
 
+        private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
+        {
+            string cp = ingresarcodigopostaltextBox.Text.Trim();
+
+            // ✅ Si está vacío y se hace clic → error
+            if (string.IsNullOrEmpty(cp))
+            {
+                MessageBox.Show("Debe ingresar un código postal para buscar.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // ✅ Caso 2: validar formato
+            // Validar formato
             if (!ValidarCodigoPostalArg(cp))
             {
                 MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
@@ -326,7 +329,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            // ✅ Pintar coincidencias y reordenar
+            // Pintar coincidencias y reordenar
             var coincidencias = new List<ListViewItem>();
             var noCoincidencias = new List<ListViewItem>();
 
@@ -351,7 +354,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 }
             }
 
-            // ✅ Reordenar: coincidencias arriba
             seleccionguiaslistView.BeginUpdate();
             seleccionguiaslistView.Items.Clear();
             seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
