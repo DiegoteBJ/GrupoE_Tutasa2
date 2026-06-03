@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static FleteroAlmacen()
         {
-            if (File.Exists(@"\Datos\FleteroEntidad.json"))
+            if (File.Exists(@"Datos\FleteroEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\FleteroEntidad.json");
+                string json = File.ReadAllText(@"Datos\FleteroEntidad.json");
                 fleteros = JsonSerializer.Deserialize<List<FleteroEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(fleteros);
-            File.WriteAllText(@"\Datos\FleteroEntidad.json", json);
+            File.WriteAllText(@"Datos\FleteroEntidad.json", json);
         }
     }
 }

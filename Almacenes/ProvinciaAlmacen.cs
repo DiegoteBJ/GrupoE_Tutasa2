@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static ProvinciaAlmacen()
         {
-            if (File.Exists(@"\Datos\ProvinciaEntidad.json"))
+            if (File.Exists(@"Datos\ProvinciaEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\ProvinciaEntidad.json");
+                string json = File.ReadAllText(@"Datos\ProvinciaEntidad.json");
                 provincias = JsonSerializer.Deserialize<List<ProvinciaEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(provincias);
-            File.WriteAllText(@"\Datos\ProvinciaEntidad.json", json);
+            File.WriteAllText(@"Datos\ProvinciaEntidad.json", json);
         }
     }
 }

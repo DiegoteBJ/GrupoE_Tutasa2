@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static CentroDistribucionAlmacen()
         {
-            if (File.Exists(@"\Datos\CentroDistribucionEntidad.json"))
+            if (File.Exists(@"Datos\CentroDistribucionEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\CentroDistribucionEntidad.json");
+                string json = File.ReadAllText(@"Datos\CentroDistribucionEntidad.json");
                 centroDistribucions = JsonSerializer.Deserialize<List<CentroDistribucionEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(centroDistribucions);
-            File.WriteAllText(@"\Datos\CentroDistribucionEntidad.json", json);
+            File.WriteAllText(@"Datos\CentroDistribucionEntidad.json", json);
         }
     }
 }

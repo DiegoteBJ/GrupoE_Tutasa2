@@ -1,15 +1,16 @@
-﻿using GrupoE_Tutasa.EmitirFactura;
-using GrupoE_Tutasa.EstadoCCClientes;
-using GrupoE_Tutasa.MonitoreoResultados;
-using GrupoE_Tutasa.Admision;
+﻿using GrupoE_Tutasa.Admision;
+using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.EmitirFactura;
 using GrupoE_Tutasa.EntregaEnAgencia;
 using GrupoE_Tutasa.EntregaEnCD;
+using GrupoE_Tutasa.EstadoCCClientes;
 using GrupoE_Tutasa.EstadoDeEncomienda;
-using GrupoE_Tutasa.Imposicion;
-using GrupoE_Tutasa.RecepcionDespachoAgencia;
-using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
 using GrupoE_Tutasa.GenerarHDR;
 using GrupoE_Tutasa.GenerarHDRTransporte;
+using GrupoE_Tutasa.Imposicion;
+using GrupoE_Tutasa.MonitoreoResultados;
+using GrupoE_Tutasa.RecepcionDespachoAgencia;
+using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
 using GrupoE_Tutasa.RendicionHDR;
 
 
@@ -24,7 +25,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-
+            //MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)

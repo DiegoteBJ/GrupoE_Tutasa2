@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static TarifarioAlmacen()
         {
-            if (File.Exists(@"\Datos\TarifarioEntidad.json"))
+            if (File.Exists(@"Datos\TarifarioEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\TarifarioEntidad.json");
+                string json = File.ReadAllText(@"Datos\TarifarioEntidad.json");
                 tarifarios = JsonSerializer.Deserialize<List<TarifarioEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(tarifarios);
-            File.WriteAllText(@"\Datos\TarifarioEntidad.json", json);
+            File.WriteAllText(@"Datos\TarifarioEntidad.json", json);
         }
     }
 }

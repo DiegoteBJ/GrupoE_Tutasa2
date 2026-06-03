@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static HDRDistribucionAlmacen()
         {
-            if (File.Exists(@"\Datos\HDRDistribucionEntidad.json"))
+            if (File.Exists(@"Datos\HDRDistribucionEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\HDRDistribucionEntidad.json");
+                string json = File.ReadAllText(@"Datos\HDRDistribucionEntidad.json");
                 hDRDistribucions = JsonSerializer.Deserialize<List<HDRDistribucionEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(hDRDistribucions);
-            File.WriteAllText(@"\Datos\HDRDistribucionEntidad.json", json);
+            File.WriteAllText(@"Datos\HDRDistribucionEntidad.json", json);
         }
     }
 }

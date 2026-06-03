@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static ServicioTransporteAlmacen()
         {
-            if (File.Exists(@"\Datos\ServicioTransporteEntidad.json"))
+            if (File.Exists(@"Datos\ServicioTransporteEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\ServicioTransporteEntidad.json");
+                string json = File.ReadAllText(@"Datos\ServicioTransporteEntidad.json");
                 servicioTransportes = JsonSerializer.Deserialize<List<ServicioTransporteEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(servicioTransportes);
-            File.WriteAllText(@"\Datos\ServicioTransporteEntidad.json", json);
+            File.WriteAllText(@"Datos\ServicioTransporteEntidad.json", json);
         }
     }
 }

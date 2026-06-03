@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static MovimientoEstadoGuiaAlmacen()
         {
-            if (File.Exists(@"\Datos\MovimientoEstadoGuiaEntidad.json"))
+            if (File.Exists(@"Datos\MovimientoEstadoGuiaEntidad.json"))
             {
-                string json = File.ReadAllText(@"\Datos\MovimientoEstadoGuiaEntidad.json");
+                string json = File.ReadAllText(@"Datos\MovimientoEstadoGuiaEntidad.json");
                 movimientoEstadoGuias = JsonSerializer.Deserialize<List<MovimientoEstadoGuiaEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(movimientoEstadoGuias);
-            File.WriteAllText(@"\Datos\MovimientoEstadoGuiaEntidad.json", json);
+            File.WriteAllText(@"Datos\MovimientoEstadoGuiaEntidad.json", json);
         }
     }
 }
