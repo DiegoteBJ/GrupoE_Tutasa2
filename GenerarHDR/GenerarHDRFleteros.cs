@@ -35,6 +35,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultostotalasignadoslabel.Text = "0";
             centrodistribucionlabel.Text = "Buenos Aires";
             generarhdrbutton.Enabled = false;
+            generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -109,7 +114,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                 this.Tag = fletero; // guardar contexto simple
                 retiroradioButton.Enabled = true;
                 distribucionradioButton.Enabled = true;
-                
+                ingresardnitextBox.Clear();
+                generarhdrbutton.Enabled = true;
+                agregarguiasbutton.Enabled = true;
+                agregartodoguiasbutton.Enabled = true;
+                eliminarguiasbutton.Enabled = true;
+                eliminartodoguiasbutton.Enabled = true;
+
             }
             else
             {
@@ -141,6 +152,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             ingresardnitextBox.Clear();
             ingresardnitextBox.Focus();
             generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
 
             this.Tag = null; // borra el contexto del fletero anterior
         }
@@ -179,8 +194,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion"); // parámetro especial
-                ActualizarAutoCompleteCP("Distribucion");
+                CargarGuiasPorEstado("Distribución"); // parámetro especial
+                ActualizarAutoCompleteCP("Distribución");
                 buscarcodigopostalbutton.Enabled = true;
                 generarhdrbutton.Enabled = true;
         }
@@ -191,24 +206,33 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             seleccionguiaslistView.Items.Clear();
 
+            // ✅ Excluir guías que ya están en detallehdrlistView
+            var guiasEnDetalle = detallehdrlistView.Items
+                .Cast<ListViewItem>()
+                .Select(i => (i.Tag as Guias)?.GuiaId)
+                .Where(id => id.HasValue)
+                .Select(id => id.Value)
+                .ToHashSet();
+
             IEnumerable<Guias> guias;
 
             if (estado == "A retirar")
             {
                 guias = modelo.LGuiasAAsignar
-                    .Where(g => 
-                        g.EstadoGuia == "A retirar" || 
-                        g.EstadoGuia == "Impuesta Telefónicamente" 
+                    .Where(g =>
+                        (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
                         && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
-            else if (estado == "Distribucion")
+            else if (estado == "Distribución")
             {
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                        (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
                         && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else
@@ -224,7 +248,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 {
                     item.SubItems.Add(g.DomicilioRetiro.CodigoPostal);
                     item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero}");
-
                 }
                 else // Distribución
                 {
@@ -236,7 +259,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(g.EstadoGuia);
 
                 if (g.EstadoGuia == "En distribución")
-                    item.SubItems.Add( g.IntentosDeEntrega.ToString());
+                    item.SubItems.Add(g.IntentosDeEntrega.ToString());
                 else
                     item.SubItems.Add("0");
 
@@ -262,21 +285,54 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(ingresarcodigopostaltextBox.Text))
+            {
+                foreach (ListViewItem item in seleccionguiaslistView.Items)
+                    item.BackColor = Color.White;
 
+                // Reordenar por número de guía al resetear
+                var itemsOrdenados = seleccionguiaslistView.Items
+                    .Cast<ListViewItem>()
+                    .OrderBy(i =>
+                    {
+                        int guiaId;
+                        return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
+                    })
+                    .ToList();
+
+                seleccionguiaslistView.BeginUpdate();
+                seleccionguiaslistView.Items.Clear();
+                seleccionguiaslistView.Items.AddRange(itemsOrdenados.ToArray());
+                seleccionguiaslistView.EndUpdate();
+            }
         }
 
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
             string cp = ingresarcodigopostaltextBox.Text.Trim();
-            if (!ValidarCodigoPostalArg(cp))
+
+            // ✅ Si está vacío y se hace clic → error
+            if (string.IsNullOrEmpty(cp))
             {
-                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ingresarcodigopostaltextBox.Clear();   // borra el contenido
-                ingresarcodigopostaltextBox.Focus(); // vuelve el foco al TextBox
+                MessageBox.Show("Debe ingresar un código postal para buscar.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Filtrar lo que ya está cargado en seleccionguiaslistView
+            // Validar formato
+            if (!ValidarCodigoPostalArg(cp))
+            {
+                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ingresarcodigopostaltextBox.Clear();
+                ingresarcodigopostaltextBox.Focus();
+                return;
+            }
+
+            // Pintar coincidencias y reordenar
+            var coincidencias = new List<ListViewItem>();
+            var noCoincidencias = new List<ListViewItem>();
+
             foreach (ListViewItem item in seleccionguiaslistView.Items)
             {
                 var guia = item.Tag as Guias;
@@ -286,8 +342,23 @@ namespace GrupoE_Tutasa.GenerarHDR
                     ? guia.DomicilioRetiro.CodigoPostal
                     : guia.DomicilioEntrega.CodigoPostal;
 
-                item.BackColor = (cpComparar == cp) ? Color.LightGreen : Color.LightGray;
+                if (cpComparar == cp)
+                {
+                    item.BackColor = Color.LightGreen;
+                    coincidencias.Add(item);
+                }
+                else
+                {
+                    item.BackColor = Color.LightGray;
+                    noCoincidencias.Add(item);
+                }
             }
+
+            seleccionguiaslistView.BeginUpdate();
+            seleccionguiaslistView.Items.Clear();
+            seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
+            seleccionguiaslistView.Items.AddRange(noCoincidencias.ToArray());
+            seleccionguiaslistView.EndUpdate();
         }
         private bool ValidarCodigoPostalArg(string cp)
         {
@@ -311,7 +382,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     .Distinct()
                     .ToArray();
             }
-            else if (estado == "Distribucion")
+            else if (estado == "Distribución")
             {
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g =>
@@ -357,6 +428,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (seleccionguiaslistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
             {
                 var guia = item.Tag as Guias;
@@ -384,6 +461,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.Items)
             {
                 var guia = item.Tag as Guias;
@@ -436,6 +519,13 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void eliminarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (detallehdrlistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             foreach (ListViewItem item in detallehdrlistView.SelectedItems)
             {
                 var guia = item.Tag as Guias;
@@ -453,7 +543,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     newItem.SubItems.Add(guia.DomicilioEntrega.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
                 }
-               
+
 
                 newItem.SubItems.Add(guia.tamañoGuia);
                 newItem.SubItems.Add(guia.EstadoGuia);
@@ -483,11 +573,17 @@ namespace GrupoE_Tutasa.GenerarHDR
             else if (distribucionradioButton.Checked)
                 CargarGuiasPorEstado("Distribucion");
 
-               
+
         }
 
         private void eliminartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultostotalasignadoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in detallehdrlistView.Items)
             {
                 var guia = item.Tag as Guias;
@@ -534,7 +630,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A retirar");
             else if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion");
+                CargarGuiasPorEstado("Distribución");
 
         }
 
