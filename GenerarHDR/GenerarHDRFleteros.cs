@@ -35,6 +35,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultostotalasignadoslabel.Text = "0";
             centrodistribucionlabel.Text = "Buenos Aires";
             generarhdrbutton.Enabled = false;
+            generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -109,7 +114,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                 this.Tag = fletero; // guardar contexto simple
                 retiroradioButton.Enabled = true;
                 distribucionradioButton.Enabled = true;
-                
+                ingresardnitextBox.Clear();
+                generarhdrbutton.Enabled = true;
+                agregarguiasbutton.Enabled = true;
+                agregartodoguiasbutton.Enabled = true;
+                eliminarguiasbutton.Enabled = true;
+                eliminartodoguiasbutton.Enabled = true;
+
             }
             else
             {
@@ -141,6 +152,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             ingresardnitextBox.Clear();
             ingresardnitextBox.Focus();
             generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
 
             this.Tag = null; // borra el contexto del fletero anterior
         }
@@ -276,15 +291,45 @@ namespace GrupoE_Tutasa.GenerarHDR
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
             string cp = ingresarcodigopostaltextBox.Text.Trim();
-            if (!ValidarCodigoPostalArg(cp))
+
+            // ✅ Caso 1: si está vacío, resetear colores y reordenar
+            if (string.IsNullOrEmpty(cp))
             {
-                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ingresarcodigopostaltextBox.Clear();   // borra el contenido
-                ingresarcodigopostaltextBox.Focus(); // vuelve el foco al TextBox
+                foreach (ListViewItem item in seleccionguiaslistView.Items)
+                    item.BackColor = Color.White;
+
+                // Reordenar por número de guía al resetear
+                var itemsOrdenados = seleccionguiaslistView.Items
+                    .Cast<ListViewItem>()
+                    .OrderBy(i =>
+                    {
+                        int guiaId;
+                        return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
+                    })
+                    .ToList();
+
+                seleccionguiaslistView.BeginUpdate();
+                seleccionguiaslistView.Items.Clear();
+                seleccionguiaslistView.Items.AddRange(itemsOrdenados.ToArray());
+                seleccionguiaslistView.EndUpdate();
+
                 return;
             }
 
-            // Filtrar lo que ya está cargado en seleccionguiaslistView
+            // ✅ Caso 2: validar formato
+            if (!ValidarCodigoPostalArg(cp))
+            {
+                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ingresarcodigopostaltextBox.Clear();
+                ingresarcodigopostaltextBox.Focus();
+                return;
+            }
+
+            // ✅ Pintar coincidencias y reordenar
+            var coincidencias = new List<ListViewItem>();
+            var noCoincidencias = new List<ListViewItem>();
+
             foreach (ListViewItem item in seleccionguiaslistView.Items)
             {
                 var guia = item.Tag as Guias;
@@ -294,8 +339,24 @@ namespace GrupoE_Tutasa.GenerarHDR
                     ? guia.DomicilioRetiro.CodigoPostal
                     : guia.DomicilioEntrega.CodigoPostal;
 
-                item.BackColor = (cpComparar == cp) ? Color.LightGreen : Color.LightGray;
+                if (cpComparar == cp)
+                {
+                    item.BackColor = Color.LightGreen;
+                    coincidencias.Add(item);
+                }
+                else
+                {
+                    item.BackColor = Color.LightGray;
+                    noCoincidencias.Add(item);
+                }
             }
+
+            // ✅ Reordenar: coincidencias arriba
+            seleccionguiaslistView.BeginUpdate();
+            seleccionguiaslistView.Items.Clear();
+            seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
+            seleccionguiaslistView.Items.AddRange(noCoincidencias.ToArray());
+            seleccionguiaslistView.EndUpdate();
         }
         private bool ValidarCodigoPostalArg(string cp)
         {
