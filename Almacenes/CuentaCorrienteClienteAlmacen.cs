@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static CuentaCorrienteClienteAlmacen()
         {
-            if (File.Exists(@"cuentacorrientecliente.json"))
+            if (File.Exists(@"\Datos\CuentaCorrienteClienteEntidad.json"))
             {
-                string json = File.ReadAllText(@"cuentacorrientecliente.json");
+                string json = File.ReadAllText(@"\Datos\CuentaCorrienteClienteEntidad.json");
                 cuentaCorrienteClientes = JsonSerializer.Deserialize<List<CuentaCorrienteClienteEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(cuentaCorrienteClientes);
-            File.WriteAllText(@"cuentacorrientecliente.json", json);
+            File.WriteAllText(@"\Datos\CuentaCorrienteClienteEntidad.json", json);
         }
     }
 }

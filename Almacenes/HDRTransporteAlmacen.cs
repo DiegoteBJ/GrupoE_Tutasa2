@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static HDRTransporteAlmacen()
         {
-            if (File.Exists(@"hdrtransporte.json"))
+            if (File.Exists(@"\Datos\HDRTransporteEntidad.json"))
             {
-                string json = File.ReadAllText(@"hdrtransporte.json");
+                string json = File.ReadAllText(@"\Datos\HDRTransporteEntidad.json");
                 hDRTransportes = JsonSerializer.Deserialize<List<HDRTransporteEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(hDRTransportes);
-            File.WriteAllText(@"hdrtransporte.json", json);
+            File.WriteAllText(@"\Datos\HDRTransporteEntidad.json", json);
         }
     }
 }

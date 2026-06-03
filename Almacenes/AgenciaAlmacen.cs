@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static AgenciaAlmacen()
         {
-            if (File.Exists(@"agencias.json"))
+            if (File.Exists(@"\Datos\AgenciaEntidad.json"))
             {
-                string json = File.ReadAllText(@"agencias.json");
+                string json = File.ReadAllText(@"\Datos\AgenciaEntidad.json");
                 agencias = JsonSerializer.Deserialize<List<AgenciaEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(agencias);
-            File.WriteAllText(@"agencias.json", json);
+            File.WriteAllText(@"\Datos\AgenciaEntidad.json", json);
         }
     }
 }

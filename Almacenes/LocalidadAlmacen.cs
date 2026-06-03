@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static LocalidadAlmacen()
         {
-            if (File.Exists(@"localidads.json"))
+            if (File.Exists(@"\Datos\LocalidadEntidad.json"))
             {
-                string json = File.ReadAllText(@"localidads.json");
+                string json = File.ReadAllText(@"\Datos\LocalidadEntidad.json");
                 localidads = JsonSerializer.Deserialize<List<LocalidadEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(localidads);
-            File.WriteAllText(@"localidads.json", json);
+            File.WriteAllText(@"\Datos\LocalidadEntidad.json", json);
         }
     }
 }

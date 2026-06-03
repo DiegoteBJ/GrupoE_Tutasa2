@@ -10,9 +10,9 @@ namespace GrupoE_Tutasa.Almacenes
 
         static GuiaAlmacen()
         {
-            if (File.Exists(@"guias.json"))
+            if (File.Exists(@"\Datos\GuiaEntidad.json"))
             {
-                string json = File.ReadAllText(@"guias.json");
+                string json = File.ReadAllText(@"\Datos\GuiaEntidad.json");
                 guias = JsonSerializer.Deserialize<List<GuiaEntidad>>(json);
             }
         }
@@ -20,7 +20,7 @@ namespace GrupoE_Tutasa.Almacenes
         public static void Guardar()
         {
             string json = JsonSerializer.Serialize(guias);
-            File.WriteAllText(@"guias.json", json);
+            File.WriteAllText(@"\Datos\GuiaEntidad.json", json);
         }
     }
 }
