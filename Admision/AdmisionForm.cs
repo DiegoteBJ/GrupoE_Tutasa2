@@ -133,11 +133,7 @@ namespace GrupoE_Tutasa.Admision
             decimal precioUnitarioTransporte = modelo.ObtenerPrecioUnitarioTransporte(guiaActual.tarifarioId);
             importeTransporte = importeTransporte * precioUnitarioTransporte;
             
-            if (guiaActual.tipoImposicion == "A")
-            {
-                importeImposicion = modelo.ObtenerTarifaImposicionAgencia(guiaActual.tarifarioId);
-            }
-            else if (guiaActual.tipoImposicion == "D")
+            if (guiaActual.tipoImposicion == "D")
             {
                 importeImposicion = modelo.ObtenerTarifaRetiroDomicilio(guiaActual.tarifarioId);
             }

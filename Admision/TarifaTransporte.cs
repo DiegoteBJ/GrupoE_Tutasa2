@@ -9,9 +9,9 @@ namespace GrupoE_Tutasa.Admision
     {
         public int CDOrigenId { get; set; }
         public int CDDestinoId { get; set; }
-        public int CoeficienteS { get; set; }
-        public int CoeficienteM { get; set; }
-        public int CoeficienteL { get; set; }
-        public int CoeficienteXL { get; set; }
+        public decimal CoeficienteS { get; set; }
+        public decimal CoeficienteM { get; set; }
+        public decimal CoeficienteL { get; set; }
+        public decimal CoeficienteXL { get; set; }
     }
 }
