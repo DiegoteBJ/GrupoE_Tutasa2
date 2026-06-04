@@ -291,12 +291,32 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ingresarcodigopostaltextBox.Text))
+            int selStart = ingresarcodigopostaltextBox.SelectionStart;
+            string raw = ingresarcodigopostaltextBox.Text ?? string.Empty;
+
+            // ✅ Filtrar solo letras y dígitos
+            string filtered = new string(raw.Where(char.IsLetterOrDigit).ToArray());
+
+            // ✅ Limitar a 5 caracteres
+            if (filtered.Length > 5)
+                filtered = filtered.Substring(0, 5);
+
+            // ✅ Normalizar a mayúsculas
+            filtered = filtered.ToUpper();
+
+            // Reemplazar si hubo cambios
+            if (ingresarcodigopostaltextBox.Text != filtered)
+            {
+                ingresarcodigopostaltextBox.Text = filtered;
+                ingresarcodigopostaltextBox.SelectionStart = Math.Min(selStart, filtered.Length);
+            }
+
+            // ✅ Reset y reordenar si queda vacío
+            if (string.IsNullOrWhiteSpace(filtered))
             {
                 foreach (ListViewItem item in seleccionguiaslistView.Items)
                     item.BackColor = Color.White;
 
-                // Reordenar por número de guía al resetear
                 var itemsOrdenados = seleccionguiaslistView.Items
                     .Cast<ListViewItem>()
                     .OrderBy(i =>
@@ -312,10 +332,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 seleccionguiaslistView.EndUpdate();
             }
         }
+        
 
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
-            string cp = ingresarcodigopostaltextBox.Text.Trim();
+            string cp = ingresarcodigopostaltextBox.Text.Trim().ToUpper();
 
             // ✅ Si está vacío y se hace clic → error
             if (string.IsNullOrEmpty(cp))
@@ -325,10 +346,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            // Validar formato
+            // ✅ Validar formato (Letra + 4 dígitos)
             if (!ValidarCodigoPostalArg(cp))
             {
-                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
+                MessageBox.Show("Código Postal inválido. Debe ser Letra + 4 dígitos (ej: C1401).",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ingresarcodigopostaltextBox.Clear();
                 ingresarcodigopostaltextBox.Focus();
@@ -360,6 +381,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                 }
             }
 
+            // ✅ Si no hubo coincidencias, mostrar aviso
+            if (coincidencias.Count == 0)
+            {
+                MessageBox.Show($"No se encontraron guías con el código postal {cp}.",
+                                "Sin coincidencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             seleccionguiaslistView.BeginUpdate();
             seleccionguiaslistView.Items.Clear();
             seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
@@ -370,20 +398,29 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             if (string.IsNullOrWhiteSpace(cp)) return false;
             cp = cp.Trim().ToUpper();
-            var regex = new System.Text.RegularExpressions.Regex(@"^([A-Z]\d{4}[A-Z]{3}|\d{4})$");
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Z][0-9]{4}$");
             return regex.IsMatch(cp);
         }
         private void ActualizarAutoCompleteCP(string estado)
         {
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null)
+            {
+                ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+                return;
+            }
+
             string[] codigosPostales;
 
             if (estado == "A retirar")
             {
                 codigosPostales = modelo.LGuiasAAsignar
-                    .Where(g => 
-                        g.EstadoGuia == "A retirar" 
-                        && !guiasAsignadas.Contains(g.GuiaId))
-                    .Select(g => g.DomicilioRetiro.CodigoPostal)
+                    .Where(g =>
+                        g.EstadoGuia == "A retirar"
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
+                    .Select(g => g.DomicilioRetiro.CodigoPostal.ToUpper())
+                    .Where(cp => ValidarCodigoPostalArg(cp))
                     .Distinct()
                     .ToArray();
             }
@@ -393,8 +430,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
                          (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
-                        && !guiasAsignadas.Contains(g.GuiaId))
-                    .Select(g => g.DomicilioEntrega.CodigoPostal)
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
+                    .Select(g => g.DomicilioEntrega.CodigoPostal.ToUpper())
+                    .Where(cp => ValidarCodigoPostalArg(cp))
                     .Distinct()
                     .ToArray();
             }
