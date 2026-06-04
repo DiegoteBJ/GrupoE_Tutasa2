@@ -754,7 +754,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";
-            popup.Size = new Size(850, 500);
+            popup.Size = new Size(950, 500);
             popup.StartPosition = FormStartPosition.CenterParent;
 
             var listView = new ListView();
@@ -763,21 +763,20 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.FullRowSelect = true;
             listView.Height = 380;
 
+            // ✅ Orden de columnas según lo pedido
             listView.Columns.Add("HDR Id", 80);
-            listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Fecha/Hora impresión", 150);
+            listView.Columns.Add("Guías incluidas", 200);
+            listView.Columns.Add("Domicilio", 200);
+            listView.Columns.Add("Fecha impresión", 120);
 
-            foreach (var r in resumen)
+            foreach (var r in resumen.OrderBy(x => x.Domicilio)) // ✅ ordenado solo por domicilio
             {
                 var item = new ListViewItem(r.HDRId.ToString());
-                item.SubItems.Add(string.Join(", ", r.GuiasIds));
                 item.SubItems.Add(r.TipoHDR);
-
-                
-
-                // ✅ Mostrar la fecha/hora de impresión desde la propiedad
-                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));
+                item.SubItems.Add(string.Join(", ", r.GuiasIds));
+                item.SubItems.Add(r.Domicilio); // ✅ calle + número
+                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy")); // ✅ solo fecha
 
                 listView.Items.Add(item);
             }
@@ -794,7 +793,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             imprimirButton.Click += (s, e) =>
             {
-                ImprimirResumen(resumen, fletero);
+                ImprimirResumen(resumen, fletero, listView.Items.Count); // ✅ pasamos cantidad de HDR
                 popup.Close();
             };
 
@@ -805,9 +804,11 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
 
 
-        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero)
+        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero, int totalHDR)
         {
-            MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
+            string fechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+            MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                     "Impresión",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
