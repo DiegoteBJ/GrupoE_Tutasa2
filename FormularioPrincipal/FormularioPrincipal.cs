@@ -25,15 +25,12 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            string datosCliente = "";
-            MessageBox.Show(Directory.GetCurrentDirectory());
-            foreach (var cliente in ClienteAlmacen.clientes)
-            {
-                // Aquí puedes cargar los clientes en algún control de la interfaz, como un ListBox o DataGridView
-                // Por ejemplo: ClientesListBox.Items.Add(cliente.Nombre);
-                datosCliente += $"Nombre: {cliente.Nombre + cliente.Apellido}, RSocial: {cliente.RazonSocial}\n";
-            }
-            MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}\n{datosCliente}");
+            //string datosCliente = "";
+            //foreach (var cliente in ClienteAlmacen.clientes)
+            //{
+            //   datosCliente += $"Nombre: {cliente.Nombre + cliente.Apellido}, RSocial: {cliente.RazonSocial}\n";
+            //}
+            //MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}\n{datosCliente}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)
