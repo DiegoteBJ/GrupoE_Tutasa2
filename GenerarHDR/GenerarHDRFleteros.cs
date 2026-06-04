@@ -615,7 +615,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A retirar");
             else if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion");
+                CargarGuiasPorEstado("Distribución");
 
 
         }
