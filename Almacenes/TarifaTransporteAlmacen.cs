@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.Almacenes
 {
@@ -12,14 +13,23 @@ namespace GrupoE_Tutasa.Almacenes
         {
             if (File.Exists(@"Datos\TarifaTransporteEntidad.json"))
             {
-                string json = File.ReadAllText(@"Datos\TarifaTransporteEntidad.json");
-                tarifaTransportes = JsonSerializer.Deserialize<List<TarifaTransporteEntidad>>(json);
+                try
+                {
+                    string json = File.ReadAllText(@"Datos\TarifaTransporteEntidad.json");
+                    tarifaTransportes = JsonSerializer.Deserialize<List<TarifaTransporteEntidad>>(json,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar TarifaTransporteEntidad.json: {ex.Message}");
+                }
             }
         }
 
         public static void Guardar()
         {
-            string json = JsonSerializer.Serialize(tarifaTransportes);
+            string json = JsonSerializer.Serialize(tarifaTransportes,
+                new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\TarifaTransporteEntidad.json", json);
         }
     }

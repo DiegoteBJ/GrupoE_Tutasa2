@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.Almacenes
 {
@@ -12,14 +13,23 @@ namespace GrupoE_Tutasa.Almacenes
         {
             if (File.Exists(@"Datos\MovimientoEstadoGuiaEntidad.json"))
             {
-                string json = File.ReadAllText(@"Datos\MovimientoEstadoGuiaEntidad.json");
-                movimientoEstadoGuias = JsonSerializer.Deserialize<List<MovimientoEstadoGuiaEntidad>>(json);
+                try
+                {
+                    string json = File.ReadAllText(@"Datos\MovimientoEstadoGuiaEntidad.json");
+                    movimientoEstadoGuias = JsonSerializer.Deserialize<List<MovimientoEstadoGuiaEntidad>>(json,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar MovimientoEstadoGuiaEntidad.json: {ex.Message}");
+                }
             }
         }
 
         public static void Guardar()
         {
-            string json = JsonSerializer.Serialize(movimientoEstadoGuias);
+            string json = JsonSerializer.Serialize(movimientoEstadoGuias,
+                new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\MovimientoEstadoGuiaEntidad.json", json);
         }
     }
