@@ -316,6 +316,7 @@
             CPRetiroTextBox.Name = "CPRetiroTextBox";
             CPRetiroTextBox.Size = new Size(92, 23);
             CPRetiroTextBox.TabIndex = 23;
+            CPRetiroTextBox.TextChanged += CPRetiroTextBox_TextChanged;
             // 
             // label14
             // 

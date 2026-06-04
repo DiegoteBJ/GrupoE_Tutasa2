@@ -534,5 +534,10 @@
         private void label19_Click(object sender, EventArgs e) { }
         private void label26_Click(object sender, EventArgs e) { }
         private void CPDomicilioTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+
+        private void CPRetiroTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
