@@ -8,7 +8,5 @@ namespace GrupoE_Tutasa.Admision
     {
         public int Id { get; set; }
         public int clienteID { get; set; } = 0;
-        public decimal descuentoxKm { get; set; } = 0.0m;
-
     }
 }

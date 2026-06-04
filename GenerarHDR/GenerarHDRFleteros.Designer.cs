@@ -66,6 +66,7 @@
             cantidaddebultoslabel = new Label();
             seleccionguiasgroupBox = new GroupBox();
             bultoslabel = new Label();
+            Intentosencomiendapendiente = new ColumnHeader();
             detallehdrgroupBox.SuspendLayout();
             seleccionguiasgroupBox.SuspendLayout();
             SuspendLayout();
@@ -283,7 +284,7 @@
             // 
             // seleccionguiaslistView
             // 
-            seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente });
+            seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente, Intentosencomiendapendiente });
             seleccionguiaslistView.Location = new Point(15, 27);
             seleccionguiaslistView.Name = "seleccionguiaslistView";
             seleccionguiaslistView.Size = new Size(400, 180);
@@ -417,6 +418,10 @@
             bultoslabel.Text = "[25 bultos]";
             bultoslabel.Click += bultoslabel_Click;
             // 
+            // Intentosencomiendapendiente
+            // 
+            Intentosencomiendapendiente.Text = "Intentos";
+            // 
             // GenerarHDRFleteros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -493,5 +498,6 @@
         private Label bultoslabel;
         private Button eliminarguiasbutton;
         private Button eliminartodoguiasbutton;
+        private ColumnHeader Intentosencomiendapendiente;
     }
 }

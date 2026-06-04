@@ -11,8 +11,8 @@ namespace GrupoE_Tutasa.Admision
         public int numeroGuia { get; set; } 
         public DateTime fechaImposicion { get; set; }
         public DateTime fechaAdmision { get; set; }
-        public string CDorigen { get; set; } = string.Empty;
-        public string CDdestino { get; set; } = string.Empty;
+        public int CDOrigenId { get; set; } 
+        public int CDDestinoId { get; set; } 
         public string tamaño { get; set; } = string.Empty;
         public decimal importeImposicion { get; set; }
         public decimal importeEntrega { get; set; }
@@ -22,5 +22,6 @@ namespace GrupoE_Tutasa.Admision
         public string observaciones { get; set; }
         public string tipoImposicion { get; set; }
         public string tipoEntrega { get; set; }
+        public int tarifarioId { get; set; }
     }
 }

@@ -12,7 +12,6 @@ namespace GrupoE_Tutasa.EmitirFactura
         public DateTime documentoFecha { get; set; }
         public string documentoNumero { get; set; }
         public decimal netoGravado { get; set; }
-
         public decimal ivaDF { get; set; }
         public decimal documentoTotal { get; set; }
 

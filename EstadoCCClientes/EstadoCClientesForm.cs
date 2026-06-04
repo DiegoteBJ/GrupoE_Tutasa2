@@ -40,7 +40,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
-                MessageBox.Show("Por favor, ingrese un CUIT válido.");
+                MessageBox.Show("El campo CUIT es requerido.");
                 return;
             }
             bool cuitValido = EstadoCCClientesModelo.ValidarCuit(CuitClienteBox.Text);
@@ -63,7 +63,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             }
             if (encuentro == 0)
             {
-                DatosCLienteRespuestaLabel.Text = "Cliente no encontrado.";
+                DatosCLienteRespuestaLabel.Text = "No existe el Cliente seleccionado. Vuelva a intentarlo.";
                 return;
             }
             ClienteIDLabel.Text = clienteId.ToString();
@@ -134,6 +134,7 @@ namespace GrupoE_Tutasa.EstadoCCClientes
         private void VerOtroBoton_Click(object sender, EventArgs e)
         {
             clienteActual = null;
+            DocumentosListView.Items.Clear();
             EstadoCClientesForm_Load(sender, e);
         }
 

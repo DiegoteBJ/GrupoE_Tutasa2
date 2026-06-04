@@ -25,11 +25,18 @@
 
   <ItemGroup>
     <Folder Include="Almacenes\" />
+    <Folder Include="Datos\" />
   </ItemGroup>
 
 <ItemGroup>
   <Compile Remove="**\obj\**\*.cs" />
   <Compile Remove="**\bin\**\*.cs" />
+</ItemGroup>
+
+<ItemGroup>
+  <None Update="Datos\ClienteEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
 </ItemGroup>
 
 </Project>

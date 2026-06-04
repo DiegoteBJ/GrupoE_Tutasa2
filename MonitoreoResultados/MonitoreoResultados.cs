@@ -15,7 +15,6 @@
             int anio = anterior.Year;
             int mes = anterior.Month;
             MesTextBox.Text = mes.ToString();
-            //AñoUpDown.Value = anio;
             AnioTextBox.Text = anio.ToString();
             ResultadoMensualLabel.Text = 0.ToString("C");
             ResultadosObtenidosListView.Items.Clear();
@@ -38,35 +37,33 @@
 					MessageBox.Show("Por favor, ingrese un número de mes válido (1-12).");
 					return;
 				}
-            if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<1900 ||  anio >DateTime.Today.Year)
+            if (!int.TryParse(AnioTextBox.Text, out int anio) || anio<2000 ||  anio >DateTime.Today.Year)
 				{
-						MessageBox.Show("Por favor, ingrese un año válido");
-				}
+					MessageBox.Show("Por favor, ingrese un año válido");
+                    return;
+            }
             decimal importePagado = 0;
             decimal importeCobrado = 0;
             decimal resultadoMensualporEmpresa = 0;
             decimal resultadoMensualAcumulado = 0;
             ResultadosObtenidosListView.Items.Clear();
 
-            if (modelo?.LProveedoresLD == null)
+            if (modelo.LProveedoresLD == null)
             {
                 return;
             }
 
             foreach (var proveedoresLD in modelo.LProveedoresLD)
             {
-                foreach (var documentos in modelo.LDocumentos)
-                {
-                    if (documentos.proveedorId == proveedoresLD.proveedorId && documentos.documentoFecha.Month == mes && documentos.documentoFecha.Year == anio)
-                    {
-                        importePagado = importePagado + documentos.documentoTotalsinIVA;
-                    }
-                }
+                importeCobrado = 0;
+                int convenioVigente = modelo.ConvenioVigenteId(proveedoresLD.proveedorId, new DateTime(anio, mes, 1));
+                importePagado = modelo.ConvenioVigenteImporte(convenioVigente);
+
                 foreach (var Guias in modelo.LGuias)
                 {
-                    if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio)
+                    if(Guias.proveedorTransporteId == proveedoresLD.proveedorId && Guias.fechaEntrega.Month == mes && Guias.fechaEntrega.Year == anio && Guias.facturada == true)
                     {
-                        importeCobrado = importeCobrado + Guias.importeTotal;
+                        importeCobrado = importeCobrado + Guias.importeTransporte;
                     }
                 }
 
@@ -79,7 +76,6 @@
 
                 resultadoMensualAcumulado = resultadoMensualporEmpresa + resultadoMensualAcumulado;
                 resultadoMensualporEmpresa = 0;
-                importeCobrado = 0;
                 importePagado = 0;
             }
             ResultadoMensualLabel.Text = resultadoMensualAcumulado.ToString("C");

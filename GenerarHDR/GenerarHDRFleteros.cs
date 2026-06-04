@@ -34,6 +34,12 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultoslabel.Text = "0";
             bultostotalasignadoslabel.Text = "0";
             centrodistribucionlabel.Text = "Buenos Aires";
+            generarhdrbutton.Enabled = false;
+            generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -101,12 +107,20 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             if (fletero != null)
             {
+                
                 //Muestra nombre y apellido de fletero en labels correspondientes, habilita los radio buttons de retiro y distribución
                 nombrefleterolabel.Text = fletero.FleteroNombre;
                 apellidofleterolabel.Text = fletero.FleteroApellido;
                 this.Tag = fletero; // guardar contexto simple
                 retiroradioButton.Enabled = true;
                 distribucionradioButton.Enabled = true;
+                ingresardnitextBox.Clear();
+                generarhdrbutton.Enabled = true;
+                agregarguiasbutton.Enabled = true;
+                agregartodoguiasbutton.Enabled = true;
+                eliminarguiasbutton.Enabled = true;
+                eliminartodoguiasbutton.Enabled = true;
+
             }
             else
             {
@@ -136,6 +150,13 @@ namespace GrupoE_Tutasa.GenerarHDR
             bultoslabel.Text = "0";
             bultostotalasignadoslabel.Text = "0";
             ingresardnitextBox.Clear();
+            ingresardnitextBox.Focus();
+            generarhdrbutton.Enabled = false;
+            agregarguiasbutton.Enabled = false;
+            agregartodoguiasbutton.Enabled = false;
+            eliminarguiasbutton.Enabled = false;
+            eliminartodoguiasbutton.Enabled = false;
+
             this.Tag = null; // borra el contexto del fletero anterior
         }
 
@@ -165,15 +186,18 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CargarGuiasPorEstado("A retirar");
                 ActualizarAutoCompleteCP("A retirar");
                 buscarcodigopostalbutton.Enabled = true;
-                
+                generarhdrbutton.Enabled = true;
+
+
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Admitida");
-                ActualizarAutoCompleteCP("Admitida");
+                CargarGuiasPorEstado("Distribución"); // parámetro especial
+                ActualizarAutoCompleteCP("Distribución");
                 buscarcodigopostalbutton.Enabled = true;
+                generarhdrbutton.Enabled = true;
         }
 
         private HashSet<int> guiasAsignadas = new HashSet<int>();
@@ -181,23 +205,74 @@ namespace GrupoE_Tutasa.GenerarHDR
         private void CargarGuiasPorEstado(string estado)
         {
             seleccionguiaslistView.Items.Clear();
-            var modelo = new AsignarGuiasModelo();
 
-            var guias = modelo.LGuiasAAsignar.Where(g => g.EstadoGuia == estado && !guiasAsignadas.Contains(g.GuiaId));
+            // ✅ Excluir guías que ya están en detallehdrlistView
+            var guiasEnDetalle = detallehdrlistView.Items
+                .Cast<ListViewItem>()
+                .Select(i => (i.Tag as Guias)?.GuiaId)
+                .Where(id => id.HasValue)
+                .Select(id => id.Value)
+                .ToHashSet();
+
+            IEnumerable<Guias> guias;
+
+            if (estado == "A retirar")
+            {
+                guias = modelo.LGuiasAAsignar
+                    .Where(g =>
+                        (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
+                        && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+            }
+            else if (estado == "Distribución")
+            {
+                guias = modelo.LGuiasAAsignar
+                    .Where(g =>
+                        (g.EstadoGuia == "Admitida" ||
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
+                        && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+            }
+            else
+            {
+                guias = Enumerable.Empty<Guias>();
+            }
 
             foreach (var g in guias)
             {
                 var item = new ListViewItem(g.GuiaId.ToString());
-                item.SubItems.Add(g.CodigoPostalGuia);
-                item.SubItems.Add(g.DomicilioGuia);
+
+                if (estado == "A retirar")
+                {
+                    item.SubItems.Add(g.DomicilioRetiro.CodigoPostal);
+                    item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero}");
+                }
+                else // Distribución
+                {
+                    item.SubItems.Add(g.DomicilioEntrega.CodigoPostal);
+                    item.SubItems.Add($"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero}");
+                }
+
                 item.SubItems.Add(g.tamañoGuia);
                 item.SubItems.Add(g.EstadoGuia);
+
+                if (g.EstadoGuia == "En distribución")
+                    item.SubItems.Add(g.IntentosDeEntrega.ToString());
+                else
+                    item.SubItems.Add("0");
+
+                item.SubItems.Add(g.NombreDestinatarioGuia);
+
                 item.Tag = g;
                 seleccionguiaslistView.Items.Add(item);
             }
 
             ActualizarBultosSeleccion();
         }
+
+
         private void ActualizarBultosSeleccion()
         {
             bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
@@ -210,28 +285,80 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(ingresarcodigopostaltextBox.Text))
+            {
+                foreach (ListViewItem item in seleccionguiaslistView.Items)
+                    item.BackColor = Color.White;
 
+                // Reordenar por número de guía al resetear
+                var itemsOrdenados = seleccionguiaslistView.Items
+                    .Cast<ListViewItem>()
+                    .OrderBy(i =>
+                    {
+                        int guiaId;
+                        return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
+                    })
+                    .ToList();
+
+                seleccionguiaslistView.BeginUpdate();
+                seleccionguiaslistView.Items.Clear();
+                seleccionguiaslistView.Items.AddRange(itemsOrdenados.ToArray());
+                seleccionguiaslistView.EndUpdate();
+            }
         }
 
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
             string cp = ingresarcodigopostaltextBox.Text.Trim();
-            if (!ValidarCodigoPostalArg(cp))
+
+            // ✅ Si está vacío y se hace clic → error
+            if (string.IsNullOrEmpty(cp))
             {
-                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ingresarcodigopostaltextBox.Clear();   // borra el contenido
-                ingresarcodigopostaltextBox.Focus(); // vuelve el foco al TextBox
+                MessageBox.Show("Debe ingresar un código postal para buscar.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Filtrar lo que ya está cargado en seleccionguiaslistView
-            foreach (ListViewItem item in seleccionguiaslistView.Items)
+            // Validar formato
+            if (!ValidarCodigoPostalArg(cp))
             {
-                var guia = item.Tag as GuiasAAsignar;
-                item.BackColor = (guia != null && guia.CodigoPostalGuia == cp) ? Color.LightGreen : Color.LightGray;
+                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ingresarcodigopostaltextBox.Clear();
                 ingresarcodigopostaltextBox.Focus();
+                return;
             }
+
+            // Pintar coincidencias y reordenar
+            var coincidencias = new List<ListViewItem>();
+            var noCoincidencias = new List<ListViewItem>();
+
+            foreach (ListViewItem item in seleccionguiaslistView.Items)
+            {
+                var guia = item.Tag as Guias;
+                if (guia == null) continue;
+
+                string cpComparar = retiroradioButton.Checked
+                    ? guia.DomicilioRetiro.CodigoPostal
+                    : guia.DomicilioEntrega.CodigoPostal;
+
+                if (cpComparar == cp)
+                {
+                    item.BackColor = Color.LightGreen;
+                    coincidencias.Add(item);
+                }
+                else
+                {
+                    item.BackColor = Color.LightGray;
+                    noCoincidencias.Add(item);
+                }
+            }
+
+            seleccionguiaslistView.BeginUpdate();
+            seleccionguiaslistView.Items.Clear();
+            seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
+            seleccionguiaslistView.Items.AddRange(noCoincidencias.ToArray());
+            seleccionguiaslistView.EndUpdate();
         }
         private bool ValidarCodigoPostalArg(string cp)
         {
@@ -242,12 +369,34 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
         private void ActualizarAutoCompleteCP(string estado)
         {
-            var modelo = new AsignarGuiasModelo();
-            var codigosPostales = modelo.LGuiasAAsignar
-                                        .Where(g => g.EstadoGuia == estado && !guiasAsignadas.Contains(g.GuiaId))
-                                        .Select(g => g.CodigoPostalGuia)
-                                        .Distinct()
-                                        .ToArray();
+            string[] codigosPostales;
+
+            if (estado == "A retirar")
+            {
+                codigosPostales = modelo.LGuiasAAsignar
+                    .Where(g => 
+                        g.EstadoGuia == "A retirar" ||
+                        g.EstadoGuia == "Impuesta Telefónicamente" 
+                        && !guiasAsignadas.Contains(g.GuiaId))
+                    .Select(g => g.DomicilioRetiro.CodigoPostal)
+                    .Distinct()
+                    .ToArray();
+            }
+            else if (estado == "Distribución")
+            {
+                codigosPostales = modelo.LGuiasAAsignar
+                    .Where(g =>
+                        (g.EstadoGuia == "Admitida" ||
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
+                        && !guiasAsignadas.Contains(g.GuiaId))
+                    .Select(g => g.DomicilioEntrega.CodigoPostal)
+                    .Distinct()
+                    .ToArray();
+            }
+            else
+            {
+                codigosPostales = Array.Empty<string>();
+            }
 
             var source = new AutoCompleteStringCollection();
             source.AddRange(codigosPostales);
@@ -279,16 +428,26 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void agregarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (seleccionguiaslistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
             {
-                var guia = item.Tag as GuiasAAsignar;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                newItem.SubItems.Add(guia.DomicilioGuia);
+
+                if (guia.EstadoGuia == "A retirar")
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
+                else
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
-                
 
                 detallehdrlistView.Items.Add(newItem);
                 seleccionguiaslistView.Items.Remove(item);
@@ -296,23 +455,32 @@ namespace GrupoE_Tutasa.GenerarHDR
                 guiasAsignadas.Add(guia.GuiaId);
             }
 
-            // Actualizar ambos contadores
             ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
         }
 
         private void agregartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para agregar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in seleccionguiaslistView.Items)
             {
-                var guia = item.Tag as GuiasAAsignar;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                newItem.SubItems.Add(guia.DomicilioGuia);
+
+                if (guia.EstadoGuia == "A retirar")
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
+                else
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
-                
 
                 detallehdrlistView.Items.Add(newItem);
 
@@ -321,7 +489,6 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             seleccionguiaslistView.Items.Clear();
 
-            // Actualizar ambos contadores
             ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
         }
@@ -352,54 +519,96 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void eliminarguiasbutton_Click(object sender, EventArgs e)
         {
+            if (detallehdrlistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             foreach (ListViewItem item in detallehdrlistView.SelectedItems)
             {
-                var guia = item.Tag as GuiasAAsignar;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
-                // Crear item nuevo para seleccionguiasListView
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                newItem.SubItems.Add(guia.CodigoPostalGuia);
-                newItem.SubItems.Add(guia.DomicilioGuia);
+
+                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                {
+                    newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
+                }
+                else if ((guia.EstadoGuia == "Admitida" || guia.EstadoGuia == "En distribución") && distribucionradioButton.Checked)
+                {
+                    newItem.SubItems.Add(guia.DomicilioEntrega.CodigoPostal);
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+                }
+
+
                 newItem.SubItems.Add(guia.tamañoGuia);
                 newItem.SubItems.Add(guia.EstadoGuia);
+                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
-                
 
-                // Validar estado y radio button
-                if (guia.EstadoGuia == "A retirar" && retiroradioButton.Checked)
-                    seleccionguiaslistView.Items.Add(newItem);
-                else if (guia.EstadoGuia == "Admitida" && distribucionradioButton.Checked)
-                    seleccionguiaslistView.Items.Add(newItem);
-
+                seleccionguiaslistView.Items.Add(newItem);
                 detallehdrlistView.Items.Remove(item);
-
                 guiasAsignadas.Remove(guia.GuiaId);
             }
 
             ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
+
+            var itemsOrdenados = seleccionguiaslistView.Items
+                .Cast<ListViewItem>()
+                    .OrderBy(i =>
+                    {
+                        int guiaId;
+                        return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
+                    })
+                .ToList();
+
+            // Refrescar vista según radio activo
+            if (retiroradioButton.Checked)
+                CargarGuiasPorEstado("A retirar");
+            else if (distribucionradioButton.Checked)
+                CargarGuiasPorEstado("Distribucion");
+
+
         }
 
         private void eliminartodoguiasbutton_Click(object sender, EventArgs e)
         {
+            if (bultostotalasignadoslabel.Text == "0")
+            {
+                MessageBox.Show("Debe haber al menos una guía para eliminar.", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             foreach (ListViewItem item in detallehdrlistView.Items)
             {
-                var guia = item.Tag as GuiasAAsignar;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                newItem.SubItems.Add(guia.CodigoPostalGuia);
-                newItem.SubItems.Add(guia.DomicilioGuia);
+
+                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                {
+                    newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
+                }
+                else if ((guia.EstadoGuia == "Admitida" || guia.EstadoGuia == "En distribución") && distribucionradioButton.Checked)
+                {
+                    newItem.SubItems.Add(guia.DomicilioEntrega.CodigoPostal);
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+                }
+               
+
                 newItem.SubItems.Add(guia.tamañoGuia);
                 newItem.SubItems.Add(guia.EstadoGuia);
+                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
-               
-                if (guia.EstadoGuia == "A retirar" && retiroradioButton.Checked)
-                    seleccionguiaslistView.Items.Add(newItem);
-                else if (guia.EstadoGuia == "Admitida" && distribucionradioButton.Checked)
-                    seleccionguiaslistView.Items.Add(newItem);
 
+                seleccionguiaslistView.Items.Add(newItem);
                 guiasAsignadas.Remove(guia.GuiaId);
             }
 
@@ -407,6 +616,22 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             ActualizarBultosSeleccion();
             ActualizarTotalesDetalle();
+            
+            var itemsOrdenados = seleccionguiaslistView.Items
+                .Cast<ListViewItem>()
+                    .OrderBy(i =>
+                        {
+                            int guiaId;
+                            return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
+                        })
+                .ToList();
+
+            // Refrescar vista según radio activo
+            if (retiroradioButton.Checked)
+                CargarGuiasPorEstado("A retirar");
+            else if (distribucionradioButton.Checked)
+                CargarGuiasPorEstado("Distribución");
+
         }
 
         private void cancelargenerarhdrbutton_Click(object sender, EventArgs e)
@@ -425,91 +650,110 @@ namespace GrupoE_Tutasa.GenerarHDR
         private int ultimoHDRRetiroId = 0;
         private int ultimoHDRDistribucionId = 0;
 
+
+        private List<HDRResumen> hdrsProvisorios = new List<HDRResumen>();
+
         private void generarhdrbutton_Click(object sender, EventArgs e)
         {
-            var resumenHDR = new List<HDRResumen>();
-            var fletero = this.Tag as Fleteros; // el fletero seleccionado en pantalla
-
-            foreach (ListViewItem item in detallehdrlistView.Items)
+            if (detallehdrlistView.Items.Count == 0)
             {
-                var guia = item.Tag as GuiasAAsignar;
-                if (guia == null || fletero == null) continue;
+                MessageBox.Show("No hay guías asignadas en el detalle.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ingresardnitextBox.Focus();
+                return;
+            }
 
-                if (guia.EstadoGuia == "A retirar")
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null)
+            {
+                MessageBox.Show("Debe seleccionar un fletero antes de generar HDR.",
+                                "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            hdrsProvisorios.Clear();
+
+            // ✅ Numeración continua según HDRs ya guardados
+            int idRetiroTemp = modelo.HDRsRetiro.Any() ? modelo.HDRsRetiro.Max(h => h.HDRRetiroId) + 1 : 1;
+            int idDistribTemp = modelo.HDRsDistribucion.Any() ? modelo.HDRsDistribucion.Max(h => h.HDRDistribucionId) + 1 : 1;
+
+            // Agrupar guías por domicilio
+            var grupos = detallehdrlistView.Items
+                .Cast<ListViewItem>()
+                .Select(i => i.Tag as Guias)
+                .GroupBy(g => (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                    ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.CodigoPostal}"
+                    : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.CodigoPostal}");
+
+            foreach (var grupo in grupos)
+            {
+                var guiasGrupo = grupo.ToList();
+
+                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente"))
                 {
-                    ultimoHDRRetiroId++;
-                    var hdr = new HDRRetiro
-                    {
-                        HDRRetiroId = ultimoHDRRetiroId,
-                        GuiaId = guia.GuiaId,
-                        fleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now
-                    };
-                    modelo.HDRsRetiro.Add(hdr);
-                    resumenHDR.Add(new HDRResumen(hdr.HDRRetiroId, guia, "Retiro"));
+                    hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro"));
                 }
-                else if (guia.EstadoGuia == "Admitida")
+                else
                 {
-                    ultimoHDRDistribucionId++;
-                    var hdr = new HDRDistribucion
-                    {
-                        HDRDistribucionId = ultimoHDRDistribucionId,
-                        GuiaId = guia.GuiaId,
-                        fleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now
-                    };
-                    modelo.HDRsDistribucion.Add(hdr);
-                    resumenHDR.Add(new HDRResumen(hdr.HDRDistribucionId, guia, "Distribución"));
-
-                    // Cambio de estado
-                    guia.EstadoGuia = "En distribución";
+                    hdrsProvisorios.Add(new HDRResumen(idDistribTemp++, guiasGrupo, "Distribución"));
                 }
             }
 
-            var resumenOrdenado = resumenHDR.OrderBy(r => r.Domicilio).ToList();
-            MostrarResumenPopup(resumenOrdenado);
+            var resumenOrdenado = hdrsProvisorios.OrderBy(r => r.Domicilio).ToList();
+            MostrarResumenPopup(resumenOrdenado, fletero);
+
 
         }
 
-        private void MostrarResumenPopup(List<HDRResumen> resumen)
+        private void MostrarResumenPopup(List<HDRResumen> resumen, Fleteros fletero)
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";
-            popup.Size = new Size(650, 450);
+            popup.Size = new Size(850, 500);
             popup.StartPosition = FormStartPosition.CenterParent;
 
             var listView = new ListView();
             listView.Dock = DockStyle.Top;
             listView.View = View.Details;
             listView.FullRowSelect = true;
-            listView.Height = 350;
+            listView.Height = 380;
 
             listView.Columns.Add("HDR Id", 80);
-            listView.Columns.Add("Guía", 80);
-            listView.Columns.Add("Destinatario", 150);
-            listView.Columns.Add("Domicilio", 200);
-            listView.Columns.Add("CP", 80);
+            listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Tipo HDR", 100);
+            listView.Columns.Add("Guías a imprimir", 200);
+            listView.Columns.Add("Fecha/Hora impresión", 150);
 
             foreach (var r in resumen)
             {
                 var item = new ListViewItem(r.HDRId.ToString());
-                item.SubItems.Add(r.GuiaId.ToString());
-                item.SubItems.Add(r.Destinatario);
-                item.SubItems.Add(r.Domicilio);
-                item.SubItems.Add(r.CodigoPostal);
+                item.SubItems.Add(string.Join(", ", r.GuiasIds));
                 item.SubItems.Add(r.TipoHDR);
+
+                // ✅ Mostrar directamente las guías a imprimir desde la propiedad
+                item.SubItems.Add(r.GuiasAImprimir.Any() ? string.Join(", ", r.GuiasAImprimir) : "-");
+
+                // ✅ Mostrar la fecha/hora de impresión desde la propiedad
+                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));
+
                 listView.Items.Add(item);
             }
 
             var imprimirButton = new Button();
-            imprimirButton.Text = "Imprimir HDR y Resumen";
+            imprimirButton.Text = "🖨️ Imprimir HDR y Resumen";
             imprimirButton.Dock = DockStyle.Bottom;
-            imprimirButton.Height = 40;
+            imprimirButton.Height = 45;
+            imprimirButton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            imprimirButton.BackColor = Color.Green;
+            imprimirButton.ForeColor = Color.White;
+            imprimirButton.FlatStyle = FlatStyle.Flat;
+            imprimirButton.FlatAppearance.BorderSize = 0;
+
             imprimirButton.Click += (s, e) =>
             {
-                ImprimirResumen(resumen);
-                popup.Close(); // cerrar el pop-up después de imprimir
+                ImprimirResumen(resumen, fletero);
+                popup.Close();
             };
 
             popup.Controls.Add(listView);
@@ -517,27 +761,58 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             popup.ShowDialog();
         }
-        private void ImprimirResumen(List<HDRResumen> resumen)
-        {
-            // Mostrar mensaje de impresión
-            MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
-                            "Impresión",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
 
-            // Guardar cambios de estado de las guías
+
+        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero)
+        {
+            MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
+                    "Impresión",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+            // Asegurar numeración continua
+            ultimoHDRRetiroId = modelo.HDRsRetiro.Any() ? modelo.HDRsRetiro.Max(h => h.HDRRetiroId) : ultimoHDRRetiroId;
+            ultimoHDRDistribucionId = modelo.HDRsDistribucion.Any() ? modelo.HDRsDistribucion.Max(h => h.HDRDistribucionId) : ultimoHDRDistribucionId;
+
             foreach (var r in resumen)
             {
-                var guia = modelo.LGuiasAAsignar.FirstOrDefault(g => g.GuiaId == r.GuiaId);
-                if (guia != null && guia.EstadoGuia == "Admitida")
+                var guiasGrupo = modelo.LGuiasAAsignar.Where(g => r.GuiasIds.Contains(g.GuiaId)).ToList();
+                if (!guiasGrupo.Any()) continue;
+
+                if (r.TipoHDR == "Retiro")
                 {
-                    guia.EstadoGuia = "En distribución";
+                    ultimoHDRRetiroId++;
+                    var hdr = new HDRRetiro
+                    {
+                        HDRRetiroId = ultimoHDRRetiroId,
+                        fleteroId = fletero.FleteroId,
+                        FechaEmision = DateTime.Now,
+                        Estado = "Pendiente",
+                        GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
+                    };
+                    modelo.HDRsRetiro.Add(hdr);
+                }
+                else if (r.TipoHDR == "Distribución")
+                {
+                    ultimoHDRDistribucionId++;
+                    var hdr = new HDRDistribucion
+                    {
+                        HDRDistribucionId = ultimoHDRDistribucionId,
+                        fleteroId = fletero.FleteroId,
+                        FechaEmision = DateTime.Now,
+                        Estado = "Pendiente",
+                        GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
+                    };
+                    modelo.HDRsDistribucion.Add(hdr);
+
+                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == "Admitida"))
+                        g.EstadoGuia = "En distribución";
                 }
             }
 
-            // Resetear todo el formulario
             ResetearFormularioFletero();
-            ingresardnitextBox.Clear(); // limpiar DNI del fletero
+            ingresardnitextBox.Clear();
+            ingresardnitextBox.Focus();
         }
     }
 }

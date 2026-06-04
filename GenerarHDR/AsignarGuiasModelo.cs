@@ -7,40 +7,321 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class AsignarGuiasModelo
     {
 
-        public List<GuiasAAsignar> LGuiasAAsignar {  get; set; } = new List<GuiasAAsignar>()
-      
+        public List<Guias> LGuiasAAsignar { get; set; } = new List<Guias>()
+
                 {
-                    new GuiasAAsignar { GuiaId = 1, CodigoPostalGuia = "1000", DomicilioGuia = "Calle Falsa 123", tamañoGuia = "L", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Juan Pérez" },
-                    new GuiasAAsignar { GuiaId = 2, CodigoPostalGuia = "2000", DomicilioGuia = "Avenida Siempre Viva 456", tamañoGuia = "M", EstadoGuia = "A retirar", NombreDestinatarioGuia = "María Gómez" },
-                    new GuiasAAsignar { GuiaId = 3, CodigoPostalGuia = "3000", DomicilioGuia = "Boulevard de los Sueños Rotos 789", tamañoGuia = "S", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Carlos Rodríguez" },
-                    new GuiasAAsignar { GuiaId = 4, CodigoPostalGuia = "4000", DomicilioGuia = "Calle del Olvido 321", tamañoGuia = "XL", EstadoGuia = "A retirar", NombreDestinatarioGuia = "Ana Martínez" },
-                    new GuiasAAsignar { GuiaId = 5, CodigoPostalGuia = "5000", DomicilioGuia = "Avenida de la Esperanza 654", tamañoGuia = "M", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Luis Fernández" },
-                    new GuiasAAsignar { GuiaId = 6, CodigoPostalGuia = "6000", DomicilioGuia = "Calle de la Fortuna 987", tamañoGuia = "S", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Sofía López" },
-                    new GuiasAAsignar { GuiaId = 7, CodigoPostalGuia = "7000", DomicilioGuia = "Avenida del Destino 159", tamañoGuia = "XL", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Miguel Sánchez" },
-                    new GuiasAAsignar { GuiaId = 8, CodigoPostalGuia = "8000", DomicilioGuia = "Calle de la Ilusión 753", tamañoGuia = "L", EstadoGuia = "Admitida", NombreDestinatarioGuia = "Laura Gómez" },
+                    new Guias
+                    {
+                        GuiaId = 1,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle Falsa",
+                            Numero = "123",
+                            CodigoPostal = "1000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "L",
+                        EstadoGuia = "A retirar",
+                        NombreDestinatarioGuia = "Juan Pérez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Calle Verdadera",
+                            Numero = "456",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 2,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle Falsa",
+                            Numero = "123",
+                            CodigoPostal = "1000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
+
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "A retirar",
+                        NombreDestinatarioGuia = "María Gómez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "789",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 3,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Boulevard de los Sueños Rotos",
+                            Numero = "789",
+                            CodigoPostal = "3000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "S",
+                        EstadoGuia = "A retirar",
+                        NombreDestinatarioGuia = "Carlos Rodríguez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Boulevard Real",
+                            Numero = "321",
+                            CodigoPostal = "7700",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 4,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle del Olvido",
+                            Numero = "321",
+                            CodigoPostal = "4000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "XL",
+                        EstadoGuia = "A retirar",
+                        NombreDestinatarioGuia = "Ana Martínez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Calle Real",
+                            Numero = "654",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 5,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Avenida de la Esperanza",
+                            Numero = "654",
+                            CodigoPostal = "5000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "Admitida",
+                        NombreDestinatarioGuia = "Luis Fernández",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "987",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 6,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle de la Fortuna",
+                            Numero = "987",
+                            CodigoPostal = "6000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "S",
+                        EstadoGuia = "Admitida",
+                        NombreDestinatarioGuia = "Sofía López",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Calle Real",
+                            Numero = "987",
+                            CodigoPostal = "3200",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 7,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Avenida del Destino",
+                            Numero = "159",
+                            CodigoPostal = "7000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "XL",
+                        EstadoGuia = "Admitida",
+                        NombreDestinatarioGuia = "Miguel Sánchez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "159",
+                            CodigoPostal = "5300",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 8,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle de la Ilusión",
+                            Numero = "753",
+                            CodigoPostal = "8000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "L",
+                        EstadoGuia = "Admitida",
+                        NombreDestinatarioGuia = "Laura Gómez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "852",
+                            CodigoPostal = "9500",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
+                    new Guias
+                    {
+                        GuiaId = 9,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Avenida de la Libertad",
+                            Numero = "852",
+                            CodigoPostal = "9000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "En distribución",
+                        NombreDestinatarioGuia = "Jorge Rodríguez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "852",
+                            CodigoPostal = "9500",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 2
+                    },
+                    new Guias
+                    {
+                        GuiaId = 10,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Calle Falsa",
+                            Numero = "123",
+                            CodigoPostal = "1000",
+                            Localidad = "Buenos Aires",
+                            Provincia = "Buenos Aires"
+
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "Impuesta Telefónicamente",
+                        NombreDestinatarioGuia = "María Gómez",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "7819",
+                            CodigoPostal = "2000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
                 };
-            
+
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
-       
+
                 {
                     new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
                     new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
                     new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
                     new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
                 };
-       
+
         // Listas HDR generadas
-        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>();
-        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>();
-
-        public static bool ValidarDniString(string dni)
+        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>()
         {
-            if (string.IsNullOrWhiteSpace(dni)) return false;
-            // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
-            if (!int.TryParse(dni, out int numero)) return false;
-            if (numero < 0) return false;
-            return dni.Length == 7 || dni.Length == 8;
-        }
+            new HDRRetiro
+            {
+                HDRRetiroId = 1,
+             
+                fleteroId = 1,
+                FechaEmision = DateTime.Now.AddDays(-1),
+                FechaRendicion = DateTime.MinValue, // aún no rendida
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
+            },
+            new HDRRetiro
+            {
+                HDRRetiroId = 2,
+               
+                fleteroId = 2,
+                FechaEmision = DateTime.Now.AddDays(-2),
+                FechaRendicion = DateTime.MinValue,
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
+            }
+        };
 
-    }
-}
+        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>()
+        {
+            new HDRDistribucion
+            {
+                HDRDistribucionId = 1,
+               
+                fleteroId = 1,
+                FechaEmision = DateTime.Now.AddDays(-1),
+                FechaRendicion = DateTime.MinValue, // aún no rendida
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
+            },
+            new HDRDistribucion
+            {
+                HDRDistribucionId = 2,
+               
+                fleteroId = 2,
+                FechaEmision = DateTime.Now.AddDays(-2),
+                FechaRendicion = DateTime.MinValue,
+                Estado = "Pendiente",
+                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
+            },
+
+
+        };
+
+                public static bool ValidarDniString(string dni)
+                {
+                    if (string.IsNullOrWhiteSpace(dni)) return false;
+                    // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
+                    if (!int.TryParse(dni, out int numero)) return false;
+                    if (numero < 0) return false;
+                    return dni.Length == 7 || dni.Length == 8;
+                }
+
+            }
+        }

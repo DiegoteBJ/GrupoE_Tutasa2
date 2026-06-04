@@ -15,6 +15,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             var clientes = modelo.LClientes;
             var documentos = modelo.LDocumentos;
             var guiasPendientes = modelo.LGuiasPendientes;
+            var guias = modelo.LGuias;
             //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
             CuitClienteBox.Clear();
             DatosCLienteRespuestaLabel.Text = string.Empty;
@@ -27,12 +28,13 @@ namespace GrupoE_Tutasa.EmitirFactura
             int encuentro = 0;
             int clienteId = 0;
             decimal totalImporte = 0;
+            string tamaño = string.Empty;
             DetalleEnviosListView.Items.Clear();
 
             //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
-                MessageBox.Show("Por favor, ingrese un CUIT válido.");
+                MessageBox.Show("Debe completar el campo CUIT.");
                 return;
             }
             if (!EmisionFacturaModelo.ValidarCuit(CuitClienteBox.Text))
@@ -54,27 +56,35 @@ namespace GrupoE_Tutasa.EmitirFactura
             }
             if (encuentro == 0)
             {
-                DatosCLienteRespuestaLabel.Text = "Cliente no encontrado.";
+                DatosCLienteRespuestaLabel.Text = "No existe el Cliente seleccionado. Vuelva a intentarlo";
                 return;
             }
             //3 Generar opercion de busqueda
-            foreach (var guia in modelo.LGuiasPendientes)
+            foreach (var guiaAFacturar in modelo.LGuiasPendientes)
             {
-                if (guia.clienteID == clienteId)
+                if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
                 {
-                    ListViewItem item = new ListViewItem(guia.numeroGuia.ToString());
-                    item.SubItems.Add(guia.fechaAdmision.ToShortDateString());
-                    item.SubItems.Add(guia.origen);
-                    item.SubItems.Add(guia.destino);
-                    item.SubItems.Add(guia.tamaño);
-                    item.SubItems.Add(guia.importe.ToString());
-                    totalImporte = totalImporte + guia.importe;
+                    ListViewItem item = new ListViewItem(guiaAFacturar.numeroGuia.ToString());
+                    foreach (var guia in modelo.LGuias)
+                    {
+                        if (guia.guiaId == guiaAFacturar.numeroGuia)
+                        {
+                            item.SubItems.Add(guia.fechaImposicion.ToShortDateString());
+                            tamaño = guia.tipoCaja.ToString();
+                            break;
+                        }
+                    }
+                    item.SubItems.Add(guiaAFacturar.fechaEntrega.ToShortDateString());
+                    item.SubItems.Add(tamaño);
+                    item.SubItems.Add(guiaAFacturar.importe.ToString());
+                    totalImporte = totalImporte + guiaAFacturar.importe;
                     DetalleEnviosListView.Items.Add(item);
                 }
             }
             TotalAFacturarLabel.Text = $"{totalImporte}";
+            if (totalImporte==0)
+            { MessageBox.Show("No se encontraron ítems pendientes de facturar. Para el cliente seleccionado. Reintente");}
         }
-
         private void CancelarBoton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -111,7 +121,8 @@ namespace GrupoE_Tutasa.EmitirFactura
             decimal netoGravado = TotalAFacturarLabel.Text != string.Empty ? decimal.Parse(TotalAFacturarLabel.Text) : 0;
             decimal iva = netoGravado * 0.21m;
             decimal documentoTotal = netoGravado + iva;
-            
+
+            // Agregar el nuevo documento a la lista de documentos del modelo. 
             modelo.LDocumentos.Add(new Documentos
             {
                 documentoId = nuevoDocumentoId,
@@ -123,6 +134,17 @@ namespace GrupoE_Tutasa.EmitirFactura
                 ivaDF = iva,
                 documentoTotal = documentoTotal,
             });
+
+            // Marcar las guías como facturadas y agregar el número de documento a cada guía facturada.
+            foreach (var guiaAFacturar in modelo.LGuiasPendientes)
+            {
+                if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
+                {
+                    guiaAFacturar.facturada = true;
+                    guiaAFacturar.documentoNumero = numeroDocumento; 
+                }
+            }
+            // Mostrar mensaje de éxito con el número de documento y el importe facturado.
             MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" + $"Importe facturado: {documentoTotal}\n" + $"Importe sin IVA: {netoGravado}");
             EmitirFacturaBoton.Enabled = false;
             CancelarBoton.Text = "Cerrar";

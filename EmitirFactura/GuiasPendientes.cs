@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-// Esta clase representa las guías que tienen estado de entregadas y pendientes de emisión de factura, con sus propiedades correspondientes.
+
 
 namespace GrupoE_Tutasa.EmitirFactura
 {
     internal class GuiasPendientes
+    //Esta clase representa las guias pendientes de facturacion, Cada guia tiene un Id unico, un clienteID 
+    //sruge en realidad de la clase CC de Clientes, guia id, fecha de entrega, fecha de movimiento, 
+    //precio de imposicion, transporte, entrega y total. Un boolean que indique si ya fue facturada
+    // y un string con el numero de cocumento una vez facturada.
     {
         public int Id { get; set; }
         public int clienteID { get; set; }
         public int numeroGuia { get; set; }
-        public DateTime fechaAdmision { get; set; }
-        public string origen { get; set; } = string.Empty;
-        public string destino { get; set; } = string.Empty;
-        public string modalidadImposicion { get; set; } = string.Empty;
-        public string modalidadEntrega { get; set; } = string.Empty;
-        public string tamaño { get; set; } = string.Empty;
+        public DateTime fechaEntrega { get; set; }
+        public DateTime fechaMovimiento { get; set; }
+        public decimal precioImposicion { get; set; } 
+        public decimal precioEntrega { get; set; } 
+        public decimal precioTransporte { get; set; } 
         public decimal importe { get; set; }
+        public int empresaTransporteID { get; set; }
+        public bool facturada { get; set; }
+        public string documentoNumero { get; set; }
+
     }
 }
