@@ -214,15 +214,20 @@ namespace GrupoE_Tutasa.GenerarHDR
                 .Select(id => id.Value)
                 .ToHashSet();
 
+            // ✅ Obtener fletero logueado
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null) return;
+
             IEnumerable<Guias> guias;
 
             if (estado == "A retirar")
             {
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
-                        (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                        g.EstadoGuia == "A retirar" 
+                        && fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) // ✅ filtro por cobertura
                         && !guiasAsignadas.Contains(g.GuiaId)
-                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
+                        && !guiasEnDetalle.Contains(g.GuiaId)
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else if (estado == "Distribución")
@@ -230,10 +235,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        && fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) // ✅ filtro por cobertura
                         && !guiasAsignadas.Contains(g.GuiaId)
-                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
-                        && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+                        && !guiasEnDetalle.Contains(g.GuiaId)
+                        && !modelo.HDRsDistribucion.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else
             {
@@ -375,8 +381,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g => 
-                        g.EstadoGuia == "A retirar" ||
-                        g.EstadoGuia == "Impuesta Telefónicamente" 
+                        g.EstadoGuia == "A retirar" 
                         && !guiasAsignadas.Contains(g.GuiaId))
                     .Select(g => g.DomicilioRetiro.CodigoPostal)
                     .Distinct()
@@ -387,7 +392,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
                         && !guiasAsignadas.Contains(g.GuiaId))
                     .Select(g => g.DomicilioEntrega.CodigoPostal)
                     .Distinct()
@@ -533,7 +538,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
-                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                if ((guia.EstadoGuia == "A retirar") && retiroradioButton.Checked)
                 {
                     newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
@@ -591,7 +596,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
-                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                if ((guia.EstadoGuia == "A retirar") && retiroradioButton.Checked)
                 {
                     newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
@@ -682,7 +687,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             var grupos = detallehdrlistView.Items
                 .Cast<ListViewItem>()
                 .Select(i => i.Tag as Guias)
-                .GroupBy(g => (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                .GroupBy(g => (g.EstadoGuia == "A retirar")
                     ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.CodigoPostal}"
                     : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.CodigoPostal}");
 
@@ -690,7 +695,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 var guiasGrupo = grupo.ToList();
 
-                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente"))
+                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar"))
                 {
                     hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro"));
                 }
@@ -722,7 +727,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.Columns.Add("HDR Id", 80);
             listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Guías a imprimir", 200);
             listView.Columns.Add("Fecha/Hora impresión", 150);
 
             foreach (var r in resumen)
@@ -731,8 +735,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(string.Join(", ", r.GuiasIds));
                 item.SubItems.Add(r.TipoHDR);
 
-                // ✅ Mostrar directamente las guías a imprimir desde la propiedad
-                item.SubItems.Add(r.GuiasAImprimir.Any() ? string.Join(", ", r.GuiasAImprimir) : "-");
+                
 
                 // ✅ Mostrar la fecha/hora de impresión desde la propiedad
                 item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));

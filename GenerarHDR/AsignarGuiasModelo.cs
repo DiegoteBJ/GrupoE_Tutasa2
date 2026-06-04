@@ -257,10 +257,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
 
                 {
-                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
-                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
-                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
-                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
+                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez", CPCobertura = new List<string> { "1000", "1001", "1002" } },
+                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales", CPCobertura = new List<string> { "2000", "2001", "2002", "2003" } },
+                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez", CPCobertura = new List<string> { "3000", "3001", "3002" } },
+                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras", CPCobertura = new List<string> { "4000", "4001", "4002" } },
                 };
 
         // Listas HDR generadas
