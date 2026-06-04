@@ -214,15 +214,20 @@ namespace GrupoE_Tutasa.GenerarHDR
                 .Select(id => id.Value)
                 .ToHashSet();
 
+            // ✅ Obtener fletero logueado
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null) return;
+
             IEnumerable<Guias> guias;
 
             if (estado == "A retirar")
             {
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
-                        (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                        g.EstadoGuia == "A retirar" 
+                        && fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) // ✅ filtro por cobertura
                         && !guiasAsignadas.Contains(g.GuiaId)
-                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
+                        && !guiasEnDetalle.Contains(g.GuiaId)
                         && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else if (estado == "Distribución")
@@ -230,10 +235,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 guias = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        && fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) // ✅ filtro por cobertura
                         && !guiasAsignadas.Contains(g.GuiaId)
-                        && !guiasEnDetalle.Contains(g.GuiaId) // ✅ nuevo filtro
-                        && !modelo.HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+                        && !guiasEnDetalle.Contains(g.GuiaId)
+                        && !modelo.HDRsDistribucion.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
             }
             else
             {
@@ -285,12 +291,32 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ingresarcodigopostaltextBox.Text))
+            int selStart = ingresarcodigopostaltextBox.SelectionStart;
+            string raw = ingresarcodigopostaltextBox.Text ?? string.Empty;
+
+            // ✅ Filtrar solo letras y dígitos
+            string filtered = new string(raw.Where(char.IsLetterOrDigit).ToArray());
+
+            // ✅ Limitar a 5 caracteres
+            if (filtered.Length > 5)
+                filtered = filtered.Substring(0, 5);
+
+            // ✅ Normalizar a mayúsculas
+            filtered = filtered.ToUpper();
+
+            // Reemplazar si hubo cambios
+            if (ingresarcodigopostaltextBox.Text != filtered)
+            {
+                ingresarcodigopostaltextBox.Text = filtered;
+                ingresarcodigopostaltextBox.SelectionStart = Math.Min(selStart, filtered.Length);
+            }
+
+            // ✅ Reset y reordenar si queda vacío
+            if (string.IsNullOrWhiteSpace(filtered))
             {
                 foreach (ListViewItem item in seleccionguiaslistView.Items)
                     item.BackColor = Color.White;
 
-                // Reordenar por número de guía al resetear
                 var itemsOrdenados = seleccionguiaslistView.Items
                     .Cast<ListViewItem>()
                     .OrderBy(i =>
@@ -306,10 +332,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 seleccionguiaslistView.EndUpdate();
             }
         }
+        
 
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
-            string cp = ingresarcodigopostaltextBox.Text.Trim();
+            string cp = ingresarcodigopostaltextBox.Text.Trim().ToUpper();
 
             // ✅ Si está vacío y se hace clic → error
             if (string.IsNullOrEmpty(cp))
@@ -319,10 +346,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            // Validar formato
+            // ✅ Validar formato (Letra + 4 dígitos)
             if (!ValidarCodigoPostalArg(cp))
             {
-                MessageBox.Show("Código Postal inválido. Use 4 dígitos o CPA (ej: C1424ABC).",
+                MessageBox.Show("Código Postal inválido. Debe ser Letra + 4 dígitos (ej: C1401).",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ingresarcodigopostaltextBox.Clear();
                 ingresarcodigopostaltextBox.Focus();
@@ -354,6 +381,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                 }
             }
 
+            // ✅ Si no hubo coincidencias, mostrar aviso
+            if (coincidencias.Count == 0)
+            {
+                MessageBox.Show($"No se encontraron guías con el código postal {cp}.",
+                                "Sin coincidencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             seleccionguiaslistView.BeginUpdate();
             seleccionguiaslistView.Items.Clear();
             seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
@@ -364,21 +398,29 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             if (string.IsNullOrWhiteSpace(cp)) return false;
             cp = cp.Trim().ToUpper();
-            var regex = new System.Text.RegularExpressions.Regex(@"^([A-Z]\d{4}[A-Z]{3}|\d{4})$");
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Z][0-9]{4}$");
             return regex.IsMatch(cp);
         }
         private void ActualizarAutoCompleteCP(string estado)
         {
+            var fletero = this.Tag as Fleteros;
+            if (fletero == null)
+            {
+                ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+                return;
+            }
+
             string[] codigosPostales;
 
             if (estado == "A retirar")
             {
                 codigosPostales = modelo.LGuiasAAsignar
-                    .Where(g => 
-                        g.EstadoGuia == "A retirar" ||
-                        g.EstadoGuia == "Impuesta Telefónicamente" 
-                        && !guiasAsignadas.Contains(g.GuiaId))
-                    .Select(g => g.DomicilioRetiro.CodigoPostal)
+                    .Where(g =>
+                        g.EstadoGuia == "A retirar"
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
+                    .Select(g => g.DomicilioRetiro.CodigoPostal.ToUpper())
+                    .Where(cp => ValidarCodigoPostalArg(cp))
                     .Distinct()
                     .ToArray();
             }
@@ -387,9 +429,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g =>
                         (g.EstadoGuia == "Admitida" ||
-                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega <= 2))
-                        && !guiasAsignadas.Contains(g.GuiaId))
-                    .Select(g => g.DomicilioEntrega.CodigoPostal)
+                         (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2))
+                        && !guiasAsignadas.Contains(g.GuiaId)
+                        && fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
+                    .Select(g => g.DomicilioEntrega.CodigoPostal.ToUpper())
+                    .Where(cp => ValidarCodigoPostalArg(cp))
                     .Distinct()
                     .ToArray();
             }
@@ -533,7 +577,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
-                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                if ((guia.EstadoGuia == "A retirar") && retiroradioButton.Checked)
                 {
                     newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
@@ -571,7 +615,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A retirar");
             else if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("Distribucion");
+                CargarGuiasPorEstado("Distribución");
 
 
         }
@@ -591,7 +635,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
-                if ((guia.EstadoGuia == "A retirar" || guia.EstadoGuia == "Impuesta Telefónicamente") && retiroradioButton.Checked)
+                if ((guia.EstadoGuia == "A retirar") && retiroradioButton.Checked)
                 {
                     newItem.SubItems.Add(guia.DomicilioRetiro.CodigoPostal);
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero}");
@@ -682,7 +726,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             var grupos = detallehdrlistView.Items
                 .Cast<ListViewItem>()
                 .Select(i => i.Tag as Guias)
-                .GroupBy(g => (g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente")
+                .GroupBy(g => (g.EstadoGuia == "A retirar")
                     ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.CodigoPostal}"
                     : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.CodigoPostal}");
 
@@ -690,7 +734,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 var guiasGrupo = grupo.ToList();
 
-                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar" || g.EstadoGuia == "Impuesta Telefónicamente"))
+                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar"))
                 {
                     hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro"));
                 }
@@ -710,7 +754,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";
-            popup.Size = new Size(850, 500);
+            popup.Size = new Size(950, 500);
             popup.StartPosition = FormStartPosition.CenterParent;
 
             var listView = new ListView();
@@ -719,23 +763,20 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.FullRowSelect = true;
             listView.Height = 380;
 
+            // ✅ Orden de columnas según lo pedido
             listView.Columns.Add("HDR Id", 80);
-            listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Guías a imprimir", 200);
-            listView.Columns.Add("Fecha/Hora impresión", 150);
+            listView.Columns.Add("Guías incluidas", 200);
+            listView.Columns.Add("Domicilio", 200);
+            listView.Columns.Add("Fecha impresión", 120);
 
-            foreach (var r in resumen)
+            foreach (var r in resumen.OrderBy(x => x.Domicilio)) // ✅ ordenado solo por domicilio
             {
                 var item = new ListViewItem(r.HDRId.ToString());
-                item.SubItems.Add(string.Join(", ", r.GuiasIds));
                 item.SubItems.Add(r.TipoHDR);
-
-                // ✅ Mostrar directamente las guías a imprimir desde la propiedad
-                item.SubItems.Add(r.GuiasAImprimir.Any() ? string.Join(", ", r.GuiasAImprimir) : "-");
-
-                // ✅ Mostrar la fecha/hora de impresión desde la propiedad
-                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));
+                item.SubItems.Add(string.Join(", ", r.GuiasIds));
+                item.SubItems.Add(r.Domicilio); // ✅ calle + número
+                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy")); // ✅ solo fecha
 
                 listView.Items.Add(item);
             }
@@ -752,7 +793,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             imprimirButton.Click += (s, e) =>
             {
-                ImprimirResumen(resumen, fletero);
+                ImprimirResumen(resumen, fletero, listView.Items.Count); // ✅ pasamos cantidad de HDR
                 popup.Close();
             };
 
@@ -763,9 +804,11 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
 
 
-        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero)
+        private void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero, int totalHDR)
         {
-            MessageBox.Show("Se están imprimiendo las HDR y el resumen...",
+            string fechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+            MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                     "Impresión",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);

@@ -17,7 +17,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Falsa",
                             Numero = "123",
-                            CodigoPostal = "1000",
+                            CodigoPostal = "C1000",
                             Localidad = "Buenos Aires",
                             Provincia = "Buenos Aires"
                         },
@@ -41,7 +41,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Falsa",
                             Numero = "123",
-                            CodigoPostal = "1000",
+                            CodigoPostal = "C1000",
                             Localidad = "Buenos Aires",
                             Provincia = "Buenos Aires"
 
@@ -125,7 +125,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "987",
-                            CodigoPostal = "2000",
+                            CodigoPostal = "C1001",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -149,7 +149,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Real",
                             Numero = "987",
-                            CodigoPostal = "3200",
+                            CodigoPostal = "C1003",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -173,7 +173,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "159",
-                            CodigoPostal = "5300",
+                            CodigoPostal = "C1000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -197,7 +197,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "852",
-                            CodigoPostal = "9500",
+                            CodigoPostal = "C1000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -221,7 +221,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "852",
-                            CodigoPostal = "9500",
+                            CodigoPostal = "C1000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -246,7 +246,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "7819",
-                            CodigoPostal = "2000",
+                            CodigoPostal = "C1000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
                         },
@@ -257,10 +257,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
 
                 {
-                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez" },
-                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales" },
-                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez" },
-                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras" },
+                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez", CPCobertura = new List<string> { "C1000", "C1001", "C1002" } },
+                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales", CPCobertura = new List<string> { "C2000", "C2001", "C2002", "C2003" } },
+                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez", CPCobertura = new List<string> { "C3000", "C3001", "C3002" } },
+                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras", CPCobertura = new List<string> { "C4000", "C4001", "C4002" } },
                 };
 
         // Listas HDR generadas
