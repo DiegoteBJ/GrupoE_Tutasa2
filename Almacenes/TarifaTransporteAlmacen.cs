@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -23,6 +24,10 @@ namespace GrupoE_Tutasa.Almacenes
                 {
                     MessageBox.Show($"Error al cargar TarifaTransporteEntidad.json: {ex.Message}");
                 }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo TarifaTransporteEntidad.json.");
             }
         }
 

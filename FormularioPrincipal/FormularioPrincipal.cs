@@ -26,12 +26,12 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
             //MessageBox.Show(Directory.GetCurrentDirectory());
-            //string datosCliente = "";
-            //foreach (var cliente in ClienteAlmacen.clientes)
+            //string datosTT = "";
+            //foreach (var tt in TarifaTransporteAlmacen.tarifaTransportes)
             //{
-            //   datosCliente += $"Nombre: {cliente.Nombre + cliente.Apellido}, RSocial: {cliente.RazonSocial}\n";
+            //   datosTT += $"Datos: {tt.CDOrigenId + tt.CDDestinoId + tt.CoeficienteS + tt.CoeficienteM + tt.CoeficienteL + tt.CoeficienteXL}\n";
             //}
-            //MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}\n{datosCliente}");
+            //MessageBox.Show($"Tarifarios cargados: {TarifaTransporteAlmacen.tarifaTransportes.Count}\n{datosTT}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)
