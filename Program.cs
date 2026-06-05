@@ -19,6 +19,8 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
             // Antes de salir, guardamos los datos en los alamcenes
             Almacenes.ClienteAlmacen.Guardar();
+            Almacenes.TarifarioAlmacen.Guardar();
+            Almacenes.TarifaTransporteAlmacen.Guardar();
         }
     }
 }

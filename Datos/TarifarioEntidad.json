@@ -1,0 +1,8 @@
+[
+  {
+    "tarifarioId": 1,
+    "tarifaRetiroDomicilio": 5000,
+    "tarifaEntregaAgencia": 5000,
+    "tarifaDistribucionDomicilio": 10000
+  }
+]

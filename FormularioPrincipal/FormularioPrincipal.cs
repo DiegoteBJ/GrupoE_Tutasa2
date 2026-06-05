@@ -25,6 +25,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
+            //MessageBox.Show(Directory.GetCurrentDirectory());
             //string datosCliente = "";
             //foreach (var cliente in ClienteAlmacen.clientes)
             //{
