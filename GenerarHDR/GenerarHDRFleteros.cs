@@ -94,7 +94,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             if (!AsignarGuiasModelo.ValidarDniString(dni))
             {
-                MessageBox.Show("Ingrese un DNI válido.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetearFormularioFletero();
                 return;
             }
