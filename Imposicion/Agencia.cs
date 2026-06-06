@@ -1,12 +1,20 @@
 namespace GrupoE_Tutasa.Imposicion
 {
+    /// <summary>
+    /// AL.3 - Padrón de Agencias
+    /// </summary>
     internal class Agencia
     {
-        //test
-        public int    AgenciaId    { get; set; }
-        public int    LocalidadId  { get; set; }
-        public string Nombre       { get; set; }
-        public string Direccion    { get; set; }
-        public string CodigoPostal { get; set; }
+        public int       AgenciaId                  { get; set; }   // PK
+        public string    RazonSocial                { get; set; }
+        public string    Nombre                     { get; set; }
+        public string    Apellido                   { get; set; }
+        public string    CUIT                       { get; set; }
+        public Domicilio Domicilio                  { get; set; }
+        public string    Telefono                   { get; set; }
+        public int       CDAsignadoId               { get; set; }   // FK → AL.18
+        public decimal   MontoFijoComisionRecepcion { get; set; }
+        public decimal   MontoFijoComisionEntrega   { get; set; }
+        public List<string> CodigosPostalesCobertura { get; set; } = new();
     }
 }
