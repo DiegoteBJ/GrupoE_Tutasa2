@@ -419,7 +419,7 @@
             groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(4, 3, 4, 3);
-            groupBox3.Size = new Size(823, 223);
+            groupBox3.Size = new Size(823, 202);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
             groupBox3.Text = "Datos para la Entrega";
@@ -573,11 +573,11 @@
             groupBox4.Controls.Add(label16);
             groupBox4.Controls.Add(label20);
             groupBox4.Controls.Add(panel2);
-            groupBox4.Location = new Point(32, 636);
+            groupBox4.Location = new Point(32, 618);
             groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4, 3, 4, 3);
-            groupBox4.Size = new Size(823, 197);
+            groupBox4.Size = new Size(823, 194);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Detalle de Encomiendas";
@@ -718,7 +718,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(657, 863);
+            button2.Location = new Point(653, 832);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
             button2.Size = new Size(88, 27);
@@ -730,7 +730,7 @@
             // 
             button3.BackColor = SystemColors.Highlight;
             button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(767, 863);
+            button3.Location = new Point(767, 832);
             button3.Margin = new Padding(4, 3, 4, 3);
             button3.Name = "button3";
             button3.Size = new Size(88, 27);
@@ -742,7 +742,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(16, 921);
+            label24.Location = new Point(23, 861);
             label24.Name = "label24";
             label24.Size = new Size(107, 15);
             label24.TabIndex = 19;
@@ -751,7 +751,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(188, 921);
+            label25.Location = new Point(195, 861);
             label25.Name = "label25";
             label25.Size = new Size(168, 15);
             label25.TabIndex = 20;
@@ -760,7 +760,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(408, 921);
+            label26.Location = new Point(415, 861);
             label26.Name = "label26";
             label26.Size = new Size(128, 15);
             label26.TabIndex = 21;
@@ -771,7 +771,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(892, 952);
+            AutoScroll = true;
+            ClientSize = new Size(676, 460);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
