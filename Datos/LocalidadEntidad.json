@@ -1,0 +1,104 @@
+[
+  {
+    "localidadId": 1,
+    "provinciaId": 1,
+    "nombre": "Belgrano",
+    "codigoPostalPrincipal": "C1426"
+  },
+  {
+    "localidadId": 2,
+    "provinciaId": 1,
+    "nombre": "Microcentro",
+    "codigoPostalPrincipal": "C1000"
+  },
+  {
+    "localidadId": 3,
+    "provinciaId": 1,
+    "nombre": "Palermo",
+    "codigoPostalPrincipal": "C1414"
+  },
+  {
+    "localidadId": 4,
+    "provinciaId": 1,
+    "nombre": "Boedo",
+    "codigoPostalPrincipal": "C1406"
+  },
+  {
+    "localidadId": 5,
+    "provinciaId": 1,
+    "nombre": "Caballito",
+    "codigoPostalPrincipal": "C1405"
+  },
+  {
+    "localidadId": 6,
+    "provinciaId": 2,
+    "nombre": "Rosario",
+    "codigoPostalPrincipal": "S2000"
+  },
+  {
+    "localidadId": 7,
+    "provinciaId": 2,
+    "nombre": "Santa Fe Capital",
+    "codigoPostalPrincipal": "S3000"
+  },
+  {
+    "localidadId": 8,
+    "provinciaId": 2,
+    "nombre": "Rafaela",
+    "codigoPostalPrincipal": "S2300"
+  },
+  {
+    "localidadId": 9,
+    "provinciaId": 3,
+    "nombre": "Córdoba Capital",
+    "codigoPostalPrincipal": "X5000"
+  },
+  {
+    "localidadId": 10,
+    "provinciaId": 3,
+    "nombre": "Villa María",
+    "codigoPostalPrincipal": "X5900"
+  },
+  {
+    "localidadId": 11,
+    "provinciaId": 3,
+    "nombre": "Río Cuarto",
+    "codigoPostalPrincipal": "X5800"
+  },
+  {
+    "localidadId": 12,
+    "provinciaId": 4,
+    "nombre": "La Plata",
+    "codigoPostalPrincipal": "B1900"
+  },
+  {
+    "localidadId": 13,
+    "provinciaId": 4,
+    "nombre": "Mar del Plata",
+    "codigoPostalPrincipal": "B7600"
+  },
+  {
+    "localidadId": 14,
+    "provinciaId": 4,
+    "nombre": "Quilmes",
+    "codigoPostalPrincipal": "B1878"
+  },
+  {
+    "localidadId": 15,
+    "provinciaId": 5,
+    "nombre": "Mendoza Capital",
+    "codigoPostalPrincipal": "M5500"
+  },
+  {
+    "localidadId": 16,
+    "provinciaId": 5,
+    "nombre": "San Rafael",
+    "codigoPostalPrincipal": "M5600"
+  },
+  {
+    "localidadId": 17,
+    "provinciaId": 5,
+    "nombre": "Luján de Cuyo",
+    "codigoPostalPrincipal": "M5507"
+  }
+]

@@ -1,0 +1,781 @@
+[
+  {
+    "agenciaId": 1,
+    "razonSocial": "Agencia Belgrano",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30618678259",
+    "domicilio": {
+      "calle": "Av. Belgrano 100",
+      "numero": "125",
+      "codigoPostal": "C1426",
+      "localidadId": 1
+    },
+    "CDAsignadoId": 1,
+    "montoFijoComisionRecepcion": 1241.55,
+    "montoFijoComisionEntrega": 744.89,
+    "codigosPostalesCobertura": [
+      "C1426"
+    ]
+  },
+  {
+    "agenciaId": 2,
+    "razonSocial": "Agencia Microcentro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30623410575",
+    "domicilio": {
+      "calle": "Av. Microcentro 200",
+      "numero": "854",
+      "codigoPostal": "C1000",
+      "localidadId": 2
+    },
+    "CDAsignadoId": 1,
+    "montoFijoComisionRecepcion": 602.5,
+    "montoFijoComisionEntrega": 1240.67,
+    "codigosPostalesCobertura": [
+      "C1000"
+    ]
+  },
+  {
+    "agenciaId": 3,
+    "razonSocial": "Agencia Palermo",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30691497328",
+    "domicilio": {
+      "calle": "Av. Palermo 300",
+      "numero": "189",
+      "codigoPostal": "C1414",
+      "localidadId": 3
+    },
+    "CDAsignadoId": 1,
+    "montoFijoComisionRecepcion": 1090.49,
+    "montoFijoComisionEntrega": 531.78,
+    "codigosPostalesCobertura": [
+      "C1414"
+    ]
+  },
+  {
+    "agenciaId": 4,
+    "razonSocial": "Agencia Boedo",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30615719451",
+    "domicilio": {
+      "calle": "Av. Boedo 400",
+      "numero": "323",
+      "codigoPostal": "C1406",
+      "localidadId": 4
+    },
+    "CDAsignadoId": 1,
+    "montoFijoComisionRecepcion": 732.66,
+    "montoFijoComisionEntrega": 1102.02,
+    "codigosPostalesCobertura": [
+      "C1406"
+    ]
+  },
+  {
+    "agenciaId": 5,
+    "razonSocial": "Agencia Caballito",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30694161290",
+    "domicilio": {
+      "calle": "Av. Caballito 500",
+      "numero": "303",
+      "codigoPostal": "C1405",
+      "localidadId": 5
+    },
+    "CDAsignadoId": 1,
+    "montoFijoComisionRecepcion": 1216.02,
+    "montoFijoComisionEntrega": 1201.32,
+    "codigosPostalesCobertura": [
+      "C1405"
+    ]
+  },
+  {
+    "agenciaId": 6,
+    "razonSocial": "Agencia Rosario Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30670383748",
+    "domicilio": {
+      "calle": "Calle Agencia 6",
+      "numero": "325",
+      "codigoPostal": "S2000",
+      "localidadId": 6
+    },
+    "CDAsignadoId": 2,
+    "montoFijoComisionRecepcion": 949.21,
+    "montoFijoComisionEntrega": 778.19,
+    "codigosPostalesCobertura": [
+      "S2000"
+    ]
+  },
+  {
+    "agenciaId": 7,
+    "razonSocial": "Agencia Rosario Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30601090313",
+    "domicilio": {
+      "calle": "Calle Agencia 7",
+      "numero": "877",
+      "codigoPostal": "S2000",
+      "localidadId": 6
+    },
+    "CDAsignadoId": 2,
+    "montoFijoComisionRecepcion": 1305.82,
+    "montoFijoComisionEntrega": 1198.14,
+    "codigosPostalesCobertura": [
+      "S2000"
+    ]
+  },
+  {
+    "agenciaId": 8,
+    "razonSocial": "Agencia Rosario Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30657084561",
+    "domicilio": {
+      "calle": "Calle Agencia 8",
+      "numero": "384",
+      "codigoPostal": "S2000",
+      "localidadId": 6
+    },
+    "CDAsignadoId": 2,
+    "montoFijoComisionRecepcion": 655.48,
+    "montoFijoComisionEntrega": 1457.21,
+    "codigosPostalesCobertura": [
+      "S2000"
+    ]
+  },
+  {
+    "agenciaId": 9,
+    "razonSocial": "Agencia Santa Fe Capital Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30656471197",
+    "domicilio": {
+      "calle": "Calle Agencia 9",
+      "numero": "204",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    },
+    "CDAsignadoId": 3,
+    "montoFijoComisionRecepcion": 592.75,
+    "montoFijoComisionEntrega": 596.72,
+    "codigosPostalesCobertura": [
+      "S3000"
+    ]
+  },
+  {
+    "agenciaId": 10,
+    "razonSocial": "Agencia Santa Fe Capital Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30657706198",
+    "domicilio": {
+      "calle": "Calle Agencia 10",
+      "numero": "718",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    },
+    "CDAsignadoId": 3,
+    "montoFijoComisionRecepcion": 764.52,
+    "montoFijoComisionEntrega": 543.45,
+    "codigosPostalesCobertura": [
+      "S3000"
+    ]
+  },
+  {
+    "agenciaId": 11,
+    "razonSocial": "Agencia Santa Fe Capital Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30677078703",
+    "domicilio": {
+      "calle": "Calle Agencia 11",
+      "numero": "649",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    },
+    "CDAsignadoId": 3,
+    "montoFijoComisionRecepcion": 624.83,
+    "montoFijoComisionEntrega": 1422.3,
+    "codigosPostalesCobertura": [
+      "S3000"
+    ]
+  },
+  {
+    "agenciaId": 12,
+    "razonSocial": "Agencia Rafaela Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30613220476",
+    "domicilio": {
+      "calle": "Calle Agencia 12",
+      "numero": "665",
+      "codigoPostal": "S2300",
+      "localidadId": 8
+    },
+    "CDAsignadoId": 4,
+    "montoFijoComisionRecepcion": 793.18,
+    "montoFijoComisionEntrega": 1128.64,
+    "codigosPostalesCobertura": [
+      "S2300"
+    ]
+  },
+  {
+    "agenciaId": 13,
+    "razonSocial": "Agencia Rafaela Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30660672288",
+    "domicilio": {
+      "calle": "Calle Agencia 13",
+      "numero": "691",
+      "codigoPostal": "S2300",
+      "localidadId": 8
+    },
+    "CDAsignadoId": 4,
+    "montoFijoComisionRecepcion": 692.29,
+    "montoFijoComisionEntrega": 569.56,
+    "codigosPostalesCobertura": [
+      "S2300"
+    ]
+  },
+  {
+    "agenciaId": 14,
+    "razonSocial": "Agencia Rafaela Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30638234986",
+    "domicilio": {
+      "calle": "Calle Agencia 14",
+      "numero": "891",
+      "codigoPostal": "S2300",
+      "localidadId": 8
+    },
+    "CDAsignadoId": 4,
+    "montoFijoComisionRecepcion": 789.39,
+    "montoFijoComisionEntrega": 579.79,
+    "codigosPostalesCobertura": [
+      "S2300"
+    ]
+  },
+  {
+    "agenciaId": 15,
+    "razonSocial": "Agencia Córdoba Capital Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30639055821",
+    "domicilio": {
+      "calle": "Calle Agencia 15",
+      "numero": "987",
+      "codigoPostal": "X5000",
+      "localidadId": 9
+    },
+    "CDAsignadoId": 5,
+    "montoFijoComisionRecepcion": 601,
+    "montoFijoComisionEntrega": 777.97,
+    "codigosPostalesCobertura": [
+      "X5000"
+    ]
+  },
+  {
+    "agenciaId": 16,
+    "razonSocial": "Agencia Córdoba Capital Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30661208682",
+    "domicilio": {
+      "calle": "Calle Agencia 16",
+      "numero": "266",
+      "codigoPostal": "X5000",
+      "localidadId": 9
+    },
+    "CDAsignadoId": 5,
+    "montoFijoComisionRecepcion": 870.18,
+    "montoFijoComisionEntrega": 709.51,
+    "codigosPostalesCobertura": [
+      "X5000"
+    ]
+  },
+  {
+    "agenciaId": 17,
+    "razonSocial": "Agencia Córdoba Capital Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30644791447",
+    "domicilio": {
+      "calle": "Calle Agencia 17",
+      "numero": "818",
+      "codigoPostal": "X5000",
+      "localidadId": 9
+    },
+    "CDAsignadoId": 5,
+    "montoFijoComisionRecepcion": 1436.65,
+    "montoFijoComisionEntrega": 1148.04,
+    "codigosPostalesCobertura": [
+      "X5000"
+    ]
+  },
+  {
+    "agenciaId": 18,
+    "razonSocial": "Agencia Villa María Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30628712308",
+    "domicilio": {
+      "calle": "Calle Agencia 18",
+      "numero": "646",
+      "codigoPostal": "X5900",
+      "localidadId": 10
+    },
+    "CDAsignadoId": 6,
+    "montoFijoComisionRecepcion": 1229.13,
+    "montoFijoComisionEntrega": 663.4,
+    "codigosPostalesCobertura": [
+      "X5900"
+    ]
+  },
+  {
+    "agenciaId": 19,
+    "razonSocial": "Agencia Villa María Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30663662054",
+    "domicilio": {
+      "calle": "Calle Agencia 19",
+      "numero": "376",
+      "codigoPostal": "X5900",
+      "localidadId": 10
+    },
+    "CDAsignadoId": 6,
+    "montoFijoComisionRecepcion": 1489.52,
+    "montoFijoComisionEntrega": 1140,
+    "codigosPostalesCobertura": [
+      "X5900"
+    ]
+  },
+  {
+    "agenciaId": 20,
+    "razonSocial": "Agencia Villa María Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30693440668",
+    "domicilio": {
+      "calle": "Calle Agencia 20",
+      "numero": "324",
+      "codigoPostal": "X5900",
+      "localidadId": 10
+    },
+    "CDAsignadoId": 6,
+    "montoFijoComisionRecepcion": 1184.61,
+    "montoFijoComisionEntrega": 1342.85,
+    "codigosPostalesCobertura": [
+      "X5900"
+    ]
+  },
+  {
+    "agenciaId": 21,
+    "razonSocial": "Agencia Río Cuarto Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30609384839",
+    "domicilio": {
+      "calle": "Calle Agencia 21",
+      "numero": "334",
+      "codigoPostal": "X5800",
+      "localidadId": 11
+    },
+    "CDAsignadoId": 7,
+    "montoFijoComisionRecepcion": 1321.8,
+    "montoFijoComisionEntrega": 1305.05,
+    "codigosPostalesCobertura": [
+      "X5800"
+    ]
+  },
+  {
+    "agenciaId": 22,
+    "razonSocial": "Agencia Río Cuarto Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30667304284",
+    "domicilio": {
+      "calle": "Calle Agencia 22",
+      "numero": "374",
+      "codigoPostal": "X5800",
+      "localidadId": 11
+    },
+    "CDAsignadoId": 7,
+    "montoFijoComisionRecepcion": 566.19,
+    "montoFijoComisionEntrega": 1413.14,
+    "codigosPostalesCobertura": [
+      "X5800"
+    ]
+  },
+  {
+    "agenciaId": 23,
+    "razonSocial": "Agencia Río Cuarto Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30695157025",
+    "domicilio": {
+      "calle": "Calle Agencia 23",
+      "numero": "997",
+      "codigoPostal": "X5800",
+      "localidadId": 11
+    },
+    "CDAsignadoId": 7,
+    "montoFijoComisionRecepcion": 1217.91,
+    "montoFijoComisionEntrega": 712.63,
+    "codigosPostalesCobertura": [
+      "X5800"
+    ]
+  },
+  {
+    "agenciaId": 24,
+    "razonSocial": "Agencia La Plata Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30683757108",
+    "domicilio": {
+      "calle": "Calle Agencia 24",
+      "numero": "505",
+      "codigoPostal": "B1900",
+      "localidadId": 12
+    },
+    "CDAsignadoId": 8,
+    "montoFijoComisionRecepcion": 1384.68,
+    "montoFijoComisionEntrega": 1142.85,
+    "codigosPostalesCobertura": [
+      "B1900"
+    ]
+  },
+  {
+    "agenciaId": 25,
+    "razonSocial": "Agencia La Plata Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30623969874",
+    "domicilio": {
+      "calle": "Calle Agencia 25",
+      "numero": "371",
+      "codigoPostal": "B1900",
+      "localidadId": 12
+    },
+    "CDAsignadoId": 8,
+    "montoFijoComisionRecepcion": 639.63,
+    "montoFijoComisionEntrega": 1244.99,
+    "codigosPostalesCobertura": [
+      "B1900"
+    ]
+  },
+  {
+    "agenciaId": 26,
+    "razonSocial": "Agencia La Plata Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30690425382",
+    "domicilio": {
+      "calle": "Calle Agencia 26",
+      "numero": "369",
+      "codigoPostal": "B1900",
+      "localidadId": 12
+    },
+    "CDAsignadoId": 8,
+    "montoFijoComisionRecepcion": 1247.01,
+    "montoFijoComisionEntrega": 928.43,
+    "codigosPostalesCobertura": [
+      "B1900"
+    ]
+  },
+  {
+    "agenciaId": 27,
+    "razonSocial": "Agencia Mar del Plata Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30697900574",
+    "domicilio": {
+      "calle": "Calle Agencia 27",
+      "numero": "508",
+      "codigoPostal": "B7600",
+      "localidadId": 13
+    },
+    "CDAsignadoId": 9,
+    "montoFijoComisionRecepcion": 862,
+    "montoFijoComisionEntrega": 1497.33,
+    "codigosPostalesCobertura": [
+      "B7600"
+    ]
+  },
+  {
+    "agenciaId": 28,
+    "razonSocial": "Agencia Mar del Plata Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30623208210",
+    "domicilio": {
+      "calle": "Calle Agencia 28",
+      "numero": "621",
+      "codigoPostal": "B7600",
+      "localidadId": 13
+    },
+    "CDAsignadoId": 9,
+    "montoFijoComisionRecepcion": 993.52,
+    "montoFijoComisionEntrega": 1255.78,
+    "codigosPostalesCobertura": [
+      "B7600"
+    ]
+  },
+  {
+    "agenciaId": 29,
+    "razonSocial": "Agencia Mar del Plata Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30618396076",
+    "domicilio": {
+      "calle": "Calle Agencia 29",
+      "numero": "256",
+      "codigoPostal": "B7600",
+      "localidadId": 13
+    },
+    "CDAsignadoId": 9,
+    "montoFijoComisionRecepcion": 1127.45,
+    "montoFijoComisionEntrega": 1292.08,
+    "codigosPostalesCobertura": [
+      "B7600"
+    ]
+  },
+  {
+    "agenciaId": 30,
+    "razonSocial": "Agencia Quilmes Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30670826682",
+    "domicilio": {
+      "calle": "Calle Agencia 30",
+      "numero": "710",
+      "codigoPostal": "B1878",
+      "localidadId": 14
+    },
+    "CDAsignadoId": 10,
+    "montoFijoComisionRecepcion": 563.53,
+    "montoFijoComisionEntrega": 881.62,
+    "codigosPostalesCobertura": [
+      "B1878"
+    ]
+  },
+  {
+    "agenciaId": 31,
+    "razonSocial": "Agencia Quilmes Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30678525746",
+    "domicilio": {
+      "calle": "Calle Agencia 31",
+      "numero": "641",
+      "codigoPostal": "B1878",
+      "localidadId": 14
+    },
+    "CDAsignadoId": 10,
+    "montoFijoComisionRecepcion": 751.41,
+    "montoFijoComisionEntrega": 1053.23,
+    "codigosPostalesCobertura": [
+      "B1878"
+    ]
+  },
+  {
+    "agenciaId": 32,
+    "razonSocial": "Agencia Quilmes Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30601926195",
+    "domicilio": {
+      "calle": "Calle Agencia 32",
+      "numero": "796",
+      "codigoPostal": "B1878",
+      "localidadId": 14
+    },
+    "CDAsignadoId": 10,
+    "montoFijoComisionRecepcion": 1220.72,
+    "montoFijoComisionEntrega": 1181.71,
+    "codigosPostalesCobertura": [
+      "B1878"
+    ]
+  },
+  {
+    "agenciaId": 33,
+    "razonSocial": "Agencia Mendoza Capital Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30690088679",
+    "domicilio": {
+      "calle": "Calle Agencia 33",
+      "numero": "868",
+      "codigoPostal": "M5500",
+      "localidadId": 15
+    },
+    "CDAsignadoId": 11,
+    "montoFijoComisionRecepcion": 766.83,
+    "montoFijoComisionEntrega": 1140.96,
+    "codigosPostalesCobertura": [
+      "M5500"
+    ]
+  },
+  {
+    "agenciaId": 34,
+    "razonSocial": "Agencia Mendoza Capital Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30618715341",
+    "domicilio": {
+      "calle": "Calle Agencia 34",
+      "numero": "400",
+      "codigoPostal": "M5500",
+      "localidadId": 15
+    },
+    "CDAsignadoId": 11,
+    "montoFijoComisionRecepcion": 934.77,
+    "montoFijoComisionEntrega": 953.72,
+    "codigosPostalesCobertura": [
+      "M5500"
+    ]
+  },
+  {
+    "agenciaId": 35,
+    "razonSocial": "Agencia Mendoza Capital Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30644189348",
+    "domicilio": {
+      "calle": "Calle Agencia 35",
+      "numero": "612",
+      "codigoPostal": "M5500",
+      "localidadId": 15
+    },
+    "CDAsignadoId": 11,
+    "montoFijoComisionRecepcion": 1261.96,
+    "montoFijoComisionEntrega": 1007.68,
+    "codigosPostalesCobertura": [
+      "M5500"
+    ]
+  },
+  {
+    "agenciaId": 36,
+    "razonSocial": "Agencia San Rafael Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30617852779",
+    "domicilio": {
+      "calle": "Calle Agencia 36",
+      "numero": "991",
+      "codigoPostal": "M5600",
+      "localidadId": 16
+    },
+    "CDAsignadoId": 12,
+    "montoFijoComisionRecepcion": 1125.3,
+    "montoFijoComisionEntrega": 1341.67,
+    "codigosPostalesCobertura": [
+      "M5600"
+    ]
+  },
+  {
+    "agenciaId": 37,
+    "razonSocial": "Agencia San Rafael Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30685171690",
+    "domicilio": {
+      "calle": "Calle Agencia 37",
+      "numero": "723",
+      "codigoPostal": "M5600",
+      "localidadId": 16
+    },
+    "CDAsignadoId": 12,
+    "montoFijoComisionRecepcion": 698.91,
+    "montoFijoComisionEntrega": 873.91,
+    "codigosPostalesCobertura": [
+      "M5600"
+    ]
+  },
+  {
+    "agenciaId": 38,
+    "razonSocial": "Agencia San Rafael Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30627103439",
+    "domicilio": {
+      "calle": "Calle Agencia 38",
+      "numero": "652",
+      "codigoPostal": "M5600",
+      "localidadId": 16
+    },
+    "CDAsignadoId": 12,
+    "montoFijoComisionRecepcion": 1453.5,
+    "montoFijoComisionEntrega": 1422.43,
+    "codigosPostalesCobertura": [
+      "M5600"
+    ]
+  },
+  {
+    "agenciaId": 39,
+    "razonSocial": "Agencia Luján de Cuyo Norte",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30600095949",
+    "domicilio": {
+      "calle": "Calle Agencia 39",
+      "numero": "713",
+      "codigoPostal": "M5507",
+      "localidadId": 17
+    },
+    "CDAsignadoId": 13,
+    "montoFijoComisionRecepcion": 824.16,
+    "montoFijoComisionEntrega": 519.48,
+    "codigosPostalesCobertura": [
+      "M5507"
+    ]
+  },
+  {
+    "agenciaId": 40,
+    "razonSocial": "Agencia Luján de Cuyo Sur",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30660898065",
+    "domicilio": {
+      "calle": "Calle Agencia 40",
+      "numero": "999",
+      "codigoPostal": "M5507",
+      "localidadId": 17
+    },
+    "CDAsignadoId": 13,
+    "montoFijoComisionRecepcion": 1485.32,
+    "montoFijoComisionEntrega": 1306.77,
+    "codigosPostalesCobertura": [
+      "M5507"
+    ]
+  },
+  {
+    "agenciaId": 41,
+    "razonSocial": "Agencia Luján de Cuyo Centro",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30640173439",
+    "domicilio": {
+      "calle": "Calle Agencia 41",
+      "numero": "159",
+      "codigoPostal": "M5507",
+      "localidadId": 17
+    },
+    "CDAsignadoId": 13,
+    "montoFijoComisionRecepcion": 740.87,
+    "montoFijoComisionEntrega": 1067.36,
+    "codigosPostalesCobertura": [
+      "M5507"
+    ]
+  }
+]

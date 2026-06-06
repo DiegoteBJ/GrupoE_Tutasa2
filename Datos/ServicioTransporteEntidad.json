@@ -1,0 +1,5122 @@
+[
+  {
+    "servicioId": 1,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-08T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 2,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 3,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-09T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 4,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-09T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 5,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-10T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 6,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-10T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 7,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-11T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 8,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-11T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 9,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-12T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 10,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-12T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 11,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 12,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 13,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-16T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 14,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-16T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 15,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-17T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 16,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-17T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 17,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-18T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 18,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-18T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 19,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-19T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 20,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-19T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 21,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-22T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 22,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 23,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-23T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 24,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-23T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 25,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-24T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 26,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-24T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 27,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-25T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 28,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-25T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 29,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-26T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 30,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-26T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 31,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 32,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 33,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-30T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 34,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-30T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 35,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-01T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 36,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-01T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 37,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-02T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 38,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-02T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 39,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-03T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 40,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-03T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 41,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-06T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 42,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-06T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 43,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-07T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 44,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-07T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 45,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-08T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 46,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 47,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-09T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 48,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-09T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 49,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-10T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 50,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 51,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-13T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 52,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-13T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 53,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-14T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 54,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-14T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 55,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-15T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 56,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-15T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 57,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-16T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 58,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-16T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 59,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-17T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 60,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-17T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 61,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-20T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 62,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 63,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-21T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 64,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-21T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 65,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-22T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 66,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 67,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-23T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 68,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-23T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 69,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-24T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 70,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-24T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 71,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 72,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 73,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-28T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 74,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-28T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 75,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 76,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-29T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 77,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-30T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 78,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-30T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 79,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-31T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 80,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-31T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 81,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-08T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 82,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 83,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-09T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 84,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-09T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 85,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-10T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 86,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-10T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 87,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-11T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 88,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-11T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 89,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-12T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 90,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-12T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 91,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-15T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 92,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-15T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 93,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-16T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 94,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-16T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 95,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-17T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 96,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-17T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 97,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-18T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 98,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-18T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 99,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-19T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 100,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-19T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 101,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 102,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 103,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-23T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 104,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-23T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 105,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-24T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 106,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-24T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 107,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-25T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 108,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-25T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 109,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-26T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 110,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-26T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 111,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 112,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 113,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-30T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 114,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-30T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 115,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-01T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 116,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-01T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 117,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-02T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 118,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-02T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 119,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-03T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 120,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-03T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 121,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-06T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 122,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 123,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-07T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 124,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-07T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 125,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-08T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 126,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 127,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-09T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 128,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-09T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 129,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-10T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 130,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 131,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-13T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 132,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-13T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 133,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-14T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 134,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-14T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 135,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 136,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-15T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 137,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-16T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 138,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-16T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 139,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-17T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 140,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-17T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 141,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-20T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 142,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 143,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-21T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 144,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-21T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 145,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 146,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 147,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-23T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 148,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-23T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 149,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-24T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 150,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-24T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 151,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-27T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 152,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 153,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-28T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 154,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-28T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 155,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 156,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-29T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 157,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-30T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 158,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-30T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 159,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-31T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 9
+  },
+  {
+    "servicioId": 160,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-31T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 9,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 161,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 162,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-08T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 163,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-09T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 164,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-09T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 165,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-10T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 166,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-10T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 167,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-11T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 168,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-11T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 169,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-12T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 170,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-12T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 171,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 172,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 173,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-16T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 174,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-16T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 175,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-17T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 176,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-17T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 177,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-18T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 178,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-18T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 179,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-19T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 180,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-19T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 181,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-22T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 182,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 183,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-23T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 184,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-23T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 185,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-24T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 186,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-24T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 187,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-25T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 188,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-25T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 189,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-26T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 190,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-26T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 191,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 192,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 193,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-30T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 194,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-30T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 195,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-01T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 196,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-01T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 197,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-02T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 198,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-02T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 199,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-03T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 200,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-03T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 201,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-06T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 202,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-06T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 203,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-07T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 204,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-07T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 205,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 206,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 207,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-09T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 208,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-09T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 209,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-10T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 210,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 211,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-13T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 212,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-13T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 213,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-14T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 214,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-14T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 215,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 216,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 217,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-16T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 218,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-16T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 219,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-17T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 220,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-17T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 221,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-20T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 222,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-20T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 223,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-21T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 224,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-21T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 225,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-22T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 226,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 227,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-23T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 228,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-23T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 229,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-24T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 230,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-24T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 231,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-27T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 232,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 233,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-28T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 234,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-28T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 235,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-29T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 236,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 237,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-30T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 238,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-30T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 239,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-31T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 240,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-31T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 241,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-08T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 242,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 243,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-09T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 244,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-09T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 245,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-10T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 246,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-10T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 247,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-11T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 248,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-11T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 249,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-12T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 250,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-12T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 251,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-15T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 252,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-15T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 253,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-16T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 254,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-16T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 255,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-17T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 256,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-17T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 257,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-18T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 258,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-18T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 259,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-19T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 260,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-19T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 261,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-22T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 262,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 263,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-23T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 264,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-23T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 265,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-24T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 266,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-24T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 267,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-25T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 268,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-25T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 269,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-26T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 270,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-26T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 271,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 272,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 273,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-30T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 274,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-30T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 275,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-01T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 276,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-01T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 277,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-02T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 278,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-02T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 279,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-03T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 280,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-03T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 281,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-06T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 282,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 283,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-07T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 284,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-07T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 285,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-08T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 286,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 287,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-09T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 288,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-09T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 289,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-10T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 290,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 291,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-13T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 292,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-13T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 293,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-14T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 294,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-14T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 295,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 296,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 297,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-16T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 298,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-16T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 299,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-17T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 300,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-17T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 301,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-20T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 302,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-20T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 303,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-21T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 304,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-21T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 305,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 306,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-22T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 307,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-23T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 308,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-23T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 309,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 310,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-24T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 311,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 312,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 313,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-28T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 314,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-28T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 315,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 316,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-29T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 317,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-30T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 318,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-30T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 319,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-31T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 320,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-31T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 321,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-08T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 322,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 323,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-09T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 324,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-09T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 325,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-10T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 326,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-10T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 327,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-11T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 328,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-11T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 329,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-12T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 330,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-12T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 331,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 332,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 333,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-16T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 334,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-16T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 335,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-17T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 336,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-17T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 337,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-18T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 338,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-18T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 339,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-19T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 340,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-19T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 341,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-22T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 342,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 343,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-23T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 344,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-23T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 345,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-24T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 346,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-24T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 347,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-25T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 348,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-25T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 349,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-26T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 350,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-26T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 351,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-29T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 352,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-29T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 353,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-30T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 354,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-30T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 355,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-01T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 356,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-01T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 357,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-02T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 358,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-02T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 359,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-03T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 360,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-03T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 361,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-06T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 362,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-06T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 363,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-07T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 364,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-07T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 365,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 366,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 367,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-09T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 368,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-09T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 369,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-10T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 370,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-10T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 371,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-13T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 372,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-13T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 373,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-14T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 374,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-14T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 375,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 376,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 377,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-16T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 378,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-16T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 379,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-17T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 380,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-17T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 381,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 382,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-20T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 383,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-21T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 384,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-21T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 385,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 386,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 387,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-23T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 388,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-23T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 389,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 390,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-24T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 391,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-27T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 392,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 393,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-28T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 394,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-28T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 395,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-29T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 396,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-29T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 397,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-30T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 398,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-30T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 399,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-31T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 1,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 400,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-31T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 1
+  },
+  {
+    "servicioId": 401,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-08T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 402,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-08T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 403,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-10T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 404,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-10T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 405,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-12T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 406,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-12T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 407,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 408,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 409,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-17T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 410,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-17T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 411,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-19T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 412,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-19T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 413,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 414,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 415,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 416,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-24T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 417,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-26T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 418,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-26T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 419,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-29T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 420,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-29T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 421,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-01T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 422,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-01T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 423,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-03T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 424,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-03T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 425,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 426,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-06T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 427,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 428,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 429,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-10T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 430,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 431,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-13T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 432,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-13T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 433,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 434,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-15T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 435,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-17T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 436,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-17T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 437,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-20T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 438,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-20T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 439,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 440,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 441,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 442,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-24T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 443,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 444,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-27T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 445,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 446,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-29T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 447,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-31T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 448,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-31T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 449,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 450,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-08T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 451,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-10T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 452,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-10T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 453,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-12T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 454,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-12T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 455,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-15T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 456,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 457,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-17T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 458,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-17T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 459,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-19T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 460,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-19T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 461,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 462,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-22T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 463,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 464,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-24T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 465,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-26T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 466,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-26T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 467,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 468,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-29T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 469,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-01T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 470,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-01T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 471,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-03T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 472,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-03T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 473,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-06T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 474,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-06T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 475,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 476,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 477,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-10T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 478,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-10T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 479,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-13T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 480,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-13T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 481,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-15T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 482,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-15T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 483,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-17T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 484,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-17T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 485,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-20T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 486,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-20T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 487,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 488,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-22T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 489,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 490,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-24T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 491,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 492,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 493,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-29T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 494,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-29T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 495,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-31T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 496,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-31T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 497,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 498,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 499,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-10T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 500,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-10T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 501,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-12T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 502,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-12T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 503,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-15T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 504,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 505,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-17T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 506,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-17T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 507,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-19T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 508,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-19T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 509,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 510,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 511,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-24T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 512,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-24T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 513,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-26T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 514,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-26T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 515,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-29T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 516,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-29T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 517,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-01T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 518,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-01T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 519,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-03T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 520,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-03T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 521,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 522,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-06T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 523,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 524,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-08T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 525,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-10T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 526,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-10T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 527,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-13T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 528,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-13T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 529,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 530,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 531,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-17T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 532,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-17T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 533,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-20T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 534,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-20T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 535,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-22T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 536,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 537,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-24T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 538,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-24T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 539,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-27T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 540,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-27T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 541,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 542,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-29T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 543,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-31T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 544,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-31T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 545,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-08T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 546,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 547,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-15T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 548,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 549,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-22T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 550,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-22T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 551,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 552,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-29T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 553,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-06T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 554,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-06T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 555,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-13T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 556,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-13T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 557,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-20T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 558,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-20T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 559,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 4,
+    "CDDestinoId": 2
+  },
+  {
+    "servicioId": 560,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 2,
+    "CDDestinoId": 4
+  },
+  {
+    "servicioId": 561,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-08T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 562,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-08T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 563,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-15T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 564,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-15T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 565,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-06-22T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 566,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 567,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-29T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 568,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 569,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-06T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 570,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-06T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 571,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-13T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 572,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-13T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 573,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 574,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 575,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 6,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 576,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-27T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 6
+  },
+  {
+    "servicioId": 577,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-08T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 578,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-08T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 579,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 580,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 581,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 582,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 583,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-06-29T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 584,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 585,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-06T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 586,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-06T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 587,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-13T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 588,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-13T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 589,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-07-20T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 590,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-20T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 591,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 7,
+    "CDDestinoId": 5
+  },
+  {
+    "servicioId": 592,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-27T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 5,
+    "CDDestinoId": 7
+  },
+  {
+    "servicioId": 593,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-08T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 594,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 595,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 596,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 597,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-22T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 598,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-06-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 599,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 600,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-29T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 601,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 602,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-06T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 603,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-13T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 604,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-13T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 605,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-20T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 606,
+    "empresaTransporteId": 1,
+    "fechaYHoraSalida": "2026-07-20T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 607,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-27T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 10,
+    "CDDestinoId": 8
+  },
+  {
+    "servicioId": 608,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-27T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 8,
+    "CDDestinoId": 10
+  },
+  {
+    "servicioId": 609,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-08T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 610,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-06-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 611,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 612,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-15T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 613,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-06-22T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 614,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-22T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 615,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 616,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-29T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 617,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-07-06T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 618,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-06T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 619,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-13T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 620,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-13T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 621,
+    "empresaTransporteId": 6,
+    "fechaYHoraSalida": "2026-07-20T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 622,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-20T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 623,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-07-27T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 12,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 624,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-27T22:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 12
+  },
+  {
+    "servicioId": 625,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-08T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 626,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-06-08T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 627,
+    "empresaTransporteId": 9,
+    "fechaYHoraSalida": "2026-06-15T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 628,
+    "empresaTransporteId": 10,
+    "fechaYHoraSalida": "2026-06-15T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 629,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-22T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 630,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-22T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 631,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-06-29T21:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 632,
+    "empresaTransporteId": 8,
+    "fechaYHoraSalida": "2026-06-29T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 633,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-06T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 634,
+    "empresaTransporteId": 7,
+    "fechaYHoraSalida": "2026-07-06T23:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 635,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-13T20:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 636,
+    "empresaTransporteId": 2,
+    "fechaYHoraSalida": "2026-07-13T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 637,
+    "empresaTransporteId": 5,
+    "fechaYHoraSalida": "2026-07-20T21:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 638,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-20T23:30:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  },
+  {
+    "servicioId": 639,
+    "empresaTransporteId": 3,
+    "fechaYHoraSalida": "2026-07-27T20:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 13,
+    "CDDestinoId": 11
+  },
+  {
+    "servicioId": 640,
+    "empresaTransporteId": 4,
+    "fechaYHoraSalida": "2026-07-27T22:00:00.0000000",
+    "estado": "PENDIENTE",
+    "CDOrigenId": 11,
+    "CDDestinoId": 13
+  }
+]

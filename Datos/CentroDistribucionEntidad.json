@@ -1,0 +1,132 @@
+[
+  {
+    "cdId": 1,
+    "nombre": "CD CABA",
+    "domicilio": {
+      "calle": "Av. Industria",
+      "numero": "1500",
+      "codigoPostal": "C1426",
+      "localidadId": 1
+    }
+  },
+  {
+    "cdId": 2,
+    "nombre": "CD Rosario",
+    "domicilio": {
+      "calle": "Ruta Nacional 9",
+      "numero": "2200",
+      "codigoPostal": "S2000",
+      "localidadId": 6
+    }
+  },
+  {
+    "cdId": 3,
+    "nombre": "CD Santa Fe Capital",
+    "domicilio": {
+      "calle": "Av. Logística",
+      "numero": "800",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    }
+  },
+  {
+    "cdId": 4,
+    "nombre": "CD Rafaela",
+    "domicilio": {
+      "calle": "Calle del Puerto",
+      "numero": "450",
+      "codigoPostal": "S2300",
+      "localidadId": 8
+    }
+  },
+  {
+    "cdId": 5,
+    "nombre": "CD Córdoba Capital",
+    "domicilio": {
+      "calle": "Av. Comercio",
+      "numero": "3100",
+      "codigoPostal": "X5000",
+      "localidadId": 9
+    }
+  },
+  {
+    "cdId": 6,
+    "nombre": "CD Villa María",
+    "domicilio": {
+      "calle": "Ruta Provincial 1",
+      "numero": "600",
+      "codigoPostal": "X5900",
+      "localidadId": 10
+    }
+  },
+  {
+    "cdId": 7,
+    "nombre": "CD Río Cuarto",
+    "domicilio": {
+      "calle": "Av. Central",
+      "numero": "1200",
+      "codigoPostal": "X5800",
+      "localidadId": 11
+    }
+  },
+  {
+    "cdId": 8,
+    "nombre": "CD La Plata",
+    "domicilio": {
+      "calle": "Calle Depósito",
+      "numero": "900",
+      "codigoPostal": "B1900",
+      "localidadId": 12
+    }
+  },
+  {
+    "cdId": 9,
+    "nombre": "CD Mar del Plata",
+    "domicilio": {
+      "calle": "Av. del Trabajo",
+      "numero": "2500",
+      "codigoPostal": "B7600",
+      "localidadId": 13
+    }
+  },
+  {
+    "cdId": 10,
+    "nombre": "CD Quilmes",
+    "domicilio": {
+      "calle": "Calle Industrial",
+      "numero": "750",
+      "codigoPostal": "B1878",
+      "localidadId": 14
+    }
+  },
+  {
+    "cdId": 11,
+    "nombre": "CD Mendoza Capital",
+    "domicilio": {
+      "calle": "Av. Norte",
+      "numero": "1800",
+      "codigoPostal": "M5500",
+      "localidadId": 15
+    }
+  },
+  {
+    "cdId": 12,
+    "nombre": "CD San Rafael",
+    "domicilio": {
+      "calle": "Calle Sur",
+      "numero": "500",
+      "codigoPostal": "M5600",
+      "localidadId": 16
+    }
+  },
+  {
+    "cdId": 13,
+    "nombre": "CD Luján de Cuyo",
+    "domicilio": {
+      "calle": "Av. Este",
+      "numero": "320",
+      "codigoPostal": "M5507",
+      "localidadId": 17
+    }
+  }
+]

@@ -25,7 +25,13 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            MessageBox.Show($"Clientes cargados: {ClienteAlmacen.clientes.Count}");
+            //MessageBox.Show(Directory.GetCurrentDirectory());
+            //string datosp = "";
+            //foreach (var tt in GuiaAlmacen.guias )
+            //{
+            //   datosp += $"Datos: {tt.CDDestinoId + tt.ApellidoDestinatario + tt.CDOrigenId }\n";
+            //}
+            //MessageBox.Show($"Guias cargadas: {GuiaAlmacen.guias.Count}\n{datosp}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)

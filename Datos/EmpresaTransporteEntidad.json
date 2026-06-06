@@ -1,0 +1,52 @@
+[
+  {
+    "empresaTransporteId": 1,
+    "razonSocial": "TransNorte S.A.",
+    "cuit": "30606418499"
+  },
+  {
+    "empresaTransporteId": 2,
+    "razonSocial": "Fletes del Sur S.R.L.",
+    "cuit": "30618186926"
+  },
+  {
+    "empresaTransporteId": 3,
+    "razonSocial": "Logística Centro S.A.",
+    "cuit": "30672907701"
+  },
+  {
+    "empresaTransporteId": 4,
+    "razonSocial": "Transportes Rápidos S.A.",
+    "cuit": "30657996676"
+  },
+  {
+    "empresaTransporteId": 5,
+    "razonSocial": "Envíos Express S.R.L.",
+    "cuit": "30652626323"
+  },
+  {
+    "empresaTransporteId": 6,
+    "razonSocial": "Cargas Federales S.A.",
+    "cuit": "30673214742"
+  },
+  {
+    "empresaTransporteId": 7,
+    "razonSocial": "Distribución Nacional S.R.L.",
+    "cuit": "30685802550"
+  },
+  {
+    "empresaTransporteId": 8,
+    "razonSocial": "Trans Andina S.A.",
+    "cuit": "30619402142"
+  },
+  {
+    "empresaTransporteId": 9,
+    "razonSocial": "Carga Litoral S.R.L.",
+    "cuit": "30664625063"
+  },
+  {
+    "empresaTransporteId": 10,
+    "razonSocial": "MoviCarga S.A.",
+    "cuit": "30696735421"
+  }
+]

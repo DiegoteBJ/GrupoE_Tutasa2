@@ -33,15 +33,17 @@
             labelCD = new Label();
             labelResultadoCD = new Label();
             groupBoxIngreseNroTransporte = new GroupBox();
+            labelResultadoFechaHoraSalida = new Label();
+            labelFechaSalida = new Label();
             labelResultadoRutadelTransporte = new Label();
             labelRutadelTransporte = new Label();
-            labelResultadoFecha = new Label();
-            labelFecha = new Label();
             labelResultadoEmpresaTransporte = new Label();
             labelEmpresaTransporte = new Label();
             botonBuscar = new Button();
             textBoxNrodeServicioTransporte = new TextBox();
             labelNrodeServicioTransporte = new Label();
+            labelResultadoFechaEmision = new Label();
+            labelFechaEmision = new Label();
             groupBoxEncomiendasPendientes = new GroupBox();
             botonAgregarTodo = new Button();
             botonAgregar = new Button();
@@ -101,57 +103,59 @@
             // 
             // groupBoxIngreseNroTransporte
             // 
+            groupBoxIngreseNroTransporte.Controls.Add(labelResultadoFechaHoraSalida);
+            groupBoxIngreseNroTransporte.Controls.Add(labelFechaSalida);
             groupBoxIngreseNroTransporte.Controls.Add(labelResultadoRutadelTransporte);
             groupBoxIngreseNroTransporte.Controls.Add(labelRutadelTransporte);
-            groupBoxIngreseNroTransporte.Controls.Add(labelResultadoFecha);
-            groupBoxIngreseNroTransporte.Controls.Add(labelFecha);
             groupBoxIngreseNroTransporte.Controls.Add(labelResultadoEmpresaTransporte);
             groupBoxIngreseNroTransporte.Controls.Add(labelEmpresaTransporte);
             groupBoxIngreseNroTransporte.Controls.Add(botonBuscar);
             groupBoxIngreseNroTransporte.Controls.Add(textBoxNrodeServicioTransporte);
             groupBoxIngreseNroTransporte.Controls.Add(labelNrodeServicioTransporte);
-            groupBoxIngreseNroTransporte.Location = new Point(17, 57);
+            groupBoxIngreseNroTransporte.Location = new Point(26, 57);
             groupBoxIngreseNroTransporte.Name = "groupBoxIngreseNroTransporte";
-            groupBoxIngreseNroTransporte.Size = new Size(748, 166);
+            groupBoxIngreseNroTransporte.Size = new Size(762, 203);
             groupBoxIngreseNroTransporte.TabIndex = 4;
             groupBoxIngreseNroTransporte.TabStop = false;
             groupBoxIngreseNroTransporte.Text = "Ingrese Nro del Transporte";
             // 
+            // labelResultadoFechaHoraSalida
+            // 
+            labelResultadoFechaHoraSalida.AutoSize = true;
+            labelResultadoFechaHoraSalida.Location = new Point(314, 114);
+            labelResultadoFechaHoraSalida.Name = "labelResultadoFechaHoraSalida";
+            labelResultadoFechaHoraSalida.Size = new Size(175, 20);
+            labelResultadoFechaHoraSalida.TabIndex = 11;
+            labelResultadoFechaHoraSalida.Text = "[Resultado Fecha y Hora]";
+            // 
+            // labelFechaSalida
+            // 
+            labelFechaSalida.AutoSize = true;
+            labelFechaSalida.Location = new Point(325, 91);
+            labelFechaSalida.Name = "labelFechaSalida";
+            labelFechaSalida.Size = new Size(164, 20);
+            labelFechaSalida.TabIndex = 9;
+            labelFechaSalida.Text = "Fecha y Hora de Salida:";
+            labelFechaSalida.Click += label1_Click;
+            // 
             // labelResultadoRutadelTransporte
             // 
             labelResultadoRutadelTransporte.AutoSize = true;
-            labelResultadoRutadelTransporte.Location = new Point(499, 114);
+            labelResultadoRutadelTransporte.Location = new Point(577, 114);
             labelResultadoRutadelTransporte.Name = "labelResultadoRutadelTransporte";
-            labelResultadoRutadelTransporte.Size = new Size(144, 20);
+            labelResultadoRutadelTransporte.Size = new Size(169, 20);
             labelResultadoRutadelTransporte.TabIndex = 8;
-            labelResultadoRutadelTransporte.Text = "[Ruta de Transporte]";
+            labelResultadoRutadelTransporte.Text = "[CD Origen/CD DEstino]";
+            labelResultadoRutadelTransporte.Click += labelResultadoRutadelTransporte_Click;
             // 
             // labelRutadelTransporte
             // 
             labelRutadelTransporte.AutoSize = true;
-            labelRutadelTransporte.Location = new Point(499, 86);
+            labelRutadelTransporte.Location = new Point(599, 86);
             labelRutadelTransporte.Name = "labelRutadelTransporte";
             labelRutadelTransporte.Size = new Size(138, 20);
             labelRutadelTransporte.TabIndex = 7;
             labelRutadelTransporte.Text = "Ruta del Transporte";
-            // 
-            // labelResultadoFecha
-            // 
-            labelResultadoFecha.AutoSize = true;
-            labelResultadoFecha.Location = new Point(292, 114);
-            labelResultadoFecha.Name = "labelResultadoFecha";
-            labelResultadoFecha.Size = new Size(140, 20);
-            labelResultadoFecha.TabIndex = 6;
-            labelResultadoFecha.Text = "[Fecha de Creación]";
-            // 
-            // labelFecha
-            // 
-            labelFecha.AutoSize = true;
-            labelFecha.Location = new Point(291, 82);
-            labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(47, 20);
-            labelFecha.TabIndex = 5;
-            labelFecha.Text = "Fecha";
             // 
             // labelResultadoEmpresaTransporte
             // 
@@ -196,6 +200,25 @@
             labelNrodeServicioTransporte.Size = new Size(192, 20);
             labelNrodeServicioTransporte.TabIndex = 0;
             labelNrodeServicioTransporte.Text = "Nro. de Servicio Transporte ";
+            // 
+            // labelResultadoFechaEmision
+            // 
+            labelResultadoFechaEmision.AutoSize = true;
+            labelResultadoFechaEmision.Location = new Point(578, 22);
+            labelResultadoFechaEmision.Name = "labelResultadoFechaEmision";
+            labelResultadoFechaEmision.Size = new Size(140, 20);
+            labelResultadoFechaEmision.TabIndex = 6;
+            labelResultadoFechaEmision.Text = "[Fecha de Creación]";
+            labelResultadoFechaEmision.Click += labelResultadoFecha_Click;
+            // 
+            // labelFechaEmision
+            // 
+            labelFechaEmision.AutoSize = true;
+            labelFechaEmision.Location = new Point(525, 22);
+            labelFechaEmision.Name = "labelFechaEmision";
+            labelFechaEmision.Size = new Size(47, 20);
+            labelFechaEmision.TabIndex = 5;
+            labelFechaEmision.Text = "Fecha";
             // 
             // groupBoxEncomiendasPendientes
             // 
@@ -340,7 +363,9 @@
             ClientSize = new Size(800, 614);
             Controls.Add(botonGenerarHDR);
             Controls.Add(botonCancelar);
+            Controls.Add(labelResultadoFechaEmision);
             Controls.Add(groupBoxEncomiendasAsignadas);
+            Controls.Add(labelFechaEmision);
             Controls.Add(groupBoxEncomiendasPendientes);
             Controls.Add(groupBoxIngreseNroTransporte);
             Controls.Add(labelResultadoCD);
@@ -349,6 +374,7 @@
             Controls.Add(labelUsuario);
             Name = "GenerarHDRTransporteForm";
             Text = "Generar HDR Transporte";
+            Load += GenerarHDRTransporteForm_Load;
             groupBoxIngreseNroTransporte.ResumeLayout(false);
             groupBoxIngreseNroTransporte.PerformLayout();
             groupBoxEncomiendasPendientes.ResumeLayout(false);
@@ -369,9 +395,9 @@
         private Button botonBuscar;
         private TextBox textBoxNrodeServicioTransporte;
         private Label labelNrodeServicioTransporte;
-        private Label labelFecha;
+        private Label labelFechaEmision;
         private Label labelRutadelTransporte;
-        private Label labelResultadoFecha;
+        private Label labelResultadoFechaEmision;
         private Label labelResultadoRutadelTransporte;
         private GroupBox groupBoxEncomiendasPendientes;
         private Button botonAgregar;
@@ -389,5 +415,7 @@
         private ColumnHeader columnaguia2;
         private ColumnHeader columnatamaño2;
         private ColumnHeader columndestino2;
+        private Label labelFechaSalida;
+        private Label labelResultadoFechaHoraSalida;
     }
 }
