@@ -16,6 +16,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<int> GuiasAImprimir { get; set; } = new List<int>(); // guías impuestas telefónicamente
         public DateTime FechaImpresion { get; set; }  // fecha/hora de impresión
 
+        // ✅ Constructor principal: recibe lista de guías y tipo de HDR
         public HDRResumen(int hdrId, List<Guias> guias, string tipo)
         {
             HDRId = hdrId;
@@ -36,12 +37,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CodigoPostal = domicilio.CodigoPostal;
             }
 
+            // ✅ Intentos máximos de entrega en el grupo
             IntentosDeEntrega = guias.Max(g => g.IntentosDeEntrega);
-
-            // ✅ Guías a imprimir: las que están impuestas telefónicamente
-            GuiasAImprimir = guias.Where(g => g.EstadoGuia == "Impuesta Telefónicamente")
-                                  .Select(g => g.GuiaId)
-                                  .ToList();
 
             // ✅ Fecha/hora de impresión
             FechaImpresion = DateTime.Now;

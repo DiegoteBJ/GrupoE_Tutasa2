@@ -16,7 +16,8 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 {
                     ServicioId = "001",
                     NombreEmpresa = "Transporte del Sur S.A.",
-                    FechaSalida = new DateTime(2026, 5, 30, 8, 0, 0),
+                    FechaEmision = new DateTime(2026, 5, 30, 8, 0, 0),
+                    FechaHoraSalida= new DateTime(2026, 5, 30, 8, 0, 0),
                     Ruta = "Buenos Aires - Córdoba",
                     GuiasPendientes = new List<Guia>
                 {
@@ -29,7 +30,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 {
                     ServicioId = "002",
                     NombreEmpresa = "Fletes del Norte S.R.L.",
-                    FechaSalida = new DateTime(2026, 5, 29, 14, 30, 0),
+                    FechaEmision = new DateTime(2026, 5, 29, 14, 30, 0),
                     Ruta = "Buenos Aires - Rosario",
                     GuiasPendientes = new List<Guia>
                 {
@@ -41,7 +42,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 {
                     ServicioId = "003",
                     NombreEmpresa = "Expreso del Litoral S.A.",
-                    FechaSalida = new DateTime(2026, 5, 31, 10, 0, 0),
+                    FechaEmision = new DateTime(2026, 5, 31, 10, 0, 0),
                     Ruta = "Buenos Aires - Santa Fe",
                     GuiasPendientes = new List<Guia>
                 {
