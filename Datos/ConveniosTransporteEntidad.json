@@ -1,0 +1,93 @@
+[
+  {
+    "convenioId": 1,
+    "empresaTransporteId": 1,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "2025-12-31",
+    "importeConvenio": 78511.82
+  },
+  {
+    "convenioId": 2,
+    "empresaTransporteId": 2,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "2025-12-31",
+    "importeConvenio": 56657.98
+  },
+  {
+    "convenioId": 3,
+    "empresaTransporteId": 3,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "2025-12-31",
+    "importeConvenio": 115408.63
+  },
+  {
+    "convenioId": 4,
+    "empresaTransporteId": 4,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 127988.05
+  },
+  {
+    "convenioId": 5,
+    "empresaTransporteId": 5,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 170976.63
+  },
+  {
+    "convenioId": 6,
+    "empresaTransporteId": 6,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 153028.57
+  },
+  {
+    "convenioId": 7,
+    "empresaTransporteId": 7,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 191039.47
+  },
+  {
+    "convenioId": 8,
+    "empresaTransporteId": 8,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 160555.65
+  },
+  {
+    "convenioId": 9,
+    "empresaTransporteId": 9,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 79555.27
+  },
+  {
+    "convenioId": 10,
+    "empresaTransporteId": 10,
+    "fechaVigenciaDesde": "2025-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 114694.61
+  },
+  {
+    "convenioId": 11,
+    "empresaTransporteId": 1,
+    "fechaVigenciaDesde": "2026-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 160000
+  },
+  {
+    "convenioId": 12,
+    "empresaTransporteId": 2,
+    "fechaVigenciaDesde": "2026-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 170000
+  },
+  {
+    "convenioId": 13,
+    "empresaTransporteId": 3,
+    "fechaVigenciaDesde": "2026-01-01",
+    "fechaVigenciaHasta": "9999-12-31",
+    "importeConvenio": 180000
+  }
+]

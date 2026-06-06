@@ -1,162 +1,142 @@
 [
   {
     "clienteId": 1,
-    "razonSocial": "",
-    "nombre": "Juan",
-    "apellido": "Pérez",
-    "cuit": "20-12345678-6",
-    "domicilio": {
-      "calle": "Av. Corrientes",
-      "numero": "1234",
-      "piso": "3",
-      "depto": "B",
-      "codigoPostal": "1043",
-      "localidadId": 1
-    },
-    "telefono": "11-4567-8901"
-  },
-  {
-    "clienteId": 2,
-    "razonSocial": "",
-    "nombre": "María",
-    "apellido": "González",
-    "cuit": "27-23456789-1",
-    "domicilio": {
-      "calle": "San Martín",
-      "numero": "456",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "1650",
-      "localidadId": 2
-    },
-    "telefono": "11-5678-9012"
-  },
-  {
-    "clienteId": 3,
     "razonSocial": "Distribuidora El Sur S.A.",
     "nombre": "",
     "apellido": "",
-    "cuit": "30-71234567-1",
+    "cuit": "33655398371",
     "domicilio": {
-      "calle": "Ruta 3",
-      "numero": "5500",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "1804",
-      "localidadId": 3
+      "calle": "Av. Comercial 100",
+      "numero": "779",
+      "codigoPostal": "C1426",
+      "localidadId": 1
     },
-    "telefono": "11-6789-0123"
+    "telefono": "11-3041-5920"
   },
   {
-    "clienteId": 4,
-    "razonSocial": "",
-    "nombre": "Carlos",
-    "apellido": "Rodríguez",
-    "cuit": "20-34567890-6",
-    "domicilio": {
-      "calle": "Belgrano",
-      "numero": "789",
-      "piso": "1",
-      "depto": "A",
-      "codigoPostal": "5000",
-      "localidadId": 4
-    },
-    "telefono": "351-234-5678"
-  },
-  {
-    "clienteId": 5,
+    "clienteId": 2,
     "razonSocial": "Importadora Norte S.R.L.",
     "nombre": "",
     "apellido": "",
-    "cuit": "33-69876543-2",
+    "cuit": "33685081038",
     "domicilio": {
-      "calle": "Av. España",
-      "numero": "2100",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "4000",
-      "localidadId": 5
+      "calle": "Av. Comercial 200",
+      "numero": "782",
+      "codigoPostal": "C1000",
+      "localidadId": 2
     },
-    "telefono": "381-456-7890"
+    "telefono": "11-7691-6344"
   },
   {
-    "clienteId": 6,
-    "razonSocial": "",
-    "nombre": "Laura",
-    "apellido": "Martínez",
-    "cuit": "27-45678901-9",
-    "domicilio": {
-      "calle": "Urquiza",
-      "numero": "321",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "3000",
-      "localidadId": 6
-    },
-    "telefono": "342-567-8901"
-  },
-  {
-    "clienteId": 7,
-    "razonSocial": "",
-    "nombre": "Roberto",
-    "apellido": "López",
-    "cuit": "20-56789012-1",
-    "domicilio": {
-      "calle": "9 de Julio",
-      "numero": "654",
-      "piso": "2",
-      "depto": "C",
-      "codigoPostal": "7600",
-      "localidadId": 7
-    },
-    "telefono": "223-678-9012"
-  },
-  {
-    "clienteId": 8,
+    "clienteId": 3,
     "razonSocial": "Comercial del Oeste S.A.",
     "nombre": "",
     "apellido": "",
-    "cuit": "30-58765432-2",
+    "cuit": "33667511580",
     "domicilio": {
-      "calle": "Av. San Martín",
-      "numero": "3300",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "5500",
+      "calle": "Av. Comercial 300",
+      "numero": "667",
+      "codigoPostal": "C1414",
+      "localidadId": 3
+    },
+    "telefono": "11-3085-4143"
+  },
+  {
+    "clienteId": 4,
+    "razonSocial": "Logística Patagonia S.R.L.",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "33670539186",
+    "domicilio": {
+      "calle": "Av. Comercial 400",
+      "numero": "793",
+      "codigoPostal": "C1406",
+      "localidadId": 4
+    },
+    "telefono": "11-3851-5930"
+  },
+  {
+    "clienteId": 5,
+    "razonSocial": "Industrias Pampa S.A.",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "30668128102",
+    "domicilio": {
+      "calle": "Av. Comercial 500",
+      "numero": "411",
+      "codigoPostal": "C1405",
+      "localidadId": 5
+    },
+    "telefono": "11-5700-4443"
+  },
+  {
+    "clienteId": 6,
+    "razonSocial": "Grupo Comercial Andino S.R.L.",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "33672123262",
+    "domicilio": {
+      "calle": "Av. Comercial 600",
+      "numero": "576",
+      "codigoPostal": "S2000",
+      "localidadId": 6
+    },
+    "telefono": "11-8238-8244"
+  },
+  {
+    "clienteId": 7,
+    "razonSocial": "Servicios Federales S.A.",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "33635853145",
+    "domicilio": {
+      "calle": "Av. Comercial 700",
+      "numero": "912",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    },
+    "telefono": "11-3780-2389"
+  },
+  {
+    "clienteId": 8,
+    "razonSocial": "Exportadora Litoral S.R.L.",
+    "nombre": "",
+    "apellido": "",
+    "cuit": "33647611457",
+    "domicilio": {
+      "calle": "Av. Comercial 800",
+      "numero": "195",
+      "codigoPostal": "S2300",
       "localidadId": 8
     },
-    "telefono": "261-789-0123"
+    "telefono": "11-4848-6085"
   },
   {
     "clienteId": 9,
     "razonSocial": "",
-    "nombre": "Ana",
-    "apellido": "Fernández",
-    "cuit": "23-67890123-7",
+    "nombre": "Martín",
+    "apellido": "Benavídez",
+    "cuit": "20275376893",
     "domicilio": {
-      "calle": "Mitre",
-      "numero": "987",
-      "piso": "4",
-      "depto": "D",
-      "codigoPostal": "8000",
+      "calle": "Calle Residencial 450",
+      "numero": "250",
+      "codigoPostal": "X5000",
       "localidadId": 9
     },
-    "telefono": "299-890-1234"
+    "telefono": "11-1400-1757"
   },
   {
     "clienteId": 10,
-    "razonSocial": "Logística Patagonia S.R.L.",
-    "nombre": "",
-    "apellido": "",
-    "cuit": "30-61234567-4",
+    "razonSocial": "",
+    "nombre": "Lucía",
+    "apellido": "Ferreyra",
+    "cuit": "27282155529",
     "domicilio": {
-      "calle": "Av. Roca",
-      "numero": "1100",
-      "piso": "",
-      "depto": "",
-      "codigoPostal": "9000",
+      "calle": "Calle Residencial 500",
+      "numero": "725",
+      "codigoPostal": "X5900",
       "localidadId": 10
     },
-    "telefono": "297-901-2345"
+    "telefono": "11-2193-8461"
   }
 ]
