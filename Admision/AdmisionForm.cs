@@ -130,9 +130,7 @@ namespace GrupoE_Tutasa.Admision
             }
 
             importeTransporte = modelo.ObtenerCoeficiente(guiaActual.CDOrigenId, guiaActual.CDDestinoId, guiaActual.tamaño);
-            decimal precioUnitarioTransporte = modelo.ObtenerPrecioUnitarioTransporte(guiaActual.tarifarioId);
-            importeTransporte = importeTransporte * precioUnitarioTransporte;
-            
+                       
             if (guiaActual.tipoImposicion == "D")
             {
                 importeImposicion = modelo.ObtenerTarifaRetiroDomicilio(guiaActual.tarifarioId);
@@ -190,7 +188,7 @@ namespace GrupoE_Tutasa.Admision
 
         private void SalirBoton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            LimpiaYCierra(sender, e);
         }
 
         private void CambiarTamañoBoton_Click(object sender, EventArgs e)
