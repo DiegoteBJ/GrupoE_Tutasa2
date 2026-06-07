@@ -186,7 +186,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     {
                         HdrRetiroId = ultimoHDRRetiroId,
                         FleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now,
+                        FechaEmision = DateTime.Today,
                         Estado = EstadoHDRRetiroEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
@@ -198,7 +198,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     {
                         HdrDistribucionId = ultimoHDRDistribucionId,
                         FleteroId = fletero.FleteroId,
-                        FechaEmision = DateTime.Now,
+                        FechaEmision = DateTime.Today,
                         Estado = EstadoHDRDistribucionEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
