@@ -62,10 +62,8 @@ namespace GrupoE_Tutasa.Imposicion
             CPDomicilioTextBox = new TextBox();
             label39 = new Label();
             groupBox4 = new GroupBox();
-            label22 = new Label();
             CantidadSTextBox = new TextBox();
             label15 = new Label();
-            GuiasAGenerarLabel = new Label();
             CantidadMTextBox = new TextBox();
             label17 = new Label();
             CantidadLTextBox = new TextBox();
@@ -74,6 +72,8 @@ namespace GrupoE_Tutasa.Imposicion
             label19 = new Label();
             label16 = new Label();
             label20 = new Label();
+            label22 = new Label();
+            GuiasAGenerarLabel = new Label();
             button2 = new Button();
             button3 = new Button();
             label24 = new Label();
@@ -169,7 +169,6 @@ namespace GrupoE_Tutasa.Imposicion
             CuitRemitenteTextBox.Name = "CuitRemitenteTextBox";
             CuitRemitenteTextBox.Size = new Size(116, 23);
             CuitRemitenteTextBox.TabIndex = 1;
-            CuitRemitenteTextBox.TextChanged += CuitRemitenteTextBox_TextChanged;
             // 
             // label1
             // 
@@ -575,23 +574,14 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4, 3, 4, 3);
-            groupBox4.Size = new Size(823, 134);
+            groupBox4.Size = new Size(823, 127);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Detalle de Encomiendas";
             // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(486, 33);
-            label22.Name = "label22";
-            label22.Size = new Size(92, 15);
-            label22.TabIndex = 34;
-            label22.Text = "Guias a Generar:";
-            // 
             // CantidadSTextBox
             // 
-            CantidadSTextBox.Location = new Point(13, 93);
+            CantidadSTextBox.Location = new Point(9, 65);
             CantidadSTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadSTextBox.Name = "CantidadSTextBox";
             CantidadSTextBox.Size = new Size(92, 23);
@@ -600,24 +590,15 @@ namespace GrupoE_Tutasa.Imposicion
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(13, 66);
+            label15.Location = new Point(9, 47);
             label15.Name = "label15";
-            label15.Size = new Size(43, 15);
+            label15.Size = new Size(40, 15);
             label15.TabIndex = 21;
-            label15.Text = "Tipo S ";
-            // 
-            // GuiasAGenerarLabel
-            // 
-            GuiasAGenerarLabel.AutoSize = true;
-            GuiasAGenerarLabel.Location = new Point(621, 33);
-            GuiasAGenerarLabel.Name = "GuiasAGenerarLabel";
-            GuiasAGenerarLabel.Size = new Size(73, 15);
-            GuiasAGenerarLabel.TabIndex = 37;
-            GuiasAGenerarLabel.Text = "[Total Guias]";
+            label15.Text = "Tipo S";
             // 
             // CantidadMTextBox
             // 
-            CantidadMTextBox.Location = new Point(120, 93);
+            CantidadMTextBox.Location = new Point(128, 65);
             CantidadMTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadMTextBox.Name = "CantidadMTextBox";
             CantidadMTextBox.Size = new Size(92, 23);
@@ -626,7 +607,7 @@ namespace GrupoE_Tutasa.Imposicion
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(120, 66);
+            label17.Location = new Point(128, 47);
             label17.Name = "label17";
             label17.Size = new Size(45, 15);
             label17.TabIndex = 25;
@@ -634,7 +615,7 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             // CantidadLTextBox
             // 
-            CantidadLTextBox.Location = new Point(223, 93);
+            CantidadLTextBox.Location = new Point(248, 65);
             CantidadLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadLTextBox.Name = "CantidadLTextBox";
             CantidadLTextBox.Size = new Size(92, 23);
@@ -643,15 +624,15 @@ namespace GrupoE_Tutasa.Imposicion
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(225, 66);
+            label18.Location = new Point(250, 47);
             label18.Name = "label18";
-            label18.Size = new Size(43, 15);
+            label18.Size = new Size(40, 15);
             label18.TabIndex = 27;
-            label18.Text = "Tipo L ";
+            label18.Text = "Tipo L";
             // 
             // CantidadXLTextBox
             // 
-            CantidadXLTextBox.Location = new Point(338, 93);
+            CantidadXLTextBox.Location = new Point(367, 65);
             CantidadXLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadXLTextBox.Name = "CantidadXLTextBox";
             CantidadXLTextBox.Size = new Size(92, 23);
@@ -660,7 +641,7 @@ namespace GrupoE_Tutasa.Imposicion
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(340, 66);
+            label19.Location = new Point(367, 47);
             label19.Name = "label19";
             label19.Size = new Size(47, 15);
             label19.TabIndex = 29;
@@ -670,24 +651,41 @@ namespace GrupoE_Tutasa.Imposicion
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(7, 33);
+            label16.Location = new Point(9, 19);
             label16.Name = "label16";
-            label16.Size = new Size(190, 15);
+            label16.Size = new Size(241, 15);
             label16.TabIndex = 22;
-            label16.Text = "Ingrese cantidad de Guias por tipo.";
-            label16.Click += label16_Click;
+            label16.Text = "Ingrese la cantidad de encomiendas por tipo";
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(393, 114);
+            label20.Location = new Point(445, 158);
             label20.Name = "label20";
             label20.Size = new Size(0, 15);
             label20.TabIndex = 31;
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(482, 34);
+            label22.Name = "label22";
+            label22.Size = new Size(92, 15);
+            label22.TabIndex = 34;
+            label22.Text = "Guias a Generar:";
+            // 
+            // GuiasAGenerarLabel
+            // 
+            GuiasAGenerarLabel.AutoSize = true;
+            GuiasAGenerarLabel.Location = new Point(617, 34);
+            GuiasAGenerarLabel.Name = "GuiasAGenerarLabel";
+            GuiasAGenerarLabel.Size = new Size(73, 15);
+            GuiasAGenerarLabel.TabIndex = 37;
+            GuiasAGenerarLabel.Text = "[Total Guias]";
+            // 
             // button2
             // 
-            button2.Location = new Point(630, 773);
+            button2.Location = new Point(631, 764);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
             button2.Size = new Size(88, 27);
@@ -699,7 +697,7 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             button3.BackColor = SystemColors.Highlight;
             button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(744, 773);
+            button3.Location = new Point(745, 764);
             button3.Margin = new Padding(4, 3, 4, 3);
             button3.Name = "button3";
             button3.Size = new Size(88, 27);
@@ -711,7 +709,7 @@ namespace GrupoE_Tutasa.Imposicion
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(9, 842);
+            label24.Location = new Point(18, 822);
             label24.Name = "label24";
             label24.Size = new Size(107, 15);
             label24.TabIndex = 19;
@@ -720,7 +718,7 @@ namespace GrupoE_Tutasa.Imposicion
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(181, 842);
+            label25.Location = new Point(190, 822);
             label25.Name = "label25";
             label25.Size = new Size(168, 15);
             label25.TabIndex = 20;
@@ -729,7 +727,7 @@ namespace GrupoE_Tutasa.Imposicion
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(401, 842);
+            label26.Location = new Point(410, 822);
             label26.Name = "label26";
             label26.Size = new Size(128, 15);
             label26.TabIndex = 21;
@@ -741,7 +739,7 @@ namespace GrupoE_Tutasa.Imposicion
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(873, 874);
+            ClientSize = new Size(879, 857);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);

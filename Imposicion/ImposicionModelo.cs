@@ -2,9 +2,7 @@ namespace GrupoE_Tutasa.Imposicion
 {
     internal class ImposicionModelo
     {
-        // ─────────────────────────────────────────────
-        // AL.1 - CLIENTES (Remitentes)
-        // ─────────────────────────────────────────────
+        // AL.1 - Clientes (Remitentes)
         public List<ClienteRemitente> LClientes
         {
             get
@@ -57,9 +55,7 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
-        // ─────────────────────────────────────────────
-        // AL.22 - PROVINCIAS
-        // ─────────────────────────────────────────────
+        // AL.22 - Provincias
         public List<Provincia> LProvincias
         {
             get
@@ -67,48 +63,39 @@ namespace GrupoE_Tutasa.Imposicion
                 return new List<Provincia>
                 {
                     new Provincia { ProvinciaId = 1, Nombre = "Buenos Aires" },
-                    new Provincia { ProvinciaId = 2, Nombre = "Córdoba"      },
-                    new Provincia { ProvinciaId = 3, Nombre = "Mendoza"      },
-                    new Provincia { ProvinciaId = 4, Nombre = "Santa Fe"     },
-                    new Provincia { ProvinciaId = 5, Nombre = "Neuquén"      },
+                    new Provincia { ProvinciaId = 2, Nombre = "Córdoba" },
+                    new Provincia { ProvinciaId = 3, Nombre = "Mendoza" },
+                    new Provincia { ProvinciaId = 4, Nombre = "Santa Fe" },
+                    new Provincia { ProvinciaId = 5, Nombre = "Neuquén" },
                 };
             }
         }
 
-        // ─────────────────────────────────────────────
-        // AL.21 - LOCALIDADES
-        // ─────────────────────────────────────────────
+        // AL.21 - Localidades
         public List<Localidad> LLocalidades
         {
             get
             {
                 return new List<Localidad>
                 {
-                    // Buenos Aires
                     new Localidad { LocalidadId = 1,  ProvinciaId = 1, Nombre = "Buenos Aires Capital", CodigoPostalPrincipal = "C1000" },
                     new Localidad { LocalidadId = 2,  ProvinciaId = 1, Nombre = "Mar del Plata",        CodigoPostalPrincipal = "B7600" },
                     new Localidad { LocalidadId = 3,  ProvinciaId = 1, Nombre = "La Plata",             CodigoPostalPrincipal = "B1900" },
                     new Localidad { LocalidadId = 4,  ProvinciaId = 1, Nombre = "Bahía Blanca",         CodigoPostalPrincipal = "B8000" },
-                    // Córdoba
                     new Localidad { LocalidadId = 5,  ProvinciaId = 2, Nombre = "Córdoba Capital",      CodigoPostalPrincipal = "X5000" },
                     new Localidad { LocalidadId = 6,  ProvinciaId = 2, Nombre = "Río Cuarto",           CodigoPostalPrincipal = "X5800" },
                     new Localidad { LocalidadId = 7,  ProvinciaId = 2, Nombre = "Villa María",          CodigoPostalPrincipal = "X5900" },
-                    // Mendoza
                     new Localidad { LocalidadId = 8,  ProvinciaId = 3, Nombre = "Mendoza Capital",      CodigoPostalPrincipal = "M5500" },
                     new Localidad { LocalidadId = 9,  ProvinciaId = 3, Nombre = "San Rafael",           CodigoPostalPrincipal = "M5600" },
-                    // Santa Fe
                     new Localidad { LocalidadId = 10, ProvinciaId = 4, Nombre = "Rosario",              CodigoPostalPrincipal = "S2000" },
                     new Localidad { LocalidadId = 11, ProvinciaId = 4, Nombre = "Santa Fe Capital",     CodigoPostalPrincipal = "S3000" },
-                    // Neuquén
                     new Localidad { LocalidadId = 12, ProvinciaId = 5, Nombre = "Neuquén Capital",      CodigoPostalPrincipal = "Q8300" },
                     new Localidad { LocalidadId = 13, ProvinciaId = 5, Nombre = "Zapala",               CodigoPostalPrincipal = "Q8340" },
                 };
             }
         }
 
-        // ─────────────────────────────────────────────
-        // AL.3 - AGENCIAS
-        // ─────────────────────────────────────────────
+        // AL.3 - Agencias
         public List<Agencia> LAgencias
         {
             get
@@ -161,9 +148,7 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
-        // ─────────────────────────────────────────────
-        // AL.18 - CENTROS DE DISTRIBUCIÓN
-        // ─────────────────────────────────────────────
+        // AL.18 - Centros de Distribución
         public List<CentroDistribucion> LCentrosDistribucion
         {
             get
@@ -194,66 +179,109 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
-        // ─────────────────────────────────────────────
-        // AL.14 - GUÍAS
-        // ─────────────────────────────────────────────
-        public List<Guia> LGuias { get; private set; } = new List<Guia>();
+        // AL.14 - Guías
+        public List<Guia> LGuias = new List<Guia>();
 
-        private static int _ultimoGuiaId = 100;
+        private int ultimoGuiaId = 100;
 
-        /// <summary>
-        /// Registra una guía aplicando la regla de negocio de CDActualId:
-        /// solo se asigna cuando la modalidad de imposición es en CD.
-        /// </summary>
-        /// <param name="guia">Guía a registrar (sin GuiaId ni FechaImposicion).</param>
-        /// <param name="cdActualId">ID del CD donde se está operando.</param>
         public void RegistrarGuia(Guia guia, int cdActualId)
         {
-            guia.GuiaId          = ++_ultimoGuiaId;
+            ultimoGuiaId++;
+            guia.GuiaId = ultimoGuiaId;
             guia.FechaImposicion = DateTime.Now;
 
-            // Regla de negocio: CDActualId se registra SOLO en imposición de CD.
-            // Para imposición telefónica (DOMICILIO) y en agencia (AGENCIA) queda null.
-            guia.CDActualId = guia.ModalidadImposicion == ModalidadImposicionEnum.CD
-                ? cdActualId
-                : (int?)null;
+            // CDActualId se registra solo cuando la imposición es en CD
+            if (guia.ModalidadImposicion == ModalidadImposicionEnum.CD)
+            {
+                guia.CDActualId = cdActualId;
+            }
+            else
+            {
+                guia.CDActualId = null;
+            }
 
             LGuias.Add(guia);
         }
 
-        // ─────────────────────────────────────────────
-        // MÉTODOS AUXILIARES
-        // ─────────────────────────────────────────────
-
         public List<Localidad> ObtenerLocalidadesPorProvincia(int provinciaId)
-            => LLocalidades.Where(l => l.ProvinciaId == provinciaId).ToList();
+        {
+            List<Localidad> resultado = new List<Localidad>();
+            foreach (var localidad in LLocalidades)
+            {
+                if (localidad.ProvinciaId == provinciaId)
+                {
+                    resultado.Add(localidad);
+                }
+            }
+            return resultado;
+        }
 
         public List<Agencia> ObtenerAgenciasPorLocalidad(int localidadId)
-            => LAgencias.Where(a => a.Domicilio?.LocalidadId == localidadId).ToList();
+        {
+            List<Agencia> resultado = new List<Agencia>();
+            foreach (var agencia in LAgencias)
+            {
+                if (agencia.Domicilio != null && agencia.Domicilio.LocalidadId == localidadId)
+                {
+                    resultado.Add(agencia);
+                }
+            }
+            return resultado;
+        }
 
         public List<CentroDistribucion> ObtenerCDsPorLocalidad(int localidadId)
-            => LCentrosDistribucion.Where(cd => cd.Domicilio?.LocalidadId == localidadId).ToList();
+        {
+            List<CentroDistribucion> resultado = new List<CentroDistribucion>();
+            foreach (var cd in LCentrosDistribucion)
+            {
+                if (cd.Domicilio != null && cd.Domicilio.LocalidadId == localidadId)
+                {
+                    resultado.Add(cd);
+                }
+            }
+            return resultado;
+        }
 
-        public static bool ValidarCuit(string cuit)
+        public bool ValidarCuit(string cuit)
         {
             if (string.IsNullOrWhiteSpace(cuit)) return false;
 
-            cuit = new string(cuit.Where(char.IsDigit).ToArray());
+            // Extraer solo dígitos
+            string soloDigitos = "";
+            foreach (char c in cuit)
+            {
+                if (char.IsDigit(c))
+                    soloDigitos = soloDigitos + c;
+            }
+            cuit = soloDigitos;
 
             if (cuit.Length != 11) return false;
 
-            int prefijo = int.Parse(cuit[..2]);
-            if (!new[] { 20, 23, 24, 27, 30, 33, 34 }.Contains(prefijo)) return false;
+            // Validar prefijo
+            int prefijo = int.Parse(cuit.Substring(0, 2));
+            if (prefijo != 20 && prefijo != 23 && prefijo != 24 &&
+                prefijo != 27 && prefijo != 30 && prefijo != 33 && prefijo != 34)
+            {
+                return false;
+            }
 
+            // Calcular dígito verificador
             int[] coef = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
-            int suma   = 0;
+            int suma = 0;
             for (int i = 0; i < 10; i++)
-                suma += (cuit[i] - '0') * coef[i];
+            {
+                suma = suma + (cuit[i] - '0') * coef[i];
+            }
 
-            int resto    = suma % 11;
+            int resto = suma % 11;
             if (resto == 1) return false;
 
-            int esperado = resto == 0 ? 0 : 11 - resto;
+            int esperado = 0;
+            if (resto != 0)
+            {
+                esperado = 11 - resto;
+            }
+
             return (cuit[10] - '0') == esperado;
         }
     }

@@ -2,14 +2,9 @@ namespace GrupoE_Tutasa.Imposicion
 {
     public partial class ImposicionForm : Form
     {
-        private readonly ImposicionModelo modelo = new();
-
-        /// <summary>
-        /// CD donde opera el usuario actual. En producción se inyecta desde el contexto de sesión.
-        /// </summary>
-        private readonly int _cdActualId = 1;
-
-        private ClienteRemitente _clienteActual = null;
+        private ImposicionModelo modelo = new();
+        private int cdActualId = 1;
+        private ClienteRemitente clienteActual = null;
 
         public ImposicionForm()
         {
@@ -17,17 +12,12 @@ namespace GrupoE_Tutasa.Imposicion
             button2.Click += button2_Click;
         }
 
-        // ─────────────────────────────────────────────
-        // CARGA DEL FORMULARIO
-        // ─────────────────────────────────────────────
         private void Form1_Load(object sender, EventArgs e)
         {
-            // ── Remitente ──
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
-            // ── Domicilio de retiro ──
             label37.Visible = false;
 
             ProvinciaRetiroComboBox.DataSource = modelo.LProvincias;
@@ -40,7 +30,6 @@ namespace GrupoE_Tutasa.Imposicion
 
             DomicilioFiscalCheck.CheckedChanged += DomicilioFiscalCheck_CheckedChanged;
 
-            // ── Datos para la Entrega ──
             ProvinciaEntregaComboBox.DataSource = modelo.LProvincias;
             ProvinciaEntregaComboBox.DisplayMember = "Nombre";
             ProvinciaEntregaComboBox.ValueMember = "ProvinciaId";
@@ -59,22 +48,17 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            // ── Cantidades ──
             CantidadSTextBox.TextChanged += CantidadSTextBox_TextChanged;
             CantidadMTextBox.TextChanged += CantidadMTextBox_TextChanged;
             CantidadLTextBox.TextChanged += CantidadLTextBox_TextChanged;
             CantidadXLTextBox.TextChanged += CantidadXLTextBox_TextChanged;
 
-            // ── Totales ──
             GuiasAGenerarLabel.Text = "[Total Guias]";
         }
 
-        // ─────────────────────────────────────────────
-        // BUSCAR REMITENTE
-        // ─────────────────────────────────────────────
         private void BuscarRemitenteBoton_Click(object sender, EventArgs e)
         {
-            _clienteActual = null;
+            clienteActual = null;
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
@@ -84,50 +68,59 @@ namespace GrupoE_Tutasa.Imposicion
                 MessageBox.Show("Es necesario que ingrese un dato.");
                 return;
             }
-            if (!ImposicionModelo.ValidarCuit(CuitRemitenteTextBox.Text))
+            if (!modelo.ValidarCuit(CuitRemitenteTextBox.Text))
             {
                 MessageBox.Show("Ingresá un CUIT válido.");
                 CuitRemitenteTextBox.Clear();
                 return;
             }
 
-            string cuitBuscado = new string(CuitRemitenteTextBox.Text.Where(char.IsDigit).ToArray());
+            string cuitBuscado = CuitRemitenteTextBox.Text.Trim();
+            int encuentro = 0;
 
-            var cliente = modelo.LClientes
-                .FirstOrDefault(c => new string(c.CUIT.Where(char.IsDigit).ToArray()) == cuitBuscado);
+            foreach (var cliente in modelo.LClientes)
+            {
+                if (cliente.CUIT == cuitBuscado)
+                {
+                    clienteActual = cliente;
+                    encuentro = 1;
+                    break;
+                }
+            }
 
-            if (cliente == null)
+            if (encuentro == 0)
             {
                 MessageBox.Show("No se encontró ningún remitente con el CUIT ingresado.");
                 CuitRemitenteTextBox.Clear();
                 return;
             }
 
-            _clienteActual = cliente;
-
-            string nombreMostrar = string.IsNullOrWhiteSpace(cliente.RazonSocial)
-                ? $"{cliente.Nombre} {cliente.Apellido}".Trim()
-                : cliente.RazonSocial;
+            string nombreMostrar = clienteActual.RazonSocial;
+            if (string.IsNullOrWhiteSpace(nombreMostrar))
+            {
+                nombreMostrar = clienteActual.Nombre + " " + clienteActual.Apellido;
+            }
 
             NombreRemitenteLabel.Text = nombreMostrar;
-            TelefonoRemitenteLabel.Text = cliente.Telefono;
-            DireccionRemitenteLabel.Text = FormatearDomicilio(cliente.Domicilio);
+            TelefonoRemitenteLabel.Text = clienteActual.Telefono;
+            DireccionRemitenteLabel.Text = FormatearDomicilio(clienteActual.Domicilio);
 
             if (DomicilioFiscalCheck.Checked)
-                label37.Text = FormatearDomicilio(cliente.Domicilio);
+            {
+                label37.Text = FormatearDomicilio(clienteActual.Domicilio);
+            }
         }
 
-        // ─────────────────────────────────────────────
-        // DOMICILIO FISCAL
-        // ─────────────────────────────────────────────
         private void DomicilioFiscalCheck_CheckedChanged(object sender, EventArgs e)
         {
             bool fiscal = DomicilioFiscalCheck.Checked;
 
             label37.Visible = fiscal;
 
-            if (fiscal && _clienteActual != null)
-                label37.Text = FormatearDomicilio(_clienteActual.Domicilio);
+            if (fiscal && clienteActual != null)
+            {
+                label37.Text = FormatearDomicilio(clienteActual.Domicilio);
+            }
 
             ProvinciaRetiroComboBox.Enabled = !fiscal;
             LocalidadRetiroComboBox.Enabled = !fiscal;
@@ -135,17 +128,16 @@ namespace GrupoE_Tutasa.Imposicion
             CPRetiroTextBox.Enabled = !fiscal;
         }
 
-        // ─────────────────────────────────────────────
-        // CASCADA RETIRO: Provincia → Localidad
-        // ─────────────────────────────────────────────
         private void ProvinciaRetiroComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadRetiroComboBox.DataSource = null;
             LocalidadRetiroComboBox.Enabled = false;
 
-            if (ProvinciaRetiroComboBox.SelectedItem is not Provincia prov) return;
+            if (ProvinciaRetiroComboBox.SelectedItem == null) return;
 
+            Provincia prov = (Provincia)ProvinciaRetiroComboBox.SelectedItem;
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
+
             LocalidadRetiroComboBox.DataSource = localidades;
             LocalidadRetiroComboBox.DisplayMember = "Nombre";
             LocalidadRetiroComboBox.ValueMember = "LocalidadId";
@@ -153,9 +145,6 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadRetiroComboBox.Enabled = true;
         }
 
-        // ─────────────────────────────────────────────
-        // CASCADA ENTREGA: Provincia → Localidad
-        // ─────────────────────────────────────────────
         private void ProvinciaEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadEntregaComboBox.DataSource = null;
@@ -169,9 +158,11 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (ProvinciaEntregaComboBox.SelectedItem is not Provincia prov) return;
+            if (ProvinciaEntregaComboBox.SelectedItem == null) return;
 
+            Provincia prov = (Provincia)ProvinciaEntregaComboBox.SelectedItem;
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
+
             LocalidadEntregaComboBox.DataSource = localidades;
             LocalidadEntregaComboBox.DisplayMember = "Nombre";
             LocalidadEntregaComboBox.ValueMember = "LocalidadId";
@@ -179,10 +170,6 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadEntregaComboBox.Enabled = true;
         }
 
-        // ─────────────────────────────────────────────
-        // CASCADA ENTREGA: Localidad → TipoEntrega
-        // Solo carga las opciones disponibles según la localidad
-        // ─────────────────────────────────────────────
         private void LocalidadEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TipoEntregaComboBox.Items.Clear();
@@ -194,8 +181,9 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (LocalidadEntregaComboBox.SelectedItem is not Localidad loc) return;
+            if (LocalidadEntregaComboBox.SelectedItem == null) return;
 
+            Localidad loc = (Localidad)LocalidadEntregaComboBox.SelectedItem;
             var agencias = modelo.ObtenerAgenciasPorLocalidad(loc.LocalidadId);
             var cds = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
 
@@ -211,9 +199,6 @@ namespace GrupoE_Tutasa.Imposicion
             TipoEntregaComboBox.Enabled = true;
         }
 
-        // ─────────────────────────────────────────────
-        // TIPO ENTREGA → carga Destino o panel domicilio
-        // ─────────────────────────────────────────────
         private void TipoEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             DestinoComboBox.DataSource = null;
@@ -222,8 +207,11 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (TipoEntregaComboBox.SelectedItem is not string tipoSeleccionado) return;
-            if (LocalidadEntregaComboBox.SelectedItem is not Localidad loc) return;
+            if (TipoEntregaComboBox.SelectedItem == null) return;
+            if (LocalidadEntregaComboBox.SelectedItem == null) return;
+
+            string tipoSeleccionado = TipoEntregaComboBox.SelectedItem.ToString();
+            Localidad loc = (Localidad)LocalidadEntregaComboBox.SelectedItem;
 
             if (tipoSeleccionado == "A domicilio")
             {
@@ -255,22 +243,22 @@ namespace GrupoE_Tutasa.Imposicion
             ActualizarTotales();
         }
 
-        // ─────────────────────────────────────────────
-        // VALIDACIÓN CÓDIGO POSTAL
-        // Solo letras → inválido; números o alfanumérico → válido
-        // ─────────────────────────────────────────────
-        private static bool ValidarCodigoPostal(string cp)
+        private bool ValidarCodigoPostal(string cp)
         {
             if (string.IsNullOrWhiteSpace(cp)) return true;
-            bool tieneLetras = cp.Any(char.IsLetter);
-            bool tieneNumeros = cp.Any(char.IsDigit);
+            bool tieneLetras = false;
+            bool tieneNumeros = false;
+
+            foreach (char c in cp)
+            {
+                if (char.IsLetter(c)) tieneLetras = true;
+                if (char.IsDigit(c)) tieneNumeros = true;
+            }
+
             if (tieneLetras && !tieneNumeros) return false;
             return true;
         }
 
-        // ─────────────────────────────────────────────
-        // CÁLCULO DE TOTALES
-        // ─────────────────────────────────────────────
         private void ActualizarTotales()
         {
             int.TryParse(CantidadSTextBox.Text, out int cantS);
@@ -284,51 +272,76 @@ namespace GrupoE_Tutasa.Imposicion
 
         private ModalidadEntregaEnum ResolverModalidadEntrega()
         {
-            if (TipoEntregaComboBox.SelectedItem is not string tipo)
+            if (TipoEntregaComboBox.SelectedItem == null)
                 return ModalidadEntregaEnum.CD;
 
-            return tipo switch
-            {
-                "A domicilio" => ModalidadEntregaEnum.DOMICILIO,
-                "Agencia" => ModalidadEntregaEnum.AGENCIA,
-                _ => ModalidadEntregaEnum.CD
-            };
+            string tipo = TipoEntregaComboBox.SelectedItem.ToString();
+
+            if (tipo == "A domicilio") return ModalidadEntregaEnum.DOMICILIO;
+            if (tipo == "Agencia") return ModalidadEntregaEnum.AGENCIA;
+            return ModalidadEntregaEnum.CD;
         }
 
-        private void CantidadSTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void CantidadMTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void CantidadLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void CantidadXLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadSTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTotales();
+        }
 
-        // ─────────────────────────────────────────────
-        // CONFIRMAR
-        // ─────────────────────────────────────────────
+        private void CantidadMTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTotales();
+        }
+
+        private void CantidadLTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTotales();
+        }
+
+        private void CantidadXLTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarTotales();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            // ── Validar remitente ──
-            if (_clienteActual == null)
+            // Validar remitente
+            if (clienteActual == null)
             {
                 MessageBox.Show("Debe seleccionar un remitente antes de confirmar.");
                 return;
             }
 
-            // ── Validar nombre destinatario ──
-            if (string.IsNullOrWhiteSpace(NombreDestinatarioTextBox.Text) ||
-                !NombreDestinatarioTextBox.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            // Validar nombre destinatario
+            if (string.IsNullOrWhiteSpace(NombreDestinatarioTextBox.Text))
             {
                 MessageBox.Show("El nombre del destinatario debe ser válido (solo letras).");
                 return;
             }
+            foreach (char c in NombreDestinatarioTextBox.Text)
+            {
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+                {
+                    MessageBox.Show("El nombre del destinatario debe ser válido (solo letras).");
+                    return;
+                }
+            }
 
-            // ── Validar apellido destinatario ──
-            if (string.IsNullOrWhiteSpace(ApellidoDestinatarioTextBox.Text) ||
-                !ApellidoDestinatarioTextBox.Text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            // Validar apellido destinatario
+            if (string.IsNullOrWhiteSpace(ApellidoDestinatarioTextBox.Text))
             {
                 MessageBox.Show("El apellido del destinatario debe ser válido (solo letras).");
                 return;
             }
+            foreach (char c in ApellidoDestinatarioTextBox.Text)
+            {
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+                {
+                    MessageBox.Show("El apellido del destinatario debe ser válido (solo letras).");
+                    return;
+                }
+            }
 
-            // ── Validar DNI ──
+            // Validar DNI
             if (!int.TryParse(DNIDestinatarioTextBox.Text, out int dni) ||
                 DNIDestinatarioTextBox.Text.Length < 7 ||
                 DNIDestinatarioTextBox.Text.Length > 8)
@@ -337,14 +350,14 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // ── Validar CP de retiro ──
+            // Validar CP de retiro
             if (!DomicilioFiscalCheck.Checked && !ValidarCodigoPostal(CPRetiroTextBox.Text))
             {
                 MessageBox.Show("El código postal de retiro es incorrecto. Debe contener al menos un número.");
                 return;
             }
 
-            // ── Validar entrega ──
+            // Validar entrega
             if (ProvinciaEntregaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccioná una provincia de entrega.");
@@ -380,11 +393,30 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // ── Validar cantidades ──
-            if ((!string.IsNullOrWhiteSpace(CantidadSTextBox.Text) && !CantidadSTextBox.Text.All(char.IsDigit)) ||
-                (!string.IsNullOrWhiteSpace(CantidadMTextBox.Text) && !CantidadMTextBox.Text.All(char.IsDigit)) ||
-                (!string.IsNullOrWhiteSpace(CantidadLTextBox.Text) && !CantidadLTextBox.Text.All(char.IsDigit)) ||
-                (!string.IsNullOrWhiteSpace(CantidadXLTextBox.Text) && !CantidadXLTextBox.Text.All(char.IsDigit)))
+            // Validar cantidades
+            bool cantidadesValidas = true;
+            if (!string.IsNullOrWhiteSpace(CantidadSTextBox.Text))
+            {
+                foreach (char c in CantidadSTextBox.Text)
+                    if (!char.IsDigit(c)) cantidadesValidas = false;
+            }
+            if (!string.IsNullOrWhiteSpace(CantidadMTextBox.Text))
+            {
+                foreach (char c in CantidadMTextBox.Text)
+                    if (!char.IsDigit(c)) cantidadesValidas = false;
+            }
+            if (!string.IsNullOrWhiteSpace(CantidadLTextBox.Text))
+            {
+                foreach (char c in CantidadLTextBox.Text)
+                    if (!char.IsDigit(c)) cantidadesValidas = false;
+            }
+            if (!string.IsNullOrWhiteSpace(CantidadXLTextBox.Text))
+            {
+                foreach (char c in CantidadXLTextBox.Text)
+                    if (!char.IsDigit(c)) cantidadesValidas = false;
+            }
+
+            if (!cantidadesValidas)
             {
                 MessageBox.Show("Las cantidades de encomiendas deben ser valores numéricos enteros.");
                 return;
@@ -401,102 +433,165 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // ── Resolver modalidad de entrega y domicilio destino ──
-            var modalidadEntrega = ResolverModalidadEntrega();
+            ModalidadEntregaEnum modalidadEntrega = ResolverModalidadEntrega();
 
             Domicilio domicilioEntrega = null;
-            int? agenciaDestinoId = null;
-            int cdDestinoId = _cdActualId; // fallback: mismo CD
+            int agenciaDestinoId = 0;
+            bool tieneAgenciaDestino = false;
+            int cdDestinoId = cdActualId;
 
-            if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem is Agencia agencia)
+            if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem != null)
             {
+                Agencia agencia = (Agencia)DestinoComboBox.SelectedItem;
                 agenciaDestinoId = agencia.AgenciaId;
+                tieneAgenciaDestino = true;
                 domicilioEntrega = agencia.Domicilio;
                 cdDestinoId = agencia.CDAsignadoId;
             }
-            else if (tipoSeleccionado == "CD" && DestinoComboBox.SelectedItem is CentroDistribucion cd)
+            else if (tipoSeleccionado == "CD" && DestinoComboBox.SelectedItem != null)
             {
+                CentroDistribucion cd = (CentroDistribucion)DestinoComboBox.SelectedItem;
                 domicilioEntrega = cd.Domicilio;
                 cdDestinoId = cd.CDId;
             }
             else if (tipoSeleccionado == "A domicilio")
             {
-                var localidadEntrega = LocalidadEntregaComboBox.SelectedItem as Localidad;
+                int localidadEntregaId = 0;
+                if (LocalidadEntregaComboBox.SelectedItem != null)
+                {
+                    Localidad localidadEntrega = (Localidad)LocalidadEntregaComboBox.SelectedItem;
+                    localidadEntregaId = localidadEntrega.LocalidadId;
+                }
                 domicilioEntrega = new Domicilio
                 {
                     Calle = DireccionDomicilioTextBox.Text,
                     CodigoPostal = CPDomicilioTextBox.Text,
-                    LocalidadId = localidadEntrega?.LocalidadId ?? 0
+                    LocalidadId = localidadEntregaId
                 };
             }
 
-            // ── Construir domicilio de retiro ──
             Domicilio domicilioRetiro;
             if (DomicilioFiscalCheck.Checked)
             {
-                domicilioRetiro = _clienteActual.Domicilio;
+                domicilioRetiro = clienteActual.Domicilio;
             }
             else
             {
-                var localidadRetiro = LocalidadRetiroComboBox.SelectedItem as Localidad;
+                int localidadRetiroId = 0;
+                if (LocalidadRetiroComboBox.SelectedItem != null)
+                {
+                    Localidad localidadRetiro = (Localidad)LocalidadRetiroComboBox.SelectedItem;
+                    localidadRetiroId = localidadRetiro.LocalidadId;
+                }
                 domicilioRetiro = new Domicilio
                 {
                     Calle = DireccionRetiroTextBox.Text,
                     CodigoPostal = CPRetiroTextBox.Text,
-                    LocalidadId = localidadRetiro?.LocalidadId ?? 0
+                    LocalidadId = localidadRetiroId
                 };
             }
 
-            // ── Registrar guías (una por bulto) ──
-            var guiasGeneradas = new List<string>();
-
-            void RegistrarPorTipo(int cantidad, TipoCajaEnum tipoCaja)
+            // Registrar guías tipo S
+            string detalle = "";
+            for (int i = 0; i < cantS; i++)
             {
-                for (int i = 0; i < cantidad; i++)
-                {
-                    var guia = new Guia
-                    {
-                        ClienteId = _clienteActual.ClienteId,
-                        CDOrigenId = _cdActualId,
-                        CDDestinoId = cdDestinoId,
-                        ModalidadImposicion = ModalidadImposicionEnum.CD,   // imposición en CD
-                        DomicilioRetiro = domicilioRetiro,
-                        ModalidadEntrega = modalidadEntrega,
-                        AgenciaDestinoId = agenciaDestinoId,
-                        DomicilioEntrega = domicilioEntrega,
-                        NombreDestinatario = NombreDestinatarioTextBox.Text.Trim(),
-                        ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim(),
-                        DNIDestinatario = dni,
-                        TipoCaja = tipoCaja,
-                        IntentosDeEntrega = 0,
-                        Estado = EstadoGuiaEnum.A_RETIRAR,
-                        TarifarioId = 1,
-                    };
-
-                    // Regla de negocio: CDActualId se asigna dentro de RegistrarGuia
-                    // solo cuando ModalidadImposicion == CD (que es este caso).
-                    modelo.RegistrarGuia(guia, _cdActualId);
-                    guiasGeneradas.Add($"{guia.GuiaId:D8} ({tipoCaja})");
-                }
+                Guia guia = new Guia();
+                guia.ClienteId = clienteActual.ClienteId;
+                guia.CDOrigenId = cdActualId;
+                guia.CDDestinoId = cdDestinoId;
+                guia.ModalidadImposicion = ModalidadImposicionEnum.CD;
+                guia.DomicilioRetiro = domicilioRetiro;
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
+                guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.S;
+                guia.IntentosDeEntrega = 0;
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+                guia.TarifarioId = 1;
+                modelo.RegistrarGuia(guia, cdActualId);
+                detalle = detalle + guia.GuiaId.ToString("D8") + " (S)\n";
             }
 
-            RegistrarPorTipo(cantS, TipoCajaEnum.S);
-            RegistrarPorTipo(cantM, TipoCajaEnum.M);
-            RegistrarPorTipo(cantL, TipoCajaEnum.L);
-            RegistrarPorTipo(cantXL, TipoCajaEnum.XL);
+            // Registrar guías tipo M
+            for (int i = 0; i < cantM; i++)
+            {
+                Guia guia = new Guia();
+                guia.ClienteId = clienteActual.ClienteId;
+                guia.CDOrigenId = cdActualId;
+                guia.CDDestinoId = cdDestinoId;
+                guia.ModalidadImposicion = ModalidadImposicionEnum.CD;
+                guia.DomicilioRetiro = domicilioRetiro;
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
+                guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.M;
+                guia.IntentosDeEntrega = 0;
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+                guia.TarifarioId = 1;
+                modelo.RegistrarGuia(guia, cdActualId);
+                detalle = detalle + guia.GuiaId.ToString("D8") + " (M)\n";
+            }
 
-            string detalle = string.Join("\n", guiasGeneradas);
-            MessageBox.Show($"Operación confirmada. Guías generadas exitosamente:\n{detalle}");
+            // Registrar guías tipo L
+            for (int i = 0; i < cantL; i++)
+            {
+                Guia guia = new Guia();
+                guia.ClienteId = clienteActual.ClienteId;
+                guia.CDOrigenId = cdActualId;
+                guia.CDDestinoId = cdDestinoId;
+                guia.ModalidadImposicion = ModalidadImposicionEnum.CD;
+                guia.DomicilioRetiro = domicilioRetiro;
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
+                guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.L;
+                guia.IntentosDeEntrega = 0;
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+                guia.TarifarioId = 1;
+                modelo.RegistrarGuia(guia, cdActualId);
+                detalle = detalle + guia.GuiaId.ToString("D8") + " (L)\n";
+            }
+
+            // Registrar guías tipo XL
+            for (int i = 0; i < cantXL; i++)
+            {
+                Guia guia = new Guia();
+                guia.ClienteId = clienteActual.ClienteId;
+                guia.CDOrigenId = cdActualId;
+                guia.CDDestinoId = cdDestinoId;
+                guia.ModalidadImposicion = ModalidadImposicionEnum.CD;
+                guia.DomicilioRetiro = domicilioRetiro;
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
+                guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.XL;
+                guia.IntentosDeEntrega = 0;
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+                guia.TarifarioId = 1;
+                modelo.RegistrarGuia(guia, cdActualId);
+                detalle = detalle + guia.GuiaId.ToString("D8") + " (XL)\n";
+            }
+
+            MessageBox.Show("Operación confirmada. Guías generadas exitosamente:\n" + detalle);
 
             LimpiarFormulario();
         }
 
-        // ─────────────────────────────────────────────
-        // CANCELAR
-        // ─────────────────────────────────────────────
         private void button2_Click(object sender, EventArgs e)
         {
-            var resultado = MessageBox.Show(
+            DialogResult resultado = MessageBox.Show(
                 "Si sale se eliminarán los datos ingresados. ¿Salir?",
                 "Confirmar salida",
                 MessageBoxButtons.YesNo);
@@ -508,12 +603,9 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
-        // ─────────────────────────────────────────────
-        // LIMPIEZA
-        // ─────────────────────────────────────────────
         private void LimpiarFormulario()
         {
-            _clienteActual = null;
+            clienteActual = null;
 
             CuitRemitenteTextBox.Clear();
             NombreRemitenteLabel.Text = string.Empty;
@@ -555,23 +647,27 @@ namespace GrupoE_Tutasa.Imposicion
             GuiasAGenerarLabel.Text = "[Total Guias]";
         }
 
-        // ─────────────────────────────────────────────
-        // HELPERS
-        // ─────────────────────────────────────────────
-        private static string FormatearDomicilio(Domicilio d)
+        private string FormatearDomicilio(Domicilio d)
         {
             if (d == null) return string.Empty;
-            var partes = new List<string>();
-            if (!string.IsNullOrWhiteSpace(d.Calle)) partes.Add(d.Calle);
-            if (!string.IsNullOrWhiteSpace(d.Numero)) partes.Add(d.Numero);
-            if (!string.IsNullOrWhiteSpace(d.Piso)) partes.Add($"P{d.Piso}");
-            if (!string.IsNullOrWhiteSpace(d.Depto)) partes.Add($"D{d.Depto}");
-            return string.Join(" ", partes);
+
+            string resultado = "";
+
+            if (!string.IsNullOrWhiteSpace(d.Calle))
+                resultado = resultado + d.Calle + " ";
+
+            if (!string.IsNullOrWhiteSpace(d.Numero))
+                resultado = resultado + d.Numero + " ";
+
+            if (!string.IsNullOrWhiteSpace(d.Piso))
+                resultado = resultado + "P" + d.Piso + " ";
+
+            if (!string.IsNullOrWhiteSpace(d.Depto))
+                resultado = resultado + "D" + d.Depto + " ";
+
+            return resultado.Trim();
         }
 
-        // ─────────────────────────────────────────────
-        // HANDLERS REQUERIDOS POR EL DESIGNER
-        // ─────────────────────────────────────────────
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }
         private void groupBox5_Enter(object sender, EventArgs e) { }
@@ -583,17 +679,9 @@ namespace GrupoE_Tutasa.Imposicion
         private void label12_Click(object sender, EventArgs e) { }
         private void label19_Click(object sender, EventArgs e) { }
         private void label26_Click(object sender, EventArgs e) { }
-        private void CPDomicilioTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void label16_Click(object sender, EventArgs e) { }
+        private void CPDomicilioTextBox_TextChanged(object sender, EventArgs e) { ActualizarTotales(); }
         private void CPRetiroTextBox_TextChanged(object sender, EventArgs e) { }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CuitRemitenteTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void CuitRemitenteTextBox_TextChanged(object sender, EventArgs e) { }
     }
 }
