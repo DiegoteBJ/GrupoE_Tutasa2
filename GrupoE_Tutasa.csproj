@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Almacenes\" />
-    <Folder Include="Datos\" />
   </ItemGroup>
 
 <ItemGroup>
@@ -34,10 +33,19 @@
 </ItemGroup>
 
 <ItemGroup>
+  <None Update="Datos\AgenciaEntidad - Copia.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
   <None Update="Datos\AgenciaEntidad.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
+  <None Update="Datos\CentroDistribucionEntidad - Copia.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
   <None Update="Datos\CentroDistribucionEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="Datos\ClienteEntidad - Copia.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ClienteEntidad.json">
@@ -59,6 +67,12 @@
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\GuiaEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="Datos\HDRDistribucionEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="Datos\HDRRetiroEntidad.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\LocalidadEntidad.json">
