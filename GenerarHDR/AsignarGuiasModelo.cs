@@ -26,7 +26,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "L",
-                        EstadoGuia = "A retirar",
+                        EstadoGuia = "A_RETIRAR",
                         NombreDestinatarioGuia = "Juan Pérez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -55,7 +55,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                         },
                         tamañoGuia = "M",
-                        EstadoGuia = "A retirar",
+                        EstadoGuia = "A_RETIRAR",
                         NombreDestinatarioGuia = "María Gómez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -83,7 +83,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "S",
-                        EstadoGuia = "A retirar",
+                        EstadoGuia = "A_RETIRAR",
                         NombreDestinatarioGuia = "Carlos Rodríguez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -107,7 +107,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "XL",
-                        EstadoGuia = "A retirar",
+                        EstadoGuia = "A_RETIRAR",
                         NombreDestinatarioGuia = "Ana Martínez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -131,7 +131,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "M",
-                        EstadoGuia = "Admitida",
+                        EstadoGuia = "ADMITIDA",
                         NombreDestinatarioGuia = "Luis Fernández",
                         DomicilioEntrega = new Domicilio
                         {
@@ -155,7 +155,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "S",
-                        EstadoGuia = "Admitida",
+                        EstadoGuia = "ADMITIDA",
                         NombreDestinatarioGuia = "Sofía López",
                         DomicilioEntrega = new Domicilio
                         {
@@ -179,7 +179,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "XL",
-                        EstadoGuia = "Admitida",
+                        EstadoGuia = "ADMITIDA",
                         NombreDestinatarioGuia = "Miguel Sánchez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -203,7 +203,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "L",
-                        EstadoGuia = "Admitida",
+                        EstadoGuia = "ADMITIDA",
                         NombreDestinatarioGuia = "Laura Gómez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -227,7 +227,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                             Provincia = "Buenos Aires"
                         },
                         tamañoGuia = "M",
-                        EstadoGuia = "En distribución",
+                        EstadoGuia = "EN_DISTRIBUCION",
                         NombreDestinatarioGuia = "Jorge Rodríguez",
                         DomicilioEntrega = new Domicilio
                         {
@@ -264,6 +264,32 @@ namespace GrupoE_Tutasa.GenerarHDR
                         },
                         IntentosDeEntrega = 0
                     },
+                    new Guias
+                    {
+                        GuiaId = 11,
+                        DomicilioRetiro = new Domicilio
+                        {
+                            Calle = "Avenida de la Esperanza",
+                            Numero = "654",
+                            CodigoPostal = "5000",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        tamañoGuia = "M",
+                        EstadoGuia = "EN_CD_DESTINO",
+                        NombreDestinatarioGuia = "Raúl García",
+                        DomicilioEntrega = new Domicilio
+                        {
+                            Calle = "Avenida Real",
+                            Numero = "987",
+                            Piso = "3",
+                            Depto = "B",
+                            CodigoPostal = "C1001",
+                            Localidad = "CABA",
+                            Provincia = "Buenos Aires"
+                        },
+                        IntentosDeEntrega = 0
+                    },
                 };
 
         public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
@@ -285,7 +311,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 fleteroId = 1,
                 FechaEmision = DateTime.Now.AddDays(-1),
                 FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "Pendiente",
+                Estado = "PENDIENTE",
                 GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
             new HDRRetiro
@@ -295,7 +321,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 fleteroId = 2,
                 FechaEmision = DateTime.Now.AddDays(-2),
                 FechaRendicion = DateTime.MinValue,
-                Estado = "Pendiente",
+                Estado = "PENDIENTE",
                 GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             }
         };
@@ -309,7 +335,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 fleteroId = 1,
                 FechaEmision = DateTime.Now.AddDays(-1),
                 FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "Pendiente",
+                Estado = "PENDIENTE",
                 GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
             new HDRDistribucion
@@ -319,7 +345,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 fleteroId = 2,
                 FechaEmision = DateTime.Now.AddDays(-2),
                 FechaRendicion = DateTime.MinValue,
-                Estado = "Pendiente",
+                Estado = "PENDIENTE",
                 GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
             },
 
@@ -406,24 +432,25 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             if (fletero == null) return Enumerable.Empty<Guias>();
 
-            if (estado == "A retirar")
+            if (estado == "A_RETIRAR")
             {
                 return LGuiasAAsignar.Where(g =>
-                    g.EstadoGuia == "A retirar" &&
+                    g.EstadoGuia == "A_RETIRAR" &&
                     fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
-                    !HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+                    !HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "PENDIENTE"));
             }
-            else if (estado == "Distribución")
+            else if (estado == "EN_DISTRIBUCION")
             {
                 return LGuiasAAsignar.Where(g =>
-                    (g.EstadoGuia == "Admitida" ||
-                     (g.EstadoGuia == "En distribución" && g.IntentosDeEntrega < 2)) &&
+                    (g.EstadoGuia == "ADMITIDA" ||
+                    (g.EstadoGuia == "EN_CD_DESTINO") ||
+                    (g.EstadoGuia == "EN_DISTRIBUCION" && g.IntentosDeEntrega < 2)) &&
                     fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
-                    !HDRsDistribucion.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "Pendiente"));
+                    !HDRsDistribucion.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "PENDIENTE"));
             }
 
             return Enumerable.Empty<Guias>();
@@ -441,7 +468,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             int idDistribTemp = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HDRDistribucionId) + 1 : 1;
 
             var grupos = guiasSeleccionadas.GroupBy(g =>
-                (g.EstadoGuia == "A retirar")
+                (g.EstadoGuia == "A_RETIRAR")
                     ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.Piso}-{g.DomicilioRetiro.Depto}-{g.DomicilioRetiro.CodigoPostal}"
                     : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.Piso}-{g.DomicilioEntrega.Depto}-{g.DomicilioEntrega.CodigoPostal}");
 
@@ -450,7 +477,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 var guiasGrupo = grupo.ToList();
                 var g = guiasGrupo.First(); // tomamos la primera guía del grupo para armar domicilio
 
-                if (guiasGrupo.All(x => x.EstadoGuia == "A retirar"))
+                if (guiasGrupo.All(x => x.EstadoGuia == "A_RETIRAR"))
                 {
                     var domicilio = $"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}";
                     hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro")
@@ -496,7 +523,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         HDRRetiroId = ultimoHDRRetiroId,
                         fleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Now,
-                        Estado = "Pendiente",
+                        Estado = "PENDIENTE",
                         GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
                 }
@@ -508,13 +535,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                         HDRDistribucionId = ultimoHDRDistribucionId,
                         fleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Now,
-                        Estado = "Pendiente",
+                        Estado = "PENDIENTE",
                         GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == "Admitida"))
+                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == "ADMITIDA" || g.EstadoGuia == "EN_CD_DESTINO"))
                     {
-                        g.EstadoGuia = "En distribución";
+                        g.EstadoGuia = "EN_DISTRIBUCION";
                     }
                 }
             }
