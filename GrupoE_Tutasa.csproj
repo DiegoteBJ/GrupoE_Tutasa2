@@ -46,6 +46,12 @@
   <None Update="Datos\ConveniosTransporteEntidad.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
+  <None Update="Datos\CuentaCorrienteClienteEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="Datos\DocumentoEntidad.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
   <None Update="Datos\EmpresaTransporteEntidad.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>

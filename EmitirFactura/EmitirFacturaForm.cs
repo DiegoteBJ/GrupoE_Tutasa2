@@ -144,14 +144,8 @@ namespace GrupoE_Tutasa.EmitirFactura
             DocumentoAlmacen.Guardar();
 
             // Marcar las guías como facturadas y agregar el número de documento a cada guía facturada.
-            foreach (var guiaAFacturar in modelo.LGuiasPendientes)
-            {
-                if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
-                {
-                    guiaAFacturar.facturada = true;
-                    guiaAFacturar.documentoNumero = numeroDocumento; 
-                }
-            }
+            modelo.MarcarGuiasComoFacturadas(clienteId, numeroDocumento);
+
             // Mostrar mensaje de éxito con el número de documento y el importe facturado.
             MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" + $"Importe facturado: {documentoTotal}\n" + $"Importe sin IVA: {netoGravado}");
             EmitirFacturaBoton.Enabled = false;

@@ -7,40 +7,26 @@ namespace GrupoE_Tutasa.EmitirFactura
 {
     internal class EmisionFacturaModelo
     {
-        public List<GuiasPendientes> LGuiasPendientes
-        {
-            get
+        public List<GuiasPendientes> LGuiasPendientes =>
+        CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
+             .Where(cc => !cc.Facturado
+                  && cc.FechaEntrega.Month == DateTime.Now.AddMonths(-1).Month
+                  && cc.FechaEntrega.Year == DateTime.Now.AddMonths(-1).Year)
+            .Select(cc => new GuiasPendientes
             {
-                return new List<GuiasPendientes>
-                {
-                    //Esta clase representa las guias pendientes de facturacion, Cada guia tiene un Id unico, un clienteID 
-                    //sruge en realidad de la clase CC de Clientes, guia id, fecha de entrega, fecha de movimiento, 
-                    //precio de imposicion, transporte, entrega y total. Un boolean que indique si ya fue facturada
-                    // y un string con el numero de cocumento una vez facturada.
-
-                    new GuiasPendientes { Id = 1, clienteID = 1, numeroGuia = 001, fechaEntrega = new DateTime(2026, 04, 05), importe = 15000 },
-                    new GuiasPendientes { Id = 2, clienteID = 2, numeroGuia = 002, fechaEntrega = new DateTime(2026, 04, 06), importe = 10000 },
-                    new GuiasPendientes { Id = 3, clienteID = 3, numeroGuia = 003, fechaEntrega = new DateTime(2026, 04, 07), importe = 6000 },
-                    new GuiasPendientes { Id = 4, clienteID = 4, numeroGuia = 004, fechaEntrega = new DateTime(2026, 04, 08), importe = 20000 },
-                    new GuiasPendientes { Id = 5, clienteID = 5, numeroGuia = 005, fechaEntrega = new DateTime(2026, 04, 09), importe = 11000 },
-                    new GuiasPendientes { Id = 6, clienteID = 6, numeroGuia = 006, fechaEntrega = new DateTime(2026, 04, 10), importe = 7000 },
-                    new GuiasPendientes { Id = 7, clienteID = 1, numeroGuia = 007, fechaEntrega = new DateTime(2026, 04, 11), importe = 19000 },
-                    new GuiasPendientes { Id = 8, clienteID = 2, numeroGuia = 008, fechaEntrega = new DateTime(2026, 04, 12), importe = 14000 },
-                    new GuiasPendientes { Id = 9, clienteID = 3, numeroGuia = 009, fechaEntrega = new DateTime(2026, 04, 13), importe = 9500 },
-                    new GuiasPendientes { Id = 10, clienteID = 4, numeroGuia = 010, fechaEntrega = new DateTime(2026, 04, 14), importe = 7500 },
-                    new GuiasPendientes { Id = 11, clienteID = 1, numeroGuia = 011, fechaEntrega = new DateTime(2026, 04, 15), importe = 20000 },
-                    new GuiasPendientes { Id = 12, clienteID = 2, numeroGuia = 012, fechaEntrega = new DateTime(2026, 04, 16), importe = 15000 },
-                    new GuiasPendientes { Id = 13, clienteID = 3, numeroGuia = 013, fechaEntrega = new DateTime(2026, 04, 17), importe = 10000 },
-                    new GuiasPendientes { Id = 14, clienteID = 4, numeroGuia = 014, fechaEntrega = new DateTime(2026, 04, 18), importe = 6000 },
-                    new GuiasPendientes { Id = 15, clienteID = 1, numeroGuia = 015, fechaEntrega = new DateTime(2026, 04, 19), importe = 20000 },
-                    new GuiasPendientes { Id = 16, clienteID = 2, numeroGuia = 016, fechaEntrega = new DateTime(2026, 04, 20), importe = 14000 },
-                    new GuiasPendientes { Id = 17, clienteID = 3, numeroGuia = 017, fechaEntrega = new DateTime(2026, 04, 21), importe = 11000 },
-                    new GuiasPendientes { Id = 18, clienteID = 4, numeroGuia = 018, fechaEntrega = new DateTime(2026, 04, 22), importe = 7000 },
-                    new GuiasPendientes { Id = 19, clienteID = 5, numeroGuia = 019, fechaEntrega = new DateTime(2026, 04, 23), importe = 19000 },
-                    new GuiasPendientes { Id = 20, clienteID = 1, numeroGuia = 020, fechaEntrega = new DateTime(2026, 04, 24), importe = 15000 }
-                };
-            }
-        }
+                Id = cc.CcClienteId,
+                clienteID = cc.ClienteId,
+                numeroGuia = cc.GuiaId,
+                fechaEntrega = cc.FechaEntrega,
+                fechaMovimiento = cc.FechaMovimiento,
+                precioImposicion = cc.PrecioImposicion,
+                precioEntrega = cc.PrecioEntrega,
+                precioTransporte = cc.PrecioTransporte,
+                importe = cc.PrecioCalculadoTotal,
+                empresaTransporteID = cc.EmpresaTransporteId,
+                facturada = cc.Facturado,
+                documentoNumero = string.Empty
+            }).ToList();
         public List<Clientes> LClientes =>
         ClienteAlmacen.clientes.Select(c => new Clientes
         {
@@ -73,6 +59,27 @@ namespace GrupoE_Tutasa.EmitirFactura
                 tipoCaja = g.TipoCaja.ToString(),
                 tarifarioId = g.TarifarioId
             }).ToList();
+
+        public void MarcarGuiasComoFacturadas(int clienteId, string numeroDocumento)
+        {
+            var registros = CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
+                .Where(cc => cc.ClienteId == clienteId
+                          && !cc.Facturado
+                          && cc.FechaEntrega.Month == DateTime.Now.AddMonths(-1).Month
+                          && cc.FechaEntrega.Year == DateTime.Now.AddMonths(-1).Year);
+
+            var documento = DocumentoAlmacen.documentos
+                .FirstOrDefault(d => d.NumeroDocumento == numeroDocumento);
+
+            foreach (var cc in registros)
+            {
+                cc.Facturado = true;
+                cc.DocumentoId = documento?.DocumentoId ?? 0;
+                cc.FechaMovimiento = DateTime.Now;
+            }
+            CuentaCorrienteClienteAlmacen.Guardar();
+        }
+
         public static bool ValidarCuit(string cuit)
         {
             if (string.IsNullOrWhiteSpace(cuit)) return false;
