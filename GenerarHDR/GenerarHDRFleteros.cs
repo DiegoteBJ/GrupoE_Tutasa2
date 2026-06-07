@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -102,8 +103,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             var fletero = modelo.BuscarFleteroPorDni(dni);
             if (fletero != null)
             {
-                nombrefleterolabel.Text = fletero.FleteroNombre;
-                apellidofleterolabel.Text = fletero.FleteroApellido;
+                nombrefleterolabel.Text = fletero.Nombre;
+                apellidofleterolabel.Text = fletero.Apellido;
                 this.Tag = fletero;
                 ingresardnitextBox.Clear();
                 retiroradioButton.Enabled = true;
@@ -207,7 +208,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 .Select(id => id.Value)
                 .ToHashSet();
 
-            var fletero = this.Tag as Fleteros;
+            var fletero = this.Tag as FleteroEntidad;
             if (fletero == null) return;
 
             var guias = modelo.ObtenerGuiasPorEstado(estado, fletero, guiasEnDetalle);
@@ -227,10 +228,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                     item.SubItems.Add($"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero} - Piso: {g.DomicilioEntrega.Piso} - Depto: {g.DomicilioEntrega.Depto}");
                 }
 
-                item.SubItems.Add(g.tamañoGuia);                // Tamaño
-                item.SubItems.Add(g.EstadoGuia);                // Estado
+                item.SubItems.Add(g.TipoCaja.ToString());                // Tamaño
+                item.SubItems.Add(g.Estado.ToString());                // Estado
                 item.SubItems.Add(g.IntentosDeEntrega.ToString()); // Intentos
-                item.SubItems.Add(g.NombreDestinatarioGuia);    // Destinatario
+                item.SubItems.Add(g.NombreDestinatario);    // Destinatario
 
                 item.Tag = g;
                 seleccionguiaslistView.Items.Add(item);
@@ -324,7 +325,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         
         private void ActualizarAutoCompleteCP(string estado)
         {
-            var fletero = this.Tag as Fleteros;
+            var fletero = this.Tag as FleteroEntidad;
             if (fletero == null)
             {
                 ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -335,8 +336,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (estado == "A_RETIRAR")
             {
                 codigosPostales = modelo.LGuiasAAsignar
-                    .Where(g => g.EstadoGuia == "A_RETIRAR" &&
-                                fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
+                    .Where(g => g.Estado == EstadoGuiaEnum.A_RETIRAR &&
+                                fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
                     .Select(g => g.DomicilioRetiro.CodigoPostal.ToUpper())
                     .Distinct()
                     .ToArray();
@@ -344,10 +345,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             else
             {
                 codigosPostales = modelo.LGuiasAAsignar
-                    .Where(g => (g.EstadoGuia == "ADMITIDA" || 
-                                (g.EstadoGuia == "EN_CD_DESTINO") ||
-                                (g.EstadoGuia == "EN_DISTRIBUCION" && g.IntentosDeEntrega < 2)) &&
-                                fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
+                    .Where(g => (g.Estado == EstadoGuiaEnum.ADMITIDA || 
+                                (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
+                                (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
+                                fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
                     .Select(g => g.DomicilioEntrega.CodigoPostal.ToUpper())
                     .Distinct()
                     .ToArray();
@@ -579,7 +580,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            var fletero = this.Tag as Fleteros;
+            var fletero = this.Tag as FleteroEntidad;
             if (fletero == null)
             {
                 MessageBox.Show("Debe seleccionar un fletero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -588,7 +589,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var guiasSeleccionadas = detallehdrlistView.Items
                 .Cast<ListViewItem>()
-                .Select(i => i.Tag as Guias)
+                .Select(i => i.Tag as GuiaEntidad)
                 .Where(g => g != null)
                 .ToList();
 
@@ -598,7 +599,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         }
 
-        private void MostrarResumenPopup(List<HDRResumen> resumen, Fleteros fletero)
+        private void MostrarResumenPopup(List<HDRResumen> resumen, FleteroEntidad fletero)
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";

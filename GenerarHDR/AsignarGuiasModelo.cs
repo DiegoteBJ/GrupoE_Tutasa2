@@ -8,352 +8,15 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class AsignarGuiasModelo
     {
-
-        public List<Guias> LGuiasAAsignar { get; set; } = new List<Guias>()
-
-                {
-                    new Guias
-                    {
-                        GuiaId = 1,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle Falsa",
-                            Numero = "123",
-                            Piso = "1",
-                            Depto = "2",
-                            CodigoPostal = "C1000",
-                            Localidad = "Buenos Aires",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "L",
-                        EstadoGuia = "A_RETIRAR",
-                        NombreDestinatarioGuia = "Juan Pérez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Calle Verdadera",
-                            Numero = "456",
-                            Piso = "1",
-                            Depto = "3",
-                            CodigoPostal = "2000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 2,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle Falsa",
-                            Numero = "123",
-                            Piso = "1",
-                            Depto= "2",
-                            CodigoPostal = "C1000",
-                            Localidad = "Buenos Aires",
-                            Provincia = "Buenos Aires"
-
-                        },
-                        tamañoGuia = "M",
-                        EstadoGuia = "A_RETIRAR",
-                        NombreDestinatarioGuia = "María Gómez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "789",
-                            Piso = "1",
-                            Depto = "3",
-                            CodigoPostal = "2000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 3,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Boulevard de los Sueños Rotos",
-                            Numero = "789",
-                            Piso = "1",
-                            Depto = "2",
-                            CodigoPostal = "3000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "S",
-                        EstadoGuia = "A_RETIRAR",
-                        NombreDestinatarioGuia = "Carlos Rodríguez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Boulevard Real",
-                            Numero = "321",
-                            CodigoPostal = "7700",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 4,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle del Olvido",
-                            Numero = "321",
-                            CodigoPostal = "4000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "XL",
-                        EstadoGuia = "A_RETIRAR",
-                        NombreDestinatarioGuia = "Ana Martínez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Calle Real",
-                            Numero = "654",
-                            CodigoPostal = "2000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 5,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Avenida de la Esperanza",
-                            Numero = "654",
-                            CodigoPostal = "5000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "M",
-                        EstadoGuia = "ADMITIDA",
-                        NombreDestinatarioGuia = "Luis Fernández",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "987",
-                            CodigoPostal = "C1001",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 6,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle de la Fortuna",
-                            Numero = "987",
-                            CodigoPostal = "6000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "S",
-                        EstadoGuia = "ADMITIDA",
-                        NombreDestinatarioGuia = "Sofía López",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Calle Real",
-                            Numero = "987",
-                            CodigoPostal = "C1003",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 7,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Avenida del Destino",
-                            Numero = "159",
-                            CodigoPostal = "7000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "XL",
-                        EstadoGuia = "ADMITIDA",
-                        NombreDestinatarioGuia = "Miguel Sánchez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "159",
-                            CodigoPostal = "C1000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 8,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle de la Ilusión",
-                            Numero = "753",
-                            CodigoPostal = "8000",
-                            Localidad = "Buenos Aires",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "L",
-                        EstadoGuia = "ADMITIDA",
-                        NombreDestinatarioGuia = "Laura Gómez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "852",
-                            CodigoPostal = "C1000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 9,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Avenida de la Libertad",
-                            Numero = "852",
-                            CodigoPostal = "9000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "M",
-                        EstadoGuia = "EN_DISTRIBUCION",
-                        NombreDestinatarioGuia = "Jorge Rodríguez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "852",
-                            CodigoPostal = "C1000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 2
-                    },
-                    new Guias
-                    {
-                        GuiaId = 10,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Calle Falsa",
-                            Numero = "123",
-                            CodigoPostal = "1000",
-                            Localidad = "Buenos Aires",
-                            Provincia = "Buenos Aires"
-
-                        },
-                        tamañoGuia = "M",
-                        EstadoGuia = "Impuesta Telefónicamente",
-                        NombreDestinatarioGuia = "María Gómez",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "7819",
-                            CodigoPostal = "C1000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                    new Guias
-                    {
-                        GuiaId = 11,
-                        DomicilioRetiro = new Domicilio
-                        {
-                            Calle = "Avenida de la Esperanza",
-                            Numero = "654",
-                            CodigoPostal = "5000",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        tamañoGuia = "M",
-                        EstadoGuia = "EN_CD_DESTINO",
-                        NombreDestinatarioGuia = "Raúl García",
-                        DomicilioEntrega = new Domicilio
-                        {
-                            Calle = "Avenida Real",
-                            Numero = "987",
-                            Piso = "3",
-                            Depto = "B",
-                            CodigoPostal = "C1001",
-                            Localidad = "CABA",
-                            Provincia = "Buenos Aires"
-                        },
-                        IntentosDeEntrega = 0
-                    },
-                };
-
-        public List<Fleteros> LFleteros { get; set; } = new List<Fleteros>()
-
-                {
-                    new Fleteros { FleteroId = 1, FleteroDNI = "12345678", FleteroNombre = "Jorge", FleteroApellido = "Perez", CPCobertura = new List<string> { "C1000", "C1001", "C1002" } },
-                    new Fleteros { FleteroId = 2, FleteroDNI = "23456789", FleteroNombre = "Gaston", FleteroApellido = "Gonzales", CPCobertura = new List<string> { "C2000", "C2001", "C2002", "C2003" } },
-                    new Fleteros { FleteroId = 3, FleteroDNI = "33333333", FleteroNombre = "Pedro", FleteroApellido = "Rodriguez", CPCobertura = new List<string> { "C3000", "C3001", "C3002" } },
-                    new Fleteros { FleteroId = 4, FleteroDNI = "7777777", FleteroNombre = "Julio", FleteroApellido = "Contreras", CPCobertura = new List<string> { "C4000", "C4001", "C4002" } },
-                };
-
-        // Listas HDR generadas
-        public List<HDRRetiro> HDRsRetiro { get; set; } = new List<HDRRetiro>()
-        {
-            new HDRRetiro
-            {
-                HDRRetiroId = 1,
-             
-                fleteroId = 1,
-                FechaEmision = DateTime.Now.AddDays(-1),
-                FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "PENDIENTE",
-                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
-            },
-            new HDRRetiro
-            {
-                HDRRetiroId = 2,
-               
-                fleteroId = 2,
-                FechaEmision = DateTime.Now.AddDays(-2),
-                FechaRendicion = DateTime.MinValue,
-                Estado = "PENDIENTE",
-                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
-            }
-        };
-
-        public List<HDRDistribucion> HDRsDistribucion { get; set; } = new List<HDRDistribucion>()
-        {
-            new HDRDistribucion
-            {
-                HDRDistribucionId = 1,
-               
-                fleteroId = 1,
-                FechaEmision = DateTime.Now.AddDays(-1),
-                FechaRendicion = DateTime.MinValue, // aún no rendida
-                Estado = "PENDIENTE",
-                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
-            },
-            new HDRDistribucion
-            {
-                HDRDistribucionId = 2,
-               
-                fleteroId = 2,
-                FechaEmision = DateTime.Now.AddDays(-2),
-                FechaRendicion = DateTime.MinValue,
-                Estado = "PENDIENTE",
-                GuiasIds = new List<int> { 0, 0 } // varias guías al mismo domicilio
-            },
+        public List<GuiaEntidad> LGuiasAAsignar => GuiaAlmacen.guias;
+        public List<FleteroEntidad> LFleteros => FleteroAlmacen.fleteros;
+        public List<HDRRetiroEntidad> HDRsRetiro => HDRRetiroAlmacen.hDRRetiros;
+        public List<HDRDistribucionEntidad> HDRsDistribucion => HDRDistribucionAlmacen.hDRDistribucions;
 
 
-        };
 
-            // Estado interno del modelo
-            private HashSet<int> guiasAsignadas = new HashSet<int>();
+        // Estado interno del modelo
+        private HashSet<int> guiasAsignadas = new HashSet<int>();
             private int ultimoHDRRetiroId = 0;
             private int ultimoHDRDistribucionId = 0;
 
@@ -422,38 +85,38 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
 
         // ✅ Buscar fletero
-        public Fleteros BuscarFleteroPorDni(string dni)
+        public FleteroEntidad BuscarFleteroPorDni(string dni)
         {
-            return LFleteros.FirstOrDefault(f => f.FleteroDNI == dni);
+            return LFleteros.FirstOrDefault(f => f.Dni.ToString() == dni);
         }
 
         // ✅ Obtener guías según estado
-        public IEnumerable<Guias> ObtenerGuiasPorEstado(string estado, Fleteros fletero, HashSet<int> guiasEnDetalle)
+        public IEnumerable<GuiaEntidad> ObtenerGuiasPorEstado(string estado, FleteroEntidad fletero, HashSet<int> guiasEnDetalle)
         {
-            if (fletero == null) return Enumerable.Empty<Guias>();
+            if (fletero == null) return Enumerable.Empty<GuiaEntidad>();
 
             if (estado == "A_RETIRAR")
             {
                 return LGuiasAAsignar.Where(g =>
-                    g.EstadoGuia == "A_RETIRAR" &&
-                    fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
+                    g.Estado == EstadoGuiaEnum.A_RETIRAR &&
+                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
-                    !HDRsRetiro.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "PENDIENTE"));
+                    !HDRsRetiro.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRRetiroEnum.PENDIENTE));
             }
             else if (estado == "EN_DISTRIBUCION")
             {
                 return LGuiasAAsignar.Where(g =>
-                    (g.EstadoGuia == "ADMITIDA" ||
-                    (g.EstadoGuia == "EN_CD_DESTINO") ||
-                    (g.EstadoGuia == "EN_DISTRIBUCION" && g.IntentosDeEntrega < 2)) &&
-                    fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
+                    (g.Estado == EstadoGuiaEnum.ADMITIDA ||
+                    (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
+                    (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
+                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
-                    !HDRsDistribucion.Any(h => h.GuiasIds.Contains(g.GuiaId) && h.Estado == "PENDIENTE"));
+                    !HDRsDistribucion.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRDistribucionEnum.PENDIENTE));
             }
 
-            return Enumerable.Empty<Guias>();
+            return Enumerable.Empty<GuiaEntidad>();
         }
 
         // ✅ Marcar y desmarcar guías
@@ -461,14 +124,14 @@ namespace GrupoE_Tutasa.GenerarHDR
         public void DesasignarGuia(int guiaId) => guiasAsignadas.Remove(guiaId);
 
         // ✅ Generar HDRs provisorios
-        public List<HDRResumen> GenerarHDR(List<Guias> guiasSeleccionadas)
+        public List<HDRResumen> GenerarHDR(List<GuiaEntidad> guiasSeleccionadas)
         {
             var hdrsProvisorios = new List<HDRResumen>();
-            int idRetiroTemp = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HDRRetiroId) + 1 : 1;
-            int idDistribTemp = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HDRDistribucionId) + 1 : 1;
+            int idRetiroTemp = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) + 1 : 1;
+            int idDistribTemp = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HdrDistribucionId) + 1 : 1;
 
             var grupos = guiasSeleccionadas.GroupBy(g =>
-                (g.EstadoGuia == "A_RETIRAR")
+                (g.Estado == EstadoGuiaEnum.A_RETIRAR)
                     ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.Piso}-{g.DomicilioRetiro.Depto}-{g.DomicilioRetiro.CodigoPostal}"
                     : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.Piso}-{g.DomicilioEntrega.Depto}-{g.DomicilioEntrega.CodigoPostal}");
 
@@ -477,7 +140,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 var guiasGrupo = grupo.ToList();
                 var g = guiasGrupo.First(); // tomamos la primera guía del grupo para armar domicilio
 
-                if (guiasGrupo.All(x => x.EstadoGuia == "A_RETIRAR"))
+                if (guiasGrupo.All(x => x.Estado == EstadoGuiaEnum.A_RETIRAR))
                 {
                     var domicilio = $"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}";
                     hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro")
@@ -501,14 +164,14 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
 
         // ✅ Imprimir y guardar HDRs
-        public void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero, int totalHDR)
+        public void ImprimirResumen(List<HDRResumen> resumen, FleteroEntidad fletero, int totalHDR)
         {
             string fechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                 "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            ultimoHDRRetiroId = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HDRRetiroId) : ultimoHDRRetiroId;
-            ultimoHDRDistribucionId = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HDRDistribucionId) : ultimoHDRDistribucionId;
+            ultimoHDRRetiroId = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) : ultimoHDRRetiroId;
+            ultimoHDRDistribucionId = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HdrDistribucionId) : ultimoHDRDistribucionId;
 
             foreach (var r in resumen)
             {
@@ -518,30 +181,31 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (r.TipoHDR == "Retiro")
                 {
                     ultimoHDRRetiroId++;
-                    HDRsRetiro.Add(new HDRRetiro
+                    HDRsRetiro.Add(new HDRRetiroEntidad
+                    
                     {
-                        HDRRetiroId = ultimoHDRRetiroId,
-                        fleteroId = fletero.FleteroId,
+                        HdrRetiroId = ultimoHDRRetiroId,
+                        FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Now,
-                        Estado = "PENDIENTE",
-                        GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
+                        Estado = EstadoHDRRetiroEnum.PENDIENTE,
+                        GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
                 }
                 else
                 {
                     ultimoHDRDistribucionId++;
-                    HDRsDistribucion.Add(new HDRDistribucion
+                    HDRsDistribucion.Add(new HDRDistribucionEntidad                    
                     {
-                        HDRDistribucionId = ultimoHDRDistribucionId,
-                        fleteroId = fletero.FleteroId,
+                        HdrDistribucionId = ultimoHDRDistribucionId,
+                        FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Now,
-                        Estado = "PENDIENTE",
-                        GuiasIds = guiasGrupo.Select(g => g.GuiaId).ToList()
+                        Estado = EstadoHDRDistribucionEnum.PENDIENTE,
+                        GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == "ADMITIDA" || g.EstadoGuia == "EN_CD_DESTINO"))
+                    foreach (var g in guiasGrupo.Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA || g.Estado == EstadoGuiaEnum.EN_CD_DESTINO))
                     {
-                        g.EstadoGuia = "EN_DISTRIBUCION";
+                        g.Estado = EstadoGuiaEnum.EN_DISTRIBUCION;
                     }
                 }
             }
@@ -558,7 +222,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             // Luego
             //public List<GuiaEntidad> LGuiasAAsignar => GuiaAlmacen.guias;
 
-            
+            GuiaAlmacen.Guardar();
+            HDRRetiroAlmacen.Guardar();
+            HDRDistribucionAlmacen.Guardar();
+            FleteroAlmacen.Guardar();
+            ClienteAlmacen.Guardar();
         }
 
 
