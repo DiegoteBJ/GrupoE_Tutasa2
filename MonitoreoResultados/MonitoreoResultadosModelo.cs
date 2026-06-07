@@ -1,4 +1,5 @@
-﻿using GrupoE_Tutasa.EmitirFactura;
+﻿using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.EmitirFactura;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,25 +8,13 @@ namespace GrupoE_Tutasa.MonitoreoResultados
 {
     internal class MonitoreoResultadosModelo
     {
-        public List<ProveedoresLD> LProveedoresLD
+        public List<ProveedoresLD> LProveedoresLD =>
+        EmpresaTransporteAlmacen.empresaTransportes.Select(e => new ProveedoresLD
         {
-            get
-            {
-                return new List<ProveedoresLD>
-                {
-                    new ProveedoresLD { proveedorId = 1, proveedorName = "Chevallier", proveedorCUIT = "30654364229", montoFijoMensual = 100000m },
-                    new ProveedoresLD { proveedorId = 2, proveedorName = "Andesmar", proveedorCUIT = "27202016494", montoFijoMensual = 150000m },
-                    new ProveedoresLD { proveedorId = 3, proveedorName = "Flechabus", proveedorCUIT = "20483900334", montoFijoMensual = 200000m },
-                    new ProveedoresLD { proveedorId = 4, proveedorName = "Crucero del Norte", proveedorCUIT = "20483900342", montoFijoMensual = 50000m },
-                    new ProveedoresLD { proveedorId = 5, proveedorName = "La Veloz del Norte", proveedorCUIT = "20329642330", montoFijoMensual = 30000m },
-                    new ProveedoresLD { proveedorId = 6, proveedorName = "Via Bariloche", proveedorCUIT = "27384592017", montoFijoMensual = 150000m },
-                    new ProveedoresLD { proveedorId = 7, proveedorName = "Plusmar", proveedorCUIT = "30765432109", montoFijoMensual = 400000m },
-                    new ProveedoresLD { proveedorId = 8, proveedorName = "El Rapido Argentino", proveedorCUIT = "23345678903", montoFijoMensual = 250000m },
-                    new ProveedoresLD { proveedorId = 9, proveedorName = "Empresa 20 de Junio", proveedorCUIT = "30789123456", montoFijoMensual = 100000m },
-                    new ProveedoresLD { proveedorId = 10, proveedorName = "General Urquiza", proveedorCUIT = "20345678901", montoFijoMensual = 80000m },
-                };
-            }
-        }
+            proveedorId = e.EmpresaTransporteId,
+            proveedorName = e.RazonSocial,
+            proveedorCUIT = e.Cuit
+        }).ToList();
         public List<Guias> LGuias
         // Esta clase representa las guías que tienen estado de entregadas y facturadas.
         // Por las modificaciones que se hicieron en el diagrama de clases, surge en realidad de la clase CuentaCorriente
@@ -59,26 +48,15 @@ namespace GrupoE_Tutasa.MonitoreoResultados
                 };
             }
         }
-        public List<ConvenioTransporte> LConvenioTransporte
+        public List<ConvenioTransporte> LConvenioTransporte =>
+        ConveniosTransporteAlmacen.conveniosTransportes.Select(c => new ConvenioTransporte
         {
-            get
-            {
-                return new List<ConvenioTransporte>
-                {
-                    new ConvenioTransporte { ConvenioId = 1, EmpresaTransporteId = 1, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(2026, 03, 31), ImporteConvenio = 150000 },
-                    new ConvenioTransporte { ConvenioId = 2, EmpresaTransporteId = 2, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 100000 },
-                    new ConvenioTransporte { ConvenioId = 3, EmpresaTransporteId = 3, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 120000 },
-                    new ConvenioTransporte { ConvenioId = 4, EmpresaTransporteId = 4, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 90000 },
-                    new ConvenioTransporte { ConvenioId = 5, EmpresaTransporteId = 5, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 110000 },
-                    new ConvenioTransporte { ConvenioId = 6, EmpresaTransporteId = 6, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 80000 },
-                    new ConvenioTransporte { ConvenioId = 7, EmpresaTransporteId = 7, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 130000 },
-                    new ConvenioTransporte { ConvenioId = 8, EmpresaTransporteId = 8, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 140000 },
-                    new ConvenioTransporte { ConvenioId = 9, EmpresaTransporteId = 9, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 160000 },
-                    new ConvenioTransporte { ConvenioId = 10, EmpresaTransporteId = 10, FechaVigenciaDesde = new DateTime(2026, 01, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 170000 },
-                    new ConvenioTransporte { ConvenioId = 11, EmpresaTransporteId = 1, FechaVigenciaDesde = new DateTime(2026, 04, 01), FechaVigenciaHasta = new DateTime(9999, 12, 31), ImporteConvenio = 180000 },
-                };
-            }
-        }
+            ConvenioId = c.ConvenioId,
+            EmpresaTransporteId = c.EmpresaTransporteId,
+            FechaVigenciaDesde = c.FechaVigenciaDesde,
+            FechaVigenciaHasta = c.FechaVigenciaHasta,
+            ImporteConvenio = c.ImporteConvenio
+        }).ToList();
         public int ConvenioVigenteId(int empresaTransporteId, DateTime fecha)
         {
         // Este método se encarga de verificar si existe un convenio vigente para el proveedor de transporte dado y la fecha actual.

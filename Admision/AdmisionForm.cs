@@ -1,3 +1,4 @@
+using GrupoE_Tutasa.Almacenes;
 using GrupoE_Tutasa.EmitirFactura;
 using GrupoE_Tutasa.EstadoCCClientes;
 using System;
@@ -50,13 +51,13 @@ namespace GrupoE_Tutasa.Admision
         private void BuscarGuiaBoton_Click(object sender, EventArgs e)
         {
             encuentro = false;
-
+            int numeroGuia = 0;
             if (string.IsNullOrWhiteSpace(NumeroGuiaTextBox.Text))
             {
                 MessageBox.Show("Por favor, ingrese un número de guía válido.");
                 return;
             }
-            if (!int.TryParse(NumeroGuiaTextBox.Text, out int numeroGuia))
+            if (!int.TryParse(NumeroGuiaTextBox.Text, out numeroGuia))
             {
                 MessageBox.Show("El número de guía debe ser un valor numérico.");
                 return;
@@ -67,7 +68,6 @@ namespace GrupoE_Tutasa.Admision
                 if (guia.numeroGuia == numeroGuia)
                 {
                     guiaActual = guia;
-                    FechaGuiaLabel.Text = guia.fechaImposicion.ToString("dd/MM/yyyy");
                     CDOrigenGuiaLabel.Text = guia.CDOrigenId.ToString();
                     CDDestinoGuiaLabel.Text = guia.CDDestinoId.ToString();
                     EstadoGuiaLabel.Text = guia.estadoGuia.ToString();
@@ -153,13 +153,9 @@ namespace GrupoE_Tutasa.Admision
             }
 
             importe = importeTransporte + importeImposicion + importeEntrega;
-
-            guiaActual.importeImposicion = importeImposicion;
-            guiaActual.importeEntrega = importeEntrega;
-            guiaActual.importeTransporte = importeTransporte;
-            guiaActual.fechaAdmision = DateTime.Now;
-            guiaActual.estadoGuia = "ADMITIDA";
-            guiaActual.importe = importe;
+            // Actualizar estado en el almacén
+            modelo.AdmitirGuia(guiaActual.numeroGuia);
+            modelo.CrearCCCliente(guiaActual);
 
             MessageBox.Show($"Guía admitida. El importe calculado para la guía es: {importe:C}.");
             LimpiaNoCierra(sender, e);
@@ -179,8 +175,7 @@ namespace GrupoE_Tutasa.Admision
             }
 
             // Actualizar el estado de la guía y guardar las observaciones del rechazo
-            guiaActual.estadoGuia = "Rechazada";
-            guiaActual.observaciones = ObservacionesTextBox.Text;
+            modelo.RechazarGuia(guiaActual.numeroGuia, ObservacionesTextBox.Text);
 
             MessageBox.Show("La guía ha sido rechazada.");
             LimpiaYCierra(sender, e);
@@ -213,14 +208,14 @@ namespace GrupoE_Tutasa.Admision
             }
 
             TamañoDeclaradoLabel.Text = nuevoTamañoNombre;
-            guiaActual.tamaño = nuevoTamañoNombre;
+            modelo.CambiarTamañoGuia(guiaActual.numeroGuia, nuevoTamañoNombre);
             MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
             TamañoCorrectoBoton.Checked = true;
         }
 
         private void LimpiaYCierra(object sender, EventArgs e)
         {
-            // FIX 1: Primero limpiar el estado, luego cerrar
+            // Primero limpiar el estado, luego cerrar
             encuentro = false;
             guiaActual = null;
 

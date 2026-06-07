@@ -80,33 +80,5 @@
             }
             ResultadoMensualLabel.Text = resultadoMensualAcumulado.ToString("C");
         }
-
-        private void MesTextBox_TextChanged(object sender, EventArgs e)
-        {
-            var mes = MesTextBox.Text;
-            if (mes == string.Empty)
-            {
-                return;
-            }
-            if (!int.TryParse(mes, out int mesInt) || mesInt < 1 || mesInt > 12)
-            {
-                MessageBox.Show("Por favor, ingrese un número de mes válido (1-12).");
-                MesTextBox.Text = string.Empty;
-            }
-        }
-
-        private void AnioTextBox_TextChanged(object sender, EventArgs e)
-        {
-            var anio = AnioTextBox.Text;
-            if (anio == string.Empty)
-            {
-                return;
-            }
-            if (!int.TryParse(anio, out int anioInt) || anioInt < 1900 || anioInt > DateTime.Today.Year)
-            {
-                MessageBox.Show("Por favor, ingrese un número de año válido.");
-                AnioTextBox.Text = string.Empty;
-            }
-        }
     }
 }

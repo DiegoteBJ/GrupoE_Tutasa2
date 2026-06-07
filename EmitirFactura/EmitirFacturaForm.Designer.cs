@@ -31,7 +31,6 @@
             DetalleEnviosLabel = new Label();
             DetalleEnviosListView = new ListView();
             columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
@@ -60,11 +59,11 @@
             // 
             // DetalleEnviosListView
             // 
-            DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5, columnHeader6 });
+            DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader3, columnHeader5, columnHeader6 });
             DetalleEnviosListView.GridLines = true;
-            DetalleEnviosListView.Location = new Point(29, 184);
+            DetalleEnviosListView.Location = new Point(81, 185);
             DetalleEnviosListView.Name = "DetalleEnviosListView";
-            DetalleEnviosListView.Size = new Size(676, 251);
+            DetalleEnviosListView.Size = new Size(627, 251);
             DetalleEnviosListView.TabIndex = 3;
             DetalleEnviosListView.UseCompatibleStateImageBehavior = false;
             DetalleEnviosListView.View = View.Details;
@@ -72,19 +71,13 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Nro. Guia";
-            columnHeader1.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Fecha Admision";
-            columnHeader2.TextAlign = HorizontalAlignment.Center;
-            columnHeader2.Width = 120;
+            columnHeader1.Width = 120;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Fecha Entrega";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 140;
+            columnHeader3.Width = 160;
             // 
             // columnHeader5
             // 
@@ -96,13 +89,13 @@
             // 
             columnHeader6.Text = "Importe";
             columnHeader6.TextAlign = HorizontalAlignment.Center;
-            columnHeader6.Width = 120;
+            columnHeader6.Width = 160;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(443, 451);
+            label1.Location = new Point(298, 460);
             label1.Name = "label1";
             label1.Size = new Size(153, 23);
             label1.TabIndex = 4;
@@ -112,7 +105,7 @@
             // 
             TotalAFacturarLabel.AutoSize = true;
             TotalAFacturarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            TotalAFacturarLabel.Location = new Point(656, 451);
+            TotalAFacturarLabel.Location = new Point(659, 460);
             TotalAFacturarLabel.Name = "TotalAFacturarLabel";
             TotalAFacturarLabel.Size = new Size(49, 20);
             TotalAFacturarLabel.TabIndex = 5;
@@ -247,7 +240,6 @@
         private Button CancelarBoton;
         private Button EmitirFacturaBoton;
         private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;

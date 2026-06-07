@@ -199,7 +199,7 @@
             MesTextBox.Name = "MesTextBox";
             MesTextBox.Size = new Size(93, 27);
             MesTextBox.TabIndex = 36;
-            MesTextBox.TextChanged += MesTextBox_TextChanged;
+            
             // 
             // AnioTextBox
             // 
@@ -208,7 +208,7 @@
             AnioTextBox.Name = "AnioTextBox";
             AnioTextBox.Size = new Size(100, 27);
             AnioTextBox.TabIndex = 37;
-            AnioTextBox.TextChanged += AnioTextBox_TextChanged;
+            
             // 
             // MonitoreoResultadosForm
             // 

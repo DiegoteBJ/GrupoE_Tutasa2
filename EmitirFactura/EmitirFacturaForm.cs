@@ -1,3 +1,5 @@
+using GrupoE_Tutasa.Almacenes;
+
 namespace GrupoE_Tutasa.EmitirFactura
 {
     public partial class EmitirFacturaForm : Form
@@ -59,7 +61,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 DatosCLienteRespuestaLabel.Text = "No existe el Cliente seleccionado. Vuelva a intentarlo";
                 return;
             }
-            //3 Generar opercion de busqueda
+            //3 Generar operacion de busqueda
             foreach (var guiaAFacturar in modelo.LGuiasPendientes)
             {
                 if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
@@ -69,7 +71,6 @@ namespace GrupoE_Tutasa.EmitirFactura
                     {
                         if (guia.guiaId == guiaAFacturar.numeroGuia)
                         {
-                            item.SubItems.Add(guia.fechaImposicion.ToShortDateString());
                             tamaño = guia.tipoCaja.ToString();
                             break;
                         }
@@ -113,7 +114,11 @@ namespace GrupoE_Tutasa.EmitirFactura
                 MessageBox.Show("No hay importe a facturar. Por favor, seleccione un cliente con guías pendientes.");
                 return;
                 }
-            int nuevoDocumentoId = Documentos.ObtenerUltimoId(modelo.LDocumentos) + 1;
+
+            int nuevoDocumentoId = DocumentoAlmacen.documentos.Count > 0
+                ? DocumentoAlmacen.documentos.Max(d => d.DocumentoId) + 1
+                : 1;
+
             int clienteId = clienteActual.clienteId;
             string documentoTipo = "FC";
             DateTime documentoFecha = DateTime.Now;
@@ -123,17 +128,20 @@ namespace GrupoE_Tutasa.EmitirFactura
             decimal documentoTotal = netoGravado + iva;
 
             // Agregar el nuevo documento a la lista de documentos del modelo. 
-            modelo.LDocumentos.Add(new Documentos
+            var nuevoDocumento = new DocumentoEntidad
             {
-                documentoId = nuevoDocumentoId,
-                clienteId = clienteId,
-                documentoTipo = documentoTipo,
-                documentoFecha = documentoFecha,
-                documentoNumero = numeroDocumento,
-                netoGravado = netoGravado,
-                ivaDF = iva,
-                documentoTotal = documentoTotal,
-            });
+                DocumentoId = nuevoDocumentoId,
+                ClienteId = clienteId,
+                TipoDocumento = TipoDocumentoEnum.FC,
+                FechaDocumento = documentoFecha,
+                NumeroDocumento = numeroDocumento,
+                NetoGravado = netoGravado,
+                IvaDF = iva,
+                Total = documentoTotal
+            };
+
+            DocumentoAlmacen.documentos.Add(nuevoDocumento);
+            DocumentoAlmacen.Guardar();
 
             // Marcar las guías como facturadas y agregar el número de documento a cada guía facturada.
             foreach (var guiaAFacturar in modelo.LGuiasPendientes)

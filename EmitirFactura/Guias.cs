@@ -9,7 +9,6 @@ namespace GrupoE_Tutasa.EmitirFactura
     {
         public int guiaId { get; set; }
         public int clienteId { get; set; }
-        public DateTime fechaImposicion { get; set; }
         public string apellidoDestinatario { get; set; }
         public string nombreDestinatario { get; set; }
         public string tipoCaja { get; set; }

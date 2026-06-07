@@ -98,12 +98,12 @@ namespace GrupoE_Tutasa.EstadoCCClientes
             {
                 if (documento.clienteId == clienteId)
                 {
-                    if (documento.documentoFecha < fechaDesde)
+                    if (documento.documentoFecha.Date < fechaDesde.Date)
                     {
                         saldoInicio = saldoInicio + documento.documentoTotal;
                         continue; // Saltar documentos fuera del rango de fechas
                     }
-                    if (documento.documentoFecha > fechaHasta)
+                    if (documento.documentoFecha.Date > fechaHasta.Date)
                     {
                         continue; // Saltar documentos fuera del rango de fechas
                     }

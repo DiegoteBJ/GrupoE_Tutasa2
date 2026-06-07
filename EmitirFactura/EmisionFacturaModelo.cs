@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -40,71 +41,38 @@ namespace GrupoE_Tutasa.EmitirFactura
                 };
             }
         }
-        public List<Clientes> LClientes
+        public List<Clientes> LClientes =>
+        ClienteAlmacen.clientes.Select(c => new Clientes
         {
-            get
-            {
-                return new List<Clientes>
-                {
-                    new Clientes { clienteId = 1, clienteName = "Cliente A", clienteCUIT = "30654364229" },
-                    new Clientes { clienteId = 2, clienteName = "Cliente B", clienteCUIT = "27202016494" },
-                    new Clientes { clienteId = 3, clienteName = "Cliente C", clienteCUIT = "20483900334" },
-                    new Clientes { clienteId = 4, clienteName = "Cliente D", clienteCUIT = "20483900342" },
-                    new Clientes { clienteId = 5, clienteName = "Cliente E", clienteCUIT = "27329642335" },
-                    new Clientes { clienteId = 6, clienteName = "Cliente F", clienteCUIT = "23384592015" },
-                    new Clientes { clienteId = 7, clienteName = "Cliente G", clienteCUIT = "33765432109" },
-                    new Clientes { clienteId = 8, clienteName = "Cliente H", clienteCUIT = "23345678903" },
-                    new Clientes { clienteId = 9, clienteName = "Cliente I", clienteCUIT = "30759123456" },
-                    new Clientes { clienteId = 10, clienteName = "Cliente J", clienteCUIT = "20345678906" },
-                };
-            }
-        }
-        public List<Documentos> LDocumentos
+            clienteId = c.ClienteId,
+            clienteName = string.IsNullOrEmpty(c.RazonSocial)
+                          ? $"{c.Nombre} {c.Apellido}"
+                          : c.RazonSocial,
+            clienteCUIT = c.Cuit
+        }).ToList();
+        public List<Documentos> LDocumentos =>
+        DocumentoAlmacen.documentos.Select(d => new Documentos
         {
-            get
+            documentoId = d.DocumentoId,
+            clienteId = d.ClienteId,
+            documentoTipo = d.TipoDocumento.ToString(),
+            documentoFecha = d.FechaDocumento,
+            documentoNumero = d.NumeroDocumento,
+            netoGravado = d.NetoGravado,
+            ivaDF = d.IvaDF,
+            documentoTotal = d.Total
+        }).ToList();
+
+        public List<Guias> LGuias =>
+            GuiaAlmacen.guias.Select(g => new Guias
             {
-                return new List<Documentos>
-                {
-                    new Documentos { documentoId = 1, clienteId = 1, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 01), documentoNumero = "F001-00000001", netoGravado = 10000,  ivaDF = 2100, documentoTotal = 12100 },
-                    new Documentos { documentoId = 2, clienteId = 2, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 02), documentoNumero = "F001-00000002", netoGravado = 15000,  ivaDF = 3150, documentoTotal = 18150 },
-                    new Documentos { documentoId = 3, clienteId = 3, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 03), documentoNumero = "F001-00000003", netoGravado = 20000,  ivaDF = 4200, documentoTotal = 24200 },
-                    new Documentos { documentoId = 4, clienteId = 4, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 04), documentoNumero = "F001-00000004", netoGravado = 25000,  ivaDF = 5250, documentoTotal = 30250 },
-                    new Documentos { documentoId = 5, clienteId = 5, documentoTipo = "Factura", documentoFecha = new DateTime(2026, 01, 05), documentoNumero = "F001-00000005", netoGravado = 30000,  ivaDF = 6300, documentoTotal = 36300 }
-                };
-            }
-        }
-        public List<Guias> LGuias
-        //Esta clase sale de la clase Guias para obtener los datos que falta para presentar en la pantalla y que
-        //el operador pueda visualizar lo que esta facturando. Necesitamos guiaID, el clienteID, apellido y nombre del destinatario
-        // tipo de caja, tarifarioID. El resto de los datos se pueden obtener de la clase GuiasPendientes, como fecha de entrega.  
-        {
-            get
-            {
-                return new List<Guias>
-                {
-                    new Guias { guiaId = 1, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 01), apellidoDestinatario="Gonzalez", nombreDestinatario = "Jorge", tipoCaja="L", tarifarioId = 1 },
-                    new Guias { guiaId = 2, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 02), apellidoDestinatario="Perez", nombreDestinatario = "Maria", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 3, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 03), apellidoDestinatario="Garcia", nombreDestinatario = "Carlos", tipoCaja = "S", tarifarioId = 1 },
-                    new Guias { guiaId = 4, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 04), apellidoDestinatario="Flores", nombreDestinatario = "Ana", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 5, clienteId = 5, fechaImposicion = new DateTime(2026, 01, 05), apellidoDestinatario="DellaSalla", nombreDestinatario = "Luis", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 6, clienteId = 6, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Conte", nombreDestinatario = "Elena", tipoCaja = "S", tarifarioId = 1 },
-                    new Guias { guiaId = 7, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 07), apellidoDestinatario="Djokeres", nombreDestinatario = "Juan", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 8, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 08), apellidoDestinatario="Saka", nombreDestinatario = "María", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 9, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 09), apellidoDestinatario="Paredes", nombreDestinatario = "Carlos", tipoCaja = "XL", tarifarioId = 1 },
-                    new Guias { guiaId = 10, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 10), apellidoDestinatario="Merentiel", nombreDestinatario = "Ana", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 11, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 11), apellidoDestinatario="Delgado", nombreDestinatario = "Luis", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 12, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 12), apellidoDestinatario="Pedraza", nombreDestinatario = "María", tipoCaja = "S", tarifarioId = 1 },
-                    new Guias { guiaId = 13, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 17), apellidoDestinatario="Torres", nombreDestinatario = "Carlos", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 14, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 18), apellidoDestinatario="Reyna", nombreDestinatario = "Ana", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 15, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 19), apellidoDestinatario="Gonzalez", nombreDestinatario = "Jorge", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 16, clienteId = 2, fechaImposicion = new DateTime(2026, 01, 20), apellidoDestinatario="Perez", nombreDestinatario = "Maria", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 17, clienteId = 3, fechaImposicion = new DateTime(2026, 01, 13), apellidoDestinatario="Torres", nombreDestinatario = "Carlos", tipoCaja = "L", tarifarioId = 1 },
-                    new Guias { guiaId = 18, clienteId = 4, fechaImposicion = new DateTime(2026, 01, 14), apellidoDestinatario="Reyna", nombreDestinatario = "Ana", tipoCaja = "X", tarifarioId = 1 },
-                    new Guias { guiaId = 19, clienteId = 5, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Gimenez", nombreDestinatario = "Luis", tipoCaja = "S", tarifarioId = 1 },
-                    new Guias { guiaId = 20, clienteId = 1, fechaImposicion = new DateTime(2026, 01, 06), apellidoDestinatario="Lopez", nombreDestinatario = "Jorge", tipoCaja = "XL", tarifarioId = 1 }
-                };
-            }
-        }
+                guiaId = g.GuiaId,
+                clienteId = g.ClienteId,
+                apellidoDestinatario = g.ApellidoDestinatario,
+                nombreDestinatario = g.NombreDestinatario,
+                tipoCaja = g.TipoCaja.ToString(),
+                tarifarioId = g.TarifarioId
+            }).ToList();
         public static bool ValidarCuit(string cuit)
         {
             if (string.IsNullOrWhiteSpace(cuit)) return false;

@@ -9,11 +9,9 @@ namespace GrupoE_Tutasa.Admision
         public int Id { get; set; }
         public int clienteID { get; set; }
         public int numeroGuia { get; set; } 
-        public DateTime fechaImposicion { get; set; }
-        public DateTime fechaAdmision { get; set; }
         public int CDOrigenId { get; set; } 
         public int CDDestinoId { get; set; } 
-        public string tamaño { get; set; } = string.Empty;
+        public string tamaño { get; set; } 
         public decimal importeImposicion { get; set; }
         public decimal importeEntrega { get; set; }
         public decimal importeTransporte { get; set; }
