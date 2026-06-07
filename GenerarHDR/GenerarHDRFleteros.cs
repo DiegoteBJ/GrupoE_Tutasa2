@@ -392,22 +392,26 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
             {
-                var guia = item.Tag as Guias;
+                var guia = item.Tag as GuiaEntidad;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
                 // ✅ Mostrar domicilio según radio activo
-                if (retiroradioButton.Checked || guia.EstadoGuia == "A_RETIRAR")
+                if (retiroradioButton.Checked || guia.Estado == EstadoGuiaEnum.A_RETIRAR)
                 {
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero} - Piso: {guia.DomicilioRetiro.Piso} - Depto: {guia.DomicilioRetiro.Depto}".Trim());
                 }
                 else
                 {
                     newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero} - Piso: {guia.DomicilioEntrega.Piso} - Depto: {guia.DomicilioEntrega.Depto}".Trim());
+                    if (guia.ModalidadEntrega == ModalidadEntregaEnum.DOMICILIO)
+                        newItem.SubItems.Add($"{guia.NombreDestinatario} {guia.ApellidoDestinatario}");
+                    else
+                        newItem.SubItems.Add("");
                 }
 
-                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
+                
                 newItem.Tag = guia;
 
                 detallehdrlistView.Items.Add(newItem);
@@ -429,23 +433,26 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccionguiaslistView.Items.Cast<ListViewItem>().ToList())
             {
-                var guia = item.Tag as Guias;
+                var guia = item.Tag as GuiaEntidad;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
                 // ✅ Mostrar domicilio según radio activo
-                if (retiroradioButton.Checked || guia.EstadoGuia == "A_RETIRAR")
+                if (retiroradioButton.Checked || guia.Estado == EstadoGuiaEnum.A_RETIRAR)
                 {
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero} - Piso: {guia.DomicilioRetiro.Piso} - Depto: {guia.DomicilioRetiro.Depto}".Trim());
                 }
                 else
                 {
                     newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero} - Piso: {guia.DomicilioEntrega.Piso} - Depto: {guia.DomicilioEntrega.Depto}".Trim());
+                    if (guia.ModalidadEntrega == ModalidadEntregaEnum.DOMICILIO)
+                        newItem.SubItems.Add($"{guia.NombreDestinatario} {guia.ApellidoDestinatario}");
+                    else
+                        newItem.SubItems.Add("");
                 }
 
-                newItem.SubItems.Add(guia.NombreDestinatarioGuia);
-                newItem.Tag = guia;
+                          newItem.Tag = guia;
 
                 detallehdrlistView.Items.Add(newItem);
                 seleccionguiaslistView.Items.Remove(item);
@@ -487,7 +494,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in detallehdrlistView.SelectedItems)
             {
-                var guia = item.Tag as Guias;
+                var guia = item.Tag as GuiaEntidad;
                 if (guia == null) continue;
 
                 var newItem = (ListViewItem)item.Clone();
@@ -529,7 +536,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in detallehdrlistView.Items.Cast<ListViewItem>().ToList())
             {
-                var guia = item.Tag as Guias;
+                var guia = item.Tag as GuiaEntidad;
                 if (guia == null) continue;
 
                 var newItem = (ListViewItem)item.Clone();
@@ -612,11 +619,13 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.FullRowSelect = true;
             listView.Height = 380;
 
+            // ✅ Orden de columnas
             listView.Columns.Add("HDR Id", 80);
             listView.Columns.Add("Tipo HDR", 100);
+            listView.Columns.Add("Modalidad", 80);               // tercera columna
             listView.Columns.Add("Guías incluidas", 200);
-            listView.Columns.Add("Destinatarios", 200);
-            listView.Columns.Add("Domicilio", 200);
+            listView.Columns.Add("Destinatario", 200);
+            listView.Columns.Add("Domicilio", 260);
             listView.Columns.Add("Código Postal", 100);
             listView.Columns.Add("Intentos", 80);
             listView.Columns.Add("Fecha impresión", 120);
@@ -625,17 +634,31 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 var item = new ListViewItem(r.HDRId.ToString());
                 item.SubItems.Add(r.TipoHDR);
+
+                // 📌 Buscar la primera guía del grupo
+                var guia = modelo.LGuiasAAsignar.FirstOrDefault(g => r.GuiasIds.Contains(g.GuiaId));
+
+                // 📌 Modalidad (3ra columna)
+                if (r.TipoHDR == "Retiro")
+                    item.SubItems.Add(guia?.ModalidadImposicion.ToString() ?? "");
+                else
+                    item.SubItems.Add(guia?.ModalidadEntrega.ToString() ?? "");
+
+                // 📌 Guías incluidas
                 item.SubItems.Add(string.Join(", ", r.GuiasIds));
 
-                if (r.TipoHDR == "Retiro")
-                    item.SubItems.Add("");
+                // 📌 Destinatario solo si HDR es Distribución y modalidad entrega es DOMICILIO
+                if (r.TipoHDR == "Distribución" && guia?.ModalidadEntrega == ModalidadEntregaEnum.DOMICILIO)
+                    item.SubItems.Add($"{guia?.NombreDestinatario} {guia?.ApellidoDestinatario}".Trim());
                 else
-                    item.SubItems.Add(r.Destinatario);
+                    item.SubItems.Add("");
 
+                // 📌 Resto de columnas
                 item.SubItems.Add(r.Domicilio);
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.IntentosDeEntrega.ToString());
                 item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy"));
+
                 listView.Items.Add(item);
             }
 
@@ -660,8 +683,5 @@ namespace GrupoE_Tutasa.GenerarHDR
             popup.Controls.Add(imprimirButton);
             popup.ShowDialog();
         }
-
-
-
     }
 }

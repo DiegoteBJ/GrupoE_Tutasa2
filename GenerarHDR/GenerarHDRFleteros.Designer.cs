@@ -56,6 +56,7 @@
             Domicilioencomiendapendiente = new ColumnHeader();
             Tamañoencomiendapendiente = new ColumnHeader();
             Estadoencomiendapendiente = new ColumnHeader();
+            Intentosencomiendapendiente = new ColumnHeader();
             generarhdrbutton = new Button();
             cancelargenerarhdrbutton = new Button();
             agregarguiasbutton = new Button();
@@ -66,7 +67,6 @@
             cantidaddebultoslabel = new Label();
             seleccionguiasgroupBox = new GroupBox();
             bultoslabel = new Label();
-            Intentosencomiendapendiente = new ColumnHeader();
             detallehdrgroupBox.SuspendLayout();
             seleccionguiasgroupBox.SuspendLayout();
             SuspendLayout();
@@ -256,11 +256,12 @@
             // Domicilioresumenhdr
             // 
             Domicilioresumenhdr.Text = "Domicilio";
-            Domicilioresumenhdr.Width = 70;
+            Domicilioresumenhdr.Width = 260;
             // 
             // Nombredestinatarioresumenhdr
             // 
-            Nombredestinatarioresumenhdr.Text = "Nombre";
+            Nombredestinatarioresumenhdr.Text = "Destinatario";
+            Nombredestinatarioresumenhdr.Width = 90;
             // 
             // bultostotalasignadoslabel
             // 
@@ -305,7 +306,7 @@
             // Domicilioencomiendapendiente
             // 
             Domicilioencomiendapendiente.Text = "Domicilio";
-            Domicilioencomiendapendiente.Width = 65;
+            Domicilioencomiendapendiente.Width = 260;
             // 
             // Tamañoencomiendapendiente
             // 
@@ -314,6 +315,11 @@
             // Estadoencomiendapendiente
             // 
             Estadoencomiendapendiente.Text = "Estado";
+            Estadoencomiendapendiente.Width = 80;
+            // 
+            // Intentosencomiendapendiente
+            // 
+            Intentosencomiendapendiente.Text = "Intentos";
             // 
             // generarhdrbutton
             // 
@@ -417,10 +423,6 @@
             bultoslabel.TabIndex = 31;
             bultoslabel.Text = "[25 bultos]";
             bultoslabel.Click += bultoslabel_Click;
-            // 
-            // Intentosencomiendapendiente
-            // 
-            Intentosencomiendapendiente.Text = "Intentos";
             // 
             // GenerarHDRFleteros
             // 
