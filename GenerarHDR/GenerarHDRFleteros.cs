@@ -219,12 +219,12 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (estado == "A retirar")
                 {
                     item.SubItems.Add(g.DomicilioRetiro.CodigoPostal); // Código Postal
-                    item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero}"); // Domicilio
+                    item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}"); // Domicilio
                 }
                 else // Distribución
                 {
                     item.SubItems.Add(g.DomicilioEntrega.CodigoPostal);
-                    item.SubItems.Add($"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero}");
+                    item.SubItems.Add($"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero} - Piso: {g.DomicilioEntrega.Piso} - Depto: {g.DomicilioEntrega.Depto}");
                 }
 
                 item.SubItems.Add(g.tamañoGuia);                // Tamaño
@@ -394,7 +394,17 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+
+                // ✅ Mostrar domicilio según radio activo
+                if (retiroradioButton.Checked || guia.EstadoGuia == "A retirar")
+                {
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero} - Piso: {guia.DomicilioRetiro.Piso} - Depto: {guia.DomicilioRetiro.Depto}".Trim());
+                }
+                else
+                {
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero} - Piso: {guia.DomicilioEntrega.Piso} - Depto: {guia.DomicilioEntrega.Depto}".Trim());
+                }
+
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
 
@@ -402,6 +412,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 seleccionguiaslistView.Items.Remove(item);
                 modelo.AsignarGuia(guia.GuiaId);
             }
+
             bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
             bultostotalasignadoslabel.Text = detallehdrlistView.Items.Count.ToString();
         }
@@ -420,8 +431,17 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
-                
-                newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero}");
+
+                // ✅ Mostrar domicilio según radio activo
+                if (retiroradioButton.Checked || guia.EstadoGuia == "A retirar")
+                {
+                    newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero} - Piso: {guia.DomicilioRetiro.Piso} - Depto: {guia.DomicilioRetiro.Depto}".Trim());
+                }
+                else
+                {
+                    newItem.SubItems.Add($"{guia.DomicilioEntrega.Calle} {guia.DomicilioEntrega.Numero} - Piso: {guia.DomicilioEntrega.Piso} - Depto: {guia.DomicilioEntrega.Depto}".Trim());
+                }
+
                 newItem.SubItems.Add(guia.NombreDestinatarioGuia);
                 newItem.Tag = guia;
 
@@ -430,7 +450,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 modelo.AsignarGuia(guia.GuiaId);
             }
 
-            bultoslabel.Text = "0";
+            bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
             bultostotalasignadoslabel.Text = detallehdrlistView.Items.Count.ToString();
         }
        
@@ -608,7 +628,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 item.SubItems.Add(r.Domicilio);
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.IntentosDeEntrega.ToString());
-                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy HH:mm"));
+                item.SubItems.Add(r.FechaImpresion.ToString("dd/MM/yyyy"));
                 listView.Items.Add(item);
             }
 

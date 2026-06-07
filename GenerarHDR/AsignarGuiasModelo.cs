@@ -19,6 +19,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Falsa",
                             Numero = "123",
+                            Piso = "1",
+                            Depto = "2",
                             CodigoPostal = "C1000",
                             Localidad = "Buenos Aires",
                             Provincia = "Buenos Aires"
@@ -30,6 +32,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Verdadera",
                             Numero = "456",
+                            Piso = "1",
+                            Depto = "3",
                             CodigoPostal = "2000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
@@ -43,6 +47,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Calle Falsa",
                             Numero = "123",
+                            Piso = "1",
+                            Depto= "2",
                             CodigoPostal = "C1000",
                             Localidad = "Buenos Aires",
                             Provincia = "Buenos Aires"
@@ -55,6 +61,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Avenida Real",
                             Numero = "789",
+                            Piso = "1",
+                            Depto = "3",
                             CodigoPostal = "2000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
@@ -68,6 +76,8 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             Calle = "Boulevard de los Sueños Rotos",
                             Numero = "789",
+                            Piso = "1",
+                            Depto = "2",
                             CodigoPostal = "3000",
                             Localidad = "CABA",
                             Provincia = "Buenos Aires"
@@ -432,20 +442,31 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var grupos = guiasSeleccionadas.GroupBy(g =>
                 (g.EstadoGuia == "A retirar")
-                    ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.CodigoPostal}"
-                    : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.CodigoPostal}");
+                    ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.Piso}-{g.DomicilioRetiro.Depto}-{g.DomicilioRetiro.CodigoPostal}"
+                    : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.Piso}-{g.DomicilioEntrega.Depto}-{g.DomicilioEntrega.CodigoPostal}");
 
             foreach (var grupo in grupos)
             {
                 var guiasGrupo = grupo.ToList();
+                var g = guiasGrupo.First(); // tomamos la primera guía del grupo para armar domicilio
 
-                if (guiasGrupo.All(g => g.EstadoGuia == "A retirar"))
+                if (guiasGrupo.All(x => x.EstadoGuia == "A retirar"))
                 {
-                    hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro"));
+                    var domicilio = $"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}";
+                    hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro")
+                    {
+                        Domicilio = domicilio,
+                        CodigoPostal = g.DomicilioRetiro.CodigoPostal
+                    });
                 }
                 else
                 {
-                    hdrsProvisorios.Add(new HDRResumen(idDistribTemp++, guiasGrupo, "Distribución"));
+                    var domicilio = $"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero} - Piso: {g.DomicilioEntrega.Piso} - Depto: {g.DomicilioEntrega.Depto}";
+                    hdrsProvisorios.Add(new HDRResumen(idDistribTemp++, guiasGrupo, "Distribución")
+                    {
+                        Domicilio = domicilio,
+                        CodigoPostal = g.DomicilioEntrega.CodigoPostal
+                    });
                 }
             }
 
