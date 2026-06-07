@@ -195,45 +195,6 @@ namespace GrupoE_Tutasa.Imposicion
         }
 
         // ─────────────────────────────────────────────
-        // AL.2.1 - TARIFARIO GENERAL
-        // ─────────────────────────────────────────────
-        public List<Tarifario> LTarifarios
-        {
-            get
-            {
-                return new List<Tarifario>
-                {
-                    new Tarifario
-                    {
-                        TarifarioId = 1,
-                        TarifaRetiroDomicilio       = 800m,
-                        TarifaEntregaAgencia        = 300m,
-                        TarifaDistribucionDomicilio = 600m
-                    }
-                };
-            }
-        }
-
-        // ─────────────────────────────────────────────
-        // AL.2.2 - TARIFAS DE TRANSPORTE
-        // ─────────────────────────────────────────────
-        public List<TarifaTransporte> LTarifasTransporte
-        {
-            get
-            {
-                return new List<TarifaTransporte>
-                {
-                    new TarifaTransporte { CDOrigenId = 1, CDDestinoId = 3, CoeficienteS = 3500m,  CoeficienteM = 6000m,  CoeficienteL = 10000m, CoeficienteXL = 16000m },
-                    new TarifaTransporte { CDOrigenId = 1, CDDestinoId = 4, CoeficienteS = 3200m,  CoeficienteM = 5500m,  CoeficienteL = 9000m,  CoeficienteXL = 14000m },
-                    new TarifaTransporte { CDOrigenId = 3, CDDestinoId = 1, CoeficienteS = 3500m,  CoeficienteM = 6000m,  CoeficienteL = 10000m, CoeficienteXL = 16000m },
-                    new TarifaTransporte { CDOrigenId = 4, CDDestinoId = 1, CoeficienteS = 3200m,  CoeficienteM = 5500m,  CoeficienteL = 9000m,  CoeficienteXL = 14000m },
-                    // Mismo CD origen y destino → sin tarifa de transporte
-                    new TarifaTransporte { CDOrigenId = 1, CDDestinoId = 1, CoeficienteS = 0m, CoeficienteM = 0m, CoeficienteL = 0m, CoeficienteXL = 0m },
-                };
-            }
-        }
-
-        // ─────────────────────────────────────────────
         // AL.14 - GUÍAS
         // ─────────────────────────────────────────────
         public List<Guia> LGuias { get; private set; } = new List<Guia>();
@@ -272,38 +233,6 @@ namespace GrupoE_Tutasa.Imposicion
 
         public List<CentroDistribucion> ObtenerCDsPorLocalidad(int localidadId)
             => LCentrosDistribucion.Where(cd => cd.Domicilio?.LocalidadId == localidadId).ToList();
-
-        /// <summary>
-        /// Calcula el importe estimado usando los coeficientes de la tarifa de transporte
-        /// entre el CD de origen y el CD de destino, sumado a extras si corresponde.
-        /// Si no existe ruta, usa precio base por defecto.
-        /// </summary>
-        public decimal CalcularImporteEstimado(int cantS, int cantM, int cantL, int cantXL,
-                                               int cdOrigenId, int cdDestinoId,
-                                               ModalidadEntregaEnum modalidadEntrega)
-        {
-            var tarifa = LTarifasTransporte
-                .FirstOrDefault(t => t.CDOrigenId == cdOrigenId && t.CDDestinoId == cdDestinoId)
-                ?? LTarifasTransporte.First(); // fallback al primero si no hay ruta exacta
-
-            var tarifario = LTarifarios.First();
-
-            decimal total = 0;
-            total += cantS  * tarifa.CoeficienteS;
-            total += cantM  * tarifa.CoeficienteM;
-            total += cantL  * tarifa.CoeficienteL;
-            total += cantXL * tarifa.CoeficienteXL;
-
-            int totalBultos = cantS + cantM + cantL + cantXL;
-
-            // Extra por modalidad de entrega
-            if (modalidadEntrega == ModalidadEntregaEnum.DOMICILIO)
-                total += tarifario.TarifaDistribucionDomicilio * totalBultos;
-            else if (modalidadEntrega == ModalidadEntregaEnum.AGENCIA)
-                total += tarifario.TarifaEntregaAgencia * totalBultos;
-
-            return total;
-        }
 
         public static bool ValidarCuit(string cuit)
         {

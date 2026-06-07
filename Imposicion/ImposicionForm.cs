@@ -23,16 +23,16 @@ namespace GrupoE_Tutasa.Imposicion
         private void Form1_Load(object sender, EventArgs e)
         {
             // ── Remitente ──
-            NombreRemitenteLabel.Text    = string.Empty;
-            TelefonoRemitenteLabel.Text  = string.Empty;
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
             // ── Domicilio de retiro ──
             label37.Visible = false;
 
-            ProvinciaRetiroComboBox.DataSource    = modelo.LProvincias;
+            ProvinciaRetiroComboBox.DataSource = modelo.LProvincias;
             ProvinciaRetiroComboBox.DisplayMember = "Nombre";
-            ProvinciaRetiroComboBox.ValueMember   = "ProvinciaId";
+            ProvinciaRetiroComboBox.ValueMember = "ProvinciaId";
             ProvinciaRetiroComboBox.SelectedIndex = -1;
             ProvinciaRetiroComboBox.SelectedIndexChanged += ProvinciaRetiroComboBox_SelectedIndexChanged;
 
@@ -41,9 +41,9 @@ namespace GrupoE_Tutasa.Imposicion
             DomicilioFiscalCheck.CheckedChanged += DomicilioFiscalCheck_CheckedChanged;
 
             // ── Datos para la Entrega ──
-            ProvinciaEntregaComboBox.DataSource    = modelo.LProvincias;
+            ProvinciaEntregaComboBox.DataSource = modelo.LProvincias;
             ProvinciaEntregaComboBox.DisplayMember = "Nombre";
-            ProvinciaEntregaComboBox.ValueMember   = "ProvinciaId";
+            ProvinciaEntregaComboBox.ValueMember = "ProvinciaId";
             ProvinciaEntregaComboBox.SelectedIndex = -1;
             ProvinciaEntregaComboBox.SelectedIndexChanged += ProvinciaEntregaComboBox_SelectedIndexChanged;
 
@@ -51,23 +51,22 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadEntregaComboBox.SelectedIndexChanged += LocalidadEntregaComboBox_SelectedIndexChanged;
 
             TipoEntregaComboBox.SelectedIndex = -1;
-            TipoEntregaComboBox.Enabled       = false;
+            TipoEntregaComboBox.Enabled = false;
             TipoEntregaComboBox.SelectedIndexChanged += TipoEntregaComboBox_SelectedIndexChanged;
 
             DestinoComboBox.Enabled = false;
             DestinoComboBox.Visible = false;
-            labelDestino.Visible    = false;
-            panel1.Visible          = false;
+            labelDestino.Visible = false;
+            panel1.Visible = false;
 
             // ── Cantidades ──
-            CantidadSTextBox.TextChanged  += CantidadSTextBox_TextChanged;
-            CantidadMTextBox.TextChanged  += CantidadMTextBox_TextChanged;
-            CantidadLTextBox.TextChanged  += CantidadLTextBox_TextChanged;
+            CantidadSTextBox.TextChanged += CantidadSTextBox_TextChanged;
+            CantidadMTextBox.TextChanged += CantidadMTextBox_TextChanged;
+            CantidadLTextBox.TextChanged += CantidadLTextBox_TextChanged;
             CantidadXLTextBox.TextChanged += CantidadXLTextBox_TextChanged;
 
             // ── Totales ──
-            GuiasAGenerarLabel.Text   = "[Total Guias]";
-            ImporteEstimadoLabel.Text = "[ $... ]";
+            GuiasAGenerarLabel.Text = "[Total Guias]";
         }
 
         // ─────────────────────────────────────────────
@@ -76,8 +75,8 @@ namespace GrupoE_Tutasa.Imposicion
         private void BuscarRemitenteBoton_Click(object sender, EventArgs e)
         {
             _clienteActual = null;
-            NombreRemitenteLabel.Text    = string.Empty;
-            TelefonoRemitenteLabel.Text  = string.Empty;
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
             if (string.IsNullOrWhiteSpace(CuitRemitenteTextBox.Text))
@@ -110,8 +109,8 @@ namespace GrupoE_Tutasa.Imposicion
                 ? $"{cliente.Nombre} {cliente.Apellido}".Trim()
                 : cliente.RazonSocial;
 
-            NombreRemitenteLabel.Text    = nombreMostrar;
-            TelefonoRemitenteLabel.Text  = cliente.Telefono;
+            NombreRemitenteLabel.Text = nombreMostrar;
+            TelefonoRemitenteLabel.Text = cliente.Telefono;
             DireccionRemitenteLabel.Text = FormatearDomicilio(cliente.Domicilio);
 
             if (DomicilioFiscalCheck.Checked)
@@ -130,10 +129,10 @@ namespace GrupoE_Tutasa.Imposicion
             if (fiscal && _clienteActual != null)
                 label37.Text = FormatearDomicilio(_clienteActual.Domicilio);
 
-            ProvinciaRetiroComboBox.Enabled  = !fiscal;
-            LocalidadRetiroComboBox.Enabled  = !fiscal;
-            DireccionRetiroTextBox.Enabled   = !fiscal;
-            CPRetiroTextBox.Enabled          = !fiscal;
+            ProvinciaRetiroComboBox.Enabled = !fiscal;
+            LocalidadRetiroComboBox.Enabled = !fiscal;
+            DireccionRetiroTextBox.Enabled = !fiscal;
+            CPRetiroTextBox.Enabled = !fiscal;
         }
 
         // ─────────────────────────────────────────────
@@ -142,16 +141,16 @@ namespace GrupoE_Tutasa.Imposicion
         private void ProvinciaRetiroComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadRetiroComboBox.DataSource = null;
-            LocalidadRetiroComboBox.Enabled    = false;
+            LocalidadRetiroComboBox.Enabled = false;
 
             if (ProvinciaRetiroComboBox.SelectedItem is not Provincia prov) return;
 
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
-            LocalidadRetiroComboBox.DataSource    = localidades;
+            LocalidadRetiroComboBox.DataSource = localidades;
             LocalidadRetiroComboBox.DisplayMember = "Nombre";
-            LocalidadRetiroComboBox.ValueMember   = "LocalidadId";
+            LocalidadRetiroComboBox.ValueMember = "LocalidadId";
             LocalidadRetiroComboBox.SelectedIndex = -1;
-            LocalidadRetiroComboBox.Enabled       = true;
+            LocalidadRetiroComboBox.Enabled = true;
         }
 
         // ─────────────────────────────────────────────
@@ -160,24 +159,24 @@ namespace GrupoE_Tutasa.Imposicion
         private void ProvinciaEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadEntregaComboBox.DataSource = null;
-            LocalidadEntregaComboBox.Enabled    = false;
+            LocalidadEntregaComboBox.Enabled = false;
             TipoEntregaComboBox.Items.Clear();
-            TipoEntregaComboBox.SelectedIndex   = -1;
-            TipoEntregaComboBox.Enabled         = false;
-            DestinoComboBox.DataSource          = null;
-            DestinoComboBox.Enabled             = false;
-            DestinoComboBox.Visible             = false;
-            labelDestino.Visible                = false;
-            panel1.Visible                      = false;
+            TipoEntregaComboBox.SelectedIndex = -1;
+            TipoEntregaComboBox.Enabled = false;
+            DestinoComboBox.DataSource = null;
+            DestinoComboBox.Enabled = false;
+            DestinoComboBox.Visible = false;
+            labelDestino.Visible = false;
+            panel1.Visible = false;
 
             if (ProvinciaEntregaComboBox.SelectedItem is not Provincia prov) return;
 
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
-            LocalidadEntregaComboBox.DataSource    = localidades;
+            LocalidadEntregaComboBox.DataSource = localidades;
             LocalidadEntregaComboBox.DisplayMember = "Nombre";
-            LocalidadEntregaComboBox.ValueMember   = "LocalidadId";
+            LocalidadEntregaComboBox.ValueMember = "LocalidadId";
             LocalidadEntregaComboBox.SelectedIndex = -1;
-            LocalidadEntregaComboBox.Enabled       = true;
+            LocalidadEntregaComboBox.Enabled = true;
         }
 
         // ─────────────────────────────────────────────
@@ -188,17 +187,17 @@ namespace GrupoE_Tutasa.Imposicion
         {
             TipoEntregaComboBox.Items.Clear();
             TipoEntregaComboBox.SelectedIndex = -1;
-            TipoEntregaComboBox.Enabled       = false;
-            DestinoComboBox.DataSource        = null;
-            DestinoComboBox.Enabled           = false;
-            DestinoComboBox.Visible           = false;
-            labelDestino.Visible              = false;
-            panel1.Visible                    = false;
+            TipoEntregaComboBox.Enabled = false;
+            DestinoComboBox.DataSource = null;
+            DestinoComboBox.Enabled = false;
+            DestinoComboBox.Visible = false;
+            labelDestino.Visible = false;
+            panel1.Visible = false;
 
             if (LocalidadEntregaComboBox.SelectedItem is not Localidad loc) return;
 
             var agencias = modelo.ObtenerAgenciasPorLocalidad(loc.LocalidadId);
-            var cds      = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
+            var cds = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
 
             if (cds.Count > 0)
                 TipoEntregaComboBox.Items.Add("CD");
@@ -218,10 +217,10 @@ namespace GrupoE_Tutasa.Imposicion
         private void TipoEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             DestinoComboBox.DataSource = null;
-            DestinoComboBox.Enabled    = false;
-            DestinoComboBox.Visible    = false;
-            labelDestino.Visible       = false;
-            panel1.Visible             = false;
+            DestinoComboBox.Enabled = false;
+            DestinoComboBox.Visible = false;
+            labelDestino.Visible = false;
+            panel1.Visible = false;
 
             if (TipoEntregaComboBox.SelectedItem is not string tipoSeleccionado) return;
             if (LocalidadEntregaComboBox.SelectedItem is not Localidad loc) return;
@@ -233,24 +232,24 @@ namespace GrupoE_Tutasa.Imposicion
             else if (tipoSeleccionado == "CD")
             {
                 var cds = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
-                DestinoComboBox.DataSource    = cds;
+                DestinoComboBox.DataSource = cds;
                 DestinoComboBox.DisplayMember = "Nombre";
-                DestinoComboBox.ValueMember   = "CDId";
+                DestinoComboBox.ValueMember = "CDId";
                 DestinoComboBox.SelectedIndex = -1;
-                DestinoComboBox.Enabled       = true;
-                DestinoComboBox.Visible       = true;
-                labelDestino.Visible          = true;
+                DestinoComboBox.Enabled = true;
+                DestinoComboBox.Visible = true;
+                labelDestino.Visible = true;
             }
             else if (tipoSeleccionado == "Agencia")
             {
                 var agencias = modelo.ObtenerAgenciasPorLocalidad(loc.LocalidadId);
-                DestinoComboBox.DataSource    = agencias;
+                DestinoComboBox.DataSource = agencias;
                 DestinoComboBox.DisplayMember = "RazonSocial";
-                DestinoComboBox.ValueMember   = "AgenciaId";
+                DestinoComboBox.ValueMember = "AgenciaId";
                 DestinoComboBox.SelectedIndex = -1;
-                DestinoComboBox.Enabled       = true;
-                DestinoComboBox.Visible       = true;
-                labelDestino.Visible          = true;
+                DestinoComboBox.Enabled = true;
+                DestinoComboBox.Visible = true;
+                labelDestino.Visible = true;
             }
 
             ActualizarTotales();
@@ -263,7 +262,7 @@ namespace GrupoE_Tutasa.Imposicion
         private static bool ValidarCodigoPostal(string cp)
         {
             if (string.IsNullOrWhiteSpace(cp)) return true;
-            bool tieneLetras  = cp.Any(char.IsLetter);
+            bool tieneLetras = cp.Any(char.IsLetter);
             bool tieneNumeros = cp.Any(char.IsDigit);
             if (tieneLetras && !tieneNumeros) return false;
             return true;
@@ -274,18 +273,13 @@ namespace GrupoE_Tutasa.Imposicion
         // ─────────────────────────────────────────────
         private void ActualizarTotales()
         {
-            int.TryParse(CantidadSTextBox.Text,  out int cantS);
-            int.TryParse(CantidadMTextBox.Text,  out int cantM);
-            int.TryParse(CantidadLTextBox.Text,  out int cantL);
+            int.TryParse(CantidadSTextBox.Text, out int cantS);
+            int.TryParse(CantidadMTextBox.Text, out int cantM);
+            int.TryParse(CantidadLTextBox.Text, out int cantL);
             int.TryParse(CantidadXLTextBox.Text, out int cantXL);
 
             int totalGuias = cantS + cantM + cantL + cantXL;
             GuiasAGenerarLabel.Text = totalGuias.ToString();
-
-            var modalidadEntrega = ResolverModalidadEntrega();
-            decimal importe = modelo.CalcularImporteEstimado(cantS, cantM, cantL, cantXL,
-                                                             _cdActualId, _cdActualId, modalidadEntrega);
-            ImporteEstimadoLabel.Text = totalGuias > 0 ? $"$ {importe:N2}" : "[ $... ]";
         }
 
         private ModalidadEntregaEnum ResolverModalidadEntrega()
@@ -296,14 +290,14 @@ namespace GrupoE_Tutasa.Imposicion
             return tipo switch
             {
                 "A domicilio" => ModalidadEntregaEnum.DOMICILIO,
-                "Agencia"     => ModalidadEntregaEnum.AGENCIA,
-                _             => ModalidadEntregaEnum.CD
+                "Agencia" => ModalidadEntregaEnum.AGENCIA,
+                _ => ModalidadEntregaEnum.CD
             };
         }
 
-        private void CantidadSTextBox_TextChanged(object sender, EventArgs e)  => ActualizarTotales();
-        private void CantidadMTextBox_TextChanged(object sender, EventArgs e)  => ActualizarTotales();
-        private void CantidadLTextBox_TextChanged(object sender, EventArgs e)  => ActualizarTotales();
+        private void CantidadSTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadMTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
+        private void CantidadLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
         private void CantidadXLTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
 
         // ─────────────────────────────────────────────
@@ -387,18 +381,18 @@ namespace GrupoE_Tutasa.Imposicion
             }
 
             // ── Validar cantidades ──
-            if ((!string.IsNullOrWhiteSpace(CantidadSTextBox.Text)  && !CantidadSTextBox.Text.All(char.IsDigit))  ||
-                (!string.IsNullOrWhiteSpace(CantidadMTextBox.Text)  && !CantidadMTextBox.Text.All(char.IsDigit))  ||
-                (!string.IsNullOrWhiteSpace(CantidadLTextBox.Text)  && !CantidadLTextBox.Text.All(char.IsDigit))  ||
+            if ((!string.IsNullOrWhiteSpace(CantidadSTextBox.Text) && !CantidadSTextBox.Text.All(char.IsDigit)) ||
+                (!string.IsNullOrWhiteSpace(CantidadMTextBox.Text) && !CantidadMTextBox.Text.All(char.IsDigit)) ||
+                (!string.IsNullOrWhiteSpace(CantidadLTextBox.Text) && !CantidadLTextBox.Text.All(char.IsDigit)) ||
                 (!string.IsNullOrWhiteSpace(CantidadXLTextBox.Text) && !CantidadXLTextBox.Text.All(char.IsDigit)))
             {
                 MessageBox.Show("Las cantidades de encomiendas deben ser valores numéricos enteros.");
                 return;
             }
 
-            int.TryParse(CantidadSTextBox.Text,  out int cantS);
-            int.TryParse(CantidadMTextBox.Text,  out int cantM);
-            int.TryParse(CantidadLTextBox.Text,  out int cantL);
+            int.TryParse(CantidadSTextBox.Text, out int cantS);
+            int.TryParse(CantidadMTextBox.Text, out int cantM);
+            int.TryParse(CantidadLTextBox.Text, out int cantL);
             int.TryParse(CantidadXLTextBox.Text, out int cantXL);
 
             if (cantS + cantM + cantL + cantXL == 0)
@@ -411,28 +405,28 @@ namespace GrupoE_Tutasa.Imposicion
             var modalidadEntrega = ResolverModalidadEntrega();
 
             Domicilio domicilioEntrega = null;
-            int?      agenciaDestinoId = null;
-            int       cdDestinoId      = _cdActualId; // fallback: mismo CD
+            int? agenciaDestinoId = null;
+            int cdDestinoId = _cdActualId; // fallback: mismo CD
 
             if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem is Agencia agencia)
             {
                 agenciaDestinoId = agencia.AgenciaId;
                 domicilioEntrega = agencia.Domicilio;
-                cdDestinoId      = agencia.CDAsignadoId;
+                cdDestinoId = agencia.CDAsignadoId;
             }
             else if (tipoSeleccionado == "CD" && DestinoComboBox.SelectedItem is CentroDistribucion cd)
             {
                 domicilioEntrega = cd.Domicilio;
-                cdDestinoId      = cd.CDId;
+                cdDestinoId = cd.CDId;
             }
             else if (tipoSeleccionado == "A domicilio")
             {
                 var localidadEntrega = LocalidadEntregaComboBox.SelectedItem as Localidad;
                 domicilioEntrega = new Domicilio
                 {
-                    Calle        = DireccionDomicilioTextBox.Text,
+                    Calle = DireccionDomicilioTextBox.Text,
                     CodigoPostal = CPDomicilioTextBox.Text,
-                    LocalidadId  = localidadEntrega?.LocalidadId ?? 0
+                    LocalidadId = localidadEntrega?.LocalidadId ?? 0
                 };
             }
 
@@ -447,18 +441,13 @@ namespace GrupoE_Tutasa.Imposicion
                 var localidadRetiro = LocalidadRetiroComboBox.SelectedItem as Localidad;
                 domicilioRetiro = new Domicilio
                 {
-                    Calle        = DireccionRetiroTextBox.Text,
+                    Calle = DireccionRetiroTextBox.Text,
                     CodigoPostal = CPRetiroTextBox.Text,
-                    LocalidadId  = localidadRetiro?.LocalidadId ?? 0
+                    LocalidadId = localidadRetiro?.LocalidadId ?? 0
                 };
             }
 
             // ── Registrar guías (una por bulto) ──
-            int totalBultos     = cantS + cantM + cantL + cantXL;
-            decimal importeTotal = modelo.CalcularImporteEstimado(cantS, cantM, cantL, cantXL,
-                                                                  _cdActualId, cdDestinoId, modalidadEntrega);
-            decimal importePorBulto = importeTotal / totalBultos;
-
             var guiasGeneradas = new List<string>();
 
             void RegistrarPorTipo(int cantidad, TipoCajaEnum tipoCaja)
@@ -467,21 +456,21 @@ namespace GrupoE_Tutasa.Imposicion
                 {
                     var guia = new Guia
                     {
-                        ClienteId            = _clienteActual.ClienteId,
-                        CDOrigenId           = _cdActualId,
-                        CDDestinoId          = cdDestinoId,
-                        ModalidadImposicion  = ModalidadImposicionEnum.CD,   // imposición en CD
-                        DomicilioRetiro      = domicilioRetiro,
-                        ModalidadEntrega     = modalidadEntrega,
-                        AgenciaDestinoId     = agenciaDestinoId,
-                        DomicilioEntrega     = domicilioEntrega,
-                        NombreDestinatario   = NombreDestinatarioTextBox.Text.Trim(),
+                        ClienteId = _clienteActual.ClienteId,
+                        CDOrigenId = _cdActualId,
+                        CDDestinoId = cdDestinoId,
+                        ModalidadImposicion = ModalidadImposicionEnum.CD,   // imposición en CD
+                        DomicilioRetiro = domicilioRetiro,
+                        ModalidadEntrega = modalidadEntrega,
+                        AgenciaDestinoId = agenciaDestinoId,
+                        DomicilioEntrega = domicilioEntrega,
+                        NombreDestinatario = NombreDestinatarioTextBox.Text.Trim(),
                         ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim(),
-                        DNIDestinatario      = dni,
-                        TipoCaja             = tipoCaja,
-                        IntentosDeEntrega    = 0,
-                        Estado               = EstadoGuiaEnum.A_RETIRAR,
-                        TarifarioId          = 1,
+                        DNIDestinatario = dni,
+                        TipoCaja = tipoCaja,
+                        IntentosDeEntrega = 0,
+                        Estado = EstadoGuiaEnum.A_RETIRAR,
+                        TarifarioId = 1,
                     };
 
                     // Regla de negocio: CDActualId se asigna dentro de RegistrarGuia
@@ -491,9 +480,9 @@ namespace GrupoE_Tutasa.Imposicion
                 }
             }
 
-            RegistrarPorTipo(cantS,  TipoCajaEnum.S);
-            RegistrarPorTipo(cantM,  TipoCajaEnum.M);
-            RegistrarPorTipo(cantL,  TipoCajaEnum.L);
+            RegistrarPorTipo(cantS, TipoCajaEnum.S);
+            RegistrarPorTipo(cantM, TipoCajaEnum.M);
+            RegistrarPorTipo(cantL, TipoCajaEnum.L);
             RegistrarPorTipo(cantXL, TipoCajaEnum.XL);
 
             string detalle = string.Join("\n", guiasGeneradas);
@@ -527,16 +516,16 @@ namespace GrupoE_Tutasa.Imposicion
             _clienteActual = null;
 
             CuitRemitenteTextBox.Clear();
-            NombreRemitenteLabel.Text    = string.Empty;
-            TelefonoRemitenteLabel.Text  = string.Empty;
+            NombreRemitenteLabel.Text = string.Empty;
+            TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
             DomicilioFiscalCheck.Checked = false;
-            label37.Visible              = false;
-            label37.Text                 = string.Empty;
+            label37.Visible = false;
+            label37.Text = string.Empty;
             ProvinciaRetiroComboBox.SelectedIndex = -1;
-            LocalidadRetiroComboBox.DataSource    = null;
-            LocalidadRetiroComboBox.Enabled       = false;
+            LocalidadRetiroComboBox.DataSource = null;
+            LocalidadRetiroComboBox.Enabled = false;
             DireccionRetiroTextBox.Clear();
             CPRetiroTextBox.Clear();
 
@@ -545,16 +534,16 @@ namespace GrupoE_Tutasa.Imposicion
             DNIDestinatarioTextBox.Clear();
 
             ProvinciaEntregaComboBox.SelectedIndex = -1;
-            LocalidadEntregaComboBox.DataSource    = null;
-            LocalidadEntregaComboBox.Enabled       = false;
+            LocalidadEntregaComboBox.DataSource = null;
+            LocalidadEntregaComboBox.Enabled = false;
             TipoEntregaComboBox.Items.Clear();
-            TipoEntregaComboBox.SelectedIndex      = -1;
-            TipoEntregaComboBox.Enabled            = false;
-            DestinoComboBox.DataSource             = null;
-            DestinoComboBox.Enabled                = false;
-            DestinoComboBox.Visible                = false;
-            labelDestino.Visible                   = false;
-            panel1.Visible                         = false;
+            TipoEntregaComboBox.SelectedIndex = -1;
+            TipoEntregaComboBox.Enabled = false;
+            DestinoComboBox.DataSource = null;
+            DestinoComboBox.Enabled = false;
+            DestinoComboBox.Visible = false;
+            labelDestino.Visible = false;
+            panel1.Visible = false;
             DireccionDomicilioTextBox.Clear();
             CPDomicilioTextBox.Clear();
 
@@ -563,8 +552,7 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadLTextBox.Clear();
             CantidadXLTextBox.Clear();
 
-            GuiasAGenerarLabel.Text   = "[Total Guias]";
-            ImporteEstimadoLabel.Text = "[ $... ]";
+            GuiasAGenerarLabel.Text = "[Total Guias]";
         }
 
         // ─────────────────────────────────────────────
@@ -574,10 +562,10 @@ namespace GrupoE_Tutasa.Imposicion
         {
             if (d == null) return string.Empty;
             var partes = new List<string>();
-            if (!string.IsNullOrWhiteSpace(d.Calle))   partes.Add(d.Calle);
-            if (!string.IsNullOrWhiteSpace(d.Numero))  partes.Add(d.Numero);
-            if (!string.IsNullOrWhiteSpace(d.Piso))    partes.Add($"P{d.Piso}");
-            if (!string.IsNullOrWhiteSpace(d.Depto))   partes.Add($"D{d.Depto}");
+            if (!string.IsNullOrWhiteSpace(d.Calle)) partes.Add(d.Calle);
+            if (!string.IsNullOrWhiteSpace(d.Numero)) partes.Add(d.Numero);
+            if (!string.IsNullOrWhiteSpace(d.Piso)) partes.Add($"P{d.Piso}");
+            if (!string.IsNullOrWhiteSpace(d.Depto)) partes.Add($"D{d.Depto}");
             return string.Join(" ", partes);
         }
 
@@ -587,15 +575,25 @@ namespace GrupoE_Tutasa.Imposicion
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }
         private void groupBox5_Enter(object sender, EventArgs e) { }
-        private void label3_Click(object sender, EventArgs e)    { }
-        private void label4_Click(object sender, EventArgs e)    { }
-        private void label6_Click(object sender, EventArgs e)    { }
-        private void label9_Click(object sender, EventArgs e)    { }
-        private void label10_Click(object sender, EventArgs e)   { }
-        private void label12_Click(object sender, EventArgs e)   { }
-        private void label19_Click(object sender, EventArgs e)   { }
-        private void label26_Click(object sender, EventArgs e)   { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
+        private void label9_Click(object sender, EventArgs e) { }
+        private void label10_Click(object sender, EventArgs e) { }
+        private void label12_Click(object sender, EventArgs e) { }
+        private void label19_Click(object sender, EventArgs e) { }
+        private void label26_Click(object sender, EventArgs e) { }
         private void CPDomicilioTextBox_TextChanged(object sender, EventArgs e) => ActualizarTotales();
-        private void CPRetiroTextBox_TextChanged(object sender, EventArgs e)    { }
+        private void CPRetiroTextBox_TextChanged(object sender, EventArgs e) { }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CuitRemitenteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

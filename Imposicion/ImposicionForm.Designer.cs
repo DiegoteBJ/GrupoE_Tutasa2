@@ -1,4 +1,4 @@
-﻿namespace GrupoE_Tutasa.Imposicion
+namespace GrupoE_Tutasa.Imposicion
 {
     partial class ImposicionForm
     {
@@ -62,8 +62,10 @@
             CPDomicilioTextBox = new TextBox();
             label39 = new Label();
             groupBox4 = new GroupBox();
+            label22 = new Label();
             CantidadSTextBox = new TextBox();
             label15 = new Label();
+            GuiasAGenerarLabel = new Label();
             CantidadMTextBox = new TextBox();
             label17 = new Label();
             CantidadLTextBox = new TextBox();
@@ -72,11 +74,6 @@
             label19 = new Label();
             label16 = new Label();
             label20 = new Label();
-            panel2 = new Panel();
-            label22 = new Label();
-            GuiasAGenerarLabel = new Label();
-            label23 = new Label();
-            ImporteEstimadoLabel = new Label();
             button2 = new Button();
             button3 = new Button();
             label24 = new Label();
@@ -89,7 +86,6 @@
             groupBox3.SuspendLayout();
             panel1.SuspendLayout();
             groupBox4.SuspendLayout();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -173,6 +169,7 @@
             CuitRemitenteTextBox.Name = "CuitRemitenteTextBox";
             CuitRemitenteTextBox.Size = new Size(116, 23);
             CuitRemitenteTextBox.TabIndex = 1;
+            CuitRemitenteTextBox.TextChanged += CuitRemitenteTextBox_TextChanged;
             // 
             // label1
             // 
@@ -562,8 +559,10 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(label22);
             groupBox4.Controls.Add(CantidadSTextBox);
             groupBox4.Controls.Add(label15);
+            groupBox4.Controls.Add(GuiasAGenerarLabel);
             groupBox4.Controls.Add(CantidadMTextBox);
             groupBox4.Controls.Add(label17);
             groupBox4.Controls.Add(CantidadLTextBox);
@@ -572,19 +571,27 @@
             groupBox4.Controls.Add(label19);
             groupBox4.Controls.Add(label16);
             groupBox4.Controls.Add(label20);
-            groupBox4.Controls.Add(panel2);
             groupBox4.Location = new Point(32, 618);
             groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4, 3, 4, 3);
-            groupBox4.Size = new Size(823, 194);
+            groupBox4.Size = new Size(823, 134);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "Detalle de Encomiendas";
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(486, 33);
+            label22.Name = "label22";
+            label22.Size = new Size(92, 15);
+            label22.TabIndex = 34;
+            label22.Text = "Guias a Generar:";
+            // 
             // CantidadSTextBox
             // 
-            CantidadSTextBox.Location = new Point(231, 36);
+            CantidadSTextBox.Location = new Point(13, 93);
             CantidadSTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadSTextBox.Name = "CantidadSTextBox";
             CantidadSTextBox.Size = new Size(92, 23);
@@ -593,15 +600,24 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(55, 47);
+            label15.Location = new Point(13, 66);
             label15.Name = "label15";
-            label15.Size = new Size(115, 15);
+            label15.Size = new Size(43, 15);
             label15.TabIndex = 21;
-            label15.Text = "Tipo S (Hasta 2,5 kg)";
+            label15.Text = "Tipo S ";
+            // 
+            // GuiasAGenerarLabel
+            // 
+            GuiasAGenerarLabel.AutoSize = true;
+            GuiasAGenerarLabel.Location = new Point(621, 33);
+            GuiasAGenerarLabel.Name = "GuiasAGenerarLabel";
+            GuiasAGenerarLabel.Size = new Size(73, 15);
+            GuiasAGenerarLabel.TabIndex = 37;
+            GuiasAGenerarLabel.Text = "[Total Guias]";
             // 
             // CantidadMTextBox
             // 
-            CantidadMTextBox.Location = new Point(231, 80);
+            CantidadMTextBox.Location = new Point(120, 93);
             CantidadMTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadMTextBox.Name = "CantidadMTextBox";
             CantidadMTextBox.Size = new Size(92, 23);
@@ -610,15 +626,15 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(55, 83);
+            label17.Location = new Point(120, 66);
             label17.Name = "label17";
-            label17.Size = new Size(111, 15);
+            label17.Size = new Size(45, 15);
             label17.TabIndex = 25;
-            label17.Text = "Tipo M (Hasta 5 kg)";
+            label17.Text = "Tipo M";
             // 
             // CantidadLTextBox
             // 
-            CantidadLTextBox.Location = new Point(231, 118);
+            CantidadLTextBox.Location = new Point(223, 93);
             CantidadLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadLTextBox.Name = "CantidadLTextBox";
             CantidadLTextBox.Size = new Size(92, 23);
@@ -627,15 +643,15 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(55, 118);
+            label18.Location = new Point(225, 66);
             label18.Name = "label18";
-            label18.Size = new Size(112, 15);
+            label18.Size = new Size(43, 15);
             label18.TabIndex = 27;
-            label18.Text = "Tipo L (Hasta 10 kg)";
+            label18.Text = "Tipo L ";
             // 
             // CantidadXLTextBox
             // 
-            CantidadXLTextBox.Location = new Point(231, 150);
+            CantidadXLTextBox.Location = new Point(338, 93);
             CantidadXLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadXLTextBox.Name = "CantidadXLTextBox";
             CantidadXLTextBox.Size = new Size(92, 23);
@@ -644,81 +660,34 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(55, 150);
+            label19.Location = new Point(340, 66);
             label19.Name = "label19";
-            label19.Size = new Size(119, 15);
+            label19.Size = new Size(47, 15);
             label19.TabIndex = 29;
-            label19.Text = "Tipo XL (Hasta 20 kg)";
+            label19.Text = "Tipo XL";
             label19.Click += label19_Click;
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(250, 18);
+            label16.Location = new Point(7, 33);
             label16.Name = "label16";
-            label16.Size = new Size(55, 15);
+            label16.Size = new Size(190, 15);
             label16.TabIndex = 22;
-            label16.Text = "Cantidad";
+            label16.Text = "Ingrese cantidad de Guias por tipo.";
+            label16.Click += label16_Click;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(454, 44);
+            label20.Location = new Point(393, 114);
             label20.Name = "label20";
             label20.Size = new Size(0, 15);
             label20.TabIndex = 31;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(label22);
-            panel2.Controls.Add(GuiasAGenerarLabel);
-            panel2.Controls.Add(label23);
-            panel2.Controls.Add(ImporteEstimadoLabel);
-            panel2.Location = new Point(411, 36);
-            panel2.Margin = new Padding(4, 3, 4, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(391, 137);
-            panel2.TabIndex = 32;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(23, 23);
-            label22.Name = "label22";
-            label22.Size = new Size(92, 15);
-            label22.TabIndex = 34;
-            label22.Text = "Guias a Generar:";
-            // 
-            // GuiasAGenerarLabel
-            // 
-            GuiasAGenerarLabel.AutoSize = true;
-            GuiasAGenerarLabel.Location = new Point(158, 23);
-            GuiasAGenerarLabel.Name = "GuiasAGenerarLabel";
-            GuiasAGenerarLabel.Size = new Size(73, 15);
-            GuiasAGenerarLabel.TabIndex = 37;
-            GuiasAGenerarLabel.Text = "[Total Guias]";
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Location = new Point(23, 60);
-            label23.Name = "label23";
-            label23.Size = new Size(104, 15);
-            label23.TabIndex = 35;
-            label23.Text = "Importe Estimado:";
-            // 
-            // ImporteEstimadoLabel
-            // 
-            ImporteEstimadoLabel.AutoSize = true;
-            ImporteEstimadoLabel.Location = new Point(158, 60);
-            ImporteEstimadoLabel.Name = "ImporteEstimadoLabel";
-            ImporteEstimadoLabel.Size = new Size(36, 15);
-            ImporteEstimadoLabel.TabIndex = 38;
-            ImporteEstimadoLabel.Text = "[ $... ]";
-            // 
             // button2
             // 
-            button2.Location = new Point(653, 832);
+            button2.Location = new Point(630, 773);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
             button2.Size = new Size(88, 27);
@@ -730,7 +699,7 @@
             // 
             button3.BackColor = SystemColors.Highlight;
             button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(767, 832);
+            button3.Location = new Point(744, 773);
             button3.Margin = new Padding(4, 3, 4, 3);
             button3.Name = "button3";
             button3.Size = new Size(88, 27);
@@ -742,7 +711,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(23, 861);
+            label24.Location = new Point(9, 842);
             label24.Name = "label24";
             label24.Size = new Size(107, 15);
             label24.TabIndex = 19;
@@ -751,7 +720,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(195, 861);
+            label25.Location = new Point(181, 842);
             label25.Name = "label25";
             label25.Size = new Size(168, 15);
             label25.TabIndex = 20;
@@ -760,7 +729,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(415, 861);
+            label26.Location = new Point(401, 842);
             label26.Name = "label26";
             label26.Size = new Size(128, 15);
             label26.TabIndex = 21;
@@ -772,7 +741,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(676, 460);
+            ClientSize = new Size(873, 874);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -800,8 +769,6 @@
             panel1.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -863,11 +830,8 @@
         private TextBox CantidadXLTextBox;
         private Label label19;
         private Label label16, label20;
-        private Panel panel2;
         private Label label22;
         private Label GuiasAGenerarLabel;
-        private Label label23;
-        private Label ImporteEstimadoLabel;
 
         private Button button2, button3;
         private Label label24, label25, label26;
