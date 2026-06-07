@@ -1,5 +1,3 @@
-using GrupoE_Tutasa.Almacenes;
-
 namespace GrupoE_Tutasa.EmitirFactura
 {
     public partial class EmitirFacturaForm : Form
@@ -10,15 +8,9 @@ namespace GrupoE_Tutasa.EmitirFactura
             InitializeComponent();
         }
         Clientes clienteActual = null;
+
         private void EmitirFacturaForm_Load(object sender, EventArgs e)
         {
-            /*Todavia el formulario no esta visible. Hay que cargar los datos del modelo
-              para que se muestren en el formulario*/
-            var clientes = modelo.LClientes;
-            var documentos = modelo.LDocumentos;
-            var guiasPendientes = modelo.LGuiasPendientes;
-            var guias = modelo.LGuias;
-            //Aqui se pueden cargar los datos en los controles del formulario, como ComboBox, DataGridView, etc.
             CuitClienteBox.Clear();
             DatosCLienteRespuestaLabel.Text = string.Empty;
             TotalAFacturarLabel.Text = $"0";
@@ -26,14 +18,12 @@ namespace GrupoE_Tutasa.EmitirFactura
 
         private void BuscarClienteBoton_Click(object sender, EventArgs e)
         {
-            //1 definir variables
             int encuentro = 0;
             int clienteId = 0;
             decimal totalImporte = 0;
             string tamaño = string.Empty;
             DetalleEnviosListView.Items.Clear();
 
-            //2 Validar Datos
             if (string.IsNullOrWhiteSpace(CuitClienteBox.Text))
             {
                 MessageBox.Show("Debe completar el campo CUIT.");
@@ -44,7 +34,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 MessageBox.Show("El CUIT ingresado no es válido.");
                 return;
             }
-         
+
             string cuit = CuitClienteBox.Text.Trim();
             foreach (var cliente in modelo.LClientes)
             {
@@ -61,7 +51,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 DatosCLienteRespuestaLabel.Text = "No existe el Cliente seleccionado. Vuelva a intentarlo";
                 return;
             }
-            //3 Generar operacion de busqueda
+
             foreach (var guiaAFacturar in modelo.LGuiasPendientes)
             {
                 if (guiaAFacturar.clienteID == clienteId && !guiaAFacturar.facturada)
@@ -78,14 +68,15 @@ namespace GrupoE_Tutasa.EmitirFactura
                     item.SubItems.Add(guiaAFacturar.fechaEntrega.ToShortDateString());
                     item.SubItems.Add(tamaño);
                     item.SubItems.Add(guiaAFacturar.importe.ToString());
-                    totalImporte = totalImporte + guiaAFacturar.importe;
+                    totalImporte += guiaAFacturar.importe;
                     DetalleEnviosListView.Items.Add(item);
                 }
             }
             TotalAFacturarLabel.Text = $"{totalImporte}";
-            if (totalImporte==0)
-            { MessageBox.Show("No se encontraron ítems pendientes de facturar. Para el cliente seleccionado. Reintente");}
+            if (totalImporte == 0)
+                MessageBox.Show("No se encontraron ítems pendientes de facturar para el cliente seleccionado. Reintente.");
         }
+
         private void CancelarBoton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -105,49 +96,24 @@ namespace GrupoE_Tutasa.EmitirFactura
         private void EmitirFacturaBoton_Click(object sender, EventArgs e)
         {
             if (clienteActual == null)
-                {
-                MessageBox.Show("Debe seleccionar un cliente antes de poder generar la factura");
+            {
+                MessageBox.Show("Debe seleccionar un cliente antes de poder generar la factura.");
                 return;
-                }
-           if (!decimal.TryParse(TotalAFacturarLabel.Text, out decimal totalParseado) || totalParseado == 0)	
-                {
+            }
+            if (!decimal.TryParse(TotalAFacturarLabel.Text, out decimal netoGravado) || netoGravado == 0)
+            {
                 MessageBox.Show("No hay importe a facturar. Por favor, seleccione un cliente con guías pendientes.");
                 return;
-                }
+            }
 
-            int nuevoDocumentoId = DocumentoAlmacen.documentos.Count > 0
-                ? DocumentoAlmacen.documentos.Max(d => d.DocumentoId) + 1
-                : 1;
+            string numeroDocumento = modelo.EmitirFactura(clienteActual.clienteId, netoGravado);
 
-            int clienteId = clienteActual.clienteId;
-            string documentoTipo = "FC";
-            DateTime documentoFecha = DateTime.Now;
-            string numeroDocumento = $"{nuevoDocumentoId:00000000}";
-            decimal netoGravado = TotalAFacturarLabel.Text != string.Empty ? decimal.Parse(TotalAFacturarLabel.Text) : 0;
-            decimal iva = netoGravado * 0.21m;
+            decimal iva            = netoGravado * 0.21m;
             decimal documentoTotal = netoGravado + iva;
 
-            // Agregar el nuevo documento a la lista de documentos del modelo. 
-            var nuevoDocumento = new DocumentoEntidad
-            {
-                DocumentoId = nuevoDocumentoId,
-                ClienteId = clienteId,
-                TipoDocumento = TipoDocumentoEnum.FC,
-                FechaDocumento = documentoFecha,
-                NumeroDocumento = numeroDocumento,
-                NetoGravado = netoGravado,
-                IvaDF = iva,
-                Total = documentoTotal
-            };
-
-            DocumentoAlmacen.documentos.Add(nuevoDocumento);
-            DocumentoAlmacen.Guardar();
-
-            // Marcar las guías como facturadas y agregar el número de documento a cada guía facturada.
-            modelo.MarcarGuiasComoFacturadas(clienteId, numeroDocumento);
-
-            // Mostrar mensaje de éxito con el número de documento y el importe facturado.
-            MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" + $"Importe facturado: {documentoTotal}\n" + $"Importe sin IVA: {netoGravado}");
+            MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" +
+                            $"Importe facturado: {documentoTotal}\n" +
+                            $"Importe sin IVA: {netoGravado}");
             EmitirFacturaBoton.Enabled = false;
             CancelarBoton.Text = "Cerrar";
         }
