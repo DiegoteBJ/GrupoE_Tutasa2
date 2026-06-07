@@ -27,11 +27,11 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         {
             //MessageBox.Show(Directory.GetCurrentDirectory());
             //string datosp = "";
-            //foreach (var tt in GuiaAlmacen.guias )
+            //foreach (var tt in CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes )
             //{
-            //   datosp += $"Datos: {tt.CDDestinoId + tt.ApellidoDestinatario + tt.CDOrigenId }\n";
+            //   datosp += $"Datos: {tt.GuiaId + tt.PrecioCalculadoTotal}\n";
             //}
-            //MessageBox.Show($"Guias cargadas: {GuiaAlmacen.guias.Count}\n{datosp}");
+            //MessageBox.Show($"Cuenta corriente clientes cargados: {CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes.Count}\n{datosp}");
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)

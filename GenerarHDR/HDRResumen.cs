@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GrupoE_Tutasa.Almacenes;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
@@ -17,14 +18,14 @@ namespace GrupoE_Tutasa.GenerarHDR
         public DateTime FechaImpresion { get; set; }  // fecha/hora de impresión
 
         // ✅ Constructor principal: recibe lista de guías y tipo de HDR
-        public HDRResumen(int hdrId, List<Guias> guias, string tipo)
+        public HDRResumen(int hdrId, List<GuiaEntidad> guias, string tipoHDR)
         {
             HDRId = hdrId;
             GuiasIds = guias.Select(g => g.GuiaId).ToList();
-            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatarioGuia));
-            TipoHDR = tipo;
+            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatario));
+            TipoHDR = tipoHDR;
 
-            if (tipo == "Retiro")
+            if (tipoHDR == "Retiro")
             {
                 var domicilio = guias.First().DomicilioRetiro;
                 Domicilio = $"{domicilio.Calle} {domicilio.Numero}";

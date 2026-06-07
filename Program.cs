@@ -22,6 +22,8 @@ namespace GrupoE_Tutasa.FormularioPrincipal
             Almacenes.CentroDistribucionAlmacen.Guardar();
             Almacenes.ClienteAlmacen.Guardar();
             Almacenes.ConveniosTransporteAlmacen.Guardar();
+            Almacenes.CuentaCorrienteClienteAlmacen.Guardar();
+            Almacenes.DocumentoAlmacen.Guardar();
             Almacenes.EmpresaTransporteAlmacen.Guardar();
             Almacenes.FleteroAlmacen.Guardar();
             Almacenes.GuiaAlmacen.Guardar();
