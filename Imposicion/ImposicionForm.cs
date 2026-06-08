@@ -34,7 +34,7 @@ namespace GrupoE_Tutasa.Imposicion
 
             DomicilioFiscalCheck.CheckedChanged += DomicilioFiscalCheck_CheckedChanged;
 
-            // Carga de provincias en el combo de entrega
+            // Carga de provincias en el combo de entrega.
             ProvinciaEntregaComboBox.Items.Clear();
             ProvinciaEntregaComboBox.DataSource = modelo.LProvincias;
             ProvinciaEntregaComboBox.DisplayMember = "Nombre";
