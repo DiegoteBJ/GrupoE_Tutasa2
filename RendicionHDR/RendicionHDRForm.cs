@@ -70,7 +70,11 @@ namespace GrupoE_Tutasa.RendicionHDR
             {
                 foreach (var hdr in modelo.LHDRRetiro)
                 {
-                    if (hdr.numeroHDR == nroHDR && hdr.estadoHDR == "Pendiente")
+                    if (hdr.numeroHDR == nroHDR && hdr.estadoHDR == "PENDIENTE")
+                    {
+                        CargarHDRRetiro(hdr);
+                        return;
+                    }
                     {
                         CargarHDRRetiro(hdr);
                         return;
@@ -82,8 +86,11 @@ namespace GrupoE_Tutasa.RendicionHDR
             {
                 foreach (var hdr in modelo.LHDRDistribucion)
                 {
-                    if (hdr.numeroHDR == nroHDR &&
-                        hdr.estadoHDR == "Pendiente")
+                    if (hdr.numeroHDR == nroHDR && hdr.estadoHDR == "PENDIENTE")
+                    {
+                        CargarHDRDistribucion(hdr);
+                        return;
+                    }
                     {
                         CargarHDRDistribucion(hdr);
                         return;
@@ -102,15 +109,15 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             var fletero =
                 modelo.LFleteros.FirstOrDefault(
-                    f => f.fleteroDNI == hdr.fleteroDNI);
+                    f => f.Dni == hdr.fleteroDNI);
 
             if (fletero == null)
                 return;
 
             // Datos del viaje
             RespuestaFleteroLabel.Text =
-                fletero.fleteroApellido + ", " +
-                fletero.fleteroNombre;
+                fletero.Apellido + ", " +
+                fletero.Nombre;
 
             RespuestaFechaLabel.Text =
                 hdr.fechaHDR.ToShortDateString();
@@ -125,7 +132,7 @@ namespace GrupoE_Tutasa.RendicionHDR
             // Cargar detalle de guías
             foreach (var guia in modelo.LGuias)
             {
-                if (guia.numeroHDR == hdr.numeroHDR)
+                if (hdr.GuiaIds.Contains(guia.guiaId))
                 {
                     ListViewItem item = new ListViewItem(guia.guiaId.ToString());
 
@@ -155,15 +162,15 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             var fletero =
                 modelo.LFleteros.FirstOrDefault(
-                    f => f.fleteroDNI == hdr.fleteroDNI);
+                    f => f.Dni == hdr.fleteroDNI);
 
             if (fletero == null)
                 return;
 
             // Datos del viaje
             RespuestaFleteroLabel.Text =
-                fletero.fleteroApellido + ", " +
-                fletero.fleteroNombre;
+                fletero.Apellido + ", " +
+                fletero.Nombre;
 
             RespuestaFechaLabel.Text =
                 hdr.fechaHDR.ToShortDateString();

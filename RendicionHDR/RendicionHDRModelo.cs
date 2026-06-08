@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,89 +7,59 @@ namespace GrupoE_Tutasa.RendicionHDR
 {
     internal class RendicionHDRModelo
     {
-        private List<Fletero> fleteros = new()
-    {
-        new Fletero
-        {
-            fleteroDNI = 12345678,
-            fleteroNombre = "Juan",
-            fleteroApellido = "Perez"
-        }
-    };
-        public List<Fletero> LFleteros => fleteros;
+        public List<FleteroEntidad> LFleteros =>
+            FleteroAlmacen.fleteros;
 
-        private List<HDRRetiro> hdrRetiro = new()
-    {
-        new HDRRetiro
-        {
-            numeroHDR = "1001",
-            fleteroDNI = 12345678,
-            estadoHDR = "Pendiente",
-            fechaHDR = DateTime.Today
-        }
-    };
-        public List<HDRRetiro> LHDRRetiro => hdrRetiro;
+        public List<HDRRetiro> LHDRRetiro =>
+            HDRRetiroAlmacen.hDRRetiros
+                .Select(h =>
+                {
+                    var fletero = FleteroAlmacen.fleteros
+                        .FirstOrDefault(f => f.FleteroId == h.FleteroId);
 
-        private List<HDRDistribucion> hdrDistribucion = new()
-    {
-        new HDRDistribucion
-        {
-            numeroHDR = "2001",
-            fleteroDNI = 12345678,
-            estadoHDR = "Pendiente",
-            fechaHDR = DateTime.Today
-        }
-    };
-        public List<HDRDistribucion> LHDRDistribucion => hdrDistribucion;
+                    return new HDRRetiro
+                    {
+                        numeroHDR = h.HdrRetiroId.ToString(),
+                        fleteroDNI = fletero?.Dni ?? 0,
+                        estadoHDR = h.Estado.ToString(),
+                        fechaHDR = h.FechaEmision,
+                        GuiaIds = h.GuiaIds
+                    };
+                })
+                .ToList();
 
-        private List<Guia> guias = new()
-{
-        new Guia
-    {
-        guiaId = 10001,
-        numeroHDR = "1001",
-        remitente = "Juan Gomez",
-        destinatario = "Maria Lopez",
-        domicilio = "Av. Rivadavia 123",
-        tamanio = "M",
-        intentosEntrega = 0,
-        resultado = "Pendiente"
-    },
-        new Guia
-    {
-        guiaId = 10002,
-        numeroHDR = "1001",
-        remitente = "Pedro Diaz",
-        destinatario = "Ana Perez",
-        domicilio = "Sarmiento 456",
-        tamanio = "XL",
-        intentosEntrega = 1,
-        resultado = "Pendiente"
-    },
-        new Guia
-    {
-        guiaId = 20001,
-        numeroHDR = "2001",
-        remitente = "Carlos Gomez",
-        destinatario = "Laura Perez",
-        domicilio = "Belgrano 123",
-        tamanio = "S",
-        intentosEntrega = 0,
-        resultado = "Pendiente"
-    },
-        new Guia
-    {
-        guiaId = 20002,
-        numeroHDR = "2001",
-        remitente = "Miguel Diaz",
-        destinatario = "Sofia Lopez",
-        domicilio = "Mitre 456",
-        tamanio = "L",
-        intentosEntrega = 1,
-        resultado = "Pendiente"
+        public List<HDRDistribucion> LHDRDistribucion => HDRDistribucionAlmacen.hDRDistribucions
+        .Select(h =>
+        {
+            var fletero =
+                FleteroAlmacen.fleteros
+                    .FirstOrDefault(f => f.FleteroId == h.FleteroId);
+
+            return new HDRDistribucion
+            {
+                numeroHDR = h.HdrDistribucionId.ToString(),
+                fleteroDNI = fletero?.Dni ?? 0,
+                estadoHDR = h.Estado.ToString(),
+                fechaHDR = h.FechaEmision,
+                GuiaIds = h.GuiaIds
+            };
+        })
+        .ToList();
+
+
+        public List<Guia> LGuias => GuiaAlmacen.guias
+        .Select(g => new Guia
+        {
+            guiaId = g.GuiaId,
+            destinatario = $"{g.NombreDestinatario} {g.ApellidoDestinatario}",
+            domicilio = g.DomicilioEntrega != null
+                ? $"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero}"
+                : string.Empty,
+            tamanio = g.TipoCaja.ToString(),
+            intentosEntrega = g.IntentosDeEntrega,
+            resultado = "Pendiente"
+        })
+        .ToList();
+
     }
-};
-        public List<Guia> LGuias => guias;
-    }
-
 }
