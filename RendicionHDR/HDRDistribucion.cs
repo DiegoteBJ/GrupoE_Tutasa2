@@ -9,6 +9,8 @@ namespace GrupoE_Tutasa.RendicionHDR
         public string numeroHDR { get; set; } = "";
         public long fleteroDNI { get; set; }
         public DateTime fechaHDR { get; set; }
-        public string estadoHDR { get; set; } 
+        public string estadoHDR { get; set; }
+
+        public List<int> GuiaIds { get; set; } = new();
     }
 }
