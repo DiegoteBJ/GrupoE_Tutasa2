@@ -9,17 +9,21 @@ namespace GrupoE_Tutasa.Imposicion
         public ImposicionForm()
         {
             InitializeComponent();
-            button2.Click += button2_Click;
+            Cancelar_Boton.Click += button2_Click;
         }
 
+        // Carga inicial del formulario
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Limpieza de etiquetas del remitente
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
             label37.Visible = false;
 
+            // Carga de provincias en el combo de retiro
+            ProvinciaRetiroComboBox.Items.Clear();
             ProvinciaRetiroComboBox.DataSource = modelo.LProvincias;
             ProvinciaRetiroComboBox.DisplayMember = "Nombre";
             ProvinciaRetiroComboBox.ValueMember = "ProvinciaId";
@@ -30,6 +34,8 @@ namespace GrupoE_Tutasa.Imposicion
 
             DomicilioFiscalCheck.CheckedChanged += DomicilioFiscalCheck_CheckedChanged;
 
+            // Carga de provincias en el combo de entrega.
+            ProvinciaEntregaComboBox.Items.Clear();
             ProvinciaEntregaComboBox.DataSource = modelo.LProvincias;
             ProvinciaEntregaComboBox.DisplayMember = "Nombre";
             ProvinciaEntregaComboBox.ValueMember = "ProvinciaId";
@@ -53,9 +59,10 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadLTextBox.TextChanged += CantidadLTextBox_TextChanged;
             CantidadXLTextBox.TextChanged += CantidadXLTextBox_TextChanged;
 
-            GuiasAGenerarLabel.Text = "[Total Guias]";
+            Total_Guias_Label.Text = "[Total Guias]";
         }
 
+        // Búsqueda del remitente por CUIT
         private void BuscarRemitenteBoton_Click(object sender, EventArgs e)
         {
             clienteActual = null;
@@ -63,19 +70,19 @@ namespace GrupoE_Tutasa.Imposicion
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(CuitRemitenteTextBox.Text))
+            if (string.IsNullOrWhiteSpace(CuitRemitente_TextBox.Text))
             {
                 MessageBox.Show("Es necesario que ingrese un dato.");
                 return;
             }
-            if (!modelo.ValidarCuit(CuitRemitenteTextBox.Text))
+            if (!modelo.ValidarCuit(CuitRemitente_TextBox.Text))
             {
                 MessageBox.Show("Ingresá un CUIT válido.");
-                CuitRemitenteTextBox.Clear();
+                CuitRemitente_TextBox.Clear();
                 return;
             }
 
-            string cuitBuscado = CuitRemitenteTextBox.Text.Trim();
+            string cuitBuscado = CuitRemitente_TextBox.Text.Trim();
             int encuentro = 0;
 
             foreach (var cliente in modelo.LClientes)
@@ -91,10 +98,11 @@ namespace GrupoE_Tutasa.Imposicion
             if (encuentro == 0)
             {
                 MessageBox.Show("No se encontró ningún remitente con el CUIT ingresado.");
-                CuitRemitenteTextBox.Clear();
+                CuitRemitente_TextBox.Clear();
                 return;
             }
 
+            // Mostrar datos del remitente encontrado
             string nombreMostrar = clienteActual.RazonSocial;
             if (string.IsNullOrWhiteSpace(nombreMostrar))
             {
@@ -111,6 +119,7 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
+        // Uso del domicilio fiscal como domicilio de retiro
         private void DomicilioFiscalCheck_CheckedChanged(object sender, EventArgs e)
         {
             bool fiscal = DomicilioFiscalCheck.Checked;
@@ -128,6 +137,7 @@ namespace GrupoE_Tutasa.Imposicion
             CPRetiroTextBox.Enabled = !fiscal;
         }
 
+        // Carga de localidades de retiro según provincia seleccionada
         private void ProvinciaRetiroComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadRetiroComboBox.DataSource = null;
@@ -145,6 +155,7 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadRetiroComboBox.Enabled = true;
         }
 
+        // Carga de localidades de entrega según provincia seleccionada
         private void ProvinciaEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocalidadEntregaComboBox.DataSource = null;
@@ -170,6 +181,7 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadEntregaComboBox.Enabled = true;
         }
 
+        // Carga de opciones de tipo de entrega según localidad seleccionada
         private void LocalidadEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TipoEntregaComboBox.Items.Clear();
@@ -199,6 +211,7 @@ namespace GrupoE_Tutasa.Imposicion
             TipoEntregaComboBox.Enabled = true;
         }
 
+        // Muestra el destino correspondiente según el tipo de entrega elegido
         private void TipoEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             DestinoComboBox.DataSource = null;
@@ -243,6 +256,7 @@ namespace GrupoE_Tutasa.Imposicion
             ActualizarTotales();
         }
 
+        // Validación del formato de código postal
         private bool ValidarCodigoPostal(string cp)
         {
             if (string.IsNullOrWhiteSpace(cp)) return true;
@@ -259,17 +273,23 @@ namespace GrupoE_Tutasa.Imposicion
             return true;
         }
 
+        // Actualización del contador de guías a generar
         private void ActualizarTotales()
         {
-            int.TryParse(CantidadSTextBox.Text, out int cantS);
-            int.TryParse(CantidadMTextBox.Text, out int cantM);
-            int.TryParse(CantidadLTextBox.Text, out int cantL);
-            int.TryParse(CantidadXLTextBox.Text, out int cantXL);
+            int cantS = 0;
+            int cantM = 0;
+            int cantL = 0;
+            int cantXL = 0;
+            int.TryParse(CantidadSTextBox.Text, out cantS);
+            int.TryParse(CantidadMTextBox.Text, out cantM);
+            int.TryParse(CantidadLTextBox.Text, out cantL);
+            int.TryParse(CantidadXLTextBox.Text, out cantXL);
 
             int totalGuias = cantS + cantM + cantL + cantXL;
-            GuiasAGenerarLabel.Text = totalGuias.ToString();
+            Total_Guias_Label.Text = totalGuias.ToString();
         }
 
+        // Resolución de la modalidad de entrega según selección del usuario
         private ModalidadEntregaEnum ResolverModalidadEntrega()
         {
             if (TipoEntregaComboBox.SelectedItem == null)
@@ -302,6 +322,7 @@ namespace GrupoE_Tutasa.Imposicion
             ActualizarTotales();
         }
 
+        // Confirmación y registro de la imposición
         private void button3_Click(object sender, EventArgs e)
         {
             // Validar remitente
@@ -357,7 +378,7 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // Validar entrega
+            // Validar datos de entrega
             if (ProvinciaEntregaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccioná una provincia de entrega.");
@@ -393,7 +414,7 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            // Validar cantidades
+            // Validar cantidades de encomiendas
             bool cantidadesValidas = true;
             if (!string.IsNullOrWhiteSpace(CantidadSTextBox.Text))
             {
@@ -422,10 +443,14 @@ namespace GrupoE_Tutasa.Imposicion
                 return;
             }
 
-            int.TryParse(CantidadSTextBox.Text, out int cantS);
-            int.TryParse(CantidadMTextBox.Text, out int cantM);
-            int.TryParse(CantidadLTextBox.Text, out int cantL);
-            int.TryParse(CantidadXLTextBox.Text, out int cantXL);
+            int cantS = 0;
+            int cantM = 0;
+            int cantL = 0;
+            int cantXL = 0;
+            int.TryParse(CantidadSTextBox.Text, out cantS);
+            int.TryParse(CantidadMTextBox.Text, out cantM);
+            int.TryParse(CantidadLTextBox.Text, out cantL);
+            int.TryParse(CantidadXLTextBox.Text, out cantXL);
 
             if (cantS + cantM + cantL + cantXL == 0)
             {
@@ -435,6 +460,7 @@ namespace GrupoE_Tutasa.Imposicion
 
             ModalidadEntregaEnum modalidadEntrega = ResolverModalidadEntrega();
 
+            // Determinación del domicilio y destino de entrega
             Domicilio domicilioEntrega = null;
             int agenciaDestinoId = 0;
             bool tieneAgenciaDestino = false;
@@ -470,6 +496,7 @@ namespace GrupoE_Tutasa.Imposicion
                 };
             }
 
+            // Determinación del domicilio de retiro
             Domicilio domicilioRetiro;
             if (DomicilioFiscalCheck.Checked)
             {
@@ -491,7 +518,7 @@ namespace GrupoE_Tutasa.Imposicion
                 };
             }
 
-            // Registrar guías tipo S
+            // Registro de guías por tipo de caja
             string detalle = "";
             for (int i = 0; i < cantS; i++)
             {
@@ -515,7 +542,6 @@ namespace GrupoE_Tutasa.Imposicion
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (S)\n";
             }
 
-            // Registrar guías tipo M
             for (int i = 0; i < cantM; i++)
             {
                 Guia guia = new Guia();
@@ -538,7 +564,6 @@ namespace GrupoE_Tutasa.Imposicion
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (M)\n";
             }
 
-            // Registrar guías tipo L
             for (int i = 0; i < cantL; i++)
             {
                 Guia guia = new Guia();
@@ -561,7 +586,6 @@ namespace GrupoE_Tutasa.Imposicion
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (L)\n";
             }
 
-            // Registrar guías tipo XL
             for (int i = 0; i < cantXL; i++)
             {
                 Guia guia = new Guia();
@@ -589,6 +613,7 @@ namespace GrupoE_Tutasa.Imposicion
             LimpiarFormulario();
         }
 
+        // Cancelación de la operación y cierre del formulario
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
@@ -603,11 +628,12 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
+        // Limpieza de todos los campos del formulario
         private void LimpiarFormulario()
         {
             clienteActual = null;
 
-            CuitRemitenteTextBox.Clear();
+            CuitRemitente_TextBox.Clear();
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
@@ -644,9 +670,10 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadLTextBox.Clear();
             CantidadXLTextBox.Clear();
 
-            GuiasAGenerarLabel.Text = "[Total Guias]";
+            Total_Guias_Label.Text = "[Total Guias]";
         }
 
+        // Formateo del domicilio para mostrar en pantalla
         private string FormatearDomicilio(Domicilio d)
         {
             if (d == null) return string.Empty;

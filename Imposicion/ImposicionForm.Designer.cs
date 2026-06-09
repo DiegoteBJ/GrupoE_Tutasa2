@@ -19,33 +19,33 @@ namespace GrupoE_Tutasa.Imposicion
             NombreRemitenteLabel = new Label();
             TelefonoRemitenteLabel = new Label();
             DireccionRemitenteLabel = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            CuitRemitenteTextBox = new TextBox();
-            label1 = new Label();
+            DireccionRemitente_Label = new Label();
+            TelefonoRemitente_Label = new Label();
+            NombreRemitente_Label = new Label();
+            CuitRemitente_TextBox = new TextBox();
+            Cuit_Remitente_Label = new Label();
             panel3 = new Panel();
-            BuscarRemitenteBoton = new Button();
+            BuscarRemitente_Boton = new Button();
             groupBox5 = new GroupBox();
             DomicilioFiscalCheck = new CheckBox();
             label37 = new Label();
-            label38 = new Label();
+            DireccionFiscal_Label = new Label();
             ProvinciaRetiroComboBox = new ComboBox();
-            label35 = new Label();
+            Provincia_Retiro_Label = new Label();
             LocalidadRetiroComboBox = new ComboBox();
-            label34 = new Label();
+            Localidad_Retiro_Label = new Label();
             DireccionRetiroTextBox = new TextBox();
-            label13 = new Label();
+            Direccion_retiro_Label = new Label();
             CPRetiroTextBox = new TextBox();
-            label14 = new Label();
+            CP_Retiro_Label = new Label();
             panel4 = new Panel();
             groupBox2 = new GroupBox();
             NombreDestinatarioTextBox = new TextBox();
-            label5 = new Label();
+            NombreDestinatario_Label = new Label();
             ApellidoDestinatarioTextBox = new TextBox();
-            label7 = new Label();
+            ApellidoDestinatario_Label = new Label();
             DNIDestinatarioTextBox = new TextBox();
-            label6 = new Label();
+            DniDestinatario_Label = new Label();
             groupBox3 = new GroupBox();
             ProvinciaEntregaComboBox = new ComboBox();
             label10 = new Label();
@@ -56,29 +56,29 @@ namespace GrupoE_Tutasa.Imposicion
             DestinoComboBox = new ComboBox();
             labelDestino = new Label();
             panel1 = new Panel();
-            label12 = new Label();
+            EntregaDomicilio_Titulo_Label = new Label();
             DireccionDomicilioTextBox = new TextBox();
-            label36 = new Label();
+            Direccion_Entrega_Label = new Label();
             CPDomicilioTextBox = new TextBox();
-            label39 = new Label();
+            CP_Entrega_Label = new Label();
             groupBox4 = new GroupBox();
+            GuiasAgenerar_Label = new Label();
             CantidadSTextBox = new TextBox();
-            label15 = new Label();
+            TipoS_Encomienda_Label = new Label();
+            Total_Guias_Label = new Label();
             CantidadMTextBox = new TextBox();
-            label17 = new Label();
+            TipoM_Encomienda_Label = new Label();
             CantidadLTextBox = new TextBox();
-            label18 = new Label();
+            TipoL_Encomienda_Label = new Label();
             CantidadXLTextBox = new TextBox();
-            label19 = new Label();
-            label16 = new Label();
+            TipoXL_Encomienda_Label = new Label();
+            Indicaciones_Encomienda_Label = new Label();
             label20 = new Label();
-            label22 = new Label();
-            GuiasAGenerarLabel = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            label24 = new Label();
-            label25 = new Label();
-            label26 = new Label();
+            Cancelar_Boton = new Button();
+            Confirmar_Boton = new Button();
+            UsuarioLogueado_Label = new Label();
+            CD_Logueado_Label = new Label();
+            FechaHora_Label = new Label();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -93,11 +93,11 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox1.Controls.Add(NombreRemitenteLabel);
             groupBox1.Controls.Add(TelefonoRemitenteLabel);
             groupBox1.Controls.Add(DireccionRemitenteLabel);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(CuitRemitenteTextBox);
-            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(DireccionRemitente_Label);
+            groupBox1.Controls.Add(TelefonoRemitente_Label);
+            groupBox1.Controls.Add(NombreRemitente_Label);
+            groupBox1.Controls.Add(CuitRemitente_TextBox);
+            groupBox1.Controls.Add(Cuit_Remitente_Label);
             groupBox1.Controls.Add(panel3);
             groupBox1.Location = new Point(24, 21);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
@@ -133,86 +133,86 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionRemitenteLabel.Size = new Size(0, 15);
             DireccionRemitenteLabel.TabIndex = 24;
             // 
-            // label4
+            // DireccionRemitente_Label
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(484, 77);
-            label4.Name = "label4";
-            label4.Size = new Size(60, 15);
-            label4.TabIndex = 7;
-            label4.Text = "Dirección:";
-            label4.Click += label4_Click;
+            DireccionRemitente_Label.AutoSize = true;
+            DireccionRemitente_Label.Location = new Point(484, 77);
+            DireccionRemitente_Label.Name = "DireccionRemitente_Label";
+            DireccionRemitente_Label.Size = new Size(60, 15);
+            DireccionRemitente_Label.TabIndex = 7;
+            DireccionRemitente_Label.Text = "Dirección:";
+            DireccionRemitente_Label.Click += label4_Click;
             // 
-            // label3
+            // TelefonoRemitente_Label
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(484, 47);
-            label3.Name = "label3";
-            label3.Size = new Size(56, 15);
-            label3.TabIndex = 5;
-            label3.Text = "Telefono:";
-            label3.Click += label3_Click;
+            TelefonoRemitente_Label.AutoSize = true;
+            TelefonoRemitente_Label.Location = new Point(484, 47);
+            TelefonoRemitente_Label.Name = "TelefonoRemitente_Label";
+            TelefonoRemitente_Label.Size = new Size(56, 15);
+            TelefonoRemitente_Label.TabIndex = 5;
+            TelefonoRemitente_Label.Text = "Telefono:";
+            TelefonoRemitente_Label.Click += label3_Click;
             // 
-            // label2
+            // NombreRemitente_Label
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(484, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(134, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Nombre / Razon Social :";
+            NombreRemitente_Label.AutoSize = true;
+            NombreRemitente_Label.Location = new Point(484, 19);
+            NombreRemitente_Label.Name = "NombreRemitente_Label";
+            NombreRemitente_Label.Size = new Size(134, 15);
+            NombreRemitente_Label.TabIndex = 3;
+            NombreRemitente_Label.Text = "Nombre / Razon Social :";
             // 
-            // CuitRemitenteTextBox
+            // CuitRemitente_TextBox
             // 
-            CuitRemitenteTextBox.Location = new Point(153, 30);
-            CuitRemitenteTextBox.Margin = new Padding(4, 3, 4, 3);
-            CuitRemitenteTextBox.Name = "CuitRemitenteTextBox";
-            CuitRemitenteTextBox.Size = new Size(116, 23);
-            CuitRemitenteTextBox.TabIndex = 1;
+            CuitRemitente_TextBox.Location = new Point(153, 30);
+            CuitRemitente_TextBox.Margin = new Padding(4, 3, 4, 3);
+            CuitRemitente_TextBox.Name = "CuitRemitente_TextBox";
+            CuitRemitente_TextBox.Size = new Size(116, 23);
+            CuitRemitente_TextBox.TabIndex = 1;
             // 
-            // label1
+            // Cuit_Remitente_Label
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(66, 33);
-            label1.Name = "label1";
-            label1.Size = new Size(33, 15);
-            label1.TabIndex = 0;
-            label1.Text = "CUIT";
+            Cuit_Remitente_Label.AutoSize = true;
+            Cuit_Remitente_Label.Location = new Point(66, 33);
+            Cuit_Remitente_Label.Name = "Cuit_Remitente_Label";
+            Cuit_Remitente_Label.Size = new Size(33, 15);
+            Cuit_Remitente_Label.TabIndex = 0;
+            Cuit_Remitente_Label.Text = "CUIT";
             // 
             // panel3
             // 
-            panel3.Controls.Add(BuscarRemitenteBoton);
+            panel3.Controls.Add(BuscarRemitente_Boton);
             panel3.Location = new Point(58, 17);
             panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(391, 48);
             panel3.TabIndex = 21;
             // 
-            // BuscarRemitenteBoton
+            // BuscarRemitente_Boton
             // 
-            BuscarRemitenteBoton.ForeColor = Color.Black;
-            BuscarRemitenteBoton.Location = new Point(268, 10);
-            BuscarRemitenteBoton.Margin = new Padding(4, 3, 4, 3);
-            BuscarRemitenteBoton.Name = "BuscarRemitenteBoton";
-            BuscarRemitenteBoton.Size = new Size(88, 27);
-            BuscarRemitenteBoton.TabIndex = 2;
-            BuscarRemitenteBoton.Text = "Buscar";
-            BuscarRemitenteBoton.UseVisualStyleBackColor = true;
-            BuscarRemitenteBoton.Click += BuscarRemitenteBoton_Click;
+            BuscarRemitente_Boton.ForeColor = Color.Black;
+            BuscarRemitente_Boton.Location = new Point(268, 10);
+            BuscarRemitente_Boton.Margin = new Padding(4, 3, 4, 3);
+            BuscarRemitente_Boton.Name = "BuscarRemitente_Boton";
+            BuscarRemitente_Boton.Size = new Size(88, 27);
+            BuscarRemitente_Boton.TabIndex = 2;
+            BuscarRemitente_Boton.Text = "Buscar";
+            BuscarRemitente_Boton.UseVisualStyleBackColor = true;
+            BuscarRemitente_Boton.Click += BuscarRemitenteBoton_Click;
             // 
             // groupBox5
             // 
             groupBox5.Controls.Add(DomicilioFiscalCheck);
             groupBox5.Controls.Add(label37);
-            groupBox5.Controls.Add(label38);
+            groupBox5.Controls.Add(DireccionFiscal_Label);
             groupBox5.Controls.Add(ProvinciaRetiroComboBox);
-            groupBox5.Controls.Add(label35);
+            groupBox5.Controls.Add(Provincia_Retiro_Label);
             groupBox5.Controls.Add(LocalidadRetiroComboBox);
-            groupBox5.Controls.Add(label34);
+            groupBox5.Controls.Add(Localidad_Retiro_Label);
             groupBox5.Controls.Add(DireccionRetiroTextBox);
-            groupBox5.Controls.Add(label13);
+            groupBox5.Controls.Add(Direccion_retiro_Label);
             groupBox5.Controls.Add(CPRetiroTextBox);
-            groupBox5.Controls.Add(label14);
+            groupBox5.Controls.Add(CP_Retiro_Label);
             groupBox5.Controls.Add(panel4);
             groupBox5.Location = new Point(24, 148);
             groupBox5.Margin = new Padding(4, 3, 4, 3);
@@ -243,14 +243,14 @@ namespace GrupoE_Tutasa.Imposicion
             label37.TabIndex = 26;
             label37.Visible = false;
             // 
-            // label38
+            // DireccionFiscal_Label
             // 
-            label38.AutoSize = true;
-            label38.Location = new Point(56, 84);
-            label38.Name = "label38";
-            label38.Size = new Size(60, 15);
-            label38.TabIndex = 25;
-            label38.Text = "Dirección:";
+            DireccionFiscal_Label.AutoSize = true;
+            DireccionFiscal_Label.Location = new Point(56, 84);
+            DireccionFiscal_Label.Name = "DireccionFiscal_Label";
+            DireccionFiscal_Label.Size = new Size(60, 15);
+            DireccionFiscal_Label.TabIndex = 25;
+            DireccionFiscal_Label.Text = "Dirección:";
             // 
             // ProvinciaRetiroComboBox
             // 
@@ -261,14 +261,14 @@ namespace GrupoE_Tutasa.Imposicion
             ProvinciaRetiroComboBox.Size = new Size(140, 23);
             ProvinciaRetiroComboBox.TabIndex = 25;
             // 
-            // label35
+            // Provincia_Retiro_Label
             // 
-            label35.AutoSize = true;
-            label35.Location = new Point(357, 25);
-            label35.Name = "label35";
-            label35.Size = new Size(56, 15);
-            label35.TabIndex = 23;
-            label35.Text = "Provincia";
+            Provincia_Retiro_Label.AutoSize = true;
+            Provincia_Retiro_Label.Location = new Point(357, 25);
+            Provincia_Retiro_Label.Name = "Provincia_Retiro_Label";
+            Provincia_Retiro_Label.Size = new Size(56, 15);
+            Provincia_Retiro_Label.TabIndex = 23;
+            Provincia_Retiro_Label.Text = "Provincia";
             // 
             // LocalidadRetiroComboBox
             // 
@@ -279,14 +279,14 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadRetiroComboBox.Size = new Size(140, 23);
             LocalidadRetiroComboBox.TabIndex = 26;
             // 
-            // label34
+            // Localidad_Retiro_Label
             // 
-            label34.AutoSize = true;
-            label34.Location = new Point(596, 25);
-            label34.Name = "label34";
-            label34.Size = new Size(61, 15);
-            label34.TabIndex = 24;
-            label34.Text = "Localidad ";
+            Localidad_Retiro_Label.AutoSize = true;
+            Localidad_Retiro_Label.Location = new Point(596, 25);
+            Localidad_Retiro_Label.Name = "Localidad_Retiro_Label";
+            Localidad_Retiro_Label.Size = new Size(61, 15);
+            Localidad_Retiro_Label.TabIndex = 24;
+            Localidad_Retiro_Label.Text = "Localidad ";
             // 
             // DireccionRetiroTextBox
             // 
@@ -296,14 +296,14 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionRetiroTextBox.Size = new Size(245, 23);
             DireccionRetiroTextBox.TabIndex = 14;
             // 
-            // label13
+            // Direccion_retiro_Label
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(355, 68);
-            label13.Name = "label13";
-            label13.Size = new Size(60, 15);
-            label13.TabIndex = 21;
-            label13.Text = "Dirección ";
+            Direccion_retiro_Label.AutoSize = true;
+            Direccion_retiro_Label.Location = new Point(355, 68);
+            Direccion_retiro_Label.Name = "Direccion_retiro_Label";
+            Direccion_retiro_Label.Size = new Size(60, 15);
+            Direccion_retiro_Label.TabIndex = 21;
+            Direccion_retiro_Label.Text = "Dirección ";
             // 
             // CPRetiroTextBox
             // 
@@ -314,14 +314,14 @@ namespace GrupoE_Tutasa.Imposicion
             CPRetiroTextBox.TabIndex = 23;
             CPRetiroTextBox.TextChanged += CPRetiroTextBox_TextChanged;
             // 
-            // label14
+            // CP_Retiro_Label
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(355, 107);
-            label14.Name = "label14";
-            label14.Size = new Size(67, 15);
-            label14.TabIndex = 22;
-            label14.Text = "Cód. Postal";
+            CP_Retiro_Label.AutoSize = true;
+            CP_Retiro_Label.Location = new Point(355, 107);
+            CP_Retiro_Label.Name = "CP_Retiro_Label";
+            CP_Retiro_Label.Size = new Size(67, 15);
+            CP_Retiro_Label.TabIndex = 22;
+            CP_Retiro_Label.Text = "Cód. Postal";
             // 
             // panel4
             // 
@@ -333,11 +333,11 @@ namespace GrupoE_Tutasa.Imposicion
             // groupBox2
             // 
             groupBox2.Controls.Add(NombreDestinatarioTextBox);
-            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(NombreDestinatario_Label);
             groupBox2.Controls.Add(ApellidoDestinatarioTextBox);
-            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(ApellidoDestinatario_Label);
             groupBox2.Controls.Add(DNIDestinatarioTextBox);
-            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(DniDestinatario_Label);
             groupBox2.Location = new Point(24, 309);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
@@ -356,14 +356,14 @@ namespace GrupoE_Tutasa.Imposicion
             NombreDestinatarioTextBox.Size = new Size(116, 23);
             NombreDestinatarioTextBox.TabIndex = 9;
             // 
-            // label5
+            // NombreDestinatario_Label
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(55, 38);
-            label5.Name = "label5";
-            label5.Size = new Size(54, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Nombre ";
+            NombreDestinatario_Label.AutoSize = true;
+            NombreDestinatario_Label.Location = new Point(55, 38);
+            NombreDestinatario_Label.Name = "NombreDestinatario_Label";
+            NombreDestinatario_Label.Size = new Size(54, 15);
+            NombreDestinatario_Label.TabIndex = 9;
+            NombreDestinatario_Label.Text = "Nombre ";
             // 
             // ApellidoDestinatarioTextBox
             // 
@@ -373,14 +373,14 @@ namespace GrupoE_Tutasa.Imposicion
             ApellidoDestinatarioTextBox.Size = new Size(116, 23);
             ApellidoDestinatarioTextBox.TabIndex = 13;
             // 
-            // label7
+            // ApellidoDestinatario_Label
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(294, 39);
-            label7.Name = "label7";
-            label7.Size = new Size(54, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Apellido ";
+            ApellidoDestinatario_Label.AutoSize = true;
+            ApellidoDestinatario_Label.Location = new Point(294, 39);
+            ApellidoDestinatario_Label.Name = "ApellidoDestinatario_Label";
+            ApellidoDestinatario_Label.Size = new Size(54, 15);
+            ApellidoDestinatario_Label.TabIndex = 12;
+            ApellidoDestinatario_Label.Text = "Apellido ";
             // 
             // DNIDestinatarioTextBox
             // 
@@ -390,15 +390,15 @@ namespace GrupoE_Tutasa.Imposicion
             DNIDestinatarioTextBox.Size = new Size(116, 23);
             DNIDestinatarioTextBox.TabIndex = 11;
             // 
-            // label6
+            // DniDestinatario_Label
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(509, 40);
-            label6.Name = "label6";
-            label6.Size = new Size(30, 15);
-            label6.TabIndex = 10;
-            label6.Text = "DNI ";
-            label6.Click += label6_Click;
+            DniDestinatario_Label.AutoSize = true;
+            DniDestinatario_Label.Location = new Point(509, 40);
+            DniDestinatario_Label.Name = "DniDestinatario_Label";
+            DniDestinatario_Label.Size = new Size(30, 15);
+            DniDestinatario_Label.TabIndex = 10;
+            DniDestinatario_Label.Text = "DNI ";
+            DniDestinatario_Label.Click += label6_Click;
             // 
             // groupBox3
             // 
@@ -499,11 +499,11 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             // panel1
             // 
-            panel1.Controls.Add(label12);
+            panel1.Controls.Add(EntregaDomicilio_Titulo_Label);
             panel1.Controls.Add(DireccionDomicilioTextBox);
-            panel1.Controls.Add(label36);
+            panel1.Controls.Add(Direccion_Entrega_Label);
             panel1.Controls.Add(CPDomicilioTextBox);
-            panel1.Controls.Add(label39);
+            panel1.Controls.Add(CP_Entrega_Label);
             panel1.Location = new Point(340, 35);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
@@ -511,15 +511,15 @@ namespace GrupoE_Tutasa.Imposicion
             panel1.TabIndex = 20;
             panel1.Visible = false;
             // 
-            // label12
+            // EntregaDomicilio_Titulo_Label
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(20, 14);
-            label12.Name = "label12";
-            label12.Size = new Size(132, 15);
-            label12.TabIndex = 21;
-            label12.Text = "ENTREGA A DOMICILIO";
-            label12.Click += label12_Click;
+            EntregaDomicilio_Titulo_Label.AutoSize = true;
+            EntregaDomicilio_Titulo_Label.Location = new Point(20, 14);
+            EntregaDomicilio_Titulo_Label.Name = "EntregaDomicilio_Titulo_Label";
+            EntregaDomicilio_Titulo_Label.Size = new Size(132, 15);
+            EntregaDomicilio_Titulo_Label.TabIndex = 21;
+            EntregaDomicilio_Titulo_Label.Text = "ENTREGA A DOMICILIO";
+            EntregaDomicilio_Titulo_Label.Click += label12_Click;
             // 
             // DireccionDomicilioTextBox
             // 
@@ -529,14 +529,14 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionDomicilioTextBox.Size = new Size(245, 23);
             DireccionDomicilioTextBox.TabIndex = 31;
             // 
-            // label36
+            // Direccion_Entrega_Label
             // 
-            label36.AutoSize = true;
-            label36.Location = new Point(90, 38);
-            label36.Name = "label36";
-            label36.Size = new Size(60, 15);
-            label36.TabIndex = 32;
-            label36.Text = "Dirección ";
+            Direccion_Entrega_Label.AutoSize = true;
+            Direccion_Entrega_Label.Location = new Point(90, 38);
+            Direccion_Entrega_Label.Name = "Direccion_Entrega_Label";
+            Direccion_Entrega_Label.Size = new Size(60, 15);
+            Direccion_Entrega_Label.TabIndex = 32;
+            Direccion_Entrega_Label.Text = "Dirección ";
             // 
             // CPDomicilioTextBox
             // 
@@ -547,28 +547,28 @@ namespace GrupoE_Tutasa.Imposicion
             CPDomicilioTextBox.TabIndex = 32;
             CPDomicilioTextBox.TextChanged += CPDomicilioTextBox_TextChanged;
             // 
-            // label39
+            // CP_Entrega_Label
             // 
-            label39.AutoSize = true;
-            label39.Location = new Point(90, 72);
-            label39.Name = "label39";
-            label39.Size = new Size(67, 15);
-            label39.TabIndex = 31;
-            label39.Text = "Cód. Postal";
+            CP_Entrega_Label.AutoSize = true;
+            CP_Entrega_Label.Location = new Point(90, 72);
+            CP_Entrega_Label.Name = "CP_Entrega_Label";
+            CP_Entrega_Label.Size = new Size(67, 15);
+            CP_Entrega_Label.TabIndex = 31;
+            CP_Entrega_Label.Text = "Cód. Postal";
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(label22);
+            groupBox4.Controls.Add(GuiasAgenerar_Label);
             groupBox4.Controls.Add(CantidadSTextBox);
-            groupBox4.Controls.Add(label15);
-            groupBox4.Controls.Add(GuiasAGenerarLabel);
+            groupBox4.Controls.Add(TipoS_Encomienda_Label);
+            groupBox4.Controls.Add(Total_Guias_Label);
             groupBox4.Controls.Add(CantidadMTextBox);
-            groupBox4.Controls.Add(label17);
+            groupBox4.Controls.Add(TipoM_Encomienda_Label);
             groupBox4.Controls.Add(CantidadLTextBox);
-            groupBox4.Controls.Add(label18);
+            groupBox4.Controls.Add(TipoL_Encomienda_Label);
             groupBox4.Controls.Add(CantidadXLTextBox);
-            groupBox4.Controls.Add(label19);
-            groupBox4.Controls.Add(label16);
+            groupBox4.Controls.Add(TipoXL_Encomienda_Label);
+            groupBox4.Controls.Add(Indicaciones_Encomienda_Label);
             groupBox4.Controls.Add(label20);
             groupBox4.Location = new Point(32, 618);
             groupBox4.Margin = new Padding(4, 3, 4, 3);
@@ -579,6 +579,15 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox4.TabStop = false;
             groupBox4.Text = "Detalle de Encomiendas";
             // 
+            // GuiasAgenerar_Label
+            // 
+            GuiasAgenerar_Label.AutoSize = true;
+            GuiasAgenerar_Label.Location = new Point(482, 34);
+            GuiasAgenerar_Label.Name = "GuiasAgenerar_Label";
+            GuiasAgenerar_Label.Size = new Size(92, 15);
+            GuiasAgenerar_Label.TabIndex = 34;
+            GuiasAgenerar_Label.Text = "Guias a Generar:";
+            // 
             // CantidadSTextBox
             // 
             CantidadSTextBox.Location = new Point(9, 65);
@@ -587,14 +596,23 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadSTextBox.Size = new Size(92, 23);
             CantidadSTextBox.TabIndex = 24;
             // 
-            // label15
+            // TipoS_Encomienda_Label
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(9, 47);
-            label15.Name = "label15";
-            label15.Size = new Size(40, 15);
-            label15.TabIndex = 21;
-            label15.Text = "Tipo S";
+            TipoS_Encomienda_Label.AutoSize = true;
+            TipoS_Encomienda_Label.Location = new Point(9, 47);
+            TipoS_Encomienda_Label.Name = "TipoS_Encomienda_Label";
+            TipoS_Encomienda_Label.Size = new Size(40, 15);
+            TipoS_Encomienda_Label.TabIndex = 21;
+            TipoS_Encomienda_Label.Text = "Tipo S";
+            // 
+            // Total_Guias_Label
+            // 
+            Total_Guias_Label.AutoSize = true;
+            Total_Guias_Label.Location = new Point(617, 34);
+            Total_Guias_Label.Name = "Total_Guias_Label";
+            Total_Guias_Label.Size = new Size(73, 15);
+            Total_Guias_Label.TabIndex = 37;
+            Total_Guias_Label.Text = "[Total Guias]";
             // 
             // CantidadMTextBox
             // 
@@ -604,14 +622,14 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadMTextBox.Size = new Size(92, 23);
             CantidadMTextBox.TabIndex = 26;
             // 
-            // label17
+            // TipoM_Encomienda_Label
             // 
-            label17.AutoSize = true;
-            label17.Location = new Point(128, 47);
-            label17.Name = "label17";
-            label17.Size = new Size(45, 15);
-            label17.TabIndex = 25;
-            label17.Text = "Tipo M";
+            TipoM_Encomienda_Label.AutoSize = true;
+            TipoM_Encomienda_Label.Location = new Point(128, 47);
+            TipoM_Encomienda_Label.Name = "TipoM_Encomienda_Label";
+            TipoM_Encomienda_Label.Size = new Size(45, 15);
+            TipoM_Encomienda_Label.TabIndex = 25;
+            TipoM_Encomienda_Label.Text = "Tipo M";
             // 
             // CantidadLTextBox
             // 
@@ -621,14 +639,14 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadLTextBox.Size = new Size(92, 23);
             CantidadLTextBox.TabIndex = 28;
             // 
-            // label18
+            // TipoL_Encomienda_Label
             // 
-            label18.AutoSize = true;
-            label18.Location = new Point(250, 47);
-            label18.Name = "label18";
-            label18.Size = new Size(40, 15);
-            label18.TabIndex = 27;
-            label18.Text = "Tipo L";
+            TipoL_Encomienda_Label.AutoSize = true;
+            TipoL_Encomienda_Label.Location = new Point(250, 47);
+            TipoL_Encomienda_Label.Name = "TipoL_Encomienda_Label";
+            TipoL_Encomienda_Label.Size = new Size(40, 15);
+            TipoL_Encomienda_Label.TabIndex = 27;
+            TipoL_Encomienda_Label.Text = "Tipo L";
             // 
             // CantidadXLTextBox
             // 
@@ -638,24 +656,24 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadXLTextBox.Size = new Size(92, 23);
             CantidadXLTextBox.TabIndex = 30;
             // 
-            // label19
+            // TipoXL_Encomienda_Label
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(367, 47);
-            label19.Name = "label19";
-            label19.Size = new Size(47, 15);
-            label19.TabIndex = 29;
-            label19.Text = "Tipo XL";
-            label19.Click += label19_Click;
+            TipoXL_Encomienda_Label.AutoSize = true;
+            TipoXL_Encomienda_Label.Location = new Point(367, 47);
+            TipoXL_Encomienda_Label.Name = "TipoXL_Encomienda_Label";
+            TipoXL_Encomienda_Label.Size = new Size(47, 15);
+            TipoXL_Encomienda_Label.TabIndex = 29;
+            TipoXL_Encomienda_Label.Text = "Tipo XL";
+            TipoXL_Encomienda_Label.Click += label19_Click;
             // 
-            // label16
+            // Indicaciones_Encomienda_Label
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(9, 19);
-            label16.Name = "label16";
-            label16.Size = new Size(241, 15);
-            label16.TabIndex = 22;
-            label16.Text = "Ingrese la cantidad de encomiendas por tipo";
+            Indicaciones_Encomienda_Label.AutoSize = true;
+            Indicaciones_Encomienda_Label.Location = new Point(9, 19);
+            Indicaciones_Encomienda_Label.Name = "Indicaciones_Encomienda_Label";
+            Indicaciones_Encomienda_Label.Size = new Size(241, 15);
+            Indicaciones_Encomienda_Label.TabIndex = 22;
+            Indicaciones_Encomienda_Label.Text = "Ingrese la cantidad de encomiendas por tipo";
             // 
             // label20
             // 
@@ -665,74 +683,56 @@ namespace GrupoE_Tutasa.Imposicion
             label20.Size = new Size(0, 15);
             label20.TabIndex = 31;
             // 
-            // label22
+            // Cancelar_Boton
             // 
-            label22.AutoSize = true;
-            label22.Location = new Point(482, 34);
-            label22.Name = "label22";
-            label22.Size = new Size(92, 15);
-            label22.TabIndex = 34;
-            label22.Text = "Guias a Generar:";
+            Cancelar_Boton.Location = new Point(631, 764);
+            Cancelar_Boton.Margin = new Padding(4, 3, 4, 3);
+            Cancelar_Boton.Name = "Cancelar_Boton";
+            Cancelar_Boton.Size = new Size(88, 27);
+            Cancelar_Boton.TabIndex = 16;
+            Cancelar_Boton.Text = "Cancelar";
+            Cancelar_Boton.UseVisualStyleBackColor = true;
             // 
-            // GuiasAGenerarLabel
+            // Confirmar_Boton
             // 
-            GuiasAGenerarLabel.AutoSize = true;
-            GuiasAGenerarLabel.Location = new Point(617, 34);
-            GuiasAGenerarLabel.Name = "GuiasAGenerarLabel";
-            GuiasAGenerarLabel.Size = new Size(73, 15);
-            GuiasAGenerarLabel.TabIndex = 37;
-            GuiasAGenerarLabel.Text = "[Total Guias]";
+            Confirmar_Boton.BackColor = SystemColors.Highlight;
+            Confirmar_Boton.ForeColor = SystemColors.ButtonFace;
+            Confirmar_Boton.Location = new Point(745, 764);
+            Confirmar_Boton.Margin = new Padding(4, 3, 4, 3);
+            Confirmar_Boton.Name = "Confirmar_Boton";
+            Confirmar_Boton.Size = new Size(88, 27);
+            Confirmar_Boton.TabIndex = 17;
+            Confirmar_Boton.Text = "Confirmar";
+            Confirmar_Boton.UseVisualStyleBackColor = false;
+            Confirmar_Boton.Click += button3_Click;
             // 
-            // button2
+            // UsuarioLogueado_Label
             // 
-            button2.Location = new Point(631, 764);
-            button2.Margin = new Padding(4, 3, 4, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(88, 27);
-            button2.TabIndex = 16;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
+            UsuarioLogueado_Label.AutoSize = true;
+            UsuarioLogueado_Label.Location = new Point(18, 822);
+            UsuarioLogueado_Label.Name = "UsuarioLogueado_Label";
+            UsuarioLogueado_Label.Size = new Size(107, 15);
+            UsuarioLogueado_Label.TabIndex = 19;
+            UsuarioLogueado_Label.Text = "Usuario: OP_CD/03";
             // 
-            // button3
+            // CD_Logueado_Label
             // 
-            button3.BackColor = SystemColors.Highlight;
-            button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(745, 764);
-            button3.Margin = new Padding(4, 3, 4, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(88, 27);
-            button3.TabIndex = 17;
-            button3.Text = "Confirmar";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            CD_Logueado_Label.AutoSize = true;
+            CD_Logueado_Label.Location = new Point(190, 822);
+            CD_Logueado_Label.Name = "CD_Logueado_Label";
+            CD_Logueado_Label.Size = new Size(168, 15);
+            CD_Logueado_Label.TabIndex = 20;
+            CD_Logueado_Label.Text = "CD-0001 · Buenos Aires Centro";
             // 
-            // label24
+            // FechaHora_Label
             // 
-            label24.AutoSize = true;
-            label24.Location = new Point(18, 822);
-            label24.Name = "label24";
-            label24.Size = new Size(107, 15);
-            label24.TabIndex = 19;
-            label24.Text = "Usuario: OP_CD/03";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(190, 822);
-            label25.Name = "label25";
-            label25.Size = new Size(168, 15);
-            label25.TabIndex = 20;
-            label25.Text = "CD-0001 · Buenos Aires Centro";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(410, 822);
-            label26.Name = "label26";
-            label26.Size = new Size(128, 15);
-            label26.TabIndex = 21;
-            label26.Text = "01/05/2026, 08:55 p. m.";
-            label26.Click += label26_Click;
+            FechaHora_Label.AutoSize = true;
+            FechaHora_Label.Location = new Point(410, 822);
+            FechaHora_Label.Name = "FechaHora_Label";
+            FechaHora_Label.Size = new Size(128, 15);
+            FechaHora_Label.TabIndex = 21;
+            FechaHora_Label.Text = "01/05/2026, 08:55 p. m.";
+            FechaHora_Label.Click += label26_Click;
             // 
             // ImposicionForm
             // 
@@ -745,11 +745,11 @@ namespace GrupoE_Tutasa.Imposicion
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
             Controls.Add(groupBox4);
-            Controls.Add(button2);
-            Controls.Add(button3);
-            Controls.Add(label24);
-            Controls.Add(label25);
-            Controls.Add(label26);
+            Controls.Add(Cancelar_Boton);
+            Controls.Add(Confirmar_Boton);
+            Controls.Add(UsuarioLogueado_Label);
+            Controls.Add(CD_Logueado_Label);
+            Controls.Add(FechaHora_Label);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ImposicionForm";
             Text = "Imposicion de Encomiendas - Centro de Distribucion (CD - 0001 - Buenos Aires)";
@@ -775,32 +775,32 @@ namespace GrupoE_Tutasa.Imposicion
 
         // ── Declaraciones de campos ──
         private GroupBox groupBox1;
-        private Label label1, label2, label3, label4;
-        private TextBox CuitRemitenteTextBox;
+        private Label Cuit_Remitente_Label, NombreRemitente_Label, TelefonoRemitente_Label, DireccionRemitente_Label;
+        private TextBox CuitRemitente_TextBox;
         private Label NombreRemitenteLabel, TelefonoRemitenteLabel, DireccionRemitenteLabel;
         private Panel panel3;
-        private Button BuscarRemitenteBoton;
+        private Button BuscarRemitente_Boton;
 
         private GroupBox groupBox5;
         private CheckBox DomicilioFiscalCheck;
-        private Label label37, label38;
+        private Label label37, DireccionFiscal_Label;
         private ComboBox ProvinciaRetiroComboBox;
-        private Label label35;
+        private Label Provincia_Retiro_Label;
         private ComboBox LocalidadRetiroComboBox;
-        private Label label34;
+        private Label Localidad_Retiro_Label;
         private TextBox DireccionRetiroTextBox;
-        private Label label13;
+        private Label Direccion_retiro_Label;
         private TextBox CPRetiroTextBox;
-        private Label label14;
+        private Label CP_Retiro_Label;
         private Panel panel4;
 
         private GroupBox groupBox2;
         private TextBox NombreDestinatarioTextBox;
-        private Label label5;
+        private Label NombreDestinatario_Label;
         private TextBox ApellidoDestinatarioTextBox;
-        private Label label7;
+        private Label ApellidoDestinatario_Label;
         private TextBox DNIDestinatarioTextBox;
-        private Label label6;
+        private Label DniDestinatario_Label;
 
         private GroupBox groupBox3;
         private ComboBox ProvinciaEntregaComboBox;
@@ -812,26 +812,26 @@ namespace GrupoE_Tutasa.Imposicion
         private ComboBox DestinoComboBox;
         private Label labelDestino;
         private Panel panel1;
-        private Label label12;
+        private Label EntregaDomicilio_Titulo_Label;
         private TextBox DireccionDomicilioTextBox;
-        private Label label36;
+        private Label Direccion_Entrega_Label;
         private TextBox CPDomicilioTextBox;
-        private Label label39;
+        private Label CP_Entrega_Label;
 
         private GroupBox groupBox4;
         private TextBox CantidadSTextBox;
-        private Label label15;
+        private Label TipoS_Encomienda_Label;
         private TextBox CantidadMTextBox;
-        private Label label17;
+        private Label TipoM_Encomienda_Label;
         private TextBox CantidadLTextBox;
-        private Label label18;
+        private Label TipoL_Encomienda_Label;
         private TextBox CantidadXLTextBox;
-        private Label label19;
-        private Label label16, label20;
-        private Label label22;
-        private Label GuiasAGenerarLabel;
+        private Label TipoXL_Encomienda_Label;
+        private Label Indicaciones_Encomienda_Label, label20;
+        private Label GuiasAgenerar_Label;
+        private Label Total_Guias_Label;
 
-        private Button button2, button3;
-        private Label label24, label25, label26;
+        private Button Cancelar_Boton, Confirmar_Boton;
+        private Label UsuarioLogueado_Label, CD_Logueado_Label, FechaHora_Label;
     }
 }
