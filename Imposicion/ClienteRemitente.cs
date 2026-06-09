@@ -5,12 +5,12 @@ namespace GrupoE_Tutasa.Imposicion
     /// </summary>
     internal class ClienteRemitente
     {
-        public int      ClienteId   { get; set; }   // PK
-        public string   RazonSocial { get; set; }
-        public string   Nombre      { get; set; }
-        public string   Apellido    { get; set; }
-        public string   CUIT        { get; set; }
-        public Domicilio Domicilio  { get; set; }
-        public string   Telefono    { get; set; }
+        public int       ClienteId   { get; set; }          // PK
+        public string    RazonSocial { get; set; } = string.Empty;
+        public string    Nombre      { get; set; } = string.Empty;
+        public string    Apellido    { get; set; } = string.Empty;
+        public string    CUIT        { get; set; } = string.Empty;
+        public Domicilio? Domicilio  { get; set; }
+        public string    Telefono    { get; set; } = string.Empty;
     }
 }

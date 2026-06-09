@@ -5,8 +5,8 @@ namespace GrupoE_Tutasa.Imposicion
     /// </summary>
     internal class CentroDistribucion
     {
-        public int       CDId      { get; set; }   // PK
-        public string    Nombre    { get; set; }
-        public Domicilio Domicilio { get; set; }
+        public int        CDId      { get; set; }           // PK
+        public string     Nombre    { get; set; } = string.Empty;
+        public Domicilio? Domicilio { get; set; }
     }
 }
