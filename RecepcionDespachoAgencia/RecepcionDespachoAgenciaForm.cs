@@ -136,10 +136,31 @@
 
             DetalleGuiasListView.Items.Clear();
 
+            var hdrRetiro =
+                modelo.LHDRRetiro.FirstOrDefault(
+                    h => h.numeroHDR == hdrSeleccionada);
+
+            var hdrDistribucion =
+                modelo.LHDRDistribucion.FirstOrDefault(
+                    h => h.numeroHDR == hdrSeleccionada);
+
             foreach (var guia in modelo.LGuias)
             {
-                if (guia.numeroHDR == hdrSeleccionada) // Se procesan únicamente las guías marcadas.
-                                                       // Las guías no marcadas permanecen en su estado actual.
+                bool perteneceHDR = false;
+
+                if (hdrRetiro != null)
+                {
+                    perteneceHDR =
+                        hdrRetiro.GuiaIds.Contains(guia.guiaId);
+                }
+
+                if (!perteneceHDR && hdrDistribucion != null)
+                {
+                    perteneceHDR =
+                        hdrDistribucion.GuiaIds.Contains(guia.guiaId);
+                }
+
+                if (perteneceHDR)
                 {
                     ListViewItem item = new ListViewItem("");
 
