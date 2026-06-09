@@ -79,9 +79,9 @@
             labelUsuarioResultado.AutoSize = true;
             labelUsuarioResultado.Location = new Point(109, 20);
             labelUsuarioResultado.Name = "labelUsuarioResultado";
-            labelUsuarioResultado.Size = new Size(33, 20);
+            labelUsuarioResultado.Size = new Size(17, 20);
             labelUsuarioResultado.TabIndex = 1;
-            labelUsuarioResultado.Text = "002";
+            labelUsuarioResultado.Text = "2";
             // 
             // labelCD
             // 

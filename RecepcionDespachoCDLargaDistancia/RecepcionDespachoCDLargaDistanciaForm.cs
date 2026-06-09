@@ -10,7 +10,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
     public partial class RecepcionDespachoCDLargaDistanciaForm : Form
     {
-        private readonly RecepcionDespachoCDLargaDistanciaModelo _modelo = new();
+        private RecepcionDespachoCDLargaDistanciaModelo _modelo = new();
 
         private List<HDRTransporte> hdrARecibir = new List<HDRTransporte>();
         private List<HDRTransporte> hdrADespachar = new List<HDRTransporte>();
@@ -18,7 +18,8 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         public RecepcionDespachoCDLargaDistanciaForm()
         {
             InitializeComponent();
-            labelRespuestaUsuario.Text = "Usuario 11";
+            labelRespuestaUsuario.Text = "8";
+            labelResultadoCD.Text = _modelo.GetNombreCDOperario();
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -118,6 +119,11 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
             listViewHDRaDespachar.Items.Clear();
             hdrARecibir.Clear();
             hdrADespachar.Clear();
+        }
+
+        private void labelRespuestaUsuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
