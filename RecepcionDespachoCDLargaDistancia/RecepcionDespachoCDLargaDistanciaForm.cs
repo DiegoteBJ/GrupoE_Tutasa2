@@ -21,7 +21,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
             labelRespuestaUsuario.Text = "8";
             labelResultadoCD.Text = _modelo.GetNombreCDOperario();
         }
-
+           
         private void botonBuscar_Click(object sender, EventArgs e)
         {
             string nroServicio = textBoxNrodeservicioTransporte.Text.Trim();
