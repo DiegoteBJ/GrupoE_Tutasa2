@@ -203,7 +203,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var guiasEnDetalle = detallehdrlistView.Items
                 .Cast<ListViewItem>()
-                .Select(i => (i.Tag as Guia)?.GuiaId)
+                .Select(i => (i.Tag as GuiaEntidad)?.GuiaId)
                 .Where(id => id.HasValue)
                 .Select(id => id.Value)
                 .ToHashSet();

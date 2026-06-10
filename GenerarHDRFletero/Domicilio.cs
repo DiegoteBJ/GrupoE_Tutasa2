@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal class Domicilio
+    internal class Domicilios
     {
         public string Calle { get; set; }
         public string Numero { get; set; }

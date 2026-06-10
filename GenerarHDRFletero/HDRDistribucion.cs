@@ -1,17 +1,23 @@
-﻿using System;
+﻿using GrupoE_Tutasa.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal class HDRDistribucion
+    internal enum EstadoHDRDistribucionEnume
     {
-        public int HDRDistribucionId { get; set; }
-        public int fleteroId { get; set; }
-        public DateTime FechaEmision { get; set; } 
+        PENDIENTE,
+        RENDIDA
+    }
+    internal class HDRDistribucionww
+    {
+        public int HdrDistribucionId { get; set; }
+        public int FleteroId { get; set; }
+        public EstadoHDRDistribucionEnume Estado { get; set; }
+        public DateTime FechaEmision { get; set; }
         public DateTime FechaRendicion { get; set; }
-        public string Estado { get; set; }
-        public List<int> GuiasIds { get; set; } = new List<int>();
+        public List<int> GuiaIds { get; set; }
 
     }
 }
