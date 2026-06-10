@@ -46,8 +46,8 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
                     DniDestinatario = g.DniDestinatario,
                     NombreDestinatario = g.NombreDestinatario,
                     ApellidoDestinatario = g.ApellidoDestinatario,
-                    Tamanio = g.TipoCaja,
-                    Estado = g.Estado,
+                    Tamanio = g.TipoCaja.ToString(),
+                    Estado = g.Estado.ToString(),
                     UbicacionActual = $"Agencia destino {g.AgenciaDestinoId}"
                 })
                 .ToList();
@@ -119,9 +119,9 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
             public long DniDestinatario { get; set; }
             public string NombreDestinatario { get; set; } = "";
             public string ApellidoDestinatario { get; set; } = "";
-            public string TipoCaja { get; set; } = "";
-            public string Estado { get; set; } = "";
-            public string ModalidadEntrega { get; set; } = "";
+            public object TipoCaja { get; set; } = "";
+            public object Estado { get; set; } = "";
+            public object ModalidadEntrega { get; set; } = "";
             public int AgenciaDestinoId { get; set; }
         }
     }
