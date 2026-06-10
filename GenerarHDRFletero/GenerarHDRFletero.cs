@@ -16,8 +16,6 @@ namespace GrupoE_Tutasa.GenerarHDR
         public GenerarHDRFletero()
         {
             InitializeComponent();
-            // Cada vez que cambian los ítems o la selección, refrescar el contador
-          
         }
 
 
@@ -153,17 +151,14 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void nombrefleterolabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void apellidolabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void apellidofleterolabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void retiroradioButton_CheckedChanged(object sender, EventArgs e)
@@ -177,15 +172,12 @@ namespace GrupoE_Tutasa.GenerarHDR
                 agregartodoguiasbutton.Enabled = true;
                 eliminarguiasbutton.Enabled = true;
                 eliminartodoguiasbutton.Enabled = true;
-
-
-
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
-                CargarGuiasPorEstado("EN_DISTRIBUCION"); // parámetro especial
+                CargarGuiasPorEstado("EN_DISTRIBUCION");
                 ActualizarAutoCompleteCP("EN_DISTRIBUCION");
                 buscarcodigopostalbutton.Enabled = true;
                 generarhdrbutton.Enabled = true;
@@ -194,8 +186,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 eliminarguiasbutton.Enabled = true;
                 eliminartodoguiasbutton.Enabled = true;
         }
-
-        
 
         private void CargarGuiasPorEstado(string estado)
         {
@@ -215,11 +205,11 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (var g in guias)
             {
-                var item = new ListViewItem(g.GuiaId.ToString()); // Columna Guía
+                var item = new ListViewItem(g.GuiaId.ToString());
 
                 if (estado == "A_RETIRAR")
                 {
-                    item.SubItems.Add(g.DomicilioRetiro.CodigoPostal); // Código Postal
+                    item.SubItems.Add(g.DomicilioRetiro.CodigoPostal);
                     item.SubItems.Add($"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}"); // Domicilio
                 }
                 else // Distribución
@@ -228,24 +218,20 @@ namespace GrupoE_Tutasa.GenerarHDR
                     item.SubItems.Add($"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero} - Piso: {g.DomicilioEntrega.Piso} - Depto: {g.DomicilioEntrega.Depto}");
                 }
 
-                item.SubItems.Add(g.TipoCaja.ToString());                // Tamaño
-                item.SubItems.Add(g.Estado.ToString());                // Estado
-                item.SubItems.Add(g.IntentosDeEntrega.ToString()); // Intentos
-                item.SubItems.Add(g.NombreDestinatario);    // Destinatario
+                item.SubItems.Add(g.TipoCaja.ToString());
+                item.SubItems.Add(g.Estado.ToString());
+                item.SubItems.Add(g.IntentosDeEntrega.ToString());
+                item.SubItems.Add(g.NombreDestinatario);
 
                 item.Tag = g;
                 seleccionguiaslistView.Items.Add(item);
             }
 
             bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
-        }
-
-
-        
+        } 
 
         private void codigopostallabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ingresarcodigopostaltextBox_TextChanged(object sender, EventArgs e)
@@ -253,14 +239,14 @@ namespace GrupoE_Tutasa.GenerarHDR
             int selStart = ingresarcodigopostaltextBox.SelectionStart;
             string raw = ingresarcodigopostaltextBox.Text ?? string.Empty;
 
-            // ✅ Filtrar solo letras y dígitos
+            // Filtrar solo letras y dígitos
             string filtered = new string(raw.Where(char.IsLetterOrDigit).ToArray());
 
-            // ✅ Limitar a 5 caracteres
+            // Limitar a 5 caracteres
             if (filtered.Length > 5)
                 filtered = filtered.Substring(0, 5);
 
-            // ✅ Normalizar a mayúsculas
+            // Normalizar a mayúsculas
             filtered = filtered.ToUpper();
 
             // Reemplazar si hubo cambios
@@ -270,7 +256,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 ingresarcodigopostaltextBox.SelectionStart = Math.Min(selStart, filtered.Length);
             }
 
-            // ✅ Reset y reordenar si queda vacío
+            // Reset y reordenar si queda vacío
             if (string.IsNullOrWhiteSpace(filtered))
             {
                 var itemsOrdenados = modelo.ResetearYOrdenar(seleccionguiaslistView);
@@ -282,12 +268,10 @@ namespace GrupoE_Tutasa.GenerarHDR
             }
         }
         
-
         private void buscarcodigopostalbutton_Click(object sender, EventArgs e)
         {
             string cp = ingresarcodigopostaltextBox.Text.Trim().ToUpper();
 
-            // ✅ Si está vacío → error
             if (string.IsNullOrEmpty(cp))
             {
                 MessageBox.Show("Debe ingresar un código postal para buscar.",
@@ -295,7 +279,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            // ✅ Validar formato
             if (!modelo.ValidarCodigoPostalArg(cp))
             {
                 MessageBox.Show("Código Postal inválido. Debe ser Letra + 4 dígitos (ej: C1401).",
@@ -305,7 +288,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            // ✅ Filtrar y reordenar
             var (coincidencias, noCoincidencias) = modelo.FiltrarPorCodigoPostal(
                 cp, seleccionguiaslistView, retiroradioButton.Checked);
 
@@ -320,7 +302,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             seleccionguiaslistView.Items.AddRange(coincidencias.ToArray());
             seleccionguiaslistView.Items.AddRange(noCoincidencias.ToArray());
             seleccionguiaslistView.EndUpdate();
-
         }
         
         private void ActualizarAutoCompleteCP(string estado)
@@ -363,23 +344,18 @@ namespace GrupoE_Tutasa.GenerarHDR
         }
         private void seleccionguiasgroupBox_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void seleccionguiaslistView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
        
-
         private void cantidaddebultoslabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void bultoslabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void agregarguiasbutton_Click(object sender, EventArgs e)
@@ -409,16 +385,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                         newItem.SubItems.Add($"{guia.NombreDestinatario} {guia.ApellidoDestinatario}");
                     else
                         newItem.SubItems.Add("");
-                }
-
-                
+                }              
                 newItem.Tag = guia;
 
                 detallehdrlistView.Items.Add(newItem);
                 seleccionguiaslistView.Items.Remove(item);
                 modelo.AsignarGuia(guia.GuiaId);
             }
-
             bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
             bultostotalasignadoslabel.Text = detallehdrlistView.Items.Count.ToString();
         }
@@ -438,7 +411,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
 
-                // ✅ Mostrar domicilio según radio activo
+                // Mostrar domicilio según radio activo
                 if (retiroradioButton.Checked || guia.Estado == EstadoGuiaEnum.A_RETIRAR)
                 {
                     newItem.SubItems.Add($"{guia.DomicilioRetiro.Calle} {guia.DomicilioRetiro.Numero} - Piso: {guia.DomicilioRetiro.Piso} - Depto: {guia.DomicilioRetiro.Depto}".Trim());
@@ -458,7 +431,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 seleccionguiaslistView.Items.Remove(item);
                 modelo.AsignarGuia(guia.GuiaId);
             }
-
             bultoslabel.Text = seleccionguiaslistView.Items.Count.ToString();
             bultostotalasignadoslabel.Text = detallehdrlistView.Items.Count.ToString();
         }
@@ -466,22 +438,18 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         private void detallehdrgroupBox_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void detallehdrlistView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void totalbultosasignadoslabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void bultostotalasignadoslabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void eliminarguiasbutton_Click(object sender, EventArgs e)
@@ -515,15 +483,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                     })
                 .ToList();
 
-            // Refrescar vista según radio activo
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A_RETIRAR");
             else if (distribucionradioButton.Checked)
                 CargarGuiasPorEstado("EN_DISTRIBUCION");
-
-
-
-
         }
 
         private void eliminartodoguiasbutton_Click(object sender, EventArgs e)
@@ -556,14 +519,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                         return int.TryParse(i.Text, out guiaId) ? guiaId : int.MaxValue;
                     })
                 .ToList();
-
-            // Refrescar vista según radio activo
+  
             if (retiroradioButton.Checked)
                 CargarGuiasPorEstado("A_RETIRAR");
             else if (distribucionradioButton.Checked)
                 CargarGuiasPorEstado("EN_DISTRIBUCION");
-
-
         }
 
         private void cancelargenerarhdrbutton_Click(object sender, EventArgs e)
@@ -577,7 +537,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (result == DialogResult.OK)
                 this.Close();
         }
-
 
         private void generarhdrbutton_Click(object sender, EventArgs e)
         {
@@ -602,8 +561,6 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var resumenOrdenado = modelo.GenerarHDR(guiasSeleccionadas);
             MostrarResumenPopup(resumenOrdenado, fletero);
-
-
         }
 
         private void MostrarResumenPopup(List<HDRResumen> resumen, FleteroEntidad fletero)
@@ -619,10 +576,9 @@ namespace GrupoE_Tutasa.GenerarHDR
             listView.FullRowSelect = true;
             listView.Height = 380;
 
-            // ✅ Orden de columnas
             listView.Columns.Add("HDR Id", 80);
             listView.Columns.Add("Tipo HDR", 100);
-            listView.Columns.Add("Modalidad", 80);               // tercera columna
+            listView.Columns.Add("Modalidad", 80);             
             listView.Columns.Add("Guías incluidas", 200);
             listView.Columns.Add("Destinatario", 200);
             listView.Columns.Add("Domicilio", 260);
@@ -635,25 +591,25 @@ namespace GrupoE_Tutasa.GenerarHDR
                 var item = new ListViewItem(r.HDRId.ToString());
                 item.SubItems.Add(r.TipoHDR);
 
-                // 📌 Buscar la primera guía del grupo
+                //Buscar la primera guía del grupo
                 var guia = modelo.LGuiasAAsignar.FirstOrDefault(g => r.GuiasIds.Contains(g.GuiaId));
 
-                // 📌 Modalidad (3ra columna)
+                // Modalidad (3ra columna)
                 if (r.TipoHDR == "Retiro")
                     item.SubItems.Add(guia?.ModalidadImposicion.ToString() ?? "");
                 else
                     item.SubItems.Add(guia?.ModalidadEntrega.ToString() ?? "");
 
-                // 📌 Guías incluidas
+                // Guías incluidas
                 item.SubItems.Add(string.Join(", ", r.GuiasIds));
 
-                // 📌 Destinatario solo si HDR es Distribución y modalidad entrega es DOMICILIO
+                // Destinatario solo si HDR es Distribución y modalidad entrega es DOMICILIO
                 if (r.TipoHDR == "Distribución" && guia?.ModalidadEntrega == ModalidadEntregaEnum.DOMICILIO)
                     item.SubItems.Add($"{guia?.NombreDestinatario} {guia?.ApellidoDestinatario}".Trim());
                 else
                     item.SubItems.Add("");
 
-                // 📌 Resto de columnas
+                // Resto de columnas
                 item.SubItems.Add(r.Domicilio);
                 item.SubItems.Add(r.CodigoPostal);
                 item.SubItems.Add(r.IntentosDeEntrega.ToString());

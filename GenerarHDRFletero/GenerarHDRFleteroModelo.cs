@@ -13,9 +13,6 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<HDRRetiroEntidad> HDRsRetiro => HDRRetiroAlmacen.hDRRetiros;
         public List<HDRDistribucionEntidad> HDRsDistribucion => HDRDistribucionAlmacen.hDRDistribucions;
 
-
-
-        // Estado interno del modelo
         private HashSet<int> guiasAsignadas = new HashSet<int>();
             private int ultimoHDRRetiroId = 0;
             private int ultimoHDRDistribucionId = 0;
@@ -23,14 +20,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             public static bool ValidarDniString(string dni)
             {
               if (string.IsNullOrWhiteSpace(dni)) return false;
-              // Sólo dígitos ya garantizados por TextChanged, pero volvemos a intentar parsear
               if (!int.TryParse(dni, out int numero)) return false;
               if (numero < 0) return false;
               return dni.Length == 7 || dni.Length == 8;
             }
 
-        // ✅ Validación de código postal
-        // ✅ Validar formato de CP Argentino (Letra + 4 dígitos)
         public bool ValidarCodigoPostalArg(string cp)
         {
             if (string.IsNullOrWhiteSpace(cp)) return false;
@@ -38,7 +32,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             return regex.IsMatch(cp.Trim().ToUpper());
         }
 
-        // ✅ Filtrar y reordenar guías por CP
         public (List<ListViewItem> coincidencias, List<ListViewItem> noCoincidencias) FiltrarPorCodigoPostal(
             string cp, ListView seleccion, bool esRetiro)
         {
@@ -68,7 +61,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             return (coincidencias, noCoincidencias);
         }
 
-        // ✅ Resetear colores y reordenar por GuíaId
         public List<ListViewItem> ResetearYOrdenar(ListView seleccion)
         {
             foreach (ListViewItem item in seleccion.Items)
@@ -84,13 +76,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                 .ToList();
         }
 
-        // ✅ Buscar fletero
         public FleteroEntidad BuscarFleteroPorDni(string dni)
         {
             return LFleteros.FirstOrDefault(f => f.Dni.ToString() == dni);
         }
 
-        // ✅ Obtener guías según estado
         public IEnumerable<GuiaEntidad> ObtenerGuiasPorEstado(string estado, FleteroEntidad fletero, HashSet<int> guiasEnDetalle)
         {
             if (fletero == null) return Enumerable.Empty<GuiaEntidad>();
@@ -117,15 +107,12 @@ namespace GrupoE_Tutasa.GenerarHDR
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsDistribucion.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRDistribucionEnum.PENDIENTE));
             }
-
             return Enumerable.Empty<GuiaEntidad>();
         }
 
-        // ✅ Marcar y desmarcar guías
         public void AsignarGuia(int guiaId) => guiasAsignadas.Add(guiaId);
         public void DesasignarGuia(int guiaId) => guiasAsignadas.Remove(guiaId);
 
-        // ✅ Generar HDRs provisorios
         public List<HDRResumen> GenerarHDR(List<GuiaEntidad> guiasSeleccionadas)
         {
             var hdrsProvisorios = new List<HDRResumen>();
@@ -140,7 +127,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             foreach (var grupo in grupos)
             {
                 var guiasGrupo = grupo.ToList();
-                var g = guiasGrupo.First(); // tomamos la primera guía del grupo para armar domicilio
+                var g = guiasGrupo.First();
 
                 if (guiasGrupo.All(x => x.Estado == EstadoGuiaEnum.A_RETIRAR))
                 {
@@ -161,11 +148,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                     });
                 }
             }
-
             return hdrsProvisorios.OrderBy(r => r.Domicilio).ToList();
         }
 
-        // ✅ Imprimir y guardar HDRs
         public void ImprimirResumen(List<HDRResumen> resumen, FleteroEntidad fletero, int totalHDR)
         {
             string fechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
