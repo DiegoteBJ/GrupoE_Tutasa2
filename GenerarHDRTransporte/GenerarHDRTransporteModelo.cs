@@ -8,10 +8,15 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
 {
     internal class GenerarHDRTransporteModelo
     {
+        //CD del operario logueado
+        public const int CDOperarioId = 1;
         // ===== MAPEO de almacenes a clases locales =====
 
         public List<ServicioTransporte> LServicios =>
-            ServicioTransporteAlmacen.servicioTransportes.Select(s => new ServicioTransporte
+            ServicioTransporteAlmacen.servicioTransportes
+            
+                 .Where(s => s.CDOrigenId == CDOperarioId)   // ← filtra por CD del operario
+                 .Select(s => new ServicioTransporte
             {
                 ServicioId = s.ServicioId.ToString(),
                 FechaEmision = s.FechaCreacion,
@@ -35,6 +40,9 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         public ServicioTransporte BuscarServicio(string nro)
             => LServicios.FirstOrDefault(s => s.ServicioId == nro);
 
+        public string GetNombreCDOperario()
+=> ObtenerNombreCD(CDOperarioId);
+
         // ===== FILTRADO de guías pendientes por servicio =====
         // Condiciones:
         // 1. Estado de la guía debe ser ADMITIDA
@@ -44,7 +52,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
             return GuiaAlmacen.guias
                 .Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA
-                         && g.CDActualId != g.CDDestinoId
+                         && g.CDActualId == g.CDDestinoId
                          && g.CDDestinoId == servicio.CDDestinoId)
                 .Select(g => new Guia
                 {

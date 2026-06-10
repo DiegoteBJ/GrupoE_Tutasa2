@@ -1,71 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace GrupoE_Tutasa.EstadoDeEncomienda
 {
     internal class EstadoDeEncomiendaModelo
     {
-        private List<Guia> guias = new List<Guia>
+        private List<MovimientoEstadoGuia> movimientos = new List<MovimientoEstadoGuia>();
+
+        public EstadoDeEncomiendaModelo()
         {
-            new Guia
+            CargarMovimientosDesdeJson();
+        }
+
+        private void CargarMovimientosDesdeJson()
+        {
+            string rutaArchivo = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Datos",
+                "MovimientoEstadoGuiaEntidad.json"
+            );
+
+            if (!File.Exists(rutaArchivo))
             {
-                GuiaId = 5001,
-                MovimientosEstado = new List<MovimientoEstadoGuia>
-                {
-                    new MovimientoEstadoGuia
-                    {
-                        GuiaId = 5001,
-                        Fecha = DateTime.Today.AddDays(-3),
-                        Estado = "ADMISION",
-                        Ubicacion = "CD Buenos Aires"
-                    },
-
-                    new MovimientoEstadoGuia
-                    {
-                        GuiaId = 5001,
-                        Fecha = DateTime.Today.AddDays(-2),
-                        Estado = "EN TRANSITO",
-                        Ubicacion = "Ruta 9"
-                    },
-
-                    new MovimientoEstadoGuia
-                    {
-                        GuiaId = 5001,
-                        Fecha = DateTime.Today.AddDays(-1),
-                        Estado = "PENDIENTE DE ENTREGA",
-                        Ubicacion = "Agencia Moron"
-                    }
-                }
-            },
-
-            new Guia
-            {
-                GuiaId = 5002,
-                MovimientosEstado = new List<MovimientoEstadoGuia>
-                {
-                    new MovimientoEstadoGuia
-                    {
-                        GuiaId = 5002,
-                        Fecha = DateTime.Today.AddDays(-5),
-                        Estado = "ADMISION",
-                        Ubicacion = "CD Rosario"
-                    },
-
-                    new MovimientoEstadoGuia
-                    {
-                        GuiaId = 5002,
-                        Fecha = DateTime.Today.AddDays(-4),
-                        Estado = "ENTREGADA",
-                        Ubicacion = "CD Rosario"
-                    }
-                }
+                movimientos = new List<MovimientoEstadoGuia>();
+                return;
             }
-        };
+
+            string json = File.ReadAllText(rutaArchivo);
+
+            movimientos = JsonSerializer.Deserialize<List<MovimientoEstadoGuia>>(
+                json,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            ) ?? new List<MovimientoEstadoGuia>();
+        }
 
         public Guia BuscarGuia(int guiaId)
         {
-            return guias.FirstOrDefault(g => g.GuiaId == guiaId);
+            List<MovimientoEstadoGuia> movimientosDeLaGuia = movimientos
+                .Where(m => m.GuiaId == guiaId)
+                .OrderBy(m => m.FechaMovimiento)
+                .ToList();
+
+            if (!movimientosDeLaGuia.Any())
+            {
+                return null;
+            }
+
+            return new Guia
+            {
+                GuiaId = guiaId,
+                MovimientosEstado = movimientosDeLaGuia
+            };
         }
     }
 }

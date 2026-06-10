@@ -52,7 +52,7 @@
             labelUsuario = new Label();
             labelRespuestaUsuario = new Label();
             label7 = new Label();
-            label8 = new Label();
+            labelResultadoCD = new Label();
             groupBoxIngreseNrodeTransporte.SuspendLayout();
             groupBoxDatosdeEmpresaTransporte.SuspendLayout();
             groupBoxHDRaRecibir.SuspendLayout();
@@ -263,6 +263,7 @@
             labelRespuestaUsuario.Size = new Size(79, 20);
             labelRespuestaUsuario.TabIndex = 7;
             labelRespuestaUsuario.Text = "Usuario 11";
+            labelRespuestaUsuario.Click += labelRespuestaUsuario_Click;
             // 
             // label7
             // 
@@ -273,21 +274,21 @@
             label7.TabIndex = 8;
             label7.Text = "CD: ";
             // 
-            // label8
+            // labelResultadoCD
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(273, 13);
-            label8.Name = "label8";
-            label8.Size = new Size(94, 20);
-            label8.TabIndex = 9;
-            label8.Text = "Buenos Aires";
+            labelResultadoCD.AutoSize = true;
+            labelResultadoCD.Location = new Point(273, 13);
+            labelResultadoCD.Name = "labelResultadoCD";
+            labelResultadoCD.Size = new Size(94, 20);
+            labelResultadoCD.TabIndex = 9;
+            labelResultadoCD.Text = "Buenos Aires";
             // 
             // RecepcionDespachoCDLargaDistanciaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 712);
-            Controls.Add(label8);
+            Controls.Add(labelResultadoCD);
             Controls.Add(label7);
             Controls.Add(labelRespuestaUsuario);
             Controls.Add(labelUsuario);
@@ -329,7 +330,7 @@
         private Label labelUsuario;
         private Label labelRespuestaUsuario;
         private Label label7;
-        private Label label8;
+        private Label labelResultadoCD;
         private ColumnHeader columnHeaderNroGuias;
         private ColumnHeader columnaNrodeGuia;
         private ColumnHeader columnHeaderDestino;

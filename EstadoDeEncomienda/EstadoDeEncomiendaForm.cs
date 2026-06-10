@@ -56,7 +56,8 @@ namespace GrupoE_Tutasa.EstadoDeEncomienda
 
             foreach (MovimientoEstadoGuia movimiento in guiaEncontrada.MovimientosEstado)
             {
-                ListViewItem fila = new ListViewItem(movimiento.Fecha.ToString("dd/MM/yyyy"));
+                //ListViewItem fila = new ListViewItem(movimiento.Fecha.ToString("dd/MM/yyyy")); -- borrar
+                ListViewItem fila = new ListViewItem(movimiento.FechaMovimiento.ToString("dd/MM/yyyy"));
                 fila.SubItems.Add(movimiento.Estado);
                 fila.SubItems.Add(movimiento.Ubicacion);
 
