@@ -106,7 +106,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
 
         private void GenerarHDRBoton_Click(object sender, EventArgs e)
         {
-            GenerarHDRFleteros generarHDRForm = new GenerarHDRFleteros();
+            GenerarHDRFletero generarHDRForm = new GenerarHDRFletero();
             generarHDRForm.Show();
         }
 

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal class AsignarGuiasModelo
+    internal class GenerarHDRFleteroModelo
     {
         public List<GuiaEntidad> LGuiasAAsignar => GuiaAlmacen.guias;
         public List<FleteroEntidad> LFleteros => FleteroAlmacen.fleteros;
@@ -47,7 +47,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccion.Items)
             {
-                var guia = item.Tag as Guias;
+                var guia = item.Tag as Guia;
                 if (guia == null) continue;
 
                 string cpComparar = esRetiro ? guia.DomicilioRetiro.CodigoPostal
@@ -211,28 +211,11 @@ namespace GrupoE_Tutasa.GenerarHDR
                     }
                 }
             }
-
-            // En modo mock no hay persistencia real, pero acá podrías simular un "GuardarCambios"
-            // TODO: cuando conectes JSON, reemplazar por:
-            // GuiaAlmacen.Guardar();
-            // HDRRetiroAlmacen.Guardar();
-            // HDRDistribucionAlmacen.Guardar();
-            // FleteroAlmacen.Guardar();
-
-            // Ahora
-            //public List<Guias> LGuiasAAsignar { get; set; } = new List<Guias>() { ... };
-            // Luego
-            //public List<GuiaEntidad> LGuiasAAsignar => GuiaAlmacen.guias;
-
             GuiaAlmacen.Guardar();
             HDRRetiroAlmacen.Guardar();
             HDRDistribucionAlmacen.Guardar();
             FleteroAlmacen.Guardar();
             ClienteAlmacen.Guardar();
         }
-
-
-
-
     }
 }

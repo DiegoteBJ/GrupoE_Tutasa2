@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    public partial class GenerarHDRFleteros : Form
+    public partial class GenerarHDRFletero : Form
     {
-        private AsignarGuiasModelo modelo = new AsignarGuiasModelo();
-        public GenerarHDRFleteros()
+        private GenerarHDRFleteroModelo modelo = new GenerarHDRFleteroModelo();
+        public GenerarHDRFletero()
         {
             InitializeComponent();
             // Cada vez que cambian los ítems o la selección, refrescar el contador
@@ -93,7 +93,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             string dni = ingresardnitextBox.Text?.Trim() ?? string.Empty;
 
-            if (!AsignarGuiasModelo.ValidarDniString(dni))
+            if (!GenerarHDRFleteroModelo.ValidarDniString(dni))
             {
                 MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetearFormularioFletero();
@@ -203,7 +203,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var guiasEnDetalle = detallehdrlistView.Items
                 .Cast<ListViewItem>()
-                .Select(i => (i.Tag as Guias)?.GuiaId)
+                .Select(i => (i.Tag as Guia)?.GuiaId)
                 .Where(id => id.HasValue)
                 .Select(id => id.Value)
                 .ToHashSet();
