@@ -79,6 +79,7 @@ namespace GrupoE_Tutasa.Imposicion
             UsuarioLogueado_Label = new Label();
             CD_Logueado_Label = new Label();
             FechaHora_Label = new Label();
+            TipoImposicion_ComboBox = new ComboBox();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -99,7 +100,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox1.Controls.Add(CuitRemitente_TextBox);
             groupBox1.Controls.Add(Cuit_Remitente_Label);
             groupBox1.Controls.Add(panel3);
-            groupBox1.Location = new Point(24, 21);
+            groupBox1.Location = new Point(24, 50);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
@@ -214,7 +215,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox5.Controls.Add(CPRetiroTextBox);
             groupBox5.Controls.Add(CP_Retiro_Label);
             groupBox5.Controls.Add(panel4);
-            groupBox5.Location = new Point(24, 148);
+            groupBox5.Location = new Point(24, 176);
             groupBox5.Margin = new Padding(4, 3, 4, 3);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(4, 3, 4, 3);
@@ -338,7 +339,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox2.Controls.Add(ApellidoDestinatario_Label);
             groupBox2.Controls.Add(DNIDestinatarioTextBox);
             groupBox2.Controls.Add(DniDestinatario_Label);
-            groupBox2.Location = new Point(24, 309);
+            groupBox2.Location = new Point(24, 334);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4, 3, 4, 3);
@@ -411,7 +412,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox3.Controls.Add(DestinoComboBox);
             groupBox3.Controls.Add(labelDestino);
             groupBox3.Controls.Add(panel1);
-            groupBox3.Location = new Point(32, 398);
+            groupBox3.Location = new Point(32, 423);
             groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(4, 3, 4, 3);
@@ -507,7 +508,7 @@ namespace GrupoE_Tutasa.Imposicion
             panel1.Location = new Point(340, 35);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(460, 112);
+            panel1.Size = new Size(460, 114);
             panel1.TabIndex = 20;
             panel1.Visible = false;
             // 
@@ -570,7 +571,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox4.Controls.Add(TipoXL_Encomienda_Label);
             groupBox4.Controls.Add(Indicaciones_Encomienda_Label);
             groupBox4.Controls.Add(label20);
-            groupBox4.Location = new Point(32, 618);
+            groupBox4.Location = new Point(32, 631);
             groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(4, 3, 4, 3);
@@ -685,7 +686,7 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             // Cancelar_Boton
             // 
-            Cancelar_Boton.Location = new Point(631, 764);
+            Cancelar_Boton.Location = new Point(630, 776);
             Cancelar_Boton.Margin = new Padding(4, 3, 4, 3);
             Cancelar_Boton.Name = "Cancelar_Boton";
             Cancelar_Boton.Size = new Size(88, 27);
@@ -697,7 +698,7 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             Confirmar_Boton.BackColor = SystemColors.Highlight;
             Confirmar_Boton.ForeColor = SystemColors.ButtonFace;
-            Confirmar_Boton.Location = new Point(745, 764);
+            Confirmar_Boton.Location = new Point(744, 776);
             Confirmar_Boton.Margin = new Padding(4, 3, 4, 3);
             Confirmar_Boton.Name = "Confirmar_Boton";
             Confirmar_Boton.Size = new Size(88, 27);
@@ -709,7 +710,7 @@ namespace GrupoE_Tutasa.Imposicion
             // UsuarioLogueado_Label
             // 
             UsuarioLogueado_Label.AutoSize = true;
-            UsuarioLogueado_Label.Location = new Point(18, 822);
+            UsuarioLogueado_Label.Location = new Point(19, 833);
             UsuarioLogueado_Label.Name = "UsuarioLogueado_Label";
             UsuarioLogueado_Label.Size = new Size(107, 15);
             UsuarioLogueado_Label.TabIndex = 19;
@@ -718,7 +719,7 @@ namespace GrupoE_Tutasa.Imposicion
             // CD_Logueado_Label
             // 
             CD_Logueado_Label.AutoSize = true;
-            CD_Logueado_Label.Location = new Point(190, 822);
+            CD_Logueado_Label.Location = new Point(191, 833);
             CD_Logueado_Label.Name = "CD_Logueado_Label";
             CD_Logueado_Label.Size = new Size(168, 15);
             CD_Logueado_Label.TabIndex = 20;
@@ -727,12 +728,20 @@ namespace GrupoE_Tutasa.Imposicion
             // FechaHora_Label
             // 
             FechaHora_Label.AutoSize = true;
-            FechaHora_Label.Location = new Point(410, 822);
+            FechaHora_Label.Location = new Point(411, 833);
             FechaHora_Label.Name = "FechaHora_Label";
             FechaHora_Label.Size = new Size(128, 15);
             FechaHora_Label.TabIndex = 21;
             FechaHora_Label.Text = "01/05/2026, 08:55 p. m.";
             FechaHora_Label.Click += label26_Click;
+            // 
+            // TipoImposicion_ComboBox
+            // 
+            TipoImposicion_ComboBox.FormattingEnabled = true;
+            TipoImposicion_ComboBox.Location = new Point(744, 12);
+            TipoImposicion_ComboBox.Name = "TipoImposicion_ComboBox";
+            TipoImposicion_ComboBox.Size = new Size(111, 23);
+            TipoImposicion_ComboBox.TabIndex = 26;
             // 
             // ImposicionForm
             // 
@@ -740,6 +749,7 @@ namespace GrupoE_Tutasa.Imposicion
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(879, 857);
+            Controls.Add(TipoImposicion_ComboBox);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -833,5 +843,6 @@ namespace GrupoE_Tutasa.Imposicion
 
         private Button Cancelar_Boton, Confirmar_Boton;
         private Label UsuarioLogueado_Label, CD_Logueado_Label, FechaHora_Label;
+        private ComboBox TipoImposicion_ComboBox;
     }
 }

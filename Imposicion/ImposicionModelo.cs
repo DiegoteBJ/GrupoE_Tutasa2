@@ -10,18 +10,18 @@ namespace GrupoE_Tutasa.Imposicion
         public List<ClienteRemitente> LClientes =>
             ClienteAlmacen.clientes.Select(c => new ClienteRemitente
             {
-                ClienteId   = c.ClienteId,
-                RazonSocial = c.RazonSocial,
-                Nombre      = c.Nombre,
-                Apellido    = c.Apellido,
-                CUIT        = c.Cuit,
-                Telefono    = c.Telefono,
-                Domicilio   = c.Domicilio != null ? new Domicilio
+                ClienteId    = c.ClienteId,
+                RazonSocial  = c.RazonSocial,
+                Nombre       = c.Nombre,
+                Apellido     = c.Apellido,
+                CUIT         = c.Cuit,
+                Telefono     = c.Telefono,
+                Domicilio    = c.Domicilio != null ? new Domicilio
                 {
-                    Calle         = c.Domicilio.Calle,
-                    Numero        = c.Domicilio.Numero,
-                    CodigoPostal  = c.Domicilio.CodigoPostal,
-                    LocalidadId   = c.Domicilio.LocalidadId
+                    Calle        = c.Domicilio.Calle,
+                    Numero       = c.Domicilio.Numero,
+                    CodigoPostal = c.Domicilio.CodigoPostal,
+                    LocalidadId  = c.Domicilio.LocalidadId
                 } : null
             }).ToList();
 
@@ -37,9 +37,9 @@ namespace GrupoE_Tutasa.Imposicion
         public List<Localidad> LLocalidades =>
             LocalidadAlmacen.localidads.Select(l => new Localidad
             {
-                LocalidadId          = l.LocalidadId,
-                ProvinciaId          = l.ProvinciaId,
-                Nombre               = l.Nombre,
+                LocalidadId           = l.LocalidadId,
+                ProvinciaId           = l.ProvinciaId,
+                Nombre                = l.Nombre,
                 CodigoPostalPrincipal = l.CodigoPostalPrincipal
             }).ToList();
 
@@ -82,47 +82,112 @@ namespace GrupoE_Tutasa.Imposicion
             }).ToList();
 
         // AL.14 - Guías
-        // LGuias ya no es una lista local: es una vista sobre GuiaAlmacen.
-        // Se mantiene por compatibilidad con el Form pero siempre refleja el estado actual del almacén.
         public List<Guia> LGuias =>
             GuiaAlmacen.guias.Select(g => new Guia
             {
-                GuiaId                 = g.GuiaId,
-                ClienteId              = g.ClienteId,
-                AgenciaOrigenId        = g.AgenciaOrigenId,
-                CDOrigenId             = g.CDOrigenId,
-                CDDestinoId            = g.CDDestinoId,
-                CDActualId             = g.CDActualId == 0 ? (int?)null : g.CDActualId,
-                ModalidadImposicion    = (ModalidadImposicionEnum)g.ModalidadImposicion,
-                DomicilioRetiro        = g.DomicilioRetiro != null ? new Domicilio
+                GuiaId                = g.GuiaId,
+                ClienteId             = g.ClienteId,
+                AgenciaOrigenId       = g.AgenciaOrigenId,
+                CDOrigenId            = g.CDOrigenId,
+                CDDestinoId           = g.CDDestinoId,
+                CDActualId            = g.CDActualId == 0 ? (int?)null : g.CDActualId,
+                ModalidadImposicion   = (ModalidadImposicionEnum)g.ModalidadImposicion,
+                DomicilioRetiro       = g.DomicilioRetiro != null ? new Domicilio
                 {
                     Calle        = g.DomicilioRetiro.Calle,
                     Numero       = g.DomicilioRetiro.Numero,
                     CodigoPostal = g.DomicilioRetiro.CodigoPostal,
                     LocalidadId  = g.DomicilioRetiro.LocalidadId
                 } : null,
-                ModalidadEntrega       = (ModalidadEntregaEnum)g.ModalidadEntrega,
-                AgenciaDestinoId       = g.AgenciaDestinoId,
-                DomicilioEntrega       = g.DomicilioEntrega != null ? new Domicilio
+                ModalidadEntrega      = (ModalidadEntregaEnum)g.ModalidadEntrega,
+                AgenciaDestinoId      = g.AgenciaDestinoId,
+                DomicilioEntrega      = g.DomicilioEntrega != null ? new Domicilio
                 {
                     Calle        = g.DomicilioEntrega.Calle,
                     Numero       = g.DomicilioEntrega.Numero,
                     CodigoPostal = g.DomicilioEntrega.CodigoPostal,
                     LocalidadId  = g.DomicilioEntrega.LocalidadId
                 } : null,
-                NombreDestinatario     = g.NombreDestinatario,
-                ApellidoDestinatario   = g.ApellidoDestinatario,
-                DNIDestinatario        = g.DniDestinatario,
-                TipoCaja               = (TipoCajaEnum)g.TipoCaja,
-                IntentosDeEntrega      = g.IntentosDeEntrega,
-                Estado                 = (EstadoGuiaEnum)g.Estado,
-                TarifarioId            = g.TarifarioId,
-                ObservacionesAdmision  = g.ObservacionesAdmision
+                NombreDestinatario    = g.NombreDestinatario,
+                ApellidoDestinatario  = g.ApellidoDestinatario,
+                DNIDestinatario       = g.DniDestinatario,
+                TipoCaja              = (TipoCajaEnum)g.TipoCaja,
+                IntentosDeEntrega     = g.IntentosDeEntrega,
+                Estado                = (EstadoGuiaEnum)g.Estado,
+                TarifarioId           = g.TarifarioId,
+                ObservacionesAdmision = g.ObservacionesAdmision
             }).ToList();
 
-        public void RegistrarGuia(Guia guia, int cdActualId)
+        // ─────────────────────────────────────────────────────────────────────
+        // Resolución de CDActualId según modalidad de imposición
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Resuelve el CDActualId a partir del código postal del domicilio de retiro.
+        ///
+        /// Reglas:
+        ///   1. Busca una agencia cuyo CodigosPostalesCobertura contenga el CP.
+        ///      Si la encuentra, retorna el CDAsignadoId de esa agencia.
+        ///   2. Si ninguna agencia cubre ese CP, busca la LocalidadId asociada al CP
+        ///      (por CodigoPostalPrincipal), obtiene su ProvinciaId, y retorna el primer
+        ///      CD cuya localidad pertenezca a esa misma provincia (fallback por provincia).
+        ///   3. Si tampoco hay CDs en esa provincia, retorna null.
+        /// </summary>
+        public int? ResolverCDActualIdPorCodigoPostal(string codigoPostal)
         {
-            // Calcular el próximo ID a partir de lo que ya existe en el almacén
+            if (string.IsNullOrWhiteSpace(codigoPostal))
+                return null;
+
+            // Regla 1: buscar una agencia cuya lista de cobertura contenga el CP
+            foreach (Agencia agencia in LAgencias)
+            {
+                foreach (string cpCobertura in agencia.CodigosPostalesCobertura)
+                {
+                    if (cpCobertura.Trim().ToUpper() == codigoPostal.Trim().ToUpper())
+                        return agencia.CDAsignadoId;
+                }
+            }
+
+            // Regla 2 (fallback): ninguna agencia cubre ese CP
+            // Buscar la localidad cuyo CodigoPostalPrincipal coincida con el CP
+            Localidad localidadEncontrada = null;
+            foreach (Localidad localidad in LLocalidades)
+            {
+                if (localidad.CodigoPostalPrincipal.Trim().ToUpper() == codigoPostal.Trim().ToUpper())
+                {
+                    localidadEncontrada = localidad;
+                    break;
+                }
+            }
+
+            if (localidadEncontrada == null)
+                return null;
+
+            // Con la provincia de esa localidad, buscar el primer CD que esté en la misma provincia
+            int provinciaId = localidadEncontrada.ProvinciaId;
+
+            foreach (CentroDistribucion cd in LCentrosDistribucion)
+            {
+                if (cd.Domicilio == null)
+                    continue;
+
+                foreach (Localidad localidad in LLocalidades)
+                {
+                    if (localidad.LocalidadId == cd.Domicilio.LocalidadId &&
+                        localidad.ProvinciaId  == provinciaId)
+                    {
+                        return cd.CDId;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+
+        public void RegistrarGuia(Guia guia, int cdOrigenId)
+        {
             int nuevoId = GuiaAlmacen.guias.Count > 0
                 ? GuiaAlmacen.guias.Max(g => g.GuiaId) + 1
                 : 1;
@@ -130,45 +195,39 @@ namespace GrupoE_Tutasa.Imposicion
             guia.GuiaId          = nuevoId;
             guia.FechaImposicion = DateTime.Now;
 
-            // CDActualId se registra solo cuando la imposición es en CD
-            guia.CDActualId = guia.ModalidadImposicion == ModalidadImposicionEnum.CD
-                ? cdActualId
-                : (int?)null;
-
-            // Mapear la Guia local a GuiaEntidad y persistir en el almacén
             var entidad = new GuiaEntidad
             {
-                GuiaId                 = guia.GuiaId,
-                ClienteId              = guia.ClienteId,
-                AgenciaOrigenId        = guia.AgenciaOrigenId ?? 0,
-                AgenciaDestinoId       = guia.AgenciaDestinoId ?? 0,
-                CDOrigenId             = guia.CDOrigenId,
-                CDDestinoId            = guia.CDDestinoId,
-                CDActualId             = guia.CDActualId ?? 0,
-                ModalidadImposicion    = (Almacenes.ModalidadImposicionEnum)guia.ModalidadImposicion,
-                DomicilioRetiro        = guia.DomicilioRetiro != null ? new Almacenes.Domicilio
+                GuiaId                = guia.GuiaId,
+                ClienteId             = guia.ClienteId,
+                AgenciaOrigenId       = guia.AgenciaOrigenId ?? 0,
+                AgenciaDestinoId      = guia.AgenciaDestinoId ?? 0,
+                CDOrigenId            = guia.CDOrigenId,
+                CDDestinoId           = guia.CDDestinoId,
+                CDActualId            = guia.CDActualId ?? 0,
+                ModalidadImposicion   = (Almacenes.ModalidadImposicionEnum)guia.ModalidadImposicion,
+                DomicilioRetiro       = guia.DomicilioRetiro != null ? new Almacenes.Domicilio
                 {
                     Calle        = guia.DomicilioRetiro.Calle,
                     Numero       = guia.DomicilioRetiro.Numero,
                     CodigoPostal = guia.DomicilioRetiro.CodigoPostal,
                     LocalidadId  = guia.DomicilioRetiro.LocalidadId
                 } : null,
-                ModalidadEntrega       = (Almacenes.ModalidadEntregaEnum)guia.ModalidadEntrega,
-                NombreDestinatario     = guia.NombreDestinatario,
-                ApellidoDestinatario   = guia.ApellidoDestinatario,
-                DniDestinatario        = guia.DNIDestinatario,
-                TipoCaja               = (Almacenes.TipoCajaEnum)guia.TipoCaja,
-                DomicilioEntrega       = guia.DomicilioEntrega != null ? new Almacenes.Domicilio
+                ModalidadEntrega      = (Almacenes.ModalidadEntregaEnum)guia.ModalidadEntrega,
+                NombreDestinatario    = guia.NombreDestinatario,
+                ApellidoDestinatario  = guia.ApellidoDestinatario,
+                DniDestinatario       = guia.DNIDestinatario,
+                TipoCaja              = (Almacenes.TipoCajaEnum)guia.TipoCaja,
+                DomicilioEntrega      = guia.DomicilioEntrega != null ? new Almacenes.Domicilio
                 {
                     Calle        = guia.DomicilioEntrega.Calle,
                     Numero       = guia.DomicilioEntrega.Numero,
                     CodigoPostal = guia.DomicilioEntrega.CodigoPostal,
                     LocalidadId  = guia.DomicilioEntrega.LocalidadId
                 } : null,
-                IntentosDeEntrega      = guia.IntentosDeEntrega,
-                Estado                 = (Almacenes.EstadoGuiaEnum)guia.Estado,
-                TarifarioId            = guia.TarifarioId,
-                ObservacionesAdmision  = guia.ObservacionesAdmision
+                IntentosDeEntrega     = guia.IntentosDeEntrega,
+                Estado                = (Almacenes.EstadoGuiaEnum)guia.Estado,
+                TarifarioId           = guia.TarifarioId,
+                ObservacionesAdmision = guia.ObservacionesAdmision
             };
 
             GuiaAlmacen.guias.Add(entidad);
@@ -225,9 +284,7 @@ namespace GrupoE_Tutasa.Imposicion
             int prefijo = int.Parse(cuit.Substring(0, 2));
             if (prefijo != 20 && prefijo != 23 && prefijo != 24 &&
                 prefijo != 27 && prefijo != 30 && prefijo != 33 && prefijo != 34)
-            {
                 return false;
-            }
 
             int[] coef = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
             int suma = 0;
