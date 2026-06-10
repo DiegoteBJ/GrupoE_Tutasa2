@@ -1,56 +1,58 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace GrupoE_Tutasa.EntregaEnCD
 {
     public class EntregaEnCDModelo
     {
-        private List<Guia> guias = new List<Guia>
+        private List<Guia> guias = new List<Guia>();
+
+        public EntregaEnCDModelo()
         {
-            new Guia
-            {
-                GuiaId = 1001,
-                DniDestinatario = 30111222,
-                NombreDestinatario = "Maria",
-                ApellidoDestinatario = "Gomez",
-                Tamanio = "M",
-                Estado = "PENDIENTE_DE_ENTREGA",
-                UbicacionActual = "CD Buenos Aires"
-            },
+            CargarGuiasDesdeJson();
+        }
 
-            new Guia
-            {
-                GuiaId = 1002,
-                DniDestinatario = 30111222,
-                NombreDestinatario = "Maria",
-                ApellidoDestinatario = "Gomez",
-                Tamanio = "L",
-                Estado = "PENDIENTE_DE_ENTREGA",
-                UbicacionActual = "CD Cordoba"
-            },
+        private void CargarGuiasDesdeJson()
+        {
+            string rutaArchivo = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Datos",
+                "GuiaEntidad.json"
+            );
 
-            new Guia
+            if (!File.Exists(rutaArchivo))
             {
-                GuiaId = 1003,
-                DniDestinatario = 28999888,
-                NombreDestinatario = "Carlos",
-                ApellidoDestinatario = "Perez",
-                Tamanio = "S",
-                Estado = "PENDIENTE_DE_ENTREGA",
-                UbicacionActual = "CD Rosario"
-            },
-
-            new Guia
-            {
-                GuiaId = 1004,
-                DniDestinatario = 33444555,
-                NombreDestinatario = "Lucia",
-                ApellidoDestinatario = "Fernandez",
-                Tamanio = "XL",
-                Estado = "ENTREGADA",
-                UbicacionActual = "CD Buenos Aires"
+                guias = new List<Guia>();
+                return;
             }
-        };
+
+            string json = File.ReadAllText(rutaArchivo);
+
+            List<GuiaJson> guiasJson = JsonSerializer.Deserialize<List<GuiaJson>>(
+                json,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            ) ?? new List<GuiaJson>();
+
+            guias = guiasJson
+                .Where(g => g.ModalidadEntrega == "CD")
+                .Select(g => new Guia
+                {
+                    GuiaId = g.GuiaId,
+                    DniDestinatario = g.DniDestinatario,
+                    NombreDestinatario = g.NombreDestinatario,
+                    ApellidoDestinatario = g.ApellidoDestinatario,
+                    Tamanio = g.TipoCaja,
+                    Estado = g.Estado,
+                    UbicacionActual = $"CD destino {g.CDDestinoId}"
+                })
+                .ToList();
+        }
 
         public List<Guia> BuscarGuiasPendientesEnCD(long dni)
         {
@@ -74,6 +76,18 @@ namespace GrupoE_Tutasa.EntregaEnCD
             {
                 guia.Estado = "ENTREGADA";
             }
+        }
+
+        private class GuiaJson
+        {
+            public int GuiaId { get; set; }
+            public long DniDestinatario { get; set; }
+            public string NombreDestinatario { get; set; } = "";
+            public string ApellidoDestinatario { get; set; } = "";
+            public string TipoCaja { get; set; } = "";
+            public string Estado { get; set; } = "";
+            public string ModalidadEntrega { get; set; } = "";
+            public int CDDestinoId { get; set; }
         }
     }
 }
