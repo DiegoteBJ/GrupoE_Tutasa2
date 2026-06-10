@@ -99,6 +99,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 return LGuiasAAsignar.Where(g =>
                     g.Estado == EstadoGuiaEnum.A_RETIRAR &&
+                    g.DomicilioRetiro != null &&
                     fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
@@ -110,6 +111,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     (g.Estado == EstadoGuiaEnum.ADMITIDA ||
                     (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
                     (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
+                    g.DomicilioEntrega != null &&
                     fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&

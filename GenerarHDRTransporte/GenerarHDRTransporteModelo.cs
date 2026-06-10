@@ -52,8 +52,8 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
             return GuiaAlmacen.guias
                 .Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA
-                         && g.CDActualId == g.CDDestinoId
-                         && g.CDDestinoId == servicio.CDDestinoId)
+                         && g.CDActualId != g.CDDestinoId)
+                         //&& g.CDDestinoId == servicio.CDDestinoId)
                 .Select(g => new Guia
                 {
                     NroGuia = g.GuiaId.ToString(),
