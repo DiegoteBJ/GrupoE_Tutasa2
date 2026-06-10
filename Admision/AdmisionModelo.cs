@@ -1,5 +1,6 @@
 using GrupoE_Tutasa.Almacenes;
 using GrupoE_Tutasa.EmitirFactura;
+using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace GrupoE_Tutasa.Admision
     {
         public List<GuiasAAdmitir> LGuiasAAdmitir =>
         GuiaAlmacen.guias
-        .Where(g => g.Estado == EstadoGuiaEnum.RENDIDA)
+        .Where(g => g.Estado == EstadoGuiaEnum.RENDIDA && g.CDOrigenId == Program.CDTrabajoId)
         .Select(g => new GuiasAAdmitir
         {
             Id = g.GuiaId,
@@ -90,6 +91,22 @@ namespace GrupoE_Tutasa.Admision
             {
                 guia.Estado = EstadoGuiaEnum.ADMITIDA;
                 GuiaAlmacen.Guardar();
+
+                int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                    ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                    : 1;
+
+                var movimiento = new MovimientoEstadoGuiaEntidad
+                {
+                    MovimientoId = nuevoMovimientoId,
+                    GuiaId = guia.GuiaId,
+                    FechaMovimiento = DateTime.Now,
+                    Estado = EstadoGuiaEnum.ADMITIDA,
+                    Ubicacion = "En CD: " + guia.CDOrigenId.ToString()
+                };
+
+                MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);
+                MovimientoEstadoGuiaAlmacen.Guardar();
             }
         }
         public void CrearCCCliente(GuiasAAdmitir guia)
