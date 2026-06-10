@@ -11,7 +11,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
     public partial class GenerarHDRTransporteForm : Form
     {
 
-        private readonly GenerarHDRTransporteModelo _modelo = new();
+        private  GenerarHDRTransporteModelo _modelo = new();
 
         public GenerarHDRTransporteForm()
         {
