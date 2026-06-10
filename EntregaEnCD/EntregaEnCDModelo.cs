@@ -40,15 +40,15 @@ namespace GrupoE_Tutasa.EntregaEnCD
             ) ?? new List<GuiaJson>();
 
             guias = guiasJson
-                .Where(g => g.ModalidadEntrega == "CD")
+                .Where(g => g.ModalidadEntrega.ToString() == "CD" || g.ModalidadEntrega.ToString() == "1")
                 .Select(g => new Guia
                 {
                     GuiaId = g.GuiaId,
                     DniDestinatario = g.DniDestinatario,
                     NombreDestinatario = g.NombreDestinatario,
                     ApellidoDestinatario = g.ApellidoDestinatario,
-                    Tamanio = g.TipoCaja,
-                    Estado = g.Estado,
+                    Tamanio = g.TipoCaja.ToString(),
+                    Estado = g.Estado.ToString(),
                     UbicacionActual = $"CD destino {g.CDDestinoId}"
                 })
                 .ToList();
@@ -84,9 +84,9 @@ namespace GrupoE_Tutasa.EntregaEnCD
             public long DniDestinatario { get; set; }
             public string NombreDestinatario { get; set; } = "";
             public string ApellidoDestinatario { get; set; } = "";
-            public string TipoCaja { get; set; } = "";
-            public string Estado { get; set; } = "";
-            public string ModalidadEntrega { get; set; } = "";
+            public object TipoCaja { get; set; } = "";
+            public object Estado { get; set; } = "";
+            public object ModalidadEntrega { get; set; } = "";
             public int CDDestinoId { get; set; }
         }
     }
