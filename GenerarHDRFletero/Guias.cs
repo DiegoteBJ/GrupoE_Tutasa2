@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal enum EstadoGuiaEnume
+    internal enum EstadoGuiaEnum
     {
         A_RETIRAR,
         RENDIDA,
@@ -18,21 +18,21 @@ namespace GrupoE_Tutasa.GenerarHDR
         ENTREGADA
     }
 
-    internal enum ModalidadImposicionEnume
+    internal enum ModalidadImposicionEnum
     {
         AGENCIA,
         CD,
         DOMICILIO
     }
 
-    internal enum ModalidadEntregaEnume
+    internal enum ModalidadEntregaEnum
     {
         AGENCIA,
         CD,
         DOMICILIO
     }
 
-    internal enum TipoCajaEnume
+    internal enum TipoCajaEnum
     {
         S,
         M,
@@ -40,7 +40,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         XL
     }
 
-    internal class Guia
+    internal class Guias
     {
         public int GuiaId { get; set; }
         public int ClienteId { get; set; }
@@ -48,17 +48,17 @@ namespace GrupoE_Tutasa.GenerarHDR
         public int AgenciaDestinoId { get; set; }
         public int CDOrigenId { get; set; }
         public int CDDestinoId { get; set; }
-        public ModalidadImposicionEnume ModalidadImposicion { get; set; }
-        public Domicilios DomicilioRetiro { get; set; }
-        public ModalidadEntregaEnume ModalidadEntrega { get; set; }
+        public ModalidadImposicionEnum ModalidadImposicion { get; set; }
+        public Domicilio DomicilioRetiro { get; set; }
+        public ModalidadEntregaEnum ModalidadEntrega { get; set; }
         public string NombreDestinatario { get; set; }
         public string ApellidoDestinatario { get; set; }
         public int DniDestinatario { get; set; }
-        public TipoCajaEnume TipoCaja { get; set; }
-        public Domicilios DomicilioEntrega { get; set; }
+        public TipoCajaEnum TipoCaja { get; set; }
+        public Domicilio DomicilioEntrega { get; set; }
         public int IntentosDeEntrega { get; set; }
         public int CDActualId { get; set; }
-        public EstadoGuiaEnume Estado { get; set; }
+        public EstadoGuiaEnum Estado { get; set; }
         public int TarifarioId { get; set; }
         public string ObservacionesAdmision { get; set; }
     }

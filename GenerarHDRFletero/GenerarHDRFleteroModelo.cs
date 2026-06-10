@@ -8,10 +8,87 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class GenerarHDRFleteroModelo
     {
-        public List<GuiaEntidad> LGuiasAAsignar => GuiaAlmacen.guias;
-        public List<FleteroEntidad> LFleteros => FleteroAlmacen.fleteros;
-        public List<HDRRetiroEntidad> HDRsRetiro => HDRRetiroAlmacen.hDRRetiros;
-        public List<HDRDistribucionEntidad> HDRsDistribucion => HDRDistribucionAlmacen.hDRDistribucions;
+        public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
+    .Select(g => new Guias
+    {
+        GuiaId = g.GuiaId,
+        ClienteId = g.ClienteId,
+        AgenciaOrigenId = g.AgenciaOrigenId,
+        AgenciaDestinoId = g.AgenciaDestinoId,
+        CDOrigenId = g.CDOrigenId,
+        CDDestinoId = g.CDDestinoId,
+        ModalidadImposicion = (ModalidadImposicionEnum)g.ModalidadImposicion,
+        DomicilioRetiro = g.DomicilioRetiro == null ? null : new Domicilio
+        {
+            Calle = g.DomicilioRetiro.Calle,
+            Numero = g.DomicilioRetiro.Numero,
+            Piso = g.DomicilioRetiro.Piso,
+            Depto = g.DomicilioRetiro.Depto,
+            CodigoPostal = g.DomicilioRetiro.CodigoPostal,
+            Localidad = g.DomicilioRetiro.LocalidadId.ToString(),
+        },
+        ModalidadEntrega = (ModalidadEntregaEnum)g.ModalidadEntrega,
+        NombreDestinatario = g.NombreDestinatario,
+        ApellidoDestinatario = g.ApellidoDestinatario,
+        DniDestinatario = g.DniDestinatario,
+        TipoCaja = (TipoCajaEnum)g.TipoCaja,
+        DomicilioEntrega = g.DomicilioEntrega == null ? null : new Domicilio
+        {
+            Calle = g.DomicilioEntrega.Calle,
+            Numero = g.DomicilioEntrega.Numero,
+            Piso = g.DomicilioEntrega.Piso,
+            Depto = g.DomicilioEntrega.Depto,
+            CodigoPostal = g.DomicilioEntrega.CodigoPostal,
+            Localidad = g.DomicilioEntrega.LocalidadId.ToString(),
+        },
+        IntentosDeEntrega = g.IntentosDeEntrega,
+        CDActualId = g.CDActualId,
+        Estado = (EstadoGuiaEnum)g.Estado,
+        TarifarioId = g.TarifarioId,
+        ObservacionesAdmision = g.ObservacionesAdmision
+    })
+    .ToList();
+
+
+        public List<Fleteros> LFleteros => FleteroAlmacen.fleteros
+        .Select(f => new Fleteros
+        {
+            FleteroId = f.FleteroId,
+            Nombre = f.Nombre,
+            Apellido = f.Apellido,
+            Dni = f.Dni,
+            Cuit = f.Cuit,
+            CostoPorBulto_S = f.CostoPorBulto_S,
+            CostoPorBulto_M = f.CostoPorBulto_M,
+            CostoPorBulto_L = f.CostoPorBulto_L,
+            CostoPorBulto_XL = f.CostoPorBulto_XL,
+            CodigosPostalesCobertura = f.CodigosPostalesCobertura
+        })
+        .ToList();
+
+
+        public List<HDRRetiro> HDRsRetiro => HDRRetiroAlmacen.hDRRetiros
+        .Select(h => new HDRRetiro
+        {
+            HdrRetiroId = h.HdrRetiroId,
+            FleteroId = h.FleteroId,
+            Estado = (EstadoHDRRetiroEnum)h.Estado,
+            FechaEmision = h.FechaEmision,
+            FechaRendicion = h.FechaRendicion,
+            GuiaIds = h.GuiaIds
+        })
+        .ToList();
+        public List<HDRDistribucion> HDRsDistribucion => HDRDistribucionAlmacen.hDRDistribucions
+        .Select(h => new HDRDistribucion
+        {
+            HdrDistribucionId = h.HdrDistribucionId,
+            FleteroId = h.FleteroId,
+            Estado = (EstadoHDRDistribucionEnum)h.Estado,
+            FechaEmision = h.FechaEmision,
+            FechaRendicion = h.FechaRendicion,
+            GuiaIds = h.GuiaIds
+        })
+        .ToList();
 
         private HashSet<int> guiasAsignadas = new HashSet<int>();
             private int ultimoHDRRetiroId = 0;
@@ -40,7 +117,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccion.Items)
             {
-                var guia = item.Tag as Guia;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 string cpComparar = esRetiro ? guia.DomicilioRetiro.CodigoPostal
@@ -76,14 +153,14 @@ namespace GrupoE_Tutasa.GenerarHDR
                 .ToList();
         }
 
-        public FleteroEntidad BuscarFleteroPorDni(string dni)
+        public Fleteros BuscarFleteroPorDni(string dni)
         {
             return LFleteros.FirstOrDefault(f => f.Dni.ToString() == dni);
         }
 
-        public IEnumerable<GuiaEntidad> ObtenerGuiasPorEstado(string estado, FleteroEntidad fletero, HashSet<int> guiasEnDetalle)
+        public IEnumerable<Guias> ObtenerGuiasPorEstado(string estado, Fleteros fletero, HashSet<int> guiasEnDetalle)
         {
-            if (fletero == null) return Enumerable.Empty<GuiaEntidad>();
+            if (fletero == null) return Enumerable.Empty<Guias>();
 
             if (estado == "A_RETIRAR")
             {
@@ -107,13 +184,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsDistribucion.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRDistribucionEnum.PENDIENTE));
             }
-            return Enumerable.Empty<GuiaEntidad>();
+            return Enumerable.Empty<Guias>();
         }
 
         public void AsignarGuia(int guiaId) => guiasAsignadas.Add(guiaId);
         public void DesasignarGuia(int guiaId) => guiasAsignadas.Remove(guiaId);
 
-        public List<HDRResumen> GenerarHDR(List<GuiaEntidad> guiasSeleccionadas)
+        public List<HDRResumen> GenerarHDR(List<Guias> guiasSeleccionadas)
         {
             var hdrsProvisorios = new List<HDRResumen>();
             int idRetiroTemp = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) + 1 : 1;
@@ -151,7 +228,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             return hdrsProvisorios.OrderBy(r => r.Domicilio).ToList();
         }
 
-        public void ImprimirResumen(List<HDRResumen> resumen, FleteroEntidad fletero, int totalHDR)
+        public void ImprimirResumen(List<HDRResumen> resumen, Fleteros fletero, int totalHDR)
         {
             string fechaHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
@@ -168,7 +245,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (r.TipoHDR == "Retiro")
                 {
                     ultimoHDRRetiroId++;
-                    HDRsRetiro.Add(new HDRRetiroEntidad
+                    HDRsRetiro.Add(new HDRRetiro
                     
                     {
                         HdrRetiroId = ultimoHDRRetiroId,
@@ -181,7 +258,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 else
                 {
                     ultimoHDRDistribucionId++;
-                    HDRsDistribucion.Add(new HDRDistribucionEntidad                    
+                    HDRsDistribucion.Add(new HDRDistribucion                   
                     {
                         HdrDistribucionId = ultimoHDRDistribucionId,
                         FleteroId = fletero.FleteroId,

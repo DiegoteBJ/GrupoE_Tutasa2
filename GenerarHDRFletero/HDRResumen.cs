@@ -7,18 +7,18 @@ namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class HDRResumen
     {
-        public int HDRId { get; set; }                // correlativo interno, no persistente
-        public List<int> GuiasIds { get; set; } = new List<int>(); // ✅ lista de guías
+        public int HDRId { get; set; }               
+        public List<int> GuiasIds { get; set; } = new List<int>(); 
         public string Destinatario { get; set; }
         public string Domicilio { get; set; }
         public string CodigoPostal { get; set; }
-        public string TipoHDR { get; set; }           // Retiro o Distribución
+        public string TipoHDR { get; set; }     
         public int IntentosDeEntrega { get; set; }
-        public List<int> GuiasAImprimir { get; set; } = new List<int>(); // guías impuestas telefónicamente
-        public DateTime FechaImpresion { get; set; }  // fecha/hora de impresión
+        public List<int> GuiasAImprimir { get; set; } = new List<int>(); 
+        public DateTime FechaImpresion { get; set; }  
 
         // ✅ Constructor principal: recibe lista de guías y tipo de HDR
-        public HDRResumen(int hdrId, List<GuiaEntidad> guias, string tipoHDR)
+        public HDRResumen(int hdrId, List<Guias> guias, string tipoHDR)
         {
             HDRId = hdrId;
             GuiasIds = guias.Select(g => g.GuiaId).ToList();
@@ -38,10 +38,10 @@ namespace GrupoE_Tutasa.GenerarHDR
                 CodigoPostal = domicilio.CodigoPostal;
             }
 
-            // ✅ Intentos máximos de entrega en el grupo
+            
             IntentosDeEntrega = guias.Max(g => g.IntentosDeEntrega);
 
-            // ✅ Fecha/hora de impresión
+            
             FechaImpresion = DateTime.Now;
         }
     }
