@@ -1,8 +1,8 @@
 namespace GrupoE_Tutasa.Imposicion
 {
-    /// <summary>
+ 
     /// AL.1 - Padrón de Clientes
-    /// </summary>
+
     internal class ClienteRemitente
     {
         public int       ClienteId   { get; set; }          // PK

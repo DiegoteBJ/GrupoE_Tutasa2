@@ -3,8 +3,7 @@ namespace GrupoE_Tutasa.Imposicion
     public partial class ImposicionForm : Form
     {
         private ImposicionModelo modelo = new();
-        private int cdActualId = 1;
-        private ClienteRemitente clienteActual = null;
+        
 
         public ImposicionForm()
         {
@@ -61,19 +60,12 @@ namespace GrupoE_Tutasa.Imposicion
 
             Total_Guias_Label.Text = "[Total Guias]";
 
-            // Carga del tipo de imposición. Por defecto CD (operador de CD logueado).
-            TipoImposicion_ComboBox.Items.Clear();
-            TipoImposicion_ComboBox.Items.Add("CD");
-            TipoImposicion_ComboBox.Items.Add("Agencia");
-            TipoImposicion_ComboBox.Items.Add("Call Center");
-            TipoImposicion_ComboBox.SelectedIndex = 0;
-            TipoImposicion_ComboBox.SelectedIndexChanged += TipoImposicion_ComboBox_SelectedIndexChanged;
         }
 
         // Búsqueda del remitente por CUIT
         private void BuscarRemitenteBoton_Click(object sender, EventArgs e)
         {
-            clienteActual = null;
+            modelo.clienteActual = null;
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
             DireccionRemitenteLabel.Text = string.Empty;
@@ -97,7 +89,7 @@ namespace GrupoE_Tutasa.Imposicion
             {
                 if (cliente.CUIT == cuitBuscado)
                 {
-                    clienteActual = cliente;
+                    modelo.clienteActual = cliente;
                     encuentro = 1;
                     break;
                 }
@@ -111,19 +103,19 @@ namespace GrupoE_Tutasa.Imposicion
             }
 
             // Mostrar datos del remitente encontrado
-            string nombreMostrar = clienteActual.RazonSocial;
+            string nombreMostrar = modelo.clienteActual.RazonSocial;
             if (string.IsNullOrWhiteSpace(nombreMostrar))
             {
-                nombreMostrar = clienteActual.Nombre + " " + clienteActual.Apellido;
+                nombreMostrar = modelo.clienteActual.Nombre + " " + modelo.clienteActual.Apellido;
             }
 
             NombreRemitenteLabel.Text = nombreMostrar;
-            TelefonoRemitenteLabel.Text = clienteActual.Telefono;
-            DireccionRemitenteLabel.Text = FormatearDomicilio(clienteActual.Domicilio);
+            TelefonoRemitenteLabel.Text = modelo.clienteActual.Telefono;
+            DireccionRemitenteLabel.Text = FormatearDomicilio(modelo.clienteActual.Domicilio);
 
             if (DomicilioFiscalCheck.Checked)
             {
-                label37.Text = FormatearDomicilio(clienteActual.Domicilio);
+                label37.Text = FormatearDomicilio(modelo.clienteActual.Domicilio);
             }
         }
 
@@ -134,9 +126,9 @@ namespace GrupoE_Tutasa.Imposicion
 
             label37.Visible = fiscal;
 
-            if (fiscal && clienteActual != null)
+            if (fiscal && modelo.clienteActual != null)
             {
-                label37.Text = FormatearDomicilio(clienteActual.Domicilio);
+                label37.Text = FormatearDomicilio(modelo.clienteActual.Domicilio);
             }
 
             ProvinciaRetiroComboBox.Enabled = !fiscal;
@@ -229,7 +221,6 @@ namespace GrupoE_Tutasa.Imposicion
             panel1.Visible = false;
 
             if (TipoEntregaComboBox.SelectedItem == null) return;
-            if (LocalidadEntregaComboBox.SelectedItem == null) return;
 
             string tipoSeleccionado = TipoEntregaComboBox.SelectedItem.ToString();
             Localidad loc = (Localidad)LocalidadEntregaComboBox.SelectedItem;
@@ -297,18 +288,6 @@ namespace GrupoE_Tutasa.Imposicion
             Total_Guias_Label.Text = totalGuias.ToString();
         }
 
-        // Muestra u oculta el apartado de domicilio de retiro según el tipo de imposición
-        private void TipoImposicion_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (TipoImposicion_ComboBox.SelectedItem == null) return;
-
-            string tipo = TipoImposicion_ComboBox.SelectedItem.ToString();
-
-            // El domicilio de retiro solo aplica para Call Center (retiro telefónico a domicilio).
-            // Para CD y Agencia el cliente se acerca físicamente, no hay domicilio de retiro.
-            groupBox5.Visible = (tipo == "Call Center");
-        }
-
         // Resolución de la modalidad de entrega según selección del usuario
         private ModalidadEntregaEnum ResolverModalidadEntrega()
         {
@@ -346,7 +325,7 @@ namespace GrupoE_Tutasa.Imposicion
         private void button3_Click(object sender, EventArgs e)
         {
             // Validar remitente
-            if (clienteActual == null)
+            if (modelo.clienteActual == null)
             {
                 MessageBox.Show("Debe seleccionar un remitente antes de confirmar.");
                 return;
@@ -392,11 +371,7 @@ namespace GrupoE_Tutasa.Imposicion
             }
 
             // Validar CP de retiro solo si es Call Center
-            string tipoImposicionValidacion = TipoImposicion_ComboBox.SelectedItem?.ToString() ?? "";
-            if (tipoImposicionValidacion == "Call Center" &&
-                !DomicilioFiscalCheck.Checked && !ValidarCodigoPostal(CPRetiroTextBox.Text))
             {
-                MessageBox.Show("El código postal de retiro es incorrecto. Debe contener al menos un número.");
                 return;
             }
 
@@ -486,7 +461,7 @@ namespace GrupoE_Tutasa.Imposicion
             Domicilio domicilioEntrega = null;
             int agenciaDestinoId = 0;
             bool tieneAgenciaDestino = false;
-            int cdDestinoId = cdActualId;
+            int cdDestinoId = modelo.cdActualId;
 
             if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem != null)
             {
@@ -518,56 +493,26 @@ namespace GrupoE_Tutasa.Imposicion
                 };
             }
 
-            // Determinación del domicilio de retiro y resolución de modalidad/CDActualId
-            // según la selección del tipo de imposición
-            Domicilio domicilioRetiro = null;
-            ModalidadImposicionEnum modalidadImposicion;
-            int? cdActualIdGuia;
-
-            string tipoImposicion = TipoImposicion_ComboBox.SelectedItem.ToString();
-
-            if (tipoImposicion == "CD")
+            // Determinación del domicilio de retiro
+            Domicilio domicilioRetiro;
+            if (DomicilioFiscalCheck.Checked)
             {
-                // El cliente se acerca físicamente al CD. No hay domicilio de retiro.
-                modalidadImposicion = ModalidadImposicionEnum.CD;
-                cdActualIdGuia      = cdActualId;
-                domicilioRetiro     = null;
-            }
-            else if (tipoImposicion == "Agencia")
-            {
-                // El cliente se acerca físicamente a una agencia. No hay domicilio de retiro.
-                // CDActualId es null porque la encomienda está en la agencia, no en un CD todavía.
-                modalidadImposicion = ModalidadImposicionEnum.AGENCIA;
-                cdActualIdGuia      = null;
-                domicilioRetiro     = null;
+                domicilioRetiro = modelo.clienteActual.Domicilio;
             }
             else
             {
-                // Call Center: retiro a domicilio. Se resuelve CDActualId por CP del domicilio de retiro.
-                modalidadImposicion = ModalidadImposicionEnum.DOMICILIO;
-
-                if (DomicilioFiscalCheck.Checked)
+                int localidadRetiroId = 0;
+                if (LocalidadRetiroComboBox.SelectedItem != null)
                 {
-                    domicilioRetiro = clienteActual.Domicilio;
+                    Localidad localidadRetiro = (Localidad)LocalidadRetiroComboBox.SelectedItem;
+                    localidadRetiroId = localidadRetiro.LocalidadId;
                 }
-                else
+                domicilioRetiro = new Domicilio
                 {
-                    int localidadRetiroId = 0;
-                    if (LocalidadRetiroComboBox.SelectedItem != null)
-                    {
-                        Localidad localidadRetiro = (Localidad)LocalidadRetiroComboBox.SelectedItem;
-                        localidadRetiroId = localidadRetiro.LocalidadId;
-                    }
-                    domicilioRetiro = new Domicilio
-                    {
-                        Calle        = DireccionRetiroTextBox.Text,
-                        CodigoPostal = CPRetiroTextBox.Text,
-                        LocalidadId  = localidadRetiroId
-                    };
-                }
-
-                string cpRetiro = domicilioRetiro?.CodigoPostal ?? string.Empty;
-                cdActualIdGuia  = modelo.ResolverCDActualIdPorCodigoPostal(cpRetiro);
+                    Calle        = DireccionRetiroTextBox.Text,
+                    CodigoPostal = CPRetiroTextBox.Text,
+                    LocalidadId  = localidadRetiroId
+                };
             }
 
             // Registro de guías por tipo de caja
@@ -575,11 +520,11 @@ namespace GrupoE_Tutasa.Imposicion
             for (int i = 0; i < cantS; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = clienteActual.ClienteId;
-                guia.CDOrigenId           = cdActualId;
+                guia.ClienteId            = modelo.clienteActual.ClienteId;
+                guia.CDOrigenId           = modelo.cdActualId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.ModalidadImposicion  = modalidadImposicion;
-                guia.CDActualId           = cdActualIdGuia;
+                guia.ModalidadImposicion  = ModalidadImposicionEnum.CD;
+                guia.CDActualId           = modelo.cdActualId;
                 guia.DomicilioRetiro      = domicilioRetiro;
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -591,18 +536,18 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.IntentosDeEntrega    = 0;
                 guia.Estado               = EstadoGuiaEnum.A_RETIRAR;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, cdActualId);
+                modelo.RegistrarGuia(guia, modelo.cdActualId);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (S)\n";
             }
 
             for (int i = 0; i < cantM; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = clienteActual.ClienteId;
-                guia.CDOrigenId           = cdActualId;
+                guia.ClienteId            = modelo.clienteActual.ClienteId;
+                guia.CDOrigenId           = modelo.cdActualId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.ModalidadImposicion  = modalidadImposicion;
-                guia.CDActualId           = cdActualIdGuia;
+                guia.ModalidadImposicion  = ModalidadImposicionEnum.CD;
+                guia.CDActualId           = modelo.cdActualId;
                 guia.DomicilioRetiro      = domicilioRetiro;
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -614,18 +559,18 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.IntentosDeEntrega    = 0;
                 guia.Estado               = EstadoGuiaEnum.A_RETIRAR;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, cdActualId);
+                modelo.RegistrarGuia(guia, modelo.cdActualId);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (M)\n";
             }
 
             for (int i = 0; i < cantL; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = clienteActual.ClienteId;
-                guia.CDOrigenId           = cdActualId;
+                guia.ClienteId            = modelo.clienteActual.ClienteId;
+                guia.CDOrigenId           = modelo.cdActualId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.ModalidadImposicion  = modalidadImposicion;
-                guia.CDActualId           = cdActualIdGuia;
+                guia.ModalidadImposicion  = ModalidadImposicionEnum.CD;
+                guia.CDActualId           = modelo.cdActualId;
                 guia.DomicilioRetiro      = domicilioRetiro;
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -637,18 +582,18 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.IntentosDeEntrega    = 0;
                 guia.Estado               = EstadoGuiaEnum.A_RETIRAR;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, cdActualId);
+                modelo.RegistrarGuia(guia, modelo.cdActualId);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (L)\n";
             }
 
             for (int i = 0; i < cantXL; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = clienteActual.ClienteId;
-                guia.CDOrigenId           = cdActualId;
+                guia.ClienteId            = modelo.clienteActual.ClienteId;
+                guia.CDOrigenId           = modelo.cdActualId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.ModalidadImposicion  = modalidadImposicion;
-                guia.CDActualId           = cdActualIdGuia;
+                guia.ModalidadImposicion  = ModalidadImposicionEnum.CD;
+                guia.CDActualId           = modelo.cdActualId;
                 guia.DomicilioRetiro      = domicilioRetiro;
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -660,7 +605,7 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.IntentosDeEntrega    = 0;
                 guia.Estado               = EstadoGuiaEnum.A_RETIRAR;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, cdActualId);
+                modelo.RegistrarGuia(guia, modelo.cdActualId);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (XL)\n";
             }
 
@@ -687,7 +632,7 @@ namespace GrupoE_Tutasa.Imposicion
         // Limpieza de todos los campos del formulario
         private void LimpiarFormulario()
         {
-            clienteActual = null;
+            modelo.clienteActual = null;
 
             CuitRemitente_TextBox.Clear();
             NombreRemitenteLabel.Text = string.Empty;
@@ -728,8 +673,6 @@ namespace GrupoE_Tutasa.Imposicion
 
             Total_Guias_Label.Text = "[Total Guias]";
 
-            // Resetear tipo de imposición a CD (valor por defecto)
-            TipoImposicion_ComboBox.SelectedIndex = 0;
         }
 
         // Formateo del domicilio para mostrar en pantalla

@@ -79,7 +79,6 @@ namespace GrupoE_Tutasa.Imposicion
             UsuarioLogueado_Label = new Label();
             CD_Logueado_Label = new Label();
             FechaHora_Label = new Label();
-            TipoImposicion_ComboBox = new ComboBox();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -100,7 +99,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox1.Controls.Add(CuitRemitente_TextBox);
             groupBox1.Controls.Add(Cuit_Remitente_Label);
             groupBox1.Controls.Add(panel3);
-            groupBox1.Location = new Point(24, 50);
+            groupBox1.Location = new Point(24, 33);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
@@ -215,7 +214,7 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox5.Controls.Add(CPRetiroTextBox);
             groupBox5.Controls.Add(CP_Retiro_Label);
             groupBox5.Controls.Add(panel4);
-            groupBox5.Location = new Point(24, 176);
+            groupBox5.Location = new Point(24, 161);
             groupBox5.Margin = new Padding(4, 3, 4, 3);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(4, 3, 4, 3);
@@ -735,21 +734,12 @@ namespace GrupoE_Tutasa.Imposicion
             FechaHora_Label.Text = "01/05/2026, 08:55 p. m.";
             FechaHora_Label.Click += label26_Click;
             // 
-            // TipoImposicion_ComboBox
-            // 
-            TipoImposicion_ComboBox.FormattingEnabled = true;
-            TipoImposicion_ComboBox.Location = new Point(744, 12);
-            TipoImposicion_ComboBox.Name = "TipoImposicion_ComboBox";
-            TipoImposicion_ComboBox.Size = new Size(111, 23);
-            TipoImposicion_ComboBox.TabIndex = 26;
-            // 
             // ImposicionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(879, 857);
-            Controls.Add(TipoImposicion_ComboBox);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -843,6 +833,6 @@ namespace GrupoE_Tutasa.Imposicion
 
         private Button Cancelar_Boton, Confirmar_Boton;
         private Label UsuarioLogueado_Label, CD_Logueado_Label, FechaHora_Label;
-        private ComboBox TipoImposicion_ComboBox;
+        
     }
 }

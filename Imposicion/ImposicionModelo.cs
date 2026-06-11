@@ -1,4 +1,5 @@
 using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.FormularioPrincipal;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,12 @@ namespace GrupoE_Tutasa.Imposicion
 {
     internal class ImposicionModelo
     {
-        // AL.1 - Clientes (Remitentes)
+        public static string modalidadImposicion = Program.modalidadImposicion; 
+        public static int cdTrabajoId = Program.CDTrabajoId;
+        public int cdActualId = 1;
+        public ClienteRemitente clienteActual = null;
+
+
         public List<ClienteRemitente> LClientes =>
             ClienteAlmacen.clientes.Select(c => new ClienteRemitente
             {
@@ -118,21 +124,6 @@ namespace GrupoE_Tutasa.Imposicion
                 ObservacionesAdmision = g.ObservacionesAdmision
             }).ToList();
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Resolución de CDActualId según modalidad de imposición
-        // ─────────────────────────────────────────────────────────────────────
-
-        /// <summary>
-        /// Resuelve el CDActualId a partir del código postal del domicilio de retiro.
-        ///
-        /// Reglas:
-        ///   1. Busca una agencia cuyo CodigosPostalesCobertura contenga el CP.
-        ///      Si la encuentra, retorna el CDAsignadoId de esa agencia.
-        ///   2. Si ninguna agencia cubre ese CP, busca la LocalidadId asociada al CP
-        ///      (por CodigoPostalPrincipal), obtiene su ProvinciaId, y retorna el primer
-        ///      CD cuya localidad pertenezca a esa misma provincia (fallback por provincia).
-        ///   3. Si tampoco hay CDs en esa provincia, retorna null.
-        /// </summary>
         public int? ResolverCDActualIdPorCodigoPostal(string codigoPostal)
         {
             if (string.IsNullOrWhiteSpace(codigoPostal))
