@@ -94,7 +94,48 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
             {
                 cuentaCorriente.FechaEntrega = DateTime.Now;
                 CuentaCorrienteClienteAlmacen.Guardar();
+                GuardarFechaEntregaEnCuentaCorrienteJson(guiaId);
             }
+        }
+        private void GuardarFechaEntregaEnCuentaCorrienteJson(int guiaId)
+        {
+            string rutaArchivo = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Datos",
+                "CuentaCorrienteClienteEntidad.json"
+            );
+
+            if (!File.Exists(rutaArchivo))
+            {
+                return;
+            }
+
+            string json = File.ReadAllText(rutaArchivo);
+
+            List<CuentaCorrienteJson> cuentas = JsonSerializer.Deserialize<List<CuentaCorrienteJson>>(
+                json,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            ) ?? new List<CuentaCorrienteJson>();
+
+            CuentaCorrienteJson cuenta = cuentas.FirstOrDefault(c => c.GuiaId == guiaId);
+
+            if (cuenta != null)
+            {
+                cuenta.FechaEntrega = DateTime.Now;
+            }
+
+            string jsonActualizado = JsonSerializer.Serialize(
+                cuentas,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                }
+            );
+
+            File.WriteAllText(rutaArchivo, jsonActualizado);
         }
 
         private void GuardarGuiasEnJson(int guiaId)
@@ -142,6 +183,21 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
             public object Estado { get; set; } = "";
             public object ModalidadEntrega { get; set; } = "";
             public int AgenciaDestinoId { get; set; }
+        }
+        private class CuentaCorrienteJson
+        {
+            public int CcClienteId { get; set; }
+            public int ClienteId { get; set; }
+            public int GuiaId { get; set; }
+            public DateTime FechaMovimiento { get; set; }
+            public DateTime FechaEntrega { get; set; }
+            public decimal PrecioImposicion { get; set; }
+            public decimal PrecioTransporte { get; set; }
+            public decimal PrecioEntrega { get; set; }
+            public decimal PrecioCalculadoTotal { get; set; }
+            public int EmpresaTransporteId { get; set; }
+            public bool Facturado { get; set; }
+            public int DocumentoId { get; set; }
         }
     }
 }

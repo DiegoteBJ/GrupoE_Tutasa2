@@ -44,7 +44,7 @@
   {
     "ccClienteId": 4,
     "clienteId": 4,
-    "guiaId": 104,
+    "guiaId": 4,
     "fechaMovimiento": "2026-05-04T11:00:00.0000000",
     "fechaEntrega": "9999-12-31T23:59:59.0000000",
     "precioImposicion": 0,
@@ -58,7 +58,7 @@
   {
     "ccClienteId": 5,
     "clienteId": 5,
-    "guiaId": 105,
+    "guiaId": 5,
     "fechaMovimiento": "2026-05-05T09:30:00.0000000",
     "fechaEntrega": "9999-12-31T23:59:59.0000000",
     "precioImposicion": 5000,
