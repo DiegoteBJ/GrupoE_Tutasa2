@@ -168,7 +168,6 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         private void GenerarHDRTransporteForm_Load(object sender, EventArgs e)
         {
             labelUsuarioResultado.Text = "1";
-            labelResultadoCD.Text = _modelo.GetNombreCDOperario();
             labelResultadoFechaEmision.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
