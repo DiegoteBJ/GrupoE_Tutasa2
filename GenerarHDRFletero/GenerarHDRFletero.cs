@@ -193,12 +193,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var guiasEnDetalle = detallehdrlistView.Items
                 .Cast<ListViewItem>()
-                .Select(i => (i.Tag as GuiaEntidad)?.GuiaId)
+                .Select(i => (i.Tag as Guias)?.GuiaId)
                 .Where(id => id.HasValue)
                 .Select(id => id.Value)
                 .ToHashSet();
 
-            var fletero = this.Tag as FleteroEntidad;
+            var fletero = this.Tag as Fleteros;
             if (fletero == null) return;
 
             var guias = modelo.ObtenerGuiasPorEstado(estado, fletero, guiasEnDetalle);
@@ -306,7 +306,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         
         private void ActualizarAutoCompleteCP(string estado)
         {
-            var fletero = this.Tag as FleteroEntidad;
+            var fletero = this.Tag as Fleteros;
             if (fletero == null)
             {
                 ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
@@ -368,7 +368,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccionguiaslistView.SelectedItems)
             {
-                var guia = item.Tag as GuiaEntidad;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
@@ -406,7 +406,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in seleccionguiaslistView.Items.Cast<ListViewItem>().ToList())
             {
-                var guia = item.Tag as GuiaEntidad;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = new ListViewItem(guia.GuiaId.ToString());
@@ -462,7 +462,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in detallehdrlistView.SelectedItems)
             {
-                var guia = item.Tag as GuiaEntidad;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = (ListViewItem)item.Clone();
@@ -499,7 +499,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             foreach (ListViewItem item in detallehdrlistView.Items.Cast<ListViewItem>().ToList())
             {
-                var guia = item.Tag as GuiaEntidad;
+                var guia = item.Tag as Guias;
                 if (guia == null) continue;
 
                 var newItem = (ListViewItem)item.Clone();
@@ -546,7 +546,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return;
             }
 
-            var fletero = this.Tag as FleteroEntidad;
+            var fletero = this.Tag as Fleteros;
             if (fletero == null)
             {
                 MessageBox.Show("Debe seleccionar un fletero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -555,7 +555,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             var guiasSeleccionadas = detallehdrlistView.Items
                 .Cast<ListViewItem>()
-                .Select(i => i.Tag as GuiaEntidad)
+                .Select(i => i.Tag as Guias)
                 .Where(g => g != null)
                 .ToList();
 
@@ -563,7 +563,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             MostrarResumenPopup(resumenOrdenado, fletero);
         }
 
-        private void MostrarResumenPopup(List<HDRResumen> resumen, FleteroEntidad fletero)
+        private void MostrarResumenPopup(List<HDRResumen> resumen, Fleteros fletero)
         {
             Form popup = new Form();
             popup.Text = "Resumen HDR";

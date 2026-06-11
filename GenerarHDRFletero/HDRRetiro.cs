@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    internal enum EstadoHDRRetiroEnume
+    internal enum EstadoHDRRetiroEnum
     {
         PENDIENTE,
         RENDIDA
@@ -14,7 +14,7 @@ namespace GrupoE_Tutasa.GenerarHDR
     {
         public int HdrRetiroId { get; set; }
         public int FleteroId { get; set; }
-        public EstadoHDRRetiroEnume Estado { get; set; }
+        public EstadoHDRRetiroEnum Estado { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRendicion { get; set; }
         public List<int> GuiaIds { get; set; }
