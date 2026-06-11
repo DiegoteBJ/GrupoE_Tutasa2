@@ -221,7 +221,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                 "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // ✅ inicializar últimos IDs desde almacenes
             ultimoHDRRetiroId = HDRRetiroAlmacen.hDRRetiros.Any()
                 ? HDRRetiroAlmacen.hDRRetiros.Max(h => h.HdrRetiroId)
                 : ultimoHDRRetiroId;
@@ -239,7 +238,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 {
                     ultimoHDRRetiroId++;
 
-                    // ✅ agregar entidad directamente al almacén con conversión explícita de enum
+                    
                     HDRRetiroAlmacen.hDRRetiros.Add(new HDRRetiroEntidad
                     {
                         HdrRetiroId = ultimoHDRRetiroId,
@@ -255,7 +254,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 {
                     ultimoHDRDistribucionId++;
 
-                    // ✅ agregar entidad directamente al almacén con conversión explícita de enum
                     HDRDistribucionAlmacen.hDRDistribucions.Add(new HDRDistribucionEntidad
                     {
                         HdrDistribucionId = ultimoHDRDistribucionId,
@@ -267,7 +265,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    // ✅ actualizar estado de guías en auxiliares y en almacén con conversión explícita
                     foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == EstadoGuiaEnum.ADMITIDA || g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO))
                     {
                         g.EstadoGuia = EstadoGuiaEnum.EN_DISTRIBUCION;
@@ -282,7 +279,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 }
             }
 
-            // ✅ guardar cambios en disco
             GuiaAlmacen.Guardar();
             HDRRetiroAlmacen.Guardar();
             HDRDistribucionAlmacen.Guardar();
