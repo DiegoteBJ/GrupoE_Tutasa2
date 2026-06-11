@@ -234,8 +234,14 @@ namespace GrupoE_Tutasa.GenerarHDR
             MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                 "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            ultimoHDRRetiroId = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) : ultimoHDRRetiroId;
-            ultimoHDRDistribucionId = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HdrDistribucionId) : ultimoHDRDistribucionId;
+            // ✅ inicializar últimos IDs desde almacenes
+            ultimoHDRRetiroId = HDRRetiroAlmacen.hDRRetiros.Any()
+                ? HDRRetiroAlmacen.hDRRetiros.Max(h => h.HdrRetiroId)
+                : ultimoHDRRetiroId;
+
+            ultimoHDRDistribucionId = HDRDistribucionAlmacen.hDRDistribucions.Any()
+                ? HDRDistribucionAlmacen.hDRDistribucions.Max(h => h.HdrDistribucionId)
+                : ultimoHDRDistribucionId;
 
             foreach (var r in resumen)
             {
@@ -245,34 +251,51 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (r.TipoHDR == "Retiro")
                 {
                     ultimoHDRRetiroId++;
-                    HDRsRetiro.Add(new HDRRetiro
-                    
+
+                    // ✅ agregar entidad directamente al almacén con conversión explícita de enum
+                    HDRRetiroAlmacen.hDRRetiros.Add(new HDRRetiroEntidad
                     {
                         HdrRetiroId = ultimoHDRRetiroId,
                         FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Today,
-                        Estado = EstadoHDRRetiroEnum.PENDIENTE,
+                        FechaRendicion = DateTime.MinValue,
+                        Estado = (GrupoE_Tutasa.Almacenes.EstadoHDRRetiroEnum)
+                                 GrupoE_Tutasa.GenerarHDR.EstadoHDRRetiroEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
                 }
                 else
                 {
                     ultimoHDRDistribucionId++;
-                    HDRsDistribucion.Add(new HDRDistribucion                   
+
+                    // ✅ agregar entidad directamente al almacén con conversión explícita de enum
+                    HDRDistribucionAlmacen.hDRDistribucions.Add(new HDRDistribucionEntidad
                     {
                         HdrDistribucionId = ultimoHDRDistribucionId,
                         FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Today,
-                        Estado = EstadoHDRDistribucionEnum.PENDIENTE,
+                        FechaRendicion = DateTime.MinValue,
+                        Estado = (GrupoE_Tutasa.Almacenes.EstadoHDRDistribucionEnum)
+                                 GrupoE_Tutasa.GenerarHDR.EstadoHDRDistribucionEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
+                    // ✅ actualizar estado de guías en auxiliares y en almacén con conversión explícita
                     foreach (var g in guiasGrupo.Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA || g.Estado == EstadoGuiaEnum.EN_CD_DESTINO))
                     {
                         g.Estado = EstadoGuiaEnum.EN_DISTRIBUCION;
+
+                        var entidad = GuiaAlmacen.guias.FirstOrDefault(e => e.GuiaId == g.GuiaId);
+                        if (entidad != null)
+                        {
+                            entidad.Estado = (GrupoE_Tutasa.Almacenes.EstadoGuiaEnum)
+                                             GrupoE_Tutasa.GenerarHDR.EstadoGuiaEnum.EN_DISTRIBUCION;
+                        }
                     }
                 }
             }
+
+            // ✅ guardar cambios en disco
             GuiaAlmacen.Guardar();
             HDRRetiroAlmacen.Guardar();
             HDRDistribucionAlmacen.Guardar();
