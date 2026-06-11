@@ -7,9 +7,8 @@ using System.Text.RegularExpressions;
 namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class GenerarHDRFleteroModelo
-    {
-        public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
-    .Select(g => new Guias
+    {    public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
+        .Select(g => new Guias
     {
         GuiaId = g.GuiaId,
         ModalidadImposicion = (ModalidadImposicionEnum)g.ModalidadImposicion,
@@ -22,10 +21,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             CodigoPostal = g.DomicilioRetiro.CodigoPostal,
             Localidad = g.DomicilioRetiro.LocalidadId.ToString(),
         },
-        ModalidadEntrega = (ModalidadEntregaEnum)g.ModalidadEntrega,
+        tamañoGuia = (TipoCajaEnum)g.TipoCaja,
+        EstadoGuia = (EstadoGuiaEnum)g.Estado,
         NombreDestinatarioGuia = g.NombreDestinatario,
         ApellidoDestinatarioGuia = g.ApellidoDestinatario,
-        tamañoGuia = (TipoCajaEnum)g.TipoCaja,
+        ModalidadEntrega = (ModalidadEntregaEnum)g.ModalidadEntrega,
         DomicilioEntrega = g.DomicilioEntrega == null ? null : new Domicilio
         {
             Calle = g.DomicilioEntrega.Calle,
@@ -37,7 +37,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         },
         IntentosDeEntrega = g.IntentosDeEntrega,
         CDActualId = g.CDActualId,
-        EstadoGuia = (EstadoGuiaEnum)g.Estado,
+        
     })
     .ToList();
 
