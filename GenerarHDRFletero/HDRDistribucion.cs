@@ -12,8 +12,8 @@ namespace GrupoE_Tutasa.GenerarHDR
     }
     internal class HDRDistribucion
     {
-        public int HdrDistribucionId { get; set; }
-        public int FleteroId { get; set; }
+        public int HDRDistribucionId { get; set; }
+        public int fleteroId { get; set; }
         public EstadoHDRDistribucionEnum Estado { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaRendicion { get; set; }

@@ -22,7 +22,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             HDRId = hdrId;
             GuiasIds = guias.Select(g => g.GuiaId).ToList();
-            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatario));
+            Destinatario = string.Join(", ", guias.Select(g => g.NombreDestinatarioGuia));
             TipoHDR = tipoHDR;
 
             if (tipoHDR == "Retiro")
