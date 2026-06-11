@@ -9,7 +9,7 @@ namespace GrupoE_Tutasa.Imposicion
     {
         public static string modalidadImposicion = Program.modalidadImposicion; 
         public static int cdTrabajoId = Program.CDTrabajoId;
-        public int cdActualId = 1;
+        public static int agenciaTrabajoId = Program.agenciaTrabajoId;
         public ClienteRemitente clienteActual = null;
 
         // Modalidad de imposición configurada (Program.modalidadImposicion) traducida al enum,
@@ -154,6 +154,9 @@ namespace GrupoE_Tutasa.Imposicion
                     : null;
                 guia.CDOrigenId = cdPorCp ?? cdTrabajoId;   // fallback si el CP no resuelve
 
+                // El domicilio de retiro es el que aporta el formulario.
+                guia.DomicilioRetiro = domicilioRetiro;
+
                 // Regla 3: el CD actual queda en null.
                 guia.CDActualId = null;
 
@@ -162,24 +165,49 @@ namespace GrupoE_Tutasa.Imposicion
             }
             else if (ModalidadImposicionActual == ModalidadImposicionEnum.AGENCIA)
             {
-                // Reglas de origen para AGENCIA aún no definidas: comportamiento previo.
-                guia.AgenciaOrigenId = null;
-                guia.CDOrigenId      = cdActualId;
-                guia.CDActualId      = cdActualId;
+                Agencia agenciaTrabajo = ResolverAgenciaTrabajo();
 
-                // Regla de estado: en agencia la guía nace "A retirar".
+                // Regla 6: agencia de origen = agencia de trabajo (Program.agenciaTrabajoId).
+                guia.AgenciaOrigenId = agenciaTrabajoId;
+
+                // Regla 7: CD de origen = CD asignado a la agencia (FK CDAsignadoId -> CentroDistribucion).
+                guia.CDOrigenId = agenciaTrabajo != null ? agenciaTrabajo.CDAsignadoId : cdTrabajoId;
+
+                // Regla 8: domicilio de retiro = domicilio de la agencia de trabajo.
+                guia.DomicilioRetiro = agenciaTrabajo?.Domicilio;
+
+                // Regla 9: el CD actual es 0.
+                guia.CDActualId = 0;
+
+                // Regla 10: en agencia la guía nace "A retirar".
                 guia.Estado = EstadoGuiaEnum.A_RETIRAR;
             }
             else // ModalidadImposicionEnum.CD
             {
-                // Reglas de origen para CD aún no definidas: comportamiento previo.
-                guia.AgenciaOrigenId = null;
-                guia.CDOrigenId      = cdActualId;
-                guia.CDActualId      = cdActualId;
+                // Regla 1: la agencia de origen es 0.
+                guia.AgenciaOrigenId = 0;
 
-                // Regla de estado: imposición directa en CD nace "Rendida".
+                // Regla 2: el CD de origen es el CD de trabajo (Program.CDTrabajoId).
+                guia.CDOrigenId = cdTrabajoId;
+
+                // Regla 3: imposición directa en CD, sin domicilio de retiro.
+                guia.DomicilioRetiro = null;
+
+                // Regla 4: el CD actual es el CD de trabajo.
+                guia.CDActualId = cdTrabajoId;
+
+                // Regla 5: imposición directa en CD nace "Rendida".
                 guia.Estado = EstadoGuiaEnum.RENDIDA;
             }
+        }
+
+        // Ubica la agencia de trabajo (Program.agenciaTrabajoId) dentro del padrón.
+        private Agencia ResolverAgenciaTrabajo()
+        {
+            foreach (Agencia a in LAgencias)
+                if (a.AgenciaId == agenciaTrabajoId)
+                    return a;
+            return null;
         }
 
         public int? ResolverCDActualIdPorCodigoPostal(string codigoPostal)
@@ -235,7 +263,7 @@ namespace GrupoE_Tutasa.Imposicion
 
         // ─────────────────────────────────────────────────────────────────────
 
-        public void RegistrarGuia(Guia guia, int cdOrigenId)
+        public void RegistrarGuia(Guia guia)
         {
             int nuevoId = GuiaAlmacen.guias.Count > 0
                 ? GuiaAlmacen.guias.Max(g => g.GuiaId) + 1
