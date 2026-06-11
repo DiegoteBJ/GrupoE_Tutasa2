@@ -12,6 +12,19 @@ namespace GrupoE_Tutasa.Imposicion
         public int cdActualId = 1;
         public ClienteRemitente clienteActual = null;
 
+        // Modalidad de imposición configurada (Program.modalidadImposicion) traducida al enum,
+        // para que el formulario no necesite conocer los textos.
+        public ModalidadImposicionEnum ModalidadImposicionActual
+        {
+            get
+            {
+                string m = (modalidadImposicion ?? string.Empty).Trim().ToUpper();
+                if (m == "DOMICILIO") return ModalidadImposicionEnum.DOMICILIO;
+                if (m == "AGENCIA")   return ModalidadImposicionEnum.AGENCIA;
+                return ModalidadImposicionEnum.CD;
+            }
+        }
+
 
         public List<ClienteRemitente> LClientes =>
             ClienteAlmacen.clientes.Select(c => new ClienteRemitente
@@ -123,6 +136,51 @@ namespace GrupoE_Tutasa.Imposicion
                 TarifarioId           = g.TarifarioId,
                 ObservacionesAdmision = g.ObservacionesAdmision
             }).ToList();
+
+        // Asigna los datos de ORIGEN de la guía según la modalidad de imposición.
+        // El formulario sólo aporta el domicilio de retiro; las reglas viven acá.
+        public void AsignarDatosOrigen(Guia guia, Domicilio domicilioRetiro)
+        {
+            guia.ModalidadImposicion = ModalidadImposicionActual;
+
+            if (ModalidadImposicionActual == ModalidadImposicionEnum.DOMICILIO)
+            {
+                // Regla 1: en imposición a domicilio no hay agencia de origen.
+                guia.AgenciaOrigenId = null;
+
+                // Regla 2: el CD de origen se resuelve por el CP del domicilio de retiro.
+                int? cdPorCp = domicilioRetiro != null
+                    ? ResolverCDActualIdPorCodigoPostal(domicilioRetiro.CodigoPostal)
+                    : null;
+                guia.CDOrigenId = cdPorCp ?? cdTrabajoId;   // fallback si el CP no resuelve
+
+                // Regla 3: el CD actual queda en null.
+                guia.CDActualId = null;
+
+                // Regla de estado: a domicilio la guía nace "A retirar".
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+            }
+            else if (ModalidadImposicionActual == ModalidadImposicionEnum.AGENCIA)
+            {
+                // Reglas de origen para AGENCIA aún no definidas: comportamiento previo.
+                guia.AgenciaOrigenId = null;
+                guia.CDOrigenId      = cdActualId;
+                guia.CDActualId      = cdActualId;
+
+                // Regla de estado: en agencia la guía nace "A retirar".
+                guia.Estado = EstadoGuiaEnum.A_RETIRAR;
+            }
+            else // ModalidadImposicionEnum.CD
+            {
+                // Reglas de origen para CD aún no definidas: comportamiento previo.
+                guia.AgenciaOrigenId = null;
+                guia.CDOrigenId      = cdActualId;
+                guia.CDActualId      = cdActualId;
+
+                // Regla de estado: imposición directa en CD nace "Rendida".
+                guia.Estado = EstadoGuiaEnum.RENDIDA;
+            }
+        }
 
         public int? ResolverCDActualIdPorCodigoPostal(string codigoPostal)
         {
