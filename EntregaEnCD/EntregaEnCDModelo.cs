@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoE_Tutasa.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -70,11 +71,29 @@ namespace GrupoE_Tutasa.EntregaEnCD
 
         public void ConfirmarEntrega(int guiaId)
         {
+            var guiaAlmacen = GuiaAlmacen.guias
+                .FirstOrDefault(g => g.GuiaId == guiaId);
+
+            if (guiaAlmacen != null)
+            {
+                guiaAlmacen.Estado = EstadoGuiaEnum.ENTREGADA;
+                GuiaAlmacen.Guardar();
+            }
+
             Guia guia = guias.FirstOrDefault(g => g.GuiaId == guiaId);
 
             if (guia != null)
             {
                 guia.Estado = "ENTREGADA";
+            }
+
+            var cuentaCorriente = CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
+                .FirstOrDefault(cc => cc.GuiaId == guiaId);
+
+            if (cuentaCorriente != null)
+            {
+                cuentaCorriente.FechaEntrega = DateTime.Now;
+                CuentaCorrienteClienteAlmacen.Guardar();
             }
         }
 

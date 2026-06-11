@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using GrupoE_Tutasa.Almacenes;
 
 namespace GrupoE_Tutasa.EntregaEnAgencia
 {
@@ -69,12 +70,30 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
 
         public void ConfirmarEntrega(int guiaId)
         {
+            var guiaAlmacen = GuiaAlmacen.guias
+                .FirstOrDefault(g => g.GuiaId == guiaId);
+
+            if (guiaAlmacen != null)
+            {
+                guiaAlmacen.Estado = EstadoGuiaEnum.ENTREGADA;
+                GuiaAlmacen.Guardar();
+            }
+
             Guia guia = guias.FirstOrDefault(g => g.GuiaId == guiaId);
 
             if (guia != null)
             {
                 guia.Estado = "ENTREGADA";
                 GuardarGuiasEnJson(guiaId);
+            }
+
+            var cuentaCorriente = CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
+                .FirstOrDefault(cc => cc.GuiaId == guiaId);
+
+            if (cuentaCorriente != null)
+            {
+                cuentaCorriente.FechaEntrega = DateTime.Now;
+                CuentaCorrienteClienteAlmacen.Guardar();
             }
         }
 
