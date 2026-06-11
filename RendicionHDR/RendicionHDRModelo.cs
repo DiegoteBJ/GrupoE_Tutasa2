@@ -7,8 +7,14 @@ namespace GrupoE_Tutasa.RendicionHDR
 {
     internal class RendicionHDRModelo
     {
-        public List<FleteroEntidad> LFleteros =>
-            FleteroAlmacen.fleteros;
+        public List<Fletero> LFleteros => FleteroAlmacen.fleteros
+                .Select(f => new Fletero
+                {
+                    fleteroDNI = f.Dni,
+                    fleteroNombre = f.Nombre,
+                    fleteroApellido = f.Apellido
+                })
+                .ToList();
 
         public List<HDRRetiro> LHDRRetiro =>
             HDRRetiroAlmacen.hDRRetiros

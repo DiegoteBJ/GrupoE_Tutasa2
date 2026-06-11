@@ -109,15 +109,15 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             var fletero =
                 modelo.LFleteros.FirstOrDefault(
-                    f => f.Dni == hdr.fleteroDNI);
+                    f => f.fleteroDNI == hdr.fleteroDNI);
 
             if (fletero == null)
                 return;
 
             // Datos del viaje
             RespuestaFleteroLabel.Text =
-                fletero.Apellido + ", " +
-                fletero.Nombre;
+                fletero.fleteroApellido + ", " +
+                fletero.fleteroNombre;
 
             RespuestaFechaLabel.Text =
                 hdr.fechaHDR.ToShortDateString();
@@ -162,15 +162,15 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             var fletero =
                 modelo.LFleteros.FirstOrDefault(
-                    f => f.Dni == hdr.fleteroDNI);
+                    f => f.fleteroDNI == hdr.fleteroDNI);
 
             if (fletero == null)
                 return;
 
             // Datos del viaje
             RespuestaFleteroLabel.Text =
-                fletero.Apellido + ", " +
-                fletero.Nombre;
+                fletero.fleteroApellido + ", " +
+                fletero.fleteroNombre;
 
             RespuestaFechaLabel.Text =
                 hdr.fechaHDR.ToShortDateString();

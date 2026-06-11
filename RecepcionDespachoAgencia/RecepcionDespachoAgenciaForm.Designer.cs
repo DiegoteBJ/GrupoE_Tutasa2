@@ -66,7 +66,7 @@
             HojasdeRutaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             HojasdeRutaGroupBox.Location = new Point(30, 207);
             HojasdeRutaGroupBox.Name = "HojasdeRutaGroupBox";
-            HojasdeRutaGroupBox.Size = new Size(277, 220);
+            HojasdeRutaGroupBox.Size = new Size(327, 220);
             HojasdeRutaGroupBox.TabIndex = 0;
             HojasdeRutaGroupBox.TabStop = false;
             HojasdeRutaGroupBox.Text = "Hojas de ruta";
@@ -76,7 +76,7 @@
             HojasdeRutaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             HojasdeRutaListView.Location = new Point(23, 28);
             HojasdeRutaListView.Name = "HojasdeRutaListView";
-            HojasdeRutaListView.Size = new Size(231, 175);
+            HojasdeRutaListView.Size = new Size(280, 175);
             HojasdeRutaListView.TabIndex = 0;
             HojasdeRutaListView.UseCompatibleStateImageBehavior = false;
             HojasdeRutaListView.View = View.Details;
@@ -86,9 +86,9 @@
             // 
             HDRaRendirAgenciaGroupBox.Controls.Add(HDRaRendirAgenciaListView);
             HDRaRendirAgenciaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            HDRaRendirAgenciaGroupBox.Location = new Point(363, 207);
+            HDRaRendirAgenciaGroupBox.Location = new Point(397, 207);
             HDRaRendirAgenciaGroupBox.Name = "HDRaRendirAgenciaGroupBox";
-            HDRaRendirAgenciaGroupBox.Size = new Size(430, 220);
+            HDRaRendirAgenciaGroupBox.Size = new Size(333, 220);
             HDRaRendirAgenciaGroupBox.TabIndex = 1;
             HDRaRendirAgenciaGroupBox.TabStop = false;
             HDRaRendirAgenciaGroupBox.Text = "Hojas de ruta a recepcionar";
@@ -96,9 +96,9 @@
             // HDRaRendirAgenciaListView
             // 
             HDRaRendirAgenciaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            HDRaRendirAgenciaListView.Location = new Point(21, 27);
+            HDRaRendirAgenciaListView.Location = new Point(23, 28);
             HDRaRendirAgenciaListView.Name = "HDRaRendirAgenciaListView";
-            HDRaRendirAgenciaListView.Size = new Size(388, 175);
+            HDRaRendirAgenciaListView.Size = new Size(280, 175);
             HDRaRendirAgenciaListView.TabIndex = 0;
             HDRaRendirAgenciaListView.UseCompatibleStateImageBehavior = false;
             HDRaRendirAgenciaListView.View = View.Details;
@@ -181,9 +181,9 @@
             // 
             // CancelarBoton
             // 
-            CancelarBoton.Location = new Point(699, 684);
+            CancelarBoton.Location = new Point(622, 696);
             CancelarBoton.Name = "CancelarBoton";
-            CancelarBoton.Size = new Size(94, 29);
+            CancelarBoton.Size = new Size(108, 29);
             CancelarBoton.TabIndex = 12;
             CancelarBoton.Text = "Cancelar";
             CancelarBoton.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@
             // 
             // ConfirmarBoton
             // 
-            ConfirmarBoton.Location = new Point(554, 684);
+            ConfirmarBoton.Location = new Point(468, 696);
             ConfirmarBoton.Name = "ConfirmarBoton";
-            ConfirmarBoton.Size = new Size(94, 29);
+            ConfirmarBoton.Size = new Size(106, 29);
             ConfirmarBoton.TabIndex = 13;
             ConfirmarBoton.Text = "Confirmar";
             ConfirmarBoton.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(31, 444);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(418, 251);
+            groupBox1.Size = new Size(418, 252);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle de Hoja de ruta";
@@ -281,10 +281,10 @@
             DetalleGuiasListView.CheckBoxes = true;
             DetalleGuiasListView.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
             DetalleGuiasListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DetalleGuiasListView.Location = new Point(22, 47);
+            DetalleGuiasListView.Location = new Point(22, 56);
             DetalleGuiasListView.Margin = new Padding(3, 4, 3, 4);
             DetalleGuiasListView.Name = "DetalleGuiasListView";
-            DetalleGuiasListView.Size = new Size(371, 185);
+            DetalleGuiasListView.Size = new Size(371, 179);
             DetalleGuiasListView.TabIndex = 17;
             DetalleGuiasListView.UseCompatibleStateImageBehavior = false;
             DetalleGuiasListView.View = View.Details;
@@ -302,7 +302,7 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Tipo";
-            columnHeader2.Width = 120;
+            columnHeader2.Width = 110;
             // 
             // label2
             // 
@@ -317,7 +317,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(805, 737);
+            ClientSize = new Size(760, 737);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(ConfirmarBoton);

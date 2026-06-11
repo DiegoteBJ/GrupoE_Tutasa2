@@ -3,7 +3,6 @@
     public partial class RecepcionDespachoAgenciaForm : Form
     {
         private RecepcionDespachoAgenciaModelo modelo = new();
-        private Fletero? fleteroActual = null;
 
         public RecepcionDespachoAgenciaForm()
         {
@@ -68,7 +67,7 @@
             {
                 if (fletero.fleteroDNI == dniBuscado)
                 {
-                    fleteroActual = fletero;
+                    modelo.fleteroActual = fletero;
 
                     NombreFleteroRespuestaLabel.Text =
                         fletero.fleteroNombre;

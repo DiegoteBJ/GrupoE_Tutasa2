@@ -7,6 +7,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
     internal class RecepcionDespachoAgenciaModelo
     {
+        public Fletero? fleteroActual = null;
         // Lista de fleteros
         public List<Fletero> LFleteros => FleteroAlmacen.fleteros
                 .OrderBy(f => f.Apellido)
@@ -55,14 +56,17 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 
         // Lista de Guías
         public List<Guia> LGuias => GuiaAlmacen.guias
-        .Select(g => new Guia
-        {
-            guiaId = g.GuiaId,
-            tipo = g.TipoCaja.ToString(),
-            estado = g.Estado.ToString()
-        })
+          .Select(g => new Guia
+          {
+              guiaId = g.GuiaId,
+              tipo = g.TipoCaja.ToString(),
+              estado = g.Estado.ToString()
+          })
         .ToList();
     }
-
 }
+   
+
+
+
 
