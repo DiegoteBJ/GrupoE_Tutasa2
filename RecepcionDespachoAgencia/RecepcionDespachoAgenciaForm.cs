@@ -1,4 +1,5 @@
-﻿namespace GrupoE_Tutasa.RecepcionDespachoAgencia
+﻿using GrupoE_Tutasa.FormularioPrincipal;
+namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
     public partial class RecepcionDespachoAgenciaForm : Form
     {
@@ -11,8 +12,8 @@
 
         private void RecepcionDespachoAgenciaForm_Load(object sender, EventArgs e)
         {
-            UsuarioRespuestaLabel.Text = "Usuario01";
-            AgenciaRespuestaLabel.Text = "Agencia Moron Centro";
+            UsuarioRespuestaLabel.Text = modelo.Usuario;
+            AgenciaRespuestaLabel.Text = modelo.AgenciaTrabajo.ToString();
 
             NombreFleteroRespuestaLabel.Text = "";
             ApellidoRespuestaLabel.Text = "";

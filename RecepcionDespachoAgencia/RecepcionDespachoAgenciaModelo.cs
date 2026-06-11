@@ -1,4 +1,5 @@
 ﻿using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,8 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
     internal class RecepcionDespachoAgenciaModelo
     {
         public Fletero? fleteroActual = null;
+        public string Usuario = "Usuario 01";
+        public int AgenciaTrabajo = Program.agenciaTrabajoId;
         // Lista de fleteros
         public List<Fletero> LFleteros => FleteroAlmacen.fleteros
                 .OrderBy(f => f.Apellido)
@@ -22,6 +25,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 
         // Lista de HDR Retiro
         public List<HDRRetiro> LHDRRetiro => HDRRetiroAlmacen.hDRRetiros
+            .Where(h => h.Estado == EstadoHDRRetiroEnum.PENDIENTE)
                 .OrderBy(h => h.FechaEmision)
                 .Select(h =>
                 {
@@ -40,6 +44,8 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 
         // Lista de HDR Distribución
         public List<HDRDistribucion> LHDRDistribucion => HDRDistribucionAlmacen.hDRDistribucions
+            .Where(h => h.Estado == EstadoHDRDistribucionEnum.PENDIENTE)
+                .OrderBy(h => h.FechaEmision)
                 .Select(h =>
                 {
                     var fletero = FleteroAlmacen.fleteros.FirstOrDefault(f => f.FleteroId == h.FleteroId);
