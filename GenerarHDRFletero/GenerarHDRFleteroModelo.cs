@@ -7,16 +7,10 @@ using System.Text.RegularExpressions;
 namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class GenerarHDRFleteroModelo
-    {
-        public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
-    .Select(g => new Guias
+    {    public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
+        .Select(g => new Guias
     {
         GuiaId = g.GuiaId,
-        ClienteId = g.ClienteId,
-        AgenciaOrigenId = g.AgenciaOrigenId,
-        AgenciaDestinoId = g.AgenciaDestinoId,
-        CDOrigenId = g.CDOrigenId,
-        CDDestinoId = g.CDDestinoId,
         ModalidadImposicion = (ModalidadImposicionEnum)g.ModalidadImposicion,
         DomicilioRetiro = g.DomicilioRetiro == null ? null : new Domicilio
         {
@@ -27,11 +21,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             CodigoPostal = g.DomicilioRetiro.CodigoPostal,
             Localidad = g.DomicilioRetiro.LocalidadId.ToString(),
         },
+        tamañoGuia = (TipoCajaEnum)g.TipoCaja,
+        EstadoGuia = (EstadoGuiaEnum)g.Estado,
+        NombreDestinatarioGuia = g.NombreDestinatario,
+        ApellidoDestinatarioGuia = g.ApellidoDestinatario,
         ModalidadEntrega = (ModalidadEntregaEnum)g.ModalidadEntrega,
-        NombreDestinatario = g.NombreDestinatario,
-        ApellidoDestinatario = g.ApellidoDestinatario,
-        DniDestinatario = g.DniDestinatario,
-        TipoCaja = (TipoCajaEnum)g.TipoCaja,
         DomicilioEntrega = g.DomicilioEntrega == null ? null : new Domicilio
         {
             Calle = g.DomicilioEntrega.Calle,
@@ -43,9 +37,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         },
         IntentosDeEntrega = g.IntentosDeEntrega,
         CDActualId = g.CDActualId,
-        Estado = (EstadoGuiaEnum)g.Estado,
-        TarifarioId = g.TarifarioId,
-        ObservacionesAdmision = g.ObservacionesAdmision
+        
     })
     .ToList();
 
@@ -54,15 +46,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         .Select(f => new Fleteros
         {
             FleteroId = f.FleteroId,
-            Nombre = f.Nombre,
-            Apellido = f.Apellido,
-            Dni = f.Dni,
-            Cuit = f.Cuit,
-            CostoPorBulto_S = f.CostoPorBulto_S,
-            CostoPorBulto_M = f.CostoPorBulto_M,
-            CostoPorBulto_L = f.CostoPorBulto_L,
-            CostoPorBulto_XL = f.CostoPorBulto_XL,
-            CodigosPostalesCobertura = f.CodigosPostalesCobertura
+            FleteroNombre = f.Nombre,
+            FleteroApellido = f.Apellido,
+            FleteroDNI = f.Dni,
+            CPCobertura = f.CodigosPostalesCobertura
         })
         .ToList();
 
@@ -70,8 +57,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<HDRRetiro> HDRsRetiro => HDRRetiroAlmacen.hDRRetiros
         .Select(h => new HDRRetiro
         {
-            HdrRetiroId = h.HdrRetiroId,
-            FleteroId = h.FleteroId,
+            HDRRetiroId = h.HdrRetiroId,
+            fleteroId = h.FleteroId,
             Estado = (EstadoHDRRetiroEnum)h.Estado,
             FechaEmision = h.FechaEmision,
             FechaRendicion = h.FechaRendicion,
@@ -81,8 +68,8 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<HDRDistribucion> HDRsDistribucion => HDRDistribucionAlmacen.hDRDistribucions
         .Select(h => new HDRDistribucion
         {
-            HdrDistribucionId = h.HdrDistribucionId,
-            FleteroId = h.FleteroId,
+            HDRDistribucionId = h.HdrDistribucionId,
+            fleteroId = h.FleteroId,
             Estado = (EstadoHDRDistribucionEnum)h.Estado,
             FechaEmision = h.FechaEmision,
             FechaRendicion = h.FechaRendicion,
@@ -155,7 +142,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         public Fleteros BuscarFleteroPorDni(string dni)
         {
-            return LFleteros.FirstOrDefault(f => f.Dni.ToString() == dni);
+            return LFleteros.FirstOrDefault(f => f.FleteroDNI.ToString() == dni);
         }
 
         public IEnumerable<Guias> ObtenerGuiasPorEstado(string estado, Fleteros fletero, HashSet<int> guiasEnDetalle)
@@ -165,9 +152,9 @@ namespace GrupoE_Tutasa.GenerarHDR
             if (estado == "A_RETIRAR")
             {
                 return LGuiasAAsignar.Where(g =>
-                    g.Estado == EstadoGuiaEnum.A_RETIRAR &&
+                    g.EstadoGuia == EstadoGuiaEnum.A_RETIRAR &&
                     g.DomicilioRetiro != null &&
-                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
+                    fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsRetiro.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRRetiroEnum.PENDIENTE));
@@ -175,11 +162,11 @@ namespace GrupoE_Tutasa.GenerarHDR
             else if (estado == "EN_DISTRIBUCION")
             {
                 return LGuiasAAsignar.Where(g =>
-                    (g.Estado == EstadoGuiaEnum.ADMITIDA ||
-                    (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
-                    (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
+                    (g.EstadoGuia == EstadoGuiaEnum.ADMITIDA ||
+                    (g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
+                    (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
                     g.DomicilioEntrega != null &&
-                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
+                    fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsDistribucion.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRDistribucionEnum.PENDIENTE));
@@ -193,11 +180,11 @@ namespace GrupoE_Tutasa.GenerarHDR
         public List<HDRResumen> GenerarHDR(List<Guias> guiasSeleccionadas)
         {
             var hdrsProvisorios = new List<HDRResumen>();
-            int idRetiroTemp = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) + 1 : 1;
-            int idDistribTemp = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HdrDistribucionId) + 1 : 1;
+            int idRetiroTemp = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HDRRetiroId) + 1 : 1;
+            int idDistribTemp = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HDRDistribucionId) + 1 : 1;
 
             var grupos = guiasSeleccionadas.GroupBy(g =>
-                (g.Estado == EstadoGuiaEnum.A_RETIRAR)
+                (g.EstadoGuia == EstadoGuiaEnum.A_RETIRAR)
                     ? $"{g.DomicilioRetiro.Calle}-{g.DomicilioRetiro.Numero}-{g.DomicilioRetiro.Piso}-{g.DomicilioRetiro.Depto}-{g.DomicilioRetiro.CodigoPostal}"
                     : $"{g.DomicilioEntrega.Calle}-{g.DomicilioEntrega.Numero}-{g.DomicilioEntrega.Piso}-{g.DomicilioEntrega.Depto}-{g.DomicilioEntrega.CodigoPostal}");
 
@@ -206,7 +193,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 var guiasGrupo = grupo.ToList();
                 var g = guiasGrupo.First();
 
-                if (guiasGrupo.All(x => x.Estado == EstadoGuiaEnum.A_RETIRAR))
+                if (guiasGrupo.All(x => x.EstadoGuia == EstadoGuiaEnum.A_RETIRAR))
                 {
                     var domicilio = $"{g.DomicilioRetiro.Calle} {g.DomicilioRetiro.Numero} - Piso: {g.DomicilioRetiro.Piso} - Depto: {g.DomicilioRetiro.Depto}";
                     hdrsProvisorios.Add(new HDRResumen(idRetiroTemp++, guiasGrupo, "Retiro")
@@ -234,8 +221,13 @@ namespace GrupoE_Tutasa.GenerarHDR
             MessageBox.Show($"Se imprimieron {totalHDR} HDR y el Resumen HDR\nFecha/Hora: {fechaHora}",
                 "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            ultimoHDRRetiroId = HDRsRetiro.Any() ? HDRsRetiro.Max(h => h.HdrRetiroId) : ultimoHDRRetiroId;
-            ultimoHDRDistribucionId = HDRsDistribucion.Any() ? HDRsDistribucion.Max(h => h.HdrDistribucionId) : ultimoHDRDistribucionId;
+            ultimoHDRRetiroId = HDRRetiroAlmacen.hDRRetiros.Any()
+                ? HDRRetiroAlmacen.hDRRetiros.Max(h => h.HdrRetiroId)
+                : ultimoHDRRetiroId;
+
+            ultimoHDRDistribucionId = HDRDistribucionAlmacen.hDRDistribucions.Any()
+                ? HDRDistribucionAlmacen.hDRDistribucions.Max(h => h.HdrDistribucionId)
+                : ultimoHDRDistribucionId;
 
             foreach (var r in resumen)
             {
@@ -245,34 +237,48 @@ namespace GrupoE_Tutasa.GenerarHDR
                 if (r.TipoHDR == "Retiro")
                 {
                     ultimoHDRRetiroId++;
-                    HDRsRetiro.Add(new HDRRetiro
+
                     
+                    HDRRetiroAlmacen.hDRRetiros.Add(new HDRRetiroEntidad
                     {
                         HdrRetiroId = ultimoHDRRetiroId,
                         FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Today,
-                        Estado = EstadoHDRRetiroEnum.PENDIENTE,
+                        FechaRendicion = DateTime.MinValue,
+                        Estado = (GrupoE_Tutasa.Almacenes.EstadoHDRRetiroEnum)
+                                 GrupoE_Tutasa.GenerarHDR.EstadoHDRRetiroEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
                 }
                 else
                 {
                     ultimoHDRDistribucionId++;
-                    HDRsDistribucion.Add(new HDRDistribucion                   
+
+                    HDRDistribucionAlmacen.hDRDistribucions.Add(new HDRDistribucionEntidad
                     {
                         HdrDistribucionId = ultimoHDRDistribucionId,
                         FleteroId = fletero.FleteroId,
                         FechaEmision = DateTime.Today,
-                        Estado = EstadoHDRDistribucionEnum.PENDIENTE,
+                        FechaRendicion = DateTime.MinValue,
+                        Estado = (GrupoE_Tutasa.Almacenes.EstadoHDRDistribucionEnum)
+                                 GrupoE_Tutasa.GenerarHDR.EstadoHDRDistribucionEnum.PENDIENTE,
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    foreach (var g in guiasGrupo.Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA || g.Estado == EstadoGuiaEnum.EN_CD_DESTINO))
+                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == EstadoGuiaEnum.ADMITIDA || g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO))
                     {
-                        g.Estado = EstadoGuiaEnum.EN_DISTRIBUCION;
+                        g.EstadoGuia = EstadoGuiaEnum.EN_DISTRIBUCION;
+
+                        var entidad = GuiaAlmacen.guias.FirstOrDefault(e => e.GuiaId == g.GuiaId);
+                        if (entidad != null)
+                        {
+                            entidad.Estado = (GrupoE_Tutasa.Almacenes.EstadoGuiaEnum)
+                                             GrupoE_Tutasa.GenerarHDR.EstadoGuiaEnum.EN_DISTRIBUCION;
+                        }
                     }
                 }
             }
+
             GuiaAlmacen.Guardar();
             HDRRetiroAlmacen.Guardar();
             HDRDistribucionAlmacen.Guardar();

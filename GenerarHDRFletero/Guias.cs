@@ -43,24 +43,19 @@ namespace GrupoE_Tutasa.GenerarHDR
     internal class Guias
     {
         public int GuiaId { get; set; }
-        public int ClienteId { get; set; }
-        public int AgenciaOrigenId { get; set; }
-        public int AgenciaDestinoId { get; set; }
-        public int CDOrigenId { get; set; }
-        public int CDDestinoId { get; set; }
+
         public ModalidadImposicionEnum ModalidadImposicion { get; set; }
         public Domicilio DomicilioRetiro { get; set; }
         public ModalidadEntregaEnum ModalidadEntrega { get; set; }
-        public string NombreDestinatario { get; set; }
-        public string ApellidoDestinatario { get; set; }
+        public string NombreDestinatarioGuia { get; set; }
+        public string ApellidoDestinatarioGuia { get; set; }
         public int DniDestinatario { get; set; }
-        public TipoCajaEnum TipoCaja { get; set; }
+        public TipoCajaEnum tamañoGuia { get; set; }
         public Domicilio DomicilioEntrega { get; set; }
         public int IntentosDeEntrega { get; set; }
         public int CDActualId { get; set; }
-        public EstadoGuiaEnum Estado { get; set; }
-        public int TarifarioId { get; set; }
-        public string ObservacionesAdmision { get; set; }
+        public EstadoGuiaEnum EstadoGuia { get; set; }
+       
     }
 }
 
