@@ -70,7 +70,7 @@
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\GuiaEntidad.json">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
   <None Update="Datos\HDRDistribucionEntidad.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>

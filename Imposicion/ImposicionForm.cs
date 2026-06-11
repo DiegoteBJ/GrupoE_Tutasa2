@@ -464,7 +464,7 @@ namespace GrupoE_Tutasa.Imposicion
             Domicilio domicilioEntrega = null;
             int agenciaDestinoId = 0;
             bool tieneAgenciaDestino = false;
-            int cdDestinoId = modelo.cdActualId;
+            int cdDestinoId = ImposicionModelo.cdTrabajoId;
 
             if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem != null)
             {
@@ -494,6 +494,9 @@ namespace GrupoE_Tutasa.Imposicion
                     CodigoPostal = CPDomicilioTextBox.Text,
                     LocalidadId = localidadEntregaId
                 };
+
+                // Entrega a domicilio: el CD de destino se resuelve por el CP de entrega ingresado.
+                cdDestinoId = modelo.ResolverCDActualIdPorCodigoPostal(CPDomicilioTextBox.Text) ?? cdDestinoId;
             }
 
             // Determinación del domicilio de retiro
@@ -525,7 +528,6 @@ namespace GrupoE_Tutasa.Imposicion
                 Guia guia = new Guia();
                 guia.ClienteId            = modelo.clienteActual.ClienteId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.DomicilioRetiro      = domicilioRetiro;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -536,7 +538,7 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.TipoCaja             = TipoCajaEnum.S;
                 guia.IntentosDeEntrega    = 0;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, modelo.cdActualId);
+                modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (S)\n";
             }
 
@@ -545,7 +547,6 @@ namespace GrupoE_Tutasa.Imposicion
                 Guia guia = new Guia();
                 guia.ClienteId            = modelo.clienteActual.ClienteId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.DomicilioRetiro      = domicilioRetiro;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -556,7 +557,7 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.TipoCaja             = TipoCajaEnum.M;
                 guia.IntentosDeEntrega    = 0;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, modelo.cdActualId);
+                modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (M)\n";
             }
 
@@ -565,7 +566,6 @@ namespace GrupoE_Tutasa.Imposicion
                 Guia guia = new Guia();
                 guia.ClienteId            = modelo.clienteActual.ClienteId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.DomicilioRetiro      = domicilioRetiro;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -576,7 +576,7 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.TipoCaja             = TipoCajaEnum.L;
                 guia.IntentosDeEntrega    = 0;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, modelo.cdActualId);
+                modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (L)\n";
             }
 
@@ -585,7 +585,6 @@ namespace GrupoE_Tutasa.Imposicion
                 Guia guia = new Guia();
                 guia.ClienteId            = modelo.clienteActual.ClienteId;
                 guia.CDDestinoId          = cdDestinoId;
-                guia.DomicilioRetiro      = domicilioRetiro;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
                 guia.ModalidadEntrega     = modalidadEntrega;
                 guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
@@ -596,7 +595,7 @@ namespace GrupoE_Tutasa.Imposicion
                 guia.TipoCaja             = TipoCajaEnum.XL;
                 guia.IntentosDeEntrega    = 0;
                 guia.TarifarioId          = 1;
-                modelo.RegistrarGuia(guia, modelo.cdActualId);
+                modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (XL)\n";
             }
 
