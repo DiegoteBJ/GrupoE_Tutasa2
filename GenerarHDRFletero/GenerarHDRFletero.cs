@@ -18,8 +18,6 @@ namespace GrupoE_Tutasa.GenerarHDR
             InitializeComponent();
         }
 
-
-
         private void GenerarHDRFleteros_Load(object sender, EventArgs e)
         {
             // Form_Load: estado inicial
@@ -101,8 +99,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             var fletero = modelo.BuscarFleteroPorDni(dni);
             if (fletero != null)
             {
-                nombrefleterolabel.Text = fletero.Nombre;
-                apellidofleterolabel.Text = fletero.Apellido;
+                nombrefleterolabel.Text = fletero.FleteroNombre;
+                apellidofleterolabel.Text = fletero.FleteroApellido;
                 this.Tag = fletero;
                 ingresardnitextBox.Clear();
                 retiroradioButton.Enabled = true;
@@ -318,7 +316,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 codigosPostales = modelo.LGuiasAAsignar
                     .Where(g => g.Estado == EstadoGuiaEnum.A_RETIRAR &&
-                                fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
+                                fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal.ToUpper()))
                     .Select(g => g.DomicilioRetiro.CodigoPostal.ToUpper())
                     .Distinct()
                     .ToArray();
@@ -329,7 +327,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     .Where(g => (g.Estado == EstadoGuiaEnum.ADMITIDA || 
                                 (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
                                 (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
-                                fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
+                                fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
                     .Select(g => g.DomicilioEntrega.CodigoPostal.ToUpper())
                     .Distinct()
                     .ToArray();

@@ -12,11 +12,6 @@ namespace GrupoE_Tutasa.GenerarHDR
     .Select(g => new Guias
     {
         GuiaId = g.GuiaId,
-        ClienteId = g.ClienteId,
-        AgenciaOrigenId = g.AgenciaOrigenId,
-        AgenciaDestinoId = g.AgenciaDestinoId,
-        CDOrigenId = g.CDOrigenId,
-        CDDestinoId = g.CDDestinoId,
         ModalidadImposicion = (ModalidadImposicionEnum)g.ModalidadImposicion,
         DomicilioRetiro = g.DomicilioRetiro == null ? null : new Domicilio
         {
@@ -30,7 +25,6 @@ namespace GrupoE_Tutasa.GenerarHDR
         ModalidadEntrega = (ModalidadEntregaEnum)g.ModalidadEntrega,
         NombreDestinatario = g.NombreDestinatario,
         ApellidoDestinatario = g.ApellidoDestinatario,
-        DniDestinatario = g.DniDestinatario,
         TipoCaja = (TipoCajaEnum)g.TipoCaja,
         DomicilioEntrega = g.DomicilioEntrega == null ? null : new Domicilio
         {
@@ -44,8 +38,6 @@ namespace GrupoE_Tutasa.GenerarHDR
         IntentosDeEntrega = g.IntentosDeEntrega,
         CDActualId = g.CDActualId,
         Estado = (EstadoGuiaEnum)g.Estado,
-        TarifarioId = g.TarifarioId,
-        ObservacionesAdmision = g.ObservacionesAdmision
     })
     .ToList();
 
@@ -54,15 +46,10 @@ namespace GrupoE_Tutasa.GenerarHDR
         .Select(f => new Fleteros
         {
             FleteroId = f.FleteroId,
-            Nombre = f.Nombre,
-            Apellido = f.Apellido,
-            Dni = f.Dni,
-            Cuit = f.Cuit,
-            CostoPorBulto_S = f.CostoPorBulto_S,
-            CostoPorBulto_M = f.CostoPorBulto_M,
-            CostoPorBulto_L = f.CostoPorBulto_L,
-            CostoPorBulto_XL = f.CostoPorBulto_XL,
-            CodigosPostalesCobertura = f.CodigosPostalesCobertura
+            FleteroNombre = f.Nombre,
+            FleteroApellido = f.Apellido,
+            FleteroDNI = f.Dni,
+            CPCobertura = f.CodigosPostalesCobertura
         })
         .ToList();
 
@@ -155,7 +142,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
         public Fleteros BuscarFleteroPorDni(string dni)
         {
-            return LFleteros.FirstOrDefault(f => f.Dni.ToString() == dni);
+            return LFleteros.FirstOrDefault(f => f.FleteroDNI.ToString() == dni);
         }
 
         public IEnumerable<Guias> ObtenerGuiasPorEstado(string estado, Fleteros fletero, HashSet<int> guiasEnDetalle)
@@ -167,7 +154,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 return LGuiasAAsignar.Where(g =>
                     g.Estado == EstadoGuiaEnum.A_RETIRAR &&
                     g.DomicilioRetiro != null &&
-                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
+                    fletero.CPCobertura.Contains(g.DomicilioRetiro.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsRetiro.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRRetiroEnum.PENDIENTE));
@@ -179,7 +166,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     (g.Estado == EstadoGuiaEnum.EN_CD_DESTINO) ||
                     (g.Estado == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
                     g.DomicilioEntrega != null &&
-                    fletero.CodigosPostalesCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
+                    fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
                     !HDRsDistribucion.Any(h => h.GuiaIds.Contains(g.GuiaId) && h.Estado == EstadoHDRDistribucionEnum.PENDIENTE));
