@@ -1,13 +1,17 @@
-﻿using GrupoE_Tutasa.Almacenes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.FormularioPrincipal;
 
 namespace GrupoE_Tutasa.GenerarHDRTransporte
 {
+
     internal class GenerarHDRTransporteModelo
     {
+        public static int cdTrabajoId = Program.CDTrabajoId;
+        public int cdActualidadId = Program.CDTrabajoId;
         public Dictionary<string, ServicioTransporte> _servicios =>
                ServicioTransporteAlmacen.servicioTransportes.ToDictionary(
                    s => s.ServicioId.ToString(),
@@ -39,7 +43,8 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
             _servicios.TryGetValue(nro, out var servicio);
             return servicio;
         }
-
+        public string GetNombreCDOperario()
+            => ObtenerNombreCD(cdTrabajoId);
         // ===== FILTRADO de guías pendientes por servicio =====
         // Condiciones:
         // 1. Estado de la guía debe ser ADMITIDA
@@ -49,7 +54,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
             return GuiaAlmacen.guias
                 .Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA
                          && g.CDActualId != g.CDDestinoId)
-                         //&& g.CDDestinoId == servicio.CDDestinoId)
+                        // && g.CDDestinoId == servicio.CDDestinoId)
                 .Select(g => new Guia
                 {
                     NroGuia = g.GuiaId.ToString(),
