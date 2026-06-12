@@ -69,6 +69,34 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
               estado = g.Estado.ToString()
           })
         .ToList();
+
+        public void ConfirmarRecepcion(string numeroHDR, List<int> guiaIdsConfirmadas)
+        {
+            foreach (int guiaId in guiaIdsConfirmadas)
+            {
+                var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
+                if (guia != null)
+                    guia.Estado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
+            }
+
+            if (int.TryParse(numeroHDR, out int hdrId))
+            {
+                var hdrRetiro = HDRRetiroAlmacen.hDRRetiros
+                    .FirstOrDefault(h => h.HdrRetiroId == hdrId);
+
+                if (hdrRetiro != null)
+                {
+                    hdrRetiro.Estado = EstadoHDRRetiroEnum.RENDIDA;
+                    return;
+                }
+
+                var hdrDistribucion = HDRDistribucionAlmacen.hDRDistribucions
+                    .FirstOrDefault(h => h.HdrDistribucionId == hdrId);
+
+                if (hdrDistribucion != null)
+                    hdrDistribucion.Estado = EstadoHDRDistribucionEnum.RENDIDA;
+            }
+        }
     }
 }
    

@@ -203,16 +203,32 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 return;
             }
 
-            MessageBox.Show(
-                "Operación confirmada. Estados actualizados.");
+            var guiaIdsConfirmadas = new List<int>();
 
-            // FUTURO:
-            // Una vez confirmada la operación:
-            // 1. Actualizar estados de las guías marcadas.
-            // 2. Remover la HDR procesada de la lista correspondiente.
-            // 3. Limpiar el detalle de la HDR para permitir procesar otra HDR del mismo fletero.
+            foreach (ListViewItem item in DetalleGuiasListView.Items)
+            {
+                if (item.Checked && int.TryParse(item.SubItems[1].Text, out int guiaId))
+                    guiaIdsConfirmadas.Add(guiaId);
+            }
+
+            string hdrActual = NumeroHDRSuperiorLabel.Text;
+
+            modelo.ConfirmarRecepcion(hdrActual, guiaIdsConfirmadas);
+
+            HojasdeRutaListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(i => i.Text == hdrActual)
+                ?.Remove();
+
+            HDRaRendirAgenciaListView.Items
+                .Cast<ListViewItem>()
+                .FirstOrDefault(i => i.Text == hdrActual)
+                ?.Remove();
+
             NumeroHDRSuperiorLabel.Text = "";
             DetalleGuiasListView.Items.Clear();
+
+            MessageBox.Show("Operación confirmada. Estados actualizados.");
 
         }
 

@@ -117,6 +117,7 @@ namespace GrupoE_Tutasa.Admision
                 }
                 string nuevoTamañoNombre = ((Cajas)TamañoReclasificacionComboBox.SelectedItem).nombre;
                 guiaActual.tamaño = nuevoTamañoNombre;
+                modelo.CambiarTamañoGuia(guiaActual.numeroGuia, nuevoTamañoNombre);
             }
 
             importeTransporte = modelo.ObtenerCoeficiente(guiaActual.CDOrigenId, guiaActual.CDDestinoId, guiaActual.tamaño);
@@ -195,6 +196,7 @@ namespace GrupoE_Tutasa.Admision
 
             TamañoDeclaradoLabel.Text = nuevoTamañoNombre;
             modelo.CambiarTamañoGuia(guiaActual.numeroGuia, nuevoTamañoNombre);
+            guiaActual.tamaño = nuevoTamañoNombre;
             MessageBox.Show($"El tamaño de la guía ha sido cambiado a: {nuevoTamañoNombre}.");
             TamañoCorrectoBoton.Checked = true;
         }
