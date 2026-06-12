@@ -116,11 +116,25 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                         guia.Estado = EstadoGuiaEnum.TRASLADADA;
                     else
                         guia.Estado = EstadoGuiaEnum.ADMITIDA;
+
+                    int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                        ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                        : 1;
+
+                    MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(new MovimientoEstadoGuiaEntidad
+                    {
+                        MovimientoId = nuevoMovimientoId,
+                        GuiaId = guia.GuiaId,
+                        FechaMovimiento = DateTime.Now,
+                        Estado = guia.Estado,
+                        Ubicacion = "En CD: " + guia.CDActualId.ToString()
+                    });
                 }
             }
 
             HDRTransporteAlmacen.Guardar();
             GuiaAlmacen.Guardar();
+            MovimientoEstadoGuiaAlmacen.Guardar();
         }
 
         private string ObtenerRuta(int cdOrigenId, int cdDestinoId)
