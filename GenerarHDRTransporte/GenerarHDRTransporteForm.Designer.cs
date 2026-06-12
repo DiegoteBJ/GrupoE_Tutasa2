@@ -318,6 +318,7 @@
             listViewEncomiendasAsignadas.Name = "listViewEncomiendasAsignadas";
             listViewEncomiendasAsignadas.Size = new Size(358, 141);
             listViewEncomiendasAsignadas.TabIndex = 0;
+            listViewEncomiendasAsignadas.FullRowSelect = true;
             listViewEncomiendasAsignadas.UseCompatibleStateImageBehavior = false;
             listViewEncomiendasAsignadas.View = View.Details;
             // 

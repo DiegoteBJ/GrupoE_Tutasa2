@@ -11,11 +11,8 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
     {
         public  int cdTrabajoId = Program.CDTrabajoId;
 
-        public Dictionary<string, ServicioTransporte> _servicios;
-
-        public RecepcionDespachoCDLargaDistanciaModelo()
-        {
-            _servicios = ServicioTransporteAlmacen.servicioTransportes
+        public Dictionary<string, ServicioTransporte> _servicios =>
+            ServicioTransporteAlmacen.servicioTransportes
                 .Where(s => s.CDOrigenId == cdTrabajoId || s.CDDestinoId == cdTrabajoId)
                 .ToDictionary(
                     s => s.ServicioId.ToString(),
@@ -28,7 +25,6 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                         HDRsARecibir = ObtenerHDRsARecibir(s.ServicioId),
                         HDRsADespachar = ObtenerHDRsADespachar(s.ServicioId)
                     });
-        }
 
        
 
@@ -73,17 +69,25 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         // HDRs de este servicio cuyo origen es MI CD (salen de aquí)
         private List<HDRTransporte> ObtenerHDRsADespachar(int servicioId)
         {
-            return HDRTransporteAlmacen.hDRTransportes
-                .Where(h => h.ServicioId == servicioId
-                         && h.CDOrigenId == cdTrabajoId)
-                .Select(h => new HDRTransporte
+            var hdr = HDRTransporteAlmacen.hDRTransportes
+                .FirstOrDefault(h => h.ServicioId == servicioId
+                                  && h.CDOrigenId == cdTrabajoId
+                                  && h.Estado == EstadoHDRTransporteEnum.PENDIENTE);
+
+            if (hdr == null) return new List<HDRTransporte>();
+
+            return hdr.GuiaIds.Select(guiaId =>
+            {
+                var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
+                return new HDRTransporte
                 {
-                    HdrTransporteId = h.HdrTransporteId,
-                    NroGuia = h.HdrTransporteId.ToString(),
-                    Destino = ObtenerNombreCD(h.CDDestinoId),
-                    Tamaño = $"{h.GuiaIds?.Count ?? 0} guías",
-                    Estado = h.Estado.ToString()
-                }).ToList();
+                    HdrTransporteId = hdr.HdrTransporteId,
+                    NroGuia = guiaId.ToString(),
+                    Destino = ObtenerNombreCD(hdr.CDDestinoId),
+                    Tamaño = guia?.TipoCaja.ToString() ?? "",
+                    Estado = hdr.Estado.ToString()
+                };
+            }).ToList();
         }
 
         // ===== Cambiar estados al confirmar =====
@@ -97,6 +101,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                 if (entidad != null)
                     entidad.Estado = EstadoHDRTransporteEnum.RENDIDA;
             }
+            HDRTransporteAlmacen.Guardar();
         }
 
         public void MarcarComoEnTransito(List<HDRTransporte> hdrs)
@@ -108,6 +113,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                 if (entidad != null)
                     entidad.Estado = EstadoHDRTransporteEnum.EN_TRANSITO;
             }
+            HDRTransporteAlmacen.Guardar();
         }
 
         // ===== HELPERS =====

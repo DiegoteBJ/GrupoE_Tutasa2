@@ -82,17 +82,44 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
             return cd?.Nombre ?? "";
         }
 
-        public void ActualizarEstadoGuiasATrasladada(List<string> nrosGuia)
+        public void GenerarHDR(string nroServicio, List<string> nrosGuia)
         {
-            foreach (var nro in nrosGuia)
+            var servicioEntidad = ServicioTransporteAlmacen.servicioTransportes
+                .FirstOrDefault(s => s.ServicioId.ToString() == nroServicio);
+
+            var guiaIds = nrosGuia
+                .Where(n => int.TryParse(n, out _))
+                .Select(n => int.Parse(n))
+                .ToList();
+
+            int nuevoId = HDRTransporteAlmacen.hDRTransportes.Count > 0
+                ? HDRTransporteAlmacen.hDRTransportes.Max(h => h.HdrTransporteId) + 1
+                : 1;
+
+            HDRTransporteAlmacen.hDRTransportes.Add(new HDRTransporteEntidad
             {
-                if (int.TryParse(nro, out int id))
+                HdrTransporteId = nuevoId,
+                ServicioId = servicioEntidad?.ServicioId ?? 0,
+                CDOrigenId = servicioEntidad?.CDOrigenId ?? 0,
+                CDDestinoId = servicioEntidad?.CDDestinoId ?? 0,
+                Estado = EstadoHDRTransporteEnum.PENDIENTE,
+                FechaEmision = DateTime.Now,
+                GuiaIds = guiaIds
+            });
+
+            foreach (var id in guiaIds)
+            {
+                var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == id);
+                if (guia != null)
                 {
-                    var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == id);
-                    if (guia != null)
+                    if (guia.CDDestinoId == guia.CDActualId)
                         guia.Estado = EstadoGuiaEnum.TRASLADADA;
+                    else
+                        guia.Estado = EstadoGuiaEnum.ADMITIDA;
                 }
             }
+
+            HDRTransporteAlmacen.Guardar();
             GuiaAlmacen.Guardar();
         }
 

@@ -144,7 +144,8 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 MessageBox.Show("Debe asignar al menos una encomienda para generar la Hoja de Ruta.", "Sin encomiendas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            _modelo.ActualizarEstadoGuiasATrasladada(
+            _modelo.GenerarHDR(
+                textBoxNrodeServicioTransporte.Text.Trim(),
                 listViewEncomiendasAsignadas.Items.Cast<ListViewItem>()
                     .Select(i => i.Text).ToList());
             MessageBox.Show("Hoja de Ruta de Transporte generada correctamente.", "HDR Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
