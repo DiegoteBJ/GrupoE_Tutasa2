@@ -13,7 +13,9 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         public static int cdTrabajoId = Program.CDTrabajoId;
         public int cdActualidadId = Program.CDTrabajoId;
         public Dictionary<string, ServicioTransporte> _servicios =>
-               ServicioTransporteAlmacen.servicioTransportes.ToDictionary(
+               ServicioTransporteAlmacen.servicioTransportes
+            .Where(s=> s.CDOrigenId == cdActualidadId)
+            .ToDictionary(
                    s => s.ServicioId.ToString(),
                    s => new ServicioTransporte
 
