@@ -157,7 +157,8 @@
             label4.Name = "label4";
             label4.Size = new Size(99, 20);
             label4.TabIndex = 2;
-            label4.Text = "CD de Origen";
+            label4.Text = "CD de Destino";
+
             // 
             // label1
             // 

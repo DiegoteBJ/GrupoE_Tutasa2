@@ -89,7 +89,10 @@ namespace GrupoE_Tutasa.Admision
 
             if (guia != null)
             {
-                guia.Estado = EstadoGuiaEnum.ADMITIDA;
+                if (guia.CDDestinoId == guia.CDActualId)
+                    { guia.Estado = EstadoGuiaEnum.TRASLADADA;}
+                else
+                    { guia.Estado = EstadoGuiaEnum.ADMITIDA; }
                 GuiaAlmacen.Guardar();
 
                 int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
@@ -101,8 +104,8 @@ namespace GrupoE_Tutasa.Admision
                     MovimientoId = nuevoMovimientoId,
                     GuiaId = guia.GuiaId,
                     FechaMovimiento = DateTime.Now,
-                    Estado = EstadoGuiaEnum.ADMITIDA,
-                    Ubicacion = "En CD: " + guia.CDOrigenId.ToString()
+                    Estado = guia.Estado,
+                    Ubicacion = "En CD: " + guia.CDActualId.ToString()
                 };
 
                 MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);

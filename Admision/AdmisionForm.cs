@@ -77,7 +77,7 @@ namespace GrupoE_Tutasa.Admision
             }
             MessageBox.Show("No se encontró la guía con el número proporcionado.");
         }
-        
+
         private void TamañoCorrectoBoton_CheckedChanged(object sender, EventArgs e)
         {
             bool habilitarReclasificacion = !TamañoCorrectoBoton.Checked && encuentro;
@@ -121,7 +121,7 @@ namespace GrupoE_Tutasa.Admision
             }
 
             importeTransporte = modelo.ObtenerCoeficiente(guiaActual.CDOrigenId, guiaActual.CDDestinoId, guiaActual.tamaño);
-                       
+
             if (guiaActual.tipoImposicion == "D")
                 importeImposicion = modelo.ObtenerTarifaRetiroDomicilio(guiaActual.tarifarioId);
             else if (guiaActual.tipoImposicion == "C")
@@ -138,9 +138,9 @@ namespace GrupoE_Tutasa.Admision
 
             // Asignar importes a guiaActual antes de crear el registro en CC
             guiaActual.importeImposicion = importeImposicion;
-            guiaActual.importeEntrega    = importeEntrega;
+            guiaActual.importeEntrega = importeEntrega;
             guiaActual.importeTransporte = importeTransporte;
-            guiaActual.importe           = importe;
+            guiaActual.importe = importe;
 
             modelo.AdmitirGuia(guiaActual.numeroGuia);
             modelo.CrearCCCliente(guiaActual);
