@@ -9,7 +9,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
     internal class RecepcionDespachoCDLargaDistanciaModelo
     {
-        public static int cdTrabajoId = Program.CDTrabajoId;
+        public  int cdTrabajoId = Program.CDTrabajoId;
 
         public Dictionary<string, ServicioTransporte> _servicios;
 

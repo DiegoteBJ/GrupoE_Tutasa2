@@ -10,7 +10,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
 
     internal class GenerarHDRTransporteModelo
     {
-        public static int cdTrabajoId = Program.CDTrabajoId;
+        public int cdTrabajoId = Program.CDTrabajoId;
         public int cdActualidadId = Program.CDTrabajoId;
         public Dictionary<string, ServicioTransporte> _servicios =>
                ServicioTransporteAlmacen.servicioTransportes
