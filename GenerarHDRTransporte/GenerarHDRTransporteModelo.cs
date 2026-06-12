@@ -82,6 +82,20 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
             return cd?.Nombre ?? "";
         }
 
+        public void ActualizarEstadoGuiasATrasladada(List<string> nrosGuia)
+        {
+            foreach (var nro in nrosGuia)
+            {
+                if (int.TryParse(nro, out int id))
+                {
+                    var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == id);
+                    if (guia != null)
+                        guia.Estado = EstadoGuiaEnum.TRASLADADA;
+                }
+            }
+            GuiaAlmacen.Guardar();
+        }
+
         private string ObtenerRuta(int cdOrigenId, int cdDestinoId)
         {
             string origen = ObtenerNombreCD(cdOrigenId);
