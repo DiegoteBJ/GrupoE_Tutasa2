@@ -309,6 +309,45 @@ namespace GrupoE_Tutasa.Imposicion
 
             GuiaAlmacen.guias.Add(entidad);
             GuiaAlmacen.Guardar();
+
+            // Huella del estado inicial de la guía en el almacén de movimientos.
+            RegistrarMovimientoInicial(guia);
+        }
+
+        // Deja registrado el estado inicial de la guía en MovimientoEstadoGuiaAlmacen.
+        // Toda alta de guía en imposición deja así su primer movimiento de estado.
+        private void RegistrarMovimientoInicial(Guia guia)
+        {
+            int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                : 1;
+
+            MovimientoEstadoGuiaEntidad movimiento = new MovimientoEstadoGuiaEntidad
+            {
+                MovimientoId    = nuevoMovimientoId,
+                GuiaId          = guia.GuiaId,
+                FechaMovimiento = DateTime.Now,
+                Estado          = (Almacenes.EstadoGuiaEnum)guia.Estado,
+                Ubicacion       = ResolverUbicacionInicial(guia)
+            };
+
+            MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);
+            MovimientoEstadoGuiaAlmacen.Guardar();
+        }
+
+        // Describe dónde queda la guía según la modalidad de imposición,
+        // siguiendo las convenciones de ubicación ya usadas en el sistema.
+        private string ResolverUbicacionInicial(Guia guia)
+        {
+            switch (guia.ModalidadImposicion)
+            {
+                case ModalidadImposicionEnum.AGENCIA:
+                    return $"En Agencia: {guia.AgenciaOrigenId ?? 0}";
+                case ModalidadImposicionEnum.CD:
+                    return $"En CD: {guia.CDOrigenId}";
+                default: // DOMICILIO
+                    return $"En Domicilio cliente: {guia.CDOrigenId}";
+            }
         }
 
         public List<Localidad> ObtenerLocalidadesPorProvincia(int provinciaId)
