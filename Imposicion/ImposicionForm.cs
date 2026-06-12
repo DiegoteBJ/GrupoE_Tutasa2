@@ -3,7 +3,7 @@ namespace GrupoE_Tutasa.Imposicion
     public partial class ImposicionForm : Form
     {
         private ImposicionModelo modelo = new();
-        
+
 
         public ImposicionForm()
         {
@@ -143,7 +143,10 @@ namespace GrupoE_Tutasa.Imposicion
             LocalidadRetiroComboBox.DataSource = null;
             LocalidadRetiroComboBox.Enabled = false;
 
-            if (ProvinciaRetiroComboBox.SelectedItem == null) return;
+            if (ProvinciaRetiroComboBox.SelectedItem == null)
+            {
+                return;
+            }
 
             Provincia prov = (Provincia)ProvinciaRetiroComboBox.SelectedItem;
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
@@ -169,7 +172,10 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (ProvinciaEntregaComboBox.SelectedItem == null) return;
+            if (ProvinciaEntregaComboBox.SelectedItem == null)
+            {
+                return;
+            }
 
             Provincia prov = (Provincia)ProvinciaEntregaComboBox.SelectedItem;
             var localidades = modelo.ObtenerLocalidadesPorProvincia(prov.ProvinciaId);
@@ -193,17 +199,24 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (LocalidadEntregaComboBox.SelectedItem == null) return;
+            if (LocalidadEntregaComboBox.SelectedItem == null)
+            {
+                return;
+            }
 
             Localidad loc = (Localidad)LocalidadEntregaComboBox.SelectedItem;
             var agencias = modelo.ObtenerAgenciasPorLocalidad(loc.LocalidadId);
             var cds = modelo.ObtenerCDsPorLocalidad(loc.LocalidadId);
 
             if (cds.Count > 0)
+            {
                 TipoEntregaComboBox.Items.Add("CD");
+            }
 
             if (agencias.Count > 0)
+            {
                 TipoEntregaComboBox.Items.Add("Agencia");
+            }
 
             // A domicilio siempre disponible
             TipoEntregaComboBox.Items.Add("A domicilio");
@@ -220,7 +233,10 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.Visible = false;
             panel1.Visible = false;
 
-            if (TipoEntregaComboBox.SelectedItem == null) return;
+            if (TipoEntregaComboBox.SelectedItem == null)
+            {
+                return;
+            }
 
             string tipoSeleccionado = TipoEntregaComboBox.SelectedItem.ToString();
             Localidad loc = (Localidad)LocalidadEntregaComboBox.SelectedItem;
@@ -258,17 +274,32 @@ namespace GrupoE_Tutasa.Imposicion
         // Validación del formato de código postal
         private bool ValidarCodigoPostal(string cp)
         {
-            if (string.IsNullOrWhiteSpace(cp)) return true;
+            if (string.IsNullOrWhiteSpace(cp))
+            {
+                return true;
+            }
+
             bool tieneLetras = false;
             bool tieneNumeros = false;
 
             foreach (char c in cp)
             {
-                if (char.IsLetter(c)) tieneLetras = true;
-                if (char.IsDigit(c)) tieneNumeros = true;
+                if (char.IsLetter(c))
+                {
+                    tieneLetras = true;
+                }
+
+                if (char.IsDigit(c))
+                {
+                    tieneNumeros = true;
+                }
             }
 
-            if (tieneLetras && !tieneNumeros) return false;
+            if (tieneLetras && !tieneNumeros)
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -292,12 +323,22 @@ namespace GrupoE_Tutasa.Imposicion
         private ModalidadEntregaEnum ResolverModalidadEntrega()
         {
             if (TipoEntregaComboBox.SelectedItem == null)
+            {
                 return ModalidadEntregaEnum.CD;
+            }
 
             string tipo = TipoEntregaComboBox.SelectedItem.ToString();
 
-            if (tipo == "A domicilio") return ModalidadEntregaEnum.DOMICILIO;
-            if (tipo == "Agencia") return ModalidadEntregaEnum.AGENCIA;
+            if (tipo == "A domicilio")
+            {
+                return ModalidadEntregaEnum.DOMICILIO;
+            }
+
+            if (tipo == "Agencia")
+            {
+                return ModalidadEntregaEnum.AGENCIA;
+            }
+
             return ModalidadEntregaEnum.CD;
         }
 
@@ -419,22 +460,42 @@ namespace GrupoE_Tutasa.Imposicion
             if (!string.IsNullOrWhiteSpace(CantidadSTextBox.Text))
             {
                 foreach (char c in CantidadSTextBox.Text)
-                    if (!char.IsDigit(c)) cantidadesValidas = false;
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        cantidadesValidas = false;
+                    }
+                }
             }
             if (!string.IsNullOrWhiteSpace(CantidadMTextBox.Text))
             {
                 foreach (char c in CantidadMTextBox.Text)
-                    if (!char.IsDigit(c)) cantidadesValidas = false;
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        cantidadesValidas = false;
+                    }
+                }
             }
             if (!string.IsNullOrWhiteSpace(CantidadLTextBox.Text))
             {
                 foreach (char c in CantidadLTextBox.Text)
-                    if (!char.IsDigit(c)) cantidadesValidas = false;
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        cantidadesValidas = false;
+                    }
+                }
             }
             if (!string.IsNullOrWhiteSpace(CantidadXLTextBox.Text))
             {
                 foreach (char c in CantidadXLTextBox.Text)
-                    if (!char.IsDigit(c)) cantidadesValidas = false;
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        cantidadesValidas = false;
+                    }
+                }
             }
 
             if (!cantidadesValidas)
@@ -464,7 +525,7 @@ namespace GrupoE_Tutasa.Imposicion
             Domicilio domicilioEntrega = null;
             int agenciaDestinoId = 0;
             bool tieneAgenciaDestino = false;
-            int cdDestinoId = ImposicionModelo.cdTrabajoId;
+            int cdDestinoId = modelo.cdTrabajoId;
 
             if (tipoSeleccionado == "Agencia" && DestinoComboBox.SelectedItem != null)
             {
@@ -515,9 +576,9 @@ namespace GrupoE_Tutasa.Imposicion
                 }
                 domicilioRetiro = new Domicilio
                 {
-                    Calle        = DireccionRetiroTextBox.Text,
+                    Calle = DireccionRetiroTextBox.Text,
                     CodigoPostal = CPRetiroTextBox.Text,
-                    LocalidadId  = localidadRetiroId
+                    LocalidadId = localidadRetiroId
                 };
             }
 
@@ -526,18 +587,18 @@ namespace GrupoE_Tutasa.Imposicion
             for (int i = 0; i < cantS; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = modelo.clienteActual.ClienteId;
-                guia.CDDestinoId          = cdDestinoId;
+                guia.ClienteId = modelo.clienteActual.ClienteId;
+                guia.CDDestinoId = cdDestinoId;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
-                guia.ModalidadEntrega     = modalidadEntrega;
-                guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
-                guia.DomicilioEntrega     = domicilioEntrega;
-                guia.NombreDestinatario   = NombreDestinatarioTextBox.Text.Trim();
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
                 guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
-                guia.DNIDestinatario      = dni;
-                guia.TipoCaja             = TipoCajaEnum.S;
-                guia.IntentosDeEntrega    = 0;
-                guia.TarifarioId          = 1;
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.S;
+                guia.IntentosDeEntrega = 0;
+                guia.TarifarioId = 1;
                 modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (S)\n";
             }
@@ -545,18 +606,18 @@ namespace GrupoE_Tutasa.Imposicion
             for (int i = 0; i < cantM; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = modelo.clienteActual.ClienteId;
-                guia.CDDestinoId          = cdDestinoId;
+                guia.ClienteId = modelo.clienteActual.ClienteId;
+                guia.CDDestinoId = cdDestinoId;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
-                guia.ModalidadEntrega     = modalidadEntrega;
-                guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
-                guia.DomicilioEntrega     = domicilioEntrega;
-                guia.NombreDestinatario   = NombreDestinatarioTextBox.Text.Trim();
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
                 guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
-                guia.DNIDestinatario      = dni;
-                guia.TipoCaja             = TipoCajaEnum.M;
-                guia.IntentosDeEntrega    = 0;
-                guia.TarifarioId          = 1;
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.M;
+                guia.IntentosDeEntrega = 0;
+                guia.TarifarioId = 1;
                 modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (M)\n";
             }
@@ -564,18 +625,18 @@ namespace GrupoE_Tutasa.Imposicion
             for (int i = 0; i < cantL; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = modelo.clienteActual.ClienteId;
-                guia.CDDestinoId          = cdDestinoId;
+                guia.ClienteId = modelo.clienteActual.ClienteId;
+                guia.CDDestinoId = cdDestinoId;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
-                guia.ModalidadEntrega     = modalidadEntrega;
-                guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
-                guia.DomicilioEntrega     = domicilioEntrega;
-                guia.NombreDestinatario   = NombreDestinatarioTextBox.Text.Trim();
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
                 guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
-                guia.DNIDestinatario      = dni;
-                guia.TipoCaja             = TipoCajaEnum.L;
-                guia.IntentosDeEntrega    = 0;
-                guia.TarifarioId          = 1;
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.L;
+                guia.IntentosDeEntrega = 0;
+                guia.TarifarioId = 1;
                 modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (L)\n";
             }
@@ -583,18 +644,18 @@ namespace GrupoE_Tutasa.Imposicion
             for (int i = 0; i < cantXL; i++)
             {
                 Guia guia = new Guia();
-                guia.ClienteId            = modelo.clienteActual.ClienteId;
-                guia.CDDestinoId          = cdDestinoId;
+                guia.ClienteId = modelo.clienteActual.ClienteId;
+                guia.CDDestinoId = cdDestinoId;
                 modelo.AsignarDatosOrigen(guia, domicilioRetiro);
-                guia.ModalidadEntrega     = modalidadEntrega;
-                guia.AgenciaDestinoId     = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
-                guia.DomicilioEntrega     = domicilioEntrega;
-                guia.NombreDestinatario   = NombreDestinatarioTextBox.Text.Trim();
+                guia.ModalidadEntrega = modalidadEntrega;
+                guia.AgenciaDestinoId = tieneAgenciaDestino ? agenciaDestinoId : (int?)null;
+                guia.DomicilioEntrega = domicilioEntrega;
+                guia.NombreDestinatario = NombreDestinatarioTextBox.Text.Trim();
                 guia.ApellidoDestinatario = ApellidoDestinatarioTextBox.Text.Trim();
-                guia.DNIDestinatario      = dni;
-                guia.TipoCaja             = TipoCajaEnum.XL;
-                guia.IntentosDeEntrega    = 0;
-                guia.TarifarioId          = 1;
+                guia.DNIDestinatario = dni;
+                guia.TipoCaja = TipoCajaEnum.XL;
+                guia.IntentosDeEntrega = 0;
+                guia.TarifarioId = 1;
                 modelo.RegistrarGuia(guia);
                 detalle = detalle + guia.GuiaId.ToString("D8") + " (XL)\n";
             }
@@ -668,21 +729,32 @@ namespace GrupoE_Tutasa.Imposicion
         // Formateo del domicilio para mostrar en pantalla
         private string FormatearDomicilio(Domicilio d)
         {
-            if (d == null) return string.Empty;
+            if (d == null)
+            {
+                return string.Empty;
+            }
 
             string resultado = "";
 
             if (!string.IsNullOrWhiteSpace(d.Calle))
+            {
                 resultado = resultado + d.Calle + " ";
+            }
 
             if (!string.IsNullOrWhiteSpace(d.Numero))
+            {
                 resultado = resultado + d.Numero + " ";
+            }
 
             if (!string.IsNullOrWhiteSpace(d.Piso))
+            {
                 resultado = resultado + "P" + d.Piso + " ";
+            }
 
             if (!string.IsNullOrWhiteSpace(d.Depto))
+            {
                 resultado = resultado + "D" + d.Depto + " ";
+            }
 
             return resultado.Trim();
         }
