@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using GrupoE_Tutasa.FormularioPrincipal;
 
 namespace GrupoE_Tutasa.GenerarHDRTransporte
 {
@@ -169,6 +170,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
             labelUsuarioResultado.Text = "1";
             labelResultadoFechaEmision.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            labelResultadoCD.Text = Program.CDTrabajoId.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)

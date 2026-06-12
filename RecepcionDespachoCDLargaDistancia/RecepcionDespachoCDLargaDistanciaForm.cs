@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using GrupoE_Tutasa.FormularioPrincipal;
 
 namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
@@ -18,7 +19,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         public RecepcionDespachoCDLargaDistanciaForm()
         {
             InitializeComponent();
-            labelRespuestaUsuario.Text = "8";
+            //labelRespuestaUsuario.Text = Program.CDTrabajoId.ToString();
             labelResultadoCD.Text = _modelo.GetNombreCDOperario();
         }
            

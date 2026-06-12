@@ -1,4 +1,5 @@
 ﻿using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +9,28 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
 {
     internal class RecepcionDespachoCDLargaDistanciaModelo
     {
-        // CD del operario logueado (hardcodeado hasta que haya login)
-        public const int CDOperarioId = 8;
+        public static int cdTrabajoId = Program.CDTrabajoId;
 
-        // ===== MAPEO de servicios a clase local =====
-        // Se muestran los servicios que tocan este CD (sea origen o destino)
-        public List<ServicioTransporte> LServicios =>
-            ServicioTransporteAlmacen.servicioTransportes
-                .Where(s => s.CDOrigenId == CDOperarioId || s.CDDestinoId == CDOperarioId)
-                .Select(s => new ServicioTransporte
-                {
-                    ServicioId = s.ServicioId.ToString(),
-                    NombreEmpresa = ObtenerNombreEmpresa(s.EmpresaTransporteId),
-                    FechaSalida = s.FechaYHoraSalida,
-                    Ruta = ObtenerRuta(s.CDOrigenId, s.CDDestinoId),
-                    HDRsARecibir = ObtenerHDRsARecibir(s.ServicioId),
-                    HDRsADespachar = ObtenerHDRsADespachar(s.ServicioId)
-                }).ToList();
+        public Dictionary<string, ServicioTransporte> _servicios;
 
-        // ===== VALIDACIONES (las tuyas, intactas) =====
+        public RecepcionDespachoCDLargaDistanciaModelo()
+        {
+            _servicios = ServicioTransporteAlmacen.servicioTransportes
+                .Where(s => s.CDOrigenId == cdTrabajoId || s.CDDestinoId == cdTrabajoId)
+                .ToDictionary(
+                    s => s.ServicioId.ToString(),
+                    s => new ServicioTransporte
+                    {
+                        ServicioId = s.ServicioId.ToString(),
+                        NombreEmpresa = ObtenerNombreEmpresa(s.EmpresaTransporteId),
+                        FechaSalida = s.FechaYHoraSalida,
+                        Ruta = ObtenerRuta(s.CDOrigenId, s.CDDestinoId),
+                        HDRsARecibir = ObtenerHDRsARecibir(s.ServicioId),
+                        HDRsADespachar = ObtenerHDRsADespachar(s.ServicioId)
+                    });
+        }
+
+       
 
         public bool EsNroVacio(string nro)
             => string.IsNullOrWhiteSpace(nro);
@@ -35,13 +39,18 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
             => !Regex.IsMatch(nro, @"^\d+$");
 
         public bool ExisteServicio(string nro)
-            => LServicios.Any(s => s.ServicioId == nro);
+            => _servicios.ContainsKey (nro);
 
         public ServicioTransporte BuscarServicio(string nro)
-            => LServicios.FirstOrDefault(s => s.ServicioId == nro);
+        {
+            _servicios.TryGetValue (nro, out var servicio);
+            return servicio; 
+        }
+            
+            
 
         public string GetNombreCDOperario()
-            => ObtenerNombreCD(CDOperarioId);
+            => ObtenerNombreCD(cdTrabajoId);
 
         // ===== HDRs a RECIBIR =====
         // HDRs de este servicio cuyo destino es MI CD (llegan aquí)
@@ -49,7 +58,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         {
             return HDRTransporteAlmacen.hDRTransportes
                 .Where(h => h.ServicioId == servicioId
-                         && h.CDDestinoId == CDOperarioId)
+                         && h.CDDestinoId == cdTrabajoId)
                 .Select(h => new HDRTransporte
                 {
                     HdrTransporteId = h.HdrTransporteId,
@@ -66,7 +75,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         {
             return HDRTransporteAlmacen.hDRTransportes
                 .Where(h => h.ServicioId == servicioId
-                         && h.CDOrigenId == CDOperarioId)
+                         && h.CDOrigenId == cdTrabajoId)
                 .Select(h => new HDRTransporte
                 {
                     HdrTransporteId = h.HdrTransporteId,
