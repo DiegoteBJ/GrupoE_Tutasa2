@@ -11,10 +11,10 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
     internal class GenerarHDRTransporteModelo
     {
         public int cdTrabajoId = Program.CDTrabajoId;
-        public int cdActualidadId = Program.CDTrabajoId;
+        
         public Dictionary<string, ServicioTransporte> _servicios =>
                ServicioTransporteAlmacen.servicioTransportes
-            .Where(s=> s.CDOrigenId == cdActualidadId)
+            .Where(s=> s.CDOrigenId == cdTrabajoId)
             .ToDictionary(
                    s => s.ServicioId.ToString(),
                    s => new ServicioTransporte

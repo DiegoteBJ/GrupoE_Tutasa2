@@ -90,9 +90,9 @@ namespace GrupoE_Tutasa.Admision
             if (guia != null)
             {
                 if (guia.CDDestinoId == guia.CDActualId)
-                    { guia.Estado = EstadoGuiaEnum.TRASLADADA;}
+                    { guia.Estado = EstadoGuiaEnum.EN_CD_DESTINO;}
                 else
-                    { guia.Estado = EstadoGuiaEnum.ADMITIDA; }
+                    { guia.Estado = EstadoGuiaEnum.ADMITIDA;}
                 GuiaAlmacen.Guardar();
 
                 int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0

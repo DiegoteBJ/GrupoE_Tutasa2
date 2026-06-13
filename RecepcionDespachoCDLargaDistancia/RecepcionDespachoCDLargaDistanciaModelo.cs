@@ -99,9 +99,19 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                 var entidad = HDRTransporteAlmacen.hDRTransportes
                     .FirstOrDefault(h => h.HdrTransporteId == hdr.HdrTransporteId);
                 if (entidad != null)
+                {
                     entidad.Estado = EstadoHDRTransporteEnum.RENDIDA;
+
+                    foreach (var guiaId in entidad.GuiaIds ?? new List<int>())
+                    {
+                        var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
+                        if (guia != null)
+                            guia.Estado = EstadoGuiaEnum.EN_CD_DESTINO;
+                    }
+                }
             }
             HDRTransporteAlmacen.Guardar();
+            GuiaAlmacen.Guardar();
         }
 
         public void MarcarComoEnTransito(List<HDRTransporte> hdrs)

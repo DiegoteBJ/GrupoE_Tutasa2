@@ -1,4 +1,5 @@
 ﻿using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,13 @@ using System.Text.RegularExpressions;
 namespace GrupoE_Tutasa.GenerarHDR
 {
     internal class GenerarHDRFleteroModelo
-    {    public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
-        .Select(g => new Guias
     {
+    public int cdTrabajoId = Program.CDTrabajoId;
+    
+    public List<Guias> LGuiasAAsignar => GuiaAlmacen.guias
+    .Select(g => new Guias
+    {
+        
         GuiaId = g.GuiaId,
         ModalidadImposicion = (ModalidadImposicionEnum)g.ModalidadImposicion,
         DomicilioRetiro = g.DomicilioRetiro == null ? null : new Domicilio
@@ -162,8 +167,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             else if (estado == "EN_DISTRIBUCION")
             {
                 return LGuiasAAsignar.Where(g =>
-                    (g.EstadoGuia == EstadoGuiaEnum.ADMITIDA ||
-                    (g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
+                    ((g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
                     (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
                     g.DomicilioEntrega != null &&
                     fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
@@ -265,7 +269,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == EstadoGuiaEnum.ADMITIDA || g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO))
+                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO))
                     {
                         g.EstadoGuia = EstadoGuiaEnum.EN_DISTRIBUCION;
 
@@ -274,6 +278,19 @@ namespace GrupoE_Tutasa.GenerarHDR
                         {
                             entidad.Estado = (GrupoE_Tutasa.Almacenes.EstadoGuiaEnum)
                                              GrupoE_Tutasa.GenerarHDR.EstadoGuiaEnum.EN_DISTRIBUCION;
+
+                            int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                                ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                                : 1;
+
+                            MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(new MovimientoEstadoGuiaEntidad
+                            {
+                                MovimientoId = nuevoMovimientoId,
+                                GuiaId = g.GuiaId,
+                                FechaMovimiento = DateTime.Now,
+                                Estado = GrupoE_Tutasa.Almacenes.EstadoGuiaEnum.EN_DISTRIBUCION,
+                                Ubicacion = cdTrabajoId.ToString()
+                            });
                         }
                     }
                 }
@@ -284,6 +301,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             HDRDistribucionAlmacen.Guardar();
             FleteroAlmacen.Guardar();
             ClienteAlmacen.Guardar();
+            MovimientoEstadoGuiaAlmacen.Guardar();
         }
     }
 }

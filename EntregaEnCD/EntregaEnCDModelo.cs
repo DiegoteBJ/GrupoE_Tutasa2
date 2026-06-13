@@ -59,7 +59,7 @@ namespace GrupoE_Tutasa.EntregaEnCD
         {
             return guias
                 .Where(g => g.DniDestinatario == dni
-                         && g.Estado == "PENDIENTE_DE_ENTREGA"
+                         && g.Estado == "EN_CD_DESTINO"
                          && g.UbicacionActual.Contains("CD"))
                 .ToList();
         }
@@ -78,6 +78,22 @@ namespace GrupoE_Tutasa.EntregaEnCD
             {
                 guiaAlmacen.Estado = EstadoGuiaEnum.ENTREGADA;
                 GuiaAlmacen.Guardar();
+
+                int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                    ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                    : 1;
+
+                var movimiento = new MovimientoEstadoGuiaEntidad
+                {
+                    MovimientoId = nuevoMovimientoId,
+                    GuiaId = guiaId,
+                    FechaMovimiento = DateTime.Now,
+                    Estado = EstadoGuiaEnum.ENTREGADA,
+                    Ubicacion = guiaAlmacen.CDDestinoId.ToString()
+                };
+
+                MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);
+                MovimientoEstadoGuiaAlmacen.Guardar();
             }
 
             Guia guia = guias.FirstOrDefault(g => g.GuiaId == guiaId);
@@ -93,8 +109,9 @@ namespace GrupoE_Tutasa.EntregaEnCD
             if (cuentaCorriente != null)
             {
                 cuentaCorriente.FechaEntrega = DateTime.Now;
+                cuentaCorriente.FechaMovimiento = DateTime.Now;
                 CuentaCorrienteClienteAlmacen.Guardar();
-                GuardarFechaEntregaEnCuentaCorrienteJson(guiaId);
+                //GuardarFechaEntregaEnCuentaCorrienteJson(guiaId);
             }
         }
 

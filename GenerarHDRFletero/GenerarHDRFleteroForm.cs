@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.GenerarHDR
 {
-    public partial class GenerarHDRFletero : Form
+    public partial class GenerarHDRFleteroForm : Form
     {
         private GenerarHDRFleteroModelo modelo = new GenerarHDRFleteroModelo();
-        public GenerarHDRFletero()
+        public GenerarHDRFleteroForm()
         {
             InitializeComponent();
         }
