@@ -1,4 +1,6 @@
 ﻿using GrupoE_Tutasa.FormularioPrincipal;
+using System.Collections.Generic;
+using System.Linq;
 namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
     public partial class RecepcionDespachoAgenciaForm : Form
@@ -63,45 +65,28 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 return;
             }
 
-            // Buscar fletero
-            foreach (var fletero in modelo.LFleteros)
+            var fletero = modelo.LFleteros.FirstOrDefault(f => f.fleteroDNI == dniBuscado);
+
+            if (fletero != null)
             {
-                if (fletero.fleteroDNI == dniBuscado)
-                {
-                    modelo.fleteroActual = fletero;
+                modelo.fleteroActual = fletero;
+                NombreFleteroRespuestaLabel.Text = fletero.fleteroNombre;
+                ApellidoRespuestaLabel.Text = fletero.fleteroApellido;
 
-                    NombreFleteroRespuestaLabel.Text =
-                        fletero.fleteroNombre;
+                var hdrsRetiro = modelo.LHDRRetiro;
+                var hdrsDistribucion = modelo.LHDRDistribucion;
 
-                    ApellidoRespuestaLabel.Text =
-                        fletero.fleteroApellido;
-                    foreach (var hdr in modelo.LHDRRetiro)
-                    {
-                        if (hdr.fleteroDNI == dniBuscado)
-                        {
-                            HojasdeRutaListView.Items.Add(hdr.numeroHDR);
-                        }
-                    }
+                foreach (var hdr in hdrsRetiro.Where(h => h.fleteroDNI == dniBuscado))
+                    HojasdeRutaListView.Items.Add(hdr.numeroHDR);
 
-                    // HDR de distribución
-                    foreach (var hdr in modelo.LHDRDistribucion)
-                    {
-                        if (hdr.fleteroDNI == dniBuscado)
-                        {
-                            HDRaRendirAgenciaListView.Items.Add(hdr.numeroHDR);
-                        }
-                    }
+                foreach (var hdr in hdrsDistribucion.Where(h => h.fleteroDNI == dniBuscado))
+                    HDRaRendirAgenciaListView.Items.Add(hdr.numeroHDR);
 
-                    return;
-                }
+                return;
             }
 
-            // Si no se encontró
-            MessageBox.Show(
-                "No se encontró el fletero. Vuelva a intentarlo.");
-
+            MessageBox.Show("No se encontró el fletero. Vuelva a intentarlo.");
             DNIFleteroBox.Clear();
-
             NombreFleteroRespuestaLabel.Text = "";
             ApellidoRespuestaLabel.Text = "";
         }
@@ -133,42 +118,19 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
         private void CargarDetalleHDR(string hdrSeleccionada)
         {
             NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
-
             DetalleGuiasListView.Items.Clear();
 
-            var hdrRetiro =
-                modelo.LHDRRetiro.FirstOrDefault(
-                    h => h.numeroHDR == hdrSeleccionada);
+            var hdrRetiro = modelo.LHDRRetiro.FirstOrDefault(h => h.numeroHDR == hdrSeleccionada);
+            var hdrDistribucion = modelo.LHDRDistribucion.FirstOrDefault(h => h.numeroHDR == hdrSeleccionada);
 
-            var hdrDistribucion =
-                modelo.LHDRDistribucion.FirstOrDefault(
-                    h => h.numeroHDR == hdrSeleccionada);
+            var ids = hdrRetiro?.GuiaIds ?? hdrDistribucion?.GuiaIds ?? new List<int>();
 
-            foreach (var guia in modelo.LGuias)
+            foreach (var guia in modelo.ObtenerGuiasPorIds(ids))
             {
-                bool perteneceHDR = false;
-
-                if (hdrRetiro != null)
-                {
-                    perteneceHDR =
-                        hdrRetiro.GuiaIds.Contains(guia.guiaId);
-                }
-
-                if (!perteneceHDR && hdrDistribucion != null)
-                {
-                    perteneceHDR =
-                        hdrDistribucion.GuiaIds.Contains(guia.guiaId);
-                }
-
-                if (perteneceHDR)
-                {
-                    ListViewItem item = new ListViewItem("");
-
-                    item.SubItems.Add(guia.guiaId.ToString());
-                    item.SubItems.Add(guia.tipo);
-
-                    DetalleGuiasListView.Items.Add(item);
-                }
+                ListViewItem item = new ListViewItem("");
+                item.SubItems.Add(guia.guiaId.ToString());
+                item.SubItems.Add(guia.tipo);
+                DetalleGuiasListView.Items.Add(item);
             }
         }
 

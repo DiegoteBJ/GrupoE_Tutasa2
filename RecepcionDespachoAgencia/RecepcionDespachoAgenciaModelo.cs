@@ -1,8 +1,8 @@
-﻿using GrupoE_Tutasa.Almacenes;
+using GrupoE_Tutasa.Almacenes;
 using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 {
@@ -11,7 +11,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
         public Fletero? fleteroActual = null;
         public string Usuario = "Usuario 01";
         public int AgenciaTrabajo = Program.agenciaTrabajoId;
-        // Lista de fleteros
+
         public List<Fletero> LFleteros => FleteroAlmacen.fleteros
                 .OrderBy(f => f.Apellido)
                 .ThenBy(f => f.Nombre)
@@ -23,14 +23,12 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 })
                 .ToList();
 
-        // Lista de HDR Retiro
         public List<HDRRetiro> LHDRRetiro => HDRRetiroAlmacen.hDRRetiros
             .Where(h => h.Estado == EstadoHDRRetiroEnum.PENDIENTE)
                 .OrderBy(h => h.FechaEmision)
                 .Select(h =>
                 {
                     var fletero = FleteroAlmacen.fleteros.FirstOrDefault(f => f.FleteroId == h.FleteroId);
-
                     return new HDRRetiro
                     {
                         numeroHDR = h.HdrRetiroId.ToString(),
@@ -41,15 +39,12 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 })
                 .ToList();
 
-
-        // Lista de HDR Distribución
         public List<HDRDistribucion> LHDRDistribucion => HDRDistribucionAlmacen.hDRDistribucions
             .Where(h => h.Estado == EstadoHDRDistribucionEnum.PENDIENTE)
                 .OrderBy(h => h.FechaEmision)
                 .Select(h =>
                 {
                     var fletero = FleteroAlmacen.fleteros.FirstOrDefault(f => f.FleteroId == h.FleteroId);
-
                     return new HDRDistribucion
                     {
                         numeroHDR = h.HdrDistribucionId.ToString(),
@@ -60,15 +55,16 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 })
                 .ToList();
 
-        // Lista de Guías
-        public List<Guia> LGuias => GuiaAlmacen.guias
-          .Select(g => new Guia
-          {
-              guiaId = g.GuiaId,
-              tipo = g.TipoCaja.ToString(),
-              estado = g.Estado.ToString()
-          })
-        .ToList();
+        public List<Guia> ObtenerGuiasPorIds(List<int> ids) =>
+            GuiaAlmacen.guias
+                .Where(g => ids.Contains(g.GuiaId))
+                .Select(g => new Guia
+                {
+                    guiaId = g.GuiaId,
+                    tipo = g.TipoCaja.ToString(),
+                    estado = g.Estado.ToString()
+                })
+                .ToList();
 
         public void ConfirmarRecepcion(string numeroHDR, List<int> guiaIdsConfirmadas)
         {
@@ -76,7 +72,22 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             {
                 var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
                 if (guia != null)
+                {
                     guia.Estado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
+
+                    int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                        ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                        : 1;
+
+                    MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(new MovimientoEstadoGuiaEntidad
+                    {
+                        MovimientoId = nuevoMovimientoId,
+                        GuiaId = guiaId,
+                        FechaMovimiento = DateTime.Now,
+                        Estado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA,
+                        Ubicacion = "Agencia: " + AgenciaTrabajo.ToString()
+                    });
+                }
             }
 
             if (int.TryParse(numeroHDR, out int hdrId))
@@ -87,6 +98,9 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 if (hdrRetiro != null)
                 {
                     hdrRetiro.Estado = EstadoHDRRetiroEnum.RENDIDA;
+                    GuiaAlmacen.Guardar();
+                    HDRRetiroAlmacen.Guardar();
+                    MovimientoEstadoGuiaAlmacen.Guardar();
                     return;
                 }
 
@@ -96,11 +110,10 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                 if (hdrDistribucion != null)
                     hdrDistribucion.Estado = EstadoHDRDistribucionEnum.RENDIDA;
             }
+
+            GuiaAlmacen.Guardar();
+            HDRDistribucionAlmacen.Guardar();
+            MovimientoEstadoGuiaAlmacen.Guardar();
         }
     }
 }
-   
-
-
-
-
