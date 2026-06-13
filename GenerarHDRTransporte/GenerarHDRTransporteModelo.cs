@@ -53,10 +53,15 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         // 2. El CD actual debe ser distinto del CD destino
         private List<Guia> FiltrarGuiasParaServicio(ServicioTransporteEntidad servicio)
         {
+            var guiasEnTransportePendiente = HDRTransporteAlmacen.hDRTransportes
+                .Where(h => h.Estado == EstadoHDRTransporteEnum.PENDIENTE)
+                .SelectMany(h => h.GuiaIds)
+                .ToHashSet();
+
             return GuiaAlmacen.guias
                 .Where(g => g.Estado == EstadoGuiaEnum.ADMITIDA
-                         && g.CDActualId != g.CDDestinoId)
-                        // && g.CDDestinoId == servicio.CDDestinoId)
+                         && g.CDActualId != g.CDDestinoId
+                         && !guiasEnTransportePendiente.Contains(g.GuiaId))
                 .Select(g => new Guia
                 {
                     NroGuia = g.GuiaId.ToString(),
@@ -112,11 +117,12 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == id);
                 if (guia != null)
                 {
-                    if (guia.CDDestinoId == guia.CDActualId)
+                    if (guia.CDDestinoId == cdTrabajoId)
                         guia.Estado = EstadoGuiaEnum.TRASLADADA;
                     else
                         guia.Estado = EstadoGuiaEnum.ADMITIDA;
-
+                    
+                    guia.CDActualId = cdTrabajoId;
                     int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
                         ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
                         : 1;
@@ -127,7 +133,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                         GuiaId = guia.GuiaId,
                         FechaMovimiento = DateTime.Now,
                         Estado = guia.Estado,
-                        Ubicacion = "En CD: " + guia.CDActualId.ToString()
+                        Ubicacion = "En CD: " + cdTrabajoId.ToString()
                     });
                 }
             }

@@ -4,11 +4,13 @@ using GrupoE_Tutasa.FormularioPrincipal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GrupoE_Tutasa.Admision
 {
     internal class AdmisionModelo
     {
+        int CDTrabajoId = Program.CDTrabajoId;
         public List<GuiasAAdmitir> LGuiasAAdmitir =>
         GuiaAlmacen.guias
         .Where(g => g.Estado == EstadoGuiaEnum.RENDIDA && g.CDOrigenId == Program.CDTrabajoId)
@@ -83,6 +85,7 @@ namespace GrupoE_Tutasa.Admision
             var guia = GuiaAlmacen.guias
                 .FirstOrDefault(g => g.GuiaId == guiaId);
 
+            guia.CDActualId = CDTrabajoId;
             if (guia != null)
             {
                 if (guia.CDDestinoId == guia.CDActualId)

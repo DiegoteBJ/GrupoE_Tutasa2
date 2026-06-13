@@ -1,9 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GrupoE_Tutasa.RendicionHDR
@@ -11,6 +8,7 @@ namespace GrupoE_Tutasa.RendicionHDR
     public partial class RendicionHDRForm : Form
     {
         private RendicionHDRModelo modelo = new();
+
         public RendicionHDRForm()
         {
             InitializeComponent();
@@ -37,186 +35,86 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             string nroHDR = HDRtextBox.Text.Trim();
 
-            // Validar vacío
             if (string.IsNullOrWhiteSpace(nroHDR))
             {
-                MessageBox.Show(
-                    "Debe ingresar un número de Hoja de Ruta.");
-
+                MessageBox.Show("Debe ingresar un número de Hoja de Ruta.");
                 HDRtextBox.Focus();
                 return;
             }
 
-            // Validar numérico
             if (!int.TryParse(nroHDR, out _))
             {
-                MessageBox.Show(
-                    "Debe ingresar solo números.");
-
+                MessageBox.Show("Debe ingresar solo números.");
                 HDRtextBox.Clear();
                 return;
             }
 
-            // Verificar que haya seleccionado un tipo
-            if (!HDRRetiroRadioBoton.Checked &&
-                !HDRDistribucionRadioBoton.Checked)
+            if (!HDRRetiroRadioBoton.Checked && !HDRDistribucionRadioBoton.Checked)
             {
-                MessageBox.Show(
-                    "Debe seleccionar un tipo de HDR.");
-
+                MessageBox.Show("Debe seleccionar un tipo de HDR.");
                 return;
             }
+
             if (HDRRetiroRadioBoton.Checked)
             {
-                foreach (var hdr in modelo.LHDRRetiro)
+                var hdr = modelo.LHDRRetiro
+                    .FirstOrDefault(h => h.numeroHDR == nroHDR && h.estadoHDR == "PENDIENTE");
+                if (hdr != null)
                 {
-                    if (hdr.numeroHDR == nroHDR && hdr.estadoHDR == "PENDIENTE")
-                    {
-                        CargarHDRRetiro(hdr);
-                        return;
-                    }
-                    {
-                        CargarHDRRetiro(hdr);
-                        return;
-                    }
+                    CargarHDR(hdr.numeroHDR, hdr.fleteroDNI, hdr.fechaHDR, hdr.GuiaIds, "Retiro");
+                    return;
                 }
             }
 
             if (HDRDistribucionRadioBoton.Checked)
             {
-                foreach (var hdr in modelo.LHDRDistribucion)
+                var hdr = modelo.LHDRDistribucion
+                    .FirstOrDefault(h => h.numeroHDR == nroHDR && h.estadoHDR == "PENDIENTE");
+                if (hdr != null)
                 {
-                    if (hdr.numeroHDR == nroHDR && hdr.estadoHDR == "PENDIENTE")
-                    {
-                        CargarHDRDistribucion(hdr);
-                        return;
-                    }
-                    {
-                        CargarHDRDistribucion(hdr);
-                        return;
-                    }
+                    CargarHDR(hdr.numeroHDR, hdr.fleteroDNI, hdr.fechaHDR, hdr.GuiaIds, "Distribución");
+                    return;
                 }
             }
-            MessageBox.Show("El número de Hoja de Ruta no existe en el tipo de viaje seleccionado o ya ha sido rendida.");
 
+            MessageBox.Show("El número de Hoja de Ruta no existe en el tipo seleccionado o ya ha sido rendida.");
             HDRtextBox.Clear();
-
             HDRRetiroRadioBoton.Checked = false;
             HDRDistribucionRadioBoton.Checked = false;
         }
 
-        private void CargarHDRRetiro(HDRRetiro hdr)
+        private void CargarHDR(string numeroHDR, long fleteroDNI, DateTime fechaHDR, List<int> guiaIds, string tipoHDR)
         {
-            var fletero =
-                modelo.LFleteros.FirstOrDefault(
-                    f => f.fleteroDNI == hdr.fleteroDNI);
+            var fletero = modelo.LFleteros.FirstOrDefault(f => f.fleteroDNI == fleteroDNI);
+            if (fletero == null) return;
 
-            if (fletero == null)
-                return;
+            RespuestaFleteroLabel.Text = $"{fletero.fleteroApellido}, {fletero.fleteroNombre}";
+            RespuestaFechaLabel.Text = fechaHDR.ToShortDateString();
+            RespuestaTipoHDRLabel.Text = tipoHDR;
 
-            // Datos del viaje
-            RespuestaFleteroLabel.Text =
-                fletero.fleteroApellido + ", " +
-                fletero.fleteroNombre;
-
-            RespuestaFechaLabel.Text =
-                hdr.fechaHDR.ToShortDateString();
-
-            RespuestaTipoHDRLabel.Text = "Retiro";
-
-            // Limpiar detalle anterior
             DetalleHDRListView.Items.Clear();
 
-            int totalGuias = 0;
-
-            // Cargar detalle de guías
-            foreach (var guia in modelo.LGuias)
+            foreach (var guia in modelo.ObtenerGuiasPorIds(guiaIds))
             {
-                if (hdr.GuiaIds.Contains(guia.guiaId))
-                {
-                    ListViewItem item = new ListViewItem(guia.guiaId.ToString());
-
-                    item.SubItems.Add(guia.remitente);
-                    item.SubItems.Add(guia.destinatario);
-                    item.SubItems.Add(guia.domicilio);
-                    item.SubItems.Add(guia.tamanio);
-                    item.SubItems.Add("-"); // En Retiro no aplica intento
-                    item.SubItems.Add(guia.resultado);
-
-                    DetalleHDRListView.Items.Add(item);
-
-                    totalGuias++;
-                }
+                ListViewItem item = new ListViewItem(guia.guiaId.ToString());
+                item.SubItems.Add(guia.destinatario);
+                item.SubItems.Add(guia.domicilio);
+                item.SubItems.Add(guia.tamanio);
+                item.SubItems.Add(tipoHDR == "Retiro" ? "-" : guia.intentosEntrega.ToString());
+                item.SubItems.Add(guia.resultado);
+                DetalleHDRListView.Items.Add(item);
             }
 
-            // Total de guías
-            RespuestaTotalGuiasLabel.Text = totalGuias.ToString();
-
-            // Inicializar contadores
-            RespCantGuiasCumplidasLabel.Text = "0/" + totalGuias;
-
-            RespCantidadGuiasNoCumplidasLabel.Text = "0/" + totalGuias;
-        }
-
-        private void CargarHDRDistribucion(HDRDistribucion hdr)
-        {
-            var fletero =
-                modelo.LFleteros.FirstOrDefault(
-                    f => f.fleteroDNI == hdr.fleteroDNI);
-
-            if (fletero == null)
-                return;
-
-            // Datos del viaje
-            RespuestaFleteroLabel.Text =
-                fletero.fleteroApellido + ", " +
-                fletero.fleteroNombre;
-
-            RespuestaFechaLabel.Text =
-                hdr.fechaHDR.ToShortDateString();
-
-            RespuestaTipoHDRLabel.Text = "Distribución";
-
-            // Limpiar detalle anterior
-            DetalleHDRListView.Items.Clear();
-
-            int totalGuias = 0;
-
-            // Cargar detalle de guías
-            foreach (var guia in modelo.LGuias)
-            {
-                if (guia.numeroHDR == hdr.numeroHDR)
-                {
-                    ListViewItem item = new ListViewItem(guia.guiaId.ToString());
-
-                    item.SubItems.Add(guia.remitente);
-                    item.SubItems.Add(guia.destinatario);
-                    item.SubItems.Add(guia.domicilio);
-                    item.SubItems.Add(guia.tamanio);
-                    item.SubItems.Add(guia.intentosEntrega.ToString());
-                    item.SubItems.Add(guia.resultado);
-
-                    DetalleHDRListView.Items.Add(item);
-
-                    totalGuias++;
-                }
-            }
-
-            // Total de guías
-            RespuestaTotalGuiasLabel.Text = totalGuias.ToString();
-
-            // Inicializar contadores
-            RespCantGuiasCumplidasLabel.Text = "0/" + totalGuias;
-
-            RespCantidadGuiasNoCumplidasLabel.Text = "0/" + totalGuias;
+            int total = DetalleHDRListView.Items.Count;
+            RespuestaTotalGuiasLabel.Text = total.ToString();
+            RespCantGuiasCumplidasLabel.Text = $"0/{total}";
+            RespCantidadGuiasNoCumplidasLabel.Text = $"0/{total}";
         }
 
         private void CambiarCumplidasBoton_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in DetalleHDRListView.SelectedItems)
-            {
-                item.SubItems[6].Text = "Cumplida";
-            }
+                item.SubItems[5].Text = "Cumplida";
 
             ActualizarContadores();
         }
@@ -224,9 +122,7 @@ namespace GrupoE_Tutasa.RendicionHDR
         private void CambiarNoCumplidasBoton_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in DetalleHDRListView.SelectedItems)
-            {
-                item.SubItems[6].Text = "No Cumplida";
-            }
+                item.SubItems[5].Text = "No Cumplida";
 
             ActualizarContadores();
         }
@@ -238,57 +134,47 @@ namespace GrupoE_Tutasa.RendicionHDR
 
             foreach (ListViewItem item in DetalleHDRListView.Items)
             {
-                string estado =
-                    item.SubItems[6].Text;
-
-                if (estado == "Cumplida")
-                    cumplidas++;
-
-                if (estado == "No Cumplida")
-                    noCumplidas++;
+                string estado = item.SubItems[5].Text;
+                if (estado == "Cumplida") cumplidas++;
+                if (estado == "No Cumplida") noCumplidas++;
             }
 
             int total = DetalleHDRListView.Items.Count;
-
-            RespCantGuiasCumplidasLabel.Text =
-                $"{cumplidas}/{total}";
-
-            RespCantidadGuiasNoCumplidasLabel.Text =
-                $"{noCumplidas}/{total}";
+            RespCantGuiasCumplidasLabel.Text = $"{cumplidas}/{total}";
+            RespCantidadGuiasNoCumplidasLabel.Text = $"{noCumplidas}/{total}";
         }
 
         private void ConfirmarRendicionBoton_Click(object sender, EventArgs e)
         {
-            bool hayPendientes = false;
-
             foreach (ListViewItem item in DetalleHDRListView.Items)
             {
-                if (item.SubItems[6].Text == "Pendiente")
+                if (item.SubItems[5].Text == "Pendiente")
                 {
-                    hayPendientes = true;
-                    break;
+                    MessageBox.Show("Operación incompleta. Debe asignar un resultado a todas las encomiendas de la grilla");
+                    return;
                 }
             }
 
-            if (hayPendientes)
-            {
-                MessageBox.Show(
-                    "Operación incompleta. Debe asignar un resultado a todas las encomiendas de la grilla");
+            var respuesta = MessageBox.Show(
+                "¿Está seguro de confirmar la rendición de la Hoja de Ruta?",
+                "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.No) return;
 
-                return;
-            }
-            DialogResult respuesta =
-            MessageBox.Show("¿Está seguro de confirmar la rendición de la Hoja de Ruta?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            var resultados = DetalleHDRListView.Items
+                .Cast<ListViewItem>()
+                .Select(item => new ResultadoGuia
+                {
+                    guiaId = int.Parse(item.SubItems[0].Text),
+                    resultado = item.SubItems[5].Text
+                })
+                .ToList();
 
-            if (respuesta == DialogResult.No)
-            {
-                return;
-            }
+            if (HDRRetiroRadioBoton.Checked)
+                modelo.ConfirmarRendicionRetiro(HDRtextBox.Text.Trim(), resultados);
+            else
+                modelo.ConfirmarRendicionDistribucion(HDRtextBox.Text.Trim(), resultados);
 
-            // Procesar rendición
-            MessageBox.Show(
-                "Rendición registrada correctamente.");
+            MessageBox.Show("Rendición registrada correctamente.");
         }
     }
 }
-
