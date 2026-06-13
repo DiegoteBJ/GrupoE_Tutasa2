@@ -1,0 +1,31 @@
+Plan de Prueba: 080_EntregaEnCD-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Entrega en CD"
+
+(DNI vacío)
+2- Botón                       "Buscar"
+3- Mensaje                     "Debe ingresar un DNI."
+4- Botón                       "Aceptar"
+
+(DNI con longitud inválida)
+5- DNI Destinatario            "123"
+6- Botón                       "Buscar"
+7- Mensaje                     "El DNI debe tener entre 7 y 8 dígitos."
+8- Botón                       "Aceptar"
+
+(DNI inexistente)
+9- DNI Destinatario            "99999999"
+10- Botón                      "Buscar"
+11- Mensaje                    "Destinatario no encontrado."
+12- Botón                      "Aceptar"
+
+(Destinatario sin guías pendientes en CD)
+13- DNI Destinatario           "25000001"
+14- Botón                      "Buscar"
+15- Mensaje                    "No hay guías pendientes en CD para este destinatario."
+16- Botón                      "Aceptar"
+17- Volver al menú principal
+
+Verificaciones:
+18- GuiaEntidad.json - Ninguna guía debe haber cambiado su Estado.

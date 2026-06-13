@@ -1,0 +1,37 @@
+Plan de Prueba: 040_EmitirFactura-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Emitir Factura"
+
+(CUIT vacío)
+2- Botón                       "Buscar Cliente"
+3- Mensaje                     "Debe completar el campo CUIT."
+4- Botón                       "Aceptar"
+
+(CUIT inválido)
+5- CUIT Cliente                "99-99999999-9"
+6- Botón                       "Buscar Cliente"
+7- Mensaje                     "El CUIT ingresado no es válido."
+8- Botón                       "Aceptar"
+
+(Cliente inexistente)
+9- CUIT Cliente                "20-00000001-0"
+10- Botón                      "Buscar Cliente"
+11- Resultado                  "No existe el Cliente seleccionado. Vuelva a intentarlo"
+
+(Cliente sin guías pendientes de facturar)
+12- CUIT Cliente               "30-98765432-1"
+13- Botón                      "Buscar Cliente"
+14- Razón Social resultado     "TransportesABC S.R.L."
+15- Mensaje                    "No se encontraron ítems pendientes de facturar para el cliente seleccionado. Reintente."
+16- Botón                      "Aceptar"
+
+(Intentar facturar sin seleccionar cliente)
+17- Botón                      "Emitir Factura"
+18- Mensaje                    "Debe seleccionar un cliente antes de poder generar la factura."
+19- Botón                      "Aceptar"
+20- Volver al menú principal
+
+Verificaciones:
+21- DocumentoEntidad.json - No debe haberse agregado ninguna entrada nueva.
+22- CuentaCorrienteClienteEntidad.json - Ningún registro debe haber cambiado su campo Facturado.

@@ -1,0 +1,33 @@
+Plan de Prueba: 100_EstadoCCClientes-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Estado Cuenta Corriente Clientes"
+
+(CUIT vacío)
+2- Botón                       "Buscar Cliente"
+3- Mensaje                     "El campo CUIT es requerido."
+4- Botón                       "Aceptar"
+
+(CUIT inválido)
+5- CUIT Cliente                "99-99999999-9"
+6- Botón                       "Buscar Cliente"
+7- Mensaje                     "El CUIT ingresado no es válido."
+8- Botón                       "Aceptar"
+
+(Buscar movimientos sin cliente)
+9- Botón                       "Buscar Movimientos"
+10- Mensaje                    "Por favor, busque un cliente antes de buscar movimientos."
+11- Botón                      "Aceptar"
+
+(Fecha Desde mayor que Fecha Hasta)
+12- CUIT Cliente               "20-12345678-9"
+13- Botón                      "Buscar Cliente"
+14- Fecha Desde                "01/06/2026"
+15- Fecha Hasta                "01/01/2026"
+16- Botón                      "Buscar Movimientos"
+17- Mensaje                    "La fecha desde no puede ser mayor que la fecha hasta."
+18- Botón                      "Aceptar"
+19- Volver al menú principal
+
+Verificaciones:
+20- La lista de documentos debe permanecer vacía en todos los casos de error.

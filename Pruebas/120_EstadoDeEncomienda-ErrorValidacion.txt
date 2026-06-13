@@ -1,0 +1,26 @@
+Plan de Prueba: 120_EstadoDeEncomienda-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Estado de Encomienda"
+
+(Campo vacío)
+2- Botón                       "Buscar"
+3- Mensaje                     "Debe ingresar un número de guía."
+4- Botón                       "Aceptar"
+
+(Formato inválido)
+5- Número de Guía              "ABC"
+6- Botón                       "Buscar"
+7- Mensaje                     "Debe ingresar solo números."
+8- Botón                       "Aceptar"
+
+(Guía inexistente)
+9- Número de Guía              "999999"
+10- Botón                      "Buscar"
+11- Mensaje                    "Número de guía no encontrado."
+12- Botón                      "Aceptar"
+13- Volver al menú principal
+
+Verificaciones:
+14- La lista de movimientos debe permanecer vacía en todos los casos de error.
+15- MovimientoEstadoGuiaEntidad.json - No debe haberse modificado ningún registro.

@@ -1,0 +1,42 @@
+Plan de Prueba: 150_GenerarHDRTransporte-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Generar HDR Transporte"
+
+(Pantalla Generar HDR Transporte)
+2- Nro. Servicio de Transporte 3
+3- Botón                       "Buscar"
+4- Empresa Transporte resultado "Transportes del Sur S.A."
+5- Fecha/Hora Salida resultado  <fecha y hora de salida del servicio 3>
+6- Ruta resultado               "CD Rosario - CD Buenos Aires"
+7- Lista encomiendas pendientes <guías en estado ADMITIDA asignadas al servicio 3>
+8- Seleccionar todas las guías de la lista
+9- Botón                        "Confirmar"
+10- Mensaje                     "HDR de transporte generado correctamente."
+11- Botón                       "Aceptar"
+12- Volver al menú principal
+
+Verificaciones:
+13- HDRTransporteEntidad.json - Debe existir una entrada nueva similar a:
+    {
+        "HdrTransporteId": <último id + 1>,
+        "ServicioId": 3,
+        "CDOrigenId": 7,
+        "CDDestinoId": <CD destino del servicio 3>,
+        "Estado": "PENDIENTE",
+        "GuiaIds": [<ids de las guías seleccionadas>]
+    }
+
+14- GuiaEntidad.json - Las guías seleccionadas deben tener:
+    {
+        "Estado": "TRASLADADA"
+    }
+
+15- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+    {
+        "MovimientoId": <último id + 1>,
+        "GuiaId": <id de la guía>,
+        "FechaMovimiento": "<fecha y hora de hoy>",
+        "Estado": "TRASLADADA",
+        "Ubicacion": "7"
+    }

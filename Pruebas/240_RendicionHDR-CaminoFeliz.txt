@@ -1,0 +1,30 @@
+Plan de Prueba: 240_RendicionHDR-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Rendición HDR"
+
+(Pantalla Rendición HDR)
+2- Nro. HDR                    1
+3- Radio Button                "HDR Retiro"
+4- Botón                       "Buscar HDR"
+5- Fletero resultado           "Pérez, Juan"
+6- Fecha resultado             <fecha de emisión del HDR 1>
+7- Tipo HDR resultado          "Retiro"
+8- Total Guías resultado       <cantidad de guías en el HDR 1>
+9- Lista detalle guías         <guías del HDR 1>
+10- Seleccionar todas las guías
+11- Botón                      "Cumplida"
+12- Contador cumplidas         <total>/<total>
+13- Botón                      "Confirmar Rendición"
+14- Mensaje                    "¿Está seguro de confirmar la rendición de la Hoja de Ruta?"
+15- Botón                      "Sí"
+16- Mensaje                    "Rendición registrada correctamente."
+17- Botón                      "Aceptar"
+18- Volver al menú principal
+
+Verificaciones:
+19- HDRRetiroEntidad.json - El HDR número 1 debe tener:
+    {
+        "HdrRetiroId": 1,
+        "Estado": "RENDIDA"
+    }

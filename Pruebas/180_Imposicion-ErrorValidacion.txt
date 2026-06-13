@@ -1,0 +1,28 @@
+Plan de Prueba: 180_Imposicion-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Imposición"
+
+(CUIT inválido)
+2- CUIT Cliente                "99-99999999-9"
+3- Botón                       "Buscar Cliente"
+4- Mensaje                     "El CUIT ingresado no es válido."
+5- Botón                       "Aceptar"
+
+(CUIT válido pero cliente inexistente)
+6- CUIT Cliente                "20-00000001-0"
+7- Botón                       "Buscar Cliente"
+8- Mensaje                     "No existe el Cliente seleccionado."
+9- Botón                       "Aceptar"
+
+(Intentar generar guía sin completar datos del destinatario)
+10- CUIT Cliente               "20-12345678-9"
+11- Botón                      "Buscar Cliente"
+12- Razón Social resultado     "MundoFOX S.A."
+13- Botón                      "Generar Guía"
+14- Mensaje                    "Debe completar todos los campos obligatorios."
+15- Botón                      "Aceptar"
+16- Volver al menú principal
+
+Verificaciones:
+17- GuiaEntidad.json - No debe haberse agregado ninguna entrada nueva.

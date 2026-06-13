@@ -1,0 +1,35 @@
+Plan de Prueba: 020_Admision-RechazarConReclasificacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Admisión"
+
+(Intento de admitir sin buscar guía)
+2- Botón                       "Admitir"
+3- Mensaje                     "No se ha encontrado la guía. Por favor, busque una guía válida antes de admitir."
+4- Botón                       "Aceptar"
+
+(Reclasificación de tamaño y rechazo)
+5- Número de Guía              6
+6- Botón                       "Buscar Guía"
+7- Tamaño Declarado resultado  "S"
+8- Radio Button                "Tamaño Incorrecto" (seleccionado)
+9- Combo Reclasificación       "L"
+10- Botón                      "Cambiar Tamaño"
+11- Mensaje                    "El tamaño de la guía ha sido cambiado a: L."
+12- Botón                      "Aceptar"
+13- Observaciones              "Caja rota, no puede ser procesada."
+14- Botón                      "Rechazar"
+15- Mensaje                    "La guía ha sido rechazada."
+16- Botón                      "Aceptar"
+17- Volver al menú principal
+
+Verificaciones:
+18- GuiaEntidad.json - La guía número 6 debe aparecer con los siguientes valores:
+    {
+        "GuiaId": 6,
+        "Estado": "CANCELADA",
+        "TipoCaja": "L",
+        "ObservacionesAdmision": "Caja rota, no puede ser procesada."
+    }
+
+19- CuentaCorrienteClienteEntidad.json - No debe existir ninguna entrada con GuiaId 6.

@@ -1,0 +1,26 @@
+Plan de Prueba: 230_RecepcionDespachoCDLD-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Recepción/Despacho CD Larga Distancia"
+
+(Campo vacío)
+2- Botón                       "Buscar"
+3- Mensaje                     "Debe ingresar el Nro. de servicio de transporte."
+4- Botón                       "Aceptar"
+
+(Formato inválido)
+5- Nro. Servicio               "XYZ"
+6- Botón                       "Buscar"
+7- Mensaje                     "El formato ingresado no es válido. Debe ingresar solo caracteres numéricos."
+8- Botón                       "Aceptar"
+
+(Servicio inexistente)
+9- Nro. Servicio               "9999"
+10- Botón                      "Buscar"
+11- Mensaje                    "No se encontró ningún servicio con el número ingresado."
+12- Botón                      "Aceptar"
+13- Volver al menú principal
+
+Verificaciones:
+14- HDRTransporteEntidad.json - Ningún HDR debe haber cambiado su Estado.
+15- GuiaEntidad.json - Ninguna guía debe haber cambiado su Estado.

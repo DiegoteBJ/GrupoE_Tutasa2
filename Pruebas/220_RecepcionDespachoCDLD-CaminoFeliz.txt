@@ -1,0 +1,37 @@
+Plan de Prueba: 220_RecepcionDespachoCDLD-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Recepción/Despacho CD Larga Distancia"
+
+(Pantalla Recepción/Despacho CD Larga Distancia)
+2- Nro. Servicio de Transporte 3
+3- Botón                       "Buscar"
+4- Empresa resultado           "Transportes del Sur S.A."
+5- Ruta resultado              "CD Rosario - CD Buenos Aires"
+6- Lista HDRs a Recibir        <HDRs cuyo CDDestinoId = 7>
+7- Seleccionar HDR Id 4 de la lista
+8- Botón                       "Confirmar Recepción"
+9- Mensaje                     "Recepción confirmada correctamente."
+10- Botón                      "Aceptar"
+11- Volver al menú principal
+
+Verificaciones:
+12- HDRTransporteEntidad.json - El HDR número 4 debe tener:
+    {
+        "HdrTransporteId": 4,
+        "Estado": "RENDIDA"
+    }
+
+13- GuiaEntidad.json - Las guías del HDR 4 deben tener:
+    {
+        "Estado": "EN_CD_DESTINO"
+    }
+
+14- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+    {
+        "MovimientoId": <último id + 1>,
+        "GuiaId": <id de la guía>,
+        "FechaMovimiento": "<fecha y hora de hoy>",
+        "Estado": "EN_CD_DESTINO",
+        "Ubicacion": "En CD: 7"
+    }

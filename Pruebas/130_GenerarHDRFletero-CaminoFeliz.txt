@@ -1,0 +1,42 @@
+Plan de Prueba: 130_GenerarHDRFletero-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Generar HDR Fletero"
+
+(Pantalla Generar HDR Fletero)
+2- DNI Fletero                 "32000001"
+3- Botón                       "Buscar Fletero"
+4- Nombre resultado            "Juan"
+5- Apellido resultado          "Pérez"
+6- Lista guías disponibles     <guías en estado EN_CD_DESTINO cuyo CP de entrega coincide con la cobertura del fletero>
+7- Seleccionar guías de la lista
+8- Botón                       "Agregar al HDR"
+9- Botón                       "Generar HDR"
+10- Mensaje                    "Se imprimieron 1 HDR y el Resumen HDR
+                                Fecha/Hora: <fecha y hora de hoy>"
+11- Botón                      "Aceptar"
+12- Volver al menú principal
+
+Verificaciones:
+13- HDRDistribucionEntidad.json - Debe existir una entrada nueva similar a:
+    {
+        "HdrDistribucionId": <último id + 1>,
+        "FleteroId": <id del fletero con DNI 32000001>,
+        "FechaEmision": "<fecha de hoy>",
+        "Estado": "PENDIENTE",
+        "GuiaIds": [<ids de las guías seleccionadas>]
+    }
+
+14- GuiaEntidad.json - Las guías seleccionadas deben tener:
+    {
+        "Estado": "EN_DISTRIBUCION"
+    }
+
+15- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+    {
+        "MovimientoId": <último id + 1>,
+        "GuiaId": <id de la guía>,
+        "FechaMovimiento": "<fecha y hora de hoy>",
+        "Estado": "EN_DISTRIBUCION",
+        "Ubicacion": "7"
+    }

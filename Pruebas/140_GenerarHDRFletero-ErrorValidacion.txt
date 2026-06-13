@@ -1,0 +1,33 @@
+Plan de Prueba: 140_GenerarHDRFletero-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Generar HDR Fletero"
+
+(DNI vacío)
+2- Botón                       "Buscar Fletero"
+3- Mensaje                     "El formato del DNI es incorrecto. Debe ingresar un número entero válido."
+4- Botón                       "Aceptar"
+
+(DNI con letras)
+5- DNI Fletero                 "ABCDE"
+6- Botón                       "Buscar Fletero"
+7- Mensaje                     "El formato del DNI es incorrecto. Debe ingresar un número entero válido."
+8- Botón                       "Aceptar"
+
+(DNI inexistente)
+9- DNI Fletero                 "99999999"
+10- Botón                      "Buscar Fletero"
+11- Mensaje                    "No se encontró el fletero."
+12- Botón                      "Aceptar"
+
+(Intentar generar HDR sin guías asignadas)
+13- DNI Fletero                "32000001"
+14- Botón                      "Buscar Fletero"
+15- Botón                      "Generar HDR"
+16- Mensaje                    "Debe agregar al menos una guía para generar el HDR."
+17- Botón                      "Aceptar"
+18- Volver al menú principal
+
+Verificaciones:
+19- HDRRetiroEntidad.json - No debe haberse agregado ninguna entrada nueva.
+20- HDRDistribucionEntidad.json - No debe haberse agregado ninguna entrada nueva.

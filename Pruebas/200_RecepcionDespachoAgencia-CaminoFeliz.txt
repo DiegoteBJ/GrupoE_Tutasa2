@@ -1,0 +1,44 @@
+Plan de Prueba: 200_RecepcionDespachoAgencia-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Recepción/Despacho Agencia"
+
+(Pantalla Recepción/Despacho Agencia)
+2- Usuario resultado           "Usuario 01"
+3- Agencia resultado           1
+4- DNI Fletero                 "32000001"
+5- Botón                       "Buscar Fletero"
+6- Nombre resultado            "Juan"
+7- Apellido resultado          "Pérez"
+8- Lista HDRs Retiro           <HDRs de retiro en estado PENDIENTE del fletero>
+9- Lista HDRs Distribución     <HDRs de distribución en estado PENDIENTE del fletero>
+10- Seleccionar HDR Id 2 de lista HDRs Distribución
+11- Lista detalle guías        <guías del HDR 2>
+12- Marcar todas las guías (checkbox)
+13- Botón                      "Confirmar"
+14- Mensaje                    "¿Está seguro de confirmar la operación?"
+15- Botón                      "Sí"
+16- Mensaje                    "Operación confirmada. Estados actualizados."
+17- Botón                      "Aceptar"
+18- Volver al menú principal
+
+Verificaciones:
+19- GuiaEntidad.json - Las guías del HDR 2 deben tener:
+    {
+        "Estado": "PENDIENTE_DE_ENTREGA"
+    }
+
+20- HDRDistribucionEntidad.json - El HDR número 2 debe tener:
+    {
+        "HdrDistribucionId": 2,
+        "Estado": "RENDIDA"
+    }
+
+21- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+    {
+        "MovimientoId": <último id + 1>,
+        "GuiaId": <id de la guía>,
+        "FechaMovimiento": "<fecha y hora de hoy>",
+        "Estado": "PENDIENTE_DE_ENTREGA",
+        "Ubicacion": "Agencia: 1"
+    }

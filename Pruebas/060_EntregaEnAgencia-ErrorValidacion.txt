@@ -1,0 +1,44 @@
+Plan de Prueba: 060_EntregaEnAgencia-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Entrega en Agencia"
+
+(DNI vacío)
+2- Botón                       "Buscar"
+3- Mensaje                     "Debe ingresar un DNI."
+4- Botón                       "Aceptar"
+
+(DNI con letras)
+5- DNI Destinatario            "ABCDE"
+6- Botón                       "Buscar"
+7- Mensaje                     "El DNI debe contener solo números."
+8- Botón                       "Aceptar"
+
+(DNI con longitud inválida)
+9- DNI Destinatario            "123"
+10- Botón                      "Buscar"
+11- Mensaje                    "El DNI debe tener entre 7 y 8 dígitos."
+12- Botón                      "Aceptar"
+
+(DNI inexistente)
+13- DNI Destinatario           "99999999"
+14- Botón                      "Buscar"
+15- Mensaje                    "Destinatario no encontrado."
+16- Botón                      "Aceptar"
+
+(DNI sin guías pendientes en agencia)
+17- DNI Destinatario           "25000001"
+18- Botón                      "Buscar"
+19- Mensaje                    "No hay guías pendientes en agencia para este destinatario."
+20- Botón                      "Aceptar"
+
+(Confirmar entrega sin seleccionar guía)
+21- DNI Destinatario           "30123456"
+22- Botón                      "Buscar"
+23- Botón                      "Confirmar Entrega"
+24- Mensaje                    "Debe seleccionar al menos una guía."
+25- Botón                      "Aceptar"
+26- Volver al menú principal
+
+Verificaciones:
+27- GuiaEntidad.json - Ninguna guía debe haber cambiado su Estado.

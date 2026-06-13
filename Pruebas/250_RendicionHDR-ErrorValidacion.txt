@@ -1,0 +1,33 @@
+Plan de Prueba: 250_RendicionHDR-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Rendición HDR"
+
+(Campo vacío)
+2- Botón                       "Buscar HDR"
+3- Mensaje                     "Debe ingresar un número de Hoja de Ruta."
+4- Botón                       "Aceptar"
+
+(Formato inválido)
+5- Nro. HDR                    "ABC"
+6- Botón                       "Buscar HDR"
+7- Mensaje                     "Debe ingresar solo números."
+8- Botón                       "Aceptar"
+
+(Sin seleccionar tipo de HDR)
+9- Nro. HDR                    "1"
+10- Botón                      "Buscar HDR"
+11- Mensaje                    "Debe seleccionar un tipo de HDR."
+12- Botón                      "Aceptar"
+
+(Confirmar con guías sin resultado asignado)
+13- Nro. HDR                   1
+14- Radio Button               "HDR Retiro"
+15- Botón                      "Buscar HDR"
+16- Botón                      "Confirmar Rendición"
+17- Mensaje                    "Operación incompleta. Debe asignar un resultado a todas las encomiendas de la grilla"
+18- Botón                      "Aceptar"
+19- Volver al menú principal
+
+Verificaciones:
+20- HDRRetiroEntidad.json - El HDR número 1 no debe haber cambiado su Estado.

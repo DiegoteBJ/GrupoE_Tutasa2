@@ -1,0 +1,34 @@
+Plan de Prueba: 030_EmitirFactura-CaminoFeliz.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Emitir Factura"
+
+(Pantalla Emitir Factura)
+2- CUIT Cliente                "20-12345678-9"
+3- Botón                       "Buscar Cliente"
+4- Razón Social resultado      "MundoFOX S.A."
+5- Lista guías a facturar      <guías con Facturado = false del cliente>
+6- Total a Facturar resultado  <suma de PrecioCalculadoTotal de las guías listadas>
+7- Botón                       "Emitir Factura"
+8- Mensaje                     "Factura emitida exitosamente. Número de documento: <último id + 1>
+                                Importe facturado: $<total + 21% IVA>
+                                Importe sin IVA: $<total>"
+9- Botón                       "Aceptar"
+10- Volver al menú principal
+
+Verificaciones:
+11- DocumentoEntidad.json - Debe existir una entrada nueva similar a:
+    {
+        "DocumentoId": <último id + 1>,
+        "ClienteId": <id de MundoFOX S.A.>,
+        "DocumentoTipo": "FC",
+        "DocumentoFecha": "<fecha de hoy>",
+        "DocumentoTotal": <neto + IVA 21%>,
+        "DocumentoNeto": <suma de PrecioCalculadoTotal sin IVA>
+    }
+
+12- CuentaCorrienteClienteEntidad.json - Todas las guías incluidas en la factura deben tener:
+    {
+        "Facturado": true,
+        "DocumentoId": <id del documento recién creado>
+    }

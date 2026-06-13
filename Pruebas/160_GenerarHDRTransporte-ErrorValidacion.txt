@@ -1,0 +1,26 @@
+Plan de Prueba: 160_GenerarHDRTransporte-ErrorValidacion.txt
+
+(Empieza con el Menú Principal)
+1- Botón                       "Generar HDR Transporte"
+
+(Campo vacío)
+2- Botón                       "Buscar"
+3- Mensaje                     "Debe ingresar el Nro. de servicio de transporte."
+4- Botón                       "Aceptar"
+
+(Formato inválido)
+5- Nro. Servicio               "ABC"
+6- Botón                       "Buscar"
+7- Mensaje                     "El formato ingresado no es válido. Debe ingresar solo caracteres numéricos."
+8- Botón                       "Aceptar"
+
+(Servicio inexistente)
+9- Nro. Servicio               "9999"
+10- Botón                      "Buscar"
+11- Mensaje                    "No se encontró ningún servicio con el número ingresado."
+12- Botón                      "Aceptar"
+13- Volver al menú principal
+
+Verificaciones:
+14- HDRTransporteEntidad.json - No debe haberse agregado ninguna entrada nueva.
+15- GuiaEntidad.json - Ninguna guía debe haber cambiado su Estado.
