@@ -106,12 +106,28 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                     {
                         var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
                         if (guia != null)
+                        {
                             guia.Estado = EstadoGuiaEnum.EN_CD_DESTINO;
+
+                            int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                                ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                                : 1;
+
+                            MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(new MovimientoEstadoGuiaEntidad
+                            {
+                                MovimientoId = nuevoMovimientoId,
+                                GuiaId = guiaId,
+                                FechaMovimiento = DateTime.Now,
+                                Estado = EstadoGuiaEnum.EN_CD_DESTINO,
+                                Ubicacion = "En CD: " + cdTrabajoId.ToString()
+                            });
+                        }
                     }
                 }
             }
             HDRTransporteAlmacen.Guardar();
             GuiaAlmacen.Guardar();
+            MovimientoEstadoGuiaAlmacen.Guardar();
         }
 
         public void MarcarComoEnTransito(List<HDRTransporte> hdrs)
