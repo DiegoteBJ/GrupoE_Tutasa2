@@ -40,6 +40,12 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             // Predictivo vacío al inicio
             ingresarcodigopostaltextBox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+
+            seleccionguiaslistView.View = View.Details;
+            seleccionguiaslistView.FullRowSelect = true;
+
+            detallehdrlistView.View = View.Details;
+            detallehdrlistView.FullRowSelect = true;
         }
 
         private void usuariolabel_Click(object sender, EventArgs e)
@@ -71,17 +77,16 @@ namespace GrupoE_Tutasa.GenerarHDR
         {
             int selStart = ingresardnitextBox.SelectionStart;
             string raw = ingresardnitextBox.Text ?? string.Empty;
-            string digits = new string(raw.Where(char.IsDigit).ToArray());
+            //string digits = new string(raw.Where(char.IsDigit).ToArray());
 
-            if (digits.Length > 8)
-                digits = digits.Substring(0, 8);
+            //if (digits.Length > 8)
+              //  digits = digits.Substring(0, 8);
 
-            if (ingresardnitextBox.Text != digits)
-            {
-                ingresardnitextBox.Text = digits;
-                ingresardnitextBox.SelectionStart = Math.Min(selStart, digits.Length);
-            }
-
+            //if (ingresardnitextBox.Text != digits)
+            //{
+              //  ingresardnitextBox.Text = digits;
+               // ingresardnitextBox.SelectionStart = Math.Min(selStart, digits.Length);
+            //}
             buscardnifleterobutton.Enabled = true;
         }
 
@@ -112,8 +117,6 @@ namespace GrupoE_Tutasa.GenerarHDR
                 MessageBox.Show($"No se encontró un fletero con DNI {dni}.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetearFormularioFletero();
             }
-
-
         }
 
         private void ResetearFormularioFletero()
@@ -324,8 +327,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             else
             {
                 codigosPostales = modelo.LGuiasAAsignar
-                    .Where(g => (g.EstadoGuia == EstadoGuiaEnum.ADMITIDA || 
-                                (g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
+                    .Where(g => ((g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
                                 (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
                                 fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal.ToUpper()))
                     .Select(g => g.DomicilioEntrega.CodigoPostal.ToUpper())

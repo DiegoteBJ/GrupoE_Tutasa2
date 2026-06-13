@@ -170,6 +170,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                     ((g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
                     (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
                     g.DomicilioEntrega != null &&
+                    g.ModalidadEntrega != ModalidadEntregaEnum.CD &&
                     fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
                     !guiasAsignadas.Contains(g.GuiaId) &&
                     !guiasEnDetalle.Contains(g.GuiaId) &&
