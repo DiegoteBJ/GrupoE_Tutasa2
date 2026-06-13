@@ -9,7 +9,7 @@ Plan de Prueba: 150_GenerarHDRTransporte-CaminoFeliz.txt
 4- Empresa Transporte resultado "Transportes del Sur S.A."
 5- Fecha/Hora Salida resultado  <fecha y hora de salida del servicio 3>
 6- Ruta resultado               "CD Rosario - CD Buenos Aires"
-7- Lista encomiendas pendientes <guías en estado ADMITIDA asignadas al servicio 3>
+7- Lista encomiendas pendientes <guías en estado ADMITIDA, que no estén en ningún HDRTransporte en estado PENDIENTE>
 8- Seleccionar todas las guías de la lista
 9- Botón                        "Confirmar"
 10- Mensaje                     "HDR de transporte generado correctamente."

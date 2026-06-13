@@ -14,8 +14,9 @@ Plan de Prueba: 200_RecepcionDespachoAgencia-CaminoFeliz.txt
 9- Lista HDRs Distribución     <HDRs de distribución en estado PENDIENTE del fletero>
 10- Seleccionar HDR Id 2 de lista HDRs Distribución
 11- Lista detalle guías        <guías del HDR 2>
-12- Marcar todas las guías (checkbox)
-13- Botón                      "Confirmar"
+12- Seleccionar todas las guías de la lista
+13- Botón                      "Cumplida"
+14- Botón                      "Confirmar"
 14- Mensaje                    "¿Está seguro de confirmar la operación?"
 15- Botón                      "Sí"
 16- Mensaje                    "Operación confirmada. Estados actualizados."

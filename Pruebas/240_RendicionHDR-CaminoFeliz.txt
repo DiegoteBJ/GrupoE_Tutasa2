@@ -26,5 +26,20 @@ Verificaciones:
 19- HDRRetiroEntidad.json - El HDR número 1 debe tener:
     {
         "HdrRetiroId": 1,
+        "Estado": "RENDIDA",
+        "FechaRendicion": "<fecha y hora de hoy>"
+    }
+
+20- GuiaEntidad.json - Las guías del HDR 1 deben tener:
+    {
         "Estado": "RENDIDA"
+    }
+
+21- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+    {
+        "MovimientoId": <último id + 1>,
+        "GuiaId": <id de la guía>,
+        "FechaMovimiento": "<fecha y hora de hoy>",
+        "Estado": "RENDIDA",
+        "Ubicacion": "En CD: 7"
     }
