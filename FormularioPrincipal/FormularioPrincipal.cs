@@ -12,6 +12,7 @@ using GrupoE_Tutasa.MonitoreoResultados;
 using GrupoE_Tutasa.RecepcionDespachoAgencia;
 using GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia;
 using GrupoE_Tutasa.RendicionHDR;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace GrupoE_Tutasa.FormularioPrincipal
@@ -22,16 +23,15 @@ namespace GrupoE_Tutasa.FormularioPrincipal
         {
             InitializeComponent();
         }
-
+        public int agenciaTrabajoId = Program.agenciaTrabajoId;
+        public int CDTrabajoId = Program.CDTrabajoId;
+        public string modalidadImposicion = Program.modalidadImposicion;
+        
         private void FormularioPrincipal_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show(Directory.GetCurrentDirectory());
-            //string datosp = "";
-            //foreach (var tt in CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes )
-            //{
-            //   datosp += $"Datos: {tt.GuiaId + tt.PrecioCalculadoTotal}\n";
-            //}
-            //MessageBox.Show($"Cuenta corriente clientes cargados: {CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes.Count}\n{datosp}");
+            CDTrabajoLabel.Text = $"{CDTrabajoId}";
+            AgenciaTrabajoLabel.Text = $"{agenciaTrabajoId}";
+            ModalidadImposicionLabel.Text = $"{modalidadImposicion}";
         }
 
         private void EmitirFacturasBoton_Click(object sender, EventArgs e)

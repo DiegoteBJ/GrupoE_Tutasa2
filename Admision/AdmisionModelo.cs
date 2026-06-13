@@ -28,13 +28,10 @@ namespace GrupoE_Tutasa.Admision
         })
         .ToList();
                 
-        public List<Cajas> LCajas => new List<Cajas>
-        {
-            new Cajas { ID = 1, nombre = "S" },
-            new Cajas { ID = 2, nombre = "M" },
-            new Cajas { ID = 3, nombre = "L" },
-            new Cajas { ID = 4, nombre = "XL" }
-        };
+        public List<Cajas> LCajas =>
+            Enum.GetValues<TipoCajaEnum>()
+                .Select((e, i) => new Cajas { ID = i + 1, nombre = e.ToString() })
+                .ToList();
 
         public decimal ObtenerCoeficiente(int origenId, int destinoId, string tipoCaja)
         {
@@ -55,7 +52,6 @@ namespace GrupoE_Tutasa.Admision
                 "M"  => tarifa.CoeficienteM,
                 "L"  => tarifa.CoeficienteL,
                 "XL" => tarifa.CoeficienteXL,
-                _    => throw new Exception($"Tipo de caja '{tipoCaja}' no válido.")
             };
         }
 
@@ -157,6 +153,7 @@ namespace GrupoE_Tutasa.Admision
                 guia.Estado = EstadoGuiaEnum.CANCELADA;
                 guia.ObservacionesAdmision = observaciones;
             }
+            GuiaAlmacen.Guardar();
         }
     }
 }

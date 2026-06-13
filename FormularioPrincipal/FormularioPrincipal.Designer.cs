@@ -42,6 +42,12 @@
             GenerarHDRBoton = new Button();
             GenerarHDRTransporteBoton = new Button();
             RendicionHDRBoton = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            CDTrabajoLabel = new Label();
+            AgenciaTrabajoLabel = new Label();
+            ModalidadImposicionLabel = new Label();
             SuspendLayout();
             // 
             // EmitirFacturasBoton
@@ -69,7 +75,7 @@
             // SalirBoton
             // 
             SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.Location = new Point(545, 523);
+            SalirBoton.Location = new Point(545, 576);
             SalirBoton.Name = "SalirBoton";
             SalirBoton.Size = new Size(165, 52);
             SalirBoton.TabIndex = 22;
@@ -80,7 +86,7 @@
             // MonitoreoBoton
             // 
             MonitoreoBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            MonitoreoBoton.Location = new Point(12, 438);
+            MonitoreoBoton.Location = new Point(545, 437);
             MonitoreoBoton.Name = "MonitoreoBoton";
             MonitoreoBoton.Size = new Size(165, 52);
             MonitoreoBoton.TabIndex = 23;
@@ -198,11 +204,71 @@
             RendicionHDRBoton.UseVisualStyleBackColor = true;
             RendicionHDRBoton.Click += RendicionHDRBoton_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 491);
+            label1.Name = "label1";
+            label1.Size = new Size(107, 20);
+            label1.TabIndex = 35;
+            label1.Text = "CD de Trabajo:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 533);
+            label2.Name = "label2";
+            label2.Size = new Size(141, 20);
+            label2.TabIndex = 36;
+            label2.Text = "Agencia de Trabajo:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 573);
+            label3.Name = "label3";
+            label3.Size = new Size(165, 20);
+            label3.TabIndex = 37;
+            label3.Text = "Modalidad Imposici:ón:";
+            // 
+            // CDTrabajoLabel
+            // 
+            CDTrabajoLabel.AutoSize = true;
+            CDTrabajoLabel.Location = new Point(238, 491);
+            CDTrabajoLabel.Name = "CDTrabajoLabel";
+            CDTrabajoLabel.Size = new Size(107, 20);
+            CDTrabajoLabel.TabIndex = 38;
+            CDTrabajoLabel.Text = "CD de Trabajo:";
+            // 
+            // AgenciaTrabajoLabel
+            // 
+            AgenciaTrabajoLabel.AutoSize = true;
+            AgenciaTrabajoLabel.Location = new Point(238, 533);
+            AgenciaTrabajoLabel.Name = "AgenciaTrabajoLabel";
+            AgenciaTrabajoLabel.Size = new Size(107, 20);
+            AgenciaTrabajoLabel.TabIndex = 39;
+            AgenciaTrabajoLabel.Text = "CD de Trabajo:";
+            // 
+            // ModalidadImposicionLabel
+            // 
+            ModalidadImposicionLabel.AutoSize = true;
+            ModalidadImposicionLabel.Location = new Point(238, 573);
+            ModalidadImposicionLabel.Name = "ModalidadImposicionLabel";
+            ModalidadImposicionLabel.Size = new Size(107, 20);
+            ModalidadImposicionLabel.TabIndex = 40;
+            ModalidadImposicionLabel.Text = "CD de Trabajo:";
+            // 
             // FormularioPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 596);
+            ClientSize = new Size(729, 641);
+            Controls.Add(ModalidadImposicionLabel);
+            Controls.Add(AgenciaTrabajoLabel);
+            Controls.Add(CDTrabajoLabel);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(RendicionHDRBoton);
             Controls.Add(GenerarHDRTransporteBoton);
             Controls.Add(GenerarHDRBoton);
@@ -221,6 +287,7 @@
             Text = "FormularioPrincipal";
             Load += FormularioPrincipal_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -238,5 +305,11 @@
         private Button GenerarHDRBoton;
         private Button GenerarHDRTransporteBoton;
         private Button RendicionHDRBoton;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label CDTrabajoLabel;
+        private Label AgenciaTrabajoLabel;
+        private Label ModalidadImposicionLabel;
     }
 }

@@ -1,6 +1,7 @@
 using GrupoE_Tutasa.EmitirFactura;
 using GrupoE_Tutasa.EstadoCCClientes;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,22 +59,21 @@ namespace GrupoE_Tutasa.Admision
                 return;
             }
 
-            foreach (var guia in modelo.LGuiasAAdmitir)
-            {
-                if (guia.numeroGuia == numeroGuia)
-                {
-                    guiaActual = guia;
-                    CDOrigenGuiaLabel.Text = guia.CDOrigenId.ToString();
-                    CDDestinoGuiaLabel.Text = guia.CDDestinoId.ToString();
-                    EstadoGuiaLabel.Text = guia.estadoGuia.ToString();
-                    ObservacionesTextBox.Text = guia.observaciones;
-                    TamañoDeclaradoLabel.Text = guia.tamaño;
-                    encuentro = true;
+            var guias = modelo.LGuiasAAdmitir;
+            guiaActual = guias.FirstOrDefault(g => g.numeroGuia == numeroGuia);
 
-                    TamañoCorrectoBoton.Checked = true;
-                    TamañoReclasificacionComboBox.SelectedIndex = -1;
-                    return;
-                }
+            if (guiaActual != null)
+            {
+                CDOrigenGuiaLabel.Text = guiaActual.CDOrigenId.ToString();
+                CDDestinoGuiaLabel.Text = guiaActual.CDDestinoId.ToString();
+                EstadoGuiaLabel.Text = guiaActual.estadoGuia.ToString();
+                ObservacionesTextBox.Text = guiaActual.observaciones;
+                TamañoDeclaradoLabel.Text = guiaActual.tamaño;
+                encuentro = true;
+
+                TamañoCorrectoBoton.Checked = true;
+                TamañoReclasificacionComboBox.SelectedIndex = -1;
+                return;
             }
             MessageBox.Show("No se encontró la guía con el número proporcionado.");
         }
