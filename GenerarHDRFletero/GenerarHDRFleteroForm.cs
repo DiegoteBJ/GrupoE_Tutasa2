@@ -96,7 +96,7 @@ namespace GrupoE_Tutasa.GenerarHDR
 
             if (!GenerarHDRFleteroModelo.ValidarDniString(dni))
             {
-                MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un DNI válido (7 u 8 dígitos numéricos positivos).", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetearFormularioFletero();
                 return;
             }
@@ -104,6 +104,7 @@ namespace GrupoE_Tutasa.GenerarHDR
             var fletero = modelo.BuscarFleteroPorDni(dni);
             if (fletero != null)
             {
+                ResetearFormularioFletero();
                 nombrefleterolabel.Text = fletero.FleteroNombre;
                 apellidofleterolabel.Text = fletero.FleteroApellido;
                 this.Tag = fletero;
