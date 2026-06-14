@@ -19,7 +19,8 @@ namespace GrupoE_Tutasa.MonitoreoResultados
         CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
             .Where(cc => cc.Facturado
                       && cc.FechaEntrega != DateTime.MaxValue
-                      && cc.DocumentoId != 0)
+                      && cc.DocumentoId != 0
+                      && cc.EmpresaTransporteId != 0)
             .Select(cc => new Guias
             {
                 clienteID = cc.ClienteId,

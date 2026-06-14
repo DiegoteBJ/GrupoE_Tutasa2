@@ -138,9 +138,20 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 }
             }
 
+            int empresaTransporteId = servicioEntidad?.EmpresaTransporteId ?? 0;
+
+            foreach (var id in guiaIds)
+            {
+                var cc = CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
+                    .FirstOrDefault(c => c.GuiaId == id);
+                if (cc != null)
+                    cc.EmpresaTransporteId = empresaTransporteId;
+            }
+
             HDRTransporteAlmacen.Guardar();
             GuiaAlmacen.Guardar();
             MovimientoEstadoGuiaAlmacen.Guardar();
+            CuentaCorrienteClienteAlmacen.Guardar();
         }
 
         private string ObtenerRuta(int cdOrigenId, int cdDestinoId)
