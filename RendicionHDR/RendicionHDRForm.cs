@@ -97,6 +97,7 @@ namespace GrupoE_Tutasa.RendicionHDR
             foreach (var guia in modelo.ObtenerGuiasPorIds(guiaIds))
             {
                 ListViewItem item = new ListViewItem(guia.guiaId.ToString());
+                item.SubItems.Add(guia.remitente);
                 item.SubItems.Add(guia.destinatario);
                 item.SubItems.Add(guia.domicilio);
                 item.SubItems.Add(guia.tamanio);
