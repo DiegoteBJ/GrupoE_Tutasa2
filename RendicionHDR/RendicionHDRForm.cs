@@ -176,5 +176,10 @@ namespace GrupoE_Tutasa.RendicionHDR
 
             MessageBox.Show("Rendición registrada correctamente.");
         }
+
+        private void CancelarRendicionBoton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

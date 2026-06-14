@@ -342,6 +342,7 @@
             CancelarRendicionBoton.TabIndex = 4;
             CancelarRendicionBoton.Text = "Cancelar";
             CancelarRendicionBoton.UseVisualStyleBackColor = true;
+            CancelarRendicionBoton.Click += CancelarRendicionBoton_Click;
             // 
             // RendicionHDRForm
             // 

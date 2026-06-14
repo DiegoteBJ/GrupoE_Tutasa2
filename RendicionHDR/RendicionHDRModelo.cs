@@ -53,12 +53,21 @@ namespace GrupoE_Tutasa.RendicionHDR
                 })
                 .ToList();
 
-        public List<Guia> ObtenerGuiasPorIds(List<int> ids) =>
-            GuiaAlmacen.guias
-                .Where(g => ids.Contains(g.GuiaId))
-                .Select(g => new Guia
+        public List<Guia> ObtenerGuiasPorIds(List<int> ids) => GuiaAlmacen.guias
+            .Where(g => ids.Contains(g.GuiaId))
+            .Select(g =>
+            {
+                var cliente = ClienteAlmacen.clientes
+                    .FirstOrDefault(c => c.ClienteId == g.ClienteId);
+
+                return new Guia
                 {
                     guiaId = g.GuiaId,
+                    remitente = cliente != null
+                        ? (!string.IsNullOrWhiteSpace(cliente.RazonSocial)
+                            ? cliente.RazonSocial
+                            : $"{cliente.Nombre} {cliente.Apellido}")
+                        : string.Empty,
                     destinatario = $"{g.NombreDestinatario} {g.ApellidoDestinatario}",
                     domicilio = g.DomicilioEntrega != null
                         ? $"{g.DomicilioEntrega.Calle} {g.DomicilioEntrega.Numero}"
@@ -66,8 +75,9 @@ namespace GrupoE_Tutasa.RendicionHDR
                     tamanio = g.TipoCaja.ToString(),
                     intentosEntrega = g.IntentosDeEntrega,
                     resultado = "Pendiente"
-                })
-                .ToList();
+                };
+            })
+            .ToList();
 
         public void ConfirmarRendicionRetiro(string numeroHDR, List<ResultadoGuia> resultados)
         {
