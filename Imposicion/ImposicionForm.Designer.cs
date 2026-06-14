@@ -76,9 +76,6 @@ namespace GrupoE_Tutasa.Imposicion
             label20 = new Label();
             Cancelar_Boton = new Button();
             Confirmar_Boton = new Button();
-            UsuarioLogueado_Label = new Label();
-            CD_Logueado_Label = new Label();
-            FechaHora_Label = new Label();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -706,40 +703,12 @@ namespace GrupoE_Tutasa.Imposicion
             Confirmar_Boton.UseVisualStyleBackColor = false;
             Confirmar_Boton.Click += button3_Click;
             // 
-            // UsuarioLogueado_Label
-            // 
-            UsuarioLogueado_Label.AutoSize = true;
-            UsuarioLogueado_Label.Location = new Point(19, 833);
-            UsuarioLogueado_Label.Name = "UsuarioLogueado_Label";
-            UsuarioLogueado_Label.Size = new Size(107, 15);
-            UsuarioLogueado_Label.TabIndex = 19;
-            UsuarioLogueado_Label.Text = "Usuario: OP_CD/03";
-            // 
-            // CD_Logueado_Label
-            // 
-            CD_Logueado_Label.AutoSize = true;
-            CD_Logueado_Label.Location = new Point(191, 833);
-            CD_Logueado_Label.Name = "CD_Logueado_Label";
-            CD_Logueado_Label.Size = new Size(168, 15);
-            CD_Logueado_Label.TabIndex = 20;
-            CD_Logueado_Label.Text = "CD-0001 · Buenos Aires Centro";
-            // 
-            // FechaHora_Label
-            // 
-            FechaHora_Label.AutoSize = true;
-            FechaHora_Label.Location = new Point(411, 833);
-            FechaHora_Label.Name = "FechaHora_Label";
-            FechaHora_Label.Size = new Size(128, 15);
-            FechaHora_Label.TabIndex = 21;
-            FechaHora_Label.Text = "01/05/2026, 08:55 p. m.";
-            FechaHora_Label.Click += label26_Click;
-            // 
             // ImposicionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(879, 857);
+            ClientSize = new Size(879, 833);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -747,12 +716,9 @@ namespace GrupoE_Tutasa.Imposicion
             Controls.Add(groupBox4);
             Controls.Add(Cancelar_Boton);
             Controls.Add(Confirmar_Boton);
-            Controls.Add(UsuarioLogueado_Label);
-            Controls.Add(CD_Logueado_Label);
-            Controls.Add(FechaHora_Label);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ImposicionForm";
-            Text = "Imposicion de Encomiendas - Centro de Distribucion (CD - 0001 - Buenos Aires)";
+            Text = "Imposicion de Encomiendas";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -768,7 +734,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -832,7 +797,6 @@ namespace GrupoE_Tutasa.Imposicion
         private Label Total_Guias_Label;
 
         private Button Cancelar_Boton, Confirmar_Boton;
-        private Label UsuarioLogueado_Label, CD_Logueado_Label, FechaHora_Label;
         
     }
 }

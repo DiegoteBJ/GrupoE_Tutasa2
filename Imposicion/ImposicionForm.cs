@@ -60,6 +60,9 @@ namespace GrupoE_Tutasa.Imposicion
 
             Total_Guias_Label.Text = "[Total Guias]";
 
+            // Habilita el domicilio de retiro solo si la imposición es a domicilio.
+            ActualizarDomicilioRetiro();
+
         }
 
         // Búsqueda del remitente por CUIT
@@ -117,6 +120,25 @@ namespace GrupoE_Tutasa.Imposicion
             {
                 label37.Text = FormatearDomicilio(modelo.clienteActual.Domicilio);
             }
+        }
+
+        // Habilita el apartado de domicilio de retiro solo en imposición a domicilio.
+        // En AGENCIA y CD el recuadro queda grisado: el origen no lo aporta el usuario,
+        // lo resuelve el modelo (domicilio de la agencia de trabajo o CD de trabajo).
+        private void ActualizarDomicilioRetiro()
+        {
+            bool habilitado;
+
+            if (modelo.ModalidadImposicionActual == ModalidadImposicionEnum.DOMICILIO)
+            {
+                habilitado = true;
+            }
+            else
+            {
+                habilitado = false;
+            }
+
+            groupBox5.Enabled = habilitado;
         }
 
         // Uso del domicilio fiscal como domicilio de retiro
