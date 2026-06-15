@@ -109,6 +109,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         private void botonCancelar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
+            Close();
         }
 
         private void LimpiarFormulario()
