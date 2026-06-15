@@ -6,7 +6,7 @@ namespace GrupoE_Tutasa.FormularioPrincipal
     internal static class Program
     {
         public static int agenciaTrabajoId = 26; // ID de la agencia de trabajo, se puede cambiar según sea necesario
-        public static int CDTrabajoId = 7; // ID del centro de distribución de trabajo, se puede cambiar según sea necesario
+        public static int CDTrabajoId = 5; // ID del centro de distribución de trabajo, se puede cambiar según sea necesario
         public static string modalidadImposicion = "agencia"; // Modalidad de imposición. Valores válidos: "AGENCIA", "CD", "DOMICILIO".
          
         /// <summary>

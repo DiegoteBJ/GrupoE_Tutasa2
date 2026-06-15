@@ -121,7 +121,7 @@
     "agenciaOrigenId": 0,
     "agenciaDestinoId": 0,
     "CDOrigenId": 1,
-    "CDDestinoId": 7,
+    "CDDestinoId": 5,
     "CDActualId": 1,
     "modalidadImposicion": "CD",
     "domicilioRetiro": null,
