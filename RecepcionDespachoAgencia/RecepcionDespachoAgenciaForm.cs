@@ -105,14 +105,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
 
         private void HojasdeRutaListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (HojasdeRutaListView.SelectedItems.Count > 0)
-            {
-                string hdrSeleccionada =
-                    HojasdeRutaListView.SelectedItems[0].Text;
-
-                NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
-                
-            }
+            //solo consulta
         }
 
         private void CargarDetalleHDR(string hdrSeleccionada)
@@ -120,10 +113,11 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
             NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
             DetalleGuiasListView.Items.Clear();
 
-            var hdrRetiro = modelo.LHDRRetiro.FirstOrDefault(h => h.numeroHDR == hdrSeleccionada);
+            //var hdrRetiro = modelo.LHDRRetiro.FirstOrDefault(h => h.numeroHDR == hdrSeleccionada);
             var hdrDistribucion = modelo.LHDRDistribucion.FirstOrDefault(h => h.numeroHDR == hdrSeleccionada);
 
-            var ids = hdrRetiro?.GuiaIds ?? hdrDistribucion?.GuiaIds ?? new List<int>();
+            //var ids = hdrRetiro?.GuiaIds ?? hdrDistribucion?.GuiaIds ?? new List<int>();
+            var ids = hdrDistribucion?.GuiaIds ?? new List<int>();
 
             foreach (var guia in modelo.ObtenerGuiasPorIds(ids))
             {
