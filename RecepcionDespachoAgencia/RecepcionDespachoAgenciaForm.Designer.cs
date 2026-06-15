@@ -64,17 +64,17 @@
             // 
             HojasdeRutaGroupBox.Controls.Add(HojasdeRutaListView);
             HojasdeRutaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            HojasdeRutaGroupBox.Location = new Point(30, 207);
+            HojasdeRutaGroupBox.Location = new Point(389, 208);
             HojasdeRutaGroupBox.Name = "HojasdeRutaGroupBox";
             HojasdeRutaGroupBox.Size = new Size(327, 220);
             HojasdeRutaGroupBox.TabIndex = 0;
             HojasdeRutaGroupBox.TabStop = false;
-            HojasdeRutaGroupBox.Text = "Hojas de ruta";
+            HojasdeRutaGroupBox.Text = "Hojas de ruta a despachar";
             // 
             // HojasdeRutaListView
             // 
             HojasdeRutaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            HojasdeRutaListView.Location = new Point(23, 28);
+            HojasdeRutaListView.Location = new Point(20, 28);
             HojasdeRutaListView.Name = "HojasdeRutaListView";
             HojasdeRutaListView.Size = new Size(280, 175);
             HojasdeRutaListView.TabIndex = 0;
@@ -86,7 +86,7 @@
             // 
             HDRaRendirAgenciaGroupBox.Controls.Add(HDRaRendirAgenciaListView);
             HDRaRendirAgenciaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            HDRaRendirAgenciaGroupBox.Location = new Point(397, 207);
+            HDRaRendirAgenciaGroupBox.Location = new Point(31, 208);
             HDRaRendirAgenciaGroupBox.Name = "HDRaRendirAgenciaGroupBox";
             HDRaRendirAgenciaGroupBox.Size = new Size(333, 220);
             HDRaRendirAgenciaGroupBox.TabIndex = 1;
@@ -328,8 +328,8 @@
             Controls.Add(AgenciaLabel);
             Controls.Add(UsuarioLabel);
             Controls.Add(HDRaRendirAgenciaGroupBox);
-            Controls.Add(HojasdeRutaGroupBox);
             Controls.Add(BuscarFleteroGroupBox);
+            Controls.Add(HojasdeRutaGroupBox);
             Name = "RecepcionDespachoAgenciaForm";
             Text = "Recepción y despacho en agencia";
             Load += RecepcionDespachoAgenciaForm_Load;
