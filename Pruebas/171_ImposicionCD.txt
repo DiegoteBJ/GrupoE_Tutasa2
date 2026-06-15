@@ -1,0 +1,58 @@
+public static int agenciaTrabajoId = 4; 
+ public static int CDTrabajoId = 5; 
+ public static string modalidadImposicion = "cd "
+
+
+(Empieza con el Menú Principal)
+1- Botón                       "Imposición"
+
+
+2- CUIT Cliente                "33647611457"
+3- Botón                       "Buscar Cliente"
+4- Razón Social resultado      "Grupo Comercial Andino S.R.L."
+5- Nombre Destinatario         "david"
+6- Apellido Destinatario       "garcia"
+7- DNI Destinatario            "11223344"
+8- Provincia Entrega:          "Mendoza"
+9- Localidad Entrega:          "San Rafael"
+10-Tipo Entrega:               "CD"
+11-Destino:                    "CD San Rafael"
+12- Cantidad caja S:            "1"
+13- Botón                       "Confirmar"
+14- Mensaje                    "Operación Confirmada. Guias generadas exitosamente 000000N° (S)"
+15- Botón                      "Aceptar"
+16- Volver al menú principal
+
+Verificaciones:
+17- GuiaEntidad.json - Última guía agregada debe ser :
+
+{
+{
+    "GuiaId": 31,
+    "ClienteId": 6,
+    "AgenciaOrigenId": 0,
+    "AgenciaDestinoId": 0,
+    "CDOrigenId": 5,
+    "CDDestinoId": 12,
+    "ModalidadImposicion": 1,
+    "DomicilioRetiro": null,
+    "ModalidadEntrega": 1,
+    "NombreDestinatario": "DAVID",
+    "ApellidoDestinatario": "GARCIA",
+    "DniDestinatario": 11223344,
+    "TipoCaja": 0,
+    "DomicilioEntrega": {
+      "Calle": "Calle Sur",
+      "Numero": "500",
+      "Piso": null,
+      "Depto": null,
+      "CodigoPostal": "M5600",
+      "LocalidadId": 16
+    },
+    "IntentosDeEntrega": 0,
+    "CDActualId": 5,
+    "Estado": 1,
+    "TarifarioId": 1,
+    "ObservacionesAdmision": ""
+  }
+}

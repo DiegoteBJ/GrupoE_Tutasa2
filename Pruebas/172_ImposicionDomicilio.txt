@@ -1,0 +1,65 @@
+public static int agenciaTrabajoId = 3;
+public static int CDTrabajoId = 10; 
+public static string modalidadImposicion = "domicilio "; 
+
+
+
+(Empieza con el Menú Principal)
+1- Botón                       "Imposición"
+
+
+2- CUIT Cliente:                "33655398371"
+3- Botón:                       "Buscar Cliente"
+4- Razón Social resultado:      "Distribuidora El Sur S.A."
+5- Check domicilio fiscal:	"Av Comercial 100 779"
+5- Nombre Destinatario         "hernan"
+6- Apellido Destinatario       "aguirre"
+7- DNI Destinatario            "22334455"
+8- Provincia Entrega:          "Santa Fe"
+9- Localidad Entrega:          "Rosario"
+10-Tipo Entrega:               "Agencia"
+11-Destino:                    "Agencia Rosario Norte"
+12- Cantidad caja XL:            "1"
+13- Botón                       "Confirmar"
+14- Mensaje                    "Operación Confirmada. Guias generadas exitosamente 000000N° (XL)"
+15- Botón                      "Aceptar"
+16- Volver al menú principal
+
+Verificaciones:
+17- GuiaEntidad.json - Última guía agregada debe ser :
+
+{
+    "GuiaId": 31,
+    "ClienteId": 1,
+    "AgenciaOrigenId": 0,
+    "AgenciaDestinoId": 6,
+    "CDOrigenId": 1,
+    "CDDestinoId": 2,
+    "ModalidadImposicion": 2,
+    "DomicilioRetiro": {
+      "Calle": "Av. Comercial 100",
+      "Numero": "779",
+      "Piso": null,
+      "Depto": null,
+      "CodigoPostal": "C1426",
+      "LocalidadId": 1
+    },
+    "ModalidadEntrega": 0,
+    "NombreDestinatario": "HERNAN",
+    "ApellidoDestinatario": "AGUIRRE",
+    "DniDestinatario": 22334455,
+    "TipoCaja": 3,
+    "DomicilioEntrega": {
+      "Calle": "Calle Agencia 6",
+      "Numero": "325",
+      "Piso": null,
+      "Depto": null,
+      "CodigoPostal": "S2000",
+      "LocalidadId": 6
+    },
+    "IntentosDeEntrega": 0,
+    "CDActualId": 0,
+    "Estado": 0,
+    "TarifarioId": 1,
+    "ObservacionesAdmision": ""
+  }

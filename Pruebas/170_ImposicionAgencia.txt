@@ -1,0 +1,64 @@
+Valores en Program:
+public static int agenciaTrabajoId = 1
+public static int CDTrabajoId = 9
+public static string modalidadImposicion = "agencia"
+
+(Empieza con el Menú Principal)
+1- Botón                       "Imposición"
+
+
+2- CUIT Cliente                "33647611457"
+3- Botón                       "Buscar Cliente"
+4- Razón Social resultado      "Exportadora Litoral S.R.L"
+5- Nombre Destinatario         "Carlos"
+6- Apellido Destinatario       "Gómez"
+7- DNI Destinatario            "30123456"
+8- Provincia Entrega:          "Cordoba"
+9- Localidad Entrega:          "Cordoba Capital"
+10-Tipo Entrega:               "CD"
+11-Destino:                    "CD Córdoba Capital"
+12- Cantidad caja M:            "1"
+13- Botón                       "Confirmar"
+14- Mensaje                    "Operación Confirmada. Guias generadas exitosamente 00000031 (M)"
+15- Botón                      "Aceptar"
+16- Volver al menú principal
+
+Verificaciones:
+17- GuiaEntidad.json - Última guía agregada debe ser :
+
+{
+    "GuiaId": 32,
+    "ClienteId": 9,
+    "AgenciaOrigenId": 1,
+    "AgenciaDestinoId": 27,
+    "CDOrigenId": 1,
+    "CDDestinoId": 9,
+    "ModalidadImposicion": 0,
+    "DomicilioRetiro": {
+      "Calle": "Av. Belgrano 100",
+      "Numero": "125",
+      "Piso": null,
+      "Depto": null,
+      "CodigoPostal": "C1426",
+      "LocalidadId": 1
+    },
+    "ModalidadEntrega": 0,
+    "NombreDestinatario": "Ariel",
+    "ApellidoDestinatario": "Paez",
+    "DniDestinatario": 30123456,
+    "TipoCaja": 0,
+    "DomicilioEntrega": {
+      "Calle": "Calle Agencia 27",
+      "Numero": "508",
+      "Piso": null,
+      "Depto": null,
+      "CodigoPostal": "B7600",
+      "LocalidadId": 13
+    },
+    "IntentosDeEntrega": 0,
+    "CDActualId": 0,
+    "Estado": 0,
+    "TarifarioId": 1,
+    "ObservacionesAdmision": ""
+  }
+
