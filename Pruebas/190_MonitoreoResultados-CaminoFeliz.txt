@@ -2,24 +2,42 @@ Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
 
 (Prerequisito: haber ejecutado al menos 010, 030 y 150 para que existan registros
  en CuentaCorrienteClienteEntidad con Facturado=true y EmpresaTransporteId != 0.)
+ Ejemplos: a. Admitir las Guía 4 y 5.
+ a.1 Loguearse como CD: 1.
+ a.2 Admitir ambas guías de una por una. 
+        Calcula para la guía 4 $ 9200 de los cuales $ 4.200 son del transporte desde CD1 a CD8 / $ 5000 entrega en agencia
+        Calcula para la guía 5 $ 3500 todo corresponde a trasnporte ya que es enrtega en CD.
+ a.3 Generar HDR Transporte con la guía 4 al servicio a La Plata (CD: 8) Servicio: 9
+ a.4 Generar HDR Transporte con la guia 5 al sercivio a Córdoba Capital (CD: 5) Servicio: 241
+ a.5 Ingresar a Recepción CD Larga Distancia y confirmar el despacho de ambas guías.
+ a.6 Loguearse como CD: 5 y generar HDR Transporte con la guia 5 al servicio a Rio Cuarto (CD: 7) Servicio: 578
+ a.7 Ingresar a Recepción CD Larga Distancia y confirmar el despacho de la guía.
+ a.8 Loguearse como CD: 8 y agencia: 26.
+ a.9 Ir a Recepción CD Larga Distancia y recepcionar el servicio 9 con la guía 4.
+ a.10 Ir a Entrega en Agencia y cargar DNI del destinatario: 38.989.545 y confirmar la entrega de la guía 4.
+ a.11 Loguearse como CD: 7.
+ a.12 Ir a Recepción CD Larga Distancia y recepcionar el servicio 578 con la guía 5.
+ a.13 Ir a Entrega en CD y cargar el DNI del destinatario: 36.448.439 y confirmar la entrega de la guía 5.
+ a.14 Ir a Emitir Facturas y facturar el cliente 2, CUIT: 33-68508103-8
 
 (Empieza con el Menú Principal)
 1- Botón                       "Monitoreo de Resultados"
 
 (Carga inicial con mes/año anterior por defecto)
-2- Mes resultado               5
+2- Mes resultado               6
 3- Año resultado               2026
 4- Botón                       "Buscar"
-5- Lista resultados            <una fila por empresa de transporte con guías facturadas en mayo 2026>
-6- Verificar fila              Empresa: "Fletes del Sur S.R.L."  Cobrado: $...  Pagado: $...  Resultado: $...
-7- Resultado Mensual           <suma de (Cobrado - Pagado) de todas las empresas en mayo 2026>
+5- Lista resultados            <una fila por empresa de transporte con guías facturadas en junio 2026>
+6- Verificar fila              Empresa: "Transportes Rápidos"  Ventas: $ 3500 (guía 5)
+                               Empresa: "Cargas Federales" Ventas: $ 4200 (guía 4) 
+7- Resultado Mensual           <suma de (Cobrado - Pagado) de todas las empresas en junio 2026>
 
 (Consulta con período diferente)
-8- Mes                         "6"
+8- Mes                         "5"
 9- Año                         "2026"
 10- Botón                      "Buscar"
-11- Lista resultados           <resultados para junio 2026>
-12- Resultado Mensual          <suma recalculada para junio 2026>
+11- Lista resultados           <resultados para mayo 2026>
+12- Resultado Mensual          <suma recalculada para mayo 2026>
 
 (Mes inválido)
 13- Mes                        "13"

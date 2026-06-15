@@ -10,8 +10,7 @@ namespace GrupoE_Tutasa.EmitirFactura
         public List<GuiasPendientes> LGuiasPendientes =>
             CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
                 .Where(cc => !cc.Facturado
-                          && cc.FechaEntrega.Month == DateTime.Now.AddMonths(-1).Month
-                          && cc.FechaEntrega.Year == DateTime.Now.AddMonths(-1).Year)
+                          && cc.FechaEntrega.Date <= DateTime.Now.Date)
                 .Select(cc => new GuiasPendientes
                 {
                     Id                  = cc.CcClienteId,
@@ -97,8 +96,7 @@ namespace GrupoE_Tutasa.EmitirFactura
             var registros = CuentaCorrienteClienteAlmacen.cuentaCorrienteClientes
                 .Where(cc => cc.ClienteId == clienteId
                           && !cc.Facturado
-                          && cc.FechaEntrega.Month == DateTime.Now.AddMonths(-1).Month
-                          && cc.FechaEntrega.Year == DateTime.Now.AddMonths(-1).Year);
+                          && cc.FechaEntrega.Date <= DateTime.Now.Date);
 
             var documento = DocumentoAlmacen.documentos
                 .FirstOrDefault(d => d.NumeroDocumento == numeroDocumento);
