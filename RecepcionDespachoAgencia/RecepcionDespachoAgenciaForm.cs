@@ -111,7 +111,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoAgencia
                     HojasdeRutaListView.SelectedItems[0].Text;
 
                 NumeroHDRSuperiorLabel.Text = hdrSeleccionada;
-                CargarDetalleHDR(hdrSeleccionada);
+                
             }
         }
 

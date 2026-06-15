@@ -18,27 +18,26 @@ Plan de Prueba: 200_RecepcionDespachoAgencia-CaminoFeliz.txt
 10- Seleccionar HDR Id 1 de lista HDRs Distribución
 11- Lista detalle guías        <guías del HDR 1>
 12- Seleccionar todas las guías de la lista
-13- Botón                      "Cumplida"
-14- Botón                      "Confirmar"
-15- Mensaje                    "¿Está seguro de confirmar la operación?"
-16- Botón                      "Sí"
-17- Mensaje                    "Operación confirmada. Estados actualizados."
-18- Botón                      "Aceptar"
-19- Volver al menú principal
+13- Botón                      "Confirmar"
+14- Mensaje                    "¿Está seguro de confirmar la operación?"
+15- Botón                      "Sí"
+16- Mensaje                    "Operación confirmada. Estados actualizados."
+17- Botón                      "Aceptar"
+18- Volver al menú principal
 
 Verificaciones:
-20- GuiaEntidad.json - Las guías del HDR 1 deben tener:
+19- GuiaEntidad.json - Las guías del HDR 1 deben tener:
     {
         "Estado": "PENDIENTE_DE_ENTREGA"
     }
 
-21- HDRDistribucionEntidad.json - El HDR número 1 debe tener:
+20- HDRDistribucionEntidad.json - El HDR número 1 debe tener:
     {
         "HdrDistribucionId": 1,
-        "Estado": "RENDIDA"
+        "Estado": "PENDIENTE"
     }
 
-22- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
+21- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
     {
         "MovimientoId": <último id + 1>,
         "GuiaId": <id de la guía>,
