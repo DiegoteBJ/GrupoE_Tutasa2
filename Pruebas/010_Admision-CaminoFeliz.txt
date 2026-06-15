@@ -7,12 +7,12 @@ Plan de Prueba: 010_Admision-CaminoFeliz.txt
 2- Número de Guía              5
 3- Botón                       "Buscar Guía"
 4- CD Origen resultado         1
-5- CD Destino resultado        7
+5- CD Destino resultado        5
 6- Estado resultado            "RENDIDA"
 7- Tamaño Declarado resultado  "S"
 8- Radio Button                "Tamaño Correcto" (seleccionado)
 9- Botón                       "Admitir"
-10- Mensaje                    "Guía admitida. El importe calculado para la guía es: $3500"
+10- Mensaje                    "Guía admitida. El importe calculado para la guía es: $4200"
 11- Botón                      "Aceptar"
 12- Volver al menú principal
 
@@ -21,7 +21,7 @@ Verificaciones:
     {
         "GuiaId": 5,
         "CDOrigenId": 1,
-        "CDDestinoId": 7,
+        "CDDestinoId": 5,
         "Estado": "ADMITIDA",
         "TipoCaja": "S"
     }
@@ -34,9 +34,9 @@ Verificaciones:
         "FechaMovimiento": "<fecha y hora de hoy>",
         "FechaEntrega": "9999-12-31T00:00:00",
         "PrecioImposicion": 0,
-        "PrecioTransporte": 3500,
+        "PrecioTransporte": 4200,
         "PrecioEntrega": 0,
-        "PrecioCalculadoTotal": 3500,
+        "PrecioCalculadoTotal": 4200,
         "EmpresaTransporteId": 0,
         "Facturado": false,
         "DocumentoId": 0
