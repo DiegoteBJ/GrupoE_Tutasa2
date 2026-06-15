@@ -20,10 +20,10 @@ Plan de Prueba: 210_RecepcionDespachoAgencia-ErrorValidacion.txt
 11- Mensaje                    "No se encontró el fletero. Vuelva a intentarlo."
 12- Botón                      "Aceptar"
 
-(Confirmar sin marcar ninguna guía)
-13- DNI Fletero                "32000001"
+(Confirmar sin marcar ninguna guía - fleteroId 1: Juan García, DNI 22874052)
+13- DNI Fletero                "22874052"
 14- Botón                      "Buscar Fletero"
-15- Seleccionar HDR Id 2 de la lista
+15- Seleccionar HDR Id 1 de la lista
 16- Botón                      "Confirmar"
 17- Mensaje                    "Debe controlar al menos una guía antes de confirmar."
 18- Botón                      "Aceptar"

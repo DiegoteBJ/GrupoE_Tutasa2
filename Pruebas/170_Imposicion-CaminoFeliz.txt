@@ -3,13 +3,13 @@ Plan de Prueba: 170_Imposicion-CaminoFeliz.txt
 (Empieza con el Menú Principal)
 1- Botón                       "Imposición"
 
-(Pantalla de Imposición)
-2- CUIT Cliente                "20-12345678-9"
+(Pantalla de Imposición - clienteId 1: Distribuidora El Sur S.A., CUIT 33655398371)
+2- CUIT Cliente                "33655398371"
 3- Botón                       "Buscar Cliente"
-4- Razón Social resultado      "MundoFOX S.A."
-5- Nombre Destinatario         "Carlos"
-6- Apellido Destinatario       "Gómez"
-7- DNI Destinatario            "30123456"
+4- Razón Social resultado      "Distribuidora El Sur S.A."
+5- Nombre Destinatario         "Pablo"
+6- Apellido Destinatario       "Cruz"
+7- DNI Destinatario            "36448439"
 8- Tamaño Caja                 "M"
 9- Botón                       "Generar Guía"
 10- Mensaje                    "Guía generada correctamente."
@@ -20,12 +20,12 @@ Verificaciones:
 13- GuiaEntidad.json - Última guía agregada debe ser similar a:
     {
         "GuiaId": <último id + 1>,
-        "ClienteId": <id de MundoFOX S.A.>,
-        "CDOrigenId": 7,
-        "NombreDestinatario": "Carlos",
-        "ApellidoDestinatario": "Gómez",
-        "DniDestinatario": 30123456,
+        "ClienteId": 1,
+        "CDOrigenId": 1,
+        "NombreDestinatario": "Pablo",
+        "ApellidoDestinatario": "Cruz",
+        "DniDestinatario": 36448439,
         "TipoCaja": "M",
-        "ModalidadImposicion": "AGENCIA",
+        "ModalidadImposicion": "CD",
         "Estado": "RENDIDA"
     }

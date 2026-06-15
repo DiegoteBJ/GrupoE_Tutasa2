@@ -26,14 +26,14 @@ Plan de Prueba: 060_EntregaEnAgencia-ErrorValidacion.txt
 15- Mensaje                    "Destinatario no encontrado."
 16- Botón                      "Aceptar"
 
-(DNI sin guías pendientes en agencia)
-17- DNI Destinatario           "25000001"
+(DNI sin guías pendientes en agencia - Pablo Cruz DNI 36448439, guía 5 modalidadEntrega CD, no agencia)
+17- DNI Destinatario           "36448439"
 18- Botón                      "Buscar"
 19- Mensaje                    "No hay guías pendientes en agencia para este destinatario."
 20- Botón                      "Aceptar"
 
-(Confirmar entrega sin seleccionar guía)
-21- DNI Destinatario           "30123456"
+(Confirmar entrega sin seleccionar guía - Ana Torres DNI 28297450, guía 1)
+21- DNI Destinatario           "28297450"
 22- Botón                      "Buscar"
 23- Botón                      "Confirmar Entrega"
 24- Mensaje                    "Debe seleccionar al menos una guía."

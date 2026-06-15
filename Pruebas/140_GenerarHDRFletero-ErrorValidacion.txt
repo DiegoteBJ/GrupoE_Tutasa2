@@ -20,8 +20,8 @@ Plan de Prueba: 140_GenerarHDRFletero-ErrorValidacion.txt
 11- Mensaje                    "No se encontró el fletero."
 12- Botón                      "Aceptar"
 
-(Intentar generar HDR sin guías asignadas)
-13- DNI Fletero                "32000001"
+(Intentar generar HDR sin guías asignadas - fleteroId 1: Juan García, DNI 22874052)
+13- DNI Fletero                "22874052"
 14- Botón                      "Buscar Fletero"
 15- Botón                      "Generar HDR"
 16- Mensaje                    "Debe agregar al menos una guía para generar el HDR."

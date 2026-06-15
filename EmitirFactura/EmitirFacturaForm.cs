@@ -108,7 +108,7 @@ namespace GrupoE_Tutasa.EmitirFactura
 
             string numeroDocumento = modelo.EmitirFactura(clienteActual.clienteId, netoGravado);
 
-            decimal iva            = netoGravado * 0.21m;
+            decimal iva            = netoGravado * 0m;
             decimal documentoTotal = netoGravado + iva;
 
             MessageBox.Show($"Factura emitida exitosamente. Número de documento: {numeroDocumento}\n" +

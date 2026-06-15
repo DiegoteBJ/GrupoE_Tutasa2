@@ -95,6 +95,13 @@ namespace GrupoE_Tutasa.Admision
             decimal importeEntrega = 0;
             decimal importeTransporte = 0;
             decimal importe = 0;
+            
+            if (guiaActual== null)
+            {
+                MessageBox.Show("No hay una guía seleccionada para admitir.");
+                return;
+            }
+
             string estadoGuia = guiaActual.estadoGuia;
 
             if (encuentro == false)

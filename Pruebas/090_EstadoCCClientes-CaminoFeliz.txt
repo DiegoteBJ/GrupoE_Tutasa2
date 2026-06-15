@@ -1,16 +1,19 @@
 Plan de Prueba: 090_EstadoCCClientes-CaminoFeliz.txt
 
+(Prerequisito: haber ejecutado 010_Admision-CaminoFeliz y 030_EmitirFactura-CaminoFeliz
+ para que existan registros en CuentaCorrienteClienteEntidad y DocumentoEntidad para clienteId 2.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Estado Cuenta Corriente Clientes"
 
-(Pantalla Estado CC Clientes)
-2- CUIT Cliente                "20-12345678-9"
+(Pantalla Estado CC Clientes - clienteId 2: Importadora Norte S.R.L., CUIT 33685081038)
+2- CUIT Cliente                "33685081038"
 3- Botón                       "Buscar Cliente"
-4- Razón Social resultado      "MundoFOX S.A."
+4- Razón Social resultado      "Importadora Norte S.R.L."
 5- Fecha Desde                 "01/01/2026"
 6- Fecha Hasta                 "30/06/2026"
 7- Botón                       "Buscar Movimientos"
-8- Lista documentos            <documentos de MundoFOX S.A. entre 01/01/2026 y 30/06/2026>
+8- Lista documentos            <documentos de Importadora Norte S.R.L. entre 01/01/2026 y 30/06/2026>
 9- Saldo Inicio resultado      <suma de documentos anteriores al 01/01/2026>
 10- Saldo Cierre resultado     <Saldo Inicio + suma de documentos del período>
 11- Botón                      "Ver Otro"
@@ -19,5 +22,5 @@ Plan de Prueba: 090_EstadoCCClientes-CaminoFeliz.txt
 
 Verificaciones:
 14- Los documentos mostrados corresponden exactamente a los registros de DocumentoEntidad.json
-    con ClienteId = <id de MundoFOX S.A.> y DocumentoFecha entre 01/01/2026 y 30/06/2026.
+    con ClienteId = 2 y DocumentoFecha entre 01/01/2026 y 30/06/2026.
 15- El Saldo Cierre es igual al Saldo Inicio más la suma de DocumentoTotal de los documentos del período.

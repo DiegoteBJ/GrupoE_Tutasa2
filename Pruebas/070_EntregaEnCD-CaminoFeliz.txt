@@ -1,38 +1,41 @@
 Plan de Prueba: 070_EntregaEnCD-CaminoFeliz.txt
 
+(Prerequisito: guía 5 debe estar en estado EN_CD_DESTINO en CD 7 (CD Río Cuarto).
+ Eso ocurre luego de: admisión de guía 5, HDR Transporte CD CABA→CD Río Cuarto,
+ y recepción en CD Río Cuarto (RecepciónDespachoCDLD).)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Entrega en CD"
 
-(Pantalla Entrega en CD)
-2- DNI Destinatario            "30123456"
+(Pantalla Entrega en CD - destinatario: Pablo Cruz DNI 36448439, guía 5)
+2- DNI Destinatario            "36448439"
 3- Botón                       "Buscar"
-4- Nombre resultado            "Carlos"
-5- Apellido resultado          "Gómez"
-6- Lista guías pendientes      <guías en estado EN_CD_DESTINO para DNI 30123456 en CD 7>
-7- Seleccionar guía Id 8 de la lista
+4- Nombre resultado            "Pablo"
+5- Apellido resultado          "Cruz"
+6- Lista guías pendientes      guía 5 (estado EN_CD_DESTINO en CD 7)
+7- Seleccionar guía Id 5 de la lista
 8- Botón                       "Confirmar Entrega"
 9- Mensaje                     "Entrega realizada correctamente."
 10- Botón                      "Aceptar"
 11- Volver al menú principal
 
 Verificaciones:
-12- GuiaEntidad.json - La guía número 8 debe aparecer con el siguiente estado:
+12- GuiaEntidad.json - La guía número 5 debe aparecer con el siguiente estado:
     {
-        "GuiaId": 8,
+        "GuiaId": 5,
         "Estado": "ENTREGADA"
     }
 
 13- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva similar a:
     {
         "MovimientoId": <último id + 1>,
-        "GuiaId": 8,
+        "GuiaId": 5,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "ENTREGADA",
-        "Ubicacion": "7"
+        "Ubicacion": "En CD: 7"
     }
 
-14- CuentaCorrienteClienteEntidad.json - El registro con GuiaId 8 debe tener:
+14- CuentaCorrienteClienteEntidad.json - El registro con GuiaId 5 debe tener:
     {
-        "FechaEntrega": "<fecha y hora de hoy>",
-        "FechaMovimiento": "<fecha y hora de hoy>"
+        "FechaEntrega": "<fecha y hora de hoy>"
     }

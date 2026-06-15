@@ -20,8 +20,8 @@ Plan de Prueba: 080_EntregaEnCD-ErrorValidacion.txt
 11- Mensaje                    "Destinatario no encontrado."
 12- Botón                      "Aceptar"
 
-(Destinatario sin guías pendientes en CD)
-13- DNI Destinatario           "25000001"
+(Destinatario sin guías pendientes en CD - Ana Torres DNI 28297450, guía 1 modalidadEntrega AGENCIA, no CD)
+13- DNI Destinatario           "28297450"
 14- Botón                      "Buscar"
 15- Mensaje                    "No hay guías pendientes en CD para este destinatario."
 16- Botón                      "Aceptar"

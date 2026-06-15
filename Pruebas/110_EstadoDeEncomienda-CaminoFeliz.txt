@@ -1,21 +1,21 @@
 Plan de Prueba: 110_EstadoDeEncomienda-CaminoFeliz.txt
 
+(Prerequisito: haber ejecutado 010_Admision-CaminoFeliz para que exista al menos
+ un movimiento en MovimientoEstadoGuiaEntidad para guía 5.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Estado de Encomienda"
 
-(Pantalla Estado de Encomienda)
+(Pantalla Estado de Encomienda - guía 5: Pablo Cruz, CD CABA → CD Río Cuarto)
 2- Número de Guía              5
 3- Botón                       "Buscar"
 4- Lista movimientos           <historial de estados de la guía 5 en orden cronológico>
-5- Verificar fila 1            Fecha: <fecha admisión>   Estado: "ADMITIDA"    Ubicacion: "En CD: 7"
-6- Verificar fila 2            Fecha: <fecha siguiente>  Estado: "TRASLADADA"  Ubicacion: <según movimiento>
-7- Mensaje                     "Consulta realizada correctamente."
-8- Botón                       "Aceptar"
-9- Botón                       "Borrar"
-10- Lista movimientos          vacía
-11- Volver al menú principal
+5- Verificar fila 1            Fecha: <fecha admisión>   Estado: "ADMITIDA"    Ubicacion: "En CD: 1"
+6- Botón                       "Borrar"
+7- Lista movimientos           vacía
+8- Volver al menú principal
 
 Verificaciones:
-12- La cantidad de filas mostradas en pantalla coincide exactamente con la cantidad de entradas
-    en MovimientoEstadoGuiaEntidad.json con GuiaId = 5.
-13- Cada fila debe mostrar FechaMovimiento, Estado y Ubicacion del movimiento correspondiente.
+9- La cantidad de filas mostradas en pantalla coincide exactamente con la cantidad de entradas
+   en MovimientoEstadoGuiaEntidad.json con GuiaId = 5.
+10- Cada fila debe mostrar FechaMovimiento, Estado y Ubicacion del movimiento correspondiente.

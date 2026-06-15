@@ -1,38 +1,41 @@
 Plan de Prueba: 050_EntregaEnAgencia-CaminoFeliz.txt
 
+(Prerequisito: guía 1 debe estar en estado PENDIENTE_DE_ENTREGA en agencia 24.
+ Eso ocurre luego de: admisión de guía 1, HDR Transporte CD CABA→CD La Plata,
+ recepción en CD La Plata, y RecepciónDespachoAgencia con HDR distribución para guía 1.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Entrega en Agencia"
 
-(Pantalla Entrega en Agencia)
-2- DNI Destinatario            "30123456"
+(Pantalla Entrega en Agencia - destinatario: Ana Torres DNI 28297450, guía 1)
+2- DNI Destinatario            "28297450"
 3- Botón                       "Buscar"
-4- Nombre resultado            "Carlos"
-5- Apellido resultado          "Gómez"
-6- Lista guías pendientes      <guías en estado EN_CD_DESTINO para DNI 30123456 en agencia 1>
-7- Seleccionar guía Id 5 de la lista
+4- Nombre resultado            "Ana"
+5- Apellido resultado          "Torres"
+6- Lista guías pendientes      guía 1 (estado PENDIENTE_DE_ENTREGA en agencia 24)
+7- Seleccionar guía Id 1 de la lista
 8- Botón                       "Confirmar Entrega"
 9- Mensaje                     "Entrega realizada correctamente."
 10- Botón                      "Aceptar"
 11- Volver al menú principal
 
 Verificaciones:
-12- GuiaEntidad.json - La guía número 5 debe aparecer con el siguiente estado:
+12- GuiaEntidad.json - La guía número 1 debe aparecer con el siguiente estado:
     {
-        "GuiaId": 5,
+        "GuiaId": 1,
         "Estado": "ENTREGADA"
     }
 
 13- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva similar a:
     {
         "MovimientoId": <último id + 1>,
-        "GuiaId": 5,
+        "GuiaId": 1,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "ENTREGADA",
-        "Ubicacion": "1"
+        "Ubicacion": "Agencia: 24"
     }
 
-14- CuentaCorrienteClienteEntidad.json - El registro con GuiaId 5 debe tener:
+14- CuentaCorrienteClienteEntidad.json - El registro con GuiaId 1 debe tener:
     {
-        "FechaEntrega": "<fecha y hora de hoy>",
-        "FechaMovimiento": "<fecha y hora de hoy>"
+        "FechaEntrega": "<fecha y hora de hoy>"
     }

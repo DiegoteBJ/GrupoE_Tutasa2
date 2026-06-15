@@ -1,28 +1,31 @@
 Plan de Prueba: 220_RecepcionDespachoCDLD-CaminoFeliz.txt
 
+(Prerequisito: debe existir un HDRTransporte en estado PENDIENTE para el servicio 3
+ (CD CABA → CD La Plata, Fletes del Sur S.R.L.). Eso ocurre luego de 150_GenerarHDRTransporte.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Recepción/Despacho CD Larga Distancia"
 
-(Pantalla Recepción/Despacho CD Larga Distancia)
+(Pantalla Recepción/Despacho CD Larga Distancia - servicioId 3)
 2- Nro. Servicio de Transporte 3
 3- Botón                       "Buscar"
-4- Empresa resultado           "Transportes del Sur S.A."
-5- Ruta resultado              "CD Rosario - CD Buenos Aires"
-6- Lista HDRs a Recibir        <HDRs cuyo CDDestinoId = 7>
-7- Seleccionar HDR Id 4 de la lista
+4- Empresa resultado           "Fletes del Sur S.R.L."
+5- Ruta resultado              "CD CABA - CD La Plata"
+6- Lista HDRs a Recibir        <HDRs cuyo CDDestinoId = 8 para el servicio 3>
+7- Seleccionar HDR Id 1 de la lista
 8- Botón                       "Confirmar Recepción"
 9- Mensaje                     "Recepción confirmada correctamente."
 10- Botón                      "Aceptar"
 11- Volver al menú principal
 
 Verificaciones:
-12- HDRTransporteEntidad.json - El HDR número 4 debe tener:
+12- HDRTransporteEntidad.json - El HDR número 1 debe tener:
     {
-        "HdrTransporteId": 4,
+        "HdrTransporteId": 1,
         "Estado": "RENDIDA"
     }
 
-13- GuiaEntidad.json - Las guías del HDR 4 deben tener:
+13- GuiaEntidad.json - Las guías del HDR 1 deben tener:
     {
         "Estado": "EN_CD_DESTINO"
     }
@@ -33,5 +36,5 @@ Verificaciones:
         "GuiaId": <id de la guía>,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "EN_CD_DESTINO",
-        "Ubicacion": "En CD: 7"
+        "Ubicacion": "En CD: 8"
     }

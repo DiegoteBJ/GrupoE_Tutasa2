@@ -1,13 +1,16 @@
 Plan de Prueba: 240_RendicionHDR-CaminoFeliz.txt
 
+(Prerequisito: debe existir un HDRRetiro en estado PENDIENTE para fleteroId 1 (Juan García).
+ Eso ocurre luego de ejecutar 130_GenerarHDRFletero-CaminoFeliz con guías de retiro.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Rendición HDR"
 
-(Pantalla Rendición HDR)
+(Pantalla Rendición HDR - HDRRetiro Id 1, fletero Juan García)
 2- Nro. HDR                    1
 3- Radio Button                "HDR Retiro"
 4- Botón                       "Buscar HDR"
-5- Fletero resultado           "Pérez, Juan"
+5- Fletero resultado           "García, Juan"
 6- Fecha resultado             <fecha de emisión del HDR 1>
 7- Tipo HDR resultado          "Retiro"
 8- Total Guías resultado       <cantidad de guías en el HDR 1>
@@ -41,5 +44,5 @@ Verificaciones:
         "GuiaId": <id de la guía>,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "RENDIDA",
-        "Ubicacion": "En CD: 7"
+        "Ubicacion": "En CD: 1"
     }

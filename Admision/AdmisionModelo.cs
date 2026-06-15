@@ -93,23 +93,25 @@ namespace GrupoE_Tutasa.Admision
                 else
                     { guia.Estado = EstadoGuiaEnum.ADMITIDA;}
                 GuiaAlmacen.Guardar();
-
-                int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
-                    ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
-                    : 1;
-
-                var movimiento = new MovimientoEstadoGuiaEntidad
-                {
-                    MovimientoId = nuevoMovimientoId,
-                    GuiaId = guia.GuiaId,
-                    FechaMovimiento = DateTime.Now,
-                    Estado = guia.Estado,
-                    Ubicacion = "En CD: " + guia.CDActualId.ToString()
-                };
-
-                MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);
-                MovimientoEstadoGuiaAlmacen.Guardar();
+                RegistrarMovimiento(guia);
             }
+        }
+
+        private void RegistrarMovimiento(GuiaEntidad guia)
+        {
+            int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
+                ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
+                : 1;
+
+            MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(new MovimientoEstadoGuiaEntidad
+            {
+                MovimientoId = nuevoMovimientoId,
+                GuiaId = guia.GuiaId,
+                FechaMovimiento = DateTime.Now,
+                Estado = guia.Estado,
+                Ubicacion = "En CD: " + guia.CDActualId.ToString()
+            });
+            MovimientoEstadoGuiaAlmacen.Guardar();
         }
         public void CrearCCCliente(GuiasAAdmitir guia)
         {
@@ -155,8 +157,9 @@ namespace GrupoE_Tutasa.Admision
             {
                 guia.Estado = EstadoGuiaEnum.CANCELADA;
                 guia.ObservacionesAdmision = observaciones;
+                GuiaAlmacen.Guardar();
+                RegistrarMovimiento(guia);
             }
-            GuiaAlmacen.Guardar();
         }
     }
 }

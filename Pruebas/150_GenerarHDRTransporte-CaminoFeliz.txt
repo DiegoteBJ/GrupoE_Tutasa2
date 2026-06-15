@@ -1,14 +1,17 @@
 Plan de Prueba: 150_GenerarHDRTransporte-CaminoFeliz.txt
 
+(Prerequisito: debe haber guías en estado ADMITIDA con CDActualId != CDDestinoId,
+ y que no estén ya en un HDRTransporte en estado PENDIENTE.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Generar HDR Transporte"
 
-(Pantalla Generar HDR Transporte)
+(Pantalla Generar HDR Transporte - servicioId 3: Fletes del Sur S.R.L., CD CABA → CD La Plata)
 2- Nro. Servicio de Transporte 3
 3- Botón                       "Buscar"
-4- Empresa Transporte resultado "Transportes del Sur S.A."
-5- Fecha/Hora Salida resultado  <fecha y hora de salida del servicio 3>
-6- Ruta resultado               "CD Rosario - CD Buenos Aires"
+4- Empresa Transporte resultado "Fletes del Sur S.R.L."
+5- Fecha/Hora Salida resultado  "09/06/2026 20:30"
+6- Ruta resultado               "CD CABA - CD La Plata"
 7- Lista encomiendas pendientes <guías en estado ADMITIDA, que no estén en ningún HDRTransporte en estado PENDIENTE>
 8- Seleccionar todas las guías de la lista
 9- Botón                        "Confirmar"
@@ -21,8 +24,8 @@ Verificaciones:
     {
         "HdrTransporteId": <último id + 1>,
         "ServicioId": 3,
-        "CDOrigenId": 7,
-        "CDDestinoId": <CD destino del servicio 3>,
+        "CDOrigenId": 1,
+        "CDDestinoId": 8,
         "Estado": "PENDIENTE",
         "GuiaIds": [<ids de las guías seleccionadas>]
     }
@@ -38,5 +41,10 @@ Verificaciones:
         "GuiaId": <id de la guía>,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "TRASLADADA",
-        "Ubicacion": "7"
+        "Ubicacion": "En CD: 1"
+    }
+
+16- CuentaCorrienteClienteEntidad.json - El registro de cada guía seleccionada debe tener:
+    {
+        "EmpresaTransporteId": 2
     }

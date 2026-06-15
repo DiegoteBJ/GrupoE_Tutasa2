@@ -15,10 +15,10 @@ Plan de Prueba: 180_Imposicion-ErrorValidacion.txt
 8- Mensaje                     "No existe el Cliente seleccionado."
 9- Botón                       "Aceptar"
 
-(Intentar generar guía sin completar datos del destinatario)
-10- CUIT Cliente               "20-12345678-9"
+(Intentar generar guía sin completar datos del destinatario - clienteId 1: Distribuidora El Sur S.A.)
+10- CUIT Cliente               "33655398371"
 11- Botón                      "Buscar Cliente"
-12- Razón Social resultado     "MundoFOX S.A."
+12- Razón Social resultado     "Distribuidora El Sur S.A."
 13- Botón                      "Generar Guía"
 14- Mensaje                    "Debe completar todos los campos obligatorios."
 15- Botón                      "Aceptar"

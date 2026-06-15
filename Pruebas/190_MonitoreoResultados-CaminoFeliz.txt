@@ -1,5 +1,8 @@
 Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
 
+(Prerequisito: haber ejecutado al menos 010, 030 y 150 para que existan registros
+ en CuentaCorrienteClienteEntidad con Facturado=true y EmpresaTransporteId != 0.)
+
 (Empieza con el Menú Principal)
 1- Botón                       "Monitoreo de Resultados"
 
@@ -7,16 +10,16 @@ Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
 2- Mes resultado               5
 3- Año resultado               2026
 4- Botón                       "Buscar"
-5- Lista resultados            <una fila por empresa de transporte>
-6- Verificar fila 1            Empresa: "Transportes del Sur S.A."  Cobrado: $...  Pagado: $...  Resultado: $...
-7- Resultado Mensual           <suma de (Cobrado - Pagado) de todas las empresas>
+5- Lista resultados            <una fila por empresa de transporte con guías facturadas en mayo 2026>
+6- Verificar fila              Empresa: "Fletes del Sur S.R.L."  Cobrado: $...  Pagado: $...  Resultado: $...
+7- Resultado Mensual           <suma de (Cobrado - Pagado) de todas las empresas en mayo 2026>
 
 (Consulta con período diferente)
-8- Mes                         "1"
+8- Mes                         "6"
 9- Año                         "2026"
 10- Botón                      "Buscar"
-11- Lista resultados           <resultados para enero 2026>
-12- Resultado Mensual          <suma recalculada para enero 2026>
+11- Lista resultados           <resultados para junio 2026>
+12- Resultado Mensual          <suma recalculada para junio 2026>
 
 (Mes inválido)
 13- Mes                        "13"
@@ -36,6 +39,6 @@ Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
 25- Volver al menú principal
 
 Verificaciones:
-26- El Resultado Mensual mostrado para cada empresa coincide con la suma de importeTransporte
-    de las guías en CuentaCorrienteClienteEntidad.json con Facturado = true, para el mes y año
-    indicado, menos el importe del convenio vigente en ConveniosTransporteEntidad.json.
+26- El Resultado Mensual mostrado para cada empresa coincide con la suma de PrecioTransporte
+    de las guías en CuentaCorrienteClienteEntidad.json con Facturado=true y EmpresaTransporteId != 0,
+    para el mes y año indicado, menos el importe del convenio vigente en ConveniosTransporteEntidad.json.

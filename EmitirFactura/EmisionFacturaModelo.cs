@@ -69,7 +69,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                 : 1;
 
             string numeroDocumento  = $"{nuevoDocumentoId:00000000}";
-            decimal iva             = netoGravado * 0.21m;
+            decimal iva             = netoGravado * 0m;
             decimal documentoTotal  = netoGravado + iva;
 
             var nuevoDocumento = new DocumentoEntidad
