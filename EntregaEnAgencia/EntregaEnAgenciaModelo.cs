@@ -67,7 +67,7 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
                     GuiaId = guiaId,
                     FechaMovimiento = DateTime.Now,
                     Estado = EstadoGuiaEnum.ENTREGADA,
-                    Ubicacion = guiaAlmacen.AgenciaDestinoId.ToString()
+                    Ubicacion = "En Agencia: " + guiaAlmacen.AgenciaDestinoId.ToString()
                 };
 
                 MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);

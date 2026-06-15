@@ -67,7 +67,7 @@ namespace GrupoE_Tutasa.EntregaEnCD
                     GuiaId = guiaId,
                     FechaMovimiento = DateTime.Now,
                     Estado = EstadoGuiaEnum.ENTREGADA,
-                    Ubicacion = guiaAlmacen.CDDestinoId.ToString()
+                    Ubicacion = "En CD: " + guiaAlmacen.CDDestinoId.ToString()
                 };
 
                 MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Add(movimiento);
