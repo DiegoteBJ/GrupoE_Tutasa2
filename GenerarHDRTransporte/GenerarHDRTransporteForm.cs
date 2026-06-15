@@ -157,6 +157,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
         {
             LimpiarDatos();
             textBoxNrodeServicioTransporte.Clear();
+            Close();
         }
 
         private void textBoxNrodeServicioTransporte_KeyDown(object sender, KeyEventArgs e)

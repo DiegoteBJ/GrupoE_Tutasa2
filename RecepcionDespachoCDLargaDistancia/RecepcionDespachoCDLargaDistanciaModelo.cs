@@ -52,17 +52,25 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
         // HDRs de este servicio cuyo destino es MI CD (llegan aquí)
         private List<HDRTransporte> ObtenerHDRsARecibir(int servicioId)
         {
-            return HDRTransporteAlmacen.hDRTransportes
-                .Where(h => h.ServicioId == servicioId
-                         && h.CDDestinoId == cdTrabajoId)
-                .Select(h => new HDRTransporte
+            var hdr = HDRTransporteAlmacen.hDRTransportes
+                .FirstOrDefault(h => h.ServicioId == servicioId
+                                  && h.CDDestinoId == cdTrabajoId
+                                  && h.Estado == EstadoHDRTransporteEnum.EN_TRANSITO);
+
+            if (hdr == null) return new List<HDRTransporte>();
+
+            return hdr.GuiaIds.Select(guiaId =>
+            {
+                var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
+                return new HDRTransporte
                 {
-                    HdrTransporteId = h.HdrTransporteId,
-                    NroGuia = h.HdrTransporteId.ToString(),
-                    Destino = ObtenerNombreCD(h.CDDestinoId),
-                    Tamaño = $"{h.GuiaIds?.Count ?? 0} guías",
-                    Estado = h.Estado.ToString()
-                }).ToList();
+                    HdrTransporteId = hdr.HdrTransporteId,
+                    NroGuia = guiaId.ToString(),
+                    Destino = ObtenerNombreCD(hdr.CDDestinoId),
+                    Tamaño = guia?.TipoCaja.ToString() ?? "",
+                    Estado = hdr.Estado.ToString()
+                };
+            }).ToList();
         }
 
         // ===== HDRs a DESPACHAR =====
