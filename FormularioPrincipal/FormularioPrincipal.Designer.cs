@@ -236,27 +236,27 @@
             CDTrabajoLabel.AutoSize = true;
             CDTrabajoLabel.Location = new Point(238, 491);
             CDTrabajoLabel.Name = "CDTrabajoLabel";
-            CDTrabajoLabel.Size = new Size(107, 20);
+            CDTrabajoLabel.Size = new Size(27, 20);
             CDTrabajoLabel.TabIndex = 38;
-            CDTrabajoLabel.Text = "CD de Trabajo:";
+            CDTrabajoLabel.Text = "[1]";
             // 
             // AgenciaTrabajoLabel
             // 
             AgenciaTrabajoLabel.AutoSize = true;
             AgenciaTrabajoLabel.Location = new Point(238, 533);
             AgenciaTrabajoLabel.Name = "AgenciaTrabajoLabel";
-            AgenciaTrabajoLabel.Size = new Size(107, 20);
+            AgenciaTrabajoLabel.Size = new Size(35, 20);
             AgenciaTrabajoLabel.TabIndex = 39;
-            AgenciaTrabajoLabel.Text = "CD de Trabajo:";
+            AgenciaTrabajoLabel.Text = "[26]";
             // 
             // ModalidadImposicionLabel
             // 
             ModalidadImposicionLabel.AutoSize = true;
             ModalidadImposicionLabel.Location = new Point(238, 573);
             ModalidadImposicionLabel.Name = "ModalidadImposicionLabel";
-            ModalidadImposicionLabel.Size = new Size(107, 20);
+            ModalidadImposicionLabel.Size = new Size(73, 20);
             ModalidadImposicionLabel.TabIndex = 40;
-            ModalidadImposicionLabel.Text = "CD de Trabajo:";
+            ModalidadImposicionLabel.Text = "[Agencia]";
             // 
             // FormularioPrincipal
             // 
