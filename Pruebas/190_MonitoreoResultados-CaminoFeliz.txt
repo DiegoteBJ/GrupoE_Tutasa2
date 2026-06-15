@@ -9,14 +9,18 @@ Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
         Calcula para la guía 5 $ 3500 todo corresponde a trasnporte ya que es enrtega en CD.
  a.3 Generar HDR Transporte con la guía 4 al servicio a La Plata (CD: 8) Servicio: 9
  a.4 Generar HDR Transporte con la guia 5 al sercivio a Córdoba Capital (CD: 5) Servicio: 241
- a.5 Ingresar a Recepción CD Larga Distancia y confirmar el despacho de ambas guías.
- a.6 Loguearse como CD: 5 y generar HDR Transporte con la guia 5 al servicio a Rio Cuarto (CD: 7) Servicio: 578
- a.7 Ingresar a Recepción CD Larga Distancia y confirmar el despacho de la guía.
+ a.5 Loguearse como CD: 5.
+ a.6 Ir a Recepción CD Larga Distancia y recepcionar el servicio 241 con la guía 5.
+     (guía 5 queda en estado ADMITIDA con CDActualId = 5, ya que CD 5 no es su destino final)
+ a.7 Generar HDR Transporte con la guía 5 al servicio a Río Cuarto (CD: 7) Servicio: 578
+     (empresa: Transportes Rápidos S.A., EmpresaTransporteId = 4)
  a.8 Loguearse como CD: 8 y agencia: 26.
  a.9 Ir a Recepción CD Larga Distancia y recepcionar el servicio 9 con la guía 4.
+     (guía 4 queda en estado EN_CD_DESTINO con CDActualId = 8, ya que CD 8 es su destino final)
  a.10 Ir a Entrega en Agencia y cargar DNI del destinatario: 38.989.545 y confirmar la entrega de la guía 4.
  a.11 Loguearse como CD: 7.
  a.12 Ir a Recepción CD Larga Distancia y recepcionar el servicio 578 con la guía 5.
+      (guía 5 queda en estado EN_CD_DESTINO con CDActualId = 7, ya que CD 7 es su destino final)
  a.13 Ir a Entrega en CD y cargar el DNI del destinatario: 36.448.439 y confirmar la entrega de la guía 5.
  a.14 Ir a Emitir Facturas y facturar el cliente 2, CUIT: 33-68508103-8
 

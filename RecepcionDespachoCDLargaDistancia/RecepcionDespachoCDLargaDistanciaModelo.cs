@@ -115,7 +115,10 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                         var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == guiaId);
                         if (guia != null)
                         {
-                            guia.Estado = EstadoGuiaEnum.EN_CD_DESTINO;
+                            guia.CDActualId = cdTrabajoId;
+                            guia.Estado = guia.CDActualId == guia.CDDestinoId
+                                ? EstadoGuiaEnum.EN_CD_DESTINO
+                                : EstadoGuiaEnum.ADMITIDA;
 
                             int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0
                                 ? MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Max(m => m.MovimientoId) + 1
@@ -126,7 +129,7 @@ namespace GrupoE_Tutasa.RecepcionDespachoCDLargaDistancia
                                 MovimientoId = nuevoMovimientoId,
                                 GuiaId = guiaId,
                                 FechaMovimiento = DateTime.Now,
-                                Estado = EstadoGuiaEnum.EN_CD_DESTINO,
+                                Estado = guia.Estado,
                                 Ubicacion = "En CD: " + cdTrabajoId.ToString()
                             });
                         }
