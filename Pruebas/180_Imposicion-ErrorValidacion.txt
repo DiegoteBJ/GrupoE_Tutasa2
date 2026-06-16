@@ -1,28 +1,27 @@
-Plan de Prueba: 180_Imposicion-ErrorValidacion.txt
 
-(Empieza con el Menú Principal)
-1- Botón                       "Imposición"
+(Empieza con el Menú Principal)	
+Botón 	Imposición
+	
+(CUIT inválido)	
+CUIT Cliente			3365539837
+Botón					Buscar Cliente
+Mensaje					"Ingresa un Cuit valido"
+Botón					Aceptar
+Evento					Cierra mensaje.
+	
+(CUIT válido pero cliente inexistente)	
+CUIT Cliente			27230938607
+Botón					Buscar Cliente
+Mensaje					"No se encontro ningun remitente con el Cuit ingrsado"
+Botón					Aceptar
+Evento					Cierra mensaje.
+	
+(Generar guía sin nombre del destinatario)	
 
-(CUIT inválido)
-2- CUIT Cliente                "99-99999999-9"
-3- Botón                       "Buscar Cliente"
-4- Mensaje                     "El CUIT ingresado no es válido."
-5- Botón                       "Aceptar"
-
-(CUIT válido pero cliente inexistente)
-6- CUIT Cliente                "20-00000001-0"
-7- Botón                       "Buscar Cliente"
-8- Mensaje                     "No existe el Cliente seleccionado."
-9- Botón                       "Aceptar"
-
-(Intentar generar guía sin completar datos del destinatario - clienteId 1: Distribuidora El Sur S.A.)
-10- CUIT Cliente               "33655398371"
-11- Botón                      "Buscar Cliente"
-12- Razón Social resultado     "Distribuidora El Sur S.A."
-13- Botón                      "Generar Guía"
-14- Mensaje                    "Debe completar todos los campos obligatorios."
-15- Botón                      "Aceptar"
-16- Volver al menú principal
-
-Verificaciones:
-17- GuiaEntidad.json - No debe haberse agregado ninguna entrada nueva.
+CUIT Cliente			33685081038
+Botón					Buscar Cliente
+Razón					Social resultado	Importadora Norte S.R.L
+Botón					Generar Guía
+Mensaje					"El nombre del destinatario debe ser valido. Solo letras."
+Botón					Aceptar
+Evento					Cierra mensaje.

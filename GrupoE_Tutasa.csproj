@@ -40,13 +40,13 @@
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\AgenciaEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\CentroDistribucionEntidad - Copia.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\CentroDistribucionEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ClienteEntidad - Copia.json">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -55,55 +55,55 @@
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ClienteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ConveniosTransporteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\CuentaCorrienteClienteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\CuentaCorrienteClienteEntidad.json.old">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
   <None Update="Datos\DocumentoEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\EmpresaTransporteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\FleteroEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\GuiaEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\HDRDistribucionEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\HDRRetiroEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\HDRTransporteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\LocalidadEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\MovimientoEstadoGuiaEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ProvinciaEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\ServicioTransporteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\TarifarioEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
   <None Update="Datos\TarifaTransporteEntidad.json">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
 </ItemGroup>
 

@@ -124,19 +124,6 @@
       "localidadId": 9
     },
     "telefono": "11-1400-1757"
-  },
-  {
-    "clienteId": 10,
-    "razonSocial": "",
-    "nombre": "Lucía",
-    "apellido": "Ferreyra",
-    "cuit": "27282155529",
-    "domicilio": {
-      "calle": "Calle Residencial 500",
-      "numero": "725",
-      "codigoPostal": "X5900",
-      "localidadId": 10
-    },
-    "telefono": "11-2193-8461"
   }
+  
 ]
