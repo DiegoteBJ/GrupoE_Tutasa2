@@ -11,6 +11,7 @@ namespace GrupoE_Tutasa.Almacenes
         EN_CD_DESTINO,
         EN_DISTRIBUCION,
         PENDIENTE_DE_ENTREGA,
+        EN_AGENCIA_DESTINO,
         ENTREGADA
     }
 

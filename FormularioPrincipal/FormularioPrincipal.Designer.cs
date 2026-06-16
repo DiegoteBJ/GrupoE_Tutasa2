@@ -167,7 +167,7 @@
             RecepcionCDLDBoton.Name = "RecepcionCDLDBoton";
             RecepcionCDLDBoton.Size = new Size(165, 52);
             RecepcionCDLDBoton.TabIndex = 31;
-            RecepcionCDLDBoton.Text = "Recepcion en CD Larga Distancia";
+            RecepcionCDLDBoton.Text = "Recepcion y despacho en CD LD";
             RecepcionCDLDBoton.UseVisualStyleBackColor = true;
             RecepcionCDLDBoton.Click += RecepcionCDLDBoton_Click;
             // 

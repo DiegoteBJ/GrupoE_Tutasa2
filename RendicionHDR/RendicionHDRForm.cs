@@ -115,7 +115,7 @@ namespace GrupoE_Tutasa.RendicionHDR
         private void CambiarCumplidasBoton_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in DetalleHDRListView.SelectedItems)
-                item.SubItems[5].Text = "Cumplida";
+                item.SubItems[6].Text = "Cumplida";
 
             ActualizarContadores();
         }
@@ -123,7 +123,7 @@ namespace GrupoE_Tutasa.RendicionHDR
         private void CambiarNoCumplidasBoton_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in DetalleHDRListView.SelectedItems)
-                item.SubItems[5].Text = "No Cumplida";
+                item.SubItems[6].Text = "No Cumplida";
 
             ActualizarContadores();
         }
@@ -135,7 +135,7 @@ namespace GrupoE_Tutasa.RendicionHDR
 
             foreach (ListViewItem item in DetalleHDRListView.Items)
             {
-                string estado = item.SubItems[5].Text;
+                string estado = item.SubItems[6].Text;
                 if (estado == "Cumplida") cumplidas++;
                 if (estado == "No Cumplida") noCumplidas++;
             }
@@ -149,7 +149,7 @@ namespace GrupoE_Tutasa.RendicionHDR
         {
             foreach (ListViewItem item in DetalleHDRListView.Items)
             {
-                if (item.SubItems[5].Text == "Pendiente")
+                if (item.SubItems[6].Text == "Pendiente")
                 {
                     MessageBox.Show("Operación incompleta. Debe asignar un resultado a todas las encomiendas de la grilla");
                     return;
@@ -166,7 +166,7 @@ namespace GrupoE_Tutasa.RendicionHDR
                 .Select(item => new ResultadoGuia
                 {
                     guiaId = int.Parse(item.SubItems[0].Text),
-                    resultado = item.SubItems[5].Text
+                    resultado = item.SubItems[6].Text
                 })
                 .ToList();
 

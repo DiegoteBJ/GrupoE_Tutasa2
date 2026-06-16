@@ -37,8 +37,7 @@ namespace GrupoE_Tutasa.EntregaEnAgencia
         {
             return guias
                 .Where(g => g.DniDestinatario == dni
-                         && g.Estado == EstadoGuiaEnum.EN_CD_DESTINO.ToString()
-                         && g.UbicacionActual.Contains("Agencia"))
+                         && g.Estado == EstadoGuiaEnum.EN_AGENCIA_DESTINO.ToString())
                 .ToList();
         }
 
