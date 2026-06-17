@@ -2,22 +2,6 @@ Plan de Prueba: 190_MonitoreoResultados-CaminoFeliz.txt
 
 (Prerequisito: haber ejecutado al menos 010, 030 y 150 para que existan registros
  en CuentaCorrienteClienteEntidad con Facturado=true y EmpresaTransporteId != 0.)
- Ejemplos: a. Admitir las Guía 4 y 5.
- a.1 Loguearse como CD: 1.
- a.2 Admitir ambas guías de una por una. 
-        Calcula para la guía 4 $ 9200 de los cuales $ 4.200 son del transporte desde CD1 a CD8 / $ 5000 entrega en agencia
-        Calcula para la guía 5 $ 4200 todo corresponde a trasnporte ya que es enrtega en CD.
- a.3 Generar HDR Transporte con la guía 4 al servicio a La Plata (CD: 8) Servicio: 9
- a.4 Generar HDR Transporte con la guia 5 al sercivio a Córdoba Capital (CD: 5) Servicio: 241
- a.5 Loguearse como CD: 5.
- a.6 Ir a Recepción CD Larga Distancia y recepcionar el servicio 241 con la guía 5.
-     (guía 5 queda en estado EN_CD_DESTINO con CDActualId = 5, ya que CD 5 es su destino final)
- a.7 Ir a Entrega en CD y cargar el DNI del destinatario: 36.448.439 y confirmar la entrega de la guía 5.
- a.8 Loguearse como CD: 8 y agencia: 26.
- a.9 Ir a Recepción CD Larga Distancia y recepcionar el servicio 9 con la guía 4.
-     (guía 4 queda en estado EN_CD_DESTINO con CDActualId = 8, ya que CD 8 es su destino final)
- a.10 Ir a Entrega en Agencia y cargar DNI del destinatario: 38.989.545 y confirmar la entrega de la guía 4.
- a.11 Ir a Emitir Facturas y facturar el cliente 2, CUIT: 33-68508103-8
 
 (Empieza con el Menú Principal)
 1- Botón                       "Monitoreo de Resultados"
