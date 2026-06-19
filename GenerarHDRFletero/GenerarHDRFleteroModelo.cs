@@ -168,7 +168,8 @@ namespace GrupoE_Tutasa.GenerarHDR
             {
                 return LGuiasAAsignar.Where(g =>
                     ((g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO) ||
-                    (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2)) &&
+                    (g.EstadoGuia == EstadoGuiaEnum.EN_DISTRIBUCION && g.IntentosDeEntrega < 2) ||
+                    (g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA && g.IntentosDeEntrega < 2)) &&
                     g.DomicilioEntrega != null &&
                     g.ModalidadEntrega != ModalidadEntregaEnum.CD &&
                     fletero.CPCobertura.Contains(g.DomicilioEntrega.CodigoPostal) &&
@@ -270,7 +271,9 @@ namespace GrupoE_Tutasa.GenerarHDR
                         GuiaIds = guiasGrupo.Select(g => g.GuiaId).ToList()
                     });
 
-                    foreach (var g in guiasGrupo.Where(g => g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO))
+                    foreach (var g in guiasGrupo.Where(g =>
+                        g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO ||
+                        g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA))
                     {
                         g.EstadoGuia = EstadoGuiaEnum.EN_DISTRIBUCION;
 

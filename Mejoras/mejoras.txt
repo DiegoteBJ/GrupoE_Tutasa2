@@ -1,0 +1,130 @@
+FIXES APLICADOS - ESTADOS DE GUÍAS TUTASA
+==========================================
+Fecha: 19/06/2026
+
+
+== FIX 1 — TRASLADADA reemplazado por EN_CD_DESTINO en recepción de transporte ==
+
+Archivo: RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaModelo.cs
+Método:  MarcarComoRecibidas()
+
+Problema: cuando una guía llegaba a su CD destino por transporte, el sistema la ponía
+en estado TRASLADADA. Ese estado nunca era levantado por ninguna pantalla, dejando
+la guía sin salida posible.
+
+Fix aplicado: se reemplazó la asignación fija a TRASLADADA por la lógica correcta:
+  - Si CDActualId == CDDestinoId → EN_CD_DESTINO
+  - Si CDActualId != CDDestinoId → ADMITIDA (sigue viajando)
+
+Código resultante (línea 119):
+    guia.Estado = guia.CDActualId == guia.CDDestinoId
+        ? EstadoGuiaEnum.EN_CD_DESTINO
+        : EstadoGuiaEnum.ADMITIDA;
+
+
+== FIX 2 — TRASLADADA reemplazado por ADMITIDA en generación de HDR Transporte ==
+
+Archivo: GenerarHDRTransporte\GenerarHDRTransporteModelo.cs
+Método:  GenerarHDR() (foreach de asignación de estado al despachar)
+
+Problema: al generar un HDR de transporte, el sistema asignaba TRASLADADA a las
+guías cuyo CDDestino coincidía con el CD de trabajo. Esto era incorrecto: en ese
+momento la guía todavía está siendo despachada (saliendo), no llegó a destino.
+El estado correcto mientras viaja siempre es ADMITIDA.
+
+Fix aplicado: se eliminó el if/else y se asigna ADMITIDA en todos los casos.
+
+Código resultante:
+    guia.Estado = EstadoGuiaEnum.ADMITIDA;
+
+También se actualizó el plan de prueba:
+    Pruebas\150_GenerarHDRTransporte-CaminoFeliz.txt
+    Las verificaciones que esperaban "TRASLADADA" ahora esperan "ADMITIDA".
+
+
+== FIX 3 — PENDIENTE_DE_ENTREGA habilitada para reintento de distribución ==
+
+Archivo: GenerarHDRFletero\GenerarHDRFleteroModelo.cs
+Métodos: ObtenerGuiasPorEstado() y ImprimirResumen()
+
+Problema: cuando el fletero no cumplía una entrega (domicilio o agencia), la guía
+quedaba en PENDIENTE_DE_ENTREGA pero ninguna pantalla la volvía a tomar para
+asignarla a una nueva HDR de distribución. La guía quedaba bloqueada.
+
+Fix aplicado en ObtenerGuiasPorEstado(): se agregó PENDIENTE_DE_ENTREGA al filtro
+de distribución, con la condición de que tenga menos de 2 intentos:
+    (g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA && g.IntentosDeEntrega < 2)
+
+Fix aplicado en ImprimirResumen(): se amplió el foreach que transiciona guías a
+EN_DISTRIBUCION al confirmar la HDR, para incluir también las PENDIENTE_DE_ENTREGA:
+    g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO ||
+    g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA
+
+
+== FIX 4 — Segundo intento fallido pasa a CANCELADA ==
+
+Archivo: RendicionHDR\RendicionHDRModelo.cs
+Método:  AplicarResultadosGuiasDistribucion()
+
+Problema: cuando el fletero fallaba dos veces la entrega, la guía quedaba en
+PENDIENTE_DE_ENTREGA con IntentosDeEntrega == 2. El filtro de GenerarHDRFletero
+exige IntentosDeEntrega < 2, por lo que quedaba excluida para siempre sin ningún
+flujo que la resolviera.
+
+Regla de negocio definida: una guía con 2 intentos fallidos debe devolverse al
+remitente, igual que una guía cancelada explícitamente. Ambos casos usan el mismo
+estado CANCELADA y serán atendidos por la pantalla de devolución (a implementar).
+
+Fix aplicado: al rendir un intento fallido se incrementa primero el contador y
+luego se decide el estado según el resultado:
+  - IntentosDeEntrega < 2 → PENDIENTE_DE_ENTREGA (puede volver a distribuirse)
+  - IntentosDeEntrega >= 2 → CANCELADA (entra al flujo de devolución al remitente)
+
+Código resultante:
+    guiaEntidad.IntentosDeEntrega++;
+    if (guiaEntidad.IntentosDeEntrega >= 2)
+    {
+        nuevoEstado = EstadoGuiaEnum.CANCELADA;
+        ubicacion = "Cancelada - devolver al remitente";
+    }
+    else
+    {
+        nuevoEstado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
+        ubicacion = "Pendiente de entrega";
+    }
+
+
+== FIX 5 — Eliminación de estados huérfanos del enum ==
+
+Archivos: Almacenes\GuiaEntidad.cs
+          Imposicion\Enums.cs
+          GenerarHDRFletero\Guias.cs
+
+Estados eliminados:
+  - TRASLADADA: reemplazado por EN_CD_DESTINO / ADMITIDA según corresponde (FIX 1 y 2).
+  - PENDIENTE_2DO_INTENTO: nunca fue asignado ni consumido en ningún lugar del código.
+    El control de reintentos se hace con el campo IntentosDeEntrega (FIX 3 y 4).
+
+
+== FIX 6 — LCentroDistribucion en AdmisionModelo ==
+
+Archivo: Admision\AdmisionModelo.cs
+
+Se agregó la propiedad LCentroDistribucion que trae todos los centros de distribución
+desde el almacén y los mapea a la clase local CentroDistribucion:
+
+    public List<CentroDistribucion> LCentroDistribucion =>
+        CentroDistribucionAlmacen.centroDistribucions
+            .Select(cd => new CentroDistribucion
+            {
+                CdId = cd.CdId,
+                nombreCD = cd.Nombre
+            })
+            .ToList();
+
+
+== PENDIENTE ==
+
+- Pantalla de devolución al remitente: debe tomar todas las guías en estado
+  CANCELADA (tanto las de 2 intentos fallidos como las canceladas explícitamente)
+  y generar una nueva guía con CDOrigen = CD actual y CDDestino = CD origen original.

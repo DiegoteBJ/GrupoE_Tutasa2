@@ -10,8 +10,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         RENDIDA,
         ADMITIDA,
         CANCELADA,
-        PENDIENTE_2DO_INTENTO,
-        TRASLADADA,
+
         EN_CD_DESTINO,
         EN_DISTRIBUCION,
         PENDIENTE_DE_ENTREGA,

@@ -117,10 +117,7 @@ namespace GrupoE_Tutasa.GenerarHDRTransporte
                 var guia = GuiaAlmacen.guias.FirstOrDefault(g => g.GuiaId == id);
                 if (guia != null)
                 {
-                    if (guia.CDDestinoId == cdTrabajoId)
-                        guia.Estado = EstadoGuiaEnum.TRASLADADA;
-                    else
-                        guia.Estado = EstadoGuiaEnum.ADMITIDA;
+                    guia.Estado = EstadoGuiaEnum.ADMITIDA;
                     
                     guia.CDActualId = cdTrabajoId;
                     int nuevoMovimientoId = MovimientoEstadoGuiaAlmacen.movimientoEstadoGuias.Count > 0

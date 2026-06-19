@@ -1,0 +1,96 @@
+RESUMEN - REPASO DE ESTADOS DE GUÍAS TUTASA
+============================================
+Fecha: 19/06/2026 (actualizado con fixes aplicados)
+
+
+== FLUJO COMPLETO DE ESTADOS ==
+
+1. IMPOSICIÓN
+   - Telefónica (retiro a domicilio) → A_RETIRAR
+   - En Agencia                      → A_RETIRAR
+   - En CD                           → RENDIDA
+
+2. RETIRO POR FLETERO (HDR Retiro)
+   - A_RETIRAR → RENDIDA (cuando el fletero rinde la HDR como Cumplida)
+   → Los tres flujos de imposición convergen en RENDIDA dentro del CD de origen.
+
+3. ADMISIÓN (CU 06)
+   - RENDIDA + CDActual == CDDestino → EN_CD_DESTINO (no necesita transporte)
+   - RENDIDA + CDActual != CDDestino → ADMITIDA (necesita viajar)
+
+4. TRANSPORTE (HDR Transporte)
+   - ADMITIDA → viaja → llega a CD intermedio → sigue en ADMITIDA
+   - ADMITIDA → viaja → llega a CD destino    → sigue en ADMITIDA (hasta recepción)
+
+5. RECEPCIÓN EN CD DESTINO
+   - ADMITIDA + CDActual == CDDestino → EN_CD_DESTINO
+   - ADMITIDA + CDActual != CDDestino → ADMITIDA (sigue viajando por CD intermedios)
+
+6. DISTRIBUCIÓN DESDE CD DESTINO
+   - EN_CD_DESTINO + ModalidadEntrega CD              → destinatario retira en CD → ENTREGADA
+   - EN_CD_DESTINO + ModalidadEntrega Domicilio/Agencia → HDR Distribución → EN_DISTRIBUCION
+
+7. HDR DISTRIBUCIÓN (rendición)
+   - EN_DISTRIBUCION + Cumplida + Domicilio → ENTREGADA
+   - EN_DISTRIBUCION + Cumplida + Agencia   → EN_AGENCIA_DESTINO
+   - EN_DISTRIBUCION + No cumplida (intento 1) → PENDIENTE_DE_ENTREGA
+   - EN_DISTRIBUCION + No cumplida (intento 2) → CANCELADA
+
+8. REINTENTO DE DISTRIBUCIÓN
+   - PENDIENTE_DE_ENTREGA (IntentosDeEntrega < 2) → nueva HDR Distribución → EN_DISTRIBUCION
+
+9. ENTREGA EN AGENCIA
+   - EN_AGENCIA_DESTINO → destinatario retira → ENTREGADA
+
+10. DEVOLUCIÓN AL REMITENTE (pendiente de implementar)
+    - CANCELADA (por 2 intentos fallidos o cancelación explícita) → pantalla de devolución
+
+
+== ESTADOS VÁLIDOS ==
+
+  A_RETIRAR, RENDIDA, ADMITIDA, EN_CD_DESTINO, EN_DISTRIBUCION,
+  PENDIENTE_DE_ENTREGA, EN_AGENCIA_DESTINO, ENTREGADA, CANCELADA
+
+
+== FIXES APLICADOS (19/06/2026) ==
+
+FIX 1 — RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaModelo.cs
+   MarcarComoRecibidas(): guía que llega a CD destino pasa a EN_CD_DESTINO (no TRASLADADA).
+
+FIX 2 — GenerarHDRTransporte\GenerarHDRTransporteModelo.cs
+   GenerarHDR(): guías despachadas quedan en ADMITIDA en todos los casos (no TRASLADADA).
+
+FIX 3 — GenerarHDRFletero\GenerarHDRFleteroModelo.cs
+   ObtenerGuiasPorEstado(): PENDIENTE_DE_ENTREGA con IntentosDeEntrega < 2 entra al filtro
+   de distribución.
+   ImprimirResumen(): el foreach que transiciona a EN_DISTRIBUCION también cubre
+   PENDIENTE_DE_ENTREGA.
+
+FIX 4 — RendicionHDR\RendicionHDRModelo.cs
+   AplicarResultadosGuiasDistribucion(): al fallar la entrega, si IntentosDeEntrega >= 2
+   el estado pasa a CANCELADA; si no, a PENDIENTE_DE_ENTREGA.
+
+FIX 5 — Enums (Almacenes\GuiaEntidad.cs, Imposicion\Enums.cs, GenerarHDRFletero\Guias.cs)
+   Eliminados los estados TRASLADADA y PENDIENTE_2DO_INTENTO, que quedaron sin uso.
+
+
+== FLUJO DE ESTADOS (versión final) ==
+
+  A_RETIRAR ──(HDR retiro cumplida)──────────────────────→ RENDIDA
+  RENDIDA (en CD origen)
+      ├── CDActual == CDDestino → EN_CD_DESTINO
+      └── CDActual != CDDestino → ADMITIDA
+                                      └── (transporte, saltos por CDs intermedios)
+                                              └── recepción en CD destino → EN_CD_DESTINO
+  EN_CD_DESTINO
+      ├── ModalidadEntrega CD       → ENTREGADA
+      └── ModalidadEntrega Dom/Ag   → EN_DISTRIBUCION
+                                          ├── Cumplida + Domicilio → ENTREGADA
+                                          ├── Cumplida + Agencia   → EN_AGENCIA_DESTINO
+                                          │                               └── ENTREGADA
+                                          ├── No cumplida (intento 1) → PENDIENTE_DE_ENTREGA
+                                          │                               └── EN_DISTRIBUCION (reintento)
+                                          └── No cumplida (intento 2) → CANCELADA
+  CANCELADA ──────────────────────────────────────────────→ devolución al remitente (*)
+
+  (*) pendiente de implementar

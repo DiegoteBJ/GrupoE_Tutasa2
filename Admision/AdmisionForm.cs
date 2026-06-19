@@ -60,12 +60,13 @@ namespace GrupoE_Tutasa.Admision
             }
 
             var guias = modelo.LGuiasAAdmitir;
+            var CDs = modelo.LCentroDistribucion;
             guiaActual = guias.FirstOrDefault(g => g.numeroGuia == numeroGuia);
 
             if (guiaActual != null)
             {
-                CDOrigenGuiaLabel.Text = guiaActual.CDOrigenId.ToString();
-                CDDestinoGuiaLabel.Text = guiaActual.CDDestinoId.ToString();
+                CDOrigenGuiaLabel.Text = CDs.FirstOrDefault(cd => cd.CdId == guiaActual.CDOrigenId)?.nombreCD;
+                CDDestinoGuiaLabel.Text = CDs.FirstOrDefault(cd => cd.CdId == guiaActual.CDDestinoId)?.nombreCD;
                 EstadoGuiaLabel.Text = guiaActual.estadoGuia.ToString();
                 ObservacionesTextBox.Text = guiaActual.observaciones;
                 TamañoDeclaradoLabel.Text = guiaActual.tamaño;

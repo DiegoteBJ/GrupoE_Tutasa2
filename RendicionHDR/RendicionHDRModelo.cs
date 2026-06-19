@@ -180,9 +180,17 @@ namespace GrupoE_Tutasa.RendicionHDR
                 }
                 else
                 {
-                    nuevoEstado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
                     guiaEntidad.IntentosDeEntrega++;
-                    ubicacion = "Pendiente de entrega";
+                    if (guiaEntidad.IntentosDeEntrega >= 2)
+                    {
+                        nuevoEstado = EstadoGuiaEnum.CANCELADA;
+                        ubicacion = "Cancelada - devolver al remitente";
+                    }
+                    else
+                    {
+                        nuevoEstado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
+                        ubicacion = "Pendiente de entrega";
+                    }
                 }
 
                 guiaEntidad.Estado = nuevoEstado;

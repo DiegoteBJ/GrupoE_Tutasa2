@@ -29,7 +29,16 @@ namespace GrupoE_Tutasa.Admision
             tarifarioId = g.TarifarioId
         })
         .ToList();
-                
+
+        public List<CentroDistribucion> LCentroDistribucion =>
+            CentroDistribucionAlmacen.centroDistribucions
+                .Select(cd => new CentroDistribucion
+                {
+                    CdId = cd.CdId,
+                    nombreCD = cd.Nombre
+                })
+                .ToList();
+
         public List<Cajas> LCajas =>
             Enum.GetValues<TipoCajaEnum>()
                 .Select((e, i) => new Cajas { ID = i + 1, nombre = e.ToString() })

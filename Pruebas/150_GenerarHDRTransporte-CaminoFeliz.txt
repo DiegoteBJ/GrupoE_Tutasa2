@@ -32,7 +32,7 @@ Verificaciones:
 
 14- GuiaEntidad.json - Las guías seleccionadas deben tener:
     {
-        "Estado": "TRASLADADA"
+        "Estado": "ADMITIDA"
     }
 
 15- MovimientoEstadoGuiaEntidad.json - Debe existir una entrada nueva por cada guía similar a:
@@ -40,7 +40,7 @@ Verificaciones:
         "MovimientoId": <último id + 1>,
         "GuiaId": <id de la guía>,
         "FechaMovimiento": "<fecha y hora de hoy>",
-        "Estado": "TRASLADADA",
+        "Estado": "ADMITIDA",
         "Ubicacion": "En CD: 1"
     }
 
