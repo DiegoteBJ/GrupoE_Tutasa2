@@ -150,6 +150,8 @@ Solución:
   1. Agregar caso _ => throw new Exception($"Tipo de caja inválido: {tipoCaja}")
   2. Envolver la llamada en AdmitirBoton_Click con try/catch que muestre
      MessageBox y haga return, evitando el diálogo de error de Windows.
+	 
+Nota: Decidimos no hacerla. Las pantallas no deberían permitir el ingresos de datos erróneos.
 
 MEJORA 3 — Bloques if sin llaves en GenerarHDRFleteroForm
 Archivo: GenerarHDRFletero\GenerarHDRFleteroForm.cs, líneas 168 y 181
@@ -198,6 +200,8 @@ Problema: doble iteración sobre localidades para resolver el CD de destino.
 Escala mal con muchos registros.
 Solución: usar un Dictionary para indexar localidades por CP antes del loop.
 
+Nota: Decidimos no hacerlo porque 
+
 --- MEJORAS DE UX ---
 
 MEJORA 9 — Reemplazar campo CUIT por combo desplegable en EmitirFactura
@@ -214,6 +218,8 @@ Solución:
      ComboBox que tome el cliente seleccionado y cargue sus guías pendientes.
   4. Eliminar las validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit) ya que
      la selección garantiza un cliente válido del sistema.
+	 
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
 
 MEJORA 11 — Reemplazar campo número de servicio por combo desplegable en GenerarHDRTransporte y RecepcionDespachoCDLargaDistancia
 Archivos: GenerarHDRTransporte\GenerarHDRTransporteForm.cs / Designer.cs
@@ -230,6 +236,7 @@ El combo mostraría empresa de transporte + fecha/hora de salida + ruta como tex
 descriptivo. La selección dispararía la carga de HDRs automáticamente, eliminando
 el botón Buscar.
 
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
 
 MEJORA 10 — Reemplazar campo CUIT por combo desplegable en EstadoCCClientes
 Archivos: EstadoCCClientes\EstadoCClientesForm.cs
@@ -243,3 +250,5 @@ Solución:
   3. Reemplazar BuscarClienteBoton_Click por SelectedIndexChanged en el ComboBox
      que tome el cliente seleccionado y dispare la carga de movimientos.
   4. Eliminar validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit).
+ 
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
