@@ -155,6 +155,8 @@ namespace GrupoE_Tutasa.Admision
             if (guia != null)
             {
                 guia.TipoCaja = Enum.Parse<TipoCajaEnum>(nuevoTamaño);
+                //guardar cambios en el almacenamiento
+                GuiaAlmacen.Guardar();
             }
         }
         public void RechazarGuia(int guiaId, string observaciones)

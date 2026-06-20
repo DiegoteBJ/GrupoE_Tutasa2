@@ -123,8 +123,123 @@ desde el almacén y los mapea a la clase local CentroDistribucion:
             .ToList();
 
 
-== PENDIENTE ==
+== NO SE VA A REALIZAR ==
 
 - Pantalla de devolución al remitente: debe tomar todas las guías en estado
   CANCELADA (tanto las de 2 intentos fallidos como las canceladas explícitamente)
   y generar una nueva guía con CDOrigen = CD actual y CDDestino = CD origen original.
+
+
+== MEJORAS PROPUESTAS (pendientes de implementar) ==
+
+--- ALTA PRIORIDAD ---
+
+MEJORA 1 — NullReferenceException en AdmitirGuia()
+Archivo: Admision\AdmisionModelo.cs, línea 97
+Problema: guia.CDActualId = CDTrabajoId se ejecuta antes del if (guia != null).
+Si guia es null, lanza NullReferenceException.
+Nota: en la práctica está cubierto por la validación del form (línea 100), pero
+es una práctica defensiva incorrecta en el modelo.
+Solución: mover guia.CDActualId = CDTrabajoId adentro del bloque if (guia != null).
+
+MEJORA 2 — Switch sin caso default en ObtenerCoeficiente()
+Archivo: Admision\AdmisionModelo.cs, líneas 60-66
+Problema: el switch sobre tipoCaja no tiene caso default. Si el valor no es
+exactamente "S", "M", "L" o "XL", lanza SwitchExpressionException sin mensaje claro.
+Solución:
+  1. Agregar caso _ => throw new Exception($"Tipo de caja inválido: {tipoCaja}")
+  2. Envolver la llamada en AdmitirBoton_Click con try/catch que muestre
+     MessageBox y haga return, evitando el diálogo de error de Windows.
+
+MEJORA 3 — Bloques if sin llaves en GenerarHDRFleteroForm
+Archivo: GenerarHDRFletero\GenerarHDRFleteroForm.cs, líneas 168 y 181
+Problema: en retiroradioButton_CheckedChanged y distribucionradioButton_CheckedChanged,
+los bloques if no tienen llaves {}. Solo la primera línea está dentro de la condición;
+ActualizarAutoCompleteCP() y todos los .Enabled = true se ejecutan siempre,
+incluso cuando el radio se desmarca.
+Solución: agregar llaves {} para encerrar todo el bloque en cada if.
+
+--- MEDIA PRIORIDAD ---
+
+MEJORA 4 — CambiarTamañoGuia() sin Guardar() [YA CORREGIDO]
+Archivo: Admision\AdmisionModelo.cs, línea 159
+El usuario lo corrigió agregando GuiaAlmacen.Guardar() dentro del método.
+
+MEJORA 5 — Snapshot obsoleta en EntregaEnAgencia y EntregaEnCD
+Archivos: EntregaEnAgencia\EntregaEnAgenciaModelo.cs
+          EntregaEnCD\EntregaEnCDModelo.cs
+Problema: las guías se cargan en el constructor y no se refrescan entre búsquedas.
+Si se entregó una guía desde otra pantalla en la misma sesión, el formulario
+sigue mostrando la lista vieja.
+Solución: eliminar la lista privada y el CargarGuias() del constructor. Consultar
+GuiaAlmacen.guias directamente en BuscarGuiasPendientes(), igual que hace
+LGuiasAAdmitir en Admision.
+
+MEJORA 6 — RendicionHDRForm no limpia el formulario después de confirmar
+Archivo: RendicionHDR\RendicionHDRForm.cs
+Problema: tras confirmar la rendición, el form queda mostrando la misma HDR
+como si estuviera pendiente. El usuario podría intentar rendirla de nuevo.
+Solución: agregar limpieza del HDRtextBox, radio buttons, DetalleHDRListView
+y contadores tras el MessageBox de éxito.
+
+--- BAJA PRIORIDAD ---
+
+MEJORA 7 — Loops sin break en búsqueda por CUIT
+Archivos: EmitirFactura\EmitirFacturaForm.cs, líneas 39-51
+          Imposicion\ImposicionForm.cs, líneas 91-106
+Problema: el foreach que busca un cliente por CUIT no tiene break al encontrarlo.
+Sigue iterando toda la lista innecesariamente. Si hubiera dos clientes con el
+mismo CUIT, gana el último en lugar del primero.
+Solución: agregar break (o usar FirstOrDefault) tras encontrar el cliente.
+
+MEJORA 8 — Algoritmo cuadrático en ResolverCDActualIdPorCodigoPostal()
+Archivo: Imposicion\ImposicionModelo.cs
+Problema: doble iteración sobre localidades para resolver el CD de destino.
+Escala mal con muchos registros.
+Solución: usar un Dictionary para indexar localidades por CP antes del loop.
+
+--- MEJORAS DE UX ---
+
+MEJORA 9 — Reemplazar campo CUIT por combo desplegable en EmitirFactura
+Archivos: EmitirFactura\EmitirFacturaForm.cs
+          EmitirFactura\EmitirFacturaForm.Designer.cs
+Problema: el usuario debe tipear el CUIT manualmente, lo que es propenso a errores
+y requiere que el sistema haga una búsqueda posterior con validación de formato.
+Solución:
+  1. En Designer: reemplazar CuitClienteBox (TextBox) por un ComboBox. Eliminar
+     BuscarClienteBoton ya que la selección dispara la carga automáticamente.
+  2. En Form_Load: poblar el ComboBox con modelo.LClientes mostrando nombre/razón
+     social. El objeto Clientes completo va en el Tag o se usa DisplayMember/ValueMember.
+  3. Reemplazar BuscarClienteBoton_Click por un evento SelectedIndexChanged en el
+     ComboBox que tome el cliente seleccionado y cargue sus guías pendientes.
+  4. Eliminar las validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit) ya que
+     la selección garantiza un cliente válido del sistema.
+
+MEJORA 11 — Reemplazar campo número de servicio por combo desplegable en GenerarHDRTransporte y RecepcionDespachoCDLargaDistancia
+Archivos: GenerarHDRTransporte\GenerarHDRTransporteForm.cs / Designer.cs
+          RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaForm.cs / Designer.cs
+Problema: el usuario tipea el número de servicio manualmente. Con muchos servicios
+en el sistema, recordar o buscar el número es incómodo.
+Solución: reemplazar el TextBox por un ComboBox filtrado que muestre solo los
+servicios relevantes para el CD de trabajo del operario:
+  - En GenerarHDRTransporte (despacho): servicios con CDOrigenId == CDTrabajoId,
+    FechaSalida >= DateTime.Today, Estado PENDIENTE.
+  - En RecepcionDespachoCDLargaDistancia (recepción): servicios con
+    CDDestinoId == CDTrabajoId, FechaSalida >= DateTime.Today, Estado EN_TRANSITO.
+El combo mostraría empresa de transporte + fecha/hora de salida + ruta como texto
+descriptivo. La selección dispararía la carga de HDRs automáticamente, eliminando
+el botón Buscar.
+
+
+MEJORA 10 — Reemplazar campo CUIT por combo desplegable en EstadoCCClientes
+Archivos: EstadoCCClientes\EstadoCClientesForm.cs
+          EstadoCCClientes\EstadoCClientesForm.Designer.cs
+Problema: mismo patrón que EmitirFactura — el usuario tipea el CUIT manualmente,
+el sistema lo valida y luego hace un foreach para encontrar el cliente.
+Solución:
+  1. En Designer: reemplazar CuitClienteBox (TextBox) por un ComboBox. Eliminar
+     BuscarClienteBoton.
+  2. En Form_Load: poblar el ComboBox con modelo.LClientes mostrando nombre/razón social.
+  3. Reemplazar BuscarClienteBoton_Click por SelectedIndexChanged en el ComboBox
+     que tome el cliente seleccionado y dispare la carga de movimientos.
+  4. Eliminar validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit).
