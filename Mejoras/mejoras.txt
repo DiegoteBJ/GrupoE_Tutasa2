@@ -1,187 +1,173 @@
-MEJORAS Y FIXES - TUTASA
-========================
-Última actualización: 21/06/2026
+FIXES APLICADOS - ESTADOS DE GUÍAS TUTASA
+==========================================
+Fecha: 19/06/2026
 
 
-╔══════════════════════════════════════════════════════════════════╗
-║                        YA REALIZADO                              ║
-╚══════════════════════════════════════════════════════════════════╝
+== FIX 1 — TRASLADADA reemplazado por EN_CD_DESTINO en recepción de transporte ==
 
-── FIXES DE ESTADOS DE GUÍAS ──────────────────────────────────────
-
-FIX 1 — TRASLADADA reemplazado por EN_CD_DESTINO en recepción de transporte
 Archivo: RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaModelo.cs
 Método:  MarcarComoRecibidas()
+
 Problema: cuando una guía llegaba a su CD destino por transporte, el sistema la ponía
 en estado TRASLADADA. Ese estado nunca era levantado por ninguna pantalla, dejando
 la guía sin salida posible.
-Fix: se reemplazó la asignación fija a TRASLADADA por la lógica correcta:
+
+Fix aplicado: se reemplazó la asignación fija a TRASLADADA por la lógica correcta:
+  - Si CDActualId == CDDestinoId → EN_CD_DESTINO
+  - Si CDActualId != CDDestinoId → ADMITIDA (sigue viajando)
+
+Código resultante (línea 119):
     guia.Estado = guia.CDActualId == guia.CDDestinoId
         ? EstadoGuiaEnum.EN_CD_DESTINO
         : EstadoGuiaEnum.ADMITIDA;
 
-FIX 2 — TRASLADADA reemplazado por ADMITIDA en generación de HDR Transporte
-Archivo: GenerarHDRTransporte\GenerarHDRTransporteModelo.cs
-Método:  GenerarHDR()
-Problema: al generar un HDR de transporte, el sistema asignaba TRASLADADA a las
-guías cuyo CDDestino coincidía con el CD de trabajo. Incorrecto: la guía todavía
-está siendo despachada, no llegó a destino. El estado correcto siempre es ADMITIDA.
-Fix: se eliminó el if/else y se asigna ADMITIDA en todos los casos.
-    guia.Estado = EstadoGuiaEnum.ADMITIDA;
-También se actualizó: Pruebas\150_GenerarHDRTransporte-CaminoFeliz.txt
 
-FIX 3 — PENDIENTE_DE_ENTREGA habilitada para reintento de distribución
+== FIX 2 — TRASLADADA reemplazado por ADMITIDA en generación de HDR Transporte ==
+
+Archivo: GenerarHDRTransporte\GenerarHDRTransporteModelo.cs
+Método:  GenerarHDR() (foreach de asignación de estado al despachar)
+
+Problema: al generar un HDR de transporte, el sistema asignaba TRASLADADA a las
+guías cuyo CDDestino coincidía con el CD de trabajo. Esto era incorrecto: en ese
+momento la guía todavía está siendo despachada (saliendo), no llegó a destino.
+El estado correcto mientras viaja siempre es ADMITIDA.
+
+Fix aplicado: se eliminó el if/else y se asigna ADMITIDA en todos los casos.
+
+Código resultante:
+    guia.Estado = EstadoGuiaEnum.ADMITIDA;
+
+También se actualizó el plan de prueba:
+    Pruebas\150_GenerarHDRTransporte-CaminoFeliz.txt
+    Las verificaciones que esperaban "TRASLADADA" ahora esperan "ADMITIDA".
+
+
+== FIX 3 — PENDIENTE_DE_ENTREGA habilitada para reintento de distribución ==
+
 Archivo: GenerarHDRFletero\GenerarHDRFleteroModelo.cs
 Métodos: ObtenerGuiasPorEstado() y ImprimirResumen()
-Problema: cuando el fletero no cumplía una entrega, la guía quedaba en
-PENDIENTE_DE_ENTREGA pero ninguna pantalla la volvía a tomar para reasignarla.
-Fix en ObtenerGuiasPorEstado(): se agregó al filtro de distribución:
+
+Problema: cuando el fletero no cumplía una entrega (domicilio o agencia), la guía
+quedaba en PENDIENTE_DE_ENTREGA pero ninguna pantalla la volvía a tomar para
+asignarla a una nueva HDR de distribución. La guía quedaba bloqueada.
+
+Fix aplicado en ObtenerGuiasPorEstado(): se agregó PENDIENTE_DE_ENTREGA al filtro
+de distribución, con la condición de que tenga menos de 2 intentos:
     (g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA && g.IntentosDeEntrega < 2)
-Fix en ImprimirResumen(): se amplió el foreach que transiciona a EN_DISTRIBUCION:
+
+Fix aplicado en ImprimirResumen(): se amplió el foreach que transiciona guías a
+EN_DISTRIBUCION al confirmar la HDR, para incluir también las PENDIENTE_DE_ENTREGA:
     g.EstadoGuia == EstadoGuiaEnum.EN_CD_DESTINO ||
     g.EstadoGuia == EstadoGuiaEnum.PENDIENTE_DE_ENTREGA
 
-FIX 4 — Segundo intento fallido pasa a CANCELADA
+
+== FIX 4 — Segundo intento fallido pasa a CANCELADA ==
+
 Archivo: RendicionHDR\RendicionHDRModelo.cs
 Método:  AplicarResultadosGuiasDistribucion()
-Problema: con 2 intentos fallidos la guía quedaba en PENDIENTE_DE_ENTREGA con
-IntentosDeEntrega == 2, excluida para siempre del filtro (que exige < 2).
-Regla de negocio: 2 intentos fallidos = devolución al remitente, igual que CANCELADA.
-Fix: al rendir un intento fallido:
+
+Problema: cuando el fletero fallaba dos veces la entrega, la guía quedaba en
+PENDIENTE_DE_ENTREGA con IntentosDeEntrega == 2. El filtro de GenerarHDRFletero
+exige IntentosDeEntrega < 2, por lo que quedaba excluida para siempre sin ningún
+flujo que la resolviera.
+
+Regla de negocio definida: una guía con 2 intentos fallidos debe devolverse al
+remitente, igual que una guía cancelada explícitamente. Ambos casos usan el mismo
+estado CANCELADA y serán atendidos por la pantalla de devolución (a implementar).
+
+Fix aplicado: al rendir un intento fallido se incrementa primero el contador y
+luego se decide el estado según el resultado:
+  - IntentosDeEntrega < 2 → PENDIENTE_DE_ENTREGA (puede volver a distribuirse)
+  - IntentosDeEntrega >= 2 → CANCELADA (entra al flujo de devolución al remitente)
+
+Código resultante:
     guiaEntidad.IntentosDeEntrega++;
     if (guiaEntidad.IntentosDeEntrega >= 2)
+    {
         nuevoEstado = EstadoGuiaEnum.CANCELADA;
+        ubicacion = "Cancelada - devolver al remitente";
+    }
     else
+    {
         nuevoEstado = EstadoGuiaEnum.PENDIENTE_DE_ENTREGA;
+        ubicacion = "Pendiente de entrega";
+    }
 
-FIX 5 — Eliminación de estados huérfanos del enum
-Archivos: Almacenes\GuiaEntidad.cs, Imposicion\Enums.cs, GenerarHDRFletero\Guias.cs
+
+== FIX 5 — Eliminación de estados huérfanos del enum ==
+
+Archivos: Almacenes\GuiaEntidad.cs
+          Imposicion\Enums.cs
+          GenerarHDRFletero\Guias.cs
+
 Estados eliminados:
-  - TRASLADADA: reemplazado por EN_CD_DESTINO / ADMITIDA (FIX 1 y 2)
-  - PENDIENTE_2DO_INTENTO: nunca fue asignado ni consumido. El control de
-    reintentos se hace con el campo IntentosDeEntrega (FIX 3 y 4)
+  - TRASLADADA: reemplazado por EN_CD_DESTINO / ADMITIDA según corresponde (FIX 1 y 2).
+  - PENDIENTE_2DO_INTENTO: nunca fue asignado ni consumido en ningún lugar del código.
+    El control de reintentos se hace con el campo IntentosDeEntrega (FIX 3 y 4).
 
-── MEJORAS FUNCIONALES ─────────────────────────────────────────────
 
-FIX 6 — LCentroDistribucion en AdmisionModelo
+== FIX 6 — LCentroDistribucion en AdmisionModelo ==
+
 Archivo: Admision\AdmisionModelo.cs
-Se agregó la propiedad LCentroDistribucion que mapea CentroDistribucionAlmacen
-a la clase local CentroDistribucion (CdId + nombreCD).
-Ahora en la pantalla de admisión se muestra el nombre del CD de origen y destino en lugar del ID.
 
-FIX 7 — CambiarTamañoGuia() persistía el cambio solo en memoria
-Archivo: Admision\AdmisionModelo.cs
-Se agregó GuiaAlmacen.Guardar() al final de CambiarTamañoGuia().
+Se agregó la propiedad LCentroDistribucion que trae todos los centros de distribución
+desde el almacén y los mapea a la clase local CentroDistribucion:
 
-FIX 8 — NullReferenceException en AdmitirGuia()
-Archivo: Admision\AdmisionModelo.cs
-Se movió guia.CDActualId = CDTrabajoId adentro del bloque if (guia != null),
-evitando un NullReferenceException si la guía no existe en el almacén.
+    public List<CentroDistribucion> LCentroDistribucion =>
+        CentroDistribucionAlmacen.centroDistribucions
+            .Select(cd => new CentroDistribucion
+            {
+                CdId = cd.CdId,
+                nombreCD = cd.Nombre
+            })
+            .ToList();
 
-FIX 9 — Bloques if sin llaves en GenerarHDRFleteroForm
+
+== NO SE VA A REALIZAR ==
+
+- Pantalla de devolución al remitente: debe tomar todas las guías en estado
+  CANCELADA (tanto las de 2 intentos fallidos como las canceladas explícitamente)
+  y generar una nueva guía con CDOrigen = CD actual y CDDestino = CD origen original.
+
+
+== MEJORAS PROPUESTAS (pendientes de implementar) ==
+
+--- ALTA PRIORIDAD ---
+
+MEJORA 1 — NullReferenceException en AdmitirGuia()
+Archivo: Admision\AdmisionModelo.cs, línea 97
+Problema: guia.CDActualId = CDTrabajoId se ejecuta antes del if (guia != null).
+Si guia es null, lanza NullReferenceException.
+Nota: en la práctica está cubierto por la validación del form (línea 100), pero
+es una práctica defensiva incorrecta en el modelo.
+Solución: mover guia.CDActualId = CDTrabajoId adentro del bloque if (guia != null).
+
+MEJORA 2 — Switch sin caso default en ObtenerCoeficiente()
+Archivo: Admision\AdmisionModelo.cs, líneas 60-66
+Problema: el switch sobre tipoCaja no tiene caso default. Si el valor no es
+exactamente "S", "M", "L" o "XL", lanza SwitchExpressionException sin mensaje claro.
+Solución:
+  1. Agregar caso _ => throw new Exception($"Tipo de caja inválido: {tipoCaja}")
+  2. Envolver la llamada en AdmitirBoton_Click con try/catch que muestre
+     MessageBox y haga return, evitando el diálogo de error de Windows.
+	 
+Nota: Decidimos no hacerla. Las pantallas no deberían permitir el ingresos de datos erróneos.
+
+MEJORA 3 — Bloques if sin llaves en GenerarHDRFleteroForm
 Archivo: GenerarHDRFletero\GenerarHDRFleteroForm.cs, líneas 168 y 181
-Se agregaron llaves {} en retiroradioButton_CheckedChanged y
-distribucionradioButton_CheckedChanged. Antes, ActualizarAutoCompleteCP() y
-los .Enabled = true se ejecutaban siempre, incluso al desmarcar el radio.
+Problema: en retiroradioButton_CheckedChanged y distribucionradioButton_CheckedChanged,
+los bloques if no tienen llaves {}. Solo la primera línea está dentro de la condición;
+ActualizarAutoCompleteCP() y todos los .Enabled = true se ejecutan siempre,
+incluso cuando el radio se desmarca.
+Solución: agregar llaves {} para encerrar todo el bloque en cada if.
 
-FIX 10 — Loop sin break en búsqueda por CUIT en EmitirFactura
-Archivo: EmitirFactura\EmitirFacturaForm.cs
-Se agregó break tras encontrar el cliente en el foreach de búsqueda por CUIT.
-Nota: ImposicionForm ya tenía el break, no requirió cambio.
+--- MEDIA PRIORIDAD ---
 
-── MEJORAS DE DISEÑO ───────────────────────────────────────────────
+MEJORA 4 — CambiarTamañoGuia() sin Guardar() [YA CORREGIDO]
+Archivo: Admision\AdmisionModelo.cs, línea 159
+El usuario lo corrigió agregando GuiaAlmacen.Guardar() dentro del método.
 
-Estado de encomienda:
-1. Label del resultado queda vacío al inicio (antes mostraba el DNI)
-2. Font del formulario cambiado a Arial 9pt negrita
-3. Label de instrucción cambiado a Arial 12
-4. ListView Resultado: ForeColor cambiado a HotTrack
-5. Botones Buscar, Borrar y Cerrar: Arial 9 negrita, minúsculas
-
-Imposición:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Botones Cancelar y Confirmar: Arial 9 negrita
-3. Botón Buscar: negrita
-
-Admisión:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Botones Salir, Rechazar, Admitir, Cambiar Tamaño y Buscar Guía: negro, Arial 9 negrita
-3. GroupBox Validación — label Tamaño: Arial 11 negrita
-
-Emitir Factura:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Label "Seleccione el cliente": Arial 11 negrita
-3. Label "Detalle de Envíos a Facturar": Arial 11 negrita
-4. Botones Buscar, Facturar otro cliente, Cancelar y Emitir Factura: Arial 9 negrita
-5. ListView Detalle de Envíos: ForeColor cambiado a Blue
-
-Entrega en Agencia y Entrega en CD:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Botones Buscar, Cancelar y Confirmar: Arial 9 negrita, minúsculas
-3. Labels NombreResultado y ApellidoResultado: se dejan vacíos al inicio
-4. ListViews Guías Pendientes y Encomiendas Pendientes en CD: ForeColor Blue
-
-Estado CC Clientes:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Label Saldo Inicio: Arial 12 negrita
-3. Label Saldo Cierre: Arial 12 negrita, ForeColor Blue
-4. Botones Buscar Cliente, Buscar Movimientos, Ver otro cliente y Salir: Arial 9 negrita, negro
-5. Labels de sección: Arial 11 negrita
-
-Generar HDR Fletero:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. ListView Selección Guías: ForeColor Blue
-3. ListView Detalle HDR: ForeColor Blue
-
-Generar HDR Transporte:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. ListView Encomiendas Pendientes: ForeColor Blue
-3. ListView Encomiendas Asignadas: ForeColor Blue
-
-Monitoreo de Resultados:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. Botones Buscar, Ver otro período y Salir: Arial 9 negrita, negro
-3. Labels de sección: Arial 11 negrita
-4. Label ResultadoMensual: Arial 12 negrita, ForeColor Blue
-5. ListView Resultados Obtenidos: ForeColor Blue
-
-Recepción Despacho en Agencia:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. ListViews y GroupBoxes: Arial 9 negrita
-3. ListView DetalleGuías: ForeColor Blue
-
-Recepción Despacho a Larga Distancia:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. ListViews y GroupBoxes: Arial 9 negrita
-3. ListView HDR a Recibir y HDR a Despachar: ForeColor Blue
-
-Rendición HDR:
-1. Font del formulario cambiado a Arial 9pt negrita
-2. ListView Detalle HDR: ForeColor Blue
-3. Label RespCantGuiasCumplidas: ForeColor Blue
-4. Label RespCantGuiasNoCumplidas: ForeColor Blue
-
-── MEJORAS DE IMPOSICIÓN ───────────────────────────────────────────
-
-Cambio 1 — Usuario logueado visible en la pantalla de imposición
-Antes: la pantalla no mostraba identificación del usuario operando.
-Después: Label en la parte superior muestra el usuario logueado.
-Archivos: Designer (UsuarioLogueadoLabel), Modelo (propiedad UsuarioLogueado),
-          Form (asignación en Form1_Load).
-
-Cambio 2 — Limpieza automática al usar domicilio fiscal como domicilio de retiro
-Antes: al tildar el check de domicilio fiscal, los controles de retiro se
-deshabilitaban pero conservaban los datos previamente cargados.
-Después: al tildar, los campos se limpian automáticamente. Al destildar, se
-rehabilitan vacíos para cargarlos a mano.
-Archivo: Form, handler DomicilioFiscalCheck_CheckedChanged.
-
-
-╔══════════════════════════════════════════════════════════════════╗
-║                     PENDIENTE DE IMPLEMENTAR                     ║
-╚══════════════════════════════════════════════════════════════════╝
-
-PENDIENTE 1 — Snapshot obsoleta en EntregaEnAgencia y EntregaEnCD [MEDIA]
+MEJORA 5 — Snapshot obsoleta en EntregaEnAgencia y EntregaEnCD
 Archivos: EntregaEnAgencia\EntregaEnAgenciaModelo.cs
           EntregaEnCD\EntregaEnCDModelo.cs
 Problema: las guías se cargan en el constructor y no se refrescan entre búsquedas.
@@ -191,40 +177,179 @@ Solución: eliminar la lista privada y el CargarGuias() del constructor. Consult
 GuiaAlmacen.guias directamente en BuscarGuiasPendientes(), igual que hace
 LGuiasAAdmitir en Admision.
 
-PENDIENTE 2 — RendicionHDRForm no limpia el formulario después de confirmar [MEDIA]
+MEJORA 6 — RendicionHDRForm no limpia el formulario después de confirmar
 Archivo: RendicionHDR\RendicionHDRForm.cs
 Problema: tras confirmar la rendición, el form queda mostrando la misma HDR
 como si estuviera pendiente. El usuario podría intentar rendirla de nuevo.
 Solución: agregar limpieza del HDRtextBox, radio buttons, DetalleHDRListView
 y contadores tras el MessageBox de éxito.
 
-PENDIENTE 3 — Combo desplegable de servicios en GenerarHDRTransporte y RecepcionDespachoCDLargaDistancia [UX]
+--- BAJA PRIORIDAD ---
+
+MEJORA 7 — Loops sin break en búsqueda por CUIT
+Archivos: EmitirFactura\EmitirFacturaForm.cs, líneas 39-51
+          Imposicion\ImposicionForm.cs, líneas 91-106
+Problema: el foreach que busca un cliente por CUIT no tiene break al encontrarlo.
+Sigue iterando toda la lista innecesariamente. Si hubiera dos clientes con el
+mismo CUIT, gana el último en lugar del primero.
+Solución: agregar break (o usar FirstOrDefault) tras encontrar el cliente.
+
+MEJORA 8 — Algoritmo cuadrático en ResolverCDActualIdPorCodigoPostal()
+Archivo: Imposicion\ImposicionModelo.cs
+Problema: doble iteración sobre localidades para resolver el CD de destino.
+Escala mal con muchos registros.
+Solución: usar un Dictionary para indexar localidades por CP antes del loop.
+
+Nota: Decidimos no hacerlo porque 
+
+--- MEJORAS DE UX ---
+
+MEJORA 9 — Reemplazar campo CUIT por combo desplegable en EmitirFactura
+Archivos: EmitirFactura\EmitirFacturaForm.cs
+          EmitirFactura\EmitirFacturaForm.Designer.cs
+Problema: el usuario debe tipear el CUIT manualmente, lo que es propenso a errores
+y requiere que el sistema haga una búsqueda posterior con validación de formato.
+Solución:
+  1. En Designer: reemplazar CuitClienteBox (TextBox) por un ComboBox. Eliminar
+     BuscarClienteBoton ya que la selección dispara la carga automáticamente.
+  2. En Form_Load: poblar el ComboBox con modelo.LClientes mostrando nombre/razón
+     social. El objeto Clientes completo va en el Tag o se usa DisplayMember/ValueMember.
+  3. Reemplazar BuscarClienteBoton_Click por un evento SelectedIndexChanged en el
+     ComboBox que tome el cliente seleccionado y cargue sus guías pendientes.
+  4. Eliminar las validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit) ya que
+     la selección garantiza un cliente válido del sistema.
+	 
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
+
+MEJORA 11 — Reemplazar campo número de servicio por combo desplegable en GenerarHDRTransporte y RecepcionDespachoCDLargaDistancia
 Archivos: GenerarHDRTransporte\GenerarHDRTransporteForm.cs / Designer.cs
           RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaForm.cs / Designer.cs
-Problema: el usuario tipea el número de servicio manualmente.
-Solución: ComboBox filtrado con solo los servicios relevantes al CD de trabajo:
-  - GenerarHDRTransporte (despacho): CDOrigenId == CDTrabajoId,
-    FechaSalida >= hoy, Estado PENDIENTE.
-  - RecepcionDespachoCDLargaDistancia (recepción): CDDestinoId == CDTrabajoId,
-    FechaSalida >= hoy, Estado EN_TRANSITO.
-El combo mostraría empresa + fecha/hora + ruta. La selección dispararía la carga
-de HDRs automáticamente, eliminando el botón Buscar.
+Problema: el usuario tipea el número de servicio manualmente. Con muchos servicios
+en el sistema, recordar o buscar el número es incómodo.
+Solución: reemplazar el TextBox por un ComboBox filtrado que muestre solo los
+servicios relevantes para el CD de trabajo del operario:
+  - En GenerarHDRTransporte (despacho): servicios con CDOrigenId == CDTrabajoId,
+    FechaSalida >= DateTime.Today, Estado PENDIENTE.
+  - En RecepcionDespachoCDLargaDistancia (recepción): servicios con
+    CDDestinoId == CDTrabajoId, FechaSalida >= DateTime.Today, Estado EN_TRANSITO.
+El combo mostraría empresa de transporte + fecha/hora de salida + ruta como texto
+descriptivo. La selección dispararía la carga de HDRs automáticamente, eliminando
+el botón Buscar.
+
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
+
+MEJORA 10 — Reemplazar campo CUIT por combo desplegable en EstadoCCClientes
+Archivos: EstadoCCClientes\EstadoCClientesForm.cs
+          EstadoCCClientes\EstadoCClientesForm.Designer.cs
+Problema: mismo patrón que EmitirFactura — el usuario tipea el CUIT manualmente,
+el sistema lo valida y luego hace un foreach para encontrar el cliente.
+Solución:
+  1. En Designer: reemplazar CuitClienteBox (TextBox) por un ComboBox. Eliminar
+     BuscarClienteBoton.
+  2. En Form_Load: poblar el ComboBox con modelo.LClientes mostrando nombre/razón social.
+  3. Reemplazar BuscarClienteBoton_Click por SelectedIndexChanged en el ComboBox
+     que tome el cliente seleccionado y dispare la carga de movimientos.
+  4. Eliminar validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit).
+ 
+Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
+
+Mejoras en Diseño:
+Estado de encomienda:
+
+1. Se cambio el label del resultado, antes tenia ej. 123345678 ahora queda vacio
+2. La letra del formulario (Font) se cambio a Arial;9pt negrita
+3. Label de instruccion se cambio la letra a Arial 12
+4. ListView Resultado se cambio el ForeColor a HotTrack
+5. Se unifico el tamaño de letra de los botones Buscar, Borrar y Cerrar a Arial 9 negrita y se dejan en minuscula
+
+Imposición
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones de Cancelar y Confirmar se cambio el Font a Arial 9 negrita
+3. El boton buscar se coloco en negrita
+
+Admision
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones Salir, Rechazar, admitir, cambiar tamaño y buscar guia se cambiaron a color negro, Font: Arial 9 negrita
+3. Del GrouBox Validacion se cambio el label de tamaño a arial 11 negrita
+
+Emitir Factura
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambia el Font a arial 11 negrita del label "Seleccione el cliente"
+3. Se cambia el Font a arial 11 negrita del label "Detalle de Envios a Facturar"
+4. Se unifican los botones Buscar, Facturar otro cliente, cancelar y emitir factura el Font a Arial 9 negrita
+5. Detalle de envios ListView se cambio el ForeColor a Blue
+
+Entrega en Agencia y Entrega en CD
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se unifican los botones Buscar, Cancelar y Confirmar a Arial 9 negrita y minusculas
+3. El label de NombreResultado y ApellidoResultado se deja vacio
+4. El ListView Guias Pendiente y Encomiendas pendientes en CD se cambia el ForeColor a Blue
+
+Estado CC Clientes
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Label de saldo Inicio se cambio a Arial 12 negrita
+3. Label de saldo cierre se cambio a Arial 12 negrita y el ForeColor a Blue
+4. Los botones Buscar Cliente, Buscar Movimientos, Ver otro cliente y Salir se cambio a Arial 9, negrita color black
+5. Los label: "Seleccione el Cliente", "Movimientos de Cuenta Corriente", "Saldo al inicio $:", y "Saldo al cierre $:", se cambio a Arial 11 negrita
+
+Generar HDR Fletero
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Seleccion Guias se cambia el ForeColor a Blue
+3. ListView de Detalle HDR se cambia el ForeColor a Blue
+
+Generar HDR Transporte
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Encomiendas Pendientes se cambia el ForeColor a Blue
+3. ListView de Encomiendas Asignadas se cambia el ForeColor a Blue
+
+Monitoreo de Resultados
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones Buscar, ver otro periodo y salir se cambio a Arial 9, negrita color black
+3. Los Labels: "Ingrese el período de la consulta", "Resultados Obtenidos" y "Resultado Mensual Empresas de Transporte $:", se cambio a Arial 11 negrita
+4. Label ResultadoMensual se cambio a arial 12 negrita y el ForeColor a Blue
+5. ListView de Resultados Obtenidos se cambia el ForeColor a Blue
+
+Recepcion Despacho en Agencia
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambiaron todos los listview y GroupBox de Hojas de ruta a recepcionar, Hojas de ruta a despachar y Detalle de Hoja de ruta a Arial 9 negrita
+3. El ListView de DetalleGuias se le cambio el ForeColor a Blue
+
+Recepcion Despacho a Larga Distancia
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambiaron todos los listview y GroupBox de Ingrese en Nro de Transporte, Datos de la Empresa de Transporte, Hojas de ruta a recibir y Hojas de ruta a despachar a arial 9 negrita
+3. El listview de HDR a Recibir y HDR a Despachar se le cambia el ForeColor a Blue
 
 
-╔══════════════════════════════════════════════════════════════════╗
-║                      NO SE VA A REALIZAR                         ║
-╚══════════════════════════════════════════════════════════════════╝
+Rendicion HDR
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Detalle HDR se cambio el ForeColor a Blue
+3. El label de RespCantGuiasCumplidas se cambia el ForeColor a Blue
+4. El label de RespCantGuiasNoCumplidas se cambia el ForeColor a Blue
 
-- Pantalla de devolución al remitente (indicación del profesor)
-  Las guías CANCELADA (2 intentos fallidos o cancelación explícita) quedan sin
-  flujo de salida. El profesor indicó no implementar este flujo.
 
-- Switch sin default en ObtenerCoeficiente() — Admision\AdmisionModelo.cs
-  Las pantallas no deberían permitir el ingreso de datos erróneos; se considera
-  cubierto por validaciones previas en el formulario.
+---------------------------------
 
-- Combo desplegable de clientes en EmitirFactura y en EstadoCCClientes [UX]
-  Son muchos valores y no simplifica el flujo del operario.
+MEJORAS IMPOSICION
 
-- Algoritmo cuadrático en ResolverCDActualIdPorCodigoPostal() — Imposicion\ImposicionModelo.cs
-  Con el volumen de datos actual no es perceptible.
+Cambio 1 — Usuario logueado visible en la pantalla de imposición
+Antes: la pantalla de imposición no mostraba ninguna identificación del usuario operando. No había forma visual de saber bajo qué modalidad/punto de atención se estaba trabajando.
+Después: se agregó un Label en la parte superior del formulario que muestra un usuario.
+
+Archivos tocados: Designer (alta del control UsuarioLogueadoLabel), Modelo (nueva propiedad UsuarioLogueado con la lógica de mapeo) y Form (asignación en Form1_Load). La lógica quedó en el Modelo respetando la separación Boundary–Control.
+Cambio 2 — Limpieza automática al usar el domicilio fiscal como domicilio de retiro
+Antes: al tildar el check de domicilio fiscal, los controles de retiro (provincia, localidad, dirección y código postal) se deshabilitaban pero conservaban los datos previamente cargados. Quedaban valores residuales visibles que ya no aplicaban, con riesgo de confusión sobre qué domicilio se estaba usando realmente.
+Después: al tildar el check, además de deshabilitarse, esos cuatro campos se limpian automáticamente (provincia y localidad quedan sin selección, dirección y CP vacíos). Al destildar, los controles se rehabilitan vacíos para volver a cargarlos a mano.
+Archivo tocado: Form, dentro del handler DomicilioFiscalCheck_CheckedChanged.
+
+Cambio 1 — Rendición HDR: antes, al confirmar la rendición se grababa pero el formulario quedaba cargado, permitiendo grabar la misma rendición por accidente. Ahora se limpia automáticamente tras grabar (HDR, tipo, fletero, grilla y contadores), evitando registros duplicados. Archivo: RendicionHDRForm.cs.
+Cambio 2 — Entrega en Agencia y Entrega en CD: antes el botón "Cancelar" solo limpiaba campos, no cerraba la pantalla. Ahora pide confirmación (avisando que no se grabarán los cambios) y, si el usuario acepta, cierra la ventana. Archivos: EntregaEnAgenciaForm.cs y EntregaEnCDForm.cs.
