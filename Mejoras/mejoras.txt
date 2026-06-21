@@ -252,3 +252,86 @@ Solución:
   4. Eliminar validaciones de CUIT (IsNullOrWhiteSpace y ValidarCuit).
  
 Nota: Decidimos no hacerlo porque son muchos valores y no simplifica
+
+Mejoras en Diseño:
+Estado de encomienda:
+
+1. Se cambio el label del resultado, antes tenia ej. 123345678 ahora queda vacio
+2. La letra del formulario (Font) se cambio a Arial;9pt negrita
+3. Label de instruccion se cambio la letra a Arial 12
+4. ListView Resultado se cambio el ForeColor a HotTrack
+5. Se unifico el tamaño de letra de los botones Buscar, Borrar y Cerrar a Arial 9 negrita y se dejan en minuscula
+
+Imposición
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones de Cancelar y Confirmar se cambio el Font a Arial 9 negrita
+3. El boton buscar se coloco en negrita
+
+Admision
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones Salir, Rechazar, admitir, cambiar tamaño y buscar guia se cambiaron a color negro, Font: Arial 9 negrita
+3. Del GrouBox Validacion se cambio el label de tamaño a arial 11 negrita
+
+Emitir Factura
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambia el Font a arial 11 negrita del label "Seleccione el cliente"
+3. Se cambia el Font a arial 11 negrita del label "Detalle de Envios a Facturar"
+4. Se unifican los botones Buscar, Facturar otro cliente, cancelar y emitir factura el Font a Arial 9 negrita
+5. Detalle de envios ListView se cambio el ForeColor a Blue
+
+Entrega en Agencia y Entrega en CD
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se unifican los botones Buscar, Cancelar y Confirmar a Arial 9 negrita y minusculas
+3. El label de NombreResultado y ApellidoResultado se deja vacio
+4. El ListView Guias Pendiente y Encomiendas pendientes en CD se cambia el ForeColor a Blue
+
+Estado CC Clientes
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Label de saldo Inicio se cambio a Arial 12 negrita
+3. Label de saldo cierre se cambio a Arial 12 negrita y el ForeColor a Blue
+4. Los botones Buscar Cliente, Buscar Movimientos, Ver otro cliente y Salir se cambio a Arial 9, negrita color black
+5. Los label: "Seleccione el Cliente", "Movimientos de Cuenta Corriente", "Saldo al inicio $:", y "Saldo al cierre $:", se cambio a Arial 11 negrita
+
+Generar HDR Fletero
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Seleccion Guias se cambia el ForeColor a Blue
+3. ListView de Detalle HDR se cambia el ForeColor a Blue
+
+Generar HDR Transporte
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Encomiendas Pendientes se cambia el ForeColor a Blue
+3. ListView de Encomiendas Asignadas se cambia el ForeColor a Blue
+
+Monitoreo de Resultados
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Los botones Buscar, ver otro periodo y salir se cambio a Arial 9, negrita color black
+3. Los Labels: "Ingrese el período de la consulta", "Resultados Obtenidos" y "Resultado Mensual Empresas de Transporte $:", se cambio a Arial 11 negrita
+4. Label ResultadoMensual se cambio a arial 12 negrita y el ForeColor a Blue
+5. ListView de Resultados Obtenidos se cambia el ForeColor a Blue
+
+Recepcion Despacho en Agencia
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambiaron todos los listview y GroupBox de Hojas de ruta a recepcionar, Hojas de ruta a despachar y Detalle de Hoja de ruta a Arial 9 negrita
+3. El ListView de DetalleGuias se le cambio el ForeColor a Blue
+
+Recepcion Despacho a Larga Distancia
+
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. Se cambiaron todos los listview y GroupBox de Ingrese en Nro de Transporte, Datos de la Empresa de Transporte, Hojas de ruta a recibir y Hojas de ruta a despachar a arial 9 negrita
+3. El listview de HDR a Recibir y HDR a Despachar se le cambia el ForeColor a Blue
+
+
+Rendicion HDR
+1. La letra del formulario (Font) se cambio a Arial;9pt negrita
+2. ListView de Detalle HDR se cambio el ForeColor a Blue
+3. El label de RespCantGuiasCumplidas se cambia el ForeColor a Blue
+4. El label de RespCantGuiasNoCumplidas se cambia el ForeColor a Blue

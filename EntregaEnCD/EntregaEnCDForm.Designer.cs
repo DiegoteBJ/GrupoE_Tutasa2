@@ -71,16 +71,15 @@
             Label_ApellidoResultado.ForeColor = SystemColors.ControlDarkDark;
             Label_ApellidoResultado.Location = new Point(263, 69);
             Label_ApellidoResultado.Name = "Label_ApellidoResultado";
-            Label_ApellidoResultado.Size = new Size(108, 17);
+            Label_ApellidoResultado.Size = new Size(2, 17);
             Label_ApellidoResultado.TabIndex = 6;
-            Label_ApellidoResultado.Text = "Apellido Resultado";
             // 
             // Label_Apellido
             // 
             Label_Apellido.AutoSize = true;
             Label_Apellido.Location = new Point(199, 70);
             Label_Apellido.Name = "Label_Apellido";
-            Label_Apellido.Size = new Size(54, 15);
+            Label_Apellido.Size = new Size(55, 15);
             Label_Apellido.TabIndex = 5;
             Label_Apellido.Text = "Apellido:";
             // 
@@ -92,9 +91,8 @@
             Label_NombreResultado.ForeColor = SystemColors.ControlDarkDark;
             Label_NombreResultado.Location = new Point(75, 70);
             Label_NombreResultado.Name = "Label_NombreResultado";
-            Label_NombreResultado.Size = new Size(108, 17);
+            Label_NombreResultado.Size = new Size(2, 17);
             Label_NombreResultado.TabIndex = 4;
-            Label_NombreResultado.Text = "Nombre Resultado";
             // 
             // Label_Nombre
             // 
@@ -102,7 +100,7 @@
             Label_Nombre.Location = new Point(15, 70);
             Label_Nombre.Name = "Label_Nombre";
             Label_Nombre.RightToLeft = RightToLeft.No;
-            Label_Nombre.Size = new Size(54, 15);
+            Label_Nombre.Size = new Size(55, 15);
             Label_Nombre.TabIndex = 3;
             Label_Nombre.Text = "Nombre:";
             // 
@@ -120,7 +118,7 @@
             // 
             TextBox_DniDestinatario.Location = new Point(48, 30);
             TextBox_DniDestinatario.Name = "TextBox_DniDestinatario";
-            TextBox_DniDestinatario.Size = new Size(184, 23);
+            TextBox_DniDestinatario.Size = new Size(184, 21);
             TextBox_DniDestinatario.TabIndex = 1;
             TextBox_DniDestinatario.TextChanged += TextBox_DniDestinatario_TextChanged;
             // 
@@ -129,7 +127,7 @@
             Label_Dni.AutoSize = true;
             Label_Dni.Location = new Point(12, 31);
             Label_Dni.Name = "Label_Dni";
-            Label_Dni.Size = new Size(30, 15);
+            Label_Dni.Size = new Size(29, 15);
             Label_Dni.TabIndex = 0;
             Label_Dni.Text = "DNI:";
             // 
@@ -146,6 +144,7 @@
             // ListView_GuiasPendientes
             // 
             ListView_GuiasPendientes.Columns.AddRange(new ColumnHeader[] { columnHeader1_nrodeguia, columnHeader2_tamaño, columnHeader3_estado });
+            ListView_GuiasPendientes.ForeColor = Color.Blue;
             ListView_GuiasPendientes.Location = new Point(14, 43);
             ListView_GuiasPendientes.Name = "ListView_GuiasPendientes";
             ListView_GuiasPendientes.Size = new Size(604, 139);
@@ -173,21 +172,23 @@
             // 
             // Button_ConfirmarEntrega
             // 
+            Button_ConfirmarEntrega.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Button_ConfirmarEntrega.Location = new Point(542, 404);
             Button_ConfirmarEntrega.Name = "Button_ConfirmarEntrega";
             Button_ConfirmarEntrega.Size = new Size(165, 23);
             Button_ConfirmarEntrega.TabIndex = 2;
-            Button_ConfirmarEntrega.Text = "CONFIRMAR";
+            Button_ConfirmarEntrega.Text = "Confirmar";
             Button_ConfirmarEntrega.UseVisualStyleBackColor = true;
             Button_ConfirmarEntrega.Click += Button_ConfirmarEntrega_Click;
             // 
             // Button_Cancelar
             // 
+            Button_Cancelar.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Button_Cancelar.Location = new Point(371, 404);
             Button_Cancelar.Name = "Button_Cancelar";
             Button_Cancelar.Size = new Size(165, 23);
             Button_Cancelar.TabIndex = 3;
-            Button_Cancelar.Text = "CANCELAR";
+            Button_Cancelar.Text = "Cancelar";
             Button_Cancelar.UseVisualStyleBackColor = true;
             Button_Cancelar.Click += Button_Cancelar_Click;
             // 
@@ -202,6 +203,7 @@
             Controls.Add(Button_ConfirmarEntrega);
             Controls.Add(GroupBox_GuiasPendientes);
             Controls.Add(GroupBox_BusquedaDestinatario);
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name = "EntregaEnCDForm";
             Text = "Entrega en CD";
             Load += EntregaEnCDFormNuevo_Load;

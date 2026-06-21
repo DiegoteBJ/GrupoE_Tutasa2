@@ -64,37 +64,41 @@
             groupBoxIngreseNrodeTransporte.Controls.Add(botonBuscar);
             groupBoxIngreseNrodeTransporte.Controls.Add(textBoxNrodeservicioTransporte);
             groupBoxIngreseNrodeTransporte.Controls.Add(labelNrodeServicioTransporte);
-            groupBoxIngreseNrodeTransporte.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBoxIngreseNrodeTransporte.Location = new Point(40, 60);
+            groupBoxIngreseNrodeTransporte.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBoxIngreseNrodeTransporte.Location = new Point(35, 45);
+            groupBoxIngreseNrodeTransporte.Margin = new Padding(3, 2, 3, 2);
             groupBoxIngreseNrodeTransporte.Name = "groupBoxIngreseNrodeTransporte";
-            groupBoxIngreseNrodeTransporte.Size = new Size(728, 109);
+            groupBoxIngreseNrodeTransporte.Padding = new Padding(3, 2, 3, 2);
+            groupBoxIngreseNrodeTransporte.Size = new Size(637, 82);
             groupBoxIngreseNrodeTransporte.TabIndex = 0;
             groupBoxIngreseNrodeTransporte.TabStop = false;
             groupBoxIngreseNrodeTransporte.Text = "Ingrese en Nro de Transporte";
             // 
             // botonBuscar
             // 
-            botonBuscar.Location = new Point(570, 47);
+            botonBuscar.Location = new Point(499, 35);
+            botonBuscar.Margin = new Padding(3, 2, 3, 2);
             botonBuscar.Name = "botonBuscar";
-            botonBuscar.Size = new Size(137, 37);
+            botonBuscar.Size = new Size(120, 28);
             botonBuscar.TabIndex = 2;
-            botonBuscar.Text = "BUSCAR";
+            botonBuscar.Text = "Buscar";
             botonBuscar.UseVisualStyleBackColor = true;
             botonBuscar.Click += botonBuscar_Click;
             // 
             // textBoxNrodeservicioTransporte
             // 
-            textBoxNrodeservicioTransporte.Location = new Point(308, 50);
+            textBoxNrodeservicioTransporte.Location = new Point(270, 38);
+            textBoxNrodeservicioTransporte.Margin = new Padding(3, 2, 3, 2);
             textBoxNrodeservicioTransporte.Name = "textBoxNrodeservicioTransporte";
-            textBoxNrodeservicioTransporte.Size = new Size(241, 31);
+            textBoxNrodeservicioTransporte.Size = new Size(211, 21);
             textBoxNrodeservicioTransporte.TabIndex = 1;
             // 
             // labelNrodeServicioTransporte
             // 
             labelNrodeServicioTransporte.AutoSize = true;
-            labelNrodeServicioTransporte.Location = new Point(29, 47);
+            labelNrodeServicioTransporte.Location = new Point(25, 35);
             labelNrodeServicioTransporte.Name = "labelNrodeServicioTransporte";
-            labelNrodeServicioTransporte.Size = new Size(272, 25);
+            labelNrodeServicioTransporte.Size = new Size(178, 15);
             labelNrodeServicioTransporte.TabIndex = 0;
             labelNrodeServicioTransporte.Text = "Nro. de Servicio de Transporte";
             // 
@@ -104,10 +108,12 @@
             groupBoxDatosdeEmpresaTransporte.Controls.Add(labelResultadoNombreTransporte);
             groupBoxDatosdeEmpresaTransporte.Controls.Add(labelFecha);
             groupBoxDatosdeEmpresaTransporte.Controls.Add(labelNombreTransporte);
-            groupBoxDatosdeEmpresaTransporte.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBoxDatosdeEmpresaTransporte.Location = new Point(40, 185);
+            groupBoxDatosdeEmpresaTransporte.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBoxDatosdeEmpresaTransporte.Location = new Point(35, 139);
+            groupBoxDatosdeEmpresaTransporte.Margin = new Padding(3, 2, 3, 2);
             groupBoxDatosdeEmpresaTransporte.Name = "groupBoxDatosdeEmpresaTransporte";
-            groupBoxDatosdeEmpresaTransporte.Size = new Size(731, 129);
+            groupBoxDatosdeEmpresaTransporte.Padding = new Padding(3, 2, 3, 2);
+            groupBoxDatosdeEmpresaTransporte.Size = new Size(640, 97);
             groupBoxDatosdeEmpresaTransporte.TabIndex = 1;
             groupBoxDatosdeEmpresaTransporte.TabStop = false;
             groupBoxDatosdeEmpresaTransporte.Text = "Datos de la Empresa de Transporte";
@@ -118,9 +124,9 @@
             labelResultadoFecha.BackColor = SystemColors.ControlLightLight;
             labelResultadoFecha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelResultadoFecha.ForeColor = SystemColors.ControlDark;
-            labelResultadoFecha.Location = new Point(193, 85);
+            labelResultadoFecha.Location = new Point(169, 64);
             labelResultadoFecha.Name = "labelResultadoFecha";
-            labelResultadoFecha.Size = new Size(117, 20);
+            labelResultadoFecha.Size = new Size(93, 15);
             labelResultadoFecha.TabIndex = 3;
             labelResultadoFecha.Text = "Resultado Fecha";
             // 
@@ -130,38 +136,40 @@
             labelResultadoNombreTransporte.BackColor = SystemColors.ControlLightLight;
             labelResultadoNombreTransporte.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelResultadoNombreTransporte.ForeColor = SystemColors.ButtonShadow;
-            labelResultadoNombreTransporte.Location = new Point(193, 40);
+            labelResultadoNombreTransporte.Location = new Point(169, 30);
             labelResultadoNombreTransporte.Name = "labelResultadoNombreTransporte";
-            labelResultadoNombreTransporte.Size = new Size(134, 20);
+            labelResultadoNombreTransporte.Size = new Size(106, 15);
             labelResultadoNombreTransporte.TabIndex = 2;
             labelResultadoNombreTransporte.Text = "Resultado Nombre";
             // 
             // labelFecha
             // 
             labelFecha.AutoSize = true;
-            labelFecha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelFecha.Location = new Point(27, 85);
+            labelFecha.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelFecha.Location = new Point(24, 64);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(50, 20);
+            labelFecha.Size = new Size(44, 15);
             labelFecha.TabIndex = 1;
             labelFecha.Text = "Fecha:";
             // 
             // labelNombreTransporte
             // 
             labelNombreTransporte.AutoSize = true;
-            labelNombreTransporte.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelNombreTransporte.Location = new Point(27, 43);
+            labelNombreTransporte.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelNombreTransporte.Location = new Point(24, 32);
             labelNombreTransporte.Name = "labelNombreTransporte";
-            labelNombreTransporte.Size = new Size(147, 20);
+            labelNombreTransporte.Size = new Size(120, 15);
             labelNombreTransporte.TabIndex = 0;
             labelNombreTransporte.Text = "Nombre Transporte:";
             // 
             // groupBoxHDRaRecibir
             // 
             groupBoxHDRaRecibir.Controls.Add(listViewHDRaRecibir);
-            groupBoxHDRaRecibir.Location = new Point(42, 320);
+            groupBoxHDRaRecibir.Location = new Point(37, 240);
+            groupBoxHDRaRecibir.Margin = new Padding(3, 2, 3, 2);
             groupBoxHDRaRecibir.Name = "groupBoxHDRaRecibir";
-            groupBoxHDRaRecibir.Size = new Size(322, 215);
+            groupBoxHDRaRecibir.Padding = new Padding(3, 2, 3, 2);
+            groupBoxHDRaRecibir.Size = new Size(282, 161);
             groupBoxHDRaRecibir.TabIndex = 2;
             groupBoxHDRaRecibir.TabStop = false;
             groupBoxHDRaRecibir.Text = "Hojas de ruta a recibir";
@@ -169,9 +177,11 @@
             // listViewHDRaRecibir
             // 
             listViewHDRaRecibir.Columns.AddRange(new ColumnHeader[] { columnHeaderNroGuias, columnHeaderDestino, columnHeaderTamaño });
-            listViewHDRaRecibir.Location = new Point(11, 29);
+            listViewHDRaRecibir.ForeColor = Color.Blue;
+            listViewHDRaRecibir.Location = new Point(10, 22);
+            listViewHDRaRecibir.Margin = new Padding(3, 2, 3, 2);
             listViewHDRaRecibir.Name = "listViewHDRaRecibir";
-            listViewHDRaRecibir.Size = new Size(301, 169);
+            listViewHDRaRecibir.Size = new Size(264, 128);
             listViewHDRaRecibir.TabIndex = 0;
             listViewHDRaRecibir.UseCompatibleStateImageBehavior = false;
             listViewHDRaRecibir.View = View.Details;
@@ -194,9 +204,11 @@
             // groupBoxHDRaDespachar
             // 
             groupBoxHDRaDespachar.Controls.Add(listViewHDRaDespachar);
-            groupBoxHDRaDespachar.Location = new Point(429, 320);
+            groupBoxHDRaDespachar.Location = new Point(375, 240);
+            groupBoxHDRaDespachar.Margin = new Padding(3, 2, 3, 2);
             groupBoxHDRaDespachar.Name = "groupBoxHDRaDespachar";
-            groupBoxHDRaDespachar.Size = new Size(335, 211);
+            groupBoxHDRaDespachar.Padding = new Padding(3, 2, 3, 2);
+            groupBoxHDRaDespachar.Size = new Size(293, 158);
             groupBoxHDRaDespachar.TabIndex = 3;
             groupBoxHDRaDespachar.TabStop = false;
             groupBoxHDRaDespachar.Text = "Hojas de ruta a despachar";
@@ -204,9 +216,11 @@
             // listViewHDRaDespachar
             // 
             listViewHDRaDespachar.Columns.AddRange(new ColumnHeader[] { columnaNrodeGuia, columnaDestinoDespachar, columnaTamañoDespachar });
-            listViewHDRaDespachar.Location = new Point(8, 29);
+            listViewHDRaDespachar.ForeColor = Color.Blue;
+            listViewHDRaDespachar.Location = new Point(7, 22);
+            listViewHDRaDespachar.Margin = new Padding(3, 2, 3, 2);
             listViewHDRaDespachar.Name = "listViewHDRaDespachar";
-            listViewHDRaDespachar.Size = new Size(310, 168);
+            listViewHDRaDespachar.Size = new Size(272, 127);
             listViewHDRaDespachar.TabIndex = 0;
             listViewHDRaDespachar.UseCompatibleStateImageBehavior = false;
             listViewHDRaDespachar.View = View.Details;
@@ -228,9 +242,10 @@
             // 
             // botonConfirmar
             // 
-            botonConfirmar.Location = new Point(130, 613);
+            botonConfirmar.Location = new Point(114, 460);
+            botonConfirmar.Margin = new Padding(3, 2, 3, 2);
             botonConfirmar.Name = "botonConfirmar";
-            botonConfirmar.Size = new Size(139, 36);
+            botonConfirmar.Size = new Size(122, 27);
             botonConfirmar.TabIndex = 4;
             botonConfirmar.Text = "Confirmar";
             botonConfirmar.UseVisualStyleBackColor = true;
@@ -238,9 +253,10 @@
             // 
             // botonCancelar
             // 
-            botonCancelar.Location = new Point(504, 613);
+            botonCancelar.Location = new Point(441, 460);
+            botonCancelar.Margin = new Padding(3, 2, 3, 2);
             botonCancelar.Name = "botonCancelar";
-            botonCancelar.Size = new Size(145, 36);
+            botonCancelar.Size = new Size(127, 27);
             botonCancelar.TabIndex = 5;
             botonCancelar.Text = "Cancelar";
             botonCancelar.UseVisualStyleBackColor = true;
@@ -249,18 +265,18 @@
             // labelUsuario
             // 
             labelUsuario.AutoSize = true;
-            labelUsuario.Location = new Point(23, 13);
+            labelUsuario.Location = new Point(20, 10);
             labelUsuario.Name = "labelUsuario";
-            labelUsuario.Size = new Size(66, 20);
+            labelUsuario.Size = new Size(57, 15);
             labelUsuario.TabIndex = 6;
             labelUsuario.Text = "Usuario: ";
             // 
             // labelRespuestaUsuario
             // 
             labelRespuestaUsuario.AutoSize = true;
-            labelRespuestaUsuario.Location = new Point(95, 13);
+            labelRespuestaUsuario.Location = new Point(83, 10);
             labelRespuestaUsuario.Name = "labelRespuestaUsuario";
-            labelRespuestaUsuario.Size = new Size(79, 20);
+            labelRespuestaUsuario.Size = new Size(67, 15);
             labelRespuestaUsuario.TabIndex = 7;
             labelRespuestaUsuario.Text = "Usuario 11";
             labelRespuestaUsuario.Click += labelRespuestaUsuario_Click;
@@ -268,26 +284,26 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(233, 13);
+            label7.Location = new Point(204, 10);
             label7.Name = "label7";
-            label7.Size = new Size(36, 20);
+            label7.Size = new Size(29, 15);
             label7.TabIndex = 8;
             label7.Text = "CD: ";
             // 
             // labelResultadoCD
             // 
             labelResultadoCD.AutoSize = true;
-            labelResultadoCD.Location = new Point(273, 13);
+            labelResultadoCD.Location = new Point(239, 10);
             labelResultadoCD.Name = "labelResultadoCD";
-            labelResultadoCD.Size = new Size(94, 20);
+            labelResultadoCD.Size = new Size(83, 15);
             labelResultadoCD.TabIndex = 9;
             labelResultadoCD.Text = "Buenos Aires";
             // 
             // RecepcionDespachoCDLargaDistanciaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 712);
+            ClientSize = new Size(700, 534);
             Controls.Add(labelResultadoCD);
             Controls.Add(label7);
             Controls.Add(labelRespuestaUsuario);
@@ -298,6 +314,8 @@
             Controls.Add(groupBoxHDRaRecibir);
             Controls.Add(groupBoxDatosdeEmpresaTransporte);
             Controls.Add(groupBoxIngreseNrodeTransporte);
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RecepcionDespachoCDLargaDistanciaForm";
             Text = "RecepcionYDespachoLargaDistanciaForm1";
             groupBoxIngreseNrodeTransporte.ResumeLayout(false);

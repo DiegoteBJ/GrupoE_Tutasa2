@@ -70,9 +70,11 @@
             BusquedaHDRgroupBox.Controls.Add(HDRRetiroRadioBoton);
             BusquedaHDRgroupBox.Controls.Add(BuscarHDRboton);
             BusquedaHDRgroupBox.Controls.Add(HDRtextBox);
-            BusquedaHDRgroupBox.Location = new Point(19, 19);
+            BusquedaHDRgroupBox.Location = new Point(17, 14);
+            BusquedaHDRgroupBox.Margin = new Padding(3, 2, 3, 2);
             BusquedaHDRgroupBox.Name = "BusquedaHDRgroupBox";
-            BusquedaHDRgroupBox.Size = new Size(815, 111);
+            BusquedaHDRgroupBox.Padding = new Padding(3, 2, 3, 2);
+            BusquedaHDRgroupBox.Size = new Size(713, 83);
             BusquedaHDRgroupBox.TabIndex = 0;
             BusquedaHDRgroupBox.TabStop = false;
             BusquedaHDRgroupBox.Text = "Búsqueda de Hoja de Ruta";
@@ -80,10 +82,9 @@
             // HDRDistribucionRadioBoton
             // 
             HDRDistribucionRadioBoton.AutoSize = true;
-            HDRDistribucionRadioBoton.Location = new Point(435, 32);
-            HDRDistribucionRadioBoton.Margin = new Padding(3, 4, 3, 4);
+            HDRDistribucionRadioBoton.Location = new Point(381, 24);
             HDRDistribucionRadioBoton.Name = "HDRDistribucionRadioBoton";
-            HDRDistribucionRadioBoton.Size = new Size(110, 24);
+            HDRDistribucionRadioBoton.Size = new Size(93, 19);
             HDRDistribucionRadioBoton.TabIndex = 25;
             HDRDistribucionRadioBoton.TabStop = true;
             HDRDistribucionRadioBoton.Text = "Distribución";
@@ -92,10 +93,9 @@
             // HDRRetiroRadioBoton
             // 
             HDRRetiroRadioBoton.AutoSize = true;
-            HDRRetiroRadioBoton.Location = new Point(365, 32);
-            HDRRetiroRadioBoton.Margin = new Padding(3, 4, 3, 4);
+            HDRRetiroRadioBoton.Location = new Point(319, 24);
             HDRRetiroRadioBoton.Name = "HDRRetiroRadioBoton";
-            HDRRetiroRadioBoton.Size = new Size(70, 24);
+            HDRRetiroRadioBoton.Size = new Size(59, 19);
             HDRRetiroRadioBoton.TabIndex = 25;
             HDRRetiroRadioBoton.TabStop = true;
             HDRRetiroRadioBoton.Text = "Retiro";
@@ -103,9 +103,10 @@
             // 
             // BuscarHDRboton
             // 
-            BuscarHDRboton.Location = new Point(6, 59);
+            BuscarHDRboton.Location = new Point(5, 44);
+            BuscarHDRboton.Margin = new Padding(3, 2, 3, 2);
             BuscarHDRboton.Name = "BuscarHDRboton";
-            BuscarHDRboton.Size = new Size(94, 29);
+            BuscarHDRboton.Size = new Size(82, 22);
             BuscarHDRboton.TabIndex = 1;
             BuscarHDRboton.Text = "Buscar";
             BuscarHDRboton.UseVisualStyleBackColor = true;
@@ -113,9 +114,10 @@
             // 
             // HDRtextBox
             // 
-            HDRtextBox.Location = new Point(6, 27);
+            HDRtextBox.Location = new Point(5, 20);
+            HDRtextBox.Margin = new Padding(3, 2, 3, 2);
             HDRtextBox.Name = "HDRtextBox";
-            HDRtextBox.Size = new Size(324, 27);
+            HDRtextBox.Size = new Size(284, 21);
             HDRtextBox.TabIndex = 0;
             // 
             // DatosViajegroupBox
@@ -128,9 +130,11 @@
             DatosViajegroupBox.Controls.Add(FechaLabel);
             DatosViajegroupBox.Controls.Add(RespuestaFleteroLabel);
             DatosViajegroupBox.Controls.Add(FleteroLabel);
-            DatosViajegroupBox.Location = new Point(19, 148);
+            DatosViajegroupBox.Location = new Point(17, 111);
+            DatosViajegroupBox.Margin = new Padding(3, 2, 3, 2);
             DatosViajegroupBox.Name = "DatosViajegroupBox";
-            DatosViajegroupBox.Size = new Size(815, 111);
+            DatosViajegroupBox.Padding = new Padding(3, 2, 3, 2);
+            DatosViajegroupBox.Size = new Size(713, 83);
             DatosViajegroupBox.TabIndex = 1;
             DatosViajegroupBox.TabStop = false;
             DatosViajegroupBox.Text = "Datos del viaje";
@@ -138,72 +142,72 @@
             // RespuestaTotalGuiasLabel
             // 
             RespuestaTotalGuiasLabel.AutoSize = true;
-            RespuestaTotalGuiasLabel.Location = new Point(656, 76);
+            RespuestaTotalGuiasLabel.Location = new Point(574, 57);
             RespuestaTotalGuiasLabel.Name = "RespuestaTotalGuiasLabel";
-            RespuestaTotalGuiasLabel.Size = new Size(44, 20);
+            RespuestaTotalGuiasLabel.Size = new Size(35, 15);
             RespuestaTotalGuiasLabel.TabIndex = 7;
             RespuestaTotalGuiasLabel.Text = "[Nro]";
             // 
             // TotalGuiasLabel
             // 
             TotalGuiasLabel.AutoSize = true;
-            TotalGuiasLabel.Location = new Point(566, 76);
+            TotalGuiasLabel.Location = new Point(495, 57);
             TotalGuiasLabel.Name = "TotalGuiasLabel";
-            TotalGuiasLabel.Size = new Size(84, 20);
+            TotalGuiasLabel.Size = new Size(71, 15);
             TotalGuiasLabel.TabIndex = 6;
             TotalGuiasLabel.Text = "Total guías:";
             // 
             // RespuestaTipoHDRLabel
             // 
             RespuestaTipoHDRLabel.AutoSize = true;
-            RespuestaTipoHDRLabel.Location = new Point(559, 37);
+            RespuestaTipoHDRLabel.Location = new Point(489, 28);
             RespuestaTipoHDRLabel.Name = "RespuestaTipoHDRLabel";
-            RespuestaTipoHDRLabel.Size = new Size(145, 20);
+            RespuestaTipoHDRLabel.Size = new Size(120, 15);
             RespuestaTipoHDRLabel.TabIndex = 5;
             RespuestaTipoHDRLabel.Text = "[Distribución/Retiro]";
             // 
             // TipoHDRLabel
             // 
             TipoHDRLabel.AutoSize = true;
-            TipoHDRLabel.Location = new Point(455, 37);
+            TipoHDRLabel.Location = new Point(398, 28);
             TipoHDRLabel.Name = "TipoHDRLabel";
-            TipoHDRLabel.Size = new Size(98, 20);
+            TipoHDRLabel.Size = new Size(78, 15);
             TipoHDRLabel.TabIndex = 4;
             TipoHDRLabel.Text = "Tipo de HDR:";
             // 
             // RespuestaFechaLabel
             // 
             RespuestaFechaLabel.AutoSize = true;
-            RespuestaFechaLabel.Location = new Point(293, 37);
+            RespuestaFechaLabel.Location = new Point(256, 28);
             RespuestaFechaLabel.Name = "RespuestaFechaLabel";
-            RespuestaFechaLabel.Size = new Size(123, 20);
+            RespuestaFechaLabel.Size = new Size(105, 15);
             RespuestaFechaLabel.TabIndex = 3;
             RespuestaFechaLabel.Text = "[FechaRendicion]";
             // 
             // FechaLabel
             // 
             FechaLabel.AutoSize = true;
-            FechaLabel.Location = new Point(248, 37);
+            FechaLabel.Location = new Point(217, 28);
             FechaLabel.Name = "FechaLabel";
-            FechaLabel.Size = new Size(50, 20);
+            FechaLabel.Size = new Size(44, 15);
             FechaLabel.TabIndex = 2;
             FechaLabel.Text = "Fecha:";
             // 
             // RespuestaFleteroLabel
             // 
             RespuestaFleteroLabel.AutoSize = true;
-            RespuestaFleteroLabel.Location = new Point(66, 37);
+            RespuestaFleteroLabel.Location = new Point(58, 28);
             RespuestaFleteroLabel.Name = "RespuestaFleteroLabel";
-            RespuestaFleteroLabel.Size = new Size(138, 20);
+            RespuestaFleteroLabel.Size = new Size(111, 15);
             RespuestaFleteroLabel.TabIndex = 1;
             RespuestaFleteroLabel.Text = "[Apellido, Nombre]";
             // 
             // FleteroLabel
             // 
             FleteroLabel.AutoSize = true;
-            FleteroLabel.Location = new Point(13, 37);
+            FleteroLabel.Location = new Point(11, 28);
             FleteroLabel.Name = "FleteroLabel";
-            FleteroLabel.Size = new Size(58, 20);
+            FleteroLabel.Size = new Size(49, 15);
             FleteroLabel.TabIndex = 0;
             FleteroLabel.Text = "Fletero:";
             // 
@@ -216,9 +220,11 @@
             DetalleHDRGroupBox.Controls.Add(RespCantGuiasCumplidasLabel);
             DetalleHDRGroupBox.Controls.Add(CantGuiasCumplidasLabel);
             DetalleHDRGroupBox.Controls.Add(DetalleHDRListView);
-            DetalleHDRGroupBox.Location = new Point(19, 279);
+            DetalleHDRGroupBox.Location = new Point(17, 209);
+            DetalleHDRGroupBox.Margin = new Padding(3, 2, 3, 2);
             DetalleHDRGroupBox.Name = "DetalleHDRGroupBox";
-            DetalleHDRGroupBox.Size = new Size(815, 326);
+            DetalleHDRGroupBox.Padding = new Padding(3, 2, 3, 2);
+            DetalleHDRGroupBox.Size = new Size(713, 244);
             DetalleHDRGroupBox.TabIndex = 2;
             DetalleHDRGroupBox.TabStop = false;
             DetalleHDRGroupBox.Text = "Detalle de HDR";
@@ -226,26 +232,28 @@
             // RespCantidadGuiasNoCumplidasLabel
             // 
             RespCantidadGuiasNoCumplidasLabel.AutoSize = true;
-            RespCantidadGuiasNoCumplidasLabel.Location = new Point(706, 277);
+            RespCantidadGuiasNoCumplidasLabel.ForeColor = Color.Blue;
+            RespCantidadGuiasNoCumplidasLabel.Location = new Point(618, 208);
             RespCantidadGuiasNoCumplidasLabel.Name = "RespCantidadGuiasNoCumplidasLabel";
-            RespCantidadGuiasNoCumplidasLabel.Size = new Size(83, 20);
+            RespCantidadGuiasNoCumplidasLabel.Size = new Size(65, 15);
             RespCantidadGuiasNoCumplidasLabel.TabIndex = 6;
             RespCantidadGuiasNoCumplidasLabel.Text = "[Nro/Total]";
             // 
             // CantGuiasNoCumplidasLabel
             // 
             CantGuiasNoCumplidasLabel.AutoSize = true;
-            CantGuiasNoCumplidasLabel.Location = new Point(503, 277);
+            CantGuiasNoCumplidasLabel.Location = new Point(440, 208);
             CantGuiasNoCumplidasLabel.Name = "CantGuiasNoCumplidasLabel";
-            CantGuiasNoCumplidasLabel.Size = new Size(201, 20);
+            CantGuiasNoCumplidasLabel.Size = new Size(170, 15);
             CantGuiasNoCumplidasLabel.TabIndex = 5;
             CantGuiasNoCumplidasLabel.Text = "Cantidad guías no cumplidas";
             // 
             // CambiarNoCumplidasBoton
             // 
-            CambiarNoCumplidasBoton.Location = new Point(14, 277);
+            CambiarNoCumplidasBoton.Location = new Point(12, 208);
+            CambiarNoCumplidasBoton.Margin = new Padding(3, 2, 3, 2);
             CambiarNoCumplidasBoton.Name = "CambiarNoCumplidasBoton";
-            CambiarNoCumplidasBoton.Size = new Size(213, 29);
+            CambiarNoCumplidasBoton.Size = new Size(186, 22);
             CambiarNoCumplidasBoton.TabIndex = 4;
             CambiarNoCumplidasBoton.Text = "Cambiar a No Cumplidas";
             CambiarNoCumplidasBoton.UseVisualStyleBackColor = true;
@@ -253,9 +261,10 @@
             // 
             // CambiarCumplidasBoton
             // 
-            CambiarCumplidasBoton.Location = new Point(14, 235);
+            CambiarCumplidasBoton.Location = new Point(12, 176);
+            CambiarCumplidasBoton.Margin = new Padding(3, 2, 3, 2);
             CambiarCumplidasBoton.Name = "CambiarCumplidasBoton";
-            CambiarCumplidasBoton.Size = new Size(213, 29);
+            CambiarCumplidasBoton.Size = new Size(186, 22);
             CambiarCumplidasBoton.TabIndex = 3;
             CambiarCumplidasBoton.Text = "Cambiar a Cumplidas";
             CambiarCumplidasBoton.UseVisualStyleBackColor = true;
@@ -264,28 +273,31 @@
             // RespCantGuiasCumplidasLabel
             // 
             RespCantGuiasCumplidasLabel.AutoSize = true;
-            RespCantGuiasCumplidasLabel.Location = new Point(706, 239);
+            RespCantGuiasCumplidasLabel.ForeColor = Color.Blue;
+            RespCantGuiasCumplidasLabel.Location = new Point(618, 179);
             RespCantGuiasCumplidasLabel.Name = "RespCantGuiasCumplidasLabel";
-            RespCantGuiasCumplidasLabel.Size = new Size(83, 20);
+            RespCantGuiasCumplidasLabel.Size = new Size(65, 15);
             RespCantGuiasCumplidasLabel.TabIndex = 2;
             RespCantGuiasCumplidasLabel.Text = "[Nro/Total]";
             // 
             // CantGuiasCumplidasLabel
             // 
             CantGuiasCumplidasLabel.AutoSize = true;
-            CantGuiasCumplidasLabel.Location = new Point(520, 239);
+            CantGuiasCumplidasLabel.Location = new Point(455, 179);
             CantGuiasCumplidasLabel.Name = "CantGuiasCumplidasLabel";
-            CantGuiasCumplidasLabel.Size = new Size(180, 20);
+            CantGuiasCumplidasLabel.Size = new Size(153, 15);
             CantGuiasCumplidasLabel.TabIndex = 1;
             CantGuiasCumplidasLabel.Text = "Cantidad guías cumplidas";
             // 
             // DetalleHDRListView
             // 
             DetalleHDRListView.Columns.AddRange(new ColumnHeader[] { GuiacolumnHeader, RemitentecolumnHeader, DestinatariocolumnHeader, DomiciliocolumnHeader, TamcolumnHeader, IntentocolumnHeader, EstadocolumnHeader });
+            DetalleHDRListView.ForeColor = Color.Blue;
             DetalleHDRListView.FullRowSelect = true;
-            DetalleHDRListView.Location = new Point(14, 27);
+            DetalleHDRListView.Location = new Point(12, 20);
+            DetalleHDRListView.Margin = new Padding(3, 2, 3, 2);
             DetalleHDRListView.Name = "DetalleHDRListView";
-            DetalleHDRListView.Size = new Size(785, 193);
+            DetalleHDRListView.Size = new Size(687, 146);
             DetalleHDRListView.TabIndex = 0;
             DetalleHDRListView.UseCompatibleStateImageBehavior = false;
             DetalleHDRListView.View = View.Details;
@@ -326,9 +338,10 @@
             // 
             // ConfirmarRendicionBoton
             // 
-            ConfirmarRendicionBoton.Location = new Point(487, 637);
+            ConfirmarRendicionBoton.Location = new Point(426, 478);
+            ConfirmarRendicionBoton.Margin = new Padding(3, 2, 3, 2);
             ConfirmarRendicionBoton.Name = "ConfirmarRendicionBoton";
-            ConfirmarRendicionBoton.Size = new Size(182, 32);
+            ConfirmarRendicionBoton.Size = new Size(159, 24);
             ConfirmarRendicionBoton.TabIndex = 3;
             ConfirmarRendicionBoton.Text = "Confirmar Rendición";
             ConfirmarRendicionBoton.UseVisualStyleBackColor = true;
@@ -336,9 +349,10 @@
             // 
             // CancelarRendicionBoton
             // 
-            CancelarRendicionBoton.Location = new Point(699, 637);
+            CancelarRendicionBoton.Location = new Point(612, 478);
+            CancelarRendicionBoton.Margin = new Padding(3, 2, 3, 2);
             CancelarRendicionBoton.Name = "CancelarRendicionBoton";
-            CancelarRendicionBoton.Size = new Size(135, 32);
+            CancelarRendicionBoton.Size = new Size(118, 24);
             CancelarRendicionBoton.TabIndex = 4;
             CancelarRendicionBoton.Text = "Cancelar";
             CancelarRendicionBoton.UseVisualStyleBackColor = true;
@@ -346,14 +360,16 @@
             // 
             // RendicionHDRForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(857, 681);
+            ClientSize = new Size(750, 511);
             Controls.Add(CancelarRendicionBoton);
             Controls.Add(ConfirmarRendicionBoton);
             Controls.Add(DetalleHDRGroupBox);
             Controls.Add(DatosViajegroupBox);
             Controls.Add(BusquedaHDRgroupBox);
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RendicionHDRForm";
             Text = "Rendicion de HDR";
             BusquedaHDRgroupBox.ResumeLayout(false);

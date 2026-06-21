@@ -63,20 +63,23 @@
             // HojasdeRutaGroupBox
             // 
             HojasdeRutaGroupBox.Controls.Add(HojasdeRutaListView);
-            HojasdeRutaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            HojasdeRutaGroupBox.Location = new Point(389, 208);
+            HojasdeRutaGroupBox.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HojasdeRutaGroupBox.Location = new Point(340, 156);
+            HojasdeRutaGroupBox.Margin = new Padding(3, 2, 3, 2);
             HojasdeRutaGroupBox.Name = "HojasdeRutaGroupBox";
-            HojasdeRutaGroupBox.Size = new Size(327, 220);
+            HojasdeRutaGroupBox.Padding = new Padding(3, 2, 3, 2);
+            HojasdeRutaGroupBox.Size = new Size(286, 165);
             HojasdeRutaGroupBox.TabIndex = 0;
             HojasdeRutaGroupBox.TabStop = false;
             HojasdeRutaGroupBox.Text = "Hojas de ruta a despachar";
             // 
             // HojasdeRutaListView
             // 
-            HojasdeRutaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            HojasdeRutaListView.Location = new Point(20, 28);
+            HojasdeRutaListView.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            HojasdeRutaListView.Location = new Point(18, 21);
+            HojasdeRutaListView.Margin = new Padding(3, 2, 3, 2);
             HojasdeRutaListView.Name = "HojasdeRutaListView";
-            HojasdeRutaListView.Size = new Size(280, 175);
+            HojasdeRutaListView.Size = new Size(246, 132);
             HojasdeRutaListView.TabIndex = 0;
             HojasdeRutaListView.UseCompatibleStateImageBehavior = false;
             HojasdeRutaListView.View = View.Details;
@@ -85,20 +88,23 @@
             // HDRaRendirAgenciaGroupBox
             // 
             HDRaRendirAgenciaGroupBox.Controls.Add(HDRaRendirAgenciaListView);
-            HDRaRendirAgenciaGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            HDRaRendirAgenciaGroupBox.Location = new Point(31, 208);
+            HDRaRendirAgenciaGroupBox.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HDRaRendirAgenciaGroupBox.Location = new Point(27, 156);
+            HDRaRendirAgenciaGroupBox.Margin = new Padding(3, 2, 3, 2);
             HDRaRendirAgenciaGroupBox.Name = "HDRaRendirAgenciaGroupBox";
-            HDRaRendirAgenciaGroupBox.Size = new Size(333, 220);
+            HDRaRendirAgenciaGroupBox.Padding = new Padding(3, 2, 3, 2);
+            HDRaRendirAgenciaGroupBox.Size = new Size(291, 165);
             HDRaRendirAgenciaGroupBox.TabIndex = 1;
             HDRaRendirAgenciaGroupBox.TabStop = false;
             HDRaRendirAgenciaGroupBox.Text = "Hojas de ruta a recepcionar";
             // 
             // HDRaRendirAgenciaListView
             // 
-            HDRaRendirAgenciaListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            HDRaRendirAgenciaListView.Location = new Point(23, 28);
+            HDRaRendirAgenciaListView.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            HDRaRendirAgenciaListView.Location = new Point(20, 21);
+            HDRaRendirAgenciaListView.Margin = new Padding(3, 2, 3, 2);
             HDRaRendirAgenciaListView.Name = "HDRaRendirAgenciaListView";
-            HDRaRendirAgenciaListView.Size = new Size(280, 175);
+            HDRaRendirAgenciaListView.Size = new Size(246, 132);
             HDRaRendirAgenciaListView.TabIndex = 0;
             HDRaRendirAgenciaListView.UseCompatibleStateImageBehavior = false;
             HDRaRendirAgenciaListView.View = View.Details;
@@ -108,9 +114,9 @@
             // 
             UsuarioLabel.AutoSize = true;
             UsuarioLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UsuarioLabel.Location = new Point(31, 21);
+            UsuarioLabel.Location = new Point(27, 16);
             UsuarioLabel.Name = "UsuarioLabel";
-            UsuarioLabel.Size = new Size(66, 20);
+            UsuarioLabel.Size = new Size(50, 15);
             UsuarioLabel.TabIndex = 2;
             UsuarioLabel.Text = "Usuario:";
             // 
@@ -118,37 +124,37 @@
             // 
             AgenciaLabel.AutoSize = true;
             AgenciaLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AgenciaLabel.Location = new Point(218, 21);
+            AgenciaLabel.Location = new Point(191, 16);
             AgenciaLabel.Name = "AgenciaLabel";
-            AgenciaLabel.Size = new Size(68, 20);
+            AgenciaLabel.Size = new Size(53, 15);
             AgenciaLabel.TabIndex = 3;
             AgenciaLabel.Text = "Agencia:";
             // 
             // NombreFleteroLabel
             // 
             NombreFleteroLabel.AutoSize = true;
-            NombreFleteroLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NombreFleteroLabel.Location = new Point(311, 32);
+            NombreFleteroLabel.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NombreFleteroLabel.Location = new Point(272, 24);
             NombreFleteroLabel.Name = "NombreFleteroLabel";
-            NombreFleteroLabel.Size = new Size(66, 20);
+            NombreFleteroLabel.Size = new Size(52, 15);
             NombreFleteroLabel.TabIndex = 4;
             NombreFleteroLabel.Text = "Nombre";
             // 
             // UsuarioRespuestaLabel
             // 
             UsuarioRespuestaLabel.AutoSize = true;
-            UsuarioRespuestaLabel.Location = new Point(99, 21);
+            UsuarioRespuestaLabel.Location = new Point(87, 16);
             UsuarioRespuestaLabel.Name = "UsuarioRespuestaLabel";
-            UsuarioRespuestaLabel.Size = new Size(75, 20);
+            UsuarioRespuestaLabel.Size = new Size(65, 15);
             UsuarioRespuestaLabel.TabIndex = 6;
             UsuarioRespuestaLabel.Text = "Usuario01";
             // 
             // AgenciaRespuestaLabel
             // 
             AgenciaRespuestaLabel.AutoSize = true;
-            AgenciaRespuestaLabel.Location = new Point(290, 21);
+            AgenciaRespuestaLabel.Location = new Point(254, 16);
             AgenciaRespuestaLabel.Name = "AgenciaRespuestaLabel";
-            AgenciaRespuestaLabel.Size = new Size(159, 20);
+            AgenciaRespuestaLabel.Size = new Size(133, 15);
             AgenciaRespuestaLabel.TabIndex = 7;
             AgenciaRespuestaLabel.Text = "Agencia Moron Centro";
             // 
@@ -156,24 +162,26 @@
             // 
             NombreFleteroRespuestaLabel.AutoSize = true;
             NombreFleteroRespuestaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NombreFleteroRespuestaLabel.Location = new Point(311, 58);
+            NombreFleteroRespuestaLabel.Location = new Point(272, 44);
             NombreFleteroRespuestaLabel.Name = "NombreFleteroRespuestaLabel";
-            NombreFleteroRespuestaLabel.Size = new Size(114, 20);
+            NombreFleteroRespuestaLabel.Size = new Size(90, 15);
             NombreFleteroRespuestaLabel.TabIndex = 8;
             NombreFleteroRespuestaLabel.Text = "Nombre Fletero";
             // 
             // DNIFleteroBox
             // 
-            DNIFleteroBox.Location = new Point(23, 55);
+            DNIFleteroBox.Location = new Point(20, 41);
+            DNIFleteroBox.Margin = new Padding(3, 2, 3, 2);
             DNIFleteroBox.Name = "DNIFleteroBox";
-            DNIFleteroBox.Size = new Size(125, 27);
+            DNIFleteroBox.Size = new Size(110, 21);
             DNIFleteroBox.TabIndex = 10;
             // 
             // BuscarFleteroBoton
             // 
-            BuscarFleteroBoton.Location = new Point(190, 133);
+            BuscarFleteroBoton.Location = new Point(166, 100);
+            BuscarFleteroBoton.Margin = new Padding(3, 2, 3, 2);
             BuscarFleteroBoton.Name = "BuscarFleteroBoton";
-            BuscarFleteroBoton.Size = new Size(117, 29);
+            BuscarFleteroBoton.Size = new Size(102, 22);
             BuscarFleteroBoton.TabIndex = 11;
             BuscarFleteroBoton.Text = "Buscar Fletero";
             BuscarFleteroBoton.UseVisualStyleBackColor = true;
@@ -181,9 +189,10 @@
             // 
             // CancelarBoton
             // 
-            CancelarBoton.Location = new Point(622, 696);
+            CancelarBoton.Location = new Point(544, 522);
+            CancelarBoton.Margin = new Padding(3, 2, 3, 2);
             CancelarBoton.Name = "CancelarBoton";
-            CancelarBoton.Size = new Size(108, 29);
+            CancelarBoton.Size = new Size(94, 22);
             CancelarBoton.TabIndex = 12;
             CancelarBoton.Text = "Cancelar";
             CancelarBoton.UseVisualStyleBackColor = true;
@@ -191,9 +200,10 @@
             // 
             // ConfirmarBoton
             // 
-            ConfirmarBoton.Location = new Point(468, 696);
+            ConfirmarBoton.Location = new Point(410, 522);
+            ConfirmarBoton.Margin = new Padding(3, 2, 3, 2);
             ConfirmarBoton.Name = "ConfirmarBoton";
-            ConfirmarBoton.Size = new Size(106, 29);
+            ConfirmarBoton.Size = new Size(93, 22);
             ConfirmarBoton.TabIndex = 13;
             ConfirmarBoton.Text = "Confirmar";
             ConfirmarBoton.UseVisualStyleBackColor = true;
@@ -207,10 +217,12 @@
             BuscarFleteroGroupBox.Controls.Add(DNIFleteroBox);
             BuscarFleteroGroupBox.Controls.Add(ApellidoLabel);
             BuscarFleteroGroupBox.Controls.Add(NombreFleteroLabel);
-            BuscarFleteroGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BuscarFleteroGroupBox.Location = new Point(30, 79);
+            BuscarFleteroGroupBox.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BuscarFleteroGroupBox.Location = new Point(26, 59);
+            BuscarFleteroGroupBox.Margin = new Padding(3, 2, 3, 2);
             BuscarFleteroGroupBox.Name = "BuscarFleteroGroupBox";
-            BuscarFleteroGroupBox.Size = new Size(763, 109);
+            BuscarFleteroGroupBox.Padding = new Padding(3, 2, 3, 2);
+            BuscarFleteroGroupBox.Size = new Size(668, 82);
             BuscarFleteroGroupBox.TabIndex = 14;
             BuscarFleteroGroupBox.TabStop = false;
             BuscarFleteroGroupBox.Text = "Buscar DNI";
@@ -218,10 +230,10 @@
             // DNILabel
             // 
             DNILabel.AutoSize = true;
-            DNILabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DNILabel.Location = new Point(23, 27);
+            DNILabel.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DNILabel.Location = new Point(20, 20);
             DNILabel.Name = "DNILabel";
-            DNILabel.Size = new Size(45, 20);
+            DNILabel.Size = new Size(34, 15);
             DNILabel.TabIndex = 10;
             DNILabel.Text = "DNI *";
             // 
@@ -229,28 +241,28 @@
             // 
             ApellidoRespuestaLabel.AutoSize = true;
             ApellidoRespuestaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ApellidoRespuestaLabel.Location = new Point(460, 58);
+            ApellidoRespuestaLabel.Location = new Point(402, 44);
             ApellidoRespuestaLabel.Name = "ApellidoRespuestaLabel";
-            ApellidoRespuestaLabel.Size = new Size(116, 20);
+            ApellidoRespuestaLabel.Size = new Size(90, 15);
             ApellidoRespuestaLabel.TabIndex = 9;
             ApellidoRespuestaLabel.Text = "Apellido Fletero";
             // 
             // ApellidoLabel
             // 
             ApellidoLabel.AutoSize = true;
-            ApellidoLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ApellidoLabel.Location = new Point(460, 32);
+            ApellidoLabel.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ApellidoLabel.Location = new Point(402, 24);
             ApellidoLabel.Name = "ApellidoLabel";
-            ApellidoLabel.Size = new Size(66, 20);
+            ApellidoLabel.Size = new Size(52, 15);
             ApellidoLabel.TabIndex = 5;
             ApellidoLabel.Text = "Apellido";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(357, 431);
+            label1.Location = new Point(312, 323);
             label1.Name = "label1";
-            label1.Size = new Size(0, 20);
+            label1.Size = new Size(0, 15);
             label1.TabIndex = 15;
             // 
             // groupBox1
@@ -258,10 +270,12 @@
             groupBox1.Controls.Add(NumeroHDRSuperiorLabel);
             groupBox1.Controls.Add(DetalleGuiasListView);
             groupBox1.Controls.Add(label2);
-            groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(31, 444);
+            groupBox1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(27, 333);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(418, 252);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(366, 189);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle de Hoja de ruta";
@@ -270,9 +284,9 @@
             // 
             NumeroHDRSuperiorLabel.AutoSize = true;
             NumeroHDRSuperiorLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NumeroHDRSuperiorLabel.Location = new Point(89, 23);
+            NumeroHDRSuperiorLabel.Location = new Point(78, 17);
             NumeroHDRSuperiorLabel.Name = "NumeroHDRSuperiorLabel";
-            NumeroHDRSuperiorLabel.Size = new Size(110, 20);
+            NumeroHDRSuperiorLabel.Size = new Size(88, 15);
             NumeroHDRSuperiorLabel.TabIndex = 2;
             NumeroHDRSuperiorLabel.Text = "[HDR-Numero]";
             // 
@@ -280,11 +294,11 @@
             // 
             DetalleGuiasListView.CheckBoxes = true;
             DetalleGuiasListView.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader1, columnHeader2 });
-            DetalleGuiasListView.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DetalleGuiasListView.Location = new Point(22, 56);
-            DetalleGuiasListView.Margin = new Padding(3, 4, 3, 4);
+            DetalleGuiasListView.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DetalleGuiasListView.ForeColor = Color.Blue;
+            DetalleGuiasListView.Location = new Point(19, 42);
             DetalleGuiasListView.Name = "DetalleGuiasListView";
-            DetalleGuiasListView.Size = new Size(371, 179);
+            DetalleGuiasListView.Size = new Size(325, 135);
             DetalleGuiasListView.TabIndex = 17;
             DetalleGuiasListView.UseCompatibleStateImageBehavior = false;
             DetalleGuiasListView.View = View.Details;
@@ -307,17 +321,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 23);
+            label2.Location = new Point(19, 17);
             label2.Name = "label2";
-            label2.Size = new Size(62, 20);
+            label2.Size = new Size(47, 15);
             label2.TabIndex = 1;
             label2.Text = "N° HDR";
             // 
             // RecepcionDespachoAgenciaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(760, 737);
+            ClientSize = new Size(665, 553);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(ConfirmarBoton);
@@ -330,6 +344,8 @@
             Controls.Add(HDRaRendirAgenciaGroupBox);
             Controls.Add(BuscarFleteroGroupBox);
             Controls.Add(HojasdeRutaGroupBox);
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RecepcionDespachoAgenciaForm";
             Text = "Recepción y despacho en agencia";
             Load += RecepcionDespachoAgenciaForm_Load;

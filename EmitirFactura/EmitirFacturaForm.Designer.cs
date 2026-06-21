@@ -50,20 +50,22 @@
             // DetalleEnviosLabel
             // 
             DetalleEnviosLabel.AutoSize = true;
-            DetalleEnviosLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            DetalleEnviosLabel.Location = new Point(30, 139);
+            DetalleEnviosLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DetalleEnviosLabel.Location = new Point(26, 104);
             DetalleEnviosLabel.Name = "DetalleEnviosLabel";
-            DetalleEnviosLabel.Size = new Size(255, 25);
+            DetalleEnviosLabel.Size = new Size(208, 18);
             DetalleEnviosLabel.TabIndex = 2;
             DetalleEnviosLabel.Text = "Detalle de Envíos a Facturar";
             // 
             // DetalleEnviosListView
             // 
             DetalleEnviosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader3, columnHeader5, columnHeader6 });
+            DetalleEnviosListView.ForeColor = Color.Blue;
             DetalleEnviosListView.GridLines = true;
-            DetalleEnviosListView.Location = new Point(81, 185);
+            DetalleEnviosListView.Location = new Point(71, 139);
+            DetalleEnviosListView.Margin = new Padding(3, 2, 3, 2);
             DetalleEnviosListView.Name = "DetalleEnviosListView";
-            DetalleEnviosListView.Size = new Size(627, 251);
+            DetalleEnviosListView.Size = new Size(549, 189);
             DetalleEnviosListView.TabIndex = 3;
             DetalleEnviosListView.UseCompatibleStateImageBehavior = false;
             DetalleEnviosListView.View = View.Details;
@@ -95,9 +97,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(298, 460);
+            label1.Location = new Point(261, 345);
             label1.Name = "label1";
-            label1.Size = new Size(153, 23);
+            label1.Size = new Size(129, 19);
             label1.TabIndex = 4;
             label1.Text = "Total a Facturar $:";
             // 
@@ -105,52 +107,57 @@
             // 
             TotalAFacturarLabel.AutoSize = true;
             TotalAFacturarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            TotalAFacturarLabel.Location = new Point(659, 460);
+            TotalAFacturarLabel.Location = new Point(577, 345);
             TotalAFacturarLabel.Name = "TotalAFacturarLabel";
-            TotalAFacturarLabel.Size = new Size(49, 20);
+            TotalAFacturarLabel.Size = new Size(38, 15);
             TotalAFacturarLabel.TabIndex = 5;
             TotalAFacturarLabel.Text = "00,00";
             // 
             // CUITClienteLabel
             // 
             CUITClienteLabel.AutoSize = true;
-            CUITClienteLabel.Location = new Point(30, 53);
+            CUITClienteLabel.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CUITClienteLabel.Location = new Point(26, 40);
             CUITClienteLabel.Name = "CUITClienteLabel";
-            CUITClienteLabel.Size = new Size(115, 20);
+            CUITClienteLabel.Size = new Size(95, 15);
             CUITClienteLabel.TabIndex = 0;
             CUITClienteLabel.Text = "CUIT del Cliente";
             // 
             // DatosClienteLabel
             // 
             DatosClienteLabel.AutoSize = true;
-            DatosClienteLabel.Location = new Point(30, 89);
+            DatosClienteLabel.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DatosClienteLabel.Location = new Point(26, 67);
             DatosClienteLabel.Name = "DatosClienteLabel";
-            DatosClienteLabel.Size = new Size(123, 20);
+            DatosClienteLabel.Size = new Size(102, 15);
             DatosClienteLabel.TabIndex = 1;
             DatosClienteLabel.Text = "Datos del Cliente";
             // 
             // DatosCLienteRespuestaLabel
             // 
             DatosCLienteRespuestaLabel.AutoSize = true;
-            DatosCLienteRespuestaLabel.Location = new Point(184, 89);
+            DatosCLienteRespuestaLabel.Location = new Point(161, 67);
             DatosCLienteRespuestaLabel.Name = "DatosCLienteRespuestaLabel";
-            DatosCLienteRespuestaLabel.Size = new Size(123, 20);
+            DatosCLienteRespuestaLabel.Size = new Size(102, 15);
             DatosCLienteRespuestaLabel.TabIndex = 2;
             DatosCLienteRespuestaLabel.Text = "Datos del Cliente";
             // 
             // CuitClienteBox
             // 
-            CuitClienteBox.Location = new Point(184, 47);
+            CuitClienteBox.Location = new Point(161, 35);
+            CuitClienteBox.Margin = new Padding(3, 2, 3, 2);
             CuitClienteBox.Name = "CuitClienteBox";
-            CuitClienteBox.Size = new Size(207, 27);
+            CuitClienteBox.Size = new Size(182, 21);
             CuitClienteBox.TabIndex = 3;
             // 
             // BuscarClienteBoton
             // 
-            BuscarClienteBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarClienteBoton.Location = new Point(593, 53);
+            BuscarClienteBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BuscarClienteBoton.ForeColor = Color.Black;
+            BuscarClienteBoton.Location = new Point(519, 40);
+            BuscarClienteBoton.Margin = new Padding(3, 2, 3, 2);
             BuscarClienteBoton.Name = "BuscarClienteBoton";
-            BuscarClienteBoton.Size = new Size(165, 52);
+            BuscarClienteBoton.Size = new Size(144, 39);
             BuscarClienteBoton.TabIndex = 4;
             BuscarClienteBoton.Text = "Buscar";
             BuscarClienteBoton.UseVisualStyleBackColor = true;
@@ -159,20 +166,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label2.Location = new Point(30, 9);
+            label2.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(26, 7);
             label2.Name = "label2";
-            label2.Size = new Size(188, 25);
+            label2.Size = new Size(156, 18);
             label2.TabIndex = 6;
             label2.Text = "Seleccione el cliente";
             // 
             // CancelarBoton
             // 
-            CancelarBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            CancelarBoton.ForeColor = Color.Red;
-            CancelarBoton.Location = new Point(408, 523);
+            CancelarBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CancelarBoton.ForeColor = Color.Black;
+            CancelarBoton.Location = new Point(357, 392);
+            CancelarBoton.Margin = new Padding(3, 2, 3, 2);
             CancelarBoton.Name = "CancelarBoton";
-            CancelarBoton.Size = new Size(165, 52);
+            CancelarBoton.Size = new Size(144, 39);
             CancelarBoton.TabIndex = 7;
             CancelarBoton.Text = "Cancelar";
             CancelarBoton.UseVisualStyleBackColor = true;
@@ -180,11 +188,12 @@
             // 
             // EmitirFacturaBoton
             // 
-            EmitirFacturaBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            EmitirFacturaBoton.ForeColor = Color.FromArgb(0, 192, 0);
-            EmitirFacturaBoton.Location = new Point(593, 523);
+            EmitirFacturaBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EmitirFacturaBoton.ForeColor = Color.Black;
+            EmitirFacturaBoton.Location = new Point(519, 392);
+            EmitirFacturaBoton.Margin = new Padding(3, 2, 3, 2);
             EmitirFacturaBoton.Name = "EmitirFacturaBoton";
-            EmitirFacturaBoton.Size = new Size(165, 52);
+            EmitirFacturaBoton.Size = new Size(144, 39);
             EmitirFacturaBoton.TabIndex = 8;
             EmitirFacturaBoton.Text = "Emitir Factura";
             EmitirFacturaBoton.UseVisualStyleBackColor = true;
@@ -192,10 +201,12 @@
             // 
             // FacturarOtroBoton
             // 
-            FacturarOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            FacturarOtroBoton.Location = new Point(30, 523);
+            FacturarOtroBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FacturarOtroBoton.ForeColor = Color.Black;
+            FacturarOtroBoton.Location = new Point(26, 392);
+            FacturarOtroBoton.Margin = new Padding(3, 2, 3, 2);
             FacturarOtroBoton.Name = "FacturarOtroBoton";
-            FacturarOtroBoton.Size = new Size(165, 52);
+            FacturarOtroBoton.Size = new Size(144, 39);
             FacturarOtroBoton.TabIndex = 9;
             FacturarOtroBoton.Text = "Facturar otro Cliente";
             FacturarOtroBoton.UseVisualStyleBackColor = true;
@@ -203,9 +214,9 @@
             // 
             // EmitirFacturaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 596);
+            ClientSize = new Size(683, 447);
             Controls.Add(FacturarOtroBoton);
             Controls.Add(EmitirFacturaBoton);
             Controls.Add(CancelarBoton);
@@ -219,6 +230,8 @@
             Controls.Add(CUITClienteLabel);
             Controls.Add(DetalleEnviosLabel);
             Controls.Add(DetalleEnviosListView);
+            Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EmitirFacturaForm";
             Text = "Emitir Factura";
             Load += EmitirFacturaForm_Load;

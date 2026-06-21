@@ -59,11 +59,12 @@
             // 
             // SalirBoton
             // 
-            SalirBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SalirBoton.ForeColor = Color.FromArgb(64, 0, 64);
-            SalirBoton.Location = new Point(593, 647);
+            SalirBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SalirBoton.ForeColor = Color.Black;
+            SalirBoton.Location = new Point(519, 485);
+            SalirBoton.Margin = new Padding(3, 2, 3, 2);
             SalirBoton.Name = "SalirBoton";
-            SalirBoton.Size = new Size(165, 52);
+            SalirBoton.Size = new Size(144, 39);
             SalirBoton.TabIndex = 20;
             SalirBoton.Text = "Salir";
             SalirBoton.UseVisualStyleBackColor = true;
@@ -72,19 +73,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label2.Location = new Point(30, 12);
+            label2.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(26, 9);
             label2.Name = "label2";
-            label2.Size = new Size(188, 25);
+            label2.Size = new Size(156, 18);
             label2.TabIndex = 18;
             label2.Text = "Seleccione el cliente";
             // 
             // BuscarClienteBoton
             // 
-            BuscarClienteBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarClienteBoton.Location = new Point(593, 56);
+            BuscarClienteBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BuscarClienteBoton.Location = new Point(519, 42);
+            BuscarClienteBoton.Margin = new Padding(3, 2, 3, 2);
             BuscarClienteBoton.Name = "BuscarClienteBoton";
-            BuscarClienteBoton.Size = new Size(165, 52);
+            BuscarClienteBoton.Size = new Size(144, 39);
             BuscarClienteBoton.TabIndex = 15;
             BuscarClienteBoton.Text = "Buscar Cliente";
             BuscarClienteBoton.UseVisualStyleBackColor = true;
@@ -92,138 +94,143 @@
             // 
             // CuitClienteBox
             // 
-            CuitClienteBox.Location = new Point(184, 50);
+            CuitClienteBox.Location = new Point(161, 38);
+            CuitClienteBox.Margin = new Padding(3, 2, 3, 2);
             CuitClienteBox.Name = "CuitClienteBox";
-            CuitClienteBox.Size = new Size(207, 27);
+            CuitClienteBox.Size = new Size(182, 21);
             CuitClienteBox.TabIndex = 13;
             // 
             // SaldoCierreLabel
             // 
             SaldoCierreLabel.AutoSize = true;
-            SaldoCierreLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SaldoCierreLabel.Location = new Point(654, 602);
+            SaldoCierreLabel.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaldoCierreLabel.ForeColor = Color.Blue;
+            SaldoCierreLabel.Location = new Point(572, 452);
             SaldoCierreLabel.Name = "SaldoCierreLabel";
-            SaldoCierreLabel.Size = new Size(102, 20);
+            SaldoCierreLabel.Size = new Size(102, 19);
             SaldoCierreLabel.TabIndex = 17;
             SaldoCierreLabel.Text = "1.000.000,23";
             // 
             // DatosCLienteRespuestaLabel
             // 
             DatosCLienteRespuestaLabel.AutoSize = true;
-            DatosCLienteRespuestaLabel.Location = new Point(184, 92);
+            DatosCLienteRespuestaLabel.Location = new Point(161, 69);
             DatosCLienteRespuestaLabel.Name = "DatosCLienteRespuestaLabel";
-            DatosCLienteRespuestaLabel.Size = new Size(123, 20);
+            DatosCLienteRespuestaLabel.Size = new Size(102, 15);
             DatosCLienteRespuestaLabel.TabIndex = 11;
             DatosCLienteRespuestaLabel.Text = "Datos del Cliente";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(28, 602);
+            label1.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(24, 452);
             label1.Name = "label1";
-            label1.Size = new Size(144, 23);
+            label1.Size = new Size(126, 18);
             label1.TabIndex = 16;
             label1.Text = "Saldo al cierre $:";
             // 
             // DatosClienteLabel
             // 
             DatosClienteLabel.AutoSize = true;
-            DatosClienteLabel.Location = new Point(30, 92);
+            DatosClienteLabel.Location = new Point(26, 69);
             DatosClienteLabel.Name = "DatosClienteLabel";
-            DatosClienteLabel.Size = new Size(123, 20);
+            DatosClienteLabel.Size = new Size(102, 15);
             DatosClienteLabel.TabIndex = 10;
             DatosClienteLabel.Text = "Datos del Cliente";
             // 
             // CUITClienteLabel
             // 
             CUITClienteLabel.AutoSize = true;
-            CUITClienteLabel.Location = new Point(30, 56);
+            CUITClienteLabel.Location = new Point(26, 42);
             CUITClienteLabel.Name = "CUITClienteLabel";
-            CUITClienteLabel.Size = new Size(115, 20);
+            CUITClienteLabel.Size = new Size(95, 15);
             CUITClienteLabel.TabIndex = 9;
             CUITClienteLabel.Text = "CUIT del Cliente";
             // 
             // DetalleEnviosLabel
             // 
             DetalleEnviosLabel.AutoSize = true;
-            DetalleEnviosLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            DetalleEnviosLabel.Location = new Point(28, 296);
+            DetalleEnviosLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DetalleEnviosLabel.Location = new Point(24, 222);
             DetalleEnviosLabel.Name = "DetalleEnviosLabel";
-            DetalleEnviosLabel.Size = new Size(312, 25);
+            DetalleEnviosLabel.Size = new Size(248, 18);
             DetalleEnviosLabel.TabIndex = 12;
             DetalleEnviosLabel.Text = "Movimientos de Cuenta Corriente";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label3.Location = new Point(30, 131);
+            label3.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(26, 98);
             label3.Name = "label3";
-            label3.Size = new Size(301, 25);
+            label3.Size = new Size(240, 18);
             label3.TabIndex = 21;
             label3.Text = "Ingrese el período de la consulta";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(30, 177);
+            label4.Location = new Point(26, 133);
             label4.Name = "label4";
-            label4.Size = new Size(54, 20);
+            label4.Size = new Size(46, 15);
             label4.TabIndex = 22;
             label4.Text = "Desde:";
             // 
             // DesdeDateTime
             // 
             DesdeDateTime.Format = DateTimePickerFormat.Short;
-            DesdeDateTime.Location = new Point(92, 170);
+            DesdeDateTime.Location = new Point(80, 128);
+            DesdeDateTime.Margin = new Padding(3, 2, 3, 2);
             DesdeDateTime.Name = "DesdeDateTime";
-            DesdeDateTime.Size = new Size(250, 27);
+            DesdeDateTime.Size = new Size(219, 21);
             DesdeDateTime.TabIndex = 23;
             // 
             // HastaDateTime
             // 
             HastaDateTime.Format = DateTimePickerFormat.Short;
-            HastaDateTime.Location = new Point(508, 170);
+            HastaDateTime.Location = new Point(444, 128);
+            HastaDateTime.Margin = new Padding(3, 2, 3, 2);
             HastaDateTime.Name = "HastaDateTime";
-            HastaDateTime.Size = new Size(250, 27);
+            HastaDateTime.Size = new Size(219, 21);
             HastaDateTime.TabIndex = 25;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(446, 177);
+            label5.Location = new Point(390, 133);
             label5.Name = "label5";
-            label5.Size = new Size(50, 20);
+            label5.Size = new Size(43, 15);
             label5.TabIndex = 24;
             label5.Text = "Hasta:";
             // 
             // SaldoInicioLabel
             // 
             SaldoInicioLabel.AutoSize = true;
-            SaldoInicioLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SaldoInicioLabel.Location = new Point(654, 343);
+            SaldoInicioLabel.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaldoInicioLabel.Location = new Point(572, 257);
             SaldoInicioLabel.Name = "SaldoInicioLabel";
-            SaldoInicioLabel.Size = new Size(102, 20);
+            SaldoInicioLabel.Size = new Size(102, 19);
             SaldoInicioLabel.TabIndex = 27;
             SaldoInicioLabel.Text = "1.000.000,23";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label7.Location = new Point(28, 341);
+            label7.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(24, 256);
             label7.Name = "label7";
-            label7.Size = new Size(142, 23);
+            label7.Size = new Size(122, 18);
             label7.TabIndex = 26;
             label7.Text = "Saldo al inicio $:";
             // 
             // BuscarMovimientosBoton
             // 
-            BuscarMovimientosBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            BuscarMovimientosBoton.Location = new Point(593, 220);
+            BuscarMovimientosBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BuscarMovimientosBoton.Location = new Point(519, 165);
+            BuscarMovimientosBoton.Margin = new Padding(3, 2, 3, 2);
             BuscarMovimientosBoton.Name = "BuscarMovimientosBoton";
-            BuscarMovimientosBoton.Size = new Size(165, 52);
+            BuscarMovimientosBoton.Size = new Size(144, 39);
             BuscarMovimientosBoton.TabIndex = 28;
             BuscarMovimientosBoton.Text = "Buscar Movimientos";
             BuscarMovimientosBoton.UseVisualStyleBackColor = true;
@@ -234,9 +241,10 @@
             DocumentosListView.BackgroundImageTiled = true;
             DocumentosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
             DocumentosListView.GridLines = true;
-            DocumentosListView.Location = new Point(34, 377);
+            DocumentosListView.Location = new Point(30, 283);
+            DocumentosListView.Margin = new Padding(3, 2, 3, 2);
             DocumentosListView.Name = "DocumentosListView";
-            DocumentosListView.Size = new Size(722, 210);
+            DocumentosListView.Size = new Size(632, 158);
             DocumentosListView.TabIndex = 29;
             DocumentosListView.UseCompatibleStateImageBehavior = false;
             DocumentosListView.View = View.Details;
@@ -272,11 +280,12 @@
             // 
             // VerOtroBoton
             // 
-            VerOtroBoton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            VerOtroBoton.ForeColor = Color.FromArgb(64, 0, 64);
-            VerOtroBoton.Location = new Point(422, 647);
+            VerOtroBoton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            VerOtroBoton.ForeColor = Color.Black;
+            VerOtroBoton.Location = new Point(369, 485);
+            VerOtroBoton.Margin = new Padding(3, 2, 3, 2);
             VerOtroBoton.Name = "VerOtroBoton";
-            VerOtroBoton.Size = new Size(165, 52);
+            VerOtroBoton.Size = new Size(144, 39);
             VerOtroBoton.TabIndex = 30;
             VerOtroBoton.Text = "Ver otro cliente";
             VerOtroBoton.UseVisualStyleBackColor = true;
@@ -285,26 +294,26 @@
             // ClienteIDLabel
             // 
             ClienteIDLabel.AutoSize = true;
-            ClienteIDLabel.Location = new Point(539, 56);
+            ClienteIDLabel.Location = new Point(472, 42);
             ClienteIDLabel.Name = "ClienteIDLabel";
-            ClienteIDLabel.Size = new Size(17, 20);
+            ClienteIDLabel.Size = new Size(14, 15);
             ClienteIDLabel.TabIndex = 31;
             ClienteIDLabel.Text = "0";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(446, 56);
+            label6.Location = new Point(390, 42);
             label6.Name = "label6";
-            label6.Size = new Size(81, 20);
+            label6.Size = new Size(66, 15);
             label6.TabIndex = 32;
             label6.Text = "Cliente ID: ";
             // 
             // EstadoCClientesForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(778, 711);
+            ClientSize = new Size(681, 533);
             Controls.Add(label6);
             Controls.Add(ClienteIDLabel);
             Controls.Add(VerOtroBoton);
@@ -327,6 +336,8 @@
             Controls.Add(DatosClienteLabel);
             Controls.Add(CUITClienteLabel);
             Controls.Add(DetalleEnviosLabel);
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EstadoCClientesForm";
             Text = "Estado Cuenta Corriente Clientes";
             Load += EstadoCClientesForm_Load;

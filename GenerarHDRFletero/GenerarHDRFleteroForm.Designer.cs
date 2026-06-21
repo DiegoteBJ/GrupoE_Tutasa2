@@ -86,7 +86,7 @@
             apellidofleterolabel.AutoSize = true;
             apellidofleterolabel.Location = new Point(270, 77);
             apellidofleterolabel.Name = "apellidofleterolabel";
-            apellidofleterolabel.Size = new Size(98, 15);
+            apellidofleterolabel.Size = new Size(102, 15);
             apellidofleterolabel.TabIndex = 20;
             apellidofleterolabel.Text = "[Apellido Fletero]";
             apellidofleterolabel.Click += apellidofleterolabel_Click;
@@ -96,7 +96,7 @@
             apellidolabel.AutoSize = true;
             apellidolabel.Location = new Point(210, 77);
             apellidolabel.Name = "apellidolabel";
-            apellidolabel.Size = new Size(54, 15);
+            apellidolabel.Size = new Size(55, 15);
             apellidolabel.TabIndex = 19;
             apellidolabel.Text = "Apellido:";
             apellidolabel.Click += apellidolabel_Click;
@@ -106,7 +106,7 @@
             nombrefleterolabel.AutoSize = true;
             nombrefleterolabel.Location = new Point(79, 77);
             nombrefleterolabel.Name = "nombrefleterolabel";
-            nombrefleterolabel.Size = new Size(98, 15);
+            nombrefleterolabel.Size = new Size(102, 15);
             nombrefleterolabel.TabIndex = 18;
             nombrefleterolabel.Text = "[Nombre Fletero]";
             nombrefleterolabel.Click += nombrefleterolabel_Click;
@@ -116,7 +116,7 @@
             nombrelabel.AutoSize = true;
             nombrelabel.Location = new Point(19, 77);
             nombrelabel.Name = "nombrelabel";
-            nombrelabel.Size = new Size(54, 15);
+            nombrelabel.Size = new Size(55, 15);
             nombrelabel.TabIndex = 17;
             nombrelabel.Text = "Nombre:";
             nombrelabel.Click += nombrelabel_Click;
@@ -126,7 +126,7 @@
             centrodistribucionlabel.AutoSize = true;
             centrodistribucionlabel.Location = new Point(194, 9);
             centrodistribucionlabel.Name = "centrodistribucionlabel";
-            centrodistribucionlabel.Size = new Size(134, 15);
+            centrodistribucionlabel.Size = new Size(141, 15);
             centrodistribucionlabel.TabIndex = 16;
             centrodistribucionlabel.Text = "[Centro de Distribución]";
             centrodistribucionlabel.Click += centrodistribucionlabel_Click;
@@ -146,7 +146,7 @@
             numusuariolabel.AutoSize = true;
             numusuariolabel.Location = new Point(79, 9);
             numusuariolabel.Name = "numusuariolabel";
-            numusuariolabel.Size = new Size(25, 15);
+            numusuariolabel.Size = new Size(28, 15);
             numusuariolabel.TabIndex = 14;
             numusuariolabel.Text = "003";
             numusuariolabel.Click += numusuariolabel_Click;
@@ -156,7 +156,7 @@
             usuariolabel.AutoSize = true;
             usuariolabel.Location = new Point(19, 9);
             usuariolabel.Name = "usuariolabel";
-            usuariolabel.Size = new Size(50, 15);
+            usuariolabel.Size = new Size(54, 15);
             usuariolabel.TabIndex = 13;
             usuariolabel.Text = "Usuario:";
             usuariolabel.Click += usuariolabel_Click;
@@ -165,7 +165,7 @@
             // 
             ingresardnitextBox.Location = new Point(79, 38);
             ingresardnitextBox.Name = "ingresardnitextBox";
-            ingresardnitextBox.Size = new Size(120, 23);
+            ingresardnitextBox.Size = new Size(120, 21);
             ingresardnitextBox.TabIndex = 12;
             ingresardnitextBox.TextChanged += ingresardnitextBox_TextChanged;
             // 
@@ -174,7 +174,7 @@
             dnifleterolabel.AutoSize = true;
             dnifleterolabel.Location = new Point(19, 46);
             dnifleterolabel.Name = "dnifleterolabel";
-            dnifleterolabel.Size = new Size(30, 15);
+            dnifleterolabel.Size = new Size(29, 15);
             dnifleterolabel.TabIndex = 11;
             dnifleterolabel.Text = "DNI:";
             dnifleterolabel.Click += dnifleterolabel_Click;
@@ -184,7 +184,7 @@
             retiroradioButton.AutoSize = true;
             retiroradioButton.Location = new Point(19, 116);
             retiroradioButton.Name = "retiroradioButton";
-            retiroradioButton.Size = new Size(56, 19);
+            retiroradioButton.Size = new Size(59, 19);
             retiroradioButton.TabIndex = 23;
             retiroradioButton.TabStop = true;
             retiroradioButton.Text = "Retiro";
@@ -196,7 +196,7 @@
             distribucionradioButton.AutoSize = true;
             distribucionradioButton.Location = new Point(79, 116);
             distribucionradioButton.Name = "distribucionradioButton";
-            distribucionradioButton.Size = new Size(89, 19);
+            distribucionradioButton.Size = new Size(93, 19);
             distribucionradioButton.TabIndex = 24;
             distribucionradioButton.TabStop = true;
             distribucionradioButton.Text = "Distribución";
@@ -241,6 +241,7 @@
             // detallehdrlistView
             // 
             detallehdrlistView.Columns.AddRange(new ColumnHeader[] { Guíaresumenhdr, Domicilioresumenhdr, Nombredestinatarioresumenhdr });
+            detallehdrlistView.ForeColor = Color.Blue;
             detallehdrlistView.Location = new Point(14, 22);
             detallehdrlistView.Name = "detallehdrlistView";
             detallehdrlistView.Size = new Size(403, 303);
@@ -268,7 +269,7 @@
             bultostotalasignadoslabel.AutoSize = true;
             bultostotalasignadoslabel.Location = new Point(148, 341);
             bultostotalasignadoslabel.Name = "bultostotalasignadoslabel";
-            bultostotalasignadoslabel.Size = new Size(63, 15);
+            bultostotalasignadoslabel.Size = new Size(67, 15);
             bultostotalasignadoslabel.TabIndex = 14;
             bultostotalasignadoslabel.Text = "[25 bultos]";
             bultostotalasignadoslabel.Click += bultostotalasignadoslabel_Click;
@@ -278,7 +279,7 @@
             totalbultosasignadoslabel.AutoSize = true;
             totalbultosasignadoslabel.Location = new Point(14, 341);
             totalbultosasignadoslabel.Name = "totalbultosasignadoslabel";
-            totalbultosasignadoslabel.Size = new Size(128, 15);
+            totalbultosasignadoslabel.Size = new Size(137, 15);
             totalbultosasignadoslabel.TabIndex = 13;
             totalbultosasignadoslabel.Text = "Total bultos asignados:";
             totalbultosasignadoslabel.Click += totalbultosasignadoslabel_Click;
@@ -286,6 +287,7 @@
             // seleccionguiaslistView
             // 
             seleccionguiaslistView.Columns.AddRange(new ColumnHeader[] { Guiaencomiendapendiente, Codigopostalencomiendapendiente, Domicilioencomiendapendiente, Tamañoencomiendapendiente, Estadoencomiendapendiente, Intentosencomiendapendiente });
+            seleccionguiaslistView.ForeColor = Color.Blue;
             seleccionguiaslistView.Location = new Point(15, 27);
             seleccionguiaslistView.Name = "seleccionguiaslistView";
             seleccionguiaslistView.Size = new Size(400, 180);
@@ -366,7 +368,7 @@
             codigopostallabel.AutoSize = true;
             codigopostallabel.Location = new Point(19, 153);
             codigopostallabel.Name = "codigopostallabel";
-            codigopostallabel.Size = new Size(84, 15);
+            codigopostallabel.Size = new Size(88, 15);
             codigopostallabel.TabIndex = 31;
             codigopostallabel.Text = "Código Postal:";
             codigopostallabel.Click += codigopostallabel_Click;
@@ -375,7 +377,7 @@
             // 
             ingresarcodigopostaltextBox.Location = new Point(109, 147);
             ingresarcodigopostaltextBox.Name = "ingresarcodigopostaltextBox";
-            ingresarcodigopostaltextBox.Size = new Size(120, 23);
+            ingresarcodigopostaltextBox.Size = new Size(120, 21);
             ingresarcodigopostaltextBox.TabIndex = 32;
             ingresarcodigopostaltextBox.TextChanged += ingresarcodigopostaltextBox_TextChanged;
             // 
@@ -394,7 +396,7 @@
             cantidaddebultoslabel.AutoSize = true;
             cantidaddebultoslabel.Location = new Point(15, 210);
             cantidaddebultoslabel.Name = "cantidaddebultoslabel";
-            cantidaddebultoslabel.Size = new Size(110, 15);
+            cantidaddebultoslabel.Size = new Size(115, 15);
             cantidaddebultoslabel.TabIndex = 16;
             cantidaddebultoslabel.Text = "Cantidad de bultos:";
             cantidaddebultoslabel.Click += cantidaddebultoslabel_Click;
@@ -419,12 +421,12 @@
             bultoslabel.AutoSize = true;
             bultoslabel.Location = new Point(132, 210);
             bultoslabel.Name = "bultoslabel";
-            bultoslabel.Size = new Size(63, 15);
+            bultoslabel.Size = new Size(67, 15);
             bultoslabel.TabIndex = 31;
             bultoslabel.Text = "[25 bultos]";
             bultoslabel.Click += bultoslabel_Click;
             // 
-            // GenerarHDRFleteros
+            // GenerarHDRFleteroForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -449,7 +451,8 @@
             Controls.Add(ingresardnitextBox);
             Controls.Add(dnifleterolabel);
             Controls.Add(seleccionguiasgroupBox);
-            Name = "GenerarHDRFleteros";
+            Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Name = "GenerarHDRFleteroForm";
             Text = "Generar HDR Fleteros";
             Load += GenerarHDRFleteros_Load;
             detallehdrgroupBox.ResumeLayout(false);
