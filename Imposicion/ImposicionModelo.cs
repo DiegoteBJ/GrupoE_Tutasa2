@@ -31,6 +31,33 @@ namespace GrupoE_Tutasa.Imposicion
             }
         }
 
+        // Usuario simulado de logueo. Se resuelve únicamente a partir del valor
+        // de Program.modalidadImposicion (no interviene tipo de agencia ni de CD).
+        public string UsuarioLogueado
+        {
+            get
+            {
+                string m = (modalidadImposicion ?? string.Empty).Trim().ToUpper();
+
+                if (m == "CD")
+                {
+                    return "Usuario: US001 CD";
+                }
+
+                if (m == "AGENCIA")
+                {
+                    return "Usuario: US001 Agencia";
+                }
+
+                if (m == "DOMICILIO")
+                {
+                    return "Usuario: US001 CallCenter";
+                }
+
+                return string.Empty;
+            }
+        }
+
 
         public List<ClienteRemitente> LClientes =>
             ClienteAlmacen.clientes.Select(c => new ClienteRemitente

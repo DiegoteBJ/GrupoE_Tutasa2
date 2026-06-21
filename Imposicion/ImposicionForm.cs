@@ -14,6 +14,9 @@ namespace GrupoE_Tutasa.Imposicion
         // Carga inicial del formulario
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Usuario simulado de logueo (según Program.modalidadImposicion)
+            UsuarioLogueadoLabel.Text = modelo.UsuarioLogueado;
+
             // Limpieza de etiquetas del remitente
             NombreRemitenteLabel.Text = string.Empty;
             TelefonoRemitenteLabel.Text = string.Empty;
@@ -151,6 +154,16 @@ namespace GrupoE_Tutasa.Imposicion
             if (fiscal && modelo.clienteActual != null)
             {
                 label37.Text = FormatearDomicilio(modelo.clienteActual.Domicilio);
+            }
+
+            // Al usar el domicilio fiscal como domicilio de retiro, se limpian
+            // los datos cargados manualmente (provincia, localidad, dirección y CP).
+            if (fiscal)
+            {
+                ProvinciaRetiroComboBox.SelectedIndex = -1;
+                LocalidadRetiroComboBox.DataSource = null;
+                DireccionRetiroTextBox.Clear();
+                CPRetiroTextBox.Clear();
             }
 
             ProvinciaRetiroComboBox.Enabled = !fiscal;

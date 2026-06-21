@@ -335,3 +335,18 @@ Rendicion HDR
 2. ListView de Detalle HDR se cambio el ForeColor a Blue
 3. El label de RespCantGuiasCumplidas se cambia el ForeColor a Blue
 4. El label de RespCantGuiasNoCumplidas se cambia el ForeColor a Blue
+
+
+---------------------------------
+
+MEJORAS IMPOSICION
+
+Cambio 1 — Usuario logueado visible en la pantalla de imposición
+Antes: la pantalla de imposición no mostraba ninguna identificación del usuario operando. No había forma visual de saber bajo qué modalidad/punto de atención se estaba trabajando.
+Después: se agregó un Label en la parte superior del formulario que muestra un usuario.
+
+Archivos tocados: Designer (alta del control UsuarioLogueadoLabel), Modelo (nueva propiedad UsuarioLogueado con la lógica de mapeo) y Form (asignación en Form1_Load). La lógica quedó en el Modelo respetando la separación Boundary–Control.
+Cambio 2 — Limpieza automática al usar el domicilio fiscal como domicilio de retiro
+Antes: al tildar el check de domicilio fiscal, los controles de retiro (provincia, localidad, dirección y código postal) se deshabilitaban pero conservaban los datos previamente cargados. Quedaban valores residuales visibles que ya no aplicaban, con riesgo de confusión sobre qué domicilio se estaba usando realmente.
+Después: al tildar el check, además de deshabilitarse, esos cuatro campos se limpian automáticamente (provincia y localidad quedan sin selección, dirección y CP vacíos). Al destildar, los controles se rehabilitan vacíos para volver a cargarlos a mano.
+Archivo tocado: Form, dentro del handler DomicilioFiscalCheck_CheckedChanged.

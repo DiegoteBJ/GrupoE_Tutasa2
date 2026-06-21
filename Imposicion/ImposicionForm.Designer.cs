@@ -76,6 +76,7 @@ namespace GrupoE_Tutasa.Imposicion
             label20 = new Label();
             Cancelar_Boton = new Button();
             Confirmar_Boton = new Button();
+            UsuarioLogueadoLabel = new Label();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -96,7 +97,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox1.Controls.Add(CuitRemitente_TextBox);
             groupBox1.Controls.Add(Cuit_Remitente_Label);
             groupBox1.Controls.Add(panel3);
-            groupBox1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(24, 33);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
@@ -136,7 +136,7 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionRemitente_Label.AutoSize = true;
             DireccionRemitente_Label.Location = new Point(484, 77);
             DireccionRemitente_Label.Name = "DireccionRemitente_Label";
-            DireccionRemitente_Label.Size = new Size(64, 15);
+            DireccionRemitente_Label.Size = new Size(60, 15);
             DireccionRemitente_Label.TabIndex = 7;
             DireccionRemitente_Label.Text = "Dirección:";
             DireccionRemitente_Label.Click += label4_Click;
@@ -146,7 +146,7 @@ namespace GrupoE_Tutasa.Imposicion
             TelefonoRemitente_Label.AutoSize = true;
             TelefonoRemitente_Label.Location = new Point(484, 47);
             TelefonoRemitente_Label.Name = "TelefonoRemitente_Label";
-            TelefonoRemitente_Label.Size = new Size(58, 15);
+            TelefonoRemitente_Label.Size = new Size(56, 15);
             TelefonoRemitente_Label.TabIndex = 5;
             TelefonoRemitente_Label.Text = "Telefono:";
             TelefonoRemitente_Label.Click += label3_Click;
@@ -156,7 +156,7 @@ namespace GrupoE_Tutasa.Imposicion
             NombreRemitente_Label.AutoSize = true;
             NombreRemitente_Label.Location = new Point(484, 19);
             NombreRemitente_Label.Name = "NombreRemitente_Label";
-            NombreRemitente_Label.Size = new Size(140, 15);
+            NombreRemitente_Label.Size = new Size(134, 15);
             NombreRemitente_Label.TabIndex = 3;
             NombreRemitente_Label.Text = "Nombre / Razon Social :";
             // 
@@ -165,7 +165,7 @@ namespace GrupoE_Tutasa.Imposicion
             CuitRemitente_TextBox.Location = new Point(153, 30);
             CuitRemitente_TextBox.Margin = new Padding(4, 3, 4, 3);
             CuitRemitente_TextBox.Name = "CuitRemitente_TextBox";
-            CuitRemitente_TextBox.Size = new Size(116, 21);
+            CuitRemitente_TextBox.Size = new Size(116, 23);
             CuitRemitente_TextBox.TabIndex = 1;
             // 
             // Cuit_Remitente_Label
@@ -212,7 +212,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox5.Controls.Add(CPRetiroTextBox);
             groupBox5.Controls.Add(CP_Retiro_Label);
             groupBox5.Controls.Add(panel4);
-            groupBox5.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox5.Location = new Point(24, 161);
             groupBox5.Margin = new Padding(4, 3, 4, 3);
             groupBox5.Name = "groupBox5";
@@ -228,7 +227,7 @@ namespace GrupoE_Tutasa.Imposicion
             DomicilioFiscalCheck.AutoSize = true;
             DomicilioFiscalCheck.Location = new Point(56, 38);
             DomicilioFiscalCheck.Name = "DomicilioFiscalCheck";
-            DomicilioFiscalCheck.Size = new Size(114, 19);
+            DomicilioFiscalCheck.Size = new Size(109, 19);
             DomicilioFiscalCheck.TabIndex = 29;
             DomicilioFiscalCheck.Text = "Domicilio Fiscal";
             DomicilioFiscalCheck.UseVisualStyleBackColor = true;
@@ -247,7 +246,7 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionFiscal_Label.AutoSize = true;
             DireccionFiscal_Label.Location = new Point(56, 84);
             DireccionFiscal_Label.Name = "DireccionFiscal_Label";
-            DireccionFiscal_Label.Size = new Size(64, 15);
+            DireccionFiscal_Label.Size = new Size(60, 15);
             DireccionFiscal_Label.TabIndex = 25;
             DireccionFiscal_Label.Text = "Dirección:";
             // 
@@ -265,7 +264,7 @@ namespace GrupoE_Tutasa.Imposicion
             Provincia_Retiro_Label.AutoSize = true;
             Provincia_Retiro_Label.Location = new Point(357, 25);
             Provincia_Retiro_Label.Name = "Provincia_Retiro_Label";
-            Provincia_Retiro_Label.Size = new Size(60, 15);
+            Provincia_Retiro_Label.Size = new Size(56, 15);
             Provincia_Retiro_Label.TabIndex = 23;
             Provincia_Retiro_Label.Text = "Provincia";
             // 
@@ -283,7 +282,7 @@ namespace GrupoE_Tutasa.Imposicion
             Localidad_Retiro_Label.AutoSize = true;
             Localidad_Retiro_Label.Location = new Point(596, 25);
             Localidad_Retiro_Label.Name = "Localidad_Retiro_Label";
-            Localidad_Retiro_Label.Size = new Size(65, 15);
+            Localidad_Retiro_Label.Size = new Size(61, 15);
             Localidad_Retiro_Label.TabIndex = 24;
             Localidad_Retiro_Label.Text = "Localidad ";
             // 
@@ -292,7 +291,7 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionRetiroTextBox.Location = new Point(453, 65);
             DireccionRetiroTextBox.Margin = new Padding(4, 3, 4, 3);
             DireccionRetiroTextBox.Name = "DireccionRetiroTextBox";
-            DireccionRetiroTextBox.Size = new Size(245, 21);
+            DireccionRetiroTextBox.Size = new Size(245, 23);
             DireccionRetiroTextBox.TabIndex = 14;
             // 
             // Direccion_retiro_Label
@@ -300,7 +299,7 @@ namespace GrupoE_Tutasa.Imposicion
             Direccion_retiro_Label.AutoSize = true;
             Direccion_retiro_Label.Location = new Point(355, 68);
             Direccion_retiro_Label.Name = "Direccion_retiro_Label";
-            Direccion_retiro_Label.Size = new Size(64, 15);
+            Direccion_retiro_Label.Size = new Size(60, 15);
             Direccion_retiro_Label.TabIndex = 21;
             Direccion_retiro_Label.Text = "Dirección ";
             // 
@@ -309,7 +308,7 @@ namespace GrupoE_Tutasa.Imposicion
             CPRetiroTextBox.Location = new Point(453, 104);
             CPRetiroTextBox.Margin = new Padding(4, 3, 4, 3);
             CPRetiroTextBox.Name = "CPRetiroTextBox";
-            CPRetiroTextBox.Size = new Size(92, 21);
+            CPRetiroTextBox.Size = new Size(92, 23);
             CPRetiroTextBox.TabIndex = 23;
             CPRetiroTextBox.TextChanged += CPRetiroTextBox_TextChanged;
             // 
@@ -318,7 +317,7 @@ namespace GrupoE_Tutasa.Imposicion
             CP_Retiro_Label.AutoSize = true;
             CP_Retiro_Label.Location = new Point(355, 107);
             CP_Retiro_Label.Name = "CP_Retiro_Label";
-            CP_Retiro_Label.Size = new Size(71, 15);
+            CP_Retiro_Label.Size = new Size(67, 15);
             CP_Retiro_Label.TabIndex = 22;
             CP_Retiro_Label.Text = "Cód. Postal";
             // 
@@ -337,7 +336,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox2.Controls.Add(ApellidoDestinatario_Label);
             groupBox2.Controls.Add(DNIDestinatarioTextBox);
             groupBox2.Controls.Add(DniDestinatario_Label);
-            groupBox2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(24, 334);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
@@ -353,7 +351,7 @@ namespace GrupoE_Tutasa.Imposicion
             NombreDestinatarioTextBox.Location = new Point(128, 35);
             NombreDestinatarioTextBox.Margin = new Padding(4, 3, 4, 3);
             NombreDestinatarioTextBox.Name = "NombreDestinatarioTextBox";
-            NombreDestinatarioTextBox.Size = new Size(116, 21);
+            NombreDestinatarioTextBox.Size = new Size(116, 23);
             NombreDestinatarioTextBox.TabIndex = 9;
             // 
             // NombreDestinatario_Label
@@ -361,7 +359,7 @@ namespace GrupoE_Tutasa.Imposicion
             NombreDestinatario_Label.AutoSize = true;
             NombreDestinatario_Label.Location = new Point(55, 38);
             NombreDestinatario_Label.Name = "NombreDestinatario_Label";
-            NombreDestinatario_Label.Size = new Size(55, 15);
+            NombreDestinatario_Label.Size = new Size(54, 15);
             NombreDestinatario_Label.TabIndex = 9;
             NombreDestinatario_Label.Text = "Nombre ";
             // 
@@ -370,7 +368,7 @@ namespace GrupoE_Tutasa.Imposicion
             ApellidoDestinatarioTextBox.Location = new Point(356, 36);
             ApellidoDestinatarioTextBox.Margin = new Padding(4, 3, 4, 3);
             ApellidoDestinatarioTextBox.Name = "ApellidoDestinatarioTextBox";
-            ApellidoDestinatarioTextBox.Size = new Size(116, 21);
+            ApellidoDestinatarioTextBox.Size = new Size(116, 23);
             ApellidoDestinatarioTextBox.TabIndex = 13;
             // 
             // ApellidoDestinatario_Label
@@ -378,7 +376,7 @@ namespace GrupoE_Tutasa.Imposicion
             ApellidoDestinatario_Label.AutoSize = true;
             ApellidoDestinatario_Label.Location = new Point(294, 39);
             ApellidoDestinatario_Label.Name = "ApellidoDestinatario_Label";
-            ApellidoDestinatario_Label.Size = new Size(55, 15);
+            ApellidoDestinatario_Label.Size = new Size(54, 15);
             ApellidoDestinatario_Label.TabIndex = 12;
             ApellidoDestinatario_Label.Text = "Apellido ";
             // 
@@ -387,7 +385,7 @@ namespace GrupoE_Tutasa.Imposicion
             DNIDestinatarioTextBox.Location = new Point(582, 37);
             DNIDestinatarioTextBox.Margin = new Padding(4, 3, 4, 3);
             DNIDestinatarioTextBox.Name = "DNIDestinatarioTextBox";
-            DNIDestinatarioTextBox.Size = new Size(116, 21);
+            DNIDestinatarioTextBox.Size = new Size(116, 23);
             DNIDestinatarioTextBox.TabIndex = 11;
             // 
             // DniDestinatario_Label
@@ -395,7 +393,7 @@ namespace GrupoE_Tutasa.Imposicion
             DniDestinatario_Label.AutoSize = true;
             DniDestinatario_Label.Location = new Point(509, 40);
             DniDestinatario_Label.Name = "DniDestinatario_Label";
-            DniDestinatario_Label.Size = new Size(29, 15);
+            DniDestinatario_Label.Size = new Size(30, 15);
             DniDestinatario_Label.TabIndex = 10;
             DniDestinatario_Label.Text = "DNI ";
             DniDestinatario_Label.Click += label6_Click;
@@ -411,7 +409,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox3.Controls.Add(DestinoComboBox);
             groupBox3.Controls.Add(labelDestino);
             groupBox3.Controls.Add(panel1);
-            groupBox3.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(32, 423);
             groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
@@ -435,7 +432,7 @@ namespace GrupoE_Tutasa.Imposicion
             label10.AutoSize = true;
             label10.Location = new Point(55, 38);
             label10.Name = "label10";
-            label10.Size = new Size(60, 15);
+            label10.Size = new Size(56, 15);
             label10.TabIndex = 9;
             label10.Text = "Provincia";
             label10.Click += label10_Click;
@@ -454,7 +451,7 @@ namespace GrupoE_Tutasa.Imposicion
             label9.AutoSize = true;
             label9.Location = new Point(55, 78);
             label9.Name = "label9";
-            label9.Size = new Size(65, 15);
+            label9.Size = new Size(61, 15);
             label9.TabIndex = 10;
             label9.Text = "Localidad ";
             label9.Click += label9_Click;
@@ -474,7 +471,7 @@ namespace GrupoE_Tutasa.Imposicion
             label8.AutoSize = true;
             label8.Location = new Point(55, 118);
             label8.Name = "label8";
-            label8.Size = new Size(81, 15);
+            label8.Size = new Size(77, 15);
             label8.TabIndex = 14;
             label8.Text = "Tipo Entrega:";
             // 
@@ -493,7 +490,7 @@ namespace GrupoE_Tutasa.Imposicion
             labelDestino.AutoSize = true;
             labelDestino.Location = new Point(55, 158);
             labelDestino.Name = "labelDestino";
-            labelDestino.Size = new Size(53, 15);
+            labelDestino.Size = new Size(50, 15);
             labelDestino.TabIndex = 15;
             labelDestino.Text = "Destino:";
             labelDestino.Visible = false;
@@ -517,7 +514,7 @@ namespace GrupoE_Tutasa.Imposicion
             EntregaDomicilio_Titulo_Label.AutoSize = true;
             EntregaDomicilio_Titulo_Label.Location = new Point(20, 14);
             EntregaDomicilio_Titulo_Label.Name = "EntregaDomicilio_Titulo_Label";
-            EntregaDomicilio_Titulo_Label.Size = new Size(134, 15);
+            EntregaDomicilio_Titulo_Label.Size = new Size(132, 15);
             EntregaDomicilio_Titulo_Label.TabIndex = 21;
             EntregaDomicilio_Titulo_Label.Text = "ENTREGA A DOMICILIO";
             EntregaDomicilio_Titulo_Label.Click += label12_Click;
@@ -527,7 +524,7 @@ namespace GrupoE_Tutasa.Imposicion
             DireccionDomicilioTextBox.Location = new Point(180, 35);
             DireccionDomicilioTextBox.Margin = new Padding(4, 3, 4, 3);
             DireccionDomicilioTextBox.Name = "DireccionDomicilioTextBox";
-            DireccionDomicilioTextBox.Size = new Size(245, 21);
+            DireccionDomicilioTextBox.Size = new Size(245, 23);
             DireccionDomicilioTextBox.TabIndex = 31;
             // 
             // Direccion_Entrega_Label
@@ -535,7 +532,7 @@ namespace GrupoE_Tutasa.Imposicion
             Direccion_Entrega_Label.AutoSize = true;
             Direccion_Entrega_Label.Location = new Point(90, 38);
             Direccion_Entrega_Label.Name = "Direccion_Entrega_Label";
-            Direccion_Entrega_Label.Size = new Size(64, 15);
+            Direccion_Entrega_Label.Size = new Size(60, 15);
             Direccion_Entrega_Label.TabIndex = 32;
             Direccion_Entrega_Label.Text = "Dirección ";
             // 
@@ -544,7 +541,7 @@ namespace GrupoE_Tutasa.Imposicion
             CPDomicilioTextBox.Location = new Point(180, 69);
             CPDomicilioTextBox.Margin = new Padding(4, 3, 4, 3);
             CPDomicilioTextBox.Name = "CPDomicilioTextBox";
-            CPDomicilioTextBox.Size = new Size(92, 21);
+            CPDomicilioTextBox.Size = new Size(92, 23);
             CPDomicilioTextBox.TabIndex = 32;
             CPDomicilioTextBox.TextChanged += CPDomicilioTextBox_TextChanged;
             // 
@@ -553,7 +550,7 @@ namespace GrupoE_Tutasa.Imposicion
             CP_Entrega_Label.AutoSize = true;
             CP_Entrega_Label.Location = new Point(90, 72);
             CP_Entrega_Label.Name = "CP_Entrega_Label";
-            CP_Entrega_Label.Size = new Size(71, 15);
+            CP_Entrega_Label.Size = new Size(67, 15);
             CP_Entrega_Label.TabIndex = 31;
             CP_Entrega_Label.Text = "Cód. Postal";
             // 
@@ -571,7 +568,6 @@ namespace GrupoE_Tutasa.Imposicion
             groupBox4.Controls.Add(TipoXL_Encomienda_Label);
             groupBox4.Controls.Add(Indicaciones_Encomienda_Label);
             groupBox4.Controls.Add(label20);
-            groupBox4.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox4.Location = new Point(32, 631);
             groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
@@ -586,7 +582,7 @@ namespace GrupoE_Tutasa.Imposicion
             GuiasAgenerar_Label.AutoSize = true;
             GuiasAgenerar_Label.Location = new Point(482, 34);
             GuiasAgenerar_Label.Name = "GuiasAgenerar_Label";
-            GuiasAgenerar_Label.Size = new Size(101, 15);
+            GuiasAgenerar_Label.Size = new Size(92, 15);
             GuiasAgenerar_Label.TabIndex = 34;
             GuiasAgenerar_Label.Text = "Guias a Generar:";
             // 
@@ -595,7 +591,7 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadSTextBox.Location = new Point(9, 65);
             CantidadSTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadSTextBox.Name = "CantidadSTextBox";
-            CantidadSTextBox.Size = new Size(92, 21);
+            CantidadSTextBox.Size = new Size(92, 23);
             CantidadSTextBox.TabIndex = 24;
             // 
             // TipoS_Encomienda_Label
@@ -603,7 +599,7 @@ namespace GrupoE_Tutasa.Imposicion
             TipoS_Encomienda_Label.AutoSize = true;
             TipoS_Encomienda_Label.Location = new Point(9, 47);
             TipoS_Encomienda_Label.Name = "TipoS_Encomienda_Label";
-            TipoS_Encomienda_Label.Size = new Size(42, 15);
+            TipoS_Encomienda_Label.Size = new Size(40, 15);
             TipoS_Encomienda_Label.TabIndex = 21;
             TipoS_Encomienda_Label.Text = "Tipo S";
             // 
@@ -612,7 +608,7 @@ namespace GrupoE_Tutasa.Imposicion
             Total_Guias_Label.AutoSize = true;
             Total_Guias_Label.Location = new Point(617, 34);
             Total_Guias_Label.Name = "Total_Guias_Label";
-            Total_Guias_Label.Size = new Size(77, 15);
+            Total_Guias_Label.Size = new Size(73, 15);
             Total_Guias_Label.TabIndex = 37;
             Total_Guias_Label.Text = "[Total Guias]";
             // 
@@ -621,7 +617,7 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadMTextBox.Location = new Point(128, 65);
             CantidadMTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadMTextBox.Name = "CantidadMTextBox";
-            CantidadMTextBox.Size = new Size(92, 21);
+            CantidadMTextBox.Size = new Size(92, 23);
             CantidadMTextBox.TabIndex = 26;
             // 
             // TipoM_Encomienda_Label
@@ -629,7 +625,7 @@ namespace GrupoE_Tutasa.Imposicion
             TipoM_Encomienda_Label.AutoSize = true;
             TipoM_Encomienda_Label.Location = new Point(128, 47);
             TipoM_Encomienda_Label.Name = "TipoM_Encomienda_Label";
-            TipoM_Encomienda_Label.Size = new Size(44, 15);
+            TipoM_Encomienda_Label.Size = new Size(45, 15);
             TipoM_Encomienda_Label.TabIndex = 25;
             TipoM_Encomienda_Label.Text = "Tipo M";
             // 
@@ -638,7 +634,7 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadLTextBox.Location = new Point(248, 65);
             CantidadLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadLTextBox.Name = "CantidadLTextBox";
-            CantidadLTextBox.Size = new Size(92, 21);
+            CantidadLTextBox.Size = new Size(92, 23);
             CantidadLTextBox.TabIndex = 28;
             // 
             // TipoL_Encomienda_Label
@@ -646,7 +642,7 @@ namespace GrupoE_Tutasa.Imposicion
             TipoL_Encomienda_Label.AutoSize = true;
             TipoL_Encomienda_Label.Location = new Point(250, 47);
             TipoL_Encomienda_Label.Name = "TipoL_Encomienda_Label";
-            TipoL_Encomienda_Label.Size = new Size(41, 15);
+            TipoL_Encomienda_Label.Size = new Size(40, 15);
             TipoL_Encomienda_Label.TabIndex = 27;
             TipoL_Encomienda_Label.Text = "Tipo L";
             // 
@@ -655,7 +651,7 @@ namespace GrupoE_Tutasa.Imposicion
             CantidadXLTextBox.Location = new Point(367, 65);
             CantidadXLTextBox.Margin = new Padding(4, 3, 4, 3);
             CantidadXLTextBox.Name = "CantidadXLTextBox";
-            CantidadXLTextBox.Size = new Size(92, 21);
+            CantidadXLTextBox.Size = new Size(92, 23);
             CantidadXLTextBox.TabIndex = 30;
             // 
             // TipoXL_Encomienda_Label
@@ -663,7 +659,7 @@ namespace GrupoE_Tutasa.Imposicion
             TipoXL_Encomienda_Label.AutoSize = true;
             TipoXL_Encomienda_Label.Location = new Point(367, 47);
             TipoXL_Encomienda_Label.Name = "TipoXL_Encomienda_Label";
-            TipoXL_Encomienda_Label.Size = new Size(49, 15);
+            TipoXL_Encomienda_Label.Size = new Size(47, 15);
             TipoXL_Encomienda_Label.TabIndex = 29;
             TipoXL_Encomienda_Label.Text = "Tipo XL";
             TipoXL_Encomienda_Label.Click += label19_Click;
@@ -673,7 +669,7 @@ namespace GrupoE_Tutasa.Imposicion
             Indicaciones_Encomienda_Label.AutoSize = true;
             Indicaciones_Encomienda_Label.Location = new Point(9, 19);
             Indicaciones_Encomienda_Label.Name = "Indicaciones_Encomienda_Label";
-            Indicaciones_Encomienda_Label.Size = new Size(258, 15);
+            Indicaciones_Encomienda_Label.Size = new Size(241, 15);
             Indicaciones_Encomienda_Label.TabIndex = 22;
             Indicaciones_Encomienda_Label.Text = "Ingrese la cantidad de encomiendas por tipo";
             // 
@@ -687,7 +683,6 @@ namespace GrupoE_Tutasa.Imposicion
             // 
             // Cancelar_Boton
             // 
-            Cancelar_Boton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cancelar_Boton.Location = new Point(630, 776);
             Cancelar_Boton.Margin = new Padding(4, 3, 4, 3);
             Cancelar_Boton.Name = "Cancelar_Boton";
@@ -699,7 +694,6 @@ namespace GrupoE_Tutasa.Imposicion
             // Confirmar_Boton
             // 
             Confirmar_Boton.BackColor = SystemColors.Highlight;
-            Confirmar_Boton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Confirmar_Boton.ForeColor = SystemColors.ButtonFace;
             Confirmar_Boton.Location = new Point(744, 776);
             Confirmar_Boton.Margin = new Padding(4, 3, 4, 3);
@@ -710,12 +704,22 @@ namespace GrupoE_Tutasa.Imposicion
             Confirmar_Boton.UseVisualStyleBackColor = false;
             Confirmar_Boton.Click += button3_Click;
             // 
+            // UsuarioLogueadoLabel
+            // 
+            UsuarioLogueadoLabel.AutoSize = true;
+            UsuarioLogueadoLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            UsuarioLogueadoLabel.Location = new Point(24, 9);
+            UsuarioLogueadoLabel.Name = "UsuarioLogueadoLabel";
+            UsuarioLogueadoLabel.Size = new Size(0, 17);
+            UsuarioLogueadoLabel.TabIndex = 18;
+            UsuarioLogueadoLabel.Text = "[Usuario]";
+            // 
             // ImposicionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(744, 430);
+            ClientSize = new Size(879, 833);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -723,7 +727,7 @@ namespace GrupoE_Tutasa.Imposicion
             Controls.Add(groupBox4);
             Controls.Add(Cancelar_Boton);
             Controls.Add(Confirmar_Boton);
-            Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Controls.Add(UsuarioLogueadoLabel);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ImposicionForm";
             Text = "Imposicion de Encomiendas";
@@ -805,6 +809,7 @@ namespace GrupoE_Tutasa.Imposicion
         private Label Total_Guias_Label;
 
         private Button Cancelar_Boton, Confirmar_Boton;
+        private Label UsuarioLogueadoLabel;
         
     }
 }
