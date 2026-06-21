@@ -562,7 +562,12 @@
     "apellidoDestinatario": "Cabrera",
     "dniDestinatario": 21491296,
     "tipoCaja": "S",
-    "domicilioEntrega": null,
+    "domicilioEntrega": {
+      "calle": "Calle Agencia 9",
+      "numero": "204",
+      "codigoPostal": "S3000",
+      "localidadId": 7
+    },
     "intentosDeEntrega": 0,
     "estado": "RENDIDA",
     "tarifarioId": 1,

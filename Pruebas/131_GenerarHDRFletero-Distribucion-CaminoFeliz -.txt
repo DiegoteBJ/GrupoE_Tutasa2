@@ -1,17 +1,17 @@
 Plan de Prueba: 130_GenerarHDRFletero-CaminoFeliz.txt
 
-(Prerequisito: debe haber guías en estado EN_CD_DESTINO cuyo domicilioEntrega
- tenga CP cubierto por el fletero. Fletero 1 Juan García cubre CP C1426 (CD CABA).)
+(Prerequisito: admitir guia 20 y debe haber guías en estado EN_CD_DESTINO cuyo domicilio de Entrega
+ tenga CP cubierto por el fletero. Fletero 9 Nicolás Gómez cubre CP S3000 (CD Santa Fe Capital).)
 
 (Empieza con el Menú Principal)
 1- Botón                       "Generar HDR Fletero"
 
-(Pantalla Generar HDR Fletero - fleteroId 1: Juan García, DNI 22874052)
-2- DNI Fletero                 ""
+(Pantalla Generar HDR Fletero - fleteroId 9: Nicolás Gómez, DNI 26389096)
+2- DNI Fletero                 "26389096"
 3- Botón                       "Buscar Fletero"
-4- Nombre resultado            ""
-5- Apellido resultado          ""
-6- Lista guías disponibles     <guías cuyo CP de retiro coincide con la cobertura del fletero ()>
+4- Nombre resultado            "Nicolás"
+5- Apellido resultado          "Gómez"
+6- Lista guías disponibles     <guías cuyo CP de retiro coincide con la cobertura del fletero (S3000)>
 7- Seleccionar guías de la lista
 8- Botón                       "Agregar al HDR"
 9- Botón                       "Generar HDR"
@@ -23,7 +23,7 @@ Plan de Prueba: 130_GenerarHDRFletero-CaminoFeliz.txt
 Verificaciones:
 13- HDRRetiroEntidad.json o HDRDistribucionEntidad.json - Debe existir una entrada nueva similar a:
     {
-        "FleteroId": 0,
+        "FleteroId": 9,
         "FechaEmision": "<fecha de hoy>",
         "Estado": "PENDIENTE",
         "GuiaIds": [<ids de las guías seleccionadas>]
@@ -40,5 +40,5 @@ Verificaciones:
         "GuiaId": <id de la guía>,
         "FechaMovimiento": "<fecha y hora de hoy>",
         "Estado": "EN_DISTRIBUCION",
-        "Ubicacion": "En CD: 1"
+        "Ubicacion": "En CD: 3"
     }
