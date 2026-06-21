@@ -94,9 +94,9 @@ namespace GrupoE_Tutasa.Admision
             var guia = GuiaAlmacen.guias
                 .FirstOrDefault(g => g.GuiaId == guiaId);
 
-            guia.CDActualId = CDTrabajoId;
             if (guia != null)
             {
+                guia.CDActualId = CDTrabajoId;
                 if (guia.CDDestinoId == guia.CDActualId)
                     { guia.Estado = EstadoGuiaEnum.EN_CD_DESTINO;}
                 else

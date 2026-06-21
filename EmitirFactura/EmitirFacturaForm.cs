@@ -44,6 +44,7 @@ namespace GrupoE_Tutasa.EmitirFactura
                     DatosCLienteRespuestaLabel.Text = $"{cliente.clienteName}";
                     clienteId = cliente.clienteId;
                     encuentro = 1;
+                    break;
                 }
             }
             if (encuentro == 0)

@@ -166,6 +166,7 @@ namespace GrupoE_Tutasa.GenerarHDR
         private void retiroradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (retiroradioButton.Checked)
+            {
                 CargarGuiasPorEstado("A_RETIRAR");
                 ActualizarAutoCompleteCP("A_RETIRAR");
                 buscarcodigopostalbutton.Enabled = true;
@@ -174,11 +175,13 @@ namespace GrupoE_Tutasa.GenerarHDR
                 agregartodoguiasbutton.Enabled = true;
                 eliminarguiasbutton.Enabled = true;
                 eliminartodoguiasbutton.Enabled = true;
+            }
         }
 
         private void distribucionradioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (distribucionradioButton.Checked)
+            {
                 CargarGuiasPorEstado("EN_DISTRIBUCION");
                 ActualizarAutoCompleteCP("EN_DISTRIBUCION");
                 buscarcodigopostalbutton.Enabled = true;
@@ -187,6 +190,7 @@ namespace GrupoE_Tutasa.GenerarHDR
                 agregartodoguiasbutton.Enabled = true;
                 eliminarguiasbutton.Enabled = true;
                 eliminartodoguiasbutton.Enabled = true;
+            }
         }
 
         private void CargarGuiasPorEstado(string estado)
