@@ -176,6 +176,28 @@ namespace GrupoE_Tutasa.RendicionHDR
                 modelo.ConfirmarRendicionDistribucion(HDRtextBox.Text.Trim(), resultados);
 
             MessageBox.Show("Rendición registrada correctamente.");
+
+            // Se limpia el formulario para evitar grabar una nueva rendición por accidente.
+            LimpiarFormulario();
+        }
+
+        private void LimpiarFormulario()
+        {
+            HDRtextBox.Clear();
+            HDRRetiroRadioBoton.Checked = false;
+            HDRDistribucionRadioBoton.Checked = false;
+
+            RespuestaFleteroLabel.Text = "";
+            RespuestaFechaLabel.Text = "";
+            RespuestaTipoHDRLabel.Text = "";
+            RespuestaTotalGuiasLabel.Text = "";
+
+            RespCantGuiasCumplidasLabel.Text = "0/0";
+            RespCantidadGuiasNoCumplidasLabel.Text = "0/0";
+
+            DetalleHDRListView.Items.Clear();
+
+            HDRtextBox.Focus();
         }
 
         private void CancelarRendicionBoton_Click(object sender, EventArgs e)

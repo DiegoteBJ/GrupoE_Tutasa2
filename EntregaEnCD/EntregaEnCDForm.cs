@@ -110,10 +110,14 @@ namespace GrupoE_Tutasa.EntregaEnCD
         }
         private void Button_Cancelar_Click(object sender, EventArgs e)
         {
-            TextBox_DniDestinatario.Clear();
-            Label_NombreResultado.Text = "";
-            Label_ApellidoResultado.Text = "";
-            ListView_GuiasPendientes.Items.Clear();
+            var respuesta = MessageBox.Show(
+                "¿Está seguro de que desea salir? No se grabarán los cambios.",
+                "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void EntregaEnCDFormNuevo_Load(object sender, EventArgs e)
