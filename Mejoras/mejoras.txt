@@ -350,3 +350,6 @@ Cambio 2 — Limpieza automática al usar el domicilio fiscal como domicilio de 
 Antes: al tildar el check de domicilio fiscal, los controles de retiro (provincia, localidad, dirección y código postal) se deshabilitaban pero conservaban los datos previamente cargados. Quedaban valores residuales visibles que ya no aplicaban, con riesgo de confusión sobre qué domicilio se estaba usando realmente.
 Después: al tildar el check, además de deshabilitarse, esos cuatro campos se limpian automáticamente (provincia y localidad quedan sin selección, dirección y CP vacíos). Al destildar, los controles se rehabilitan vacíos para volver a cargarlos a mano.
 Archivo tocado: Form, dentro del handler DomicilioFiscalCheck_CheckedChanged.
+
+Cambio 1 — Rendición HDR: antes, al confirmar la rendición se grababa pero el formulario quedaba cargado, permitiendo grabar la misma rendición por accidente. Ahora se limpia automáticamente tras grabar (HDR, tipo, fletero, grilla y contadores), evitando registros duplicados. Archivo: RendicionHDRForm.cs.
+Cambio 2 — Entrega en Agencia y Entrega en CD: antes el botón "Cancelar" solo limpiaba campos, no cerraba la pantalla. Ahora pide confirmación (avisando que no se grabarán los cambios) y, si el usuario acepta, cierra la ventana. Archivos: EntregaEnAgenciaForm.cs y EntregaEnCDForm.cs.
