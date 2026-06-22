@@ -1,6 +1,6 @@
 MEJORAS Y FIXES - TUTASA
 ========================
-Última actualización: 21/06/2026
+Última actualización: 22/06/2026
 
 
 ╔══════════════════════════════════════════════════════════════════╗
@@ -196,27 +196,18 @@ Archivo: Form, handler DomicilioFiscalCheck_CheckedChanged.
 ║                     PENDIENTE DE IMPLEMENTAR                     ║
 ╚══════════════════════════════════════════════════════════════════╝
 
-PENDIENTE 1 — Snapshot obsoleta en EntregaEnAgencia y EntregaEnCD [MEDIA]
-Archivos: EntregaEnAgencia\EntregaEnAgenciaModelo.cs
-          EntregaEnCD\EntregaEnCDModelo.cs
-Problema: las guías se cargan en el constructor y no se refrescan entre búsquedas.
-Si se entregó una guía desde otra pantalla en la misma sesión, el formulario
-sigue mostrando la lista vieja.
-Solución: eliminar la lista privada y el CargarGuias() del constructor. Consultar
-GuiaAlmacen.guias directamente en BuscarGuiasPendientes(), igual que hace
-LGuiasAAdmitir en Admision.
-
-PENDIENTE 2 — Combo desplegable de servicios en GenerarHDRTransporte y RecepcionDespachoCDLargaDistancia [UX]
-Archivos: GenerarHDRTransporte\GenerarHDRTransporteForm.cs / Designer.cs
-          RecepcionDespachoCDLargaDistancia\RecepcionDespachoCDLargaDistanciaForm.cs / Designer.cs
+PENDIENTE 1 — Combo desplegable de servicios en GenerarHDRTransporte [UX]
+Archivo: GenerarHDRTransporte\GenerarHDRTransporteForm.cs / Designer.cs
 Problema: el usuario tipea el número de servicio manualmente.
-Solución: ComboBox filtrado con solo los servicios relevantes al CD de trabajo:
-  - GenerarHDRTransporte (despacho): CDOrigenId == CDTrabajoId,
-    FechaSalida >= hoy, Estado PENDIENTE.
-  - RecepcionDespachoCDLargaDistancia (recepción): CDDestinoId == CDTrabajoId,
-    FechaSalida >= hoy, Estado EN_TRANSITO.
+Solución: ComboBox filtrado con las siguientes condiciones:
+  - CDOrigenId == CDTrabajoId
+  - Estado == PENDIENTE
+  - FechaYHoraSalida >= DateTime.Today
+  - FechaYHoraSalida <= DateTime.Today.AddDays(5)
 El combo mostraría empresa + fecha/hora + ruta. La selección dispararía la carga
-de HDRs automáticamente, eliminando el botón Buscar.
+de guías automáticamente, eliminando el botón Buscar.
+Nota: RecepcionDespachoCDLargaDistancia queda con ingreso manual porque el operario
+tiene el papel del servicio en la mano.
 
 
 ╔══════════════════════════════════════════════════════════════════╗
@@ -236,3 +227,6 @@ de HDRs automáticamente, eliminando el botón Buscar.
 
 - Algoritmo cuadrático en ResolverCDActualIdPorCodigoPostal() — Imposicion\ImposicionModelo.cs
   Con el volumen de datos actual no es perceptible.
+
+- Combo desplegable de servicios en RecepcionDespachoCDLargaDistancia
+  El operario tiene el papel del servicio en la mano y tipea el número directamente.
