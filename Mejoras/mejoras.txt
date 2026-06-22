@@ -2,6 +2,39 @@ MEJORAS Y FIXES - TUTASA
 ========================
 Última actualización: 22/06/2026
 
+╔══════════════════════════════════════════════════════════════════╗
+║                           ÍNDICE                                 ║
+╚══════════════════════════════════════════════════════════════════╝
+
+1. YA REALIZADO
+   1.1 Fixes de estados de guías
+       FIX 1  — TRASLADADA → EN_CD_DESTINO en recepción de transporte
+       FIX 2  — TRASLADADA → ADMITIDA en generación de HDR Transporte
+       FIX 3  — PENDIENTE_DE_ENTREGA habilitada para reintento de distribución
+       FIX 4  — Segundo intento fallido pasa a CANCELADA
+       FIX 5  — Eliminación de estados huérfanos del enum
+   1.2 Mejoras funcionales
+       FIX 6  — LCentroDistribucion en AdmisionModelo
+       FIX 7  — CambiarTamañoGuia() persistía el cambio solo en memoria
+       FIX 8  — NullReferenceException en AdmitirGuia()
+       FIX 9  — Bloques if sin llaves en GenerarHDRFleteroForm
+       FIX 10 — Loop sin break en búsqueda por CUIT en EmitirFactura
+       FIX 11 — RendicionHDRForm no limpiaba el formulario después de confirmar
+       FIX 12 — Botón Cancelar en EntregaEnAgencia y EntregaEnCD
+   1.3 Mejoras de diseño (fuentes, colores, botones por pantalla)
+   1.4 Mejoras de imposición
+       Cambio 1 — Usuario logueado visible en pantalla de imposición
+       Cambio 2 — Limpieza automática al usar domicilio fiscal como domicilio de retiro
+
+2. PENDIENTE DE IMPLEMENTAR
+   PENDIENTE 1 — Combo desplegable de servicios en GenerarHDRTransporte [UX]
+
+3. NO SE VA A REALIZAR
+   — Pantalla de devolución al remitente
+   — Switch sin default en ObtenerCoeficiente()
+   — Combo desplegable de clientes en EmitirFactura y EstadoCCClientes
+   — Algoritmo cuadrático en ResolverCDActualIdPorCodigoPostal()
+   — Combo desplegable de servicios en RecepcionDespachoCDLargaDistancia
 
 ╔══════════════════════════════════════════════════════════════════╗
 ║                        YA REALIZADO                              ║
@@ -191,7 +224,6 @@ Después: al tildar, los campos se limpian automáticamente. Al destildar, se
 rehabilitan vacíos para cargarlos a mano.
 Archivo: Form, handler DomicilioFiscalCheck_CheckedChanged.
 
-
 ╔══════════════════════════════════════════════════════════════════╗
 ║                     PENDIENTE DE IMPLEMENTAR                     ║
 ╚══════════════════════════════════════════════════════════════════╝
@@ -208,7 +240,6 @@ El combo mostraría empresa + fecha/hora + ruta. La selección dispararía la ca
 de guías automáticamente, eliminando el botón Buscar.
 Nota: RecepcionDespachoCDLargaDistancia queda con ingreso manual porque el operario
 tiene el papel del servicio en la mano.
-
 
 ╔══════════════════════════════════════════════════════════════════╗
 ║                      NO SE VA A REALIZAR                         ║
